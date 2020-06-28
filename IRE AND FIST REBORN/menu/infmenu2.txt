@@ -1,0 +1,17 @@
+{
+	"menu_id": "infmenu2",
+	"parent_menu_id": "blt_options",
+	"title": "inf2_title",
+	"description": "inf2_desc",
+	"back_callback": "test",
+	"items":
+	[
+		{
+			"type" : "button",
+			"id" : "weapon_header",
+			"title" : "inf_weapon_header",
+			"description" : "inf_blank",
+			"callback" : "infcb_donothing"
+		}
+	]
+}

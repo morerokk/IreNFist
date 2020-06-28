@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2">
+	<object file="units/pd2_dlc_joy/weapons/wpn_fps_smg_shepheard/wpn_fps_smg_shepheard" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_shepheard"/>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="NewRaycastWeaponBase" >
+			<var name="name_id" value="shepheardprimary" />
+		</extension>
+	</extensions>
+</unit>

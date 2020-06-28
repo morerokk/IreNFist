@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2">
+	<object file="units/pd2_dlc_sdb/weapons/wpn_fps_sho_coach/wpn_fps_sho_coach" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_coach"/>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="SaigaShotgun" >
+			<var name="name_id" value="coachprimary" />
+		</extension>
+	</extensions>
+</unit>

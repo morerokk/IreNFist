@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2">
+	<object file="units/pd2_dlc_born/weapons/wpn_fps_smg_hajk/wpn_fps_smg_hajk" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_hajk"/>
+	</dependencies>
+    <extensions>
+        <extension name="unit_data" class="ScriptUnitData" />
+        <extension name="base" class="NewRaycastWeaponBase" >
+			<var name="name_id" value="hajkprimary" />
+		</extension>
+    </extensions>
+</unit>

@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2" >
+    <object file="units/payday2/weapons/wpn_fps_smg_olympic/wpn_fps_smg_olympic" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_m4"/>
+	</dependencies>
+    <extensions>
+        <extension name="unit_data" class="ScriptUnitData" />
+          <extension name="base" class="NewRaycastWeaponBase" >
+			<var name="name_id" value="olympicprimary" />
+		</extension>
+    </extensions>
+</unit>

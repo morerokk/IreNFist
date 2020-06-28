@@ -1,0 +1,82 @@
+{
+	"inf_title": "IREnFIST",
+	"inf_desc": "Configure IREnFIST. Some settings are only applied after the next loading screen.",
+	"inf_blank": "",
+
+	"inf_weapon_header": "-- WEAPON OPTIONS --",
+	"inf_allpenwalls": "All Weapons Penetrate Walls",
+	"inf_allpenwalls_desc": "If on, all non-buckshot bullets can penetrate walls to a certain extent. Penetration distance varies depending on weapon type. DEFAULT: ON",
+	"inf_reloadbreaksads": "Reloading Cancels Aiming",
+	"inf_reloadbreaksads_desc": "If on, starting a reload will cancel aiming like in vanilla Payday. Does not prevent you from immediately aiming in again if your weapon allows it. DEFAULT: ON",
+	"inf_disable_autoreload": "Disable Autoreload",
+	"inf_disable_autoreload_desc": "If on, attempting to fire an empty weapon will not automatically start a reload. DEFAULT: ON",
+	"inf_goldeneye": "Goldeneye Reloads",
+	"inf_goldeneye_desc": "Determines if weapons should be lowered off-screen during reload. DEFAULT: 1",
+	"inf_goldeneye_1": "1: Disabled",
+	"inf_goldeneye_2": "2: Akimbos only",
+	"inf_goldeneye_3": "3: All weapons",
+
+	"inf_ene_header": "-- ENEMY OPTIONS --",
+	"inf_ene_rainbowassault": "Enemy Assault Variety",
+	"inf_ene_rainbowassault_desc": "TAKES EFFECT ON HOST ONLY. If on, adds Blues, CAR-4 Greens, CAR-4 Whiteheads, and UMP Grays to Overkill, Mayhem, and Death Wish assault waves. DEFAULT: ON",
+	"inf_ene_skulldozersahoy": "Skulldozers Ahoy",
+	"inf_ene_skulldozersahoy_desc": "TAKES EFFECT ON HOST ONLY. If on, allows Skulldozers to spawn on difficulties below Death Wish. DEFAULT: 2",
+	"inf_ene_skulldozersahoy_1": "1: No change",
+	"inf_ene_skulldozersahoy_2": "2: Add to Overkill/Mayhem",
+	"inf_ene_skulldozersahoy_3": "3: Add to all difficulties",
+	"inf_ene_sanehp": "Use InF Enemy Health",
+	"inf_ene_sanehp_desc": "Greatly reduces enemy headshot multipliers and overall health. This option is included for compatibility reasons - InF is not balanced for it. DEFAULT: ON",
+	"inf_ene_copfalloff": "Use IREnFIST Enemy Damage",
+	"inf_ene_copfalloff_desc": "Reduces enemy damage in certain scenarios, primarily from enemies at range and enemies on Death Sentence. This option is included for compatibility reasons - InF is not balanced for it. DEFAULT: ON",
+	"inf_ene_copmiss": "Use IREnFIST Enemy Accuracy",
+	"inf_ene_copmiss_desc": "Reduces enemy accuracy at range. This option is included for compatibility reasons - InF is not balanced for it. DEFAULT: ON",
+
+	"inf_txt_header": "--- TEXT OPTIONS ---",
+	"inf_txt_wpnname": "Use IREnFIST Text",
+	"inf_txt_wpnname_desc": "Determines whether IREnFIST should try to use its own text for weapons and weapon mods. Use option 1 for more compatibility with other text mods. Warning: item text descriptions may not be accurate to InF stats. DEFAULT: 2",
+	"inf_txt_wpnname_1": "1: Leave non-InF strings alone",
+	"inf_txt_wpnname_2": "2: Apply IREnFIST text",
+
+	"inf_slide_header": "--- ADVANCED MOVEMENT OPTIONS ---",
+	"inf_runkick": "Sprint Kicks",
+	"inf_runkick_desc": "Determines if kicking from a non-jumping sprint is allowed. Disable if you're tired of being pinballed in tight spaces or something. Setting is applied immediately. DEFAULT: OFF",
+	"inf_kickyeet": "Kick Ragdoll Launch Multiplier",
+	"inf_kickyeet_desc": "Determines how hard ragdolls are launched when killed by your mighty boot. Setting is applied immediately. DEFAULT: 1",
+	"inf_dashcontrols": "Dash Controls",
+	"inf_dashcontrols_desc": "Determines whether dashes are controlled by keybind, double-tap, or both. NOTE: Keybind requires HoldTheKey installed to function. DEFAULT: 4",
+	"inf_dashcontrols_1": "1: Dash disabled",
+	"inf_dashcontrols_2": "2: Keybind",
+	"inf_dashcontrols_3": "3: Double-Tap",
+	"inf_dashcontrols_4": "4: Keybind + Double-Tap",
+	"inf_dash": "Dash Keybind",
+	"inf_dash_desc": "Hold this key plus a directional movement key to dash. Will not dash if you're able to sprint with this input. NOTE: Requires HoldTheKey installed to function.",
+	"inf_slidestealth": "Sliding (Stealth)",
+	"inf_slidestealth_desc": "Determines how slide controls work in stealth. Setting is applied immediately. DEFAULT: 2",
+	"inf_slidestealth_1": "1: Slide disabled",
+	"inf_slidestealth_2": "2: Hold crouch + directional movement key",
+	"inf_slidestealth_3": "3: Hold crouch only",
+	"inf_slideloud": "Sliding (Loud)",
+	"inf_slideloud_desc": "Determines how slide controls work in combat. Setting is applied immediately. DEFAULT: 3",
+	"inf_slideloud_1": "1: Slide disabled",
+	"inf_slideloud_2": "2: Hold crouch + directional movement key",
+	"inf_slideloud_3": "3: Hold crouch only",
+	"inf_slidewpnangle": "Slide Weapon Angle",
+	"inf_slidewpnangle_desc": "Determines how much the weapon is tilted when sliding but not aiming down the sights. Setting is applied immediately. DEFAULT: 15",
+	"inf_wallrunwpnangle": "Wallrun Weapon Angle",
+	"inf_wallrunwpnangle_desc": "Determines how much the weapon is tilted when sliding but not aiming down the sights. Setting is applied immediately. DEFAULT: 15",
+
+
+
+
+
+	"inf_txt_wpnname_3": "3: Real names",
+	"inf_txt_partname": "Weapon Mod Names",
+	"inf_txt_partname_desc": "Determines which set of part names to use. Use 'no change' for more compatibility with other text mods. DEFAULT: 2",
+	"inf_txt_partname_1": "1: No change",
+	"inf_txt_partname_2": "2: Modified PAYDAY names",
+	"inf_txt_partname_3": "3: Real names",
+
+
+
+	"inf_easter_egg": "Special thanks to Fahrenheit and Ricky Rio for playing this shit with me even though Ricky Rio is total fucking garbage. gitgud scrub."
+}

@@ -1,0 +1,1202 @@
+<table name="irenfist" color="Color(0, 0.5, 0)"> <!-- priority="-33" -->
+<AssetUpdates id="24208" version="1.50" provider="modworkshop"/>
+<GlobalValue id="infmod" color="Color(0, 0.5, 0)"/>
+
+<AddFiles directory="assets">
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_m308_20rnd"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_akmsu_har"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_car4_blk"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_amr16_har"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst_only"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_spas_valve"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_spas_sven"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_bar_slowfire"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_shortdot"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_contraband_grip"/>
+
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_ak74_zastava"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_akm_zastava"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_asval_dmr"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_asval_sp6"/>
+<!--
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_svu_unsil"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_c96_auto"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_car4_ironsretain"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_amr16_ironsretain"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_contraband_ironsretain"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_lmg_offset"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_lmg_offset_nongadget"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_m95_nobipod"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_ivan"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_akcover_smooth"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_akcover_rib"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_devotion"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_m231fpw"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_sightrail"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_groza_762"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_groza_545"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_groza_556"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_mk18_nomagwelldevice"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_hk417_dmr"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_lapd_556"/>
+-->
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/hajkprimary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_hajkprimary/wpn_fps_smg_hajkprimary"/>
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/shepheardprimary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_shepheardprimary/wpn_fps_smg_shepheardprimary"/>
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/coalprimary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_coalprimary/wpn_fps_smg_coalprimary"/>
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m1928primary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_m1928primary/wpn_fps_smg_thompsonprimary"/>
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/olympicprimary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_olympicprimary/wpn_fps_smg_olympicprimary"/>
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/new_mp5primary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_mp5primary/wpn_fps_smg_mp5primary"/>
+		<!-- <unit path="units/primarysmg/weapons/wpn_fps_smg_mp5primary/wpn_fps_smg_mp5primary_npc"/> -->
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/schakalprimary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_schakalprimary/wpn_fps_smg_schakalprimary"/>
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/akmsuprimary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_smg_akmsuprimary/wpn_fps_smg_akmsuprimary"/>
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/coachprimary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_sho_coachprimary/wpn_fps_sho_coachprimary"/>
+
+
+        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m37primary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary"/>
+</AddFiles>
+
+	<Sounds directory="sounds">
+		<!-- new vegas 5.56 revolver -->
+		<sounds prefix="infalt">
+			<sound id="chinchilla_fire" path="thatgun.ogg"/>
+		</sounds>
+		<!-- metro exodus ashot -->
+		<sounds prefix="infalt">
+			<sound id="hx25_fire" path="ashot.ogg"/>
+		</sounds>
+		<!-- provided by killerwolf -->
+		<sound id="kick_off" path="kick_off.ogg"/>
+		<sound id="kick_light" path="kick_light.ogg"/>
+		<sound id="kick_heavy" path="kick_heavy.ogg"/>
+		<sound id="slide_enter1" path="slide_start1.ogg"/>
+		<sound id="slide_enter2" path="slide_start2.ogg"/>
+		<sound id="slide_loop1" path="slide_loop1.ogg"/>
+		<sound id="slide_loop1slow" path="slide_loop1slow.ogg"/>
+		<sound id="slide_loop1slower" path="slide_loop1slower.ogg"/>
+		<sound id="slide_loop1slowest" path="slide_loop1slowest.ogg"/>
+		<sound id="slide_loop2" path="slide_loop2.ogg"/>
+		<sound id="slide_loop2slow" path="slide_loop2slow.ogg"/>
+		<sound id="slide_loop2slower" path="slide_loop2slower.ogg"/>
+		<sound id="slide_loop2slowest" path="slide_loop2slowest.ogg"/>
+		<sound id="slide_loop3" path="slide_loop3.ogg"/>
+		<sound id="slide_loop3slow" path="slide_loop3slow.ogg"/>
+		<sound id="slide_loop3slower" path="slide_loop3slower.ogg"/>
+		<sound id="slide_loop3slowest" path="slide_loop3slowest.ogg"/>
+		<sound id="slide_loop4" path="slide_loop4.ogg"/>
+		<sound id="slide_loop4slow" path="slide_loop4slow.ogg"/>
+		<sound id="slide_loop4slower" path="slide_loop4slower.ogg"/>
+		<sound id="slide_loop4slowest" path="slide_loop4slowest.ogg"/>
+		<sound id="slide_loop5" path="slide_loop5.ogg"/>
+		<sound id="slide_loop5slow" path="slide_loop5slow.ogg"/>
+		<sound id="slide_loop5slower" path="slide_loop5slower.ogg"/>
+		<sound id="slide_loop5slowest" path="slide_loop5slowest.ogg"/>
+		<sound id="slide_loop6" path="slide_loop6.ogg"/>
+		<sound id="slide_loop6slow" path="slide_loop6slow.ogg"/>
+		<sound id="slide_loop6slower" path="slide_loop6slower.ogg"/>
+		<sound id="slide_loop6slowest" path="slide_loop6slowest.ogg"/>
+		<!-- grabbed the sound of an electric motor off of youtube -->
+		<sound id="windup1" path="windup1.ogg"/>
+		<sound id="windup2" path="windup2.ogg"/>
+		<sound id="windup3" path="windup3.ogg"/>
+		<sound id="windup4" path="windup4.ogg"/>
+		<sound id="winddown1" path="winddown1.ogg"/>
+		<sound id="winddown2" path="winddown2.ogg"/>
+		<sound id="winddown3" path="winddown3.ogg"/>
+		<sound id="winddown4" path="winddown4.ogg"/>
+	</Sounds>
+
+<!-- Surplus Special -->
+<WeaponMod id="inf_m308_20rnd" based_on="wpn_fps_ass_m14_body_lower" type="lower_body" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" >
+	<weapons>
+		<value_node value="wpn_fps_ass_m14"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- krinkov 7.62 -->
+<WeaponMod id="inf_akmsu_har" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_smg_akmsu"/>
+		<value_node value="wpn_fps_smg_x_akmsu"/>
+		<value_node value="wpn_fps_smg_akmsuprimary"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- car-4 heavy rifle -->
+<WeaponMod id="inf_car4_blk" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_m4"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- AMR-16 full heavy rifle -->
+<WeaponMod id="inf_amr16_har" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_m16"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- semi/burst -->
+<WeaponMod id="inf_burst_only" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_amcar"/>
+		<value_node value="wpn_fps_ass_m4"/>
+		<value_node value="wpn_fps_ass_m16"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- semi/burst/auto -->
+<WeaponMod id="inf_burst" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_amcar"/>
+		<value_node value="wpn_fps_ass_m4"/>
+		<value_node value="wpn_fps_ass_m16"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- spas half-life style -->
+<WeaponMod id="inf_spas_valve" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_sho_spas12"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- spas sven coop style -->
+<WeaponMod id="inf_spas_sven" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_sho_spas12"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- BAR rate reducer -->
+<WeaponMod id="inf_bar_slowfire" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<!-- ak74 zastava -->
+<WeaponMod id="inf_ak74_zastava" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_74"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- akm zastava -->
+<WeaponMod id="inf_akm_zastava" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_akm"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- AS VAL DMR -->
+<WeaponMod id="inf_asval_dmr" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_asval"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+<!-- AS VAL SP-6 -->
+<WeaponMod id="inf_asval_sp6" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_asval"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- babyforce SVU unsilenced -->
+<WeaponMod id="inf_svu_unsil" based_on="wpn_fps_snp_desertfox_b_short" type="barrel" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+
+<!-- Schnellfeuer -->
+<WeaponMod id="inf_c96_auto" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" >
+	<weapons>
+		<value_node value="wpn_fps_pis_c96"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+
+<!-- CAR-4 ironsights -->
+<WeaponMod id="inf_car4_ironsretain" based_on="wpn_fps_m4_uupg_o_flipup" type="sight_irons" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_m4"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- AMR-16 ironsights -->
+<WeaponMod id="inf_amr16_ironsretain" based_on="wpn_fps_ass_m16_os_frontsight" type="sight_irons" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_m16"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- little friend ironsights -->
+<WeaponMod id="inf_contraband_ironsretain" based_on="wpn_fps_ass_contraband_o_standard" type="sight_irons" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_contraband"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- deployable bipod part added to custom weapon bipods -->
+<WeaponMod id="inf_bipod_part" based_on="wpn_fps_upg_bp_lmg_lionbipod" a_obj="a_nowhere" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_bipod_snp" based_on="wpn_fps_upg_bp_lmg_lionbipod" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<!-- backup ironsights -->
+<WeaponMod id="inf_buis" based_on="wpn_fps_upg_o_45iron" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<!-- aim to the side with LMGs -->
+<WeaponMod id="inf_lmg_offset" based_on="wpn_fps_upg_o_45iron" type="gadget" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_lmg_rpk"/>
+		<value_node value="wpn_fps_lmg_m249"/>
+		<value_node value="wpn_fps_lmg_hk21"/>
+		<value_node value="wpn_fps_lmg_mg42"/>
+		<value_node value="wpn_fps_lmg_par"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- standalone aiming to the side with LMGs -->
+<WeaponMod id="inf_lmg_offset_nongadget" based_on="wpn_fps_smg_mp9_b_dummy" type="sight_irons" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_lmg_rpk"/>
+		<value_node value="wpn_fps_lmg_m249"/>
+		<value_node value="wpn_fps_lmg_hk21"/>
+		<value_node value="wpn_fps_lmg_mg42"/>
+		<value_node value="wpn_fps_lmg_par"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- Thanatos bipod removal -->
+<WeaponMod id="inf_m95_nobipod" based_on="wpn_fps_smg_mp9_b_dummy" type="bipod" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_snp_m95"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- hyperion-cr default sight (w/reticle change) -->
+<WeaponMod id="inf_shortdot" based_on="wpn_fps_upg_o_shortdot" type="sight" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_snp_m95"/>
+		<value_node value="wpn_fps_snp_msr"/>
+		<value_node value="wpn_fps_snp_r93"/>
+		<value_node value="wpn_fps_snp_mosin"/>
+		<value_node value="wpn_fps_snp_wa2000"/>
+		<value_node value="wpn_fps_snp_model70"/>
+		<value_node value="wpn_fps_snp_desertfox"/>
+		<value_node value="wpn_fps_snp_tti"/>
+		<value_node value="wpn_fps_snp_siltstone"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- bootleg/little friend grip -->
+<WeaponMod id="inf_contraband_grip" based_on="wpn_fps_ass_contraband_g_standard" type="grip" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_m4"/>
+		<value_node value="wpn_fps_ass_m16"/>
+		<value_node value="wpn_fps_ass_amcar"/>
+		<value_node value="wpn_fps_smg_olympic"/>
+		<value_node value="wpn_fps_smg_x_olympic"/>
+		<value_node value="wpn_fps_smg_olympicprimary"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- RIFLE IS FINE -->
+<WeaponMod id="inf_ivan" based_on="wpn_fps_smg_mp9_b_dummy" type="zzzz" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_74"/>
+		<value_node value="wpn_fps_ass_akm"/>
+		<value_node value="wpn_fps_ass_akm_gold"/>
+		<value_node value="wpn_fps_shot_saiga"/>
+		<value_node value="wpn_fps_smg_akmsu"/>
+		<value_node value="wpn_fps_smg_akmsuprimary"/>
+		<value_node value="wpn_fps_ass_flint"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_akcover_smooth" based_on="wpn_fps_ass_74_body_upperreceiver" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_akm"/>
+		<value_node value="wpn_fps_smg_akmsu"/>
+		<value_node value="wpn_fps_smg_akmsuprimary"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_akcover_rib" based_on="wpn_fps_ass_akm_body_upperreceiver_vanilla" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_ass_74"/>
+		<value_node value="wpn_fps_shot_saiga"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- pewpew -->
+<WeaponMod id="inf_devotion" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_lmg_par"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- pewpew -->
+<WeaponMod id="inf_m231fpw" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_smg_olympic"/>
+		<value_node value="wpn_fps_smg_x_olympic"/>
+		<value_node value="wpn_fps_smg_olympicprimary"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- alternate sight rail -->
+<WeaponMod id="inf_sightrail" based_on="wpn_fps_snp_model70_o_rail" a_obj="a_infrail" type="sight_rail" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<!-- <value_node value="wpn_fps_ass_asval"/> -->
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_sightrail_invis" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_infrail" type="sight_rail" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_invis_stance" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_body" type="whoknows" drop="false" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_groza_762" based_on="wpn_fps_m4_uupg_m_std_vanilla" a_obj="a_m_ak" type="magazine" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_groza_545" based_on="wpn_fps_m4_uupg_m_std_vanilla" a_obj="a_m_ak" type="magazine" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_groza_556" based_on="wpn_fps_m4_uupg_m_std_vanilla" a_obj="a_m_m4" type="magazine" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_mk18_nomagwelldevice" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_g" type="weirdmagthing" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_hk417_dmr" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_lapd_556" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_nowhere" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_50bmg_incendiary" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_nowhere" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+	<weapons>
+		<value_node value="wpn_fps_snp_m95"/>
+	</weapons>
+</WeaponMod>
+
+<WeaponMod id="inf_50bmg_raufoss" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_nowhere" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+	<weapons>
+		<value_node value="wpn_fps_snp_m95"/>
+	</weapons>
+</WeaponMod>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<WeaponNew unlock_level="38">
+		<weapon id="hajkprimary" based_on="hajk" texture_bundle_folder="primarysmg" weapon_hold="hajk" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="hajk"/>
+		</weapon>
+        <factory id="wpn_fps_smg_hajkprimary" unit="units/primarysmg/weapons/wpn_fps_smg_hajkprimary/wpn_fps_smg_hajkprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_hajk_b_standard"/>
+				<value_node value="wpn_fps_smg_hajk_fg_standard"/>
+				<value_node value="wpn_fps_smg_hajk_g_standard"/>
+				<value_node value="wpn_fps_m4_uupg_m_std_vanilla"/>
+				<value_node value="wpn_fps_smg_hajk_ns_standard"/>
+				<value_node value="wpn_fps_smg_hajk_o_standard"/>
+				<value_node value="wpn_fps_smg_hajk_s_standard"/>
+				<value_node value="wpn_fps_smg_hajk_body_standard"/>
+				<value_node value="wpn_fps_smg_hajk_vg_moe"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_hajk_b_standard"/>
+				<value_node value="wpn_fps_smg_hajk_b_short"/>
+				<value_node value="wpn_fps_smg_hajk_b_medium"/>
+				<value_node value="wpn_fps_smg_hajk_fg_standard"/>
+				<value_node value="wpn_fps_smg_hajk_g_standard"/>
+				<value_node value="wpn_fps_smg_hajk_ns_standard"/>
+				<value_node value="wpn_fps_smg_hajk_o_standard"/>
+				<value_node value="wpn_fps_smg_hajk_s_standard"/>
+				<value_node value="wpn_fps_smg_hajk_body_standard"/>
+				<value_node value="wpn_fps_smg_hajk_vg_moe"/>
+
+				<value_node value="wpn_fps_m4_uupg_m_std_vanilla"/>
+				<value_node value="wpn_fps_ass_l85a2_m_emag"/>
+				<value_node value="wpn_fps_upg_m4_m_pmag"/>
+				<value_node value="wpn_fps_upg_m4_m_l5"/>
+				<value_node value="wpn_fps_upg_m4_m_quad"/>
+				<value_node value="wpn_fps_upg_m4_m_straight"/>
+				<value_node value="wpn_fps_m4_upg_m_quick"/>
+
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_o_xpsg33_magnifier"/>
+
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+	<WeaponNew unlock_level="20">
+		<weapon id="shepheardprimary" based_on="shepheard" texture_bundle_folder="primarysmg" weapon_hold="shepheard" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="shepheard"/>
+		</weapon>
+        <factory id="wpn_fps_smg_shepheardprimary" unit="units/primarysmg/weapons/wpn_fps_smg_shepheardprimary/wpn_fps_smg_shepheardprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_shepheard_b_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_body"/>
+				<value_node value="wpn_fps_smg_shepheard_mag_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_dh_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_ns_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_s_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_g_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_bolt_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_o_standard"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_shepheard_b_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_body"/>
+				<value_node value="wpn_fps_smg_shepheard_body_short"/>
+				<value_node value="wpn_fps_smg_shepheard_g_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_dh_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_ns_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_s_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_s_no"/>
+				<value_node value="wpn_fps_smg_shepheard_s_adapter"/>
+				<value_node value="wpn_fps_smg_shepheard_mag_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_mag_extended"/>
+				<value_node value="wpn_fps_smg_shepheard_bolt_standard"/>
+				<value_node value="wpn_fps_smg_shepheard_o_standard"/>
+
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_o_xpsg33_magnifier"/>
+
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_ak_ns_ak105"/>
+
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+
+				<value_node value="wpn_fps_upg_m4_s_ubr"/>
+				<value_node value="wpn_fps_upg_m4_s_crane"/>
+				<value_node value="wpn_fps_upg_m4_s_mk46"/>
+				<value_node value="wpn_fps_upg_m4_s_standard_vanilla"/>
+				<value_node value="wpn_fps_upg_m4_s_pts"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+	<WeaponNew unlock_level="42">
+		<weapon id="coalprimary" based_on="coal" texture_bundle_folder="primarysmg" weapon_hold="coal" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="coal"/>
+		</weapon>
+        <factory id="wpn_fps_smg_coalprimary" unit="units/primarysmg/weapons/wpn_fps_smg_coalprimary/wpn_fps_smg_coalprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_coal_b_standard"/>
+				<value_node value="wpn_fps_smg_coal_body_standard"/>
+				<value_node value="wpn_fps_smg_coal_m_standard"/>
+				<value_node value="wpn_fps_smg_coal_fg_standard"/>
+				<value_node value="wpn_fps_smg_coal_dh_standard"/>
+				<value_node value="wpn_fps_smg_coal_ns_standard"/>
+				<value_node value="wpn_fps_smg_coal_s_standard"/>
+				<value_node value="wpn_fps_smg_coal_g_standard"/>
+				<value_node value="wpn_fps_smg_coal_mr_standard"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_coal_b_standard"/>
+				<value_node value="wpn_fps_smg_coal_body_standard"/>
+				<value_node value="wpn_fps_smg_coal_fg_standard"/>
+				<value_node value="wpn_fps_smg_coal_g_standard"/>
+				<value_node value="wpn_fps_smg_coal_dh_standard"/>
+				<value_node value="wpn_fps_smg_coal_ns_standard"/>
+				<value_node value="wpn_fps_smg_coal_s_standard"/>
+				<value_node value="wpn_fps_smg_coal_m_standard"/>
+				<value_node value="wpn_fps_smg_coal_mr_standard"/>
+
+				<value_node value="wpn_fps_smg_coal_o_scopemount_standard"/>
+
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_o_xpsg33_magnifier"/>
+
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_ns_ass_pbs1"/>
+				<value_node value="wpn_fps_upg_ak_ns_ak105"/>
+
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+
+				<value_node value="wpn_fps_upg_ak_g_hgrip"/>
+				<value_node value="wpn_fps_upg_ak_g_pgrip"/>
+				<value_node value="wpn_fps_upg_ak_g_wgrip"/>
+				<value_node value="wpn_fps_upg_ak_g_rk3"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+	<WeaponNew unlock_level="14">
+		<weapon id="m1928primary" based_on="m1928" texture_bundle_folder="primarysmg" weapon_hold="tommy" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="m1928"/>
+		</weapon>
+        <factory id="wpn_fps_smg_thompsonprimary" unit="units/primarysmg/weapons/wpn_fps_smg_m1928primary/wpn_fps_smg_thompsonprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_thompson_barrel"/>
+				<value_node value="wpn_fps_smg_thompson_body"/>
+				<value_node value="wpn_fps_smg_thompson_drummag"/>
+				<value_node value="wpn_fps_smg_thompson_foregrip"/>
+				<value_node value="wpn_fps_smg_thompson_grip"/>
+				<value_node value="wpn_fps_smg_thompson_stock"/>
+				<value_node value="wpn_fps_smg_thompson_ns_standard"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_thompson_barrel"/>
+				<value_node value="wpn_fps_smg_thompson_barrel_long"/>
+				<value_node value="wpn_fps_smg_thompson_barrel_short"/>
+				<value_node value="wpn_fps_smg_thompson_body"/>
+				<value_node value="wpn_fps_smg_thompson_drummag"/>
+				<value_node value="wpn_fps_smg_thompson_fl_adapter"/>
+				<value_node value="wpn_fps_smg_thompson_foregrip"/>
+				<value_node value="wpn_fps_smg_thompson_foregrip_discrete"/>
+				<value_node value="wpn_fps_smg_thompson_grip"/>
+				<value_node value="wpn_fps_smg_thompson_grip_discrete"/>
+				<value_node value="wpn_fps_smg_thompson_ns_standard"/>
+				<value_node value="wpn_fps_smg_thompson_o_adapter"/>
+				<value_node value="wpn_fps_smg_thompson_stock"/>
+				<value_node value="wpn_fps_smg_thompson_stock_discrete"/>
+				<value_node value="wpn_fps_smg_thompson_stock_nostock"/>
+
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+				<value_node value="wpn_fps_upg_o_xpsg33_magnifier"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+
+	<WeaponNew unlock_level="19">
+		<weapon id="olympicprimary" based_on="olympic" texture_bundle_folder="primarysmg" weapon_hold="olympic" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="olympic"/>
+		</weapon>
+        <factory id="wpn_fps_smg_olympicprimary" unit="units/primarysmg/weapons/wpn_fps_smg_olympicprimary/wpn_fps_smg_olympicprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_olympic_s_adjust"/>
+				<value_node value="wpn_fps_m4_uupg_draghandle"/>
+				<value_node value="wpn_fps_upg_m4_m_straight_vanilla"/>
+				<value_node value="wpn_fps_upg_m4_g_standard_vanilla"/>
+				<value_node value="wpn_fps_m4_uupg_b_short_vanilla"/>
+				<value_node value="wpn_fps_m4_upper_reciever_round"/>
+				<value_node value="wpn_fps_m4_lower_reciever"/>
+				<value_node value="wpn_fps_smg_olympic_fg_olympic"/>
+				<value_node value="wpn_fps_ass_m16_o_handle_sight"/>
+				<value_node value="wpn_fps_amcar_bolt_standard"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_m4_lower_reciever"/>
+				<value_node value="wpn_fps_m4_upper_reciever_edge"/>
+				<value_node value="wpn_fps_m4_upper_reciever_round"/>
+				<value_node value="wpn_fps_m4_uupg_draghandle"/>
+				<value_node value="wpn_fps_smg_olympic_fg_olympic"/>
+				<value_node value="wpn_fps_smg_olympic_fg_railed"/>
+				<value_node value="wpn_fps_smg_olympic_s_short"/>
+				<value_node value="wpn_fps_smg_olympic_s_adjust"/>
+				<value_node value="wpn_fps_upg_m4_s_standard"/>
+				<value_node value="wpn_fps_upg_m4_s_pts"/>
+				<value_node value="wpn_fps_m4_uupg_b_short_vanilla"/>
+				<value_node value="wpn_fps_m4_uupg_b_medium"/>
+				<value_node value="wpn_fps_m4_uupg_m_std"/>
+				<value_node value="wpn_fps_upg_m4_m_drum"/>
+				<value_node value="wpn_fps_upg_m4_m_pmag"/>
+				<value_node value="wpn_fps_upg_m4_m_straight_vanilla"/>
+				<value_node value="wpn_fps_ass_m16_o_handle_sight"/>
+
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+
+				<value_node value="wpn_fps_upg_vg_ass_smg_verticalgrip"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_afg"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_m4_g_standard_vanilla"/>
+				<value_node value="wpn_fps_upg_m4_g_ergo"/>
+				<value_node value="wpn_fps_upg_m4_g_sniper"/>
+				<value_node value="wpn_fps_upg_m4_g_hgrip"/>
+				<value_node value="wpn_fps_upg_m4_g_mgrip"/>
+
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+
+				<value_node value="wpn_fps_upg_m4_m_quad"/>
+				<value_node value="wpn_fps_ass_l85a2_m_emag"/>
+				<value_node value="wpn_fps_upg_m4_s_crane"/>
+				<value_node value="wpn_fps_upg_m4_s_mk46"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+
+				<value_node value="wpn_fps_upg_m4_s_ubr"/>
+				<value_node value="wpn_fps_upg_m4_m_l5"/>
+				<value_node value="wpn_fps_upg_ass_m4_upper_reciever_ballos"/>
+				<value_node value="wpn_fps_upg_ass_m4_upper_reciever_core"/>
+				<value_node value="wpn_fps_upg_ass_m4_lower_reciever_core"/>
+				<value_node value="wpn_fps_m4_uupg_draghandle_ballos"/>
+				<value_node value="wpn_fps_m4_uupg_draghandle_core"/>
+				<value_node value="wpn_fps_upg_smg_olympic_fg_lr300"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_amcar_bolt_standard"/>
+				<value_node value="wpn_fps_m4_upg_m_quick"/>
+				<value_node value="wpn_fps_snp_tti_s_vltor"/>
+				<value_node value="wpn_fps_snp_tti_g_grippy"/>
+				<value_node value="wpn_fps_upg_o_xpsg33_magnifier"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+
+	<WeaponNew unlock_level="13">
+		<weapon id="new_mp5primary" based_on="new_mp5" texture_bundle_folder="primarysmg" weapon_hold="mp5" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="mp5"/>
+		</weapon>
+        <factory id="wpn_fps_smg_mp5primary" unit="units/primarysmg/weapons/wpn_fps_smg_mp5primary/wpn_fps_smg_mp5primary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp5_body_mp5"/>
+				<value_node value="wpn_fps_smg_mp5_fg_mp5a4"/>
+				<value_node value="wpn_fps_smg_mp5_m_std"/>
+				<value_node value="wpn_fps_smg_mp5_s_solid"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp5_body_mp5"/>
+				<value_node value="wpn_fps_smg_mp5_fg_m5k"/>
+				<value_node value="wpn_fps_smg_mp5_fg_mp5a4"/>
+				<value_node value="wpn_fps_smg_mp5_fg_mp5a5"/>
+				<value_node value="wpn_fps_smg_mp5_fg_mp5sd"/>
+				<value_node value="wpn_fps_smg_mp5_m_std"/>
+				<value_node value="wpn_fps_smg_mp5_m_drum"/>
+				<value_node value="wpn_fps_smg_mp5_s_ring"/>
+				<value_node value="wpn_fps_smg_mp5_s_adjust"/>
+				<value_node value="wpn_fps_smg_mp5_s_solid"/>
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_verticalgrip"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_afg"/>
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_smg_mp5_m_straight"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+				<value_node value="wpn_fps_smg_mp5_fg_flash"/>
+				<value_node value="wpn_fps_smg_mp5_s_folding"/>
+				<value_node value="wpn_fps_upg_o_xpsg33_magnifier"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+
+
+	<WeaponNew unlock_level="20">
+		<weapon id="schakalprimary" based_on="schakal" texture_bundle_folder="primarysmg" weapon_hold="schakal" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="schakal"/>
+		</weapon>
+        <factory id="wpn_fps_smg_schakalprimary" unit="units/primarysmg/weapons/wpn_fps_smg_schakalprimary/wpn_fps_smg_schakalprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_schakal_b_standard"/>
+				<value_node value="wpn_fps_smg_schakal_body_lower"/>
+				<value_node value="wpn_fps_smg_schakal_body_upper"/>
+				<value_node value="wpn_fps_smg_schakal_m_standard"/>
+				<value_node value="wpn_fps_smg_schakal_s_standard"/>
+				<value_node value="wpn_fps_smg_schakal_dh_standard"/>
+				<value_node value="wpn_fps_smg_schakal_bolt_standard"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_verticalgrip"/>
+				<value_node value="wpn_fps_smg_schakal_extra_magrelease"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_schakal_b_civil"/>
+				<value_node value="wpn_fps_smg_schakal_b_standard"/>
+				<value_node value="wpn_fps_smg_schakal_body_lower"/>
+				<value_node value="wpn_fps_smg_schakal_body_upper"/>
+				<value_node value="wpn_fps_smg_schakal_m_long"/>
+				<value_node value="wpn_fps_smg_schakal_m_short"/>
+				<value_node value="wpn_fps_smg_schakal_m_standard"/>
+				<value_node value="wpn_fps_smg_schakal_ns_silencer"/>
+				<value_node value="wpn_fps_smg_schakal_s_civil"/>
+				<value_node value="wpn_fps_smg_schakal_s_folded"/>
+				<value_node value="wpn_fps_smg_schakal_s_standard"/>
+				<value_node value="wpn_fps_smg_schakal_dh_standard"/>
+				<value_node value="wpn_fps_smg_schakal_bolt_standard"/>
+				<value_node value="wpn_fps_smg_schakal_vg_extra"/>
+				<value_node value="wpn_fps_smg_schakal_vg_surefire"/>
+				<value_node value="wpn_fps_smg_schakal_extra_magrelease"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_verticalgrip"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_afg"/>
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+				<value_node value="wpn_fps_upg_o_xpsg33_magnifier"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+
+	<WeaponNew unlock_level="29">
+		<weapon id="akmsuprimary" based_on="akmsu" texture_bundle_folder="primarysmg" weapon_hold="ak47" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="akmsu"/>
+		</weapon>
+        <factory id="wpn_fps_smg_akmsuprimary" unit="units/primarysmg/weapons/wpn_fps_smg_akmsuprimary/wpn_fps_smg_akmsuprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_akmsu_body_lowerreceiver"/>
+				<value_node value="wpn_fps_ass_akm_body_upperreceiver_vanilla"/>
+				<value_node value="wpn_fps_smg_akmsu_b_standard"/>
+				<value_node value="wpn_fps_smg_akmsu_fg_standard"/>
+				<value_node value="wpn_upg_ak_s_folding_vanilla"/>
+				<value_node value="wpn_upg_ak_g_standard"/>
+				<value_node value="wpn_upg_ak_m_akm"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_akmsu_body_lowerreceiver"/>
+				<value_node value="wpn_fps_ass_akm_body_upperreceiver_vanilla"/>
+				<value_node value="wpn_fps_smg_akmsu_b_standard"/>
+				<value_node value="wpn_fps_smg_akmsu_fg_standard"/>
+				<value_node value="wpn_fps_smg_akmsu_fg_rail"/>
+				<value_node value="wpn_upg_ak_g_standard"/>
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_upg_ak_m_akm"/>
+				<value_node value="wpn_fps_upg_m4_s_standard"/>
+				<value_node value="wpn_fps_upg_m4_s_pts"/>
+				<value_node value="wpn_upg_ak_s_folding_vanilla"/>
+				<value_node value="wpn_upg_ak_s_psl"/>
+				<value_node value="wpn_upg_ak_s_skfoldable"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_verticalgrip"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_vg_ass_smg_afg"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_ak_g_hgrip"/>
+				<value_node value="wpn_fps_upg_ak_g_pgrip"/>
+				<value_node value="wpn_fps_upg_ak_g_wgrip"/>
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+				<value_node value="wpn_fps_upg_m4_s_crane"/>
+				<value_node value="wpn_fps_upg_m4_s_mk46"/>
+				<value_node value="wpn_fps_upg_ak_m_quad"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_m4_s_ubr"/>
+				<value_node value="wpn_fps_upg_ak_g_rk3"/>
+				<value_node value="wpn_fps_upg_ak_s_solidstock"/>
+				<value_node value="wpn_fps_upg_o_ak_scopemount"/>
+				<value_node value="wpn_fps_upg_ns_ass_pbs1"/>
+				<value_node value="wpn_fps_upg_ak_m_uspalm"/>
+				<value_node value="wpn_fps_upg_ak_fg_zenit"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+				<value_node value="wpn_fps_upg_ak_m_quick"/>
+				<value_node value="wpn_fps_snp_tti_s_vltor"/>
+				<!--
+				<value_node value="inf_akmsu_har"/>
+				<value_node value="inf_ivan"/>
+				<value_node value="inf_akcover_smooth"/>
+				-->
+
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+
+	<WeaponNew unlock_level="43">
+		<weapon id="coachprimary" based_on="coach" texture_bundle_folder="primarysmg" weapon_hold="coach" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="coach"/>
+		</weapon>
+        <factory id="wpn_fps_sho_coachprimary" unit="units/primarysmg/weapons/wpn_fps_sho_coachprimary/wpn_fps_sho_coachprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_sho_coach_b_standard"/>
+				<value_node value="wpn_fps_sho_coach_body_standard"/>
+				<value_node value="wpn_fps_sho_coach_right_hammer"/>
+				<value_node value="wpn_fps_sho_coach_left_hammer"/>
+				<value_node value="wpn_fps_sho_coach_barrel_lock"/>
+				<value_node value="wpn_fps_sho_coach_s_long"/>
+				<value_node value="wpn_fps_sho_coach_right_slug"/>
+				<value_node value="wpn_fps_sho_coach_left_slug"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_sho_coach_b_short"/>
+				<value_node value="wpn_fps_sho_coach_s_short"/>
+				<value_node value="wpn_fps_sho_coach_b_standard"/>
+				<value_node value="wpn_fps_sho_coach_body_standard"/>
+				<value_node value="wpn_fps_sho_coach_right_hammer"/>
+				<value_node value="wpn_fps_sho_coach_left_hammer"/>
+				<value_node value="wpn_fps_sho_coach_barrel_lock"/>
+				<value_node value="wpn_fps_sho_coach_s_long"/>
+				<value_node value="wpn_fps_sho_coach_right_slug"/>
+				<value_node value="wpn_fps_sho_coach_left_slug"/>
+				<value_node value="wpn_fps_upg_a_slug"/>
+				<value_node value="wpn_fps_upg_a_custom"/>
+				<value_node value="wpn_fps_upg_a_custom_free"/>
+				<value_node value="wpn_fps_upg_a_explosive"/>
+				<value_node value="wpn_fps_upg_a_piercing"/>
+				<value_node value="wpn_fps_upg_a_dragons_breath"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+
+	<WeaponNew unlock_level="23">
+		<weapon id="m37primary" based_on="m37" texture_bundle_folder="primarysmg" weapon_hold="m37" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="m37"/>
+		</weapon>
+        <factory id="wpn_fps_shot_m37primary" unit="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary">
+			<default_blueprint>
+				<value_node value="wpn_fps_shot_m37_b_standard"/>
+				<value_node value="wpn_fps_shot_m37_s_standard"/>
+				<value_node value="wpn_fps_shot_m37_m_standard"/>
+				<value_node value="wpn_fps_shot_m37_body_standard"/>
+				<value_node value="wpn_fps_shot_m37_fg_standard"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_shot_m37_b_short"/>
+				<value_node value="wpn_fps_shot_m37_b_standard"/>
+				<value_node value="wpn_fps_shot_m37_s_short"/>
+				<value_node value="wpn_fps_shot_m37_s_standard"/>
+				<value_node value="wpn_fps_shot_m37_m_standard"/>
+				<value_node value="wpn_fps_shot_m37_body_standard"/>
+				<value_node value="wpn_fps_shot_m37_fg_standard"/>
+				<value_node value="wpn_fps_upg_ns_shot_thick"/>
+				<value_node value="wpn_fps_upg_ns_shot_shark"/>
+				<value_node value="wpn_fps_upg_shot_ns_king"/>
+				<value_node value="wpn_fps_upg_ns_sho_salvo_large"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_ns_duck"/>
+				<value_node value="wpn_fps_upg_a_slug"/>
+				<value_node value="wpn_fps_upg_a_custom"/>
+				<value_node value="wpn_fps_upg_a_custom_free"/>
+				<value_node value="wpn_fps_upg_a_explosive"/>
+				<value_node value="wpn_fps_upg_a_piercing"/>
+				<value_node value="wpn_fps_upg_a_dragons_breath"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+
+
+</table>

@@ -1,0 +1,12 @@
+<unit type="static" slot="2" >
+	<object file="units/payday2/weapons/wpn_fps_smg_akmsu/wpn_fps_smg_akmsu" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_akmsu"/>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="NewRaycastWeaponBase" >
+			<var name="name_id" value="akmsuprimary" />
+		</extension>
+	</extensions>
+</unit>

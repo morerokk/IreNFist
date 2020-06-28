@@ -1,0 +1,65 @@
+{
+    "name" : "Ire and Fist",
+    "description" : "Unnecessarily large rebalance mod for gratuitously hypermasculine people.",
+    "author" : "Solo Queue Pixy",
+    "version" : "1.50",
+	"image" : "memedaytheheist.png",
+	"priority" : "4",
+	"blt_version" : 2
+
+	"hooks" : [
+		{ "hook_id": "lib/managers/menumanager", "script_path": "menu/infmenu.lua" },
+
+		{"hook_id": "core/lib/units/coreunitdamage", "script_path" : "lua/why primarysmg crash meltdown.lua"},
+
+		{"hook_id": "lib/tweak_data/preplanningtweakdata", "script_path" : "lua/assets_cost_dentist.lua"},
+		{"hook_id": "lib/tweak_data/assetstweakdata", "script_path" : "lua/assets_cost.lua"},
+		{"hook_id": "lib/managers/moneymanager", "script_path" : "lua/gunprice.lua"},
+
+		{"hook_id": "lib/managers/blackmarketmanager", "script_path" : "lua/menustuff.lua"},
+		{"hook_id": "lib/managers/weaponfactorymanager", "script_path" : "lua/menustuffattachdesc.lua"},
+		{"hook_id": "lib/managers/menu/blackmarketgui", "script_path" : "lua/blackmarketgui.lua"},
+		{"hook_id": "lib/units/cameras/fpcameraplayerbase", "script_path" : "lua/recoil.lua"},
+		{"hook_id": "lib/units/beings/player/states/playerstandard", "script_path" : "lua/playerstandard.lua"},
+		{"hook_id": "lib/units/beings/player/states/playertased", "script_path" : "lua/playertased.lua"},
+		{"hook_id": "lib/units/beings/player/playerdamage", "script_path" : "lua/playerdamage.lua"},
+		{"hook_id": "lib/units/weapons/raycastweaponbase", "script_path" : "lua/raycast.lua"},
+		{"hook_id": "lib/units/weapons/newraycastweaponbase", "script_path" : "lua/newraycast.lua"},
+		{"hook_id": "lib/units/weapons/shotgun/shotgunbase", "script_path" : "lua/newshotgun.lua"},
+		{"hook_id": "lib/units/weapons/sawweaponbase", "script_path" : "lua/sawfighter.lua"},
+		{"hook_id": "lib/units/weapons/weaponliongadget1", "script_path" : "lua/bipod.lua"},
+		{"hook_id": "lib/units/beings/player/states/playerbipod", "script_path" : "lua/bipod2.lua"},
+		{"hook_id": "lib/utils/inventorydescription", "script_path" : "lua/inventorydesc.lua"},
+		{"hook_id": "lib/managers/playermanager", "script_path" : "lua/playerman.lua"},
+		{"hook_id": "lib/tweak_data/guitweakdata", "script_path" : "lua/guitweak.lua"},
+
+		{"hook_id" : "lib/tweak_data/vehicletweakdata", "script_path" : "lua/vehicles.lua"},
+		{"hook_id" : "lib/units/beings/player/states/playerdriving", "script_path" : "lua/vehiclesneck.lua"},
+
+		{"hook_id" : "lib/managers/localizationmanager", "script_path" : "lua/renames.lua"},
+
+		{"hook_id": "lib/tweak_data/charactertweakdata", "script_path" : "lua/chartweakdata.lua"},
+		{"hook_id": "lib/tweak_data/groupaitweakdata", "script_path" : "lua/groupaitweak.lua"},
+		{"hook_id": "lib/units/enemies/cop/copdamage", "script_path" : "lua/copdamage.lua"},
+
+		{"hook_id": "lib/tweak_data/blackmarket/meleeweaponstweakdata", "script_path" : "lua/melee.lua"},
+		{"hook_id": "lib/tweak_data/weapontweakdata", "script_path" : "lua/wpn_stats.lua"},
+		{"hook_id": "lib/tweak_data/weaponfactorytweakdata", "script_path" : "lua/wpn_parts.lua"},
+		{"hook_id": "lib/tweak_data/playertweakdata", "script_path" : "lua/playertweak.lua"},
+		{"hook_id": "lib/tweak_data/blackmarket/projectilestweakdata", "script_path" : "lua/projectiles.lua"},
+		{"hook_id": "lib/tweak_data/tweakdata", "script_path" : "lua/projectiles2.lua"},
+		{"hook_id": "lib/units/weapons/grenades/fraggrenade", "script_path" : "lua/fragnadesafetydevice.lua"},
+		{"hook_id": "lib/player_actions/skills/playeractionfullyloaded", "script_path" : "lua/throwablepickup.lua"},
+		{"hook_id": "lib/tweak_data/enveffecttweakdata", "script_path" : "lua/fire.lua"},
+
+		{"hook_id": "lib/tweak_data/upgradestweakdata", "script_path" : "lua/upgradestweak.lua"},
+		{"hook_id": "lib/tweak_data/skilltreetweakdata", "script_path" : "lua/skilltree.lua"},
+
+		{ "hook_id": "lib/units/beings/player/states/playerstandard", "script_path": "lua/BurstFire.lua" },
+		{ "hook_id": "lib/units/weapons/newraycastweaponbase", "script_path": "lua/BurstFire.lua" },
+		{ "hook_id": "lib/units/weapons/akimboweaponbase", "script_path": "lua/BurstFire.lua" },
+		{ "hook_id": "lib/managers/hudmanagerpd2", "script_path": "lua/BurstFire.lua" },
+		{ "hook_id": "lib/managers/hud/hudteammate", "script_path": "lua/BurstFire.lua" }
+	]
+
+}

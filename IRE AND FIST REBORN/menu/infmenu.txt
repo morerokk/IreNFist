@@ -1,0 +1,252 @@
+{
+	"menu_id": "infmenu",
+	"parent_menu_id": "blt_options",
+	"title": "inf_title",
+	"description": "inf_desc",
+	"back_callback": "infsave",
+	"items":
+	[
+		{
+			"type" : "button",
+			"id" : "slide_header",
+			"title" : "inf_slide_header",
+			"description" : "inf_blank",
+			"callback" : "infcb_donothing"
+		},
+		{
+			"type" : "toggle",
+			"id" : "runkick",
+			"title" : "inf_runkick",
+			"description" : "inf_runkick_desc",
+			"callback" : "infcb_runkick",
+			"value" : "runkick",
+			"default_value" : false
+		},
+		{
+			"type" : "slider",
+			"id" : "kickyeet",
+			"title" : "inf_kickyeet",
+			"description" : "inf_kickyeet_desc",
+			"callback" : "infcb_kickyeet",
+			"value" : "kickyeet",
+			"default_value" : 1,
+			"min" : 0,
+			"max" : 50,
+			"step" : 0.25
+		},
+		{
+			"type" : "multiple_choice",
+			"id" : "dashcontrols",
+			"title" : "inf_dashcontrols",
+			"description" : "inf_dashcontrols_desc",
+			"callback" : "infcb_dashcontrols",
+			"items" : [
+				"inf_dashcontrols_1",
+				"inf_dashcontrols_2",
+				"inf_dashcontrols_3",
+				"inf_dashcontrols_4"
+			],
+			"value" : "dashcontrols",
+			"default_value" : 4
+		},
+		{
+			"type" : "keybind",
+			"id" : "dash",
+			"title" : "inf_dash",
+			"description" : "inf_dash_desc",
+			"keybind_id" : "inf_dash",
+			"func" : "infcb_donothing",
+			"run_in_game" : true,
+			"run_in_menu" : false
+		},
+		{
+			"type" : "multiple_choice",
+			"id" : "slidestealth",
+			"title" : "inf_slidestealth",
+			"description" : "inf_slidestealth_desc",
+			"callback" : "infcb_ene_slidestealth",
+			"items" : [
+				"inf_slidestealth_1",
+				"inf_slidestealth_2",
+				"inf_slidestealth_3"
+			],
+			"value" : "slidestealth",
+			"default_value" : 2
+		},
+		{
+			"type" : "multiple_choice",
+			"id" : "slideloud",
+			"title" : "inf_slideloud",
+			"description" : "inf_slideloud_desc",
+			"callback" : "infcb_ene_slideloud",
+			"items" : [
+				"inf_slideloud_1",
+				"inf_slideloud_2",
+				"inf_slideloud_3"
+			],
+			"value" : "slideloud",
+			"default_value" : 2
+		},
+		{
+			"type" : "slider",
+			"id" : "slidewpnangle",
+			"title" : "inf_slidewpnangle",
+			"description" : "inf_slidewpnangle_desc",
+			"callback" : "infcb_slidewpnangle",
+			"value" : "slidewpnangle",
+			"default_value" : 15,
+			"min" : 0,
+			"max" : 30,
+			"step" : 1
+		},
+		{
+			"type" : "slider",
+			"id" : "wallrunwpnangle",
+			"title" : "inf_wallrunwpnangle",
+			"description" : "inf_wallrunwpnangle_desc",
+			"callback" : "infcb_wallrunwpnangle",
+			"value" : "wallrunwpnangle",
+			"default_value" : 15,
+			"min" : 0,
+			"max" : 30,
+			"step" : 1
+		},
+		{
+			"type" : "divider",
+			"size" : 16
+		},
+		{
+			"type" : "button",
+			"id" : "weapon_header",
+			"title" : "inf_weapon_header",
+			"description" : "inf_blank",
+			"callback" : "infcb_donothing"
+		},
+		{
+			"type" : "toggle",
+			"id" : "allpenwalls",
+			"title" : "inf_allpenwalls",
+			"description" : "inf_allpenwalls_desc",
+			"callback" : "infcb_allpenwalls",
+			"value" : "allpenwalls",
+			"default_value" : true
+		},
+		{
+			"type" : "toggle",
+			"id" : "reloadbreaksads",
+			"title" : "inf_reloadbreaksads",
+			"description" : "inf_reloadbreaksads_desc",
+			"callback" : "infcb_reloadbreaksads",
+			"value" : "reloadbreaksads",
+			"default_value" : true
+		},
+		{
+			"type" : "toggle",
+			"id" : "disable_autoreload",
+			"title" : "inf_disable_autoreload",
+			"description" : "inf_disable_autoreload_desc",
+			"callback" : "infcb_disable_autoreload",
+			"value" : "disable_autoreload",
+			"default_value" : true
+		},
+		{
+			"type" : "multiple_choice",
+			"id" : "goldeneye",
+			"title" : "inf_goldeneye",
+			"description" : "inf_goldeneye_desc",
+			"callback" : "infcb_goldeneye",
+			"items" : [
+				"inf_goldeneye_1",
+				"inf_goldeneye_2",
+				"inf_goldeneye_3"
+			],
+			"value" : "goldeneye",
+			"default_value" : 1
+		},
+		{
+			"type" : "divider",
+			"size" : 16
+		},
+		{
+			"type" : "button",
+			"id" : "enemy_header",
+			"title" : "inf_ene_header",
+			"description" : "inf_blank",
+			"callback" : "infcb_donothing"
+		},
+		{
+			"type" : "toggle",
+			"id" : "rainbowassault",
+			"title" : "inf_ene_rainbowassault",
+			"description" : "inf_ene_rainbowassault_desc",
+			"callback" : "infcb_ene_rainbowassault",
+			"value" : "rainbowassault",
+			"default_value" : true
+		},
+		{
+			"type" : "multiple_choice",
+			"id" : "skulldozersahoy",
+			"title" : "inf_ene_skulldozersahoy",
+			"description" : "inf_ene_skulldozersahoy_desc",
+			"callback" : "infcb_ene_skulldozersahoy",
+			"items" : [
+				"inf_ene_skulldozersahoy_1",
+				"inf_ene_skulldozersahoy_2",
+				"inf_ene_skulldozersahoy_3"
+			],
+			"value" : "skulldozersahoy",
+			"default_value" : 2
+		},
+		{
+			"type" : "toggle",
+			"id" : "sanehp",
+			"title" : "inf_ene_sanehp",
+			"description" : "inf_ene_sanehp_desc",
+			"callback" : "infcb_ene_sanehp",
+			"value" : "sanehp",
+			"default_value" : true
+		},
+		{
+			"type" : "toggle",
+			"id" : "copfalloff",
+			"title" : "inf_ene_copfalloff",
+			"description" : "inf_ene_copfalloff_desc",
+			"callback" : "infcb_ene_copfalloff",
+			"value" : "copfalloff",
+			"default_value" : true
+		},
+		{
+			"type" : "toggle",
+			"id" : "copmiss",
+			"title" : "inf_ene_copmiss",
+			"description" : "inf_ene_copmiss_desc",
+			"callback" : "infcb_ene_copmiss",
+			"value" : "copmiss",
+			"default_value" : true
+		},
+		{
+			"type" : "divider",
+			"size" : 16
+		},
+		{
+			"type" : "button",
+			"id" : "txt_header",
+			"title" : "inf_txt_header",
+			"description" : "inf_blank",
+			"callback" : "infcb_donothing"
+		},
+		{
+			"type" : "multiple_choice",
+			"id" : "txt_wpnname",
+			"title" : "inf_txt_wpnname",
+			"description" : "inf_txt_wpnname_desc",
+			"callback" : "infcb_txt_wpnname",
+			"items" : [
+				"inf_txt_wpnname_1",
+				"inf_txt_wpnname_2"
+			],
+			"value" : "txt_wpnname",
+			"default_value" : 2
+		}
+	]
+}

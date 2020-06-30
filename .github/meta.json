@@ -1,0 +1,8 @@
+[
+    {
+        "ident" : "irenfist_rokk",
+        "hash" : "%HASH%",
+        "patchnotes_url" : "https://example.com/other-patchnotes.html",
+        "download_url" : "https://github.com/HugoZink/IreNFist/releases/download/refs%2Fheads%2Fmaster/irenfist.zip"
+    }
+]

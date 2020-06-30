@@ -15,7 +15,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Archive Mod
       run: |
-         tar.exe -a -c -f irenfist.zip "./IRE AND FIST REBORN"
+         .\.github\7za.exe -tzip a ".\irenfist.zip" ".\IRE AND FIST REBORN"
       shell: powershell
     - name: Create New Release
       id: create_release

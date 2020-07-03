@@ -3529,8 +3529,54 @@ end
 		concealment = -2
 	}
 
+	-- Beretta 93R Parts
+	self.parts.wpn_fps_pis_beer_b_robo.stats = deep_clone(barrel_m2)
+	
+	self.parts.wpn_fps_pis_beer_g_lux.stats = {
+		value = 0
+	}
+	
+	self.parts.wpn_fps_pis_beer_g_robo.stats = {
+		value = 0
+	}
+	
+	-- CZ 75 parts
+	self.parts.wpn_fps_pis_czech_b_long.stats = deep_clone(barrel_m1)
+	
+	self.parts.wpn_fps_pis_czech_g_sport.stats = {
+		value = 0
+	}
+	
+	self.parts.wpn_fps_pis_czech_g_luxury.stats = {
+		value = 0
+	}
+	
+	-- Stechkin/Igor Parts
+	self.parts.wpn_fps_pis_stech_b_long.stats = deep_clone(barrel_m1)
+	
+	self.parts.wpn_fps_pis_stech_g_luxury.stats = {
+		value = 1
+	}
+	
+	self.parts.wpn_fps_pis_stech_g_tactical.stats = {
+		value = 0
+	}
+	
+	self.parts.wpn_fps_pis_stech_s_standard.stats = {
+		value = 0,
+		spread = 5,
+		recoil = 2,
+		concealment = -2
+	}
 
-
+	-- Hudson H9/Holt Parts
+	self.parts.wpn_fps_pis_holt_g_ergo.stats = {
+		value = 0
+	}
+	
+	self.parts.wpn_fps_pis_holt_g_bling.stats = {
+		value = 1
+	}
 
 	-- RPK PARTS
 	-- Tactical Handguard

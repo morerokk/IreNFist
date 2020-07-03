@@ -1208,6 +1208,17 @@ end
 	self.parts.inf_burst.internal_part = true
 	self.parts.inf_burst.custom_stats = {has_burst_fire = true, burst_size = 3, adaptive_burst_size = false, burst_fire_rate_multiplier = 1.2}
 	self.parts.inf_burst.stats = deep_clone(nostats)
+	
+	-- Beretta 93R burstfire parts
+	-- Same as above but no RoF increase
+	self.parts.inf_burst_only_norpm.internal_part = true
+	self.parts.inf_burst_only_norpm.custom_stats = {has_burst_fire = true, burst_size = 3, adaptive_burst_size = false, inf_rof_mult = 1, anim_speed_mult = 1}
+	self.parts.inf_burst_only_norpm.perks = {"fire_mode_single"}
+	self.parts.inf_burst_only_norpm.stats = deep_clone(nostats)
+	self.parts.inf_burst_norpm.internal_part = true
+	self.parts.inf_burst_norpm.custom_stats = {has_burst_fire = true, burst_size = 3, adaptive_burst_size = false, burst_fire_rate_multiplier = 1}
+	self.parts.inf_burst_norpm.stats = deep_clone(nostats)
+	
 	-- Heavy Barrel
 	self.parts.wpn_fps_upg_ass_m4_b_beowulf.custom_stats = {}
 	self.parts.wpn_fps_upg_ass_m4_b_beowulf.stats = deep_clone(barrel_m2)

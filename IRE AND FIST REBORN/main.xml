@@ -9,6 +9,8 @@
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_amr16_har"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst_only"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst_only_norpm"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst_norpm"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_spas_valve"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_spas_sven"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_bar_slowfire"/>
@@ -175,6 +177,24 @@
 		<value_node value="wpn_fps_ass_amcar"/>
 		<value_node value="wpn_fps_ass_m4"/>
 		<value_node value="wpn_fps_ass_m16"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- Beretta 93R Burst Mods, same as above but no RPM increase -->
+<!-- Technically the 93R never had full auto to begin with. -->
+<WeaponMod id="inf_burst_only_norpm" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_pis_beer"/>
+		<value_node value="wpn_fps_pis_x_beer"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_burst_norpm" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_pis_beer"/>
+		<value_node value="wpn_fps_pis_x_beer"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>

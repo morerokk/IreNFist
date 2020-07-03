@@ -842,6 +842,19 @@ end
 		value = 0,
 		concealment = -2
 	}
+	
+	-- Signature Magnifier Gadget
+	self.parts.wpn_fps_upg_o_sig.stats = {
+		value = 0,
+		concealment = -1
+	}
+	
+	-- 45 degree ironsights
+	-- Why why why does this *add* concealment in vanilla?
+	self.parts.wpn_fps_upg_o_45steel.stats = {
+		value = 0,
+		concealment = -1
+	}
 
 	-- Pocket Laser
 	self.parts.wpn_fps_upg_fl_pis_laser.stats = {
@@ -934,6 +947,13 @@ end
 		value = 0,
 		recoil = 1,
 		spread = 2,
+		concealment = -1
+	}
+	
+	-- Marmon Compensator
+	self.parts.wpn_fps_upg_ns_ass_smg_v6.stats = {
+		value = 0,
+		recoil = 2,
 		concealment = -1
 	}
 
@@ -1333,6 +1353,9 @@ end
 	-- Straight Grip
 	self.parts.wpn_fps_upg_m4_g_mgrip.stats = deep_clone(nostats)
 	self.wpn_fps_snp_m95.override.wpn_fps_upg_m4_g_mgrip = {}
+	
+	-- Titanium Skeleton Grip
+	self.parts.wpn_fps_upg_g_m4_surgeon.stats = deep_clone(nostats)
 
 	-- Standard Stock
 	self.parts.wpn_fps_upg_m4_s_standard.stats = deep_clone(nostats)

@@ -799,11 +799,13 @@ function WeaponTweakData:inf_init_all_default()
 	self:inf_init("hk21", "lmg", "heavy")
 	self:inf_init("mg42", "lmg", "heavy")
 	self:inf_init("par", "lmg", "heavy")
+	self:inf_init("m60", "lmg", "heavy")
 	--self:inf_init("tecci", "lmg")
 
 	self:inf_init("r93", "snp", "heavy")
 	self:inf_init("mosin", "snp", "heavy")
 	self:inf_init("desertfox", "snp", "heavy")
+	self:inf_init("r700", "snp", "heavy")
 
 	self:inf_init("m95", "snp", "superheavy")
 end
@@ -1777,7 +1779,7 @@ function WeaponTweakData:_init_new_weapons(...)
 10:42:49 PM Lua: 0.1
 --]]
 
-	local lmglist = {"rpk", "m249", "hk21", "mg42", "par"}
+	local lmglist = {"rpk", "m249", "hk21", "mg42", "par", "m60"}
 	local pivot_shoulder_translation = nil
 	local pivot_shoulder_rotation = nil
 	local pivot_head_translation = nil
@@ -2669,6 +2671,42 @@ end
 	self.m95.use_custom_anim_state = true
 	self.m95.bipod_rof_mult = 1.25
 
+	self.r700.sdesc1 = "caliber_r762x51"
+	self.r700.sdesc2 = "action_bolt"
+	self.r700.CLIP_AMMO_MAX = 10
+	self.r700.stats.concealment = 17
+	self.r700.not_empty_reload_speed_mult = 1.40
+	self.r700.timers.reload_not_empty = 4.8
+	self.r700.timers.reload_not_empty_end = 0.70 -- 2.51
+	self.r700.empty_reload_speed_mult = 1.40
+	self.r700.timers.reload_empty = 5.5
+	self.r700.timers.reload_empty_end = 0.50 -- 3.09
+	--self.r700.price = 300*1000
+	self:apply_standard_bipod_stats("r700")
+	self.r700.custom_bipod = true
+	self.r700.bipod_weapon_translation = Vector3(-2, -6, -4)
+	pivot_shoulder_translation = Vector3(20.555, 48.5, -8.55)
+	pivot_shoulder_rotation = Rotation(0.1, -0.1, 0.6)
+	pivot_head_translation = Vector3(10, 33, -4)
+	pivot_head_rotation = Rotation(0, 0, 0)
+	self.r700.stances.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
+	self.r700.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+	self.r700.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
+	self.r700.use_custom_anim_state = true
+	self.r700.bipod_rof_mult = 1.25
+if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+	if not self.r700.attachment_points then
+		self.r700.attachment_points = {}
+	end
+	table.list_append(self.r700.attachment_points, {
+		{
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 47, 4),
+			rotation = Rotation(0, 0, 0)
+		}
+	})
+end
 
 	self.tec9.sdesc1 = "caliber_p9x19"
 	self.tec9.sdesc2 = "action_blowback"
@@ -3806,7 +3844,35 @@ end
 	end
 	self.peacemaker.stats_modifiers.damage = 5
 
+	-- Igor/Stechkin
+	self.stech.sdesc1 = "caliber_p9x19"
+	self.stech.sdesc2 = "action_blowback"
+	self.stech.CLIP_AMMO_MAX = 20
+	self.stech.AMMO_MAX = 160
+	self.stech.AMMO_PICKUP = self:_pickup_chance(160, 1)
+	self:copy_timers("stech", "b92fs")
 
+	self.x_stech.sdesc1 = "caliber_p9x19"
+	self.x_stech.sdesc2 = "action_blowback"
+	self.x_stech.CLIP_AMMO_MAX = 40
+	self.x_stech.AMMO_MAX = 180
+	self.x_stech.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self:copy_timers("x_stech", "x_b92fs")
+	
+	-- Hudson H9/Holt
+	self.holt.sdesc1 = "caliber_p9x19"
+	self.holt.sdesc2 = "action_shortrecoil"
+	self.holt.CLIP_AMMO_MAX = 15
+	self.holt.AMMO_MAX = 150
+	self.holt.AMMO_PICKUP = self:_pickup_chance(150, 1)
+	self:copy_timers("holt", "b92fs")
+	
+	self.x_holt.sdesc1 = "caliber_p9x19"
+	self.x_holt.sdesc2 = "action_shortrecoil"
+	self.x_holt.CLIP_AMMO_MAX = 30
+	self.x_holt.AMMO_MAX = 180
+	self.x_holt.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self:copy_timers("x_holt", "x_b92fs")
 
 	self.b682.sdesc1 = "caliber_s12g"
 	self.b682.sdesc2 = "action_breakou"
@@ -4261,7 +4327,21 @@ end
 	self.par.timers.reload_empty_end = 1.0 -- 5.41
 	self.par.equip_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 	self.par.reload_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
-
+	
+	-- m60
+	self.m60.sdesc1 = "caliber_r762x51"
+	self.m60.sdesc2 = "action_gas"
+	self.m60.stats.concealment = 8
+	self.m60.fire_mode_data.fire_rate = 60/550
+	self.m60.CLIP_AMMO_MAX = 200
+	self.m60.taser_reload_amount = 50
+	self.m60.reload_speed_mult = 1.35
+	self.m60.timers.reload_not_empty = 9.1
+	self.m60.timers.reload_not_empty_end = 1.0 -- 5.41
+	self.m60.timers.reload_empty = 9.1
+	self.m60.timers.reload_empty_end = 1.0 -- 5.41
+	self.m60.equip_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
+	self.m60.reload_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 
 	-- vulcan/hephaestus
 	self.m134.sdesc1 = "caliber_r762x51"
@@ -4612,6 +4692,22 @@ if BeardLib.Utils:FindMod("cz") then
 	self.x_cz.AMMO_PICKUP = self:_pickup_chance(180, 1)
 	self:copy_timers("x_cz", "x_b92fs")
 end
+
+	-- Ha ha, the CZ 75 is now also sorta in the game, close enough
+	self:inf_init("czech", "pistol", nil)
+	self.czech.sdesc1 = "caliber_p9x19"
+	self.czech.sdesc2 = "action_shortrecoil"
+	self:copy_timers("czech", "b92fs")
+	self.czech.stats.concealment = 30
+	self.czech.AMMO_MAX = 144
+	self.czech.AMMO_PICKUP = self:_pickup_chance(144, 1)
+
+	self:inf_init("x_czech", "pistol", nil)
+	self:copy_sdescs("x_czech", "czech", true)
+	self.x_czech.stats.concealment = 30
+	self.x_czech.AMMO_MAX = 180
+	self.x_czech.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self:copy_timers("x_czech", "x_b92fs")
 
 	-- MA DEUCE
 if BeardLib.Utils:FindMod("M2HB_HMG") then
@@ -5128,6 +5224,35 @@ if BeardLib.Utils:FindMod("Beretta 93R") then
 	self.b93r.stats.spread = self.b93r.stats.spread - 15
 	self:copy_timers("b93r", "b92fs")
 end
+
+	-- Yoink, the B93R is now actually in the game
+	self:inf_init("beer", "pistol", nil)
+	self.beer.sdesc1 = "caliber_p9x19"
+	self.beer.sdesc2 = "action_shortrecoil"
+	--self.beer.stats.concealment = 29
+	self.beer.AMMO_MAX = 140
+	self.beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
+	self.beer.BURST_FIRE = 3
+	self.beer.ADAPTIVE_BURST_SIZE = false
+	self.beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
+	self.beer.DELAYED_BURST_RECOIL = false
+	self.beer.stats.spread = self.beer.stats.spread - 15
+	self.beer.fire_mode_data.fire_rate = 60/1100
+	self:copy_timers("beer", "b92fs")
+	
+	self:inf_init("x_beer", "pistol", nil)
+	self.x_beer.sdesc1 = "caliber_p9x19"
+	self.x_beer.sdesc2 = "action_shortrecoil"
+	--self.x_beer.stats.concealment = 29
+	self.x_beer.AMMO_MAX = 140
+	self.x_beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
+	self.x_beer.BURST_FIRE = 3
+	self.x_beer.ADAPTIVE_BURST_SIZE = false
+	self.x_beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
+	self.x_beer.DELAYED_BURST_RECOIL = false
+	self.x_beer.stats.spread = self.x_beer.stats.spread - 15
+	self.x_beer.fire_mode_data.fire_rate = 60/1100
+	self:copy_timers("x_beer", "x_b92fs")
 
 if BeardLib.Utils:FindMod("TOZ-34") then
 	self:inf_init("toz34", "shotgun", {"dmg_heavy", "range_long", "rof_db"})

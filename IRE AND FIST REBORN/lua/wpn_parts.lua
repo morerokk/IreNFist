@@ -617,10 +617,44 @@ end
 		concealment = -2
 	}
 
-
+	-- BMG
+	self.parts.wpn_fps_upg_o_bmg.custom_stats = {disallow_ads_while_reloading = true}
+	self.parts.wpn_fps_upg_o_bmg.stats = {
+		value = 0,
+		zoom = 5,
+		concealment = -2
+	}
+	
+	-- FC1
+	self.parts.wpn_fps_upg_o_fc1.custom_stats = {disallow_ads_while_reloading = true}
+	self.parts.wpn_fps_upg_o_fc1.stats = {
+		value = 0,
+		zoom = 3,
+		concealment = -1
+	}
+	
+	-- UH
+	self.parts.wpn_fps_upg_o_uh.custom_stats = {disallow_ads_while_reloading = true}
+	self.parts.wpn_fps_upg_o_uh.stats = {
+		value = 0,
+		zoom = 3,
+		concealment = -1
+	}
 
 	-- Roach/Pistol Red Dot Sight
 	self.parts.wpn_fps_upg_o_rmr.stats = {
+		value = 0,
+		concealment = -1
+	}
+	
+	-- Riktpunkt
+	self.parts.wpn_fps_upg_o_rikt.stats = {
+		value = 0,
+		concealment = -1
+	}
+	
+	-- Microsight
+	self.parts.wpn_fps_upg_o_rms.stats = {
 		value = 0,
 		concealment = -1
 	}
@@ -668,7 +702,7 @@ end
 		concealment = -1
 	}
 
-	local sightlist = {"wpn_fps_upg_o_t1micro", "wpn_fps_upg_o_cmore", "wpn_fps_upg_o_reflex", "wpn_fps_upg_o_eotech_xps", "wpn_fps_upg_o_eotech", "wpn_fps_upg_o_rx30", "wpn_fps_upg_o_rx01", "wpn_fps_upg_o_docter", "wpn_fps_upg_o_cs", "wpn_fps_upg_o_specter", "wpn_fps_upg_o_aimpoint", "wpn_fps_upg_o_aimpoint_2", "wpn_fps_upg_o_acog", "wpn_fps_upg_o_spot"} -- all non-sniper sights
+	local sightlist = {"wpn_fps_upg_o_t1micro", "wpn_fps_upg_o_cmore", "wpn_fps_upg_o_reflex", "wpn_fps_upg_o_eotech_xps", "wpn_fps_upg_o_eotech", "wpn_fps_upg_o_rx30", "wpn_fps_upg_o_rx01", "wpn_fps_upg_o_docter", "wpn_fps_upg_o_cs", "wpn_fps_upg_o_specter", "wpn_fps_upg_o_aimpoint", "wpn_fps_upg_o_aimpoint_2", "wpn_fps_upg_o_acog", "wpn_fps_upg_o_spot", "wpn_fps_upg_o_bmg", "wpn_fps_upg_o_fc1", "wpn_fps_upg_o_uh"} -- all non-sniper sights
 	local sightlist_noacog = {"wpn_fps_upg_o_t1micro", "wpn_fps_upg_o_cmore", "wpn_fps_upg_o_reflex", "wpn_fps_upg_o_eotech_xps", "wpn_fps_upg_o_eotech", "wpn_fps_upg_o_rx30", "wpn_fps_upg_o_rx01", "wpn_fps_upg_o_docter", "wpn_fps_upg_o_cs", "wpn_fps_upg_o_specter", "wpn_fps_upg_o_aimpoint", "wpn_fps_upg_o_aimpoint_2", } -- no acog/recon (extends too far back)
 	-- parts that are not added to the sightlist for sniper-corrected overrides (because they're already correct)
 	local sniper_concealment_parts = {{"wpn_fps_upg_o_leupold", -4+1}, {"wpn_fps_upg_o_box", -4+1}, {"inf_shortdot", -3}, {"wpn_fps_upg_o_shortdot", -3}, {"wpn_fps_upg_o_shortdot_vanilla", -3}} -- number is ('correct' concealment) - (actual part concealment)
@@ -715,7 +749,7 @@ end
 		end
 	end
 
-	local gunlist_snp = {{"wpn_fps_snp_msr", -3}, {"wpn_fps_snp_model70", -3}, {"wpn_fps_snp_r93", -3}, {"wpn_fps_snp_mosin", -3}, {"wpn_fps_snp_wa2000", -3}, {"wpn_fps_snp_desertfox", -3}, {"wpn_fps_snp_m95", -3}, {"wpn_fps_snp_tti", -3}, {"wpn_fps_snp_siltstone", -3}}
+	local gunlist_snp = {{"wpn_fps_snp_msr", -3}, {"wpn_fps_snp_model70", -3}, {"wpn_fps_snp_r93", -3}, {"wpn_fps_snp_mosin", -3}, {"wpn_fps_snp_wa2000", -3}, {"wpn_fps_snp_desertfox", -3}, {"wpn_fps_snp_m95", -3}, {"wpn_fps_snp_tti", -3}, {"wpn_fps_snp_siltstone", -3}, {"wpn_fps_snp_r700", -3}}
 	-- used to add correct conceal to sniper scopes after custom weapons have been added
 
 
@@ -895,7 +929,13 @@ end
 		concealment = -1
 	}
 	
-
+	-- Typhoon Compensator
+	self.parts.wpn_fps_upg_ns_pis_typhoon.stats = {
+		value = 0,
+		recoil = 1,
+		spread = 2,
+		concealment = -1
+	}
 
 	-- The Bigger The Better
 	self.parts.wpn_fps_upg_ns_ass_smg_large.custom_stats = silencercustomstats
@@ -1017,6 +1057,7 @@ if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod(
 	table.insert(self.wpn_fps_snp_r93.uses_parts, "inf_bipod_snp")
 	table.insert(self.wpn_fps_snp_mosin.uses_parts, "inf_bipod_snp")
 	table.insert(self.wpn_fps_snp_desertfox.uses_parts, "inf_bipod_snp")
+	table.insert(self.wpn_fps_snp_r700.uses_parts, "inf_bipod_snp")
 	--table.insert(self.wpn_fps_snp_m95.uses_parts, "inf_bipod_snp")
 	table.insert(self.wpn_fps_snp_winchester.uses_parts, "inf_bipod_snp")
 end
@@ -1034,7 +1075,8 @@ end
 		wpn_fps_lmg_mg42 = {translation = Vector3(4, 0, -1)},
 		wpn_fps_lmg_hk21 = {translation = Vector3(4, 0, -1)},
 		wpn_fps_lmg_m249 = {translation = Vector3(4, 0, -1)},
-		wpn_fps_lmg_par = {translation = Vector3(4, 0, -1)}
+		wpn_fps_lmg_par = {translation = Vector3(4, 0, -1)},
+		wpn_fps_lmg_m60 = {translation = Vector3(4, 0, -1)},
 	}
 	self.parts.inf_lmg_offset_nongadget.internal_part = true
 	self.parts.inf_lmg_offset_nongadget.forbids = {"inf_lmg_offset"}
@@ -2160,6 +2202,16 @@ end
 		wpn_fps_snp_m95_bipod = {unit = dummy, third_unit = dummy}
 	}
 	self.parts.wpn_fps_snp_m95_bipod.adds = {"inf_bipod_part"}
+	
+	-- R700 PARTS
+	-- Military stock
+	self.parts.wpn_fps_snp_r700_s_military.stats = {
+		value = 0,
+		reload = 5,
+		concealment = -1
+	}
+	-- Tactical stock
+	self.parts.wpn_fps_snp_r700_s_tactical.stats = deep_clone(nostats)
 
 	self.parts.inf_50bmg_incendiary.sub_type = "ammo_dragons_breath"
 	self.parts.inf_50bmg_incendiary.internal_part = true

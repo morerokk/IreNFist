@@ -324,6 +324,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_scar_m203 = "Eagle Light + M203",
 		bm_w_ak12_200 = "AK-2013",
 		bm_w_ak12_76 = "AK-2013/76",
+		bm_w_beer = "Beretta 93R",
+		bm_w_x_beer = "Akimbo Beretta 93R",
 		bm_w_hahabenis = "--!! this exists only so i can add new strings below older ones by making a duplicate of the older string and pasting in the new shit without fucking with commas every time"
 		--bm_w_mas49 = "MAS-49",
 		--bm_w_sks = "SKS",
@@ -1719,6 +1721,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_inf_50bmg_raufoss = "Mk 211 Mod 0 Multipurpose",
 	bm_wp_inf_50bmg_raufoss_desc = "High-explosive incendiary armor-piercing. The Raufoss round does it all.\n\n-50% ammo scavenge. +50% damage if hitting Bulldozer visors. Damage is 80%/20% bullet/explosive. 30 damage/sec for 3 seconds on direct hit.",
 	bm_wp_inf_50bmg_raufoss_restricted_desc = "ITEM CANNOT BE USED WITHOUT: Fix Custom Weapon Dragons Breath Crash (http://modwork.shop/24695)",
+	
+	-- R700
+	bm_w_r700_desc = "Favored by both the police and the military, the R700 is a classic (if you can deal with the accidental discharges).",
 
 
 	-- BIZON
@@ -2211,7 +2216,28 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_chinchilla_desc = "The most powerful handgun in the world? Maybe not. But a skull doesn't care for the finer points of bullet energy if it goes straight through all the same.",
 	bm_w_x_chinchilla_desc = "Some people ask themselves if they're lucky. A poor decision, really. It's not about luck when you can count where the numbers matter.",
 
-
+	-- B93R
+	bm_w_beer_desc = "A rapid-fire version of the Beretta 92. The \"R\" stands for Raffica, or \"burst\".",
+	bm_w_x_beer_desc = "A rapid-fire version of the Beretta 92. The \"R\" stands for Raffica, or \"burst\".",
+	
+	-- CZ 75
+	bm_w_czech = "CZ-75 Auto",
+	bm_w_czech_desc = "A classic Czech handgun modified for full-auto firing mode.",
+	bm_w_x_czech = "Akimbo CZ-75 Auto",
+	bm_w_x_czech_desc = "A classic Czech handgun modified for full-auto firing mode.",
+	
+	-- Stechkin/Igor
+	bm_w_stech = "Stechkin Automatic",
+	bm_w_stech_desc = "A deadly Russian select-fire machine pistol. Artillery and mortar crew used these in lieu of bulky assault rifles.",
+	bm_w_x_stech = "Akimbo Stechkin Automatic",
+	bm_w_x_stech_desc = "A deadly Russian select-fire machine pistol. Artillery and mortar crew used these in lieu of bulky assault rifles.",
+	
+	-- Hudson H9/Holt
+	bm_w_holt = "Hudson H9",
+	bm_w_holt_desc = "A light and slightly unusually shaped pistol designed to minimize recoil. Hudson declared bankruptcy in 2019.",
+	
+	bm_w_x_holt = "Akimbo Hudson H9",
+	bm_w_x_holt_desc = "A light and slightly unusually shaped pistol designed to minimize recoil. Hudson declared bankruptcy in 2019.",
 
 	-- GL40
 	bm_w_gre_m79_desc = "Thump Gun. Pro Pipe. Noob Tube. Blooper. The things we love have many names. Many sizes too, if you feel like sawing it down.",

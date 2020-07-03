@@ -466,14 +466,19 @@ function PlayerStandard:get_offhand_half_reload_t(t, wpnbase)
 end
 
 
--- These "fixes" break in VR and I don't care about them
+-- These fixes break in VR and I don't care about them enough to fix it there. For the time being, VR reloading acts like vanilla.
 
 -- based on custom weapon animation fixes
 -- fabarm stf-12/mossberg 590 screwing with me
 -- nobody screws with me binch
---[[
 DelayedCalls:Add("fuckyourreloadfunc", 0.25, function(self, params)
+
+	local startReloadEnterOrig = PlayerStandard._start_action_reload_enter
 	function PlayerStandard:_start_action_reload_enter(t)
+		if _G.IS_VR then
+			return startReloadEnterOrig(self, t)
+		end
+	
 		if self._equipped_unit:base():can_reload() then
 			local weapon = self._equipped_unit:base()
 			local tweak_data = weapon:weapon_tweak_data()
@@ -518,15 +523,20 @@ DelayedCalls:Add("fuckyourreloadfunc", 0.25, function(self, params)
 		end
 	end
 end)
-]]
 
 -- add a post-reload wait, the mag updating and being allowed to shoot are no longer the exact same timer
 -- custom wpn animation fixes also implemented
 
 -- delay because gm6 lynx will override this otherwise
---[[
 DelayedCalls:Add("fuckyourshitgm6", 0.5, function(self, params)
+
+local startActionReloadOrig = PlayerStandard._start_action_reload
 function PlayerStandard:_start_action_reload(t)
+
+	if _G.IS_VR then
+		return startActionReloadOrig(self, t)
+	end
+
 	local weapon = self._equipped_unit:base()
 
 	if weapon and weapon:can_reload() then
@@ -593,7 +603,6 @@ function PlayerStandard:_start_action_reload(t)
 	end
 end
 end)
-]]
 
 -- read from newraycast base before reading from wpn_stats tweak data
 function PlayerStandard:_get_timer_reload_empty()

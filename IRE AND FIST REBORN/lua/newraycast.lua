@@ -598,7 +598,7 @@ local updateReloadingOrig = NewRaycastWeaponBase.update_reloading
 function NewRaycastWeaponBase:update_reloading(t, dt, time_left)
 
 	if _G.IS_VR then
-		updateReloadingOrig(self, t, dt, time_left)
+		return updateReloadingOrig(self, t, dt, time_left)
 	end
 
 	local speed_multiplier = self:reload_speed_multiplier()

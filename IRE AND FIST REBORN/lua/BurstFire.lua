@@ -407,6 +407,13 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 	
 	--Default function for vanilla HUD. If using a custom HUD that alters fire mode HUD components, make sure to implement this function in it
 	HUDTeammate.set_weapon_firemode_burst = HUDTeammate.set_weapon_firemode_burst or function(self, id, firemode, burst_fire)
+	
+		-- In VR, dont update the HUD
+		-- TODO: if VR even has a firemode display, implement burst into it here
+		if _G.IS_VR then
+			return
+		end
+	
 		local is_secondary = id == 1
 		local secondary_weapon_panel = self._player_panel:child("weapons_panel"):child("secondary_weapon_panel")
 		local primary_weapon_panel = self._player_panel:child("weapons_panel"):child("primary_weapon_panel")

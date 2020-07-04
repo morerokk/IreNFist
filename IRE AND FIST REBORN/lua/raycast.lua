@@ -97,6 +97,11 @@ function RaycastWeaponBase:trigger_held(...)
 end
 --]]
 
+-- Disable autoaim
+Hooks:PostHook(RaycastWeaponBase, "setup", "inf_removeautoaim", function(self, setup_data, damage_multiplier)
+	self._autoaim = false
+end)
+
 -- don't ignore shields
 function FlameBulletBase:bullet_slotmask()
 	return managers.slot:get_mask("bullet_impact_targets")

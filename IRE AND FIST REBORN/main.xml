@@ -21,6 +21,8 @@
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_akm_zastava"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_asval_dmr"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_asval_sp6"/>
+	
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_fnfal_dmrkit"/>
 <!--
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_svu_unsil"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_c96_auto"/>
@@ -361,6 +363,13 @@
 		<value_node value="wpn_fps_smg_olympic"/>
 		<value_node value="wpn_fps_smg_x_olympic"/>
 		<value_node value="wpn_fps_smg_olympicprimary"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_fnfal_dmrkit" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" desc_id="bm_wp_inf_fnfal_dmrkit_desc">
+	<weapons>
+		<value_node value="wpn_fps_ass_fal"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>

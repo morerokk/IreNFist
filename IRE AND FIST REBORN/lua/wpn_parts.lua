@@ -1875,6 +1875,13 @@ end
 	-- Wooden Stock
 	self.parts.wpn_fps_ass_fal_s_wood.stats = deep_clone(nostats)
 
+	-- DMR Kit
+	self:convert_part("inf_fnfal_dmrkit", "hrifle", "dmr")
+	self.parts.inf_fnfal_dmrkit.custom_stats.sdesc1 = "caliber_r762x51dm151"
+	self.parts.inf_fnfal_dmrkit.perks = {"fire_mode_single"}
+	
+	-- Forbid larger mag
+	self.parts.inf_fnfal_dmrkit.forbids = { "wpn_fps_ass_fal_m_01" }
 
 	-- GEWEHR 3 PARTS
 	-- Sniper Barrel (G3 DMR kit)

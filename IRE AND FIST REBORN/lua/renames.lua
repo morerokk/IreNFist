@@ -1552,6 +1552,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_fal_s_03 = "Marksman Stock",
 	bm_wp_fal_s_03_desc = "Adjustable and comfortable.",
 	bm_wp_fal_s_wood_desc = "Old and gold.",
+	-- DMR kit
+	bm_wp_inf_fnfal_dmrkit = "Marksman Kit",
+	bm_wp_inf_fnfal_dmrkit_desc = "High-penetration rounds. The way this weapon is meant to be.\n\n-58% ammo scavenge. Penetrates shields. Locked to semi-automatic.",
 
 
 	-- G3

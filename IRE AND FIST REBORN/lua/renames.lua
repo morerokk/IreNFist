@@ -481,6 +481,7 @@ end
 	caliber_r473x33 = "4.73x33mm DM11.",
 	caliber_r308 = ".308 Winchester.",
 	caliber_r408cheytac = ".408 CheyTac.",
+	caliber_r280 = ".280 British.",
 	caliber_r303 = ".303 British.",
 	caliber_r127x108 = "12.7x108mm.",
 	caliber_r75x54 = "7.5x54mm French.",
@@ -1555,6 +1556,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- DMR kit
 	bm_wp_inf_fnfal_dmrkit = "Marksman Kit",
 	bm_wp_inf_fnfal_dmrkit_desc = "High-penetration rounds. The way this weapon is meant to be.\n\n-58% ammo scavenge. Penetrates shields. Locked to semi-automatic.",
+	-- British .280 kit
+	bm_wp_inf_fnfal_classickit = "British Kit",
+	bm_wp_inf_fnfal_classickit_desc = "Chambers the weapon into the original slightly lighter British .280 rounds.\n\nMore ammo scavenge.",
 
 
 	-- G3

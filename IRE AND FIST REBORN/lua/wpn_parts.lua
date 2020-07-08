@@ -1879,9 +1879,13 @@ end
 	self:convert_part("inf_fnfal_dmrkit", "hrifle", "dmr")
 	self.parts.inf_fnfal_dmrkit.custom_stats.sdesc1 = "caliber_r762x51dm151"
 	self.parts.inf_fnfal_dmrkit.perks = {"fire_mode_single"}
-	
 	-- Forbid larger mag
 	self.parts.inf_fnfal_dmrkit.forbids = { "wpn_fps_ass_fal_m_01" }
+
+	-- Classic Kit
+	self:convert_part("inf_fnfal_classickit", "hrifle", "mrifle")
+	self.parts.inf_fnfal_classickit.custom_stats.sdesc1 = "caliber_r280"
+	self.parts.inf_fnfal_classickit.stats.extra_ammo = 10
 
 	-- GEWEHR 3 PARTS
 	-- Sniper Barrel (G3 DMR kit)

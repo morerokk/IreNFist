@@ -5232,10 +5232,10 @@ end
 	--self.beer.stats.concealment = 29
 	self.beer.AMMO_MAX = 140
 	self.beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
-	self.beer.BURST_FIRE = 3
-	self.beer.ADAPTIVE_BURST_SIZE = false
-	self.beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
-	self.beer.DELAYED_BURST_RECOIL = false
+	--self.beer.BURST_FIRE = 3
+	--self.beer.ADAPTIVE_BURST_SIZE = false
+	--self.beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
+	--self.beer.DELAYED_BURST_RECOIL = false
 	self.beer.stats.spread = self.beer.stats.spread - 15
 	self.beer.fire_mode_data.fire_rate = 60/1100
 	self:copy_timers("beer", "b92fs")
@@ -5246,10 +5246,10 @@ end
 	--self.x_beer.stats.concealment = 29
 	self.x_beer.AMMO_MAX = 140
 	self.x_beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
-	self.x_beer.BURST_FIRE = 3
-	self.x_beer.ADAPTIVE_BURST_SIZE = false
-	self.x_beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
-	self.x_beer.DELAYED_BURST_RECOIL = false
+	--self.x_beer.BURST_FIRE = 3
+	--self.x_beer.ADAPTIVE_BURST_SIZE = false
+	--self.x_beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
+	--self.x_beer.DELAYED_BURST_RECOIL = false
 	self.x_beer.stats.spread = self.x_beer.stats.spread - 15
 	self.x_beer.fire_mode_data.fire_rate = 60/1100
 	self:copy_timers("x_beer", "x_b92fs")

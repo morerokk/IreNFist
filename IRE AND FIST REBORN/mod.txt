@@ -2,10 +2,10 @@
     "name" : "Ire and Fist",
     "description" : "Unnecessarily large rebalance mod for gratuitously hypermasculine people.",
     "author" : "Solo Queue Pixy",
-    "version" : "1.53",
+    "version" : "1.54",
 	"image" : "memedaytheheist.png",
 	"priority" : "4",
-	"blt_version" : 2
+	"blt_version" : 2,
 
 	"hooks" : [
 		{ "hook_id": "lib/managers/menumanager", "script_path": "menu/infmenu.lua" },
@@ -65,7 +65,7 @@
 		{
 			"identifier" : "irenfist_rokk",
 			"host" : {
-				"meta" : "https://github.com/HugoZink/IreNFist/releases/download/refs%2Fheads%2Fmaster/meta.json",
+				"meta" : "https://github.com/HugoZink/IreNFist/releases/download/refs%2Fheads%2Fmaster/meta.json"
 			}
 		}
 	]

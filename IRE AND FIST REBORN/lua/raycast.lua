@@ -98,9 +98,12 @@ end
 --]]
 
 -- Disable autoaim
+-- Note: uncommenting this will also glitch out the game's accuracy stat counter, making it always 0% or always 100%.
+--[[
 Hooks:PostHook(RaycastWeaponBase, "setup", "inf_removeautoaim", function(self, setup_data, damage_multiplier)
 	self._autoaim = false
 end)
+]]
 
 -- don't ignore shields
 function FlameBulletBase:bullet_slotmask()

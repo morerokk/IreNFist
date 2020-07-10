@@ -40,6 +40,400 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "givecoolenemies", fun
 end)
 --]]
 
+Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasersquads", function(self, difficulty_index)
+	if difficulty_index <= 2 then
+		self.enemy_spawn_groups.tac_tazer_flanking = {
+			amount = {
+				5,
+				6
+			},
+			spawn = {
+				{
+					amount_min = 0,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_flanking
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 1,
+					unit = "FBI_suit_C45_M4",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 3,
+					freq = 1,
+					amount_max = 3,
+					rank = 1,
+					unit = "CS_cop_C45_R870",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 2,
+					unit = "CS_cop_stealth_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	elseif difficulty_index == 3 then
+		self.enemy_spawn_groups.tac_tazer_flanking = {
+			amount = {
+				6,
+				6
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_flanking
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_suit_stealth_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 1,
+					unit = "FBI_suit_C45_M4",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_cop_stealth_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.tac_tazer_flanking = {
+			amount = {
+				6,
+				7
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_flanking
+				},
+				{
+					amount_min = 3,
+					freq = 1,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_suit_stealth_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 1,
+					unit = "FBI_suit_C45_M4",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 0,
+					freq = 0.2,
+					amount_max = 1,
+					rank = 1,
+					unit = "CS_cop_C45_R870",
+					tactics = self._tactics.tazer_flanking
+				}
+			}
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.tac_tazer_flanking = {
+			amount = {
+				7,
+				7
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_flanking
+				},
+				{
+					amount_min = 4,
+					freq = 1,
+					amount_max = 4,
+					rank = 2,
+					unit = "FBI_suit_stealth_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 1,
+					unit = "FBI_suit_C45_M4",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	elseif difficulty_index == 6 then
+		self.enemy_spawn_groups.tac_tazer_flanking = {
+			amount = {
+				7,
+				7
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_flanking
+				},
+				{
+					amount_min = 4,
+					freq = 1,
+					amount_max = 4,
+					rank = 2,
+					unit = "FBI_suit_stealth_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 1,
+					unit = "FBI_suit_C45_M4",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.tac_tazer_flanking = {
+			amount = {
+				7,
+				8
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_flanking
+				},
+				{
+					amount_min = 4,
+					freq = 1,
+					amount_max = 4,
+					rank = 2,
+					unit = "FBI_suit_stealth_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 1,
+					unit = "FBI_suit_C45_M4",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	end
+
+	if difficulty_index <= 2 then
+		self.enemy_spawn_groups.tac_tazer_charge = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_charge
+				},
+				{
+					amount_min = 2,
+					freq = 3,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	elseif difficulty_index == 3 then
+		self.enemy_spawn_groups.tac_tazer_charge = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_charge
+				},
+				{
+					amount_min = 2,
+					freq = 3,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.tac_tazer_charge = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_charge
+				},
+				{
+					amount_min = 1,
+					freq = 3,
+					amount_max = 1,
+					rank = 2,
+					unit = "CS_swat_MP5",
+					tactics = self._tactics.swat_rifle_flank
+				},
+				{
+					amount_min = 1,
+					freq = 3,
+					amount_max = 1,
+					rank = 2,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.tac_tazer_charge = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_charge
+				},
+				{
+					amount_min = 2,
+					freq = 3,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	elseif difficulty_index == 6 then
+		self.enemy_spawn_groups.tac_tazer_charge = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_charge
+				},
+				{
+					amount_min = 2,
+					freq = 3,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.tac_tazer_charge = {
+			amount = {
+				3,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_tazer",
+					tactics = self._tactics.tazer_charge
+				},
+				{
+					amount_min = 0,
+					freq = 1,
+					amount_max = 1,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 2,
+					freq = 3,
+					amount_max = 2,
+					rank = 1,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle_flank
+				}
+			}
+		}
+	end
+end)
+
 local old_inituc = GroupAITweakData._init_unit_categories
 function GroupAITweakData:_init_unit_categories(difficulty_index)
 	old_inituc(self, difficulty_index)
@@ -63,27 +457,120 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			table.insert(self.unit_categories.FBI_tank.unit_types.america, Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"))
 		end
 	end
+	
+	-- Rokks tweaks start here
+	
+	
+	-- Add mysteriously missing ene_cop_2 to basic cops list
+	-- Is this the Bronco cop? That stuff was hilarious
+	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.america, Idstring("units/payday2/characters/ene_cop_2/ene_cop_2"))
+
+	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_1/ene_cop_hvh_2"))
+	
+	self.unit_categories.FBI_suit_C45_M4.unit_types.murkywater = {
+		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"),
+		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
+	}
+	
+	self.unit_categories.FBI_suit_M4_MP5.unit_types.murkywater = {
+		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"),
+		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
+	}
+	
+	self.unit_categories.FBI_suit_stealth_MP5.unit_types.murkywater = {
+		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
+	}	
 end
 
 
-Hooks:PostHook(GroupAITweakData, "_init_task_data", "fuckyouraurawinters", function(self, params)
+Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", function(self, difficulty_index, difficulty)
+
+	-- Nerf Winters damage reduction
 	self.phalanx.vip.damage_reduction = {
 		max = 0.25,
 		start = 0.15,
 		increase_intervall = 3000,
 		increase = 0.02
 	}
-end)
+	
+	-- Make fades last longer
+	self.besiege.regroup.duration = {
+		30,
+		30,
+		30
+	}
+	
+	-- Add more/longer assault breaks
+	if difficulty_index <= 2 then
+		self.besiege.assault.delay = {
+			105,
+			85,
+			70
+		}
+	elseif difficulty_index == 3 then
+		self.besiege.assault.delay = {
+			85,
+			75,
+			65
+		}
+	elseif difficulty_index == 4 then
+		self.besiege.assault.delay = {
+			80,
+			70,
+			60
+		}
+	elseif difficulty_index == 5 then
+		self.besiege.assault.delay = {
+			70,
+			60,
+			50
+		}
+	else
+		self.besiege.assault.delay = {
+			60,
+			55,
+			50
+		}
+	end
 
---[[
-Hooks:PostHook(GroupAITweakData, "_init_task_data", "reducespawnrate", function(self, params)
+	-- Make the assault breaks substantially longer if players have hostages
+	if difficulty_index <= 5 then
+		self.besiege.assault.hostage_hesitation_delay = {
+			70,
+			70,
+			70
+		}
+	else
+		self.besiege.assault.hostage_hesitation_delay = {
+			60,
+			60,
+			60
+		}
+	end
+	
+	-- Taser squads part 2, actually add them to the recon teams
+	-- Wipe the other cops from the recon groups, ONLY add hostage rescues
+	self.besiege.recon.groups = { 
+		tac_tazer_flanking = {
+			0.1,
+			0.1,
+			0.1
+		}
+	}
+	
+	-- Remove the taser flanking group from the assault since this contains hostage rescue.
+	self.besiege.assault.groups.tac_tazer_flanking = {
+		0,
+		0,
+		0
+	}
+	
+	-- Reduce spawn rates a little
 	-- max # of simultaneous cops
-	self.besiege.assault.force = {10, 12, 14} -- 14, 16, 18
+	self.besiege.assault.force = {14, 15, 16} -- 14, 16, 18
 	self.besiege.assault.force_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
 
 	-- max # of cops in an entire assault wave
 	self.besiege.assault.force_pool = {40, 45, 50} -- 150, 175, 225
 	self.besiege.assault.force_pool_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
-
 end)
---]]

@@ -40,6 +40,7 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "givecoolenemies", fun
 end)
 --]]
 
+-- Add taser squads. Flank squads in calm state are used for hostage rescue, assault squads are expanded.
 Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasersquads", function(self, difficulty_index)
 	if difficulty_index <= 2 then
 		self.enemy_spawn_groups.tac_tazer_flanking = {
@@ -434,6 +435,641 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasers
 	end
 end)
 
+-- Re-add the mistakenly removed shotgunners
+Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgunsquads", function(self, difficulty_index)
+
+	-- Shotgun rushers
+	if difficulty_index <= 2 then
+		self.enemy_spawn_groups.tac_swat_shotgun_rush = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 3 then
+		self.enemy_spawn_groups.tac_swat_shotgun_rush = {
+			amount = {
+				4,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 3,
+					unit = "CS_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.tac_swat_shotgun_rush = {
+			amount = {
+				4,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 3,
+					freq = 1,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.tac_swat_shotgun_rush = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 0.2,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 6 then
+		self.enemy_spawn_groups.tac_swat_shotgun_rush = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 3,
+					freq = 3,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 7 then
+		self.enemy_spawn_groups.tac_swat_shotgun_rush = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.tac_swat_shotgun_rush = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 3,
+					freq = 3,
+					amount_max = 3,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	end
+	
+	-- Shotgun flankers
+	if difficulty_index <= 2 then
+		self.enemy_spawn_groups.tac_swat_shotgun_flank = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_heavy_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				}
+			}
+		}
+	elseif difficulty_index == 3 then
+		self.enemy_spawn_groups.tac_swat_shotgun_flank = {
+			amount = {
+				4,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 3,
+					unit = "CS_heavy_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				}
+			}
+		}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.tac_swat_shotgun_flank = {
+			amount = {
+				4,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 3,
+					freq = 1,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				}
+			}
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.tac_swat_shotgun_flank = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 0,
+					freq = 0.2,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				}
+			}
+		}
+	elseif difficulty_index == 6 then
+		self.enemy_spawn_groups.tac_swat_shotgun_flank = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 3,
+					freq = 3,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 0,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				}
+			}
+		}
+	elseif difficulty_index == 7 then
+		self.enemy_spawn_groups.tac_swat_shotgun_flank = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 0,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.tac_swat_shotgun_flank = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 3,
+					freq = 3,
+					amount_max = 3,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				},
+				{
+					amount_min = 0,
+					freq = 0.5,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.swat_shotgun_flank
+				}
+			}
+		}
+	end
+	
+	-- Tactical riflemen
+	if difficulty_index <= 2 then
+		self.enemy_spawn_groups.tac_swat_rifle = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_MP5",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	elseif difficulty_index == 3 then
+		self.enemy_spawn_groups.tac_swat_rifle = {
+			amount = {
+				4,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_MP5",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 3,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.tac_swat_rifle = {
+			amount = {
+				4,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 3,
+					freq = 1,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.tac_swat_rifle = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 0,
+					freq = 0.2,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	elseif difficulty_index == 6 then
+		self.enemy_spawn_groups.tac_swat_rifle = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 3,
+					freq = 3,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 0,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	elseif difficulty_index == 7 then
+		self.enemy_spawn_groups.tac_swat_rifle = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 0,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.tac_swat_rifle = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 3,
+					freq = 3,
+					amount_max = 3,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 0,
+					freq = 0.5,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	end
+
+end)
+
 local old_inituc = GroupAITweakData._init_unit_categories
 function GroupAITweakData:_init_unit_categories(difficulty_index)
 	old_inituc(self, difficulty_index)
@@ -542,9 +1178,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 		}
 	else
 		self.besiege.assault.hostage_hesitation_delay = {
-			60,
-			60,
-			60
+			50,
+			50,
+			50
 		}
 	end
 	

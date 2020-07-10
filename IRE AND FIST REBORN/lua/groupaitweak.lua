@@ -1101,7 +1101,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	-- Is this the Bronco cop? That stuff was hilarious
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.america, Idstring("units/payday2/characters/ene_cop_2/ene_cop_2"))
 
-	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_1/ene_cop_hvh_2"))
+	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"))
 	
 	self.unit_categories.FBI_suit_C45_M4.unit_types.murkywater = {
 		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"),
@@ -1186,7 +1186,38 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	
 	-- Taser squads part 2, actually add them to the recon teams
 	-- Wipe the other cops from the recon groups, ONLY add hostage rescues
-	self.besiege.recon.groups = { 
+	--[[
+	self.besiege.recon.groups = {
+		tac_tazer_flanking = {
+			0.1,
+			0.1,
+			0.1
+		}
+	}]]
+	
+	-- EDIT: Testing a possible crash fix, do not wipe the whole table but just set the others' chances to 0.
+	-- Is the crash caused by the map forcing this spawn group to happen or something?
+	self.besiege.recon.groups = {
+		tac_swat_shotgun_rush = {
+			0,
+			0,
+			0
+		},
+		tac_swat_shotgun_flank = {
+			0,
+			0,
+			0
+		},
+		tac_swat_rifle = {
+			0,
+			0,
+			0
+		},
+		tac_swat_rifle_flank = {
+			0,
+			0,
+			0
+		},
 		tac_tazer_flanking = {
 			0.1,
 			0.1,
@@ -1194,7 +1225,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 		}
 	}
 	
-	-- Remove the taser flanking group from the assault since this contains hostage rescue.
+	-- Remove the taser flanking group from the assault since this contains hostage rescue teams.
 	self.besiege.assault.groups.tac_tazer_flanking = {
 		0,
 		0,
@@ -1207,6 +1238,8 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	self.besiege.assault.force_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
 
 	-- max # of cops in an entire assault wave
+	-- I'm pretty happy with these values on Overkill
 	self.besiege.assault.force_pool = {40, 45, 50} -- 150, 175, 225
 	self.besiege.assault.force_pool_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
+
 end)

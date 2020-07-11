@@ -1879,8 +1879,9 @@ end
 	self:convert_part("inf_fnfal_dmrkit", "hrifle", "dmr")
 	self.parts.inf_fnfal_dmrkit.custom_stats.sdesc1 = "caliber_r762x51dm151"
 	self.parts.inf_fnfal_dmrkit.perks = {"fire_mode_single"}
-	-- Forbid larger mag
-	self.parts.inf_fnfal_dmrkit.forbids = { "wpn_fps_ass_fal_m_01" }
+	
+	-- Forbid larger mag and fire rate mods
+	self.parts.inf_fnfal_dmrkit.forbids = { "wpn_fps_ass_fal_m_01", "wpn_fps_upg_i_singlefire", "wpn_fps_upg_i_autofire" }
 
 	-- Classic Kit
 	self:convert_part("inf_fnfal_classickit", "hrifle", "mrifle")

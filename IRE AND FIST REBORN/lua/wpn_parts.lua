@@ -1876,7 +1876,7 @@ end
 	self.parts.wpn_fps_ass_fal_s_wood.stats = deep_clone(nostats)
 
 	-- DMR Kit
-	self:convert_part("inf_fnfal_dmrkit", "hrifle", "dmr")
+	self:convert_part("inf_fnfal_dmrkit", "hrifle", "dmr", nil, nil, 700, nil)
 	self.parts.inf_fnfal_dmrkit.custom_stats.sdesc1 = "caliber_r762x51dm151"
 	self.parts.inf_fnfal_dmrkit.perks = {"fire_mode_single"}
 	

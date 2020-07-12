@@ -40,10 +40,10 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "givecoolenemies", fun
 end)
 --]]
 
--- Add taser squads. Flank squads in calm state are used for hostage rescue, assault squads are expanded.
-Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasersquads", function(self, difficulty_index)
+-- Expand rushing taser squads. Add calm state hostage rescue squads (which can also have tasers).
+Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_hostagerescueandtasersquads", function(self, difficulty_index)
 	if difficulty_index <= 2 then
-		self.enemy_spawn_groups.tac_tazer_flanking = {
+		self.enemy_spawn_groups.tac_hostagerescue_flanking = {
 			amount = {
 				5,
 				6
@@ -84,7 +84,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasers
 			}
 		}
 	elseif difficulty_index == 3 then
-		self.enemy_spawn_groups.tac_tazer_flanking = {
+		self.enemy_spawn_groups.tac_hostagerescue_flanking = {
 			amount = {
 				6,
 				6
@@ -125,7 +125,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasers
 			}
 		}
 	elseif difficulty_index == 4 then
-		self.enemy_spawn_groups.tac_tazer_flanking = {
+		self.enemy_spawn_groups.tac_hostagerescue_flanking = {
 			amount = {
 				6,
 				7
@@ -166,7 +166,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasers
 			}
 		}
 	elseif difficulty_index == 5 then
-		self.enemy_spawn_groups.tac_tazer_flanking = {
+		self.enemy_spawn_groups.tac_hostagerescue_flanking = {
 			amount = {
 				7,
 				7
@@ -199,7 +199,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasers
 			}
 		}
 	elseif difficulty_index == 6 then
-		self.enemy_spawn_groups.tac_tazer_flanking = {
+		self.enemy_spawn_groups.tac_hostagerescue_flanking = {
 			amount = {
 				7,
 				7
@@ -232,7 +232,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_tasers
 			}
 		}
 	else
-		self.enemy_spawn_groups.tac_tazer_flanking = {
+		self.enemy_spawn_groups.tac_hostagerescue_flanking = {
 			amount = {
 				7,
 				8
@@ -1098,11 +1098,11 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	
 	
 	-- Add mysteriously missing ene_cop_2 to basic cops list
-	-- Is this the Bronco cop? That stuff was hilarious
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.america, Idstring("units/payday2/characters/ene_cop_2/ene_cop_2"))
 
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"))
 	
+	-- Change the hostage rescue units for murkywater to all light FBIs
 	self.unit_categories.FBI_suit_C45_M4.unit_types.murkywater = {
 		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"),
 		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
@@ -1172,13 +1172,13 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	-- Make the assault breaks substantially longer if players have hostages
 	if difficulty_index <= 5 then
 		self.besiege.assault.hostage_hesitation_delay = {
-			70,
-			70,
-			70
+			60,
+			55,
+			50
 		}
 	else
 		self.besiege.assault.hostage_hesitation_delay = {
-			50,
+			55,
 			50,
 			50
 		}
@@ -1186,47 +1186,16 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	
 	-- Taser squads part 2, actually add them to the recon teams
 	-- Wipe the other cops from the recon groups, ONLY add hostage rescues
-	--[[
 	self.besiege.recon.groups = {
-		tac_tazer_flanking = {
-			0.1,
-			0.1,
-			0.1
-		}
-	}]]
-	
-	-- EDIT: Testing a possible crash fix, do not wipe the whole table but just set the others' chances to 0.
-	-- Is the crash caused by the map forcing this spawn group to happen or something?
-	self.besiege.recon.groups = {
-		tac_swat_shotgun_rush = {
-			0,
-			0,
-			0
-		},
-		tac_swat_shotgun_flank = {
-			0,
-			0,
-			0
-		},
-		tac_swat_rifle = {
-			0,
-			0,
-			0
-		},
-		tac_swat_rifle_flank = {
-			0,
-			0,
-			0
-		},
-		tac_tazer_flanking = {
+		tac_hostagerescue_flanking = {
 			0.1,
 			0.1,
 			0.1
 		}
 	}
 	
-	-- Remove the taser flanking group from the assault since this contains hostage rescue teams.
-	self.besiege.assault.groups.tac_tazer_flanking = {
+	-- Remove the HRT flanking group from the assault, but still define it.
+	self.besiege.assault.groups.tac_hostagerescue_flanking = {
 		0,
 		0,
 		0

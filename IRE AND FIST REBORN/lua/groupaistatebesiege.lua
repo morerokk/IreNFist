@@ -37,6 +37,7 @@ function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force, use_last
 					
 						-- They cant do anything without an objective, I dunno why theyre spawning this way
 						-- Temp fix is to just nuke it for now
+						-- TODO: Test if this was fixed and remove this whole function override
 						if not spawn_task or not spawn_task.group or not spawn_task.group.objective or not spawn_task.group.objective.element then
 							log("[COPSPAWNDEBUG] Fatal error: a cop spawned without an objective set!")
 							return true

@@ -539,9 +539,6 @@ InFmenu.rstance.norecoil = {
 	steelsight = {0, 0, 0, 0}
 }
 
-
-
-
 function WeaponTweakData:_pickup_chance(max_ammo, selection_index)
 	local low, high
 
@@ -1586,12 +1583,14 @@ function WeaponTweakData:inf_init_akimbo(wpn, subtype, delaytime)
 		self[wpn].spreadadd.moving_steelsight = 0.75
 	end
 	-- allows single-firing akimbos to toggle vanilla double-shoot
-	if not self:has_category(wpn, "smg") then
+	if not self:has_category(wpn, "smg") and not _G.IS_VR then
 		self[wpn].BURST_FIRE = 2
 	end
 	if delaytime then
 		self[wpn].recoil_apply_delay = delaytime or 0 --0.07
 	end
+
+	--self[wpn]
 end
 
 -- MISTAKES

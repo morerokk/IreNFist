@@ -227,8 +227,8 @@ end
 
 end
 
-
-if RequiredScript == "lib/units/weapons/akimboweaponbase" then
+-- Don't touch the akimbos in VR, they work differently
+if not _G.IS_VR and RequiredScript == "lib/units/weapons/akimboweaponbase" then
 
 	local _update_stats_values_original = AkimboWeaponBase._update_stats_values
 	local fire_original = AkimboWeaponBase.fire

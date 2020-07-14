@@ -4012,18 +4012,73 @@ end
 	self.parts.wpn_fps_ass_m14_body_legendary.stats = deep_clone(nostats)
 	
 
+	-- Add all sights to akimbos
+	-- List of sights so we can add these to akimbo variants
+	local weapon_sights = {"wpn_fps_upg_o_t1micro", "wpn_fps_upg_o_cmore", "wpn_fps_upg_o_reflex", "wpn_fps_upg_o_eotech_xps", "wpn_fps_upg_o_eotech", "wpn_fps_upg_o_rx30", "wpn_fps_upg_o_rx01", "wpn_fps_upg_o_docter", "wpn_fps_upg_o_cs", "wpn_fps_upg_o_specter", "wpn_fps_upg_o_aimpoint", "wpn_fps_upg_o_aimpoint_2", "wpn_fps_upg_o_acog", "wpn_fps_upg_o_spot", "wpn_fps_upg_o_bmg", "wpn_fps_upg_o_fc1", "wpn_fps_upg_o_uh", "wpn_upg_o_marksmansight_rear", "wpn_fps_upg_o_rmr", "wpn_fps_upg_o_rms", "wpn_fps_upg_o_rikt" }
 
+	local function string_starts(String, Start)
+		return string.sub(String,1,string.len(Start))==Start
+	end
 
+	-- I hate this
+	for wpn, data in pairs(self) do
+		-- Is akimbo weapon
+		if type(wpn) == "string" and string_starts(wpn, "wpn_fps") and string.find(wpn, "_x_") then
+			log("Found wpn_fps")
+			-- Get name of single weapon variant
+			local single_wpn = self[wpn:gsub("_x_", "_")]
+			-- Check if single weapon exists (it should)
+			if single_wpn then
+				-- If it does, loop over all sights, check if the single weapon has them, and if so, add them to the akimbo weapon.
+				for i, sight in pairs(weapon_sights) do
+					if table.contains(single_wpn.uses_parts, sight) then
+						-- Add to uses_parts
+						table.insert(self[wpn].uses_parts, sight)
 
+						-- If there is an override, also copy it
+						if single_wpn.override and single_wpn.override[sight] then
+							-- Extra nil checks because not all weapons have overrides
+							if not self[wpn].override then
+								self[wpn].override = {}
+							end
+							self[wpn].override[sight] = single_wpn.override[sight]
+						end
+					end
+				end
+			end
+		end
+	end
 
+	-- These weapons do not fit the standard naming scheme so we have to run over them again and add the sights
+	local akimbo_wpn_translations = {
+		{
+			single = "wpn_fps_pis_deagle",
+			akimbo = "wpn_fps_x_deagle"
+		},
+		{
+			single = "wpn_fps_pis_1911",
+			akimbo = "wpn_fps_x_1911"
+		},
+		{
+			single = "wpn_fps_pis_beretta",
+			akimbo = "wpn_fps_x_b92fs"
+		},
+	}
 
+	for i, wpn in pairs(akimbo_wpn_translations) do
+		for j, sight in pairs(weapon_sights) do
+			if table.contains(self[wpn.single].uses_parts, sight) then
+				table.insert(self[wpn.akimbo].uses_parts, sight)
 
-
-
-
-
-
-
+				if self[wpn.single].override and self[wpn.single].override[sight] then
+					if not self[wpn.akimbo].override then
+						self[wpn.akimbo].override = {}
+					end
+					self[wpn.akimbo].override[sight] = self[wpn.single].override[sight]
+				end
+			end
+		end
+	end
 
 	-- SR EINHERI PARTS
 if BeardLib.Utils:FindMod("SR-3M Vikhr") then

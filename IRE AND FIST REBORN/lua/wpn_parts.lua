@@ -4024,7 +4024,6 @@ end
 	for wpn, data in pairs(self) do
 		-- Is akimbo weapon
 		if type(wpn) == "string" and string_starts(wpn, "wpn_fps") and string.find(wpn, "_x_") then
-			log("Found wpn_fps")
 			-- Get name of single weapon variant
 			local single_wpn = self[wpn:gsub("_x_", "_")]
 			-- Check if single weapon exists (it should)

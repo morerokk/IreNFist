@@ -40,6 +40,24 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "givecoolenemies", fun
 end)
 --]]
 
+-- Heist-specific overrides for assault values
+-- This has to be done because some poorly designed heists like Shacklethorne have assaults that end way too quickly with these tweaks
+-- Default values:
+-- self.besiege.assault.force = {14, 15, 16} -- 14, 16, 18
+-- self.besiege.assault.force_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
+-- 
+-- self.besiege.assault.force_pool = {40, 45, 50} -- originally 150, 175, 225
+-- self.besiege.assault.force_pool_balance_mul = {1, 2, 3, 4} -- originally 1, 2, 3, 4
+
+local bad_heist_overrides = {
+	sah = { -- Shacklethorne Auction, lower max cops but increase the assault pool size
+		force = { 12, 13, 14 },
+		force_balance_mul = { 1, 2, 3, 4 },
+		force_pool = { 50, 55, 60 },
+		force_pool_balance_mul = { 1, 2, 3, 4 }
+	}
+}
+
 -- Expand rushing taser squads. Add calm state hostage rescue squads (which can also have tasers).
 Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_hostagerescueandtasersquads", function(self, difficulty_index)
 	if difficulty_index <= 2 then
@@ -1211,4 +1229,16 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	self.besiege.assault.force_pool = {40, 45, 50} -- 150, 175, 225
 	self.besiege.assault.force_pool_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
 
+	-- Check and apply heist-specific overrides for the above values
+	local job = Global.level_data and Global.level_data.level_id
+	if job and bad_heist_overrides[job] then
+		self.besiege.assault.force = bad_heist_overrides[job].force
+		self.besiege.assault.force_balance_mul = bad_heist_overrides[job].force_balance_mul
+
+		self.besiege.assault.force_pool = bad_heist_overrides[job].force_pool
+		self.besiege.assault.force_pool_balance_mul = bad_heist_overrides[job].force_pool_balance_mul
+
+		log("Bad heist " .. job .. " found, applying relevant assault overrides")
+	end
+	
 end)

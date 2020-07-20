@@ -6311,6 +6311,7 @@ DelayedCalls:Add("akpack47delay", 0.50, function(self, params)
 end)
 end
 
+-- heffy_545 AK74
 if BeardLib.Utils:FindMod("AK-74") and self.heffy_545 then
 	self:inf_init("heffy_545", "ar", nil)
 	self.heffy_545.sdesc1 = "caliber_r545x39"
@@ -6328,11 +6329,35 @@ if BeardLib.Utils:FindMod("AK-74") and self.heffy_545 then
 	self.heffy_545.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
 	self.heffy_545.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.heffy_545.use_custom_anim_state = true
-DelayedCalls:Add("akpack47delay", 0.50, function(self, params)
-	tweak_data.weapon.heffy_545.bipod_weapon_translation = Vector3(-2, 5, -4)
-end)
+	DelayedCalls:Add("akpack47delay", 0.50, function(self, params)
+		tweak_data.weapon.heffy_545.bipod_weapon_translation = Vector3(-2, 5, -4)
+	end)
 end
 
+-- AK Pack 2.0 AK-74
+if BeardLib.Utils:FindMod("AK-74") and self.ak_stamp_545 then
+	self:inf_init("ak_stamp_545", "ar", nil)
+	self.ak_stamp_545.sdesc1 = "caliber_r545x39"
+	self.ak_stamp_545.sdesc2 = "action_gaslong"
+	self:copy_timers("ak_stamp_545", "flint")
+	self.ak_stamp_545.stats.concealment = 20
+
+	self:apply_standard_bipod_stats("ak_stamp_545")
+	self.ak_stamp_545.custom_bipod = true
+	pivot_shoulder_translation = Vector3(0, 0, 0)
+	pivot_shoulder_rotation = Rotation(0, 0, 0)
+	pivot_head_translation = Vector3(-10.25, -5.2, 4.90)
+	pivot_head_rotation = Rotation(0, 0, 0)
+	self.ak_stamp_545.stances.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
+	self.ak_stamp_545.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+	self.ak_stamp_545.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
+	self.ak_stamp_545.use_custom_anim_state = true
+	DelayedCalls:Add("akpack74_akpack20_delay", 0.50, function(self, params)
+		tweak_data.weapon.ak_stamp_545.bipod_weapon_translation = Vector3(-2, 5, -4)
+	end)
+end
+
+-- heffy_556 AK-101
 if BeardLib.Utils:FindMod("AK-101") and self.heffy_556 then
 	self:inf_init("heffy_556", "ar", nil)
 	self.heffy_556.sdesc1 = "caliber_r545x39"
@@ -6340,12 +6365,49 @@ if BeardLib.Utils:FindMod("AK-101") and self.heffy_556 then
 	self:copy_timers("heffy_556", "flint")
 end
 
+-- AK Pack 2.0 AK-101
+if BeardLib.Utils:FindMod("AK-101") and self.ak_stamp_556 then
+	self:inf_init("ak_stamp_556", "ar", nil)
+	self.ak_stamp_556.sdesc1 = "caliber_r545x39"
+	self.ak_stamp_556.sdesc2 = "action_gaslong"
+	self:copy_timers("ak_stamp_556", "flint")
+end
+
+-- Golden AKMS heffy
 if BeardLib.Utils:FindMod("Golden-AKMS") and self.heffy_gold then
 	self:inf_init("heffy_gold", "ar", {"medium"})
 	self.heffy_gold.sdesc1 = "caliber_r762x39"
 	self.heffy_gold.sdesc2 = "action_gaslong"
 	self:copy_timers("heffy_gold", "flint")
 	self.heffy_gold.price = 5*1000000
+end
+
+-- Golden AKMS AK Pack 2.0
+-- This one isnt behaving at all, it thinks its an AK12 or something?
+if BeardLib.Utils:FindMod("Golden-AKMS") and self.ak_stamp_gold then
+	self:inf_init("ak_stamp_gold", "ar", {"medium"})
+	self.ak_stamp_gold.sdesc1 = "caliber_r762x39"
+	self.ak_stamp_gold.sdesc2 = "action_gaslong"
+	self:copy_timers("ak_stamp_gold", "flint")
+	self.ak_stamp_gold.price = 5*1000000
+
+	-- Either way, not my problem anymore
+	--[[
+	if self.ak12 then
+		self:inf_init("ak12", "ar", {"medium"})
+		self.ak12.sdesc1 = "caliber_r762x39"
+		self.ak12.sdesc2 = "action_gaslong"
+		self:copy_timers("ak12", "flint")
+	end
+	]]
+end
+
+-- AKM AK Pack 2.0
+if BeardLib.Utils:FindMod("AKM") and self.ak_stamp_762 then
+	self:inf_init("ak_stamp_762", "ar", {"medium"})
+	self.ak_stamp_762.sdesc1 = "caliber_r762x39"
+	self.ak_stamp_762.sdesc2 = "action_gaslong"
+	self:copy_timers("ak_stamp_762", "flint")
 end
 
 if BeardLib.Utils:FindMod("Saiga-12") then

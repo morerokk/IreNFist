@@ -3464,6 +3464,24 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- saiga-12
 	bm_w_heffy_12g_desc = "Combines the flesh-rending punch of a shotgun with the engineering of an AK.",
 
+	-- AK pack 2.0 stuff
+	-- AK-74
+	bm_w_ak_stamp_545_desc = "The most iconic Soviet Union AK rifle. Still used to this day by military and armed militia alike.",
+
+	-- AK-101
+	bm_w_ak_stamp_556_desc = "A more standardized and export-friendly version of the AK-74, adopting a more standard NATO 5.56x45mm cartridge while keeping the Kalashnikov reliability.",
+
+	-- AKM
+	bm_w_ak_stamp_762_desc = "A modernised version of the AK-47. Still has the same amount of oomph behind every shot. Will probably outlast you and your entire bloodline.",
+
+	-- Golden AKMS
+	bm_w_ak_stamp_gold_desc = "A gold-plated AKMS. Do I need to say any more?\n\nCURRENTLY BROKEN DUE TO UNKNOWN REASONS. Contact the mod author and ask them why this is clashing with the AK12, and why the stats cannot be changed.",
+
+	-- Why does the AK pack not have any localization for their weapon mod categories???
+	bm_menu_stock_adapter = "Stock Adapter",
+	bm_menu_barrel2 = "AK Barrel",
+	bm_menu_bolt = "Bolt",
+
 	-- nagant 1895
 	bm_w_m1895_desc = "Russian revolver with unusual gas-sealing mechanism and cartridge, allowing it to be easily suppressed. Despite its obsolescence on debut, it saw widespread service due to its low cost and near-invulnerability.",
 

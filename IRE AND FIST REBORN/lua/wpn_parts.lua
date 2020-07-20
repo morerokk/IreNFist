@@ -7022,12 +7022,13 @@ end
 
 if BeardLib.Utils:FindMod("Chiappa Rhino 60DS") then
 	self.parts.wpn_fps_pis_rhino_bullets.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_rhino_grip_rubber_small.stats = deep_clone(nostats)
+	--self.parts.wpn_fps_upg_rhino_grip_rubber_small.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_rhino_grip_wood_small.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_rhino_sight_fiber.stats = deep_clone(nostats)
 	self:convert_part("wpn_fps_upg_rhino_ammo_40sw", "heavypis", "supermediumpis")
 	self.parts.wpn_fps_upg_rhino_ammo_40sw.custom_stats.sdesc1 = "caliber_p40sw"
-	self.parts.wpn_fps_upg_rhino_frame_200ds.custom_stats = {switchspeed_mult = switch_snubnose}
+	-- self.parts.wpn_fps_upg_rhino_frame_200ds.custom_stats = {switchspeed_mult = switch_snubnose}
+	--[[
 	self.parts.wpn_fps_upg_rhino_frame_200ds.stats = {
 		value = 0,
 		spread = -30,
@@ -7035,6 +7036,7 @@ if BeardLib.Utils:FindMod("Chiappa Rhino 60DS") then
 		reload = 20,
 		concealment = 3
 	}
+	]]
 end
 
 if BeardLib.Utils:FindMod("Sjögren Inertia") then

@@ -7303,7 +7303,8 @@ if BeardLib.Utils:FindMod("AK-47") then
 	}
 end
 
-if BeardLib.Utils:FindMod("AK-74") then
+-- Apparently theres two mods called AK74? Thanks
+if BeardLib.Utils:FindMod("AK-74") and self.parts.wpn_fps_ass_heffy_545_fh_ak74 then
 	self.parts.wpn_fps_ass_heffy_545_fh_ak74.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_545_fh_aks74u.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_545_lr_aks74u.stats = deep_clone(nostats)
@@ -7363,7 +7364,7 @@ if BeardLib.Utils:FindMod("AK-74") then
 	--self.parts.wpn_fps_ass_heffy_545_m_poly_60.stats.extra_ammo = 30
 end
 
-if BeardLib.Utils:FindMod("AK-101") then
+if BeardLib.Utils:FindMod("AK-101") and self.parts.wpn_fps_ass_heffy_556_fh_ak101 then
 	self.parts.wpn_fps_ass_heffy_556_fh_ak101.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_556_fh_ak102.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_556_ba_ak108.stats = deep_clone(nostats)

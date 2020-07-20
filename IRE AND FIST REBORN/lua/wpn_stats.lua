@@ -6311,7 +6311,7 @@ DelayedCalls:Add("akpack47delay", 0.50, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("AK-74") then
+if BeardLib.Utils:FindMod("AK-74") and self.heffy_545 then
 	self:inf_init("heffy_545", "ar", nil)
 	self.heffy_545.sdesc1 = "caliber_r545x39"
 	self.heffy_545.sdesc2 = "action_gaslong"
@@ -6333,14 +6333,14 @@ DelayedCalls:Add("akpack47delay", 0.50, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("AK-101") then
+if BeardLib.Utils:FindMod("AK-101") and self.heffy_556 then
 	self:inf_init("heffy_556", "ar", nil)
 	self.heffy_556.sdesc1 = "caliber_r545x39"
 	self.heffy_556.sdesc2 = "action_gaslong"
 	self:copy_timers("heffy_556", "flint")
 end
 
-if BeardLib.Utils:FindMod("Golden-AKMS") then
+if BeardLib.Utils:FindMod("Golden-AKMS") and self.heffy_gold then
 	self:inf_init("heffy_gold", "ar", {"medium"})
 	self.heffy_gold.sdesc1 = "caliber_r762x39"
 	self.heffy_gold.sdesc2 = "action_gaslong"

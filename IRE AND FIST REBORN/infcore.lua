@@ -18,7 +18,7 @@ if not IreNFist then
             force_balance_mul = { 1, 2, 3, 4 },
             force_pool = { 50, 55, 60 },
             force_pool_balance_mul = { 1, 2, 3, 4 },
-            initial_spawn_delay = 50 -- Add a 50 second spawn delay because a literal 0 second response time is dumb
+            initial_spawn_delay = 30 -- Add a 30 second spawn delay because a literal 0 second response time is dumb
         }
     }
 

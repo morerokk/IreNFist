@@ -517,7 +517,8 @@ function NewRaycastWeaponBase:_get_spread(user_unit)
 	-- ADS/bipod multiplier
 	--if current_state:in_steelsight() or current_state:_is_using_bipod() then
 	-- checks for state name before running bipod check so it should no longer crash MWS
-	if current_state:in_steelsight() or (user_unit:movement()._current_state_name and current_state:_is_using_bipod()) then
+	-- Note: if the player is in VR, ADS spread is always used. It's hard enough to aim as it is.
+	if _G.IS_VR or (current_state:in_steelsight() or (user_unit:movement()._current_state_name and current_state:_is_using_bipod())) then
 		local ads_spread
 		if current_state._moving then
 			ads_spread = spread_values.moving_steelsight
@@ -590,8 +591,6 @@ function NewRaycastWeaponBase:_get_spread(user_unit)
 
 	return spread_x, spread_y
 end
-
-
 
 -- ONE-IN-THE-CHAMBER SHIT
 local updateReloadingOrig = NewRaycastWeaponBase.update_reloading

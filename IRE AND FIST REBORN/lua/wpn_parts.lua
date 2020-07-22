@@ -3641,6 +3641,11 @@ end
 	-- Ergo Grip
 	self.parts.wpn_fps_lmg_hk21_g_ergo.stats = deep_clone(nostats)
 
+	-- Brenner leftie grip part
+	-- BeardLibs findmod seems to return false (because its not a mod_override?) so we only check if the part exists
+	if self.parts.wpn_fps_lmg_hk21_fg_short_leftie then
+		self.parts.wpn_fps_lmg_hk21_fg_short_leftie.stats = deep_clone(barrel_p3)
+	end
 
 	-- MG42 PARTS
 	-- Light Barrel

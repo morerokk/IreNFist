@@ -42,6 +42,8 @@
 		{"hook_id": "lib/tweak_data/charactertweakdata", "script_path" : "lua/chartweakdata.lua"},
 		{"hook_id": "lib/tweak_data/groupaitweakdata", "script_path" : "lua/groupaitweak.lua"},
 		{"hook_id": "lib/units/enemies/cop/copdamage", "script_path" : "lua/copdamage.lua"},
+		{"hook_id": "lib/units/enemies/cop/copbrain", "script_path" : "lua/copbrain.lua"},
+		{"hook_id": "lib/units/enemies/cop/copmovement", "script_path" : "lua/copmovement.lua"},
 
 		{"hook_id": "lib/tweak_data/blackmarket/meleeweaponstweakdata", "script_path" : "lua/melee.lua"},
 		{"hook_id": "lib/tweak_data/weapontweakdata", "script_path" : "lua/wpn_stats.lua"},

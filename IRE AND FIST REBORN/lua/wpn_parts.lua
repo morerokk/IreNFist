@@ -5530,11 +5530,11 @@ if BeardLib.Utils:FindMod("Illuminated Iron Sight Pack") then
 	self.parts.wpn_fps_upg_pl14_tritium.stats = {value = 0, concealment = 0}
 	self.parts.wpn_fps_upg_usp_tritium.stats = {value = 0, concealment = 0}
 	primarysmgadds_specific.wpn_fps_smg_akmsuprimary = primarysmgadds_specific.wpn_fps_smg_akmsuprimary or {}
-	table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_upg_akmsu_o_night_sight")
+	table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_upg_akmsu_nightsight")
 	primarysmgadds_specific.wpn_fps_smg_hajkprimary = primarysmgadds_specific.wpn_fps_smg_hajkprimary or {}
-	table.insert(primarysmgadds_specific.wpn_fps_smg_hajkprimary, "wpn_fps_upg_cz805_o_tritium")
+	table.insert(primarysmgadds_specific.wpn_fps_smg_hajkprimary, "wpn_fps_upg_cz805_tritium")
 	primarysmgadds_specific.wpn_fps_smg_schakalprimary = primarysmgadds_specific.wpn_fps_smg_schakalprimary or {}
-	table.insert(primarysmgadds_specific.wpn_fps_smg_schakalprimary, "wpn_fps_upg_ump45_o_tritium")
+	table.insert(primarysmgadds_specific.wpn_fps_smg_schakalprimary, "wpn_fps_upg_ump45_tritium")
 	self.parts.wpn_fps_upg_asval_nightsight.forbids = {"inf_sightrail"}
 end
 

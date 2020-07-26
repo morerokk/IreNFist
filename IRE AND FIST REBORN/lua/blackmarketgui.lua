@@ -1534,4 +1534,9 @@ function BlackMarketGui:update_info_text()
 		self._rename_caret:set_h(h)
 		self._rename_caret:set_world_position(x + w, y)
 	end
+	
+	-- Goonmod customizer compatibility
+	if BLT.Mods:GetModByName("Weapon Visual Customization") then
+		Hooks:Call("BlackMarketGUIUpdateInfoText", self)
+	end
 end

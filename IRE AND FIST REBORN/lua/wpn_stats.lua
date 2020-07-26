@@ -1846,7 +1846,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.ak74.timers.reload_empty_end = 0.40 -- 3.23
 	self.ak74.reload_stance_mod = {ads = {translation = Vector3(0, 0, -4), rotation = Rotation(0, 5, 0)}}
 	--self.ak74.price = 50*1000
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.ak74.attachment_points then
 		self.ak74.attachment_points = {}
 	end
@@ -1889,7 +1889,7 @@ end
 	self.aug.equip_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 	self.aug.reload_stance_mod = {ads = {translation = Vector3(0, 0, -4), rotation = Rotation(0, 0, 0)}}
 	--self.aug.price = 150*1000
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	self:SetupAttachmentPoint("aug", {
 		name = "nowhere",
 		base_a_obj = "a_o",
@@ -2087,7 +2087,7 @@ end
 	self.akm.timers.reload_empty_end = 1.00 -- 3.29
 	self.akm.reload_stance_mod = {ads = {translation = Vector3(0, 0, -4), rotation = Rotation(0, 5, 0)}}
 	--self.akm.price = 50*1000
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.akm.attachment_points then
 		self.akm.attachment_points = {}
 	end
@@ -2107,7 +2107,7 @@ end
 	self.akm_gold.stats.concealment = self.akm.stats.concealment - 2
 	self:copy_timers("akm_gold", "akm")
 	self.akm_gold.price = 5*1000000
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.akm_gold.attachment_points then
 		self.akm_gold.attachment_points = {}
 	end
@@ -2200,7 +2200,7 @@ end
 	self.asval.timers.reload_empty = 3.2
 	self.asval.timers.reload_empty_end = 0.70 -- 2.52
 	--self.asval.price = 500*1000
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.asval.attachment_points then
 		self.asval.attachment_points = {}
 	end
@@ -2377,7 +2377,7 @@ end
 	self.winchester1874.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.winchester1874.use_custom_anim_state = true
 	self.winchester1874.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.winchester1874.attachment_points then
 		self.winchester1874.attachment_points = {}
 	end
@@ -2416,7 +2416,7 @@ end
 	self.msr.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.msr.use_custom_anim_state = true
 	self.msr.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.msr.attachment_points then
 		self.msr.attachment_points = {}
 	end
@@ -2454,7 +2454,7 @@ end
 	self.model70.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.model70.use_custom_anim_state = true
 	self.model70.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.model70.attachment_points then
 		self.model70.attachment_points = {}
 	end
@@ -2501,7 +2501,7 @@ end
 	self.wa2000.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.wa2000.use_custom_anim_state = true
 	self.wa2000.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.wa2000.attachment_points then
 		self.wa2000.attachment_points = {}
 	end
@@ -2539,7 +2539,7 @@ end
 	self.r93.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.r93.use_custom_anim_state = true
 	self.r93.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.r93.attachment_points then
 		self.r93.attachment_points = {}
 	end
@@ -2577,7 +2577,7 @@ end
 	self.mosin.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.mosin.use_custom_anim_state = true
 	self.mosin.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.mosin.attachment_points then
 		self.mosin.attachment_points = {}
 	end
@@ -2617,7 +2617,7 @@ end
 	self.desertfox.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.desertfox.use_custom_anim_state = true
 	self.desertfox.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.desertfox.attachment_points then
 		self.desertfox.attachment_points = {}
 	end
@@ -2693,7 +2693,7 @@ end
 	self.r700.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.r700.use_custom_anim_state = true
 	self.r700.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.r700.attachment_points then
 		self.r700.attachment_points = {}
 	end
@@ -3139,7 +3139,7 @@ end
 	self.x_shepheard.timers.reload_empty = 2.20
 	self.x_shepheard.timers.reload_empty_half = 2.00 -- fuck this reload animation
 	self.x_shepheard.timers.reload_empty_end = 0.80 -- 2.4
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	self:SetupAttachmentPoint( "shepheardprimary", {
 			name = "a_b_long",
 	        base_a_obj = "a_b",
@@ -3488,7 +3488,7 @@ end
 	self.lemming.timers.reload_empty = 2.05
 	self.lemming.timers.reload_empty_end = 0.60
 	--self.lemming.price = 200*1000
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	self:SetupAttachmentPoint("lemming", {
 		name = "a_ns",
 		base_a_obj = "a_ns",
@@ -4107,7 +4107,7 @@ end
 	self.m37primary.stats.concealment = 21
 	self.m37primary.animations = self.m37primary.animations or {}
 	self.m37primary.animations.reload_shell_by_shell = true
-if BeardLib.Utils:FindMod("GSPS Various Attachment") then
+if BeardLib.Utils:FindMod("GSPS Various Attachment") and self.SetupAttachmentPoint then
 	self:SetupAttachmentPoint( "m37primary", {
         name = "a_b_slayer",
         base_a_obj = "a_b",
@@ -5332,7 +5332,7 @@ if BeardLib.Utils:FindMod("L115") then
 	self.l115.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.l115.use_custom_anim_state = true
 	self.l115.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.l115.attachment_points then
 		self.l115.attachment_points = {}
 	end
@@ -5530,7 +5530,7 @@ if BeardLib.Utils:FindMod("CheyTac M200") then
 	self.m200.AMMO_PICKUP = self:_pickup_chance(28, 1)
 	self.m200.reload_speed_mult = self.m200.reload_speed_mult * 1.2
 
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.m200.attachment_points then
 		self.m200.attachment_points = {}
 	end
@@ -5567,7 +5567,7 @@ if BeardLib.Utils:FindMod("Minebea SMG") then
 	--self.minebea.stats.concealment = 27
 	self:copy_timers("minebea", "cobray")
 	self.minebea.reload_speed_mult = self.minebea.reload_speed_mult * 1.15
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.minebea.attachment_points then
 		self.minebea.attachment_points = {}
 	end
@@ -6669,7 +6669,7 @@ if BeardLib.Utils:FindMod("M40A5") then
 	self.m40a5.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.m40a5.use_custom_anim_state = true
 	self.m40a5.bipod_rof_mult = 1.25
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	if not self.m40a5.attachment_points then
 		self.m40a5.attachment_points = {}
 	end
@@ -6819,7 +6819,7 @@ end
 
 	-- !!
 
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
 	for a, b in ipairs(lmglist) do
 		if not self[b].attachment_points then
 			self[b].attachment_points = {}

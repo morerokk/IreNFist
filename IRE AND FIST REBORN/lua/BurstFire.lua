@@ -410,6 +410,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 	
 		-- In VR, dont update the HUD
 		-- TODO: if VR even has a firemode display, implement burst into it here
+		-- UPDATE: It doesn't
 		if _G.IS_VR then
 			return
 		end

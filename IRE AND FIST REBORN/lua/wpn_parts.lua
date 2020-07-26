@@ -5516,26 +5516,26 @@ if BeardLib.Utils:FindMod("HX25 Handheld Grenade Launcher") then
 end
 
 if BeardLib.Utils:FindMod("Illuminated Iron Sight Pack") then
-	self.parts.wpn_fps_upg_1911_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_b92fs_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_colt_def_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_deagle_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_fs_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_g18c_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_g22c_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_g26_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_hs2000_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_jericho_941_pl_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_p226_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_pl14_o_tritium.stats = {value = 0, concealment = 0}
-	self.parts.wpn_fps_upg_usp_o_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_1911_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_b92fs_tritium.stats = {value = 0, concealment = 0}
+	--self.parts.wpn_fps_upg_colt_def_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_deagle_tritium.stats = {value = 0, concealment = 0}
+	--self.parts.wpn_fps_upg_fs_tritium.stats = {value = 0, concealment = 0}
+	--self.parts.wpn_fps_upg_g18c_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_g22c_tritium.stats = {value = 0, concealment = 0}
+	--self.parts.wpn_fps_upg_g26_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_hs2000_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_sparrow_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_p226_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_pl14_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_usp_tritium.stats = {value = 0, concealment = 0}
 	primarysmgadds_specific.wpn_fps_smg_akmsuprimary = primarysmgadds_specific.wpn_fps_smg_akmsuprimary or {}
 	table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_upg_akmsu_o_night_sight")
 	primarysmgadds_specific.wpn_fps_smg_hajkprimary = primarysmgadds_specific.wpn_fps_smg_hajkprimary or {}
 	table.insert(primarysmgadds_specific.wpn_fps_smg_hajkprimary, "wpn_fps_upg_cz805_o_tritium")
 	primarysmgadds_specific.wpn_fps_smg_schakalprimary = primarysmgadds_specific.wpn_fps_smg_schakalprimary or {}
 	table.insert(primarysmgadds_specific.wpn_fps_smg_schakalprimary, "wpn_fps_upg_ump45_o_tritium")
-	self.parts.wpn_fps_upg_asval_o_night_sight.forbids = {"inf_sightrail"}
+	self.parts.wpn_fps_upg_asval_nightsight.forbids = {"inf_sightrail"}
 end
 
 if BeardLib.Utils:FindMod("stock_attachment_pack") then

@@ -617,7 +617,7 @@ end
 		concealment = -2
 	}
 
-	-- BMG
+	-- BMG Advanced Combat Sight (trijicon)
 	self.parts.wpn_fps_upg_o_bmg.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_bmg.stats = {
 		value = 0,
@@ -625,19 +625,19 @@ end
 		concealment = -2
 	}
 	
-	-- FC1
+	-- FC1 compact profile sight
 	self.parts.wpn_fps_upg_o_fc1.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_fc1.stats = {
 		value = 0,
-		zoom = 3,
+		zoom = 0,
 		concealment = -1
 	}
 	
-	-- UH
+	-- UH maelstrom
 	self.parts.wpn_fps_upg_o_uh.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_uh.stats = {
 		value = 0,
-		zoom = 3,
+		zoom = 0,
 		concealment = -1
 	}
 
@@ -2025,6 +2025,8 @@ end
 	self.parts.wpn_fps_ass_m14_body_ebr.stats = deep_clone(nostats)
 	-- Jaeger Body
 	self.parts.wpn_fps_ass_m14_body_jae.stats = deep_clone(nostats)
+	-- B-Team Stock
+	self.parts.wpn_fps_ass_m14_body_ruger.stats = deep_clone(nostats)
 	-- Scope Mount
 	self.parts.wpn_fps_upg_o_m14_scopemount.stats = deep_clone(nostats)
 	-- Surplus Special (dmr to heavy rifle)

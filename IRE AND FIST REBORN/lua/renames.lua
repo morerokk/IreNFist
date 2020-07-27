@@ -948,6 +948,14 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- Marksman Irons
 	bm_wp_upg_o_marksmansight_rear_desc = "Custom iron sights.",
 
+	-- Riktpunkt Holosight
+	bm_wp_upg_o_rikt = "Aimpoint Acro P-1 Sight",
+	bm_wp_upg_o_rikt_desc = "Reliable and very durable, will survive Russian winters and Groningen earthquakes alike.",
+
+	-- SKOLD Reflex Micro Sight
+	bm_wp_upg_o_rms = "SHIELD RMSc",
+	bm_wp_upg_o_rms_desc = "The SHIELD Reflex Mini Sight Compact. A covert red-dot sight which lacks a reflective red filter on the lens, ensuring minimum visual signature.",
+
 	-- Holographic Sight
 	bm_wp_upg_o_eotech = "Jotun Holosight",
 	bm_wp_upg_o_eotech_desc = "Holographic sight powered by lithium batteries. A favorite of AR-toting operators everywhere.",
@@ -995,6 +1003,16 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- Box Buddy Sight
 	bm_wp_upg_o_box = "The Box Buddy",
 	bm_wp_upg_o_box_desc = "Digital sight with target ID and video recording features.\n\nZoom level 10.",
+	-- BMG Combat Sight (Trijicon 6x48)
+	bm_wp_upg_o_bmg = "Trigonom ACOG Combat Sight",
+	bm_wp_upg_o_bmg_desc = "A high-magnification ACOG sight. Advertised with the *revolutionary* idea of \"keeping both eyes open\".\n\nZoom level 5.",
+	-- FC1 compact profile sight
+	bm_wp_upg_o_fc1 = "Compact Tactical Sight",
+	bm_wp_upg_o_fc1_desc = "An unbranded generic sight. If you actually liked the Tediore box sights, this might be a good fit.",
+	-- Maelstrom sight
+	bm_wp_upg_o_uh = "Maelstrom Sight",
+	bm_wp_upg_o_uh_desc = "Ideal for close quarters. Designed with a large viewing window.",
+
 	-- Hayha Mode
 	bm_wp_mosin_iron_sight = "Iron Sights",
 	bm_wp_mosin_iron_sight_desc = "Remove the scope and use iron sights.",
@@ -1072,6 +1090,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_upg_ass_ns_surefire_desc = "As a side effect, it'll also redirect your muzzle blast.",
 	-- Ported Compensator
 	bm_wp_ns_battle_desc = "Kicks recoil to the curb, according to the promotional material.",
+	-- Marmon compensator
+	bm_wp_upg_ns_ass_smg_v6_desc = "Nothing like a fistful of heavy metal.",
 
 	-- Flash Hider
 	bm_wp_upg_pis_ns_flash_desc = "This would be useful for protecting your ability to see at night if you went out at night more often.",
@@ -1079,6 +1099,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_upg_ns_meatgrinder_desc = "It's hard to imagine why you'd punch a man with the end of a gun before shooting him, but that's niche products for you.",
 	-- IPSC Compensator
 	bm_wp_upg_ns_ipsccomp_desc = "When everyone has to know you can shoot straight, even your gun.",
+	-- Hurricane Compensator
+	bm_wp_upg_ns_typhoon_desc = "For those who prefer their Democracy leaded.",
 
 	-- Low Profile Suppressor
 	bm_wp_upg_ns_ass_smg_small_desc = "Easily-mounted suppressor designed for low weight and size." .. silstr,
@@ -1625,6 +1647,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_upg_o_m14_scopemount_desc = "Improved mounting position that places sights closer to the eye.",
 	--
 	bm_wp_wpn_fps_m14_extra_bipod_desc = "When the jungle speaks, listen.\n\n" .. bipodstr,
+	-- B-team stock
+	bm_wp_m14_body_ruger = "Ruger Mini-14 Body",
+	bm_wp_m14_body_ruger_desc = "A second-choice stock. Fitting for a B-Team like you.",
 
 
 	-- Galant/Garand
@@ -2217,6 +2242,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- DEAGLE
 	bm_w_deagle_desc = "The most powerful semi-automatic handgun ever mass produced, without question. Only a revolver could match a cannon like this blow-for-blow.",
 	bm_w_x_deagle_desc = "There will come a time when you have no options, and all that's left to do is hand over the gun - one bullet at a time.",
+
+	-- Milled barrel
+	bm_wp_deagle_b_modern_desc = "Standard slide with a side-venting muzzle device.",
 
 
 	-- MATEBA

@@ -3677,7 +3677,15 @@ end
 	self.parts.inf_devotion.perks = {"fire_mode_single"}
 	self.parts.inf_devotion.stats = deep_clone(nostats)
 
-
+	-- M60 PARTS
+	-- Short barrel
+	self.parts.wpn_fps_lmg_m60_b_short.stats = deep_clone(barrel_p1)
+	-- Tactical foregrip
+	self.parts.wpn_fps_lmg_m60_fg_tactical.stats = deep_clone(nostats)
+	-- Tropical foregrip
+	self.parts.wpn_fps_lmg_m60_fg_tropical.stats = deep_clone(nostats)
+	-- Modernized foregrip
+	self.parts.wpn_fps_lmg_m60_fg_keymod.stats = deep_clone(nostats)
 
 
 	-- HEPHAESTUS/VULCAN PARTS
@@ -6868,6 +6876,8 @@ DelayedCalls:Add("dp28delay", delay, function(self, params)
 end)
 end
 
+-- Actually ingame now
+--[[
 if BeardLib.Utils:FindMod("M60") then
 	self.parts.wpn_fps_lmg_m60_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_m60_bipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -6888,6 +6898,7 @@ if BeardLib.Utils:FindMod("M60") then
 		}
 	end
 end
+]]
 
 if BeardLib.Utils:FindMod("RPD") then
 	self.parts.wpn_fps_upg_rpd_bipod.custom_stats = {recoil_horizontal_mult = 2}

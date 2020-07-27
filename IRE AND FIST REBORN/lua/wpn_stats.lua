@@ -6076,6 +6076,8 @@ end)
 	table.insert(lmglist, "dp28")
 end
 
+-- Actually in the game now
+--[[
 if BeardLib.Utils:FindMod("M60") then
 	self:inf_init("m60", "lmg", "heavy")
 	self.m60.sdesc1 = "caliber_r762x51"
@@ -6089,6 +6091,7 @@ if BeardLib.Utils:FindMod("M60") then
 	self.m60.deploy_anim_override = "m249"
 	table.insert(lmglist, "m60")
 end
+]]
 
 if BeardLib.Utils:FindMod("RPD") then
 	self:inf_init("rpd", "lmg", "medium")

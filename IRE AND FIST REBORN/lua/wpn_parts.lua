@@ -2621,6 +2621,12 @@ end
 		recoil = 2,
 		concealment = -1
 	}
+	-- Add No Stock to Akimbo mini uzi
+	table.insert(self.wpn_fps_smg_x_baka.uses_parts, "wpn_fps_smg_baka_s_standard")
+	if not self.wpn_fps_smg_x_baka.override then
+		self.wpn_fps_smg_x_baka.override = {}
+	end
+	table.insert(self.wpn_fps_smg_x_baka.override, { stats = { value = 0, recoil = -1, concealment = 1 } })
 
 
 	-- VERESK PARTS
@@ -8139,7 +8145,12 @@ wpn_fps_upg_o_m14_scopemount
 		end
 	end
 
+	-- Why did this bit of code below exist?
+	-- It breaks all angled sights (giving them +concealment)
+	-- And sightlist already exists anyway.
+
 	-- add possible sights to list of parts for sniper rifles to override
+	--[[
 	for a, part in pairs(parts_with_data) do
 		-- do not adjust concealments of parts that already have sniper-adjusted concealment
 		local has_part = nil
@@ -8153,6 +8164,7 @@ wpn_fps_upg_o_m14_scopemount
 			table.insert(sightlist, part)
 		end
 	end
+	]]
 
 	-- correct sight concealment for sniper rifles
 	for a, wpndata in pairs(gunlist_snp) do

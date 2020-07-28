@@ -5528,6 +5528,7 @@ end
 if BeardLib.Utils:FindMod("Illuminated Iron Sight Pack") then
 	self.parts.wpn_fps_upg_1911_tritium.stats = {value = 0, concealment = 0}
 	self.parts.wpn_fps_upg_b92fs_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_baka_tritium.stats = {value = 0, concealment = 0}
 	--self.parts.wpn_fps_upg_colt_def_tritium.stats = {value = 0, concealment = 0}
 	self.parts.wpn_fps_upg_deagle_tritium.stats = {value = 0, concealment = 0}
 	--self.parts.wpn_fps_upg_fs_tritium.stats = {value = 0, concealment = 0}
@@ -5539,6 +5540,7 @@ if BeardLib.Utils:FindMod("Illuminated Iron Sight Pack") then
 	self.parts.wpn_fps_upg_p226_tritium.stats = {value = 0, concealment = 0}
 	self.parts.wpn_fps_upg_pl14_tritium.stats = {value = 0, concealment = 0}
 	self.parts.wpn_fps_upg_usp_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_asval_nightsight.stats = {value = 0, concealment = 0}
 	primarysmgadds_specific.wpn_fps_smg_akmsuprimary = primarysmgadds_specific.wpn_fps_smg_akmsuprimary or {}
 	table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_upg_akmsu_nightsight")
 	primarysmgadds_specific.wpn_fps_smg_hajkprimary = primarysmgadds_specific.wpn_fps_smg_hajkprimary or {}
@@ -5546,6 +5548,12 @@ if BeardLib.Utils:FindMod("Illuminated Iron Sight Pack") then
 	primarysmgadds_specific.wpn_fps_smg_schakalprimary = primarysmgadds_specific.wpn_fps_smg_schakalprimary or {}
 	table.insert(primarysmgadds_specific.wpn_fps_smg_schakalprimary, "wpn_fps_upg_ump45_tritium")
 	self.parts.wpn_fps_upg_asval_nightsight.forbids = {"inf_sightrail"}
+	
+	self.parts.wpn_fps_upg_beer_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_chinchilla_fiber.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_czech_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_shrew_tritium.stats = {value = 0, concealment = 0}
+	self.parts.wpn_fps_upg_stech_tritium.stats = {value = 0, concealment = 0}
 end
 
 if BeardLib.Utils:FindMod("stock_attachment_pack") then

@@ -34,7 +34,7 @@ ironsights.keepdesc = "Keeps the default ironsights when using attachable sights
 
 local speedpulldesc = "Magazine with speed pull tab to ease removal of magazines mid-combat."
 
-
+local tritiumdesc = "Illuminated sights that are easier to see at night. Not like you go outside often."
 
 
 
@@ -1011,7 +1011,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_upg_o_fc1_desc = "An unbranded generic sight. If you actually liked the Tediore box sights, this might be a good fit.",
 	-- Maelstrom sight
 	bm_wp_upg_o_uh = "Maelstrom Sight",
-	bm_wp_upg_o_uh_desc = "Ideal for close quarters. Designed with a large viewing window.",
+	bm_wp_upg_o_uh_desc = "Ideal for close quarters. Designed with a large viewing window and zero distortion.",
 
 	-- Hayha Mode
 	bm_wp_mosin_iron_sight = "Iron Sights",
@@ -2258,27 +2258,27 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_x_chinchilla_desc = "Some people ask themselves if they're lucky. A poor decision, really. It's not about luck when you can count where the numbers matter.",
 
 	-- B93R
-	bm_w_beer_desc = "A rapid-fire version of the Beretta 92. The \"R\" stands for Raffica, or \"burst\".",
-	bm_w_x_beer_desc = "A rapid-fire version of the Beretta 92. The \"R\" stands for Raffica, or \"burst\".",
+	bm_w_beer_desc = "A rapid-fire version of the Beretta 92. The \"R\" stands for Raffica, or \"burst\". Designed for use where both size and firepower are important.",
+	bm_w_x_beer_desc = "Liberty is simultaneously its own greatest ally, and its own greatest enemy. It is up to the free to protect it from the oppressed.",
 	
 	-- CZ 75
 	bm_w_czech = "CZ-75 Auto",
 	bm_w_czech_desc = "A classic Czech handgun modified for full-auto firing mode.",
 	bm_w_x_czech = "Akimbo CZ-75 Auto",
-	bm_w_x_czech_desc = "A classic Czech handgun modified for full-auto firing mode.",
+	bm_w_x_czech_desc = "Violence is for the weak, yet the weak are the ones at the receiving end of it.",
 	
 	-- Stechkin/Igor
 	bm_w_stech = "Stechkin Automatic",
 	bm_w_stech_desc = "A deadly Russian select-fire machine pistol. Artillery and mortar crew used these in lieu of bulky assault rifles.",
 	bm_w_x_stech = "Akimbo Stechkin Automatic",
-	bm_w_x_stech_desc = "A deadly Russian select-fire machine pistol. Artillery and mortar crew used these in lieu of bulky assault rifles.",
+	bm_w_x_stech_desc = "True strength comes from within. A 9x19 Parabellum to the face will hurt just as much, though.",
 	
 	-- Hudson H9/Holt
 	bm_w_holt = "Hudson H9",
-	bm_w_holt_desc = "A light and slightly unusually shaped pistol designed to minimize recoil. Hudson declared bankruptcy in 2019.",
+	bm_w_holt_desc = "A light and slightly unusually shaped pistol designed to minimize recoil. Borrows the better aspects of many other handguns, but ultimately discontinued due to mismanagement.",
 	
 	bm_w_x_holt = "Akimbo Hudson H9",
-	bm_w_x_holt_desc = "A light and slightly unusually shaped pistol designed to minimize recoil. Hudson declared bankruptcy in 2019.",
+	bm_w_x_holt_desc = "Even when you can do something better than anyone else, it won't mean a thing if you don't do it.",
 
 	-- GL40
 	bm_w_gre_m79_desc = "Thump Gun. Pro Pipe. Noob Tube. Blooper. The things we love have many names. Many sizes too, if you feel like sawing it down.",
@@ -3643,7 +3643,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- trijicon RMR
 	bm_wp_wpn_fps_upg_o_rmr_riser_desc = "If it can handle being tossed around by a pistol slide, a rifle won't even faze it.",
 
-
+	-- bm_wp_wpn_fps_
+	bm_wp_wpn_fps_upg_il_tritium_desc = tritiumdesc,
 
 
 

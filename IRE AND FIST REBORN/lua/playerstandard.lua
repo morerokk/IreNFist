@@ -1257,7 +1257,7 @@ function PlayerStandard:_check_action_primary_attack(t, input)
 						end
 
 						-- if akimbo, only apply recoil on second shot
-						if weap_base.akimbo and weap_base:_in_burst_or_auto_mode() then
+						if not _G.IS_VR and weap_base.akimbo then
 							-- increment accumulated recoil by one
 							self._camera_unit:base():recoil_kick(0, 0, 0, 0)
 						else

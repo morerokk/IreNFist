@@ -149,7 +149,7 @@ end
 	function NewRaycastWeaponBase:fire(...)
 		local result = fire_original(self, ...)
 
-		if result and not self.AKIMBO and self:in_burst_mode() then
+		if result and self:in_burst_mode() then
 			if self:clip_empty() then
 				self._last_burst_rounds_fired = self._last_burst_rounds_fired + 1
 				self:cancel_burst()
@@ -173,7 +173,11 @@ end
 	
 	--Semi-override
 	function NewRaycastWeaponBase:toggle_firemode(...)
-		return self._has_burst_fire and --[[not self._locked_fire_mode and--]] not self:gadget_overrides_weapon_functions() and self:_check_toggle_burst() or toggle_firemode_original(self, ...)
+		if self._has_burst_fire and not self:gadget_overrides_weapon_functions() then
+			return self:_check_toggle_burst()
+		else
+			return toggle_firemode_original(self, ...)
+		end
 	end
 	
 	
@@ -183,7 +187,7 @@ end
 			--self:_set_burst_mode(false, self.AKIMBO and not self._has_auto)
 			self:_set_burst_mode(false, false)
 			return true
-		elseif ((self._fire_mode == NewRaycastWeaponBase.IDSTRING_SINGLE) or (self._fire_mode == NewRaycastWeaponBase.IDSTRING_AUTO and not self:can_toggle_firemode())) and not self._has_burst_fire == false then
+		elseif ((self._fire_mode == NewRaycastWeaponBase.IDSTRING_SINGLE) or (self._fire_mode == NewRaycastWeaponBase.IDSTRING_AUTO and not self:can_toggle_firemode())) and self._has_burst_fire then
 			--self:_set_burst_mode(true, self.AKIMBO)
 			self:_set_burst_mode(true, false)
 			return true
@@ -227,26 +231,18 @@ end
 
 end
 
--- Don't touch the akimbos in VR, they work differently
-if not _G.IS_VR and RequiredScript == "lib/units/weapons/akimboweaponbase" then
+if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 
 	local _update_stats_values_original = AkimboWeaponBase._update_stats_values
 	local fire_original = AkimboWeaponBase.fire
-	local fire_rate_multiplier_original = AkimboWeaponBase.fire_rate_multiplier
-	local toggle_firemode_original = AkimboWeaponBase.toggle_firemode
+	local fire_rate_multiplier_original_ak = AkimboWeaponBase.fire_rate_multiplier
+	local toggle_firemode_original_ak = AkimboWeaponBase.toggle_firemode
 	
-	function AkimboWeaponBase:_update_stats_values(...)
-		_update_stats_values_original(self, ...)
-		
-		if not self:is_npc() then
-			self._has_burst_fire = self._has_burst_fire --or ((self:weapon_tweak_data().BURST_FIRE ~= false) and (self._fire_mode == NewRaycastWeaponBase.IDSTRING_SINGLE))
-			
-			--if self._has_burst_fire then
-			--	self:_set_burst_mode(not self._manual_fire_second_gun, true)
-			--end
-		end
-	end
-	
+	-- Temporarily discontinued in favor of properly working Akimbo burstfire.
+	-- If single-fire akimbo is ever implemented again, it will not use the vanilla firemode as a "two-round burst",
+	-- because that conflicts with a weapon's potential actual burst mechanics.
+	-- This probably wasn't an issue before the Beretta 93R came along
+	--[[
 	function AkimboWeaponBase:fire(...)
 		local result = nil
 		if self._fire_left_side == true and alive(self._second_gun) and not self:_in_burst_or_auto_mode() then
@@ -277,6 +273,7 @@ if not _G.IS_VR and RequiredScript == "lib/units/weapons/akimboweaponbase" then
 		
 		return results
 	end
+	]]
 
 	-- apply recoil only to the second shot if firing in burst/auto
 	Hooks:PostHook(AkimboWeaponBase, "_fire_second", "applykick", function(self, params)
@@ -294,7 +291,8 @@ if not _G.IS_VR and RequiredScript == "lib/units/weapons/akimboweaponbase" then
 		left = left * self._recoil_horizontal_mult * managers.player:upgrade_value("player", "recoil_h_mult", 1)
 		right = right * self._recoil_horizontal_mult * managers.player:upgrade_value("player", "recoil_h_mult", 1)
 		-- apply ADS-specific recoil mults
-		if state_data.in_steelsight == true then
+		-- Always applied in VR because aiming is hard enough as it is already
+		if _G.IS_VR or state_data.in_steelsight == trueR then
 			up = up * self._ads_recoil_vertical_mult
 			down = down * self._ads_recoil_vertical_mult
 			left = left * self._ads_recoil_horizontal_mult
@@ -306,16 +304,23 @@ if not _G.IS_VR and RequiredScript == "lib/units/weapons/akimboweaponbase" then
 		self._setup.user_unit:camera()._camera_unit:base():recoil_kick(up * recoil_multiplier, down * recoil_multiplier, left * recoil_multiplier, right * recoil_multiplier)
 	end)
 	
+	-- Now that akimbos fire both weapons again, this can be done away with for now.
+	-- I get that it was cool, but it looked pretty dumb animation-wise.
+	-- This energy might be better invested in adding the ability to switch to a single version of your akimbo primary, even if your secondary is something else.
+	--[[
 	function AkimboWeaponBase:fire_rate_multiplier(...)
-		return fire_rate_multiplier_original(self, ...) * (self:_in_burst_or_auto_mode() and 1 or 2)
+		return fire_rate_multiplier_original_ak(self, ...) * (self:_in_burst_or_auto_mode() and 1 or 2)
 	end
+	]]
 	
 	--Override
+	--[[
 	function AkimboWeaponBase:toggle_firemode(...)
 		return self._has_burst_fire and self:_check_toggle_burst() or toggle_firemode_original(self, ...)
 	end
-
+	]]
 	
+	--[[
 	function AkimboWeaponBase:_set_burst_mode(status, skip_sound)
 		if alive(self._second_gun) then
 			self._second_gun:base():_set_burst_mode(status, skip_sound)
@@ -323,13 +328,13 @@ if not _G.IS_VR and RequiredScript == "lib/units/weapons/akimboweaponbase" then
 		
 		return AkimboWeaponBase.super._set_burst_mode(self, status, skip_sound)
 	end
+	]]
 	
 	function AkimboWeaponBase:_in_burst_or_auto_mode()
 		return self._fire_mode == NewRaycastWeaponBase.IDSTRING_AUTO or self:in_burst_mode()
 	end
-	
-end
 
+end
 
 
 if RequiredScript == "lib/units/beings/player/states/playerstandard" then

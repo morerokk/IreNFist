@@ -510,6 +510,7 @@ end
 	caliber_p50ae = ".50 Action Express.",
 	caliber_p545x18 = "5.45x18mm 7N7.",
 	caliber_p38spc = ".38 Special.",
+	caliber_p38sup = ".38 Super.",
 	caliber_p44amp = ".44 AMP.",
 	caliber_p117saphp = "12.7x40mm M228 SAP-HP.", -- high pen, not hollow point
 	caliber_p117he = "12.7x40mm M227 HE.", -- that's a made-up number
@@ -3646,7 +3647,28 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- bm_wp_wpn_fps_
 	bm_wp_wpn_fps_upg_il_tritium_desc = tritiumdesc,
 
+	
+	-- Vanilla Styled Mod (and weapon) Pack 1
+	-- 2 when?
+	bm_w_amr12_desc = "A macgyvered shotgun variant of the AMR-16, meant to compete with the SAIGA-12. A total abomination, but gets the job done nonetheless.",
+	bm_w_aknato_desc = "The AK's take on the CAR-4 platform. Atypically for an AK, it fires 5.56.",
+	bm_w_sg416_desc = "Very similar to the CAR-4, the SG-416 boasts high customizability and that trademark precision German engineering.",
+	bm_w_sgs_desc = "KG 552 Commando modified to shoot .308 Winchester. A truly frightening marksman rifle.",
+	bm_w_lebman_desc = "A full-auto Crosskill conversion. Mind the recoil.",
+	bm_w_cold_desc = "The original Crosskill from the New York days. Found in an old unopened box in the old safehouse.",
+	bm_w_smolak_desc = "Gage had the bizarre idea of trying to turn old leftover AK parts into a pistol. The result is this. Please don't tell Ivan.",
+	bm_w_ak5s_desc = "Experimental AK-5 SMG variant, reluctantly shared by Wolf.",
+	bm_w_car9_desc = "Very similarly to the CAR-23 Para, the ACAR-9 is an SMG on the CAR platform. Custom barrel and flip-up iron sights.",
+	bm_w_spike_desc = "A full-length rifle variant of the GRIMM Bullpup Shotgun. The ultimate mall ninja AK.",
+	bm_w_beck_desc = "Stashed away behind a fake brick wall in the old safehouse. Its days of shattering visor glass might be over, but that doesn't mean it isn't still brutally effective.",
 
+	bm_w_x_lebman_desc = "Slander is deadly at any range, but a pair of bullet hoses is arguably more effective up close.",
+	bm_w_x_cold_desc = "If the action is the juice for you, why do you always choose the path of more money?",
+	bm_w_x_smolak_desc = "Greed is good, but is more greed always better?",
+	bm_w_x_car9_desc = "You can't improve perfection, but nothing is truly perfect.",
+	bm_w_x_aks5_desc = "Dangerous freedom is better than peaceful slavery. But when forced to bear the responsibility either way, are you truly free?",
+
+	bm_wp_wpn_fps_sho_saiga_upper_receiver_smooth_desc = "It's not being cheap, it's 'manufacturing efficiency'.",
 
 	-- !!
 

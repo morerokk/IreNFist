@@ -6389,23 +6389,12 @@ if BeardLib.Utils:FindMod("Golden-AKMS") and self.heffy_gold then
 end
 
 -- Golden AKMS AK Pack 2.0
--- This one isnt behaving at all, it thinks its an AK12 or something?
-if BeardLib.Utils:FindMod("Golden-AKMS") and self.ak_stamp_gold then
+if BeardLib.Utils:FindMod("Golden AKMS") and self.ak_stamp_gold then
 	self:inf_init("ak_stamp_gold", "ar", {"medium"})
 	self.ak_stamp_gold.sdesc1 = "caliber_r762x39"
 	self.ak_stamp_gold.sdesc2 = "action_gaslong"
 	self:copy_timers("ak_stamp_gold", "flint")
 	self.ak_stamp_gold.price = 5*1000000
-
-	-- Either way, not my problem anymore
-	--[[
-	if self.ak12 then
-		self:inf_init("ak12", "ar", {"medium"})
-		self.ak12.sdesc1 = "caliber_r762x39"
-		self.ak12.sdesc2 = "action_gaslong"
-		self:copy_timers("ak12", "flint")
-	end
-	]]
 end
 
 -- AKM AK Pack 2.0
@@ -6821,7 +6810,134 @@ if BeardLib.Utils:FindMod("AK-12/76") then
 	self.ak12_76.FIRE_MODE = "single"
 end
 
+-- Oh boy this is a big one
+if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 
+	-- AMR12 shotgun
+	self:inf_init("amr12", "shotgun", {"dmg_vlight", "rof_mag"})
+	self.amr12.sdesc1 = "caliber_s12g" -- The AMR12 is not real and it cant hurt you
+	self.amr12.sdesc2 = "action_di"
+	self.amr12.recategorize = "shotgun"
+	self:copy_timers("amr12", "saiga")
+
+	-- SG 416 (HK416)
+	self:inf_init("sg416", "ar", nil)
+	self.sg416.sdesc1 = "caliber_r556x45"
+	self.sg416.sdesc2 = "action_pistonshort"
+	self:copy_timers("sg416", "new_m4")
+	self.sg416.stats.concealment = 18
+
+	-- Mamba 5.56
+	self:inf_init("aknato", "ar", nil)
+	self.aknato.sdesc1 = "caliber_r556x45"
+	self.aknato.sdesc2 = "action_gaslong"
+	self:copy_timers("aknato", "new_m4")
+	self.aknato.stats.concealment = 19
+
+	-- An AK turned into a shotgun with the SAIGA, turned into a bullpup with the Grimm
+	-- And now you turn it into an AR again
+	-- RIFLE IS FINE
+	self:inf_init("spike", "ar", {"medium"})
+	self.spike.sdesc1 = "caliber_r762x39"
+	self.spike.sdesc2 = "action_gaslong"
+	self:copy_timers("spike", "akm")
+	-- based_on should be used for sync purposes and such, not which weapon most closely resembles it visually.
+	-- This weapon oughta be based_on the AKM instead
+	-- Now I get to un-shotgunify it, and clients still see you rapid-firing a 60rnd mag GRIMM at the enemy a mile away
+	self.spike.sdesc3_type = nil
+	self.spike.fulldesc_show_range = nil
+	self.spike.damage_near = nil
+	self.spike.damage_far = nil
+	self.spike.rays = nil
+
+	-- Commando/SG552 DMR
+	self:inf_init("sgs", "ar", {"ldmr"})
+	self.sgs.sdesc1 = "caliber_r308"
+	self.sgs.sdesc2 = "action_gas"
+	self.sgs.stats.concealment = 20
+	self.sgs.CLIP_AMMO_MAX = 20
+	self:copy_timers("sgs", "new_m14")
+
+	-- Full auto crosskill lebman
+	self:inf_init("lebman", "pistol", "medium")
+	self.lebman.sdesc1 = "caliber_p38sup"
+	self.lebman.sdesc2 = "action_shortrecoil"
+	self:copy_timers("lebman", "beer")
+
+	self:inf_init("x_lebman", "pistol", "medium")
+	self.x_lebman.sdesc1 = "caliber_p38sup"
+	self.x_lebman.sdesc2 = "action_shortrecoil"
+	self:copy_timers("x_lebman", "x_beer")
+	self.x_lebman.stats.recoil = self.lebman.stats.recoil - 4
+
+	-- Classic Crosskill
+	self:inf_init("cold", "pistol", "medium")
+	self.cold.sdesc1 = "caliber_p45acp"
+	self.cold.sdesc2 = "action_shortrecoil"
+	self:copy_timers("cold", "colt_1911")
+	self.cold.CLIP_AMMO_MAX = 7
+	self.cold.AMMO_MAX = 77
+	self.cold.AMMO_PICKUP = self:_pickup_chance(77, 1)
+
+	self:inf_init("x_cold", "pistol", "medium")
+	self.x_cold.sdesc1 = "caliber_p45acp"
+	self.x_cold.sdesc2 = "action_shortrecoil"
+	self:copy_timers("x_cold", "x_1911")
+	self.x_cold.CLIP_AMMO_MAX = self.cold.CLIP_AMMO_MAX * 2
+	self.x_cold.AMMO_MAX = 98
+	self.x_cold.AMMO_PICKUP = self:_pickup_chance(98, 1)
+	self.x_cold.stats.recoil = self.cold.stats.recoil - 4
+
+	-- ACAR-9 SMG
+	self:inf_init("car9", "smg", {"range_carbine"})
+	self.car9.sdesc1 = "caliber_r556x45"
+	self.car9.sdesc2 = "action_di"
+	self.car9.stats.concealment = 26
+	self.car9.stats.CLIP_AMMO_MAX = 25
+	self.car9.stats.AMMO_MAX = 120
+	self.car9.stats.AMMO_PICKUP = self:_pickup_chance(120, 1)
+	self:copy_timers("car9", "olympic")
+
+	self:inf_init("x_car9", "smg", {"range_carbine"})
+	self.x_car9.sdesc1 = "caliber_r556x45"
+	self.x_car9.sdesc2 = "action_di"
+	self.x_car9.stats.concealment = 26
+	self.x_car9.stats.CLIP_AMMO_MAX = self.car9.stats.CLIP_AMMO_MAX * 2
+	self.x_car9.stats.AMMO_MAX = 180
+	self.x_car9.stats.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self:copy_timers("x_car9", "x_olympic")
+
+	-- Automat-5 SMG (Swedish AK5 in SMG form)
+	self:inf_init("ak5s", "smg", {"range_carbine"})
+	self.ak5s.sdesc1 = "caliber_r556x45"
+	self.ak5s.sdesc2 = "action_gas"
+	self:copy_timers("ak5s", "akmsu")
+
+	self:inf_init("x_ak5s", "smg", {"range_carbine"})
+	self.x_ak5s.sdesc1 = "caliber_r556x45"
+	self.x_ak5s.sdesc2 = "action_gas"
+	self:copy_timers("x_ak5s", "x_akmsu")
+
+	-- Dragon 5.45 pistol (AK pistol??? What in fuck)
+	self:inf_init("smolak", "pistol", "heavy")
+	self.smolak.sdesc1 = "caliber_r545x39"
+	self.smolak.sdesc2 = "action_gaslongaks74"
+	self.smolak.CLIP_AMMO_MAX = 10
+	self:copy_timers("smolak", "deagle")
+
+	self:inf_init("x_smolak", "pistol", "heavy")
+	self.x_smolak.sdesc1 = "caliber_r545x39"
+	self.x_smolak.sdesc2 = "action_gaslongaks74"
+	self.x_smolak.CLIP_AMMO_MAX = self.smolak.CLIP_AMMO_MAX * 2
+	self:copy_timers("x_smolak", "x_deagle")
+
+	-- Classic reinbeck shotgun
+	self:inf_init("beck", "shotgun", {"rof_slow", "range_slowpump"})
+	self.beck.sdesc1 = "caliber_s12g"
+	self.beck.sdesc2 = "action_pump"
+	self.beck.stats.concealment = 20
+	self:copy_timers("beck", "r870")
+end
 
 	-- !!
 

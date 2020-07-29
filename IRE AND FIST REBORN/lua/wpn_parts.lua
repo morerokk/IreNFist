@@ -5752,6 +5752,58 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 	self.parts.wpn_fps_sho_b_spas12_small.stats = deep_clone(barrelsho_p2)
 	self.parts.wpn_fps_smg_uzi_b_carbine.stats = deep_clone(barrel_m2)
 	self.parts.wpn_fps_pis_g17_b_bling.stats = deep_clone(nostats)
+
+	-- Reinbeck foregrip/pumps
+	self.parts.wpn_fps_shot_beck_pump_custom.stats = deep_clone(nostats)
+	self.parts.wpn_fps_shot_beck_pump_swat.stats = { value = 1, concealment = -1 }
+
+	-- SGS parts
+	-- Sniper stock
+	self.parts.wpn_fps_snp_sgs_s_sniper.stats = deep_clone(nostats)
+	-- Marksman grip
+	self.parts.wpn_fps_snp_sgs_g_black.stats = deep_clone(nostats)
+	-- Scout Foregrip
+	self.parts.wpn_fps_snp_sgs_fg_rail.stats = deep_clone(nostats)
+	-- Extended Barrel
+	self.parts.wpn_fps_snp_sgs_b_long.stats = deep_clone(barrel_m1)
+	-- Silenced Barrel
+	self.parts.wpn_fps_snp_sgs_b_sil.stats = deep_clone(silstatssnp)
+
+	-- ACAR-9 parts
+	-- Extended mags
+	self.parts.wpn_fps_smg_car9_m_extended.stats.extra_ammo = 5
+	self.parts.wpn_fps_smg_car9_m_extended_akimbo.stats.extra_ammo = 10 -- Isn't this what overrides are for?
+	-- Steel Barrel
+	self.parts.wpn_fps_smg_car9_b_long.stats = deep_clone(barrel_m1)
+
+	-- Dragon 5.45 parts
+	-- Discreet Foregrip
+	self.parts.wpn_fps_pis_smolak_fg_polymer.stats = deep_clone(nostats)
+
+	-- Valkyrie Stock
+	self.parts.wpn_fps_ass_m16_s_op.stats = deep_clone(nostats)
+	-- Ratnik Stock
+	self.parts.wpn_fps_ass_m4_s_russian.stats = deep_clone(nostats)
+	-- Sport Grip
+	self.parts.wpn_fps_ass_m4_g_fancy.stats = deep_clone(nostats)
+	-- Schafer Grip
+	self.parts.wpn_fps_ass_m4_g_sg.stats = deep_clone(nostats)
+	-- Heavy Compensator
+	self.parts.wpn_fps_upg_ns_ass_smg_heavy.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_tank.stats)
+	-- Grievky Nozzle
+	self.parts.wpn_fps_upg_ns_ass_smg_russian.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_firepig.stats)
+	-- Fugitive Foregrip
+	self.parts.wpn_fps_ass_amcar_fg_covers_base.stats = deep_clone(nostats)
+	-- Cylinder Foregrip
+	self.parts.wpn_fps_ass_amcar_fg_cylinder.stats = deep_clone(nostats)
+	-- HeistEye Gadget
+	self.parts.wpn_fps_upg_fl_ass_smg_sho_marker.stats = { concealment = -1 }
+	-- AK titanium grip
+	self.parts.wpn_upg_ak_g_titanium.stats = deep_clone(nostats)
+	-- AK Speedpull Mag
+	self.parts.wpn_fps_pis_smolak_m_custom.stats = deep_clone(nostats)
+	-- Smooth AK Cover
+	self.parts.wpn_fps_sho_saiga_upper_receiver_smooth.stats = deep_clone(nostats)
 end
 
 if BeardLib.Utils:FindMod("Zenith 10mm") then

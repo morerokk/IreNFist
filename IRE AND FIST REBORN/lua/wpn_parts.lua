@@ -5804,6 +5804,12 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 	self.parts.wpn_fps_pis_smolak_m_custom.stats = deep_clone(nostats)
 	-- Smooth AK Cover
 	self.parts.wpn_fps_sho_saiga_upper_receiver_smooth.stats = deep_clone(nostats)
+
+	-- Theia micro sight
+	self.parts.wpn_fps_upg_o_cqb.stats = {
+		value = 0,
+		concealment = -1
+	}
 end
 
 if BeardLib.Utils:FindMod("Zenith 10mm") then
@@ -6276,9 +6282,9 @@ end
 
 if BeardLib.Utils:FindMod("HK416") then
 	self.parts.wpn_fps_ass_hk416_bolt.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_hk416_grip_magpul_miad.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_hk416_grip_magpul_moe.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_hk416_grip_vindicator.stats = deep_clone(nostats)
+	--self.parts.wpn_fps_upg_hk416_grip_magpul_miad.stats = deep_clone(nostats)
+	--self.parts.wpn_fps_upg_hk416_grip_magpul_moe.stats = deep_clone(nostats)
+	--self.parts.wpn_fps_upg_hk416_grip_vindicator.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_hk416_mag_pull_assist.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_hk416_sights_frontfold.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_hk416_barrel_long.stats = {
@@ -6307,6 +6313,32 @@ if BeardLib.Utils:FindMod("HK416") then
 		recoil = -6,
 		concealment = 3
 	}
+
+	-- New handguards
+	self.parts.wpn_fps_upg_hk416_handguard_elite.stats = {
+		value = 0,
+		recoil = -1,
+		concealment = 1
+	}
+	self.parts.wpn_fps_upg_hk416_handguard_hera_irs.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_hk416_handguard_smr.stats = {
+		value = 0,
+		spread = 1,
+		concealment = -1
+	}
+	self.parts.wpn_fps_upg_hk416_handguard_smrlong.stats = {
+		value = 0,
+		spread = 2,
+		concealment = -2
+	}
+	self.parts.wpn_fps_upg_hk416_handguard_troyalpha.stats = {
+		recoil = 1,
+		concealment = -1
+	}
+
+	-- New stocks
+	self.parts.wpn_fps_upg_hk416_stock_e1.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_hk416_stock_slimline.stats = deep_clone(nostats)
 end
 
 if BeardLib.Utils:FindMod("HK416C Standalone") then

@@ -6811,7 +6811,7 @@ if BeardLib.Utils:FindMod("AK-12/76") then
 end
 
 -- Oh boy this is a big one
-if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
+if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 
 	-- AMR12 shotgun
 	self:inf_init("amr12", "shotgun", {"dmg_vlight", "rof_mag"})
@@ -6937,6 +6937,14 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 	self.beck.sdesc2 = "action_pump"
 	self.beck.stats.concealment = 20
 	self:copy_timers("beck", "r870")
+end
+
+-- M4 SOPMOD II
+if BeardLib.Utils:FindMod("M4 SOPMOD II") and self.soppo then
+	self:inf_init("soppo", "ar", {"has_gl"})
+	self:copy_sdescs("soppo", "new_m4")
+	self:copy_timers("soppo", "new_m4")
+	self.soppo.concealment = 15
 end
 
 	-- !!

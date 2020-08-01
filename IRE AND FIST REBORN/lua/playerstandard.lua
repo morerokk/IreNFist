@@ -1257,6 +1257,7 @@ function PlayerStandard:_check_action_primary_attack(t, input)
 						end
 
 						-- if akimbo, only apply recoil on second shot
+						-- Recoil is handled on a posthook as soon as the second shot in a pair is fired, so it does not have to be handled here at all.
 						if not _G.IS_VR and weap_base.akimbo then
 							-- increment accumulated recoil by one
 							self._camera_unit:base():recoil_kick(0, 0, 0, 0)

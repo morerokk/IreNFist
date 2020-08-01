@@ -276,37 +276,40 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 	]]
 
 	-- apply recoil only to the second shot if firing in burst/auto
-	Hooks:PostHook(AkimboWeaponBase, "_fire_second", "applykick", function(self, params)
-		local state_data = self._setup.user_unit:movement()._state_data
-		local weap_tweak_data = tweak_data.weapon[self:get_name_id()] -- was i supposed to unfuck this to self._equipped_unit:base():weapon_tweak_data() too
-		local up, down, left, right = unpack(weap_tweak_data.kick[state_data.in_steelsight and "steelsight" or state_data.ducking and "crouching" or "standing"])
-		-- use alternate stance kick multipliers as necessary
-		if self._rstance then
-			up, down, left, right = unpack(self._rstance[state_data.in_steelsight and "steelsight" or state_data.ducking and "crouching" or "standing"])
-		end
+	-- Disabled in VR because they already fire individually
+	if not _G.IS_VR then
+		Hooks:PostHook(AkimboWeaponBase, "_fire_second", "applykick", function(self, params)
+			local state_data = self._setup.user_unit:movement()._state_data
+			local weap_tweak_data = tweak_data.weapon[self:get_name_id()] -- was i supposed to unfuck this to self._equipped_unit:base():weapon_tweak_data() too
+			local up, down, left, right = unpack(weap_tweak_data.kick[state_data.in_steelsight and "steelsight" or state_data.ducking and "crouching" or "standing"])
+			-- use alternate stance kick multipliers as necessary
+			if self._rstance then
+				up, down, left, right = unpack(self._rstance[state_data.in_steelsight and "steelsight" or state_data.ducking and "crouching" or "standing"])
+			end
 
-		-- apply custom_stat recoil mults
-		up = up * self._recoil_vertical_mult
-		down = down * self._recoil_vertical_mult
-		left = left * self._recoil_horizontal_mult * managers.player:upgrade_value("player", "recoil_h_mult", 1)
-		right = right * self._recoil_horizontal_mult * managers.player:upgrade_value("player", "recoil_h_mult", 1)
-		-- apply ADS-specific recoil mults
-		-- Always applied in VR because aiming is hard enough as it is already
-		if _G.IS_VR or state_data.in_steelsight == trueR then
-			up = up * self._ads_recoil_vertical_mult
-			down = down * self._ads_recoil_vertical_mult
-			left = left * self._ads_recoil_horizontal_mult
-			right = right * self._ads_recoil_horizontal_mult
-		end
+			-- apply custom_stat recoil mults
+			up = up * self._recoil_vertical_mult
+			down = down * self._recoil_vertical_mult
+			left = left * self._recoil_horizontal_mult * managers.player:upgrade_value("player", "recoil_h_mult", 1)
+			right = right * self._recoil_horizontal_mult * managers.player:upgrade_value("player", "recoil_h_mult", 1)
+			-- apply ADS-specific recoil mults
+			if state_data.in_steelsight == true then
+				up = up * self._ads_recoil_vertical_mult
+				down = down * self._ads_recoil_vertical_mult
+				left = left * self._ads_recoil_horizontal_mult
+				right = right * self._ads_recoil_horizontal_mult
+			end
 
-		local recoil_multiplier = (self:recoil() + self:recoil_addend()) * self:recoil_multiplier() * 2 -- apply recoil for both weapons
+			local recoil_multiplier = (self:recoil() + self:recoil_addend()) * self:recoil_multiplier() * 2 -- apply recoil for both weapons
 
-		self._setup.user_unit:camera()._camera_unit:base():recoil_kick(up * recoil_multiplier, down * recoil_multiplier, left * recoil_multiplier, right * recoil_multiplier)
-	end)
+			self._setup.user_unit:camera()._camera_unit:base():recoil_kick(up * recoil_multiplier, down * recoil_multiplier, left * recoil_multiplier, right * recoil_multiplier)
+		end)
+	end
 	
 	-- Now that akimbos fire both weapons again, this can be done away with for now.
 	-- I get that it was cool, but it looked pretty dumb animation-wise.
 	-- This energy might be better invested in adding the ability to switch to a single version of your akimbo primary, even if your secondary is something else.
+	-- Either way, akimbo single-fire oughta be separate from burst altogether.
 	--[[
 	function AkimboWeaponBase:fire_rate_multiplier(...)
 		return fire_rate_multiplier_original_ak(self, ...) * (self:_in_burst_or_auto_mode() and 1 or 2)

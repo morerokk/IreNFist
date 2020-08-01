@@ -6859,9 +6859,11 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	self:copy_timers("sgs", "new_m14")
 
 	-- Full auto crosskill lebman
+	-- These fire .38 super which is comparable in terms of both velocity and energy, so the damage is still the same.
 	self:inf_init("lebman", "pistol", "medium")
 	self.lebman.sdesc1 = "caliber_p38sup"
 	self.lebman.sdesc2 = "action_shortrecoil"
+	self.lebman.CLIP_AMMO_MAX = 7
 	self:copy_timers("lebman", "beer")
 
 	self:inf_init("x_lebman", "pistol", "medium")
@@ -6869,6 +6871,7 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	self.x_lebman.sdesc2 = "action_shortrecoil"
 	self:copy_timers("x_lebman", "x_beer")
 	self.x_lebman.stats.recoil = self.lebman.stats.recoil - 4
+	self.x_lebman.CLIP_AMMO_MAX = self.lebman.CLIP_AMMO_MAX * 2
 
 	-- Classic Crosskill
 	self:inf_init("cold", "pistol", "medium")
@@ -6944,7 +6947,8 @@ if BeardLib.Utils:FindMod("M4 SOPMOD II") and self.soppo then
 	self:inf_init("soppo", "ar", {"has_gl"})
 	self:copy_sdescs("soppo", "new_m4")
 	self:copy_timers("soppo", "new_m4")
-	self.soppo.concealment = 15
+	self.soppo.fire_mode_data.fire_rate = 60/700
+	self.soppo.stats.concealment = 15
 end
 
 	-- !!

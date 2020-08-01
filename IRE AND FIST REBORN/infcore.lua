@@ -10,7 +10,7 @@ if not IreNFist then
     -- 
     -- self.besiege.assault.force_pool = {40, 45, 50} -- originally 150, 175, 225
     -- self.besiege.assault.force_pool_balance_mul = {1, 2, 3, 4} -- originally 1, 2, 3, 4
-    -- Spawn delay is 0 by default.
+    -- Spawn delay is optional. If not given, is basically 0.
 
     IreNFist.bad_heist_overrides = {
         sah = { -- Shacklethorne Auction, lower max cops but increase the assault pool size
@@ -19,7 +19,16 @@ if not IreNFist then
             force_pool = { 50, 55, 60 },
             force_pool_balance_mul = { 1, 2, 3, 4 },
             initial_spawn_delay = 30 -- Add a 30 second spawn delay because a literal 0 second response time is dumb
+        },
+        kenaz = { -- Golden grin casino. Not *actually* a bad heist at all, but the lowered max cop count makes this too easy otherwise
+            force = {14, 16, 18},
+            force_balance_mul = { 1, 2, 3, 4 },
+            force_pool = {45, 50, 55},
+            force_pool_balance_mul = { 1, 2, 3, 4 }
         }
     }
+
+    -- Not sure which one of these two names Golden Grin uses, so just override them both.
+    IreNFist.bad_heist_overrides.cas = IreNFist.bad_heist_overrides.kenaz
 
 end

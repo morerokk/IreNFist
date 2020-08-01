@@ -1174,15 +1174,15 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	-- Make the assault breaks substantially longer if players have hostages
 	if difficulty_index <= 5 then
 		self.besiege.assault.hostage_hesitation_delay = {
-			60,
-			55,
-			50
+			50,
+			45,
+			40
 		}
 	else
 		self.besiege.assault.hostage_hesitation_delay = {
-			55,
-			50,
-			50
+			45,
+			40,
+			35
 		}
 	end
 	

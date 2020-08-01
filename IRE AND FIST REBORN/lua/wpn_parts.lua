@@ -3122,6 +3122,7 @@ end
 		value = 0,
 		spread = 5,
 		recoil = 2,
+		reload = -10,
 		concealment = -2
 	}
 
@@ -3365,7 +3366,7 @@ end
 		value = 0,
 		spread = -5,
 		recoil = 2,
-		concealment = 0
+		concealment = 1
 	}
 	-- Long Slide
 	self.parts.wpn_fps_pis_hs2000_sl_long.stats = deep_clone(nostats)
@@ -5775,10 +5776,72 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 	self.parts.wpn_fps_smg_car9_m_extended_akimbo.stats.extra_ammo = 10 -- Isn't this what overrides are for?
 	-- Steel Barrel
 	self.parts.wpn_fps_smg_car9_b_long.stats = deep_clone(barrel_m1)
+	-- Hush foregrip
+	self.parts.wpn_fps_smg_car9_fg_rail.stats = deep_clone(nostats)
 
 	-- Dragon 5.45 parts
 	-- Discreet Foregrip
 	self.parts.wpn_fps_pis_smolak_fg_polymer.stats = deep_clone(nostats)
+
+	-- Lebman/Crosskill auto parts
+	-- Room broom kit
+	self.parts.wpn_fps_pis_lebman_body_classic.stats = deep_clone(nostats)
+	-- Chrome slides
+	self.parts.wpn_fps_pis_lebman_b_chrome.stats = deep_clone(nostats)
+	self.parts.wpn_fps_pis_lebman_b_chrome_akimbo.stats = deep_clone(nostats)
+	-- Giant stock lmao
+	self.parts.wpn_fps_pis_lebman_stock.stats = {
+		value = 0,
+		spread = 5,
+		recoil = 2,
+		reload = -10,
+		concealment = -2
+	}
+	-- Crosskill classic grip
+	self.parts.wpn_fps_pis_1911_g_classic.stats = deep_clone(nostats)
+	-- Wooden grip
+	self.parts.wpn_fps_pis_cold_g_wood.stats = deep_clone(nostats)
+	-- Crosskill classic sneaky frame
+	self.parts.wpn_fps_pis_cold_body_custom.stats = deep_clone(nostats)
+	-- Crosskill classic extended mag
+	self.parts.wpn_fps_pis_cold_m_extended.stats = {
+		extra_ammo = 5,
+		concealment = -2
+	}
+	self.parts.wpn_fps_pis_x_cold_m_extended.stats = {
+		extra_ammo = 5,
+		concealment = -2
+	}
+
+	-- AMR-12 parts
+	-- Enforcer foregrip
+	self.parts.wpn_fps_shot_amr12_fg_railed.stats = deep_clone(nostats)
+	-- Breacher Foregrip
+	self.parts.wpn_fps_shot_amr12_fg_short.stats = deep_clone(barrelsho_p2)
+
+	-- Reinbeck M1 Parts
+	-- Classic Heat Barrel
+	self.parts.wpn_fps_shot_beck_b_heat_dummy.stats = deep_clone(nostats)
+	-- Trench Sweeper Nozzle
+	self.parts.wpn_fps_upg_ns_shot_grinder.stats = {
+		value = 0,
+		recoil = 2,
+		concealment = -1
+	}
+	-- Enforcer stock
+	self.parts.wpn_fps_shot_beck_s_tac.stats = deep_clone(nostats)
+	-- Ghost stock
+	self.parts.wpn_fps_shot_beck_s_wrist.stats = {
+		value = 0,
+		concealment = 2,
+		recoil = -2
+	}
+	-- Shell rack
+	self.parts.wpn_fps_shot_beck_shells.stats = {
+		value = 0,
+		reload = 5,
+		concealment = -1
+	}
 
 	-- Valkyrie Stock
 	self.parts.wpn_fps_ass_m16_s_op.stats = deep_clone(nostats)
@@ -5804,6 +5867,15 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 	self.parts.wpn_fps_pis_smolak_m_custom.stats = deep_clone(nostats)
 	-- Smooth AK Cover
 	self.parts.wpn_fps_sho_saiga_upper_receiver_smooth.stats = deep_clone(nostats)
+	-- Low profile pistol compensator
+	self.parts.wpn_fps_upg_pis_ns_edge.stats = {
+		value = 0,
+		spread = 2,
+		recoil = 1,
+		concealment = -1
+	}
+	-- HS covert frame
+	self.parts.wpn_fps_pis_hs2000_body_stealth.stats = deep_clone(nostats)
 
 	-- Theia micro sight
 	self.parts.wpn_fps_upg_o_cqb.stats = {

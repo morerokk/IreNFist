@@ -3647,14 +3647,17 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- bm_wp_wpn_fps_
 	bm_wp_wpn_fps_upg_il_tritium_desc = tritiumdesc,
 
-	
+	-- M4 SOPMOD
+	bm_w_soppo = "CAR-4 SOPMOD II",
+
 	-- Vanilla Styled Mod (and weapon) Pack 1
 	-- 2 when?
 	bm_w_amr12_desc = "A macgyvered shotgun variant of the AMR-16, meant to compete with the SAIGA-12. A total abomination, but gets the job done nonetheless.",
 	bm_w_aknato_desc = "The AK's take on the CAR-4 platform. Atypically for an AK, it fires 5.56.",
 	bm_w_sg416_desc = "Very similar to the CAR-4, the SG-416 boasts high customizability and that trademark precision German engineering.",
 	bm_w_sgs_desc = "KG 552 Commando modified to shoot .308 Winchester. A truly frightening marksman rifle.",
-	bm_w_lebman_desc = "A full-auto Crosskill conversion. Mind the recoil.",
+	bm_w_lebman = "Crosskill Operator .38 Auto",
+	bm_w_lebman_desc = "A full-auto Crosskill conversion, modified to shoot .38 Super. Mind the recoil.",
 	bm_w_cold_desc = "The original Crosskill from the New York days. Found in an old unopened box in the old safehouse.",
 	bm_w_smolak_desc = "Gage had the bizarre idea of trying to turn old leftover AK parts into a pistol. The result is this. Please don't tell Ivan.",
 	bm_w_ak5s_desc = "Experimental AK-5 SMG variant, reluctantly shared by Wolf.",

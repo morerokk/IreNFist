@@ -6864,6 +6864,8 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	self.lebman.sdesc1 = "caliber_p38sup"
 	self.lebman.sdesc2 = "action_shortrecoil"
 	self.lebman.CLIP_AMMO_MAX = 7
+	self.lebman.AMMO_MAX = 77
+	self.lebman.AMMO_PICKUP = self:_pickup_chance(77, 1)
 	self:copy_timers("lebman", "beer")
 
 	self:inf_init("x_lebman", "pistol", "medium")
@@ -6872,6 +6874,8 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	self:copy_timers("x_lebman", "x_beer")
 	self.x_lebman.stats.recoil = self.lebman.stats.recoil - 4
 	self.x_lebman.CLIP_AMMO_MAX = self.lebman.CLIP_AMMO_MAX * 2
+	self.x_lebman.AMMO_MAX = 98
+	self.x_lebman.AMMO_PICKUP = self:_pickup_chance(98, 1)
 
 	-- Classic Crosskill
 	self:inf_init("cold", "pistol", "medium")

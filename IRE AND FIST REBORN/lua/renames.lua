@@ -3657,7 +3657,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_aknato_desc = "The AK's take on the CAR-4 platform. Atypically for an AK, it fires 5.56.",
 	bm_w_sg416_desc = "Very similar to the CAR-4, the SG-416 boasts high customizability and that trademark precision German engineering.",
 	bm_w_sgs_desc = "KG 552 Commando modified to shoot .308 Winchester. A truly frightening marksman rifle.",
-	bm_w_lebman = "Crosskill Operator .38 Auto",
+	bm_w_lebman = "Crosskill .38 Auto",
+	bm_w_x_lebman = "Akimbo Crosskill .38 Auto",
 	bm_w_lebman_desc = "A full-auto Crosskill conversion, modified to shoot .38 Super. Mind the recoil.",
 	bm_w_cold_desc = "The original Crosskill from the New York days. Found in an old unopened box in the old safehouse.",
 	bm_w_smolak_desc = "Gage had the bizarre idea of trying to turn old leftover AK parts into a pistol. The result is this. Please don't tell Ivan.",
@@ -3670,7 +3671,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_x_cold_desc = "If the action is the juice for you, why do you always choose the path of more money?",
 	bm_w_x_smolak_desc = "Greed is good, but is more greed always better?",
 	bm_w_x_car9_desc = "You can't improve perfection, but nothing is truly perfect.",
-	bm_w_x_aks5_desc = "Dangerous freedom is better than peaceful slavery. But when forced to bear the responsibility either way, are you truly free?",
+	bm_w_x_ak5s_desc = "Dangerous freedom is better than peaceful slavery. But when forced to bear the responsibility either way, are you truly free?",
 
 	bm_wp_wpn_fps_sho_saiga_upper_receiver_smooth_desc = "It's not being cheap, it's 'manufacturing efficiency'.",
 

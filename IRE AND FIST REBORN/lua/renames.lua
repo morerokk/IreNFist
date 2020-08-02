@@ -702,7 +702,7 @@ end
 
 	-- ENFORCER
 	-- fully loaded
-	menu_bandoliers_beta_desc = "BASIC: ##$basic##\nYou hold ##25%## more total ammo.\n\nACE: ##$pro##\nYour ammo scavenge rate is set to a non-stacking ##175%##. You also have a base ##5%## chance to get a throwable from scavenging, increasing by ##1%## for every ammo pickup without a throwable. This chance resets upon finding a throwable. Throwables with higher capacities have higher scavenge rate and quantity.\n\nSee the Contact Database for exact values.",
+	menu_bandoliers_beta_desc = "BASIC: ##$basic##\nYou hold ##25%## more total ammo.\n\nACE: ##$pro##\nYour ammo scavenge rate is set to ##150%##. You also have a base ##5%## chance to get a throwable from scavenging, increasing by ##1%## for every ammo pickup without a throwable. This chance resets upon finding a throwable. Throwables with higher capacities have higher scavenge rate and quantity.\n\nSee the Contact Database for exact values.",
 	-- overkill
 	menu_overkill_beta = "Last Word",
 	menu_overkill_beta_desc = "BASIC: ##$basic##\nOn shotguns with a base capacity of at least ##4##, the last shell deals ##100%## more damage.\n\nACE: ##$pro##\nThe second-to-last shell also deals ##100%## more damage.",
@@ -768,6 +768,7 @@ end
 	menu_deckall_2_desc = "You gain ##45%## more experience from heists.",
 	menu_deckall_4 = "Hustle",
 	menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.",
+	menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.",
 
 
 
@@ -3672,6 +3673,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_x_aks5_desc = "Dangerous freedom is better than peaceful slavery. But when forced to bear the responsibility either way, are you truly free?",
 
 	bm_wp_wpn_fps_sho_saiga_upper_receiver_smooth_desc = "It's not being cheap, it's 'manufacturing efficiency'.",
+
+	-- Flak Jacket Desc
+	bm_armor_level_5_desc = "Medium movement penalty, medium visibility, +50% ammo pickup.\n\nThe flak jacket by Gensec Security Industries is a modern take on the classic version. It absorbs the impact from firearm projectiles and shrapnel from explosions.\n\nIt combines a heavy ballistic vest with shoulder and side protection armor components, offering spine protection as well.\n\nFlak jackets are worn by Marines, combat soldiers and Gensec FTSU task forces.",
 
 	-- !!
 

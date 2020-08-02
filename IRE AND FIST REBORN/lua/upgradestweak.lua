@@ -32,6 +32,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "fuckyourskills", function(self, param
 	for a = 1, 21, 1 do
 		-- set 25% headshot bonus text to 0%
 		self.specialization_descs[a][2].multiperk = "0%"
+		-- set 35% ammo pickup bonus text to 0%
+		self.specialization_descs[a][6].multiperk = "100%"
 		-- set 5% damage bonus text to 0%
 		self.specialization_descs[a][8].multiperk = "0%"
 	end
@@ -133,6 +135,24 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "fuckyourskills2", functio
 	self.values.shotgun.damage_addend = {1.5, 2.5}
 
 	self.values.pistol.enter_steelsight_speed_multiplier = {2}
+
+	-- Add extra ammo to the flak jacket *only*
+	self.values.player.body_armor.skill_ammo_mul = {
+		1,
+		1,
+		1,
+		1,
+		1.5,
+		1,
+		1
+	}
+
+	-- Remove ammo pickup bonus from walk in closet
+	-- Also nerf fully loaded aced from 1.75x to 1.5x
+	self.values.player.pick_up_ammo_multiplier = {
+		1,
+		1.5
+	}
 end)
 
 

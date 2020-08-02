@@ -6896,18 +6896,18 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	self.car9.sdesc1 = "caliber_r556x45"
 	self.car9.sdesc2 = "action_di"
 	self.car9.stats.concealment = 26
-	self.car9.stats.CLIP_AMMO_MAX = 25
-	self.car9.stats.AMMO_MAX = 120
-	self.car9.stats.AMMO_PICKUP = self:_pickup_chance(120, 1)
+	self.car9.CLIP_AMMO_MAX = 25
+	self.car9.AMMO_MAX = 120
+	self.car9.AMMO_PICKUP = self:_pickup_chance(120, 1)
 	self:copy_timers("car9", "olympic")
 
 	self:inf_init("x_car9", "smg", {"range_carbine"})
 	self.x_car9.sdesc1 = "caliber_r556x45"
 	self.x_car9.sdesc2 = "action_di"
 	self.x_car9.stats.concealment = 26
-	self.x_car9.stats.CLIP_AMMO_MAX = self.car9.stats.CLIP_AMMO_MAX * 2
-	self.x_car9.stats.AMMO_MAX = 180
-	self.x_car9.stats.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self.x_car9.CLIP_AMMO_MAX = self.car9.CLIP_AMMO_MAX * 2
+	self.x_car9.AMMO_MAX = 180
+	self.x_car9.AMMO_PICKUP = self:_pickup_chance(180, 1)
 	self:copy_timers("x_car9", "x_olympic")
 
 	-- Automat-5 SMG (Swedish AK5 in SMG form)

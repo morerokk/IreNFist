@@ -1463,7 +1463,7 @@ end
 	self.parts.inf_ivan.override = {}
 	self.parts.inf_ivan.internal_part = true
 	self.parts.inf_ivan.stats = deep_clone(nostats)
-	local akparts = {"wpn_upg_ak_fg_combo2", "wpn_upg_ak_fg_combo3", "wpn_upg_ak_fg_combo1", "wpn_upg_ak_fg_combo4", "wpn_fps_upg_m4_s_standard", "wpn_fps_upg_m4_s_pts", "wpn_upg_ak_s_folding", "wpn_upg_ak_s_psl", "wpn_fps_upg_ak_g_hgrip", "wpn_fps_upg_ak_g_pgrip", "wpn_fps_upg_ak_g_wgrip", "wpn_fps_upg_m4_s_crane", "wpn_fps_upg_m4_s_mk46", "wpn_fps_upg_ak_fg_tapco", "wpn_fps_upg_fg_midwest", "wpn_fps_upg_ak_b_draco", "wpn_fps_upg_ak_m_quad", "wpn_fps_upg_m4_s_ubr", "wpn_fps_upg_ak_g_rk3", "wpn_fps_upg_ak_s_solidstock", "wpn_fps_upg_o_ak_scopemount", "wpn_fps_upg_ak_m_uspalm", "wpn_fps_upg_ak_fg_krebs", "wpn_fps_upg_ak_fg_trax", "wpn_fps_upg_ak_b_ak105", "wpn_fps_upg_ass_ak_b_zastava", "wpn_fps_upg_ak_m_quick", "wpn_fps_snp_tti_s_vltor", "wpn_fps_smg_akmsu_fg_rail", "wpn_upg_ak_s_skfoldable", "wpn_fps_upg_ak_fg_zenit", "wpn_fps_sho_saiga_b_short", "wpn_upg_saiga_fg_lowerrail", "wpn_fps_sho_saiga_fg_holy", "wpn_fps_sho_basset_m_extended"} -- no sights, barrel attachments, or gadgets... yet?
+	local akparts = {"wpn_upg_ak_fg_combo2", "wpn_upg_ak_fg_combo3", "wpn_upg_ak_fg_combo1", "wpn_upg_ak_fg_combo4", "wpn_fps_upg_m4_s_standard", "wpn_fps_upg_m4_s_pts", "wpn_upg_ak_s_folding", "wpn_upg_ak_s_psl", "wpn_fps_upg_ak_g_hgrip", "wpn_fps_upg_ak_g_pgrip", "wpn_fps_upg_ak_g_wgrip", "wpn_fps_upg_m4_s_crane", "wpn_fps_upg_m4_s_mk46", "wpn_fps_upg_ak_fg_tapco", "wpn_fps_upg_fg_midwest", "wpn_fps_upg_ak_b_draco", "wpn_fps_upg_ak_m_quad", "wpn_fps_upg_m4_s_ubr", "wpn_fps_upg_ak_g_rk3", "wpn_fps_upg_ak_s_solidstock", "wpn_fps_upg_o_ak_scopemount", "wpn_fps_upg_ak_m_uspalm", "wpn_fps_upg_ak_fg_krebs", "wpn_fps_upg_ak_fg_trax", "wpn_fps_upg_ak_b_ak105", "wpn_fps_upg_ass_ak_b_zastava", "wpn_fps_upg_ak_m_quick", "wpn_fps_snp_tti_s_vltor", "wpn_fps_smg_akmsu_fg_rail", "wpn_upg_ak_s_skfoldable", "wpn_fps_upg_ak_fg_zenit", "wpn_fps_sho_saiga_b_short", "wpn_upg_saiga_fg_lowerrail", "wpn_fps_sho_saiga_fg_holy", "wpn_fps_sho_basset_m_extended", "wpn_fps_pis_smolak_fg_polymer", "wpn_fps_pis_smolak_m_custom"} -- no sights, barrel attachments, or gadgets... yet?
 	for a, b in ipairs(akparts) do
 		if self.parts[b] then
 			self.parts.inf_ivan.override[b] = {desc_id = self.parts[b].name_id .. "_desc_fine"}
@@ -2382,9 +2382,21 @@ end
 	-- Custom Assault Frame
 	self.parts.wpn_fps_smg_p90_body_boxy.stats = deep_clone(nostats)
 
-
-
-
+	-- PDW AP Kit
+	-- Applies to P90 and MP7
+	self.parts.inf_pdw_apkit.stats = {
+		spread = 3,
+		recoil = -3,
+		damage = -3
+	}
+	self.parts.inf_pdw_apkit.custom_stats = {
+		can_shoot_through_enemy = true,
+		can_shoot_through_shield = true,
+		can_shoot_through_wall = true,
+		pen_shield_dmg_mult = 0.5,
+		pen_wall_dmg_mult = 1,
+		ammo_pickup_max_mul = 0.5
+	}
 
 	-- COMPACT-5 PARTS
 	-- Sehr Kurz
@@ -3233,6 +3245,21 @@ end
 	-- Extended Magazine
 	self.parts.wpn_fps_pis_lemming_m_ext.stats = deep_clone(mag_125)
 	self.parts.wpn_fps_pis_lemming_m_ext.stats.extra_ammo = 4
+
+	-- AP Kit
+	self.parts.inf_lemming_apkit.stats = {
+		spread = 2,
+		recoil = -2,
+		damage = -3
+	}
+	self.parts.inf_lemming_apkit.custom_stats = {
+		can_shoot_through_enemy = true,
+		can_shoot_through_shield = true,
+		can_shoot_through_wall = true,
+		pen_shield_dmg_mult = 0.5,
+		pen_wall_dmg_mult = 1,
+		ammo_pickup_max_mul = 0.5
+	}
 
 
 	-- M13 PARTS
@@ -5782,6 +5809,9 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 	-- Dragon 5.45 parts
 	-- Discreet Foregrip
 	self.parts.wpn_fps_pis_smolak_fg_polymer.stats = deep_clone(nostats)
+
+	-- Add Ivans Legacy
+	table.insert(self.wpn_fps_pis_smolak.uses_parts, "inf_ivan")
 
 	-- Lebman/Crosskill auto parts
 	-- Room broom kit

@@ -24,6 +24,9 @@
 	
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_fnfal_dmrkit"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_fnfal_classickit"/>
+	
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_pdw_apkit"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_lemming_apkit"/>
 <!--
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_svu_unsil"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_c96_auto"/>
@@ -250,6 +253,23 @@
 <WeaponMod id="inf_asval_sp6" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<weapons>
 		<value_node value="wpn_fps_ass_asval"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- P90/MP7 PDW Kit -->
+<WeaponMod id="inf_pdw_apkit" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_smg_p90"/>
+		<value_node value="wpn_fps_smg_mp7"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- Five-Seven AP rounds -->
+<WeaponMod id="inf_lemming_apkit" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_pis_lemming"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>

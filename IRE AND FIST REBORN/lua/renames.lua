@@ -1915,6 +1915,10 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_p90_b_civilian_desc = "Ventilated shroud with high-accuracy barrel.",
 	bm_wp_p90_b_ninja_desc = "Don't settle for less.",
 
+	-- PDW AP Kit
+	bm_wp_inf_pdw_apkit = "PDW Armor-Piercing Kit",
+	bm_wp_inf_pdw_apkit_desc = "Converts the weapon for armor-piercing rounds.\n\nPenetrates shields and armor. Slightly less damage to fleshy bits.\n\n-50% ammo scavenge. No damage penalty for shooting through walls.",
+
 
 	-- SIGNATURE SMG
 	bm_w_shepheard_desc = "Recent SMG designed with CAR-like controls for military and law enforcement use. Unusually for an SMG, it features a closed rotating bolt.",
@@ -2157,6 +2161,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	-- Five-seveN
 	bm_w_lemming_desc = "Lightweight. Polymer. Armor-piercing. Large-magazined. Good thing they're outlawed, or criminals might get their hands on one.",
+	-- AP Kit
+	bm_wp_inf_lemming_apkit = "AP Kit",
+	bm_wp_inf_lemming_apkit_desc = "Converts the weapon for armor-piercing rounds.\n\nPenetrates shields and armor. Slightly less damage to fleshy bits.\n\n-50% ammo scavenge. No damage penalty for shooting through walls.",
 
 
 	-- M13
@@ -3674,6 +3681,12 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_x_ak5s_desc = "Dangerous freedom is better than peaceful slavery. But when forced to bear the responsibility either way, are you truly free?",
 
 	bm_wp_wpn_fps_sho_saiga_upper_receiver_smooth_desc = "It's not being cheap, it's 'manufacturing efficiency'.",
+
+	-- Ivans legacy smolak/draco pistol parts
+	bm_wp_wpn_fps_pis_smolak_fg_polymer_desc = "Polymer foregrip for those nighttime Soviet compound infiltrations.",
+	bm_wp_wpn_fps_pis_smolak_fg_polymer_desc_fine = "MIGHT AS WELL SEND SERGEI BIRTHDAY CARD. \"HAPPY BIRTHDAY SERGEI! I PISS ON ALL YOU CREATE!\"",
+	bm_wp_wpn_fps_pis_smolak_m_custom_desc = "Magazine with speedpull sleeve to ease removal during combat.",
+	bm_wp_wpn_fps_pis_smolak_m_custom_desc_fine = "I AM CONGRATULATE. YOU ARE NOW SPETSNAZ. MAKE SURE ENEMY DOES NOT SEE TEDDY BEAR OR HE MAYBE SO AFRAID HE SHITS IN PANTS.",
 
 	-- Flak Jacket Desc
 	bm_armor_level_5_desc = "Medium movement penalty, medium visibility, +50% ammo pickup.\n\nThe flak jacket by Gensec Security Industries is a modern take on the classic version. It absorbs the impact from firearm projectiles and shrapnel from explosions.\n\nIt combines a heavy ballistic vest with shoulder and side protection armor components, offering spine protection as well.\n\nFlak jackets are worn by Marines, combat soldiers and Gensec FTSU task forces.",

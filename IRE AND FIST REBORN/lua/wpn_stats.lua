@@ -6866,12 +6866,14 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	self.lebman.CLIP_AMMO_MAX = 7
 	self.lebman.AMMO_MAX = 77
 	self.lebman.AMMO_PICKUP = self:_pickup_chance(77, 1)
+	self.lebman.stats.concealment = 26
 	self:copy_timers("lebman", "beer")
 
 	self:inf_init("x_lebman", "pistol", "medium")
 	self.x_lebman.sdesc1 = "caliber_p38sup"
 	self.x_lebman.sdesc2 = "action_shortrecoil"
 	self:copy_timers("x_lebman", "x_beer")
+	self.x_lebman.stats.concealment = 26
 	self.x_lebman.stats.recoil = self.lebman.stats.recoil - 4
 	self.x_lebman.CLIP_AMMO_MAX = self.lebman.CLIP_AMMO_MAX * 2
 	self.x_lebman.AMMO_MAX = 98

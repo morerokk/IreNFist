@@ -97,6 +97,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, param
 	self.skills.shock_and_awe[2].upgrades = {"locknload_reload", "locknload_reload_partial"}
 
 	-- Add armor ammo multiplier to default upgrades
-	table.insert(self.default_upgrades, "player_add_armor_stat_skill_ammo_mul")
+	if not table.contains(self.default_upgrades, "player_add_armor_stat_skill_ammo_mul") then
+		table.insert(self.default_upgrades, "player_add_armor_stat_skill_ammo_mul")
+	end
 
 end)

@@ -40,8 +40,13 @@ Hooks:PostHook(UpgradesTweakData, "init", "fuckyourskills", function(self, param
 end)
 
 Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "fuckyourskills2", function(self, params)
+	local armor_overhaul = BLT.Mods:GetModByName("Armor Overhaul")
+	local armor_overhaul_compat = armor_overhaul and armor_overhaul:IsEnabled() or false
+
 	-- STOP JUMPING MY SCREEN AROUND
-	self.values.player.body_armor.damage_shake = {0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10}
+	if not armor_overhaul_compat then
+		self.values.player.body_armor.damage_shake = {0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10}
+	end
 
 	-- walk slower with coolguy weapons
 	self.weapon_movement_penalty.minigun = 0.70
@@ -137,15 +142,18 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "fuckyourskills2", functio
 	self.values.pistol.enter_steelsight_speed_multiplier = {2}
 
 	-- Add extra ammo to the flak jacket *only*
-	self.values.player.body_armor.skill_ammo_mul = {
-		1,
-		1,
-		1,
-		1,
-		1.5,
-		1,
-		1
-	}
+	-- Has overlap with armor overhaul
+	if not armor_overhaul_compat then
+		self.values.player.body_armor.skill_ammo_mul = {
+			1,
+			1,
+			1,
+			1,
+			1.5,
+			1,
+			1
+		}
+	end
 
 	-- Remove ammo pickup bonus from walk in closet
 	-- Also nerf fully loaded aced from 1.75x to 1.5x

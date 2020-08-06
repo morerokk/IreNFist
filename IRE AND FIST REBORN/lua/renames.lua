@@ -770,7 +770,8 @@ end
 	menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.",
 	menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.",
 
-
+	-- Sicario cooldown reduction
+	menu_deck18_1_desc = "Unlocks and equips the throwable Smoke Bomb.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for ##10## seconds. While standing inside the smoke screen, you and any of your allies automatically avoid ##50%## of all bullets. Any enemies that stand in the smoke will see their accuracy reduced by ##50%##.\n\nAfter the smoke screen dissipates, the Smoke Bomb is on a cooldown for ##30## seconds, but killing enemies will reduce this cooldown by ##1## second.",
 
 
 
@@ -3690,7 +3691,6 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	-- Flak Jacket Desc
 	bm_armor_level_5_desc = "Medium movement penalty, medium visibility, +50% ammo pickup.\n\nThe flak jacket by Gensec Security Industries is a modern take on the classic version. It absorbs the impact from firearm projectiles and shrapnel from explosions.\n\nIt combines a heavy ballistic vest with shoulder and side protection armor components, offering spine protection as well.\n\nFlak jackets are worn by Marines, combat soldiers and Gensec FTSU task forces.",
-
 	-- !!
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot

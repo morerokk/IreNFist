@@ -33,6 +33,8 @@ tweak_data.projectiles.wpn_prj_jav.damage = 150.0
 --tweak_data.projectiles.wpn_prj_jav.launch_speed = 1500
 --tweak_data.projectiles.wpn_prj_jav.adjust_z = 30
 
+tweak_data.projectiles.smoke_screen_grenade.base_cooldown = 30	
+
 
 tweak_data.dot_types = {poison = {
 	damage_class = "PoisonBulletBase",

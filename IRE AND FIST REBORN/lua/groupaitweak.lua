@@ -1097,14 +1097,11 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	end
 	
 	-- Rokks tweaks start here
-	
-	
-	-- Add mysteriously missing ene_cop_2 to basic cops list
-	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.america, Idstring("units/payday2/characters/ene_cop_2/ene_cop_2"))
 
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"))
 	
 	-- Change the hostage rescue units for murkywater to all light FBIs
+	--[[
 	self.unit_categories.FBI_suit_C45_M4.unit_types.murkywater = {
 		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"),
 		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
@@ -1117,7 +1114,12 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	
 	self.unit_categories.FBI_suit_stealth_MP5.unit_types.murkywater = {
 		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
-	}	
+	}
+	]]
+
+	-- Overkill made yet another typo which crashes the game on Federales heists, fixing it by setting the Federales FBI groups to be identical to America
+	self.unit_categories.FBI_suit_C45_M4.unit_types.federales = self.unit_categories.FBI_suit_C45_M4.unit_types.america
+	self.unit_categories.FBI_suit_M4_MP5.unit_types.federales = self.unit_categories.FBI_suit_M4_MP5.unit_types.america
 end
 
 

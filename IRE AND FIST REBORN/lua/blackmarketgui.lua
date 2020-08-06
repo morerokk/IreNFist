@@ -623,20 +623,20 @@ function BlackMarketGui:update_info_text()
 		self._armor_info_panel:set_h(armor_image:bottom())
 
 		if not self._slot_data.unlocked then
-			updated_texts[3].text = utf8.to_upper(managers.localization:text(slot_data.level == 0 and (slot_data.skill_name or "bm_menu_skilltree_locked") or "bm_menu_level_req", {
+			updated_texts[3].text = utf8.to_upper("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" .. managers.localization:text(slot_data.level == 0 and (slot_data.skill_name or "bm_menu_skilltree_locked") or "bm_menu_level_req", {
 				level = slot_data.level,
 				SKILL = slot_data.name
-			}))
+			})) -- Still printing behind the stats
 			updated_texts[3].below_stats = true
 		elseif managers.player:has_category_upgrade("player", "damage_to_hot") and not table.contains(tweak_data:get_raw_value("upgrades", "damage_to_hot_data", "armors_allowed") or {}, self._slot_data.name) then
-			updated_texts[3].text = managers.localization:to_upper_text("bm_menu_disables_damage_to_hot")
+			updated_texts[3].text = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" .. managers.localization:to_upper_text("bm_menu_disables_damage_to_hot")
 			updated_texts[3].below_stats = true
 		elseif managers.player:has_category_upgrade("player", "armor_health_store_amount") then
 			local bm_armor_tweak = tweak_data.blackmarket.armors[slot_data.name]
 			local upgrade_level = bm_armor_tweak.upgrade_level
 			local amount = managers.player:body_armor_value("skill_max_health_store", upgrade_level, 1)
 			local multiplier = managers.player:upgrade_value("player", "armor_max_health_store_multiplier", 1)
-			updated_texts[2].text = managers.localization:to_upper_text("bm_menu_armor_max_health_store", {
+			updated_texts[2].text = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" .. managers.localization:to_upper_text("bm_menu_armor_max_health_store", {
 				amount = format_round(amount * multiplier * tweak_data.gui.stats_present_multiplier)
 			})
 			updated_texts[2].below_stats = true

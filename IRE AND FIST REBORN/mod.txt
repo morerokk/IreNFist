@@ -22,6 +22,7 @@
 		{"hook_id": "lib/units/cameras/fpcameraplayerbase", "script_path" : "lua/recoil.lua"},
 		{"hook_id": "lib/units/beings/player/states/playerstandard", "script_path" : "lua/playerstandard.lua"},
 		{"hook_id": "lib/units/beings/player/states/playertased", "script_path" : "lua/playertased.lua"},
+		{"hook_id": "lib/units/beings/player/states/playerbleedout", "script_path" : "lua/playerbleedout.lua"},
 		{"hook_id": "lib/units/beings/player/playerdamage", "script_path" : "lua/playerdamage.lua"},
 		{"hook_id": "lib/units/weapons/raycastweaponbase", "script_path" : "lua/raycast.lua"},
 		{"hook_id": "lib/units/weapons/newraycastweaponbase", "script_path" : "lua/newraycast.lua"},

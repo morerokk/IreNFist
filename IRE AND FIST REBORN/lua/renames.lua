@@ -699,6 +699,8 @@ end
 	menu_rifleman_beta_desc = "BASIC: ##$basic##\nYou aim down the sights ##100%## faster with all weapons and reload sniper rifles ##15%## faster.\n\nACE: ##$pro##\nYou also reload SMGs and assault rifles ##15%## faster.",
 	menu_speedy_reload_beta = "Have a Plan",
 	menu_speedy_reload_beta_desc = "BASIC: ##$basic##\nYou regain ##5## armor after headshotting with a sniper rifle.\n\nACE: ##$pro##\nThe armor regain is increased to ##50##.",
+	-- Stockholm Syndrome
+	menu_stockholm_syndrome_beta_desc = "BASIC: ##$basic##\nCivilians are intimidated by the noise you make and remain intimidated ##50%## longer.\n\nYou can call over civilians and converted enemies to revive you. The civilian can be tied or untied.\n\nACE: ##$pro##\nYour hostages will not flee when they have been rescued by law enforcers. Whenever you get into custody, your hostages will trade themselves for your safe return. This effect can occur during assaults, but only ##1## time during a heist.",
 
 	-- ENFORCER
 	-- fully loaded
@@ -722,7 +724,8 @@ end
 	-- GHOST
 	-- duck and cover
 	menu_sprinter_beta_desc = "BASIC: ##$basic##\nYour stamina starts regenerating ##25%## earlier and ##25%## faster. You also sprint ##25%## faster.\n\nACE: ##$pro##\nYou have a ##10%## increased chance to dodge while sprinting or sliding.",
-
+	-- shockproof
+	menu_insulation_beta_desc = "BASIC: ##$basic##\nWhen tased, the shock effect has a ##30%## chance to backfire on the Taser, knocking them back.\n\nACE: ##$pro##\nWhen tased, you are able to free yourself from the taser by interacting with it within ##2## seconds of getting tased.\n\nWhile being tased, your bullets will electrify enemies.",
 
 	-- FUGITIVE
 	-- desperado
@@ -2073,6 +2076,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- GOLIATH
 	bm_w_rota_desc = "Revolving bullpup shotgun. Unlike its namesake, the Goliath is very light and compact, even seeing use as an underbarrel accessory in cut-down form.",
 	bm_w_x_rota_desc = "Everyone loves a good underdog story until they're on the wrong side of it.",
+	
+	-- Silenced barrel
+	bm_wp_rota_b_silenced_desc = "Silenced barrel for when you want to launch someone across the street... quietly." .. silstr2,
 
 
 	-- GRIMM

@@ -937,3 +937,27 @@ function InstantExplosiveBulletBase:give_fire_damage(col_ray, weapon_unit, user_
 
 	return defense_data
 end
+
+-- Bringing back Skill Overhaul features that are neat
+-- If you are tased with Shockproof Ace, your bullets will tase cops hit by them
+local instantbullet_give_impact_dmg_orig = InstantBulletBase.give_impact_damage
+function InstantBulletBase:give_impact_damage(col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
+	if managers.player:has_category_upgrade("player", "electric_bullets_while_tased") and user_unit == managers.player:player_unit() and managers.player:current_state() == "tased" then
+		local action_data = {
+			variant = variant or "bullet",
+			damage = damage,
+			electric = true,
+			weapon_unit = weapon_unit,
+			attacker_unit = user_unit,
+			col_ray = col_ray,
+			armor_piercing = armor_piercing,
+			shield_knock = shield_knock,
+			origin = user_unit:position(),
+			knock_down = knock_down,
+			stagger = stagger
+		}
+		return col_ray.unit:character_damage():damage_tase(action_data)
+	else
+		return instantbullet_give_impact_dmg_orig(self, col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
+	end
+end

@@ -100,6 +100,9 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "fuckyourskills2", functio
 	--self.values.player.melee_damage_health_ratio_multiplier = {2.5}
 	self.values.player.damage_health_ratio_multiplier = {0.50} -- 150%
 
+	-- Taser bullets
+	self.values.player.electric_bullets_while_tased = {true}
+
 
 
 
@@ -515,4 +518,14 @@ Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills",
 			value = 2
 		}
 	}
+
+	self.definitions.player_electric_bullets_while_tased = {
+		category = "feature",
+		name_id = "menu_player_eletric_bullets_while_tased",
+		upgrade = {
+			category = "player",
+			upgrade = "electric_bullets_while_tased",
+			value = 1
+		}
+}
 end)

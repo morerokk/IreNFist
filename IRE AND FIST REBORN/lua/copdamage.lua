@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 -- partially unfucking the previous hollow point implementation
 --[[
 Hooks:PreHook(CopDamage, "damage_bullet", "inf_undohollowpoint", function(self, attack_data)
@@ -207,3 +209,14 @@ function CopDamage:damage_fire(attack_data)
 	
 	damage_fire_original(self, attack_data)
 end
+
+-- If a converted cop dies, unregister them from the converts list.
+Hooks:PostHook(CopDamage, "_on_death", "InF_SkillOverhaulRemoveJoker", function(self)
+    if self._unit:unit_data().is_convert and IreNFist._converts then
+        for i, unit in pairs(IreNFist._converts) do
+            if unit == self._unit then
+                table.remove(IreNFist._converts, i)
+            end
+        end
+    end
+end)

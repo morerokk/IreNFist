@@ -32,9 +32,14 @@ Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, param
 	self.skills.speedy_reload[1].upgrades = {"snp_headshot_armor"}
 	self.skills.speedy_reload[2].upgrades = {"snp_headshot_armor_2"}
 
+	-- Re-add old stockholm syndrome to stockholm syndrome skill
+	table.insert(self.skills.stockholm_syndrome[1].upgrades, "player_civilian_reviver")
+
 	-- GHOST
 	-- duck and cover
 	self.skills.sprinter[2].upgrades = {"player_run_dodge_chance", "slide_dodge_chance"}
+	-- Shockproof Ace: taser bullets (lol)
+	table.insert(self.skills.insulation[2].upgrades, "player_electric_bullets_while_tased")
 
 
 	-- FUGITIVE

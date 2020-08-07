@@ -27,8 +27,7 @@ if not IreNFist then
             force = { 12, 13, 14 },
             force_balance_mul = { 1, 2, 3, 4 },
             force_pool = { 50, 55, 60 },
-            force_pool_balance_mul = { 1, 2, 3, 4 },
-            initial_spawn_delay = 30 -- Add a 30 second spawn delay because a literal 0 second response time is dumb
+            force_pool_balance_mul = { 1, 2, 3, 4 }
         },
         kenaz = { -- Golden grin casino. Not *actually* a bad heist at all, but the lowered max cop count makes this too easy otherwise
             force = {14, 16, 18},

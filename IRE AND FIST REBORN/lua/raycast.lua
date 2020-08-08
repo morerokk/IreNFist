@@ -943,20 +943,28 @@ end
 local instantbullet_give_impact_dmg_orig = InstantBulletBase.give_impact_damage
 function InstantBulletBase:give_impact_damage(col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
 	if managers.player:has_category_upgrade("player", "electric_bullets_while_tased") and user_unit == managers.player:player_unit() and managers.player:current_state() == "tased" then
-		local action_data = {
-			variant = variant or "bullet",
-			damage = damage,
-			electric = true,
-			weapon_unit = weapon_unit,
-			attacker_unit = user_unit,
-			col_ray = col_ray,
-			armor_piercing = armor_piercing,
-			shield_knock = shield_knock,
-			origin = user_unit:position(),
-			knock_down = knock_down,
-			stagger = stagger
-		}
-		return col_ray.unit:character_damage():damage_tase(action_data)
+		local hit_unit = col_ray.unit
+		local action_data = {}
+		action_data.weapon_unit = weapon_unit
+		action_data.attacker_unit = user_unit
+		action_data.col_ray = col_ray
+		action_data.armor_piercing = armor_piercing
+		action_data.attacker_unit = user_unit
+		action_data.attack_dir = col_ray.ray
+		
+		action_data.variant = "taser_tased"
+		action_data.damage = damage
+		action_data.damage_effect = 1
+		action_data.name_id = "taser"
+		action_data.charge_lerp_value = 0	
+		
+		defense_data = hit_unit and hit_unit:character_damage().damage_tase and hit_unit:character_damage():damage_melee(action_data)
+		if hit_unit and hit_unit:character_damage().damage_tase then
+			action_data.damage = 0
+			action_data.damage_effect = nil
+			hit_unit:character_damage():damage_tase(action_data)
+		end
+		return defense_data
 	else
 		return instantbullet_give_impact_dmg_orig(self, col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
 	end

@@ -75,7 +75,8 @@
 	"inf_txt_partname_1": "1: No change",
 	"inf_txt_partname_2": "2: Modified PAYDAY names",
 	"inf_txt_partname_3": "3: Real names",
-
+	"inf_disablefrogmanwarnings": "Disable mod incompatibility warnings",
+	"inf_disablefrogmanwarnings_desc": "Disabls startup notifications for incompatible mods like Full Speed Swarm.",
 
 
 	"inf_easter_egg": "Special thanks to Fahrenheit and Ricky Rio for playing this shit with me even though Ricky Rio is total fucking garbage. gitgud scrub."

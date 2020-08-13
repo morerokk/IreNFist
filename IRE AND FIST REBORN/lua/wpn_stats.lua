@@ -21,7 +21,9 @@ InFmenu.settings = InFmenu.settings or {
 	wallrunwpnangle = 15,
 	dashcontrols = 4,
 
-	txt_wpnname = 2
+	txt_wpnname = 2,
+
+	disablefrogmanwarnings = false
 }
 
 function InFmenu:Save()
@@ -6955,6 +6957,47 @@ if BeardLib.Utils:FindMod("M4 SOPMOD II") and self.soppo then
 	self:copy_timers("soppo", "new_m4")
 	self.soppo.fire_mode_data.fire_rate = 60/700
 	self.soppo.stats.concealment = 15
+end
+
+-- Lo Wang Sidekick Uzi
+if self.uzi_lowang then
+	self:copy_stats("uzi_lowang", "uzi", false)
+	self:copy_sdescs("uzi_lowang", "uzi", false)
+end
+
+if self.x_uzi_lowang then
+	-- These are actually Akimbos, but false is passed into copy_stats and sdescs because an already akimbo weapon is being copied from
+	self:copy_stats("x_uzi_lowang", "x_uzi", false)
+	self:copy_sdescs("x_uzi_lowang", "x_uzi", false)
+end
+
+-- Deck-ARD pistol
+if self.deckard then
+	self:inf_init("deckard", "pistol", "heavy")
+	self.deckard.sdesc1 = "caliber_p40sw"
+	self.deckard.sdesc2 = "action_wang"
+	self:copy_timers("deckard", "new_raging_bull")
+end
+
+if self.x_deckard then
+	self:inf_init("x_deckard", "pistol", "heavy")
+	self.x_deckard.sdesc1 = "caliber_p40sw"
+	self.x_deckard.sdesc2 = "action_wang"
+	self:copy_timers("deckard", "new_raging_bull")
+end
+
+-- Vanilla styled mod pack vol. 2, Hornet .300 Rifle
+if self.bdgr then
+	self:inf_init("bdgr", "ar", nil)
+	self.bdgr.categories = {"assault_rifle"}
+	self.bdgr.sdesc1 = "caliber_r300blackout"
+	self.bdgr.sdesc2 = "action_di"
+	self:copy_stats("bdgr", "olympic")
+	self.bdgr.stats.concealment = 26
+	self.bdgr.CLIP_AMMO_MAX = 20
+	self.bdgr.AMMO_MAX = 180
+	self.bdgr.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self:copy_timers("bdgr", "olympic")
 end
 
 	-- !!

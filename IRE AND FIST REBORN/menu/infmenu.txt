@@ -247,6 +247,15 @@
 			],
 			"value" : "txt_wpnname",
 			"default_value" : 2
+		},
+		{
+			"type" : "toggle",
+			"id" : "disablefrogmanwarnings",
+			"title" : "inf_disablefrogmanwarnings",
+			"description" : "inf_disablefrogmanwarnings_desc",
+			"callback" : "infcb_disablefrogmanwarnings",
+			"value" : "disablefrogmanwarnings",
+			"default_value" : false
 		}
 	]
 }

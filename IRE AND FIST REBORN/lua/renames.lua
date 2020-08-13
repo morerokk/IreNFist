@@ -618,6 +618,8 @@ end
 
 	action_devotion = "Cyclic accelerator.",
 
+	action_wang = "Wang action.",
+
 
 	--misc_quickdraw = "+10% switch speed.",
 	misc_quickdraw = "switch speed.",
@@ -3698,6 +3700,17 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- Flak Jacket Desc
 	bm_armor_level_5_desc = "Medium movement penalty, medium visibility, +50% ammo pickup.\n\nThe flak jacket by Gensec Security Industries is a modern take on the classic version. It absorbs the impact from firearm projectiles and shrapnel from explosions.\n\nIt combines a heavy ballistic vest with shoulder and side protection armor components, offering spine protection as well.\n\nFlak jackets are worn by Marines, combat soldiers and Gensec FTSU task forces.",
 	-- !!
+
+	-- Vanilla mod pack 2
+	-- Hornet .300
+	bm_w_bdgr_desc = "Your enemies are deathly allergic to the Hornet .300's silent sting.",
+
+	-- Shadow Warrior 2 pack and Deck-ARD
+	bm_w_uzi_lowang_desc = "Spray and pray. Maybe concentrate on praying.",
+	bm_w_x_uzi_lowang_desc = "Baldness cannot just be forced, it must be earned.",
+
+	bm_w_deckard_desc = "A revolver from the future. Contrary to popular belief, it works just as well on cops as it does on Replicants.",
+	bm_w_x_deckard_desc = "Who wants some Wang?",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

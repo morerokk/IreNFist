@@ -85,9 +85,30 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu.settings[item:name()] = tonumber(item:value())
 		InFmenu:Save()
 	end
+	
+	MenuCallbackHandler.infcb_disablefrogmanwarnings = function(this, item)
+		InFmenu.settings[item:name()] = item:value() == 'on'
+		InFmenu:Save()
+	end
 
 
 	InFmenu:Load()
 	--MenuHelper:LoadFromJsonFile(InFmenu._path .. 'menu/infmenu2.txt', InFmenu, InFmenu.settings)
 	MenuHelper:LoadFromJsonFile(InFmenu._path .. 'menu/infmenu.txt', InFmenu, InFmenu.settings)
+end)
+
+Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_frogman", function(menu_manager, nodes)
+	if not InFmenu.settings.disablefrogmanwarnings then
+		local fss = BLT.Mods:GetModByName("Full Speed Swarm")
+		if not fss or not fss:IsEnabled() then
+			return
+		end
+	
+		QuickMenu:new("FSS Detected", "You are using Full Speed Swarm, which breaks some IreNFist features. We strongly recommend removing Full Speed Swarm for the best gameplay experience.\n\nYou can disable this warning in the IreNFist mod options.", {
+			[1] = {
+				text = "OK",
+				is_cancel_button = true
+			}
+		}):show()
+	end
 end)

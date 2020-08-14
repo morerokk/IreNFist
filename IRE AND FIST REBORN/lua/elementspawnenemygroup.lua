@@ -24,10 +24,7 @@ local groupsOLD = {
 	"tac_bull_rush"
 }
 
-local old_finalize_values = ElementSpawnEnemyGroup._finalize_values
-function ElementSpawnEnemyGroup:_finalize_values()
-	old_finalize_values(self)
-			
+Hooks:PostHook(ElementSpawnEnemyGroup, "_finalize_values", "inf_elementspawnenemygroup_addspawngroups", function(self)	
 	local groups = self._values.preferred_spawn_groups
 	-- If we have an ordinary spawn with exactly the old group elements, add all defined groups.
 	if groups and #groups == #groupsOLD and table.contains_all(groups, groupsOLD) then
@@ -37,4 +34,4 @@ function ElementSpawnEnemyGroup:_finalize_values()
 			end
 		end
 	end
-end
+end)

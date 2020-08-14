@@ -8,7 +8,7 @@ end
 
 Hooks:PostHook(PlayerTweakData, "init", "fuckingletmeregen", function(self, params)
 	-- i don't even remember changing this and i'm not sure if i want to change it back
-	self.damage.REGENERATE_TIME = 2 -- 3
+	--self.damage.REGENERATE_TIME = 2 -- 3
 end)
 
 Hooks:PostHook(PlayerTweakData, "_set_sm_wish", "playertweak_cancerdifficulty", function(self, params)

@@ -1072,17 +1072,16 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 
 end)
 
-local old_inituc = GroupAITweakData._init_unit_categories
-function GroupAITweakData:_init_unit_categories(difficulty_index)
-	old_inituc(self, difficulty_index)
-
-	if InFmenu.settings.rainbowassault and InFmenu.settings.rainbowassault == true and difficulty_index >= 5 then
+Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak_initunitcategors", function(self, difficulty_index)
+	if InFmenu.settings.rainbowassault and difficulty_index >= 5 then
 		if difficulty_index > 5 then
 			-- greens
 			table.insert(self.unit_categories.FBI_swat_M4.unit_types.america, Idstring("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"))
+
+			-- UMP grays, only on overkill because they're already re-added on Mayhem/DW
+			table.insert(self.unit_categories.FBI_swat_M4.unit_types.america, Idstring("units/payday2/characters/ene_city_swat_3/ene_city_swat_3"))
 		end
-		-- UMP grays
-		table.insert(self.unit_categories.FBI_swat_M4.unit_types.america, Idstring("units/payday2/characters/ene_city_swat_3/ene_city_swat_3"))
+
 		-- blues
 		table.insert(self.unit_categories.FBI_swat_M4.unit_types.america, Idstring("units/payday2/characters/ene_swat_1/ene_swat_1"))
 
@@ -1098,24 +1097,8 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	
 	-- Rokks tweaks start here
 
+	-- I forgot why
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"))
-	
-	-- Change the hostage rescue units for murkywater to all light FBIs
-	--[[
-	self.unit_categories.FBI_suit_C45_M4.unit_types.murkywater = {
-		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"),
-		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
-	}
-	
-	self.unit_categories.FBI_suit_M4_MP5.unit_types.murkywater = {
-		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"),
-		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
-	}
-	
-	self.unit_categories.FBI_suit_stealth_MP5.unit_types.murkywater = {
-		Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi")
-	}
-	]]
 
 	-- Overkill made yet another typo which crashes the game on Federales heists, fixing it by setting the Federales FBI groups to be identical to America
 	self.unit_categories.FBI_suit_C45_M4.unit_types.federales = self.unit_categories.FBI_suit_C45_M4.unit_types.america
@@ -1123,7 +1106,15 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	-- Same with murkywater
 	self.unit_categories.FBI_suit_C45_M4.unit_types.murkywater = self.unit_categories.FBI_suit_C45_M4.unit_types.america
 	self.unit_categories.FBI_suit_M4_MP5.unit_types.murkywater = self.unit_categories.FBI_suit_M4_MP5.unit_types.america
-end
+
+	-- Add UMP/Benelli Gensec guys to Mayhem/DW
+	if difficulty_index == 6 or difficulty_index == 7 then
+		-- Add UMP guys to M4 units
+		table.insert(self.unit_categories.FBI_swat_M4.unit_types.america, Idstring("units/payday2/characters/ene_city_swat_3/ene_city_swat_3"))
+		-- Add Benelli guys to R870 units
+		table.insert(self.unit_categories.FBI_swat_R870.unit_types.america, Idstring("units/payday2/characters/ene_city_swat_2/ene_city_swat_2"))
+	end
+end)
 
 
 Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", function(self, difficulty_index, difficulty)

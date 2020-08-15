@@ -97,7 +97,7 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 	MenuHelper:LoadFromJsonFile(InFmenu._path .. 'menu/infmenu.txt', InFmenu, InFmenu.settings)
 end)
 
-Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_frogman", function(menu_manager, nodes)
+Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_frogman_fss", function(menu_manager, nodes)
 	if not InFmenu.settings.disablefrogmanwarnings then
 		local fss = BLT.Mods:GetModByName("Full Speed Swarm")
 		if not fss or not fss:IsEnabled() then
@@ -105,6 +105,43 @@ Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_frogman", function
 		end
 	
 		QuickMenu:new("FSS Detected", "You are using Full Speed Swarm, which breaks some IreNFist features. We strongly recommend removing Full Speed Swarm for the best gameplay experience.\n\nYou can disable this warning in the IreNFist mod options.", {
+			[1] = {
+				text = "OK",
+				is_cancel_button = true
+			}
+		}):show()
+	end
+end)
+
+Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_frogman_iter", function(menu_manager, nodes)
+	if not InFmenu.settings.disablefrogmanwarnings then
+		local iter = BLT.Mods:GetModByName("Iter")
+		if not iter or not iter:IsEnabled() then
+			return
+		end
+	
+		QuickMenu:new("Iter Detected", "You are using Iter, which breaks the cops' flanking AI and forces them to always rush at you. In light of InF's assault tweaks, we strongly recommend removing Iter for the best gameplay experience.\n\nYou can disable this warning in the IreNFist mod options.", {
+			[1] = {
+				text = "OK",
+				is_cancel_button = true
+			}
+		}):show()
+	end
+end)
+
+Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_assaulttweaks_compat_warning", function(menu_manager, nodes)
+	if not InFmenu.settings.disablefrogmanwarnings then
+		local assaulttweaks = BLT.Mods:GetModByName("Assault Tweaks Standalone")
+		if not assaulttweaks or not assaulttweaks:IsEnabled() then
+			return
+		end
+		
+		local assaulttweaks_lite = BLT.Mods:GetModByName("Assault Tweaks Standalone Lite")
+		if not assaulttweaks_lite or not assaulttweaks_lite:IsEnabled() then
+			return
+		end
+	
+		QuickMenu:new("Assault Tweaks Detected", "You are using Assault Tweaks Standalone, which is already included in IREnFIST. We strongly recommend removing Assault Tweaks Standalone to avoid crashes or other issues.\n\nYou can disable this warning in the IreNFist mod options.", {
 			[1] = {
 				text = "OK",
 				is_cancel_button = true

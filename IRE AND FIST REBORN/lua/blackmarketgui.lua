@@ -1130,11 +1130,20 @@ function BlackMarketGui:update_info_text()
 		end
 
 		local mask_mod_info = managers.blackmarket:info_customize_mask()
-		updated_texts[2].text = managers.localization:to_upper_text("bm_menu_mask_customization") .. "\n"
+		local mask_base_price = managers.blackmarket:get_customize_mask_base_value()
+		updated_texts[2].text = updated_texts[2].text .. managers.localization:to_upper_text("bm_menu_masks") .. ": " .. self._data.topic_params.mask_name
+
+		if mask_base_price and mask_base_price > 0 then
+			updated_texts[2].text = updated_texts[2].text .. " " .. managers.experience:cash_string(mask_base_price)
+		end
+
+		updated_texts[2].text = updated_texts[2].text .. "\n"
 		local resource_color = {}
 		local material_text = managers.localization:to_upper_text("bm_menu_materials")
 		local pattern_text = managers.localization:to_upper_text("bm_menu_textures")
 		local colors_text = managers.localization:to_upper_text("bm_menu_colors")
+		local color_a_text = managers.localization:to_upper_text("bm_menu_color_a")
+		local color_b_text = managers.localization:to_upper_text("bm_menu_color_b")
 
 		if mask_mod_info[1].overwritten then
 			updated_texts[2].text = updated_texts[2].text .. material_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_overwritten") .. "##" .. "\n"
@@ -1172,22 +1181,62 @@ function BlackMarketGui:update_info_text()
 			table.insert(resource_color, tweak_data.screen_colors.important_1)
 		end
 
-		if mask_mod_info[3].overwritten then
-			updated_texts[2].text = updated_texts[2].text .. colors_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_overwritten") .. "##" .. "\n"
+		local should_show_one_color = mask_mod_info[4].is_same or mask_mod_info[3].overwritten and mask_mod_info[4].overwritten
 
-			table.insert(resource_color, tweak_data.screen_colors.risk)
-		elseif mask_mod_info[3].is_good then
-			updated_texts[2].text = updated_texts[2].text .. colors_text .. ": " .. managers.localization:text(mask_mod_info[3].text)
+		if should_show_one_color then
+			if mask_mod_info[3].overwritten then
+				updated_texts[2].text = updated_texts[2].text .. colors_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_overwritten") .. "##" .. "\n"
 
-			if mask_mod_info[3].price and mask_mod_info[3].price > 0 then
-				updated_texts[2].text = updated_texts[2].text .. " " .. managers.experience:cash_string(mask_mod_info[3].price)
+				table.insert(resource_color, tweak_data.screen_colors.risk)
+			elseif mask_mod_info[3].is_good then
+				updated_texts[2].text = updated_texts[2].text .. colors_text .. ": " .. managers.localization:text(mask_mod_info[3].text)
+
+				if mask_mod_info[3].price and mask_mod_info[3].price > 0 then
+					updated_texts[2].text = updated_texts[2].text .. " " .. managers.experience:cash_string(mask_mod_info[3].price)
+				end
+
+				updated_texts[2].text = updated_texts[2].text .. "\n"
+			else
+				updated_texts[2].text = updated_texts[2].text .. colors_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_not_selected") .. "##" .. "\n"
+
+				table.insert(resource_color, tweak_data.screen_colors.important_1)
+			end
+		else
+			if mask_mod_info[3].overwritten then
+				updated_texts[2].text = updated_texts[2].text .. color_a_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_overwritten") .. "##" .. "\n"
+
+				table.insert(resource_color, tweak_data.screen_colors.risk)
+			elseif mask_mod_info[3].is_good then
+				updated_texts[2].text = updated_texts[2].text .. color_a_text .. ": " .. managers.localization:text(mask_mod_info[3].text)
+
+				if mask_mod_info[3].price and mask_mod_info[3].price > 0 then
+					updated_texts[2].text = updated_texts[2].text .. " " .. managers.experience:cash_string(mask_mod_info[3].price)
+				end
+
+				updated_texts[2].text = updated_texts[2].text .. "\n"
+			else
+				updated_texts[2].text = updated_texts[2].text .. color_a_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_not_selected") .. "##" .. "\n"
+
+				table.insert(resource_color, tweak_data.screen_colors.important_1)
 			end
 
-			updated_texts[2].text = updated_texts[2].text .. "\n"
-		else
-			updated_texts[2].text = updated_texts[2].text .. colors_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_not_selected") .. "##" .. "\n"
+			if mask_mod_info[4].overwritten then
+				updated_texts[2].text = updated_texts[2].text .. color_b_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_overwritten") .. "##" .. "\n"
 
-			table.insert(resource_color, tweak_data.screen_colors.important_1)
+				table.insert(resource_color, tweak_data.screen_colors.risk)
+			elseif mask_mod_info[4].is_good then
+				updated_texts[2].text = updated_texts[2].text .. color_b_text .. ": " .. managers.localization:text(mask_mod_info[4].text)
+
+				if mask_mod_info[4].price and mask_mod_info[4].price > 0 then
+					updated_texts[2].text = updated_texts[2].text .. " " .. managers.experience:cash_string(mask_mod_info[4].price)
+				end
+
+				updated_texts[2].text = updated_texts[2].text .. "\n"
+			else
+				updated_texts[2].text = updated_texts[2].text .. color_b_text .. ": " .. "##" .. managers.localization:to_upper_text("menu_bm_not_selected") .. "##" .. "\n"
+
+				table.insert(resource_color, tweak_data.screen_colors.important_1)
+			end
 		end
 
 		updated_texts[2].text = updated_texts[2].text .. "\n"
@@ -1228,6 +1277,8 @@ function BlackMarketGui:update_info_text()
 				materials = 1,
 				textures = 2
 			}
+			index.mask_colors = index.colors
+			index.colors = nil
 			index = index[slot_data.category]
 
 			if index == 1 then
@@ -1286,7 +1337,7 @@ function BlackMarketGui:update_info_text()
 			end
 
 			if #missed_mods > 1 then
-				for i = 1, #missed_mods, 1 do
+				for i = 1, #missed_mods do
 					list_of_mods = list_of_mods .. missed_mods[i]
 
 					if i < #missed_mods - 1 then

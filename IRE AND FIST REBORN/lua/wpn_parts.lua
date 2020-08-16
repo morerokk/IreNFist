@@ -8050,7 +8050,6 @@ end
 if BeardLib.Utils:FindMod("Browning Auto Shotgun") then
 	self.parts.wpn_fps_shot_auto5_b_short.stats = deep_clone(barrelsho_p1)
 	self.parts.wpn_fps_shot_auto5_b_reinforced.stats = deep_clone(nostats)
-	self.parts.wpn_fps_shot_auto5_ammorack.stats = deep_clone(nostats)
 	self.parts.wpn_fps_shot_auto5_s_pad.stats = deep_clone(nostats)
 	self.parts.wpn_fps_shot_auto5_s_grip.stats = deep_clone(nostats)
 

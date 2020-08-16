@@ -326,10 +326,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_ak12_76 = "AK-2013/76",
 		bm_w_beer = "Beretta 93R",
 		bm_w_x_beer = "Akimbo Beretta 93R",
-		bm_w_hahabenis = "--!! this exists only so i can add new strings below older ones by making a duplicate of the older string and pasting in the new shit without fucking with commas every time"
 		--bm_w_mas49 = "MAS-49",
 		--bm_w_sks = "SKS",
-		--bm_w_kar98k = "Karabiner 98k",
+		bm_w_kar98k = "Karabiner 98k"
 		--bm_w_mdr = "Desert Tech MDR",
 		--bm_w_m40a5 = "M40A5",
 		--bm_w_pb = "PB",
@@ -3626,7 +3625,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_wpn_fps_upg_scar_m203_incen = "Incendiary Grenade",
 
 	-- kar98k
-	--bm_w_kar98k_desc = "",
+	bm_w_kar98k_desc = "Became the standard service rifle for the Wehrmacht a few years before World War 2, and ended its lifetime in 1945. The Soviets confiscated most of these rifles, and therefore the Karabiner 98k still appears in times of conflict around the world.",
 
 	-- golden gun
 	bm_w_goldgun_desc = "A weapon assembled from a set of unlikely-seeming items. Fires custom bullets made of gold, which is significantly denser than lead and perhaps a bit ostentatious, not to mention a feat of propellant.",

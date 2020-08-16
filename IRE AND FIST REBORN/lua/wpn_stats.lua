@@ -6750,6 +6750,22 @@ if BeardLib.Utils:FindMod("Kar98k") then
 end
 --]]
 
+-- kar98k
+if self.kar98k then
+	-- This fucks up the reload times immensely, let's not. Sorry!
+	Hooks:RemovePostHook("kar98kInit")
+
+	self:inf_init("kar98k", "snp", "heavy")
+	self.kar98k.sdesc1 = "caliber_r792mauser"
+	self.kar98k.sdesc2 = "action_bolt"
+	self:copy_timers("kar98k", "mosin")
+	self.kar98k.chamber = 0
+	self.kar98k.stats.concealment = 21
+	self.kar98k.damage_near = 10000
+	self.kar98k.damage_far = 10000
+	self.kar98k.rays = 1
+end
+
 if BeardLib.Utils:FindMod("Golden Gun") then
 	self:inf_init("goldgun", "pistol", "heavy")
 	self.goldgun.categories = {"pistol"}

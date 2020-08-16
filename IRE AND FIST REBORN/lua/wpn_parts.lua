@@ -4677,11 +4677,6 @@ if BeardLib.Utils:FindMod("SVU") then
 		zoom = 0,
 		concealment = 3
 	}
-	self.parts.wpn_fps_upg_svu_leupold_pro.stats = {
-		value = 0,
-		zoom = 0,
-		concealment = 2
-	}
 	self.parts.wpn_fps_upg_svu_supp_pbs1.custom_stats = silencercustomstats
 	self.parts.wpn_fps_upg_svu_supp_pbs1.stats = deep_clone(silstatsconc2)
 	table.insert(gunlist_snp, {"wpn_fps_snp_svu", -3})

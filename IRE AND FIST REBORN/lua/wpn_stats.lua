@@ -6839,10 +6839,7 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	-- An AK turned into a shotgun with the SAIGA, turned into a bullpup with the Grimm
 	-- And now you turn it into an AR again
 	-- RIFLE IS FINE
-	self:inf_init("spike", "ar", {"medium"})
-	self.spike.sdesc1 = "caliber_r762x39"
-	self.spike.sdesc2 = "action_gaslong"
-	self:copy_timers("spike", "akm")
+
 	-- based_on should be used for sync purposes and such, not which weapon most closely resembles it visually.
 	-- This weapon oughta be based_on the AKM instead
 	-- Now I get to un-shotgunify it, and clients still see you rapid-firing a 60rnd mag GRIMM at the enemy a mile away
@@ -6851,6 +6848,12 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") and self.amr12 then
 	self.spike.damage_near = nil
 	self.spike.damage_far = nil
 	self.spike.rays = nil
+	self.spike.categories = {"assault_rifle"}
+	self:inf_init("spike", "ar", {"medium"})
+	self.spike.sdesc1 = "caliber_r762x39"
+	self.spike.sdesc2 = "action_gaslong"
+	self:copy_timers("spike", "akm")
+	self.spike.stats.damage = 15 -- 75 damage. Somehow this isnt working in inf_init despite initializing the weapon properly
 
 	-- Commando/SG552 DMR
 	self:inf_init("sgs", "ar", {"ldmr"})

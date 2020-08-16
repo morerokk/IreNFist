@@ -4610,15 +4610,13 @@ end
 if BeardLib.Utils:FindMod("Marlin Model 1894 Custom") then
 	-- default parts
 	self.parts.wpn_fps_snp_m1894_loading_spring.stats = {}
-	self.parts.wpn_fps_upg_m1894_irons.stats = {
+	self.parts.wpn_fps_snp_m1894_irons.stats = {
 		value = 0,
 		zoom = 0,
 		concealment = 3
 	}
 	self.parts.wpn_fps_upg_m1894_supp_gemtech_gm45.custom_stats = snpsilencercustomstats
 	self.parts.wpn_fps_upg_m1894_supp_gemtech_gm45.stats = deep_clone(silstatsconc2)
-	self.parts.wpn_fps_upg_m1894_supp_osprey.custom_stats = snpsilencercustomstats
-	self.parts.wpn_fps_upg_m1894_supp_osprey.stats = deep_clone(silstatsconc2)
 end
 
 -- primary svu/SVU-T

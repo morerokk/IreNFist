@@ -7884,7 +7884,7 @@ end
 
 if BeardLib.Utils:FindMod("Stealth Flashlights") then
 	self.parts.wpn_fps_upg_fl_wml.desc_id = "bm_wp_wpn_fps_upg_fl_wml_desc"
-	self.parts.wpn_fps_upg_fl_micro90.desc_id = "bm_wp_wpn_fps_upg_fl_micro90_desc"
+	self.parts.wpn_fps_upg_fl_pis_micro90.desc_id = "bm_wp_wpn_fps_upg_fl_micro90_desc"
 end
 
 if BeardLib.Utils:FindMod("Gepard GM6 Lynx") then

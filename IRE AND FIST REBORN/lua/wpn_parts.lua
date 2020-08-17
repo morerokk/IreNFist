@@ -8185,9 +8185,10 @@ if BeardLib.Utils:FindMod("FN SCAR-L M203") then
 		concealment = 0
 	}
 
-	self.parts.wpn_fps_upg_scar_m203_grip_magpul_miad.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_scar_m203_grip_magpul_moe.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_scar_m203_grip_vindicator.stats = deep_clone(nostats)
+	--self.parts.wpn_fps_upg_scar_m203_grip_magpul_miad.stats = deep_clone(nostats)
+	--self.parts.wpn_fps_upg_scar_m203_grip_magpul_moe.stats = deep_clone(nostats)
+	--self.parts.wpn_fps_upg_scar_m203_grip_vindicator.stats = deep_clone(nostats)
+	self.parts.wpn_fps_ass_scar_m203_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_scar_m203_mag_pull_assist.stats = deep_clone(nostats)
 end
 

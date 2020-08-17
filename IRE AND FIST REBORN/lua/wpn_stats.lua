@@ -6722,6 +6722,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("scar_m203buckshot", "contraband_m203")
 		self.scar_m203buckshot.reload_speed_mult = 1.20
 
+		--[[
 		self:inf_init("scar_m203flechette", "shotgun", {"dmg_heavy"})
 		self.scar_m203flechette.stats.damage = 75 -- 375
 		self.scar_m203flechette.stats_modifiers = {damage = 5}
@@ -6734,6 +6735,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.scar_m203flechette.AMMO_PICKUP = {1338, 50}
 		self:copy_timers("scar_m203flechette", "contraband_m203")
 		self.scar_m203flechette.reload_speed_mult = 1.20
+		]]
 	end
 
 	--[[

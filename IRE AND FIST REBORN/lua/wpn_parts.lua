@@ -5907,6 +5907,15 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 	}
 end
 
+-- Vanilla styled modpack 2
+if self.parts.wpn_fps_shot_minibeck_shells then
+	self.parts.wpn_fps_shot_minibeck_shells.stats = {
+		value = 0,
+		reload = 5,
+		concealment = -1
+	}
+end
+
 if BeardLib.Utils:FindMod("Zenith 10mm") then
 	self.parts.wpn_fps_upg_zenith_ammo_ap.custom_stats = {sdesc1 = "caliber_p10hr", pen_shield_dmg_mult = 0.20/0.25, ammo_pickup_min_mul = 0.50, ammo_pickup_max_mul = 0.50, can_shoot_through_shield = true, can_shoot_through_wall = true}
 	self.parts.wpn_fps_upg_zenith_ammo_ap.internal_part = true

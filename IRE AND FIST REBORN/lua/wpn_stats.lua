@@ -6970,7 +6970,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	end
 
 	-- M4 SOPMOD II
-	if BeardLib.Utils:FindMod("M4 SOPMOD II") and self.soppo then
+	if self.soppo then
 		self:inf_init("soppo", "ar", {"has_gl"})
 		self:copy_sdescs("soppo", "new_m4")
 		self:copy_timers("soppo", "new_m4")
@@ -7017,6 +7017,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.bdgr.AMMO_MAX = 180
 		self.bdgr.AMMO_PICKUP = self:_pickup_chance(180, 1)
 		self:copy_timers("bdgr", "olympic")
+	end
+
+	-- Mini reinbeck, Secondary Locomotive shotgun ("Reinbeck Auto Shotgun")
+	if self.minibeck then
+		self:inf_init("minibeck", "shotgun", {"range_short", "rof_semi"})
+		self.minibeck.sdesc1 = "caliber_s12g"
+		self.minibeck.sdesc2 = "action_pump"
+		self:copy_timers("minibeck", "serbu")
 	end
 
 		-- !!

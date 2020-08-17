@@ -3690,6 +3690,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	bm_wp_wpn_fps_sho_saiga_upper_receiver_smooth_desc = "It's not being cheap, it's 'manufacturing efficiency'.",
 
+	bm_w_minibeck_desc = "A miniature full-auto variant of the Reinbeck M1. Just as effective up close, but lacks range. Absolutely not a sharpshooter weapon, no matter what Hoxton tells you.",
+
 	-- Ivans legacy smolak/draco pistol parts
 	bm_wp_wpn_fps_pis_smolak_fg_polymer_desc = "Polymer foregrip for those nighttime Soviet compound infiltrations.",
 	bm_wp_wpn_fps_pis_smolak_fg_polymer_desc_fine = "MIGHT AS WELL SEND SERGEI BIRTHDAY CARD. \"HAPPY BIRTHDAY SERGEI! I PISS ON ALL YOU CREATE!\"",

@@ -5519,6 +5519,7 @@ if BeardLib.Utils:FindMod("HX25 Handheld Grenade Launcher") then
 		spread = -20,
 		concealment = 0
 	}
+	--[[
 	self.parts.wpn_fps_upg_hx25_dragons_breath_ammo.custom_stats = {
 		armor_piercing_add = 1,
 		ammo_pickup_max_mul = 2,
@@ -5538,6 +5539,7 @@ if BeardLib.Utils:FindMod("HX25 Handheld Grenade Launcher") then
 		sdesc3 = "range_shotdb",
 		sdesc3_range_override = true
 	}
+	
 	self.parts.wpn_fps_upg_hx25_dragons_breath_ammo.sound_switch = {suppressed = "infalt"}
 	self.parts.wpn_fps_upg_hx25_dragons_breath_ammo.stats = {
 		value = 0,
@@ -5545,6 +5547,7 @@ if BeardLib.Utils:FindMod("HX25 Handheld Grenade Launcher") then
 		spread = -35,
 		concealment = 0
 	}
+	]]
 	self.parts.wpn_fps_upg_hx25_sight_iron_il.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_hx25_sight_rmr.stats = {
 		value = 0,

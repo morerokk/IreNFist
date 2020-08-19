@@ -6849,18 +6849,13 @@ if BeardLib.Utils:FindMod("Vepr-12") then
 	self.parts.wpn_fps_upg_vepr12_handguard_midwest.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vepr12_handguard_terminator.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vepr12_stock_ak_plastic.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_vepr12_stock_ak_rpk74m.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vepr12_stock_ak_wood.stats = deep_clone(nostats)
-	self.parts.wpn_fps_upg_vepr12_stock_caam4.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vepr12_stock_sok.stats = deep_clone(nostats)
 
 	self.parts.wpn_fps_upg_vepr12_mag_sgm.stats = deep_clone(mag_150)
 	self.parts.wpn_fps_upg_vepr12_mag_sgm.stats.extra_ammo = 4
 
 	self.parts.wpn_fps_upg_vepr12_barrel_long.stats = deep_clone(barrelsho_m1)
-
-	self.parts.wpn_fps_upg_vepr12_gk_01.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
-	self.parts.wpn_fps_upg_vepr12_nomad.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
 end
 
 if BeardLib.Utils:FindMod("M3 Grease Gun") then

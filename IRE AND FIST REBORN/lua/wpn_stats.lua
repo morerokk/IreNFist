@@ -5699,22 +5699,21 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.ots_14_4a.stats.spread = self.ots_14_4a.stats.spread - 10
 		self.ots_14_4a.stats.concealment = 25
 		self.ots_14_4a.reload_speed_mult = self.ots_14_4a.reload_speed_mult * self:convert_reload_to_mult("mag_66")
-	DelayedCalls:Add("grozaakmagpoints", 0.50, function(self, params)
-		table.list_append(tweak_data.weapon.ots_14_4a.attachment_points, {
-			{
+
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("ots_14_4a", {
 				name = "a_m_ak",
 				base_a_obj = "a_m",
 				position = Vector3(0, -1.25, 1),
 				rotation = Rotation(0, 0, 0)
-			},
-			{
+			})
+			self:SetupAttachmentPoint("ots_14_4a", {
 				name = "a_m_m4",
 				base_a_obj = "a_m",
 				position = Vector3(0, 0.5, 1),
 				rotation = Rotation(0, 0, 0)
-			}
-		})
-	end)
+			})
+		end
 	end
 
 	if BeardLib.Utils:FindMod("MK18 Specialist") then

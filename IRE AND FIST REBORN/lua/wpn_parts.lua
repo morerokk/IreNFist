@@ -8276,7 +8276,7 @@ if BeardLib.Utils:FindMod("AK-12") then
 	}
 end
 
-if BeardLib.Utils:FindMod("AK-12/76") then
+if BeardLib.Utils:FindMod("AK-12/76") and self.parts.wpn_fps_shot_ak12_76_mag then
 	self.parts.wpn_fps_shot_ak12_76_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_ak12_76_grip_molot.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_ak12_76_mag_magpul.stats = deep_clone(nostats)
@@ -8289,17 +8289,38 @@ if BeardLib.Utils:FindMod("AK-12/76") then
 	}
 end
 
-if BeardLib.Utils:FindMod("RAZOR AMG UH-1") then
+if BeardLib.Utils:FindMod("RAZOR AMG UH-1") and self.parts.wpn_fps_upg_o_razoramg then
 	self.parts.wpn_fps_upg_o_razoramg.customsight = true
 	self.parts.wpn_fps_upg_o_razoramg.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 end
 
-if BeardLib.Utils:FindMod("Trijicon RMR Sight") then
+if BeardLib.Utils:FindMod("Trijicon RMR Sight") and self.parts.wpn_fps_upg_o_rmr_riser then
 	self.parts.wpn_fps_upg_o_rmr_riser.customsight = true
 	self.parts.wpn_fps_upg_o_rmr_riser.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 end
 
+-- McMillan CS5
+if BeardLib.Utils:FindMod("McMillan CS5") and self.parts.wpn_fps_upg_cs5_barrel_short then
+	-- Long barrel
+	self.parts.wpn_fps_upg_cs5_barrel_long.stats = deep_clone(barrel_m1)
+	-- Short barrel
+	self.parts.wpn_fps_upg_cs5_barrel_short.stats = deep_clone(barrel_p2)
+	-- Suppressed barrel
+	self.parts.wpn_fps_upg_cs5_barrel_suppressed.custom_stats = snpsilencercustomstats
+	self.parts.wpn_fps_upg_cs5_barrel_suppressed.stats = deep_clone(silstatssnp)
+	-- Bipod
+	self.parts.wpn_fps_upg_cs5_harris_bipod.stats = {
+		value = 0,
+		concealment = -1
+	}
+	self.parts.wpn_fps_upg_cs5_harris_bipod.custom_stats = {recoil_horizontal_mult = 2}
 
+	-- Add the McMillan CS5 to be eligible for all the sniper custom parts, like the customizable Leupold
+	table.insert(self.wpn_fps_snp_cs5.uses_parts, "wpn_fps_upg_o_spot")
+	table.insert(self.wpn_fps_snp_cs5.uses_parts, "inf_shortdot")
+	table.insert(self.wpn_fps_snp_cs5.uses_parts, "wpn_fps_upg_o_box")
+	table.insert(gunlist_snp, {"wpn_fps_snp_cs5", -3})
+end
 
 
 

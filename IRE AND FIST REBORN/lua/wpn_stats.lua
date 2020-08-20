@@ -7028,6 +7028,15 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("minibeck", "serbu")
 	end
 
+	-- McMillan CS5
+	if self.cs5 then
+		self:inf_init("cs5", "snp", nil)
+		self.cs5.sdesc1 = "caliber_r308"
+		self.cs5.sdesc2 = "action_bolt"
+		self.cs5.stats.concealment = 17
+		self:copy_timers("cs5", "msr")
+	end
+
 		-- !!
 
 	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then

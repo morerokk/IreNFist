@@ -3713,6 +3713,11 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_deckard_desc = "A revolver from the future. Contrary to popular belief, it works just as well on cops as it does on Replicants.",
 	bm_w_x_deckard_desc = "Who wants some Wang?",
 
+	-- McMillan CS5
+	bm_w_cs5_desc = "A sniper rifle dedicated to being stealthy and concealable in urban environments. Originally meant for the military, but that won't stop you.",
+	bm_wp_wpn_fps_upg_cs5_barrel_suppressed_desc = "It's not a rude surprise if they never see it coming." .. silstr3,
+	bm_wp_wpn_fps_upg_cs5_harris_bipod_desc = "Press $BTN_GADGET to deploy. When deployed, reduce recoil by 50% and increase rate of fire by 25%.",
+
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""
 

@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 Hooks:Add('LocalizationManagerPostInit', 'infmenu_wordswordswords', function(loc)
 	InFmenu:Load()
 	loc:load_localization_file(InFmenu._path .. 'menu/infmenu_en.txt', false)

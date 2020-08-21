@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 --[[
 local text_original = LocalizationManager.text
 local testAllStrings = true  --Set to true to show all string ID's, false to return to normal.

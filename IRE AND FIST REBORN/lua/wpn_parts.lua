@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 --[[
 anim_speed_mult
 inf_rof_mult

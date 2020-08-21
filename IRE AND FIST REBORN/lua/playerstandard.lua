@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 Hooks:Add("MenuManagerInitialize", "mmi_inf", function(menu_manager)
 	-- custom keybind
 	local mod

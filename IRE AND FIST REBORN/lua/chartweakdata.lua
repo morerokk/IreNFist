@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 --[[
 normal
 hard

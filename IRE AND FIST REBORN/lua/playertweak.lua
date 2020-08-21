@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 local function checkfolders(subfolder, file)
 	local filename = file or "main.xml"
 	if SystemFS:exists("mods/" .. subfolder .. "/" .. filename) or SystemFS:exists("assets/mod_overrides/" .. subfolder .. "/" .. filename) then

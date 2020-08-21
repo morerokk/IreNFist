@@ -1083,7 +1083,14 @@ function WeaponTweakData:inf_init_bow(wpn, subtype)
 	self[wpn].armor_piercing_chance = 1
 end
 
-Hooks:PostHook(WeaponTweakData, "_init_new_weapons", "inf_weapontweak_initnewweapons_wpnstats", function(self)
+-- For some ungodly reason, turning this function override into a proper PostHook crashes the game.
+-- With this old_init method, BeardLib adds the InF custom weapons *before* this function runs, ensuring that the primary SMG's get the right stats.
+-- With PostHooks, the hook actually runs before BeardLib somehow, which causes a crash.
+--Hooks:PostHook(WeaponTweakData, "_init_new_weapons", "inf_weapontweak_initnewweapons_wpnstats", function(self)
+local old_wep_tweak_init = WeaponTweakData._init_new_weapons
+function WeaponTweakData:_init_new_weapons(...)
+	old_wep_tweak_init(self, ...)
+
 	self.stats.total_ammo_mod = {}
 	for i = -1000, 10000, 1 do
 		table.insert(self.stats.total_ammo_mod, i / 1000)
@@ -6490,7 +6497,7 @@ Hooks:PostHook(WeaponTweakData, "_init_new_weapons", "inf_weapontweak_initnewwea
 			})
 		end
 	end
-end)
+end
 
 -- FUCK TURRETS
 local cancerous = {"swat_van_turret_module", "ceiling_turret_module", "ceiling_turret_module_no_idle", "ceiling_turret_module_longer_range", "aa_turret_module", "crate_turret_module"}

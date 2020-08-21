@@ -1,3 +1,35 @@
+local function checkfolders(subfolder, file)
+	local filename = file or "main.xml"
+	if SystemFS:exists("mods/" .. subfolder .. "/" .. filename) or SystemFS:exists("assets/mod_overrides/" .. subfolder .. "/" .. filename) then
+		return true
+	end
+	return false
+end
+
+local function kick_mult(array, sv, sh, cv, ch, adsv, adsh)
+	if not array.standing then
+		log("OH SHIT WHAT YOU ARE DOING WHY DID YOU PASS A NON-KICK TO KICK_MULT")
+	else
+		local newarray = {}
+		newarray.standing = {array.standing[1] * sv, array.standing[2] * sv, array.standing[3] * sh, array.standing[4] * sh}
+		newarray.crouching = {array.crouching[1] * cv, array.crouching[2] * cv, array.crouching[3] * ch, array.crouching[4] * ch}
+		newarray.steelsight = {array.steelsight[1] * adsv, array.steelsight[2] * adsv, array.steelsight[3] * adsh, array.steelsight[4] * adsh}
+		return newarray
+	end
+end
+
+local function rtable_mult(array, vert, horiz)
+	local newarray = {}
+	for a = 1, #array do
+		newarray[a] = {}
+		newarray[a][1] = array[a][1] * vert
+		newarray[a][2] = array[a][2] * vert
+		newarray[a][3] = array[a][3] * horiz
+		newarray[a][4] = array[a][4] * horiz
+	end
+	return newarray
+end
+
 -- New InF table, primarily used for tweakdata
 if not IreNFist then
 

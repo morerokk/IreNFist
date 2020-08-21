@@ -225,6 +225,24 @@
 			"default_value" : true
 		},
 		{
+			"type" : "toggle",
+			"id" : "enablenewcopvoices",
+			"title" : "inf_enablenewcopvoices",
+			"description" : "inf_enablenewcopvoices_desc",
+			"callback" : "infcb_enablenewcopvoices",
+			"value" : "enablenewcopvoices",
+			"default_value" : true
+		},
+		{
+			"type" : "toggle",
+			"id" : "enablenewcopdomination",
+			"title" : "inf_enablenewcopdomination",
+			"description" : "inf_enablenewcopdomination_desc",
+			"callback" : "infcb_enablenewcopdomination",
+			"value" : "enablenewcopdomination",
+			"default_value" : true
+		},
+		{
 			"type" : "divider",
 			"size" : 16
 		},

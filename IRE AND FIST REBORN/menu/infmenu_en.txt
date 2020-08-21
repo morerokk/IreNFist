@@ -30,6 +30,10 @@
 	"inf_ene_copfalloff_desc": "Reduces enemy damage in certain scenarios, primarily from enemies at range and enemies on Death Sentence. This option is included for compatibility reasons - InF is not balanced for it. DEFAULT: ON",
 	"inf_ene_copmiss": "Use IREnFIST Enemy Accuracy",
 	"inf_ene_copmiss_desc": "Reduces enemy accuracy at range. This option is included for compatibility reasons - InF is not balanced for it. DEFAULT: ON",
+	"inf_enablenewcopvoices": "Change cop voices",
+	"inf_enablenewcopvoices_desc": "Changes the voices of heavier non-special units to different voice sets that sound more like a radio. This setting will not take effect until the next loading screen.",
+	"inf_enablenewcopdomination": "Harder cop dominations",
+	"inf_enablenewcopdomination_desc": "Makes it a little bit harder to dominate cops, similarly to older versions of PAYDAY 2. Cops will now no longer instantly surrender when they take a little bit of damage. Try to catch them off-guard with their weapons down/reloading, flank them, or catch them away from their squad! Leaving this option enabled is strongly recommended.",
 
 	"inf_txt_header": "--- TEXT OPTIONS ---",
 	"inf_txt_wpnname": "Use IREnFIST Text",

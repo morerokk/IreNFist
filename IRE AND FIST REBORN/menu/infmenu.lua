@@ -91,6 +91,15 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu:Save()
 	end
 
+	MenuCallbackHandler.infcb_enablenewcopvoices = function(this, item)
+		InFmenu.settings[item:name()] = item:value() == 'on'
+		InFmenu:Save()
+	end
+
+	MenuCallbackHandler.infcb_enablenewcopdomination = function(this, item)
+		InFmenu.settings[item:name()] = item:value() == 'on'
+		InFmenu:Save()
+	end
 
 	InFmenu:Load()
 	--MenuHelper:LoadFromJsonFile(InFmenu._path .. 'menu/infmenu2.txt', InFmenu, InFmenu.settings)

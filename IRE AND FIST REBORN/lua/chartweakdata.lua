@@ -879,95 +879,138 @@ end)
 
 -- Change the surrender preset to a harder one
 -- Thanks, Kuziz
-Hooks:PostHook(CharacterTweakData, "init", "InF_chartweakinit_setsurrenderchances", function(self)
-	-- Easy surrender preset, used for guards and easier cops
-	local surrender_preset_easy = {
-        base_chance = 0.75,
-        significant_chance = 0.1,
-        violence_timeout = 2,
-        reasons = {
-            health = {
-                [1] = 0.2,
-                [0.3] = 1
-            },
-            weapon_down = 0.8,
-            pants_down = 1,
-            isolated = 0.1
-        },
-        factors = {
-            flanked = 0.07,
-            unaware_of_aggressor = 0.08,
-            enemy_weap_cold = 0.15,
-            aggressor_dis = {
-                [1000] = 0.02,
-                [300] = 0.15
-            }
-        }
-	}
-	
-	-- Normal preset, really just used for HRT's and first responders
-	local surrender_preset_normal = {
-        base_chance = 0.5,
-        significant_chance = 0.25,
-        violence_timeout = 2,
-        reasons = {
-            health = {
-                [1] = 0,
-                [0.4] = 0.5
-            },
-            weapon_down = 0.2,
-            pants_down = 0.8
-        },
-        factors = {
-            isolated = 0.1,
-            flanked = 0.04,
-            unaware_of_aggressor = 0.1,
-            enemy_weap_cold = 0.05,
-            aggressor_dis = {
-                [1000] = 0,
-                [300] = 0.1
-            }
-        }
-    }
+if InFmenu and InFmenu.settings.enablenewcopdomination then
+	Hooks:PostHook(CharacterTweakData, "init", "InF_chartweakinit_setsurrenderchances", function(self)
+		-- Easy surrender preset, used for guards and easier cops
+		local surrender_preset_easy = {
+			base_chance = 0.75,
+			significant_chance = 0.1,
+			violence_timeout = 2,
+			reasons = {
+				health = {
+					[1] = 0.2,
+					[0.3] = 1
+				},
+				weapon_down = 0.8,
+				pants_down = 1,
+				isolated = 0.1
+			},
+			factors = {
+				flanked = 0.07,
+				unaware_of_aggressor = 0.08,
+				enemy_weap_cold = 0.15,
+				aggressor_dis = {
+					[1000] = 0.02,
+					[300] = 0.15
+				}
+			}
+		}
+		
+		-- Normal preset, really just used for HRT's and first responders
+		local surrender_preset_normal = {
+			base_chance = 0.5,
+			significant_chance = 0.25,
+			violence_timeout = 2,
+			reasons = {
+				health = {
+					[1] = 0,
+					[0.4] = 0.5
+				},
+				weapon_down = 0.2,
+				pants_down = 0.8
+			},
+			factors = {
+				isolated = 0.1,
+				flanked = 0.04,
+				unaware_of_aggressor = 0.1,
+				enemy_weap_cold = 0.05,
+				aggressor_dis = {
+					[1000] = 0,
+					[300] = 0.1
+				}
+			}
+		}
 
-	-- Harder preset, used for nearly every cop
-	local surrender_preset_hard = {
-        base_chance = 0.35,
-        significant_chance = 0.25,
-        violence_timeout = 2,
-        reasons = {
-            health = {
-                [1] = 0,
-                [0.35] = 0.5
-            },
-            weapon_down = 0.2,
-            pants_down = 0.8
-        },
-        factors = {
-            isolated = 0.1,
-            flanked = 0.04,
-            unaware_of_aggressor = 0.1,
-            enemy_weap_cold = 0.05,
-            aggressor_dis = {
-                [1000] = 0,
-                [300] = 0.1
-            }
-        }
-	}
-	
-	-- Give most non-special assault units the "hard" preset
-	self.fbi_swat.surrender = surrender_preset_hard
-	self.swat.surrender = surrender_preset_hard
-	self.heavy_swat.surrender = surrender_preset_hard
-	self.fbi_heavy_swat.surrender = surrender_preset_hard
-	self.fbi_swat.surrender = surrender_preset_hard
-	self.city_swat.surrender = surrender_preset_hard
+		-- Harder preset, used for nearly every cop
+		local surrender_preset_hard = {
+			base_chance = 0.35,
+			significant_chance = 0.25,
+			violence_timeout = 2,
+			reasons = {
+				health = {
+					[1] = 0,
+					[0.35] = 0.5
+				},
+				weapon_down = 0.2,
+				pants_down = 0.8
+			},
+			factors = {
+				isolated = 0.1,
+				flanked = 0.04,
+				unaware_of_aggressor = 0.1,
+				enemy_weap_cold = 0.05,
+				aggressor_dis = {
+					[1000] = 0,
+					[300] = 0.1
+				}
+			}
+		}
+		
+		-- Give most non-special assault units the "hard" preset
+		self.fbi_swat.surrender = surrender_preset_hard
+		self.swat.surrender = surrender_preset_hard
+		self.heavy_swat.surrender = surrender_preset_hard
+		self.fbi_heavy_swat.surrender = surrender_preset_hard
+		self.fbi_swat.surrender = surrender_preset_hard
+		self.city_swat.surrender = surrender_preset_hard
 
-	-- Give the guards and "scared cop" an easy preset
-	self.security.surrender = surrender_preset_easy
-	self.cop_scared.surrender = surrender_preset_easy
+		-- Give the guards and "scared cop" an easy preset
+		self.security.surrender = surrender_preset_easy
+		self.cop_scared.surrender = surrender_preset_easy
 
-	-- And override the HRT's and first responder presets with "normal" ones
-	self.cop.surrender = surrender_preset_normal
-	self.fbi.surrender = surrender_preset_normal
-end)
+		-- And override the HRT's and first responder presets with "normal" ones
+		self.cop.surrender = surrender_preset_normal
+		self.fbi.surrender = surrender_preset_normal
+	end)
+end
+
+if InFmenu and InFmenu.settings.enablenewcopvoices then
+	local is_america = false
+	local is_murky = false
+	Hooks:PreHook(CharacterTweakData, "init", "inf_chartweak_copvoicefilters_determineregion", function(self)
+		is_america = false
+		is_murky = false
+	end)
+
+	-- Add voice filter to US cops
+	Hooks:PostHook(CharacterTweakData, "_init_region_america", "inf_chartweak_copvoicefilters_america", function(self)
+		is_america = true
+	end)
+
+	-- Not working somehow, guess murkies will just have to have their new voices
+	Hooks:PostHook(CharacterTweakData, "_init_region_murkywater", "inf_chartweak_copvoicefilters_murky", function(self)
+		is_murky = true
+	end)
+
+	Hooks:PostHook(CharacterTweakData, "_init_fbi_heavy_swat", "inf_chartweak_fbi_heavy_swat_init", function(self)
+		if is_america then
+			self.fbi_heavy_swat.speech_prefix_p1 = "l"
+			self.fbi_heavy_swat.speech_prefix_count = 5
+			self.fbi_heavy_swat.speech_prefix_p2 = "d"
+		end
+	end)
+
+	Hooks:PostHook(CharacterTweakData, "_init_fbi_swat", "inf_chartweak_fbi_swat_init", function(self)
+		if is_america and not is_murky then
+			self.fbi_swat.speech_prefix_p1 = "l"
+			self.fbi_swat.speech_prefix_p2 = "d"
+		end
+	end)
+
+	Hooks:PostHook(CharacterTweakData, "_init_city_swat", "inf_chartweak_city_swat_init", function(self)
+		if is_america then
+			self.city_swat.speech_prefix_p1 = "l"
+			self.city_swat.speech_prefix_p2 = "d"
+		end
+	end)
+end

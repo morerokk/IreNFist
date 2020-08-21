@@ -12,6 +12,8 @@ InFmenu.settings = InFmenu.settings or {
 	sanehp = true,
 	copfalloff = true,
 	copmiss = true,
+	enablenewcopvoices = true,
+	enablenewcopdomination = true,
 
 	runkick = false,
 	kickyeet = 1,

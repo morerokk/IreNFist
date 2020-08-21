@@ -494,6 +494,7 @@ end
 	caliber_p9x19nade = "9x19mm +P",
 	caliber_p9x21 = "9x21mm Gyurza.",
 	caliber_p9x21imi = "9x21mm IMI.",
+	caliber_9mm_mars = "9mm Mars.",
 	caliber_p10 = "10mm Auto.",
 	caliber_p10hr = "10mm QAP.",
 	caliber_p40sw = ".40 S&W.",
@@ -521,6 +522,7 @@ end
 	caliber_p2mmkolibri = "2.7x9mm Kolibri.",
 	caliber_p22lr = ".22 Long Rifle.",
 	caliber_pscaramanga = "4.2mm Gold-Nickel.",
+	caliber_p45mars = ".45 Mars.",
 
 	caliber_s12g = "12 gauge 2 3/4\".",
 	caliber_s12g_ap = "12 gauge 2 3/4\" AP slug.",
@@ -592,6 +594,7 @@ end
 	action_shortrecoil = "Short recoil action.",
 	action_shortrecoilmod = "Modified short recoil action.",
 	action_shortrecoilluger = "Toggle-locked short recoil action.",
+	action_longrecoilrotating = "Long recoil rotating action.",
 	action_an94 = "Gas and pulley action.",
 
 	action_breech = "Breech-loaded.",

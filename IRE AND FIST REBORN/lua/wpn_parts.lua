@@ -4137,11 +4137,13 @@ if BeardLib.Utils:FindMod("SR-3M Vikhr") then
 	-- mounting sights in an aesthetic fashion
 	self.parts.wpn_fps_upg_sr3m_cover_rail.stats = {}
 	-- dotsight
+	--[[
 	self.parts.wpn_fps_upg_sr3m_leupold_pro.stats = {
 		value = 0,
 		zoom = 0,
 		concealment = -1
 	}
+	]]
 	-- 20rnd mag
 	self.parts.wpn_fps_upg_sr3m_mag_20rnd.stats = deep_clone(mag_66)
 	self.parts.wpn_fps_upg_sr3m_mag_20rnd.stats.extra_ammo = -10
@@ -6693,13 +6695,13 @@ end
 
 if BeardLib.Utils:FindMod("Mk14") then
 	table.insert(gunlist_snp, {"wpn_fps_snp_wargoddess", -3})
-	self.parts.wpn_fps_snp_wargoddess_b_ebr.stats = deep_clone(barrel_p1)
+	--self.parts.wpn_fps_snp_wargoddess_b_ebr.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_snp_wargoddess_o_dummy.stats = {
 		value = 0,
 		concealment = 0
 	}
-	self.parts.wpn_fps_snp_wargoddess_s_mod0_unfolded.stats = deep_clone(nostats)
-	self.parts.wpn_fps_snp_wargoddess_s_mod0_folded.stats = {
+	self.parts.wpn_fps_snp_wargoddess_s_mod0_un.stats = deep_clone(nostats)
+	self.parts.wpn_fps_snp_wargoddess_s_mod0_in.stats = {
 		value = 0,
 		recoil = -2,
 		concealment = 1

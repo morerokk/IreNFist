@@ -1085,7 +1085,7 @@ end
 
 -- For some ungodly reason, turning this function override into a proper PostHook crashes the game.
 -- With this old_init method, BeardLib adds the InF custom weapons *before* this function runs, ensuring that the primary SMG's get the right stats.
--- With PostHooks, the hook actually runs before BeardLib somehow, which causes a crash.
+-- With PostHook, the hook actually runs before BeardLib somehow, which causes a crash.
 --Hooks:PostHook(WeaponTweakData, "_init_new_weapons", "inf_weapontweak_initnewweapons_wpnstats", function(self)
 local old_wep_tweak_init = WeaponTweakData._init_new_weapons
 function WeaponTweakData:_init_new_weapons(...)
@@ -6478,6 +6478,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.cs5.sdesc2 = "action_bolt"
 		self.cs5.stats.concealment = 17
 		self:copy_timers("cs5", "msr")
+	end
+
+	-- Mars Automatic Pistol
+	if self.mars then
+		self:inf_init("mars", "pistol", "heavy")
+		self.mars.sdesc1 = "caliber_p45mars"
+		self.mars.sdesc2 = "action_longrecoilrotating"
+		self:copy_timers("mars", "deagle")
 	end
 
 		-- !!

@@ -1015,4 +1015,70 @@ if InFmenu and InFmenu.settings.enablenewcopvoices then
 			self.city_swat.speech_prefix_p2 = "d"
 		end
 	end)
+
+	Hooks:PostHook(CharacterTweakData, "_init_gangster", "inf_chartweak_gangster_init", function(self, presets)
+		local job_speech_prefixes = {
+			russian = { -- Russian gangsters that Vlad doesn't like
+				p1 = "rt",
+				p2 = nil,
+				count = 2
+			},
+			ovkmc = { -- Overkill MC (Big Oil)
+				p1 = "ict",
+				p2 = nil,
+				count = 2
+			},
+			taxman_dealer = { -- Sturr's deal in Undercover, gangsters are actually Undercover cops
+				p1 = "l",
+				p2 = "n",
+				count = 4,
+				gangster_is_cop = true
+			},
+			default = { -- Default gangster chatter (Rats etc.)
+				p1 = "lt",
+				p2 = nil,
+				count = 2
+			}
+		}
+
+		local jobs_speech = {
+			nightclub = job_speech_prefixes.russian,
+			short2_stage1 = job_speech_prefixes.russian,
+			jolly = job_speech_prefixes.russian,
+			spa = job_speech_prefixes.russian,
+			alex_2 = job_speech_prefixes.ovkmc,
+			welcome_to_the_jungle_1 = job_speech_prefixes.ovkmc,
+			man = job_speech_prefixes.taxman_dealer
+		}
+
+		local job = Global.level_data and Global.level_data.level_id
+		if job and jobs_speech[job] then
+			-- Use the provided gangster speech type for this job
+			self.gangster.speech_prefix_p1 = job_speech_prefixes[job].p1
+			self.gangster.speech_prefix_count = job_speech_prefixes[job].count
+			self.gangster.speech_prefix_p2 = job_speech_prefixes[job].p2
+
+			if job_speech_prefixes[job].gangster_is_cop then
+				-- If the gangsters are undercover cops, give them the same attributes as cops (rescue hostages, arrest players)
+				self.gangster.no_arrest = false
+				self.gangster.rescue_hostages = true
+				self.gangster.use_radio = self._default_chatter	
+			end
+		else
+			-- Job is either nil or there's no special gangster speech override defined for this job.
+			-- In that case, use the default speech.
+			self.gangster.speech_prefix_p1 = job_speech_prefixes.default.p1
+			self.gangster.speech_prefix_count = job_speech_prefixes.default.count
+			self.gangster.speech_prefix_p2 = job_speech_prefixes.default.p2
+		end
+
+		-- Make the gangsters actually use their voicelines (thanks Zdann)
+		self.gangster.chatter = {
+			aggressive = true,
+			retreat = true,
+			contact = true,
+			go_go = true,
+			suppress = true
+		}
+	end)
 end

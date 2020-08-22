@@ -267,6 +267,7 @@ end
 
 -- Upgrade values that should always exist regardless of mod compatibility
 Hooks:PostHook(UpgradesTweakData, "init", "inf_upgradestweak_upgradevalues_always", function(self)
+	
 	-- Remove all akimbo stability bonuses
 	self.values.akimbo.recoil_index_addend = {0, 0, 0, 0, 0}
 

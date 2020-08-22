@@ -3,81 +3,86 @@ dofile(ModPath .. "infcore.lua")
 -- If sydch's skill overhaul is enabled then touch the trees differently
 if IreNFist.mod_compatibility.sso then
 	Hooks:PostHook(SkillTreeTweakData, "init", "inf_skilltreetweak_init_sso_trees", function(self)
-		-- Rifleman
-		self.skills.rifleman[1].upgrades = {"weapon_enter_steelsight_speed_multiplier", "snp_reload_speed_multiplier"}
-		self.skills.rifleman[2].upgrades = {"smg_reload_speed_multiplier", "assault_rifle_reload_speed_multiplier"}
+		-- SSO loads its data through BeardLib which isn't guaranteed to respect InF's slightly lower priority.
+		-- Additionally, it uses old_init instead of PostHooks which can make things even muddier
+		-- Normally a lower priority means InF loads *later* and therefore overrides previous changes.
+		DelayedCalls:Add("inf_ssocompat_delayedskilltreeinit", 0.2, function()
+			-- Rifleman
+			self.skills.rifleman[1].upgrades = {"weapon_enter_steelsight_speed_multiplier", "snp_reload_speed_multiplier"}
+			self.skills.rifleman[2].upgrades = {"smg_reload_speed_multiplier", "assault_rifle_reload_speed_multiplier"}
 
-		-- Ammo Efficiency
-		self.skills.spotter_teamwork[1].upgrades = { "head_shot_ammo_return_1" }
-		self.skills.spotter_teamwork[2].upgrades = { "head_shot_ammo_return_2" }
+			-- Ammo Efficiency
+			self.skills.spotter_teamwork[1].upgrades = { "head_shot_ammo_return_1" }
+			self.skills.spotter_teamwork[2].upgrades = { "head_shot_ammo_return_2" }
 
-		-- Aggressive Reload
-		self.skills.speedy_reload[1].upgrades = {"snp_headshot_armor"}
-		self.skills.speedy_reload[2].upgrades = {"snp_headshot_armor_2"}
+			-- Aggressive Reload
+			self.skills.speedy_reload[1].upgrades = {"snp_headshot_armor"}
+			self.skills.speedy_reload[2].upgrades = {"snp_headshot_armor_2"}
 
-		-- Shotgun Impact/Solid Impact
-		self.skills.shotgun_impact[1].upgrades = {"advmov_stamina_on_kill"}
-		self.skills.shotgun_impact[2].upgrades = {"advmov_stamina_on_kill_2"}
+			-- Shotgun Impact/Solid Impact
+			self.skills.shotgun_impact[1].upgrades = {"advmov_stamina_on_kill"}
+			self.skills.shotgun_impact[2].upgrades = {"advmov_stamina_on_kill_2"}
 
-		-- Shotgun CQB
-		self.skills.shotgun_cqb[1].upgrades = {"shotgun_reload_speed_multiplier_1"}
-		self.skills.shotgun_cqb[2].upgrades = {"shotgun_reload_speed_multiplier_2"}
+			-- Shotgun CQB
+			self.skills.shotgun_cqb[1].upgrades = {"shotgun_reload_speed_multiplier_1"}
+			self.skills.shotgun_cqb[2].upgrades = {"shotgun_reload_speed_multiplier_2"}
 
-		-- Far Away/Surgical Shot
-		self.skills.far_away[1].upgrades = {"pellet_penalty_reduction"}
-		self.skills.far_away[2].upgrades = {"pellet_penalty_reduction_2"}
+			-- Far Away/Surgical Shot
+			self.skills.far_away[1].upgrades = {"pellet_penalty_reduction"}
+			self.skills.far_away[2].upgrades = {"pellet_penalty_reduction_2"}
 
-		-- Close By (no shotgun mag plus pls)
-		self.skills.close_by[2].upgrades = {"shotgun_switchspeed_buff"}
+			-- Close By (no shotgun mag plus pls)
+			self.skills.close_by[2].upgrades = {"shotgun_switchspeed_buff"}
 
-		-- Overkill/Last Word
-		-- These damage bonuses are a bit OP in InF
-		self.skills.overkill[1].upgrades = {"shotgun_last_shell_amount", "shotgun_last_shell_dmg_mult"}
-		self.skills.overkill[2].upgrades = {"shotgun_last_shell_amount_2"}
+			-- Overkill/Last Word
+			-- These damage bonuses are a bit OP in InF
+			self.skills.overkill[1].upgrades = {"shotgun_last_shell_amount", "shotgun_last_shell_dmg_mult"}
+			self.skills.overkill[2].upgrades = {"shotgun_last_shell_amount_2"}
 
-		-- Technician
-		-- Bunker/Fire Control instead of Mag Plus and reload bonuses
-		self.skills.fire_control[1].upgrades = {"bipod_deploy_speed_mult"}
-		self.skills.fire_control[2].upgrades = {"bipod_dmg_taken_mult"}
-		-- Lock and load, add low magazine reload bonus to the new hipfire skill rather than to Surefire
-		table.insert(self.skills.shock_and_awe[2].upgrades, "locknload_reload")
-		table.insert(self.skills.shock_and_awe[2].upgrades, "locknload_reload_partial")
-		-- Fire control horizontal recoil
-		-- Confusingly, some skills were swapped
-		self.skills.fast_fire[1].upgrades = {"recoil_h_mult"}
-		self.skills.fast_fire[2].upgrades = {"recoil_h_mult_2"}
+			-- Technician
+			-- Bunker/Fire Control instead of Mag Plus and reload bonuses
+			self.skills.fire_control[1].upgrades = {"bipod_deploy_speed_mult"}
+			self.skills.fire_control[2].upgrades = {"bipod_dmg_taken_mult"}
+			-- Lock and load, add low magazine reload bonus to the new hipfire skill rather than to Surefire
+			table.insert(self.skills.shock_and_awe[2].upgrades, "locknload_reload")
+			table.insert(self.skills.shock_and_awe[2].upgrades, "locknload_reload_partial")
+			-- Fire control horizontal recoil
+			-- Confusingly, some skills were swapped
+			self.skills.fast_fire[1].upgrades = {"recoil_h_mult"}
+			self.skills.fast_fire[2].upgrades = {"recoil_h_mult_2"}
 
-		-- Shockproof, add taser bullets
-		table.insert(self.skills.hitman[2].upgrades, "player_electric_bullets_while_tased")
+			-- Shockproof, add taser bullets
+			table.insert(self.skills.hitman[2].upgrades, "player_electric_bullets_while_tased")
 
-		-- Specialized Killing, remove the silencer damage bonus and spread the other bonuses out over the 2 tiers
-		self.skills.unseen_strike[1].upgrades = {
-			"weapon_silencer_recoil_index_addend"
-		}
-		self.skills.unseen_strike[2].upgrades = {
-			"weapon_silencer_enter_steelsight_speed_multiplier",
-			"weapon_silencer_spread_index_addend"
-		}
+			-- Specialized Killing, remove the silencer damage bonus and spread the other bonuses out over the 2 tiers
+			self.skills.unseen_strike[1].upgrades = {
+				"weapon_silencer_recoil_index_addend"
+			}
+			self.skills.unseen_strike[2].upgrades = {
+				"weapon_silencer_enter_steelsight_speed_multiplier",
+				"weapon_silencer_spread_index_addend"
+			}
 
-		-- Fugitive
-		-- Pistol/Dexterous tree
-		-- Itchy Finger, remove reload speed bonus and mag size increase
-		self.skills.dance_instructor[1].upgrades = {"pistol_switchspeed_buff"}
-		self.skills.dance_instructor[2].upgrades = {"pistol_switchspeed_buff_2"}
-		-- Akimbo/Two-Hands/Dual Wielder skill, replace stability and ammo bonuses with switch speed and reload bonuses instead
-		self.skills.akimbo[1].upgrades = {"empty_akimbo_switch"}
-		self.skills.akimbo[2].upgrades = {"empty_akimbo_reload"}
+			-- Fugitive
+			-- Pistol/Dexterous tree
+			-- Itchy Finger, remove reload speed bonus and mag size increase
+			self.skills.dance_instructor[1].upgrades = {"pistol_switchspeed_buff"}
+			self.skills.dance_instructor[2].upgrades = {"pistol_switchspeed_buff_2"}
+			-- Akimbo/Two-Hands/Dual Wielder skill, replace stability and ammo bonuses with switch speed and reload bonuses instead
+			self.skills.akimbo[1].upgrades = {"empty_akimbo_switch"}
+			self.skills.akimbo[2].upgrades = {"empty_akimbo_reload"}
 
-		self.skills.expert_handling[1].upgrades = {"pistol_enter_steelsight_speed_multiplier"}
-		self.skills.expert_handling[2].upgrades = {"pistol_reload_speed_multiplier"}
+			self.skills.expert_handling[1].upgrades = {"pistol_enter_steelsight_speed_multiplier"}
+			self.skills.expert_handling[2].upgrades = {"pistol_reload_speed_multiplier"}
 
-		-- one handed talent/off-handed reload
-		self.skills.gun_fighter[1].upgrades = {"offhand_reload_time_mult", "pistol_gives_offhand_reload"}
-		self.skills.gun_fighter[2].upgrades = {"offhand_reload_time_mult_2", "ar_gives_offhand_reload", "smg_gives_offhand_reload", "shotgun_gives_offhand_reload", "xbow_gives_offhand_reload"}
+			-- one handed talent/off-handed reload
+			self.skills.gun_fighter[1].upgrades = {"offhand_reload_time_mult", "pistol_gives_offhand_reload"}
+			self.skills.gun_fighter[2].upgrades = {"offhand_reload_time_mult_2", "ar_gives_offhand_reload", "smg_gives_offhand_reload", "shotgun_gives_offhand_reload", "xbow_gives_offhand_reload"}
 
-		-- Trigger Happy/Coordination
-		self.skills.trigger_happy[1].upgrades = {"pistol_stacking_hit_damage_multiplier_1"}
-		self.skills.trigger_happy[2].upgrades = {"pistol_stacking_hit_damage_multiplier_2"}
+			-- Trigger Happy/Coordination
+			self.skills.trigger_happy[1].upgrades = {"pistol_stacking_hit_damage_multiplier_1"}
+			self.skills.trigger_happy[2].upgrades = {"pistol_stacking_hit_damage_multiplier_2"}
+		end)
 	end)
 else
 	Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, params)

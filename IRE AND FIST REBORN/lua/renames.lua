@@ -694,106 +694,6 @@ end
 
 
 
-	-- skill renames
-
-	-- MASTERMIND
-	menu_stable_shot_beta = "Cool Under Pressure",
-	menu_stable_shot_beta_desc = "BASIC: ##$basic##\nYou reload all weapons ##5%## faster.\n\nACE: ##$pro##\nYour reload speed bonus is increased to ##10%##.",
-	-- marksman
-	menu_sharpshooter_beta_desc = "BASIC: ##$basic##\nYou gain ##10## accuracy with SMGs, assault rifles, and sniper rifles fired in single-fire mode.\n\nACE: ##$pro##\nYou deal ##17.5%## more damage with headshots.",
-	-- rifleman
-	menu_rifleman_beta_desc = "BASIC: ##$basic##\nYou aim down the sights ##100%## faster with all weapons and reload sniper rifles ##15%## faster.\n\nACE: ##$pro##\nYou also reload SMGs and assault rifles ##15%## faster.",
-	menu_speedy_reload_beta = "Have a Plan",
-	menu_speedy_reload_beta_desc = "BASIC: ##$basic##\nYou regain ##5## armor after headshotting with a sniper rifle.\n\nACE: ##$pro##\nThe armor regain is increased to ##50##.",
-	-- Stockholm Syndrome
-	menu_stockholm_syndrome_beta_desc = "BASIC: ##$basic##\nCivilians are intimidated by the noise you make and remain intimidated ##50%## longer.\n\nYou can call over civilians and converted enemies to revive you. The civilian can be tied or untied.\n\nACE: ##$pro##\nYour hostages will not flee when they have been rescued by law enforcers. Whenever you get into custody, your hostages will trade themselves for your safe return. This effect can occur during assaults, but only ##1## time during a heist.",
-
-	-- ENFORCER
-	-- fully loaded
-	menu_bandoliers_beta_desc = "BASIC: ##$basic##\nYou hold ##25%## more total ammo.\n\nACE: ##$pro##\nYour ammo scavenge rate is set to ##150%##. You also have a base ##5%## chance to get a throwable from scavenging, increasing by ##1%## for every ammo pickup without a throwable. This chance resets upon finding a throwable. Throwables with higher capacities have higher scavenge rate and quantity.\n\nSee the Contact Database for exact values.",
-	-- overkill
-	menu_overkill_beta = "Last Word",
-	menu_overkill_beta_desc = "BASIC: ##$basic##\nOn shotguns with a base capacity of at least ##4##, the last shell deals ##100%## more damage.\n\nACE: ##$pro##\nThe second-to-last shell also deals ##100%## more damage.",
-	-- far away
-	menu_far_away_beta = "Surgical Shot",
-	menu_far_away_beta_desc = "BASIC: ##$basic##\nYour shotguns lose ##25%## less damage from not having every pellet hit the same target.\n\nACE: ##$pro##\nThe damage loss from not hitting the same target with all pellets is now reduced by ##50%##.\n\nNote: Damage scales from 100% to roughly 30% depending the percentage of pellets that hit the same target.",
-	-- close by
-	menu_close_by_beta = "Danger Close",
-	menu_close_by_beta_desc = "BASIC: ##$basic##\nYou can now hip-fire with shotguns while sprinting.\n\nACE: ##$pro##\nHaving a non-akimbo shotgun equipped increases all weapon switch speed by ##30%##.",
-	-- shotgun cqb
-	menu_shotgun_cqb_beta_desc = "BASIC: ##$basic##\nYou reload shotguns ##10%## faster.\n\nACE: ##$pro##\nYour shotgun reload speed bonus is increased to ##20%##.",
-	-- shotgun impact
-	--menu_shotgun_impact_beta_desc = "BASIC: ##$basic##\nYour damage with shotguns is increased by ##10##.\n\nACE: ##$pro##\nYour damage bonus with shotguns is increased to ##25##.",
-	menu_shotgun_impact_beta = "Close Range Assault",
-	menu_shotgun_impact_beta_desc = "BASIC: ##$basic##\nKilling an enemy while sliding or dashing restores ##2## stamina. Killing an enemy while wallkicking or wallrunning restores ##3## stamina.\n\nACE: ##$pro##\nStamina restoration from advanced movement kills is ##doubled##.",
-
-	-- GHOST
-	-- duck and cover
-	menu_sprinter_beta_desc = "BASIC: ##$basic##\nYour stamina starts regenerating ##25%## earlier and ##25%## faster. You also sprint ##25%## faster.\n\nACE: ##$pro##\nYou have a ##10%## increased chance to dodge while sprinting or sliding.",
-	-- shockproof
-	menu_insulation_beta_desc = "BASIC: ##$basic##\nWhen tased, the shock effect has a ##30%## chance to backfire on the Taser, knocking them back.\n\nACE: ##$pro##\nWhen tased, you are able to free yourself from the taser by interacting with it within ##2## seconds of getting tased.\n\nWhile being tased, your bullets will electrify enemies.",
-
-	-- FUGITIVE
-	-- desperado
-	menu_expert_handling_desc = "BASIC: ##$basic##\nYou aim down the sights ##100%## faster with pistols.\n\nACE: ##$pro##\nYou reload both single and akimbo pistols ##20%## faster.",
-	-- gun nut
-	menu_dance_instructor = "Gun Kata",
-	menu_dance_instructor_desc = "BASIC: ##$basic##\nHaving a pistol equipped as your secondary increases all weapon switch speed by ##10%##.\n\nACE: ##$pro##\nThe weapon switch speed bonus is increased to ##20%##.",
-	-- akimbo
-	menu_akimbo_skill_beta = "New York Reload",
-	menu_akimbo_skill_beta_desc = "BASIC: ##$basic##\nWhen your akimbo weapons are empty, you switch weapons ##20%## faster.\n\nACE: ##$pro##\nYour akimbo weapons reload ##15%## faster when empty.",
-	-- pumping iron
-	menu_steroids_beta_desc = "BASIC: ##$basic##\nYou deal ##50%## more melee damage.\n\nACE: ##$pro##\nYour melee weapons charge ##100%## faster.",
-	-- bloodthirst
-	menu_bloodthirst_desc = "BASIC: ##$basic##\nEvery kill you get increases your melee damage by ##25%##, up to a maximum of ##300%##. This effect resets when you kill an enemy with a melee attack.\n\nACE: ##$pro##\nWhenever you kill an enemy with a melee attack, you gain a ##25%## increase in reload speed for ##5## seconds.",
-	-- one-handed talent
-	menu_gun_fighter_beta = "Off-Handed Reload",
-	menu_gun_fighter_beta_desc = "BASIC: ##$basic##\nAfter switching to your secondary pistol, your primary weapon will automatically begin reloading itself. This reload takes ##4## times as long as a standard reload and is interrupted if you switch back to your primary.\n\nACE: ##$pro##\nYour off-hand reloads now only take ##3## times as long as a standard reload, and can also be initiated by switching to a secondary SMG, carbine, shotgun, or crossbow.",
-	-- equilibrium
-	menu_equilibrium_beta = "Plan B",
-	menu_equilibrium_beta_desc = "BASIC: ##$basic##\nSwitch speed bonus for secondary pistols is increased to ##25%##.\n\nACE: ##$pro##\nSwitch speed bonus for secondary pistols is increased to ##30%##.",
-
-
-	-- TECHNICIAN
-	-- surefire
-	menu_fast_fire_beta = "Bunker",
-	menu_fast_fire_beta_desc = "BASIC: ##$basic##\nYou deploy bipods ##100%## faster.\n\nACE: ##$pro##\nYou take ##50%## less bullet damage when you have a bipod deployed.",
-	-- steady grip
-	menu_steady_grip_beta_desc = "BASIC: ##$basic##\nYou gain a minor stability bonus roughly equivalent to ##5%## recoil reduction.\n\nACE: ##$pro##\nThis stability bonus is now doubled to roughly ##10%##.",
-	-- lock 'n load
-	menu_shock_and_awe_beta_desc = "BASIC: ##$basic##\nYou can now hipfire your weapons while sprinting.\n\nACE: ##$pro##\nYour automatic rifles, sniper rifles, shotguns, SMGs, LMGs, and miniguns reload up to ##25%## faster as the magazine runs low.",
-	-- fire control
-	menu_fire_control_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
-
-
-
-
-
-	-- OVERDOGs
-	menu_deck8_7_desc = "When you are surrounded by three or more enemies, you receive ##12%## less damage from enemies.\n\nYour second and each consecutive melee hit within ##5## seconds of the last one will deal ##2## times the damage. Missing a swing will reset this.",
-	menu_deck9_1_desc = "When you are surrounded by three or more enemies, you receive ##12%## less damage from enemies.\n\nYour second and each consecutive melee hit within ##5## seconds of the last one will deal ##2## times the damage. Missing a swing will reset this.",
-
-	menu_deckall_2 = "Get Cracking",
-	menu_deckall_2_desc = "You gain ##45%## more experience from heists.",
-	menu_deckall_4 = "Hustle",
-	menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.",
-	menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.",
-
-	-- Sicario cooldown reduction
-	menu_deck18_1_desc = "Unlocks and equips the throwable Smoke Bomb.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for ##10## seconds. While standing inside the smoke screen, you and any of your allies automatically avoid ##50%## of all bullets. Any enemies that stand in the smoke will see their accuracy reduced by ##50%##.\n\nAfter the smoke screen dissipates, the Smoke Bomb is on a cooldown for ##30## seconds, but killing enemies will reduce this cooldown by ##1## second.",
-
-
-
-
-
-	-- crew bonuses
-	-- interact inspire scavenge ai ap ammo
-	-- healthy sturdy evasive motivated regen quiet generous eager
-	menu_crew_eager_desc = "Players reload and switch weapons 25% faster.",
-	menu_crew_motivated_desc = "Players have 25 more stamina and the armor speed penalty is reduced by 25%.",
-
-
-
 
 
 	-- BOOSTS
@@ -947,6 +847,109 @@ end
 
 	hahabenis = "fuck commas"
 })
+
+-- Skill renames and descriptions, only used if Sydch's skill overhaul is not installed
+if not IreNFist.mod_compatibility.sso then
+	LocalizationManager:add_localized_strings({
+		-- skill renames
+
+		-- MASTERMIND
+		menu_stable_shot_beta = "Cool Under Pressure",
+		menu_stable_shot_beta_desc = "BASIC: ##$basic##\nYou reload all weapons ##5%## faster.\n\nACE: ##$pro##\nYour reload speed bonus is increased to ##10%##.",
+		-- marksman
+		menu_sharpshooter_beta_desc = "BASIC: ##$basic##\nYou gain ##10## accuracy with SMGs, assault rifles, and sniper rifles fired in single-fire mode.\n\nACE: ##$pro##\nYou deal ##17.5%## more damage with headshots.",
+		-- rifleman
+		menu_rifleman_beta_desc = "BASIC: ##$basic##\nYou aim down the sights ##100%## faster with all weapons and reload sniper rifles ##15%## faster.\n\nACE: ##$pro##\nYou also reload SMGs and assault rifles ##15%## faster.",
+		menu_speedy_reload_beta = "Have a Plan",
+		menu_speedy_reload_beta_desc = "BASIC: ##$basic##\nYou regain ##5## armor after headshotting with a sniper rifle.\n\nACE: ##$pro##\nThe armor regain is increased to ##50##.",
+		-- Stockholm Syndrome
+		menu_stockholm_syndrome_beta_desc = "BASIC: ##$basic##\nCivilians are intimidated by the noise you make and remain intimidated ##50%## longer.\n\nYou can call over civilians and converted enemies to revive you. The civilian can be tied or untied.\n\nACE: ##$pro##\nYour hostages will not flee when they have been rescued by law enforcers. Whenever you get into custody, your hostages will trade themselves for your safe return. This effect can occur during assaults, but only ##1## time during a heist.",
+
+		-- ENFORCER
+		-- fully loaded
+		menu_bandoliers_beta_desc = "BASIC: ##$basic##\nYou hold ##25%## more total ammo.\n\nACE: ##$pro##\nYour ammo scavenge rate is set to ##150%##. You also have a base ##5%## chance to get a throwable from scavenging, increasing by ##1%## for every ammo pickup without a throwable. This chance resets upon finding a throwable. Throwables with higher capacities have higher scavenge rate and quantity.\n\nSee the Contact Database for exact values.",
+		-- overkill
+		menu_overkill_beta = "Last Word",
+		menu_overkill_beta_desc = "BASIC: ##$basic##\nOn shotguns with a base capacity of at least ##4##, the last shell deals ##100%## more damage.\n\nACE: ##$pro##\nThe second-to-last shell also deals ##100%## more damage.",
+		-- far away
+		menu_far_away_beta = "Surgical Shot",
+		menu_far_away_beta_desc = "BASIC: ##$basic##\nYour shotguns lose ##25%## less damage from not having every pellet hit the same target.\n\nACE: ##$pro##\nThe damage loss from not hitting the same target with all pellets is now reduced by ##50%##.\n\nNote: Damage scales from 100% to roughly 30% depending the percentage of pellets that hit the same target.",
+		-- close by
+		menu_close_by_beta = "Danger Close",
+		menu_close_by_beta_desc = "BASIC: ##$basic##\nYou can now hip-fire with shotguns while sprinting.\n\nACE: ##$pro##\nHaving a non-akimbo shotgun equipped increases all weapon switch speed by ##30%##.",
+		-- shotgun cqb
+		menu_shotgun_cqb_beta_desc = "BASIC: ##$basic##\nYou reload shotguns ##10%## faster.\n\nACE: ##$pro##\nYour shotgun reload speed bonus is increased to ##20%##.",
+		-- shotgun impact
+		--menu_shotgun_impact_beta_desc = "BASIC: ##$basic##\nYour damage with shotguns is increased by ##10##.\n\nACE: ##$pro##\nYour damage bonus with shotguns is increased to ##25##.",
+		menu_shotgun_impact_beta = "Close Range Assault",
+		menu_shotgun_impact_beta_desc = "BASIC: ##$basic##\nKilling an enemy while sliding or dashing restores ##2## stamina. Killing an enemy while wallkicking or wallrunning restores ##3## stamina.\n\nACE: ##$pro##\nStamina restoration from advanced movement kills is ##doubled##.",
+
+		-- GHOST
+		-- duck and cover
+		menu_sprinter_beta_desc = "BASIC: ##$basic##\nYour stamina starts regenerating ##25%## earlier and ##25%## faster. You also sprint ##25%## faster.\n\nACE: ##$pro##\nYou have a ##10%## increased chance to dodge while sprinting or sliding.",
+		-- shockproof
+		menu_insulation_beta_desc = "BASIC: ##$basic##\nWhen tased, the shock effect has a ##30%## chance to backfire on the Taser, knocking them back.\n\nACE: ##$pro##\nWhen tased, you are able to free yourself from the taser by interacting with it within ##2## seconds of getting tased.\n\nWhile being tased, your bullets will electrify enemies.",
+
+		-- FUGITIVE
+		-- desperado
+		menu_expert_handling_desc = "BASIC: ##$basic##\nYou aim down the sights ##100%## faster with pistols.\n\nACE: ##$pro##\nYou reload both single and akimbo pistols ##20%## faster.",
+		-- gun nut
+		menu_dance_instructor = "Gun Kata",
+		menu_dance_instructor_desc = "BASIC: ##$basic##\nHaving a pistol equipped as your secondary increases all weapon switch speed by ##10%##.\n\nACE: ##$pro##\nThe weapon switch speed bonus is increased to ##20%##.",
+		-- akimbo
+		menu_akimbo_skill_beta = "New York Reload",
+		menu_akimbo_skill_beta_desc = "BASIC: ##$basic##\nWhen your akimbo weapons are empty, you switch weapons ##20%## faster.\n\nACE: ##$pro##\nYour akimbo weapons reload ##15%## faster when empty.",
+		-- pumping iron
+		menu_steroids_beta_desc = "BASIC: ##$basic##\nYou deal ##50%## more melee damage.\n\nACE: ##$pro##\nYour melee weapons charge ##100%## faster.",
+		-- bloodthirst
+		menu_bloodthirst_desc = "BASIC: ##$basic##\nEvery kill you get increases your melee damage by ##25%##, up to a maximum of ##300%##. This effect resets when you kill an enemy with a melee attack.\n\nACE: ##$pro##\nWhenever you kill an enemy with a melee attack, you gain a ##25%## increase in reload speed for ##5## seconds.",
+		-- one-handed talent
+		menu_gun_fighter_beta = "Off-Handed Reload",
+		menu_gun_fighter_beta_desc = "BASIC: ##$basic##\nAfter switching to your secondary pistol, your primary weapon will automatically begin reloading itself. This reload takes ##4## times as long as a standard reload and is interrupted if you switch back to your primary.\n\nACE: ##$pro##\nYour off-hand reloads now only take ##3## times as long as a standard reload, and can also be initiated by switching to a secondary SMG, carbine, shotgun, or crossbow.",
+		-- equilibrium
+		menu_equilibrium_beta = "Plan B",
+		menu_equilibrium_beta_desc = "BASIC: ##$basic##\nSwitch speed bonus for secondary pistols is increased to ##25%##.\n\nACE: ##$pro##\nSwitch speed bonus for secondary pistols is increased to ##30%##.",
+
+
+		-- TECHNICIAN
+		-- surefire
+		menu_fast_fire_beta = "Bunker",
+		menu_fast_fire_beta_desc = "BASIC: ##$basic##\nYou deploy bipods ##100%## faster.\n\nACE: ##$pro##\nYou take ##50%## less bullet damage when you have a bipod deployed.",
+		-- steady grip
+		menu_steady_grip_beta_desc = "BASIC: ##$basic##\nYou gain a minor stability bonus roughly equivalent to ##5%## recoil reduction.\n\nACE: ##$pro##\nThis stability bonus is now doubled to roughly ##10%##.",
+		-- lock 'n load
+		menu_shock_and_awe_beta_desc = "BASIC: ##$basic##\nYou can now hipfire your weapons while sprinting.\n\nACE: ##$pro##\nYour automatic rifles, sniper rifles, shotguns, SMGs, LMGs, and miniguns reload up to ##25%## faster as the magazine runs low.",
+		-- fire control
+		menu_fire_control_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
+
+
+
+
+
+		-- OVERDOGs
+		menu_deck8_7_desc = "When you are surrounded by three or more enemies, you receive ##12%## less damage from enemies.\n\nYour second and each consecutive melee hit within ##5## seconds of the last one will deal ##2## times the damage. Missing a swing will reset this.",
+		menu_deck9_1_desc = "When you are surrounded by three or more enemies, you receive ##12%## less damage from enemies.\n\nYour second and each consecutive melee hit within ##5## seconds of the last one will deal ##2## times the damage. Missing a swing will reset this.",
+
+		menu_deckall_2 = "Get Cracking",
+		menu_deckall_2_desc = "You gain ##45%## more experience from heists.",
+		menu_deckall_4 = "Hustle",
+		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.",
+		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.",
+
+		-- Sicario cooldown reduction
+		menu_deck18_1_desc = "Unlocks and equips the throwable Smoke Bomb.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for ##10## seconds. While standing inside the smoke screen, you and any of your allies automatically avoid ##50%## of all bullets. Any enemies that stand in the smoke will see their accuracy reduced by ##50%##.\n\nAfter the smoke screen dissipates, the Smoke Bomb is on a cooldown for ##30## seconds, but killing enemies will reduce this cooldown by ##1## second.",
+
+
+
+
+
+		-- crew bonuses
+		-- interact inspire scavenge ai ap ammo
+		-- healthy sturdy evasive motivated regen quiet generous eager
+		menu_crew_eager_desc = "Players reload and switch weapons 25% faster.",
+		menu_crew_motivated_desc = "Players have 25 more stamina and the armor speed penalty is reduced by 25%.",
+	})
+end
 
 
 

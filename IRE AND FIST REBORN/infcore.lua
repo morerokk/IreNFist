@@ -73,6 +73,19 @@ if not IreNFist then
     -- Not sure which one of these two names Golden Grin uses, so just override them both.
     IreNFist.bad_heist_overrides.cas = deep_clone(IreNFist.bad_heist_overrides.kenaz)
 
+    -- Mod compatibility detection
+    -- Detect if a mod is installed and enabled, if it is then add a table entry so we can keep track of the mod
+    IreNFist.mod_compatibility = {}
+    -- Sydch's Skill Overhaul
+    local sso = BLT.Mods:GetModByName("Sydch's Skill Overhaul")
+    if sso and sso:IsEnabled() then
+        IreNFist.mod_compatibility.sso = true
+    end
+    -- Armor Overhaul
+    local armor_overhaul = BLT.Mods:GetModByName("Armor Overhaul")
+    if armor_overhaul and armor_overhaul:IsEnabled() then
+        IreNFist.mod_compatibility.armor_overhaul = true
+    end
 end
 
 -- Old table that I don't wanna refactor right now, holds menu settings but also holds tweakdata for the various weapon categories.

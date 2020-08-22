@@ -1,109 +1,114 @@
-Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, params)
+dofile(ModPath .. "infcore.lua")
 
-	local digest = function(value)
-		return Application:digest_value(value, true)
-	end
-	self.tier_unlocks = {
-		digest(0),
-		digest(1),
-		digest(3),
-		digest(16)
-	}
+-- If sydch's skill overhaul is enabled then don't touch any of the trees
+if not IreNFist.mod_compatibility.sso then
+	Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, params)
 
-	for a = 1, 21, 1 do
-		-- remove 25% headshot bonus, add xp multiplier
-		self.specializations[a][2].upgrades = {"passive_player_xp_multiplier"}
-		-- remove xp multiplier and concealment modifier
-		self.specializations[a][4].upgrades = {"player_passive_armor_movement_penalty_multiplier"}
-		-- remove 5% damage bonus
-		self.specializations[a][8].upgrades = {"passive_doctor_bag_interaction_speed_multiplier"}
-	end
+		local digest = function(value)
+			return Application:digest_value(value, true)
+		end
+		self.tier_unlocks = {
+			digest(0),
+			digest(1),
+			digest(3),
+			digest(16)
+		}
 
-	-- MASTERMIND
-	-- tier 1 cool under pressure
-	self.skills.stable_shot[1].upgrades = {"ugh_its_a_reload_bonus"}
-	self.skills.stable_shot[2].upgrades = {"ugh_its_a_reload_bonus_2"}
-	-- marksman
-	self.skills.sharpshooter[2].upgrades = {"weapon_passive_headshot_damage_multiplier"}
-	-- rifleman
-	self.skills.rifleman[1].upgrades = {"weapon_enter_steelsight_speed_multiplier", "snp_reload_speed_multiplier"}
-	self.skills.rifleman[2].upgrades = {"smg_reload_speed_multiplier", "assault_rifle_reload_speed_multiplier"}
-	-- aggressive reload
-	self.skills.speedy_reload[1].upgrades = {"snp_headshot_armor"}
-	self.skills.speedy_reload[2].upgrades = {"snp_headshot_armor_2"}
+		for a = 1, 21, 1 do
+			-- remove 25% headshot bonus, add xp multiplier
+			self.specializations[a][2].upgrades = {"passive_player_xp_multiplier"}
+			-- remove xp multiplier and concealment modifier
+			self.specializations[a][4].upgrades = {"player_passive_armor_movement_penalty_multiplier"}
+			-- remove 5% damage bonus
+			self.specializations[a][8].upgrades = {"passive_doctor_bag_interaction_speed_multiplier"}
+		end
 
-	-- Re-add old stockholm syndrome to stockholm syndrome skill
-	table.insert(self.skills.stockholm_syndrome[1].upgrades, "player_civilian_reviver")
+		-- MASTERMIND
+		-- tier 1 cool under pressure
+		self.skills.stable_shot[1].upgrades = {"ugh_its_a_reload_bonus"}
+		self.skills.stable_shot[2].upgrades = {"ugh_its_a_reload_bonus_2"}
+		-- marksman
+		self.skills.sharpshooter[2].upgrades = {"weapon_passive_headshot_damage_multiplier"}
+		-- rifleman
+		self.skills.rifleman[1].upgrades = {"weapon_enter_steelsight_speed_multiplier", "snp_reload_speed_multiplier"}
+		self.skills.rifleman[2].upgrades = {"smg_reload_speed_multiplier", "assault_rifle_reload_speed_multiplier"}
+		-- aggressive reload
+		self.skills.speedy_reload[1].upgrades = {"snp_headshot_armor"}
+		self.skills.speedy_reload[2].upgrades = {"snp_headshot_armor_2"}
 
-	-- GHOST
-	-- duck and cover
-	self.skills.sprinter[2].upgrades = {"player_run_dodge_chance", "slide_dodge_chance"}
-	-- Shockproof Ace: taser bullets (lol)
-	table.insert(self.skills.insulation[2].upgrades, "player_electric_bullets_while_tased")
+		-- Re-add old stockholm syndrome to stockholm syndrome skill
+		table.insert(self.skills.stockholm_syndrome[1].upgrades, "player_civilian_reviver")
 
-
-	-- FUGITIVE
-	-- gun nut
-	-- fuck your mag capacity
-	-- fuck your stryk magic too
-	-- basically just eat a bag of dicks for managing to trigger what precious little gun autism i have
-	self.skills.dance_instructor[1].upgrades = {"pistol_switchspeed_buff"}
-	self.skills.dance_instructor[2].upgrades = {"pistol_switchspeed_buff_2"}
-	-- akimbo
-	self.skills.akimbo[1].upgrades = {"empty_akimbo_switch"}
-	self.skills.akimbo[2].upgrades = {"empty_akimbo_reload"}
-	-- pumping iron
-	self.skills.steroids[1].upgrades = {"player_non_special_melee_multiplier", "player_melee_damage_multiplier"}
-	self.skills.steroids[2].upgrades = {"imma_chargin_mah_melee"}
-	-- desperado
-	self.skills.expert_handling[1].upgrades = {"pistol_enter_steelsight_speed_multiplier"}
-	-- one handed talent/off-handed reload
-	self.skills.gun_fighter[1].upgrades = {"offhand_reload_time_mult", "pistol_gives_offhand_reload"}
-	self.skills.gun_fighter[2].upgrades = {"offhand_reload_time_mult_2", "ar_gives_offhand_reload", "smg_gives_offhand_reload", "shotgun_gives_offhand_reload", "xbow_gives_offhand_reload"}
-	-- equilibrium
-	self.skills.equilibrium[1].upgrades = {"pistol_base_switchspeed_add"}
-	self.skills.equilibrium[2].upgrades = {"pistol_base_switchspeed_add_2"}
+		-- GHOST
+		-- duck and cover
+		self.skills.sprinter[2].upgrades = {"player_run_dodge_chance", "slide_dodge_chance"}
+		-- Shockproof Ace: taser bullets (lol)
+		table.insert(self.skills.insulation[2].upgrades, "player_electric_bullets_while_tased")
 
 
-	-- ENFORCER
-	-- overkill
-	self.skills.overkill[1].upgrades = {"shotgun_last_shell_amount", "shotgun_last_shell_dmg_mult"}
-	self.skills.overkill[2].upgrades = {"shotgun_last_shell_amount_2"}
-	-- far away
-	self.skills.far_away[1].upgrades = {"pellet_penalty_reduction"}
-	self.skills.far_away[2].upgrades = {"pellet_penalty_reduction_2"}
-	-- close by
-	self.skills.close_by[2].upgrades = {"shotgun_switchspeed_buff"}
-	-- shotgun cqb
-	self.skills.shotgun_cqb[2].upgrades = {"shotgun_reload_speed_multiplier_2"}
-	-- shotgun impact
-	--self.skills.shotgun_impact[1].upgrades = {"shotgun_damage_addend"}
-	--self.skills.shotgun_impact[2].upgrades = {"shotgun_damage_addend_2"}
-	self.skills.shotgun_impact[1].upgrades = {"advmov_stamina_on_kill"}
-	self.skills.shotgun_impact[2].upgrades = {"advmov_stamina_on_kill_2"}
+		-- FUGITIVE
+		-- gun nut
+		-- fuck your mag capacity
+		-- fuck your stryk magic too
+		-- basically just eat a bag of dicks for managing to trigger what precious little gun autism i have
+		self.skills.dance_instructor[1].upgrades = {"pistol_switchspeed_buff"}
+		self.skills.dance_instructor[2].upgrades = {"pistol_switchspeed_buff_2"}
+		-- akimbo
+		self.skills.akimbo[1].upgrades = {"empty_akimbo_switch"}
+		self.skills.akimbo[2].upgrades = {"empty_akimbo_reload"}
+		-- pumping iron
+		self.skills.steroids[1].upgrades = {"player_non_special_melee_multiplier", "player_melee_damage_multiplier"}
+		self.skills.steroids[2].upgrades = {"imma_chargin_mah_melee"}
+		-- desperado
+		self.skills.expert_handling[1].upgrades = {"pistol_enter_steelsight_speed_multiplier"}
+		-- one handed talent/off-handed reload
+		self.skills.gun_fighter[1].upgrades = {"offhand_reload_time_mult", "pistol_gives_offhand_reload"}
+		self.skills.gun_fighter[2].upgrades = {"offhand_reload_time_mult_2", "ar_gives_offhand_reload", "smg_gives_offhand_reload", "shotgun_gives_offhand_reload", "xbow_gives_offhand_reload"}
+		-- equilibrium
+		self.skills.equilibrium[1].upgrades = {"pistol_base_switchspeed_add"}
+		self.skills.equilibrium[2].upgrades = {"pistol_base_switchspeed_add_2"}
 
 
-	-- TECHNICIAN
-	-- surefire/bunker
-	self.skills.fast_fire[1].upgrades = {"bipod_deploy_speed_mult"}
-	self.skills.fast_fire[2].upgrades = {"bipod_dmg_taken_mult"}
-	-- steady grip
-	self.skills.steady_grip[1].upgrades = {"player_stability_increase_bonus_1"}
-	self.skills.steady_grip[2].upgrades = {"player_stability_increase_bonus_2"}
-	-- fire control
-	self.skills.fire_control[1].upgrades = {"recoil_h_mult"}
-	self.skills.fire_control[2].upgrades = {"recoil_h_mult_2"}
+		-- ENFORCER
+		-- overkill
+		self.skills.overkill[1].upgrades = {"shotgun_last_shell_amount", "shotgun_last_shell_dmg_mult"}
+		self.skills.overkill[2].upgrades = {"shotgun_last_shell_amount_2"}
+		-- far away
+		self.skills.far_away[1].upgrades = {"pellet_penalty_reduction"}
+		self.skills.far_away[2].upgrades = {"pellet_penalty_reduction_2"}
+		-- close by
+		self.skills.close_by[2].upgrades = {"shotgun_switchspeed_buff"}
+		-- shotgun cqb
+		self.skills.shotgun_cqb[2].upgrades = {"shotgun_reload_speed_multiplier_2"}
+		-- shotgun impact
+		--self.skills.shotgun_impact[1].upgrades = {"shotgun_damage_addend"}
+		--self.skills.shotgun_impact[2].upgrades = {"shotgun_damage_addend_2"}
+		self.skills.shotgun_impact[1].upgrades = {"advmov_stamina_on_kill"}
+		self.skills.shotgun_impact[2].upgrades = {"advmov_stamina_on_kill_2"}
+
+
+		-- TECHNICIAN
+		-- surefire/bunker
+		self.skills.fast_fire[1].upgrades = {"bipod_deploy_speed_mult"}
+		self.skills.fast_fire[2].upgrades = {"bipod_dmg_taken_mult"}
+		-- steady grip
+		self.skills.steady_grip[1].upgrades = {"player_stability_increase_bonus_1"}
+		self.skills.steady_grip[2].upgrades = {"player_stability_increase_bonus_2"}
+		-- fire control
+		self.skills.fire_control[1].upgrades = {"recoil_h_mult"}
+		self.skills.fire_control[2].upgrades = {"recoil_h_mult_2"}
 
 
 
 
-	-- lock 'n load
-	--self.skills.shock_and_awe[1].upgrades = {}
-	self.skills.shock_and_awe[2].upgrades = {"locknload_reload", "locknload_reload_partial"}
+		-- lock 'n load
+		--self.skills.shock_and_awe[1].upgrades = {}
+		self.skills.shock_and_awe[2].upgrades = {"locknload_reload", "locknload_reload_partial"}
 
-	-- Add armor ammo multiplier to default upgrades
-	if not table.contains(self.default_upgrades, "player_add_armor_stat_skill_ammo_mul") then
-		table.insert(self.default_upgrades, "player_add_armor_stat_skill_ammo_mul")
-	end
+		-- Add armor ammo multiplier to default upgrades
+		if not table.contains(self.default_upgrades, "player_add_armor_stat_skill_ammo_mul") then
+			table.insert(self.default_upgrades, "player_add_armor_stat_skill_ammo_mul")
+		end
 
-end)
+	end)
+end

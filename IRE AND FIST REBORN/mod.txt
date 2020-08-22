@@ -4,7 +4,7 @@
     "author" : "Solo Queue Pixy (maintained by Rokk)",
     "version" : "1.59.1",
 	"image" : "memedaytheheist.png",
-	"priority" : "4",
+	"priority" : "-1",
 	"blt_version" : 2,
 
 	"hooks" : [

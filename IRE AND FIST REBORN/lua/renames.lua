@@ -848,8 +848,45 @@ end
 	hahabenis = "fuck commas"
 })
 
--- Skill renames and descriptions, only used if Sydch's skill overhaul is not installed
-if not IreNFist.mod_compatibility.sso then
+-- Skill renames and descriptions, other ones are used if Sydch's skill overhaul is installed
+if IreNFist.mod_compatibility.sso then
+	LocalizationManager:add_localized_strings({
+		menu_insulation_beta_desc = "BASIC ##$basic##\nWhen you get tased, there will be a shock effect once every second. Each effect has a ##30%## chance to backfire on the Taser and knock them back. With this effects, there is slight chance for taser incapacitates you, although you are still vulnerable to other gunfire that can down you.\n\nAdditionally, you recover ##50%## faster when you freed from Tasers.\n\nACE ##$pro##\nWhen tased, you are able to free yourself from the Taser interacting with it within ##2## seconds by looking at the Taser and using the ##Interact## button. Your bullets will stun enemies while tased.\n\n##''I GOT FIFTY-THOUSAND VOLTS HERE WITH YOUR NAME ON EM.''##",
+		menu_silence_expert_desc = "BASIC ##$basic##\nYou gain ##8## weapon stability with silenced weapons.\n\nACE ##$pro##\nYou gain ##12## weapon accuracy and ##100%## snap to zoom speed increase with silenced weapons.",
+		menu_rifleman_beta_desc = "BASIC: ##$basic##\nYou aim down the sights ##100%## faster with all weapons and reload sniper rifles ##15%## faster.\n\nACE: ##$pro##\nYou also reload SMGs and assault rifles ##15%## faster.",
+		menu_speedy_reload_beta = "Have a Plan",
+		menu_speedy_reload_beta_desc = "BASIC: ##$basic##\nYou regain ##5## armor after headshotting with a sniper rifle.\n\nACE: ##$pro##\nThe armor regain is increased to ##50##.",
+		menu_single_shot_ammo_return_beta_desc = "BASIC ##$basic##\nGetting ##3## headshots in less than ##6## seconds will refund ##1## bullet to your used weapon. Can only be triggered by ##SMGs##, ##Assault Rifles## and ##Sniper Rifles## fired in ##Single Shot## fire mode.\n\nACE ##$pro##\nGetting ##2## headshots in less than ##12## seconds will refund ##1## bullet to your used weapon. Can only be triggered by ##SMGs##, ##Assault Rifles## and ##Sniper Rifles## fired in ##Single Shot## fire mode.",
+	
+		menu_shotgun_impact_beta = "Close Range Assault",
+		menu_shotgun_impact_beta_desc = "BASIC: ##$basic##\nKilling an enemy while sliding or dashing restores ##2## stamina. Killing an enemy while wallkicking or wallrunning restores ##3## stamina.\n\nACE: ##$pro##\nStamina restoration from advanced movement kills is ##doubled##.",
+		menu_shotgun_cqb_beta_desc = "BASIC: ##$basic##\nYou reload shotguns ##10%## faster.\n\nACE: ##$pro##\nYour shotgun reload speed bonus is increased to ##20%##.",
+		menu_far_away_beta = "Surgical Shot",
+		menu_far_away_beta_desc = "BASIC: ##$basic##\nYour shotguns lose ##25%## less damage from not having every pellet hit the same target.\n\nACE: ##$pro##\nThe damage loss from not hitting the same target with all pellets is now reduced by ##50%##.\n\nNote: Damage scales from 100% to roughly 30% depending the percentage of pellets that hit the same target.",
+		menu_close_by_beta = "Danger Close",
+		menu_close_by_beta_desc = "BASIC: ##$basic##\nYou can now hip-fire with shotguns while sprinting.\n\nACE: ##$pro##\nHaving a non-akimbo shotgun equipped increases all weapon switch speed by ##30%##.",
+		menu_overkill_beta = "Last Word",
+		menu_overkill_beta_desc = "BASIC: ##$basic##\nOn shotguns with a base capacity of at least ##4##, the last shell deals ##100%## more damage.\n\nACE: ##$pro##\nThe second-to-last shell also deals ##100%## more damage.",
+
+		menu_fire_control_beta = "Bunker",
+		menu_fire_control_beta_desc = "BASIC: ##$basic##\nYou deploy bipods ##100%## faster.\n\nACE: ##$pro##\nYou take ##50%## less bullet damage when you have a bipod deployed.",
+		menu_shock_and_awe_beta_desc = "BASIC ##$basic##\nYou gain the ability to ##Reload## your weapons while sprinting.\n\nACE ##$pro##\nYou gain the ability to ##Hip-Fire## with your weapons while sprinting.\n\nYour weapons reload up to ##25%## faster as the magazine runs low.",
+		menu_fast_fire_beta = "Fire Control",
+		menu_fast_fire_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
+
+		menu_dance_instructor = "Gun Kata",
+		menu_dance_instructor_desc = "BASIC: ##$basic##\nHaving a pistol equipped as your secondary increases all weapon switch speed by ##10%##.\n\nACE: ##$pro##\nThe weapon switch speed bonus is increased to ##20%##.",
+		menu_akimbo_skill_beta = "New York Reload",
+		menu_akimbo_skill_beta_desc = "BASIC: ##$basic##\nWhen your akimbo weapons are empty, you switch weapons ##20%## faster.\n\nACE: ##$pro##\nYour akimbo weapons reload ##15%## faster when empty.",
+
+		menu_trigger_happy_beta_desc = "BASIC: ##$basic##\nYou aim down the sights ##100%## faster with pistols.\n\nACE: ##$pro##\nYou reload both single and akimbo pistols ##20%## faster.",
+
+		menu_gun_fighter_beta = "Off-Handed Reload",
+		menu_gun_fighter_beta_desc = "BASIC: ##$basic##\nAfter switching to your secondary pistol, your primary weapon will automatically begin reloading itself. This reload takes ##4## times as long as a standard reload and is interrupted if you switch back to your primary.\n\nACE: ##$pro##\nYour off-hand reloads now only take ##3## times as long as a standard reload, and can also be initiated by switching to a secondary SMG, carbine, shotgun, or crossbow.",
+
+		menu_expert_handling_desc = "BASIC: ##$basic##\nFor every hit with a pistol you gain a ##20%## damage boost that lasts for ##2## seconds. Stacks up to ##2## times.\n\nACE: ##$pro##\nIncreases the damage boost duration to ##15## seconds.",
+	})
+else
 	LocalizationManager:add_localized_strings({
 		-- skill renames
 
@@ -887,6 +924,9 @@ if not IreNFist.mod_compatibility.sso then
 		-- GHOST
 		-- duck and cover
 		menu_sprinter_beta_desc = "BASIC: ##$basic##\nYour stamina starts regenerating ##25%## earlier and ##25%## faster. You also sprint ##25%## faster.\n\nACE: ##$pro##\nYou have a ##10%## increased chance to dodge while sprinting or sliding.",
+		-- dire need (moving target)
+		menu_moving_target = "Moving Target",
+		menu_moving_target_desc = "BASIC: ##$basic##\nYou gain ##2%## extra movement speed for every ##3## points of detection risk under ##35##, up to ##20%##.\n\nACE: ##$pro##\nYou gain ##2%## extra movement speed for every ##1## point of detection risk under ##35##, up to ##20%##.",
 		-- shockproof
 		menu_insulation_beta_desc = "BASIC: ##$basic##\nWhen tased, the shock effect has a ##30%## chance to backfire on the Taser, knocking them back.\n\nACE: ##$pro##\nWhen tased, you are able to free yourself from the taser by interacting with it within ##2## seconds of getting tased.\n\nWhile being tased, your bullets will electrify enemies.",
 

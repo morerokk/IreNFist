@@ -1,20 +1,16 @@
 dofile(ModPath .. "infcore.lua")
 
--- If sydch's skill overhaul is enabled then don't touch any of the trees
-if not IreNFist.mod_compatibility.sso then
-	Hooks:PostHook(UpgradesTweakData, "init", "fuckyourskills", function(self, params)
-		-- pistol reload
-		self.values.pistol.reload_speed_multiplier = {1.20}
+-- If sydch's skill overhaul is enabled then don't touch a lot of the skills and decks
+if IreNFist.mod_compatibility.sso then
 
-		-- shotgun reload
-		self.values.shotgun.reload_speed_multiplier = {1.10, 1.20}
+else
+	Hooks:PostHook(UpgradesTweakData, "init", "inf_fuckyourskills", function(self, params)
 		--self.skill_descs.shotgun_cqb.multibasic2 = "10%"
 		--self.skill_descs.shotgun_cqb.multipro = "20%"
 
 		-- overkill
 		self.skill_descs.overkill.multibasic = "20%"
 		self.skill_descs.overkill.multibasic2 = "10"
-
 
 		-- trigger happy
 		self.skill_descs.trigger_happy.multibasic4 = "20%" -- damage bonus
@@ -43,7 +39,7 @@ if not IreNFist.mod_compatibility.sso then
 		end
 	end)
 
-	Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "fuckyourskills2", function(self, params)
+	Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "inf_fuckyourskills2", function(self, params)
 		-- STOP JUMPING MY SCREEN AROUND
 		if not IreNFist.mod_compatibility.armor_overhaul then
 			self.values.player.body_armor.damage_shake = {0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10}
@@ -73,8 +69,6 @@ if not IreNFist.mod_compatibility.sso then
 
 		-- akimbo ammo
 		--self.values.akimbo.extra_ammo_multiplier = {1.25, 1.50}
-		-- akimbo recoil
-		self.values.akimbo.recoil_index_addend = {0, 0, 0, 0, 0}
 
 		-- sociopath/infiltrator OVERDOG
 		self.values.melee.stacking_hit_damage_multiplier = {2, 2}
@@ -104,7 +98,23 @@ if not IreNFist.mod_compatibility.sso then
 		-- Taser bullets
 		self.values.player.electric_bullets_while_tased = {true}
 
-
+		-- Moving Target
+		self.values.player.detection_risk_add_movement_speed = {
+			{
+				0.02,
+				3,
+				"below",
+				35,
+				0.2
+			},
+			{
+				0.02,
+				1,
+				"below",
+				35,
+				0.2
+			}
+		}
 
 
 		-- AI crew bonuses
@@ -116,34 +126,20 @@ if not IreNFist.mod_compatibility.sso then
 
 
 		-- InF skills
-		self.values.player.pistol_switchspeed_buff = {1.15, 1.30}
-		self.values.player.shotgun_switchspeed_buff = {1.30}
-		self.values.player.pellet_penalty_reduction = {0.25, 0.50}
-		self.values.player.empty_akimbo_switch = {1.20}
-		self.values.player.empty_akimbo_reload = {1.15}
 		self.values.player.imma_chargin_mah_melee = {2}
-		self.values.player.bipod_deploy_speed_mult = {2}
-		self.values.player.bipod_dmg_taken_mult = {0.50}
-		self.values.player.offhand_reload_time_mult = {4.0, 3.0}
-		self.values.player.pistol_gives_offhand_reload = {true}
-		self.values.player.ar_gives_offhand_reload = {true}
-		self.values.player.smg_gives_offhand_reload = {true}
-		self.values.player.shotgun_gives_offhand_reload = {true}
-		self.values.player.xbow_gives_offhand_reload = {true}
+
+
 		self.values.player.ugh_its_a_reload_bonus = {1.05, 1.10}
-		self.values.player.locknload_reload = {1.25}
-		self.values.player.locknload_reload_partial = {1.25}
-		self.values.player.recoil_h_mult = {0.90, 0.70}
-		self.values.player.snp_headshot_armor = {0.5, 5.0}
+
+		
 		self.values.player.pistol_base_switchspeed_add = {0.05, 0.10}
 		self.values.player.slide_dodge_addend = {0.10}
-		self.values.player.shotgun_last_shell_amount = {1, 2}
-		self.values.player.shotgun_last_shell_dmg_mult = {2}
-		self.values.player.advmov_stamina_on_kill = {2, 4}
+
+		
 
 		self.values.shotgun.damage_addend = {1.5, 2.5}
 
-		self.values.pistol.enter_steelsight_speed_multiplier = {2}
+		
 
 		-- Add extra ammo to the flak jacket *only*
 		-- Has overlap with armor overhaul
@@ -167,179 +163,13 @@ if not IreNFist.mod_compatibility.sso then
 		}
 	end)
 
-	Hooks:PostHook(UpgradesTweakData, "_pistol_definitions", "gonnamakemyownpistolskills", function(self, params)
-		self.definitions.pistol_enter_steelsight_speed_multiplier = {
-			name_id = "menu_pistol_enter_steelsight_speed_multiplier",
-			category = "feature",
-			upgrade = {
-				value = 1,
-				upgrade = "enter_steelsight_speed_multiplier",
-				category = "pistol"
-			}
-		}
-	end)
-
-	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills", function(self, params)
-		self.definitions.pistol_switchspeed_buff = {
-			category = "feature",
-			name_id = "pistol_switchspeed_buff",
-			upgrade = {
-				category = "player",
-				upgrade = "pistol_switchspeed_buff",
-				value = 1
-			}
-		}
-		self.definitions.pistol_switchspeed_buff_2 = {
-			category = "feature",
-			name_id = "pistol_switchspeed_buff",
-			upgrade = {
-				category = "player",
-				upgrade = "pistol_switchspeed_buff",
-				value = 2
-			}
-		}
-	
-		self.definitions.shotgun_switchspeed_buff = {
-			category = "feature",
-			name_id = "shotgun_switchspeed_buff",
-			upgrade = {
-				category = "player",
-				upgrade = "shotgun_switchspeed_buff",
-				value = 1
-			}
-		}
-	
-		self.definitions.pellet_penalty_reduction = {
-			category = "feature",
-			name_id = "pellet_penalty_reduction",
-			upgrade = {
-				category = "player",
-				upgrade = "pellet_penalty_reduction",
-				value = 1
-			}
-		}
-		self.definitions.pellet_penalty_reduction_2 = {
-			category = "feature",
-			name_id = "pellet_penalty_reduction",
-			upgrade = {
-				category = "player",
-				upgrade = "pellet_penalty_reduction",
-				value = 2
-			}
-		}
-	
-	
-	
-		self.definitions.empty_akimbo_switch = {
-			category = "feature",
-			name_id = "empty_akimbo_switch",
-			upgrade = {
-				category = "player",
-				upgrade = "empty_akimbo_switch",
-				value = 1
-			}
-		}
-		self.definitions.empty_akimbo_reload = {
-			category = "feature",
-			name_id = "empty_akimbo_reload",
-			upgrade = {
-				category = "player",
-				upgrade = "empty_akimbo_reload",
-				value = 1
-			}
-		}
-	
-	
+	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills", function(self, params)	
 		self.definitions.imma_chargin_mah_melee = {
 			category = "feature",
 			name_id = "imma_chargin_mah_melee",
 			upgrade = {
 				category = "player",
 				upgrade = "imma_chargin_mah_melee",
-				value = 1
-			}
-		}
-	
-		self.definitions.bipod_deploy_speed_mult = {
-			category = "feature",
-			name_id = "bipod_deploy_speed_mult",
-			upgrade = {
-				category = "player",
-				upgrade = "bipod_deploy_speed_mult",
-				value = 1
-			}
-		}
-		self.definitions.bipod_dmg_taken_mult = {
-			category = "feature",
-			name_id = "bipod_dmg_taken_mult",
-			upgrade = {
-				category = "player",
-				upgrade = "bipod_dmg_taken_mult",
-				value = 1
-			}
-		}
-	
-	
-		self.definitions.offhand_reload_time_mult = {
-			category = "feature",
-			name_id = "offhand_reload_time_mult",
-			upgrade = {
-				category = "player",
-				upgrade = "offhand_reload_time_mult",
-				value = 1
-			}
-		}
-		self.definitions.offhand_reload_time_mult_2 = {
-			category = "feature",
-			name_id = "offhand_reload_time_mult",
-			upgrade = {
-				category = "player",
-				upgrade = "offhand_reload_time_mult",
-				value = 2
-			}
-		}
-		self.definitions.pistol_gives_offhand_reload = {
-			category = "feature",
-			name_id = "pistol_gives_offhand_reload",
-			upgrade = {
-				category = "player",
-				upgrade = "pistol_gives_offhand_reload",
-				value = 1
-			}
-		}
-		self.definitions.ar_gives_offhand_reload = {
-			category = "feature",
-			name_id = "smg_gives_offhand_reload",
-			upgrade = {
-				category = "player",
-				upgrade = "ar_gives_offhand_reload",
-				value = 1
-			}
-		}
-		self.definitions.smg_gives_offhand_reload = {
-			category = "feature",
-			name_id = "smg_gives_offhand_reload",
-			upgrade = {
-				category = "player",
-				upgrade = "smg_gives_offhand_reload",
-				value = 1
-			}
-		}
-		self.definitions.shotgun_gives_offhand_reload = {
-			category = "feature",
-			name_id = "shotgun_gives_offhand_reload",
-			upgrade = {
-				category = "player",
-				upgrade = "shotgun_gives_offhand_reload",
-				value = 1
-			}
-		}
-		self.definitions.xbow_gives_offhand_reload = {
-			category = "feature",
-			name_id = "xbow_gives_offhand_reload",
-			upgrade = {
-				category = "player",
-				upgrade = "xbow_gives_offhand_reload",
 				value = 1
 			}
 		}
@@ -362,65 +192,7 @@ if not IreNFist.mod_compatibility.sso then
 				upgrade = "ugh_its_a_reload_bonus",
 				value = 2
 			}
-		}
-	
-		self.definitions.locknload_reload = {
-			category = "feature",
-			name_id = "locknload_reload",
-			upgrade = {
-				category = "player",
-				upgrade = "locknload_reload",
-				value = 1
-			}
-		}
-		self.definitions.locknload_reload_partial = {
-			category = "feature",
-			name_id = "locknload_reload_partial",
-			upgrade = {
-				category = "player",
-				upgrade = "locknload_reload_partial",
-				value = 1
-			}
-		}
-	
-		self.definitions.recoil_h_mult = {
-			category = "feature",
-			name_id = "recoil_h_mult",
-			upgrade = {
-				category = "player",
-				upgrade = "recoil_h_mult",
-				value = 1
-			}
-		}
-		self.definitions.recoil_h_mult_2 = {
-			category = "feature",
-			name_id = "recoil_h_mult",
-			upgrade = {
-				category = "player",
-				upgrade = "recoil_h_mult",
-				value = 2
-			}
-		}
-	
-		self.definitions.snp_headshot_armor = {
-			category = "feature",
-			name_id = "snp_headshot_armor",
-			upgrade = {
-				category = "player",
-				upgrade = "snp_headshot_armor",
-				value = 1
-			}
-		}
-		self.definitions.snp_headshot_armor_2 = {
-			category = "feature",
-			name_id = "snp_headshot_armor",
-			upgrade = {
-				category = "player",
-				upgrade = "snp_headshot_armor",
-				value = 2
-			}
-		}
-	
+		}	
 	
 		self.definitions.shotgun_damage_addend = {
 			name_id = "shotgun_damage_addend",
@@ -471,61 +243,380 @@ if not IreNFist.mod_compatibility.sso then
 			}
 		}
 	
-		self.definitions.shotgun_last_shell_amount = {
+		self.definitions.player_detection_risk_add_movement_speed_1 = {
 			category = "feature",
-			name_id = "shotgun_last_shell_amount",
+			name_id = "menu_player_detection_risk_add_movement_speed",
 			upgrade = {
 				category = "player",
-				upgrade = "shotgun_last_shell_amount",
-				value = 1
-			}
-		}
-		self.definitions.shotgun_last_shell_amount_2 = {
-			category = "feature",
-			name_id = "shotgun_last_shell_amount",
-			upgrade = {
-				category = "player",
-				upgrade = "shotgun_last_shell_amount",
-				value = 2
-			}
-		}
-		self.definitions.shotgun_last_shell_dmg_mult = {
-			category = "feature",
-			name_id = "shotgun_last_shell_dmg_mult",
-			upgrade = {
-				category = "player",
-				upgrade = "shotgun_last_shell_dmg_mult",
+				upgrade = "detection_risk_add_movement_speed",
 				value = 1
 			}
 		}
 	
-		self.definitions.advmov_stamina_on_kill = {
+		self.definitions.player_detection_risk_add_movement_speed_2 = {
 			category = "feature",
-			name_id = "advmov_stamina_on_kill",
+			name_id = "menu_player_detection_risk_add_movement_speed",
 			upgrade = {
 				category = "player",
-				upgrade = "advmov_stamina_on_kill",
-				value = 1
-			}
-		}
-		self.definitions.advmov_stamina_on_kill_2 = {
-			category = "feature",
-			name_id = "advmov_stamina_on_kill",
-			upgrade = {
-				category = "player",
-				upgrade = "advmov_stamina_on_kill",
+				upgrade = "detection_risk_add_movement_speed",
 				value = 2
 			}
 		}
-	
-		self.definitions.player_electric_bullets_while_tased = {
-			category = "feature",
-			name_id = "menu_player_eletric_bullets_while_tased",
-			upgrade = {
-				category = "player",
-				upgrade = "electric_bullets_while_tased",
-				value = 1
-			}
-	}
 	end)
 end
+
+-- Upgrade values that should always exist regardless of mod compatibility
+Hooks:PostHook(UpgradesTweakData, "init", "inf_upgradestweak_upgradevalues_always", function(self)
+	-- Remove all akimbo stability bonuses
+	self.values.akimbo.recoil_index_addend = {0, 0, 0, 0, 0}
+
+	-- pistol reload
+	self.values.pistol.reload_speed_multiplier = {1.20}
+
+	-- shotgun reload
+	self.values.shotgun.reload_speed_multiplier = {1.10, 1.20}
+
+	-- Sniper headshot armor regain
+	self.values.player.snp_headshot_armor = {0.5, 5.0}
+
+	-- Sniper headshot ammo regain
+	self.values.player.head_shot_ammo_return = {
+		{
+			headshots = 3,
+			ammo = 1,
+			time = 6
+		},
+		{
+			headshots = 2,
+			ammo = 1,
+			time = 12
+		}
+	}
+
+	self.values.player.advmov_stamina_on_kill = {2, 4}
+	self.values.player.pellet_penalty_reduction = {0.25, 0.50}
+	self.values.player.shotgun_switchspeed_buff = {1.30}
+	self.values.player.shotgun_last_shell_amount = {1, 2}
+	self.values.player.shotgun_last_shell_dmg_mult = {2}
+
+	self.values.player.bipod_deploy_speed_mult = {2}
+	self.values.player.bipod_dmg_taken_mult = {0.50}
+	self.values.player.locknload_reload = {1.25}
+	self.values.player.locknload_reload_partial = {1.25}
+	self.values.player.recoil_h_mult = {0.90, 0.70}
+
+	self.values.player.pistol_switchspeed_buff = {1.15, 1.30}
+	self.values.player.empty_akimbo_switch = {1.20}
+	self.values.player.empty_akimbo_reload = {1.15}
+	self.values.pistol.enter_steelsight_speed_multiplier = {2}
+	self.values.player.offhand_reload_time_mult = {4.0, 3.0}
+	self.values.player.pistol_gives_offhand_reload = {true}
+	self.values.player.ar_gives_offhand_reload = {true}
+	self.values.player.smg_gives_offhand_reload = {true}
+	self.values.player.shotgun_gives_offhand_reload = {true}
+	self.values.player.xbow_gives_offhand_reload = {true}
+end)
+
+-- Player upgrade definitions that should always exist regardless of mod compatibility
+Hooks:PostHook(UpgradesTweakData, "_player_definitions", "inf_upgradestweak_playerdefs_always", function(self)
+	-- TODO
+
+	self.definitions.snp_headshot_armor = {
+		category = "feature",
+		name_id = "snp_headshot_armor",
+		upgrade = {
+			category = "player",
+			upgrade = "snp_headshot_armor",
+			value = 1
+		}
+	}
+	self.definitions.snp_headshot_armor_2 = {
+		category = "feature",
+		name_id = "snp_headshot_armor",
+		upgrade = {
+			category = "player",
+			upgrade = "snp_headshot_armor",
+			value = 2
+		}
+	}
+
+	self.definitions.head_shot_ammo_return_1 = {
+		incremental = true,
+		name_id = "menu_head_shot_ammo_return_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "head_shot_ammo_return",
+			category = "player"
+		}
+	}
+	self.definitions.head_shot_ammo_return_2 = {
+		incremental = true,
+		name_id = "menu_head_shot_ammo_return_2",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "head_shot_ammo_return",
+			category = "player"
+		}
+	}
+
+	self.definitions.advmov_stamina_on_kill = {
+		category = "feature",
+		name_id = "advmov_stamina_on_kill",
+		upgrade = {
+			category = "player",
+			upgrade = "advmov_stamina_on_kill",
+			value = 1
+		}
+	}
+	self.definitions.advmov_stamina_on_kill_2 = {
+		category = "feature",
+		name_id = "advmov_stamina_on_kill",
+		upgrade = {
+			category = "player",
+			upgrade = "advmov_stamina_on_kill",
+			value = 2
+		}
+	}
+
+	self.definitions.player_electric_bullets_while_tased = {
+		category = "feature",
+		name_id = "menu_player_electric_bullets_while_tased",
+		upgrade = {
+			category = "player",
+			upgrade = "electric_bullets_while_tased",
+			value = 1
+		}
+	}
+
+	self.definitions.pellet_penalty_reduction = {
+		category = "feature",
+		name_id = "pellet_penalty_reduction",
+		upgrade = {
+			category = "player",
+			upgrade = "pellet_penalty_reduction",
+			value = 1
+		}
+	}
+	self.definitions.pellet_penalty_reduction_2 = {
+		category = "feature",
+		name_id = "pellet_penalty_reduction",
+		upgrade = {
+			category = "player",
+			upgrade = "pellet_penalty_reduction",
+			value = 2
+		}
+	}
+
+	self.definitions.shotgun_switchspeed_buff = {
+		category = "feature",
+		name_id = "shotgun_switchspeed_buff",
+		upgrade = {
+			category = "player",
+			upgrade = "shotgun_switchspeed_buff",
+			value = 1
+		}
+	}
+
+	self.definitions.shotgun_last_shell_amount = {
+		category = "feature",
+		name_id = "shotgun_last_shell_amount",
+		upgrade = {
+			category = "player",
+			upgrade = "shotgun_last_shell_amount",
+			value = 1
+		}
+	}
+	self.definitions.shotgun_last_shell_amount_2 = {
+		category = "feature",
+		name_id = "shotgun_last_shell_amount",
+		upgrade = {
+			category = "player",
+			upgrade = "shotgun_last_shell_amount",
+			value = 2
+		}
+	}
+	self.definitions.shotgun_last_shell_dmg_mult = {
+		category = "feature",
+		name_id = "shotgun_last_shell_dmg_mult",
+		upgrade = {
+			category = "player",
+			upgrade = "shotgun_last_shell_dmg_mult",
+			value = 1
+		}
+	}
+
+
+	self.definitions.bipod_deploy_speed_mult = {
+		category = "feature",
+		name_id = "bipod_deploy_speed_mult",
+		upgrade = {
+			category = "player",
+			upgrade = "bipod_deploy_speed_mult",
+			value = 1
+		}
+	}
+	self.definitions.bipod_dmg_taken_mult = {
+		category = "feature",
+		name_id = "bipod_dmg_taken_mult",
+		upgrade = {
+			category = "player",
+			upgrade = "bipod_dmg_taken_mult",
+			value = 1
+		}
+	}
+
+	self.definitions.locknload_reload = {
+		category = "feature",
+		name_id = "locknload_reload",
+		upgrade = {
+			category = "player",
+			upgrade = "locknload_reload",
+			value = 1
+		}
+	}
+	self.definitions.locknload_reload_partial = {
+		category = "feature",
+		name_id = "locknload_reload_partial",
+		upgrade = {
+			category = "player",
+			upgrade = "locknload_reload_partial",
+			value = 1
+		}
+	}
+
+	self.definitions.recoil_h_mult = {
+		category = "feature",
+		name_id = "recoil_h_mult",
+		upgrade = {
+			category = "player",
+			upgrade = "recoil_h_mult",
+			value = 1
+		}
+	}
+	self.definitions.recoil_h_mult_2 = {
+		category = "feature",
+		name_id = "recoil_h_mult",
+		upgrade = {
+			category = "player",
+			upgrade = "recoil_h_mult",
+			value = 2
+		}
+	}
+
+
+	self.definitions.pistol_switchspeed_buff = {
+		category = "feature",
+		name_id = "pistol_switchspeed_buff",
+		upgrade = {
+			category = "player",
+			upgrade = "pistol_switchspeed_buff",
+			value = 1
+		}
+	}
+	self.definitions.pistol_switchspeed_buff_2 = {
+		category = "feature",
+		name_id = "pistol_switchspeed_buff",
+		upgrade = {
+			category = "player",
+			upgrade = "pistol_switchspeed_buff",
+			value = 2
+		}
+	}
+
+	self.definitions.empty_akimbo_switch = {
+		category = "feature",
+		name_id = "empty_akimbo_switch",
+		upgrade = {
+			category = "player",
+			upgrade = "empty_akimbo_switch",
+			value = 1
+		}
+	}
+	self.definitions.empty_akimbo_reload = {
+		category = "feature",
+		name_id = "empty_akimbo_reload",
+		upgrade = {
+			category = "player",
+			upgrade = "empty_akimbo_reload",
+			value = 1
+		}
+	}
+
+	self.definitions.offhand_reload_time_mult = {
+		category = "feature",
+		name_id = "offhand_reload_time_mult",
+		upgrade = {
+			category = "player",
+			upgrade = "offhand_reload_time_mult",
+			value = 1
+		}
+	}
+	self.definitions.offhand_reload_time_mult_2 = {
+		category = "feature",
+		name_id = "offhand_reload_time_mult",
+		upgrade = {
+			category = "player",
+			upgrade = "offhand_reload_time_mult",
+			value = 2
+		}
+	}
+	self.definitions.pistol_gives_offhand_reload = {
+		category = "feature",
+		name_id = "pistol_gives_offhand_reload",
+		upgrade = {
+			category = "player",
+			upgrade = "pistol_gives_offhand_reload",
+			value = 1
+		}
+	}
+	self.definitions.ar_gives_offhand_reload = {
+		category = "feature",
+		name_id = "smg_gives_offhand_reload",
+		upgrade = {
+			category = "player",
+			upgrade = "ar_gives_offhand_reload",
+			value = 1
+		}
+	}
+	self.definitions.smg_gives_offhand_reload = {
+		category = "feature",
+		name_id = "smg_gives_offhand_reload",
+		upgrade = {
+			category = "player",
+			upgrade = "smg_gives_offhand_reload",
+			value = 1
+		}
+	}
+	self.definitions.shotgun_gives_offhand_reload = {
+		category = "feature",
+		name_id = "shotgun_gives_offhand_reload",
+		upgrade = {
+			category = "player",
+			upgrade = "shotgun_gives_offhand_reload",
+			value = 1
+		}
+	}
+	self.definitions.xbow_gives_offhand_reload = {
+		category = "feature",
+		name_id = "xbow_gives_offhand_reload",
+		upgrade = {
+			category = "player",
+			upgrade = "xbow_gives_offhand_reload",
+			value = 1
+		}
+	}
+end)
+
+Hooks:PostHook(UpgradesTweakData, "_pistol_definitions", "gonnamakemyownpistolskills", function(self, params)
+	self.definitions.pistol_enter_steelsight_speed_multiplier = {
+		name_id = "menu_pistol_enter_steelsight_speed_multiplier",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "enter_steelsight_speed_multiplier",
+			category = "pistol"
+		}
+	}
+end)

@@ -1054,11 +1054,11 @@ if InFmenu and InFmenu.settings.enablenewcopvoices then
 		local job = Global.level_data and Global.level_data.level_id
 		if job and jobs_speech[job] then
 			-- Use the provided gangster speech type for this job
-			self.gangster.speech_prefix_p1 = job_speech_prefixes[job].p1
-			self.gangster.speech_prefix_count = job_speech_prefixes[job].count
-			self.gangster.speech_prefix_p2 = job_speech_prefixes[job].p2
+			self.gangster.speech_prefix_p1 = jobs_speech[job].p1
+			self.gangster.speech_prefix_count = jobs_speech[job].count
+			self.gangster.speech_prefix_p2 = jobs_speech[job].p2
 
-			if job_speech_prefixes[job].gangster_is_cop then
+			if jobs_speech[job].gangster_is_cop then
 				-- If the gangsters are undercover cops, give them the same attributes as cops (rescue hostages, arrest players)
 				self.gangster.no_arrest = false
 				self.gangster.rescue_hostages = true

@@ -81,6 +81,8 @@
 	"inf_txt_partname_3": "3: Real names",
 	"inf_disablefrogmanwarnings": "Disable mod incompatibility warnings",
 	"inf_disablefrogmanwarnings_desc": "Disabls startup notifications for incompatible mods like Full Speed Swarm.",
+	"inf_changeitemprices": "Change item prices",
+	"inf_changeitemprices_desc": "If enabled, most weapons, weaponmods and assets will cost $0. Even with this option disabled, many simpler weapon mods (unfolded stocks) will still cost $0.",
 
 
 	"inf_easter_egg": "Special thanks to Fahrenheit and Ricky Rio for playing this shit with me even though Ricky Rio is total fucking garbage. gitgud scrub."

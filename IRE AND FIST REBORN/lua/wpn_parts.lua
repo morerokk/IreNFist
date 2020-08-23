@@ -208,7 +208,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 
 	-- rifle/pistol suppressors
 	local silstatsconc0 = {
-		value = 0,
+		value = 1,
 		suppression = 12,
 		alert_size = 12,
 		spread = 5,
@@ -216,7 +216,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 		concealment = 0
 	}
 	local silstatsconc1 = {
-		value = 0,
+		value = 1,
 		suppression = 12,
 		alert_size = 12,
 		spread = 5,
@@ -224,7 +224,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 		concealment = -1
 	}
 	local silstatsconc2 = {
-		value = 0,
+		value = 1,
 		suppression = 12,
 		alert_size = 12,
 		spread = 5,
@@ -233,7 +233,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 	}
 	-- sniper rifle
 	local silstatssnp = {
-		value = 0,
+		value = 1,
 		suppression = 12,
 		alert_size = 12,
 		recoil = 4,
@@ -241,7 +241,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 	}
 	-- shotgun
 	local silstatssho = {
-		value = 0,
+		value = 1,
 		suppression = 12,
 		alert_size = 12,
 		recoil = 4,
@@ -250,112 +250,112 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 
 	-- barrel presets
 	local barrel_m1 = {
-		value = 0,
+		value = 1,
 		spread = 5,
 		recoil = 3,
 		reload = -5,
 		concealment = -1
 	}
 	local barrel_m2 = {
-		value = 0,
+		value = 2,
 		spread = 10,
 		recoil = 6,
 		reload = -10,
 		concealment = -2
 	}
 	local barrel_p1 = {
-		value = 0,
+		value = 1,
 		spread = -5,
 		recoil = -2,
 		reload = 5,
 		concealment = 1
 	}
 	local barrel_p2 = {
-		value = 0,
+		value = 2,
 		spread = -10,
 		recoil = -4,
 		reload = 10,
 		concealment = 2
 	}
 	local barrel_p3 = {
-		value = 0,
+		value = 2,
 		spread = -15,
 		recoil = -6,
 		reload = 15,
 		concealment = 3
 	}
 	local barrelsho_m1 = {
-		value = 0,
+		value = 1,
 		spread = 10,
 		recoil = 2,
 		reload = -8,
 		concealment = -1
 	}
 	local barrelsho_m2 = {
-		value = 0,
+		value = 2,
 		spread = 20,
 		recoil = 4,
 		reload = -16,
 		concealment = -2
 	}
 	local barrelsho_m3 = {
-		value = 0,
+		value = 2,
 		spread = 30,
 		recoil = 6,
 		reload = -24,
 		concealment = -2
 	}
 	local barrelsho_p1 = {
-		value = 0,
+		value = 1,
 		spread = -15,
 		recoil = -2,
 		reload = 8,
 		concealment = 1
 	}
 	local barrelsho_p2 = {
-		value = 0,
+		value = 2,
 		spread = -20,
 		recoil = -4,
 		reload = 16,
 		concealment = 2
 	}
 	local barrelsho_p3 = {
-		value = 0,
+		value = 2,
 		spread = -30,
 		recoil = -6,
 		reload = 24,
 		concealment = 3
 	}
 	local barrelshoammo_m1 = {
-		value = 0,
+		value = 1,
 		spread = 10,
 		recoil = 2,
 		reload = -8,
 		concealment = -1
 	}
 	local barrelshoammo_m2 = {
-		value = 0,
+		value = 2,
 		spread = 20,
 		recoil = 4,
 		reload = -16,
 		concealment = -2
 	}
 	local barrelshoammo_p1 = {
-		value = 0,
+		value = 1,
 		spread = -10,
 		recoil = -2,
 		reload = 12,
 		concealment = 1
 	}
 	local barrelshoammo_p2 = {
-		value = 0,
+		value = 2,
 		spread = -20,
 		recoil = -4,
 		reload = 24,
 		concealment = 2
 	}
 	local barrelshoammo_p3 = {
-		value = 0,
+		value = 2,
 		spread = -30,
 		recoil = -6,
 		reload = 36,
@@ -363,7 +363,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 	}
 	-- stock presets
 	local stock_snp = {
-		value = 0,
+		value = 1,
 		recoil = 10,
 		reload = -10,
 		concealment = -2
@@ -371,13 +371,13 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 
 	-- double barrel presets
 	local db_barrel = {
-		value = 0,
+		value = 1,
 		spread = -30,
 		reload = 20,
 		concealment = 3
 	}
 	local db_stock = {
-		value = 0,
+		value = 1,
 		recoil = -10,
 		reload = 10,
 		concealment = 3
@@ -445,7 +445,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, pa
 		concealment = -4
 	}
 	local mag_alternating = {
-		value = 0,
+		value = 1,
 		reload = -20,
 		concealment = -1
 	}
@@ -525,49 +525,49 @@ end
 	-- SIGHTS
 	-- Professional's Choice
 	self.parts.wpn_fps_upg_o_t1micro.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
 	-- See More Sight
 	self.parts.wpn_fps_upg_o_cmore.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
 	-- Speculator Sight
 	self.parts.wpn_fps_upg_o_reflex.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
 	-- Compact Holosight
 	self.parts.wpn_fps_upg_o_eotech_xps.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
 	-- Holographic Sight
 	self.parts.wpn_fps_upg_o_eotech.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
 	-- Surgeon Sight
 	self.parts.wpn_fps_upg_o_docter.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
 	-- Solar Sight
 	self.parts.wpn_fps_upg_o_rx30.stats = {
-		value = 0,
+		value = 1,
 		zoom = 3,
 		concealment = -2
 	}
 	-- Trigonom Sight
 	self.parts.wpn_fps_upg_o_rx01.stats = {
-		value = 0,
+		value = 1,
 		zoom = 3,
 		concealment = -2
 	}
@@ -580,41 +580,41 @@ end
 	}
 	--self.parts.wpn_fps_upg_o_cs.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_cs.stats = {
-		value = 0,
+		value = 1,
 		zoom = 3,
 		concealment = -2
 	}
 	-- Military Red Dot Sight
 	--self.parts.wpn_fps_upg_o_aimpoint.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_aimpoint.stats = {
-		value = 0,
+		value = 1,
 		zoom = 3,
 		concealment = -2
 	}
 	--self.parts.wpn_fps_upg_o_aimpoint_2.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_aimpoint_2.stats = {
-		value = 0,
+		value = 1,
 		zoom = 3,
 		concealment = -2
 	}
 	-- Milspec Scope
 	self.parts.wpn_fps_upg_o_specter.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_specter.stats = {
-		value = 0,
+		value = 1,
 		zoom = 5,
 		concealment = -2
 	}
 	-- ACOUGH
 	self.parts.wpn_fps_upg_o_acog.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_acog.stats = {
-		value = 0,
+		value = 1,
 		zoom = 5,
 		concealment = -2
 	}
 	-- Recon Sight
 	self.parts.wpn_fps_upg_o_spot.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_spot.stats = {
-		value = 0,
+		value = 1,
 		zoom = 5,
 		concealment = -2
 	}
@@ -622,7 +622,7 @@ end
 	-- BMG Advanced Combat Sight (trijicon)
 	self.parts.wpn_fps_upg_o_bmg.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_bmg.stats = {
-		value = 0,
+		value = 1,
 		zoom = 5,
 		concealment = -2
 	}
@@ -630,7 +630,7 @@ end
 	-- FC1 compact profile sight
 	self.parts.wpn_fps_upg_o_fc1.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_fc1.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
@@ -638,26 +638,26 @@ end
 	-- UH maelstrom
 	self.parts.wpn_fps_upg_o_uh.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_uh.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0,
 		concealment = -1
 	}
 
 	-- Roach/Pistol Red Dot Sight
 	self.parts.wpn_fps_upg_o_rmr.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	
 	-- Riktpunkt
 	self.parts.wpn_fps_upg_o_rikt.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	
 	-- Microsight
 	self.parts.wpn_fps_upg_o_rms.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 
@@ -665,7 +665,7 @@ end
 	self.parts.inf_shortdot.customsight = true
 	self.parts.inf_shortdot.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.inf_shortdot.stats = {
-		value = 0,
+		value = 1,
 		zoom = 6,
 		concealment = 0
 	}
@@ -679,27 +679,27 @@ end
 --]]
 	self.parts.wpn_fps_upg_o_shortdot.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_shortdot.stats = {
-		value = 0,
+		value = 1,
 		zoom = 6,
 		concealment = 0
 	}
 	self.parts.wpn_fps_upg_o_shortdot_vanilla.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_shortdot_vanilla.stats = {
-		value = 0,
+		value = 1,
 		zoom = 6,
 		concealment = 0
 	}
 	-- Theia Magnified Scope
 	self.parts.wpn_fps_upg_o_leupold.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_leupold.stats = {
-		value = 0,
+		value = 2,
 		zoom = 10,
 		concealment = -1
 	}
 	-- Box Buddy
 	self.parts.wpn_fps_upg_o_box.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_box.stats = {
-		value = 0,
+		value = 2,
 		zoom = 10,
 		concealment = -1
 	}
@@ -757,27 +757,27 @@ end
 
 	-- Marksman's Sight
 	self.parts.wpn_upg_o_marksmansight_rear.stats = {
-		value = 0,
+		value = 1,
 		zoom = 0
 	}
 	-- 45-Degree Irons
 	self.parts.wpn_fps_upg_o_45iron.stats = {
-		value = 0,
+		value = 1,
 		gadget_zoom = 2
 	}
 	-- 45-Degree Red Dot Sight
 	self.parts.wpn_fps_upg_o_45rds.stats = {
-		value = 0,
+		value = 1,
 		gadget_zoom = 2
 	}
 	-- Riktpunkt 45-Degree Sight
 	self.parts.wpn_fps_upg_o_45rds_v2.stats = {
-		value = 0,
+		value = 1,
 		gadget_zoom = 2
 	}
 	-- Riktpunkt Magnifier
 	self.parts.wpn_fps_upg_o_xpsg33_magnifier.stats = {
-		value = 0,
+		value = 1,
 		gadget_zoom = 10
 	}
 	-- InF BUIS part
@@ -785,7 +785,7 @@ end
 	self.parts.inf_buis.a_obj = "a_s"
 	self.parts.inf_buis.sub_type = "second_sight"
 	self.parts.inf_buis.stats = {
-		value = 0,
+		value = 1,
 		gadget_zoom = 2
 	}
 	self.parts.inf_buis.stance_mod = {
@@ -808,78 +808,78 @@ end
 	self.parts.wpn_fps_upg_i_singlefire.perks = {}
 	--self.parts.wpn_fps_upg_i_singlefire.forbids = {"wpn_fps_upg_pn_over", "wpn_fps_upg_pn_under"}
 	self.parts.wpn_fps_upg_i_singlefire.stats = {
-		value = 0
+		value = 1,
 	}
 	-- Auto Fire Lock/Ultra-Light Bolt
 	self.parts.wpn_fps_upg_i_autofire.custom_stats = {inf_rof_mult = 1.10}
 	self.parts.wpn_fps_upg_i_autofire.perks = {}
 	--self.parts.wpn_fps_upg_i_autofire.forbids = {"wpn_fps_upg_pn_over", "wpn_fps_upg_pn_under"}
 	self.parts.wpn_fps_upg_i_autofire.stats = {
-		value = 0
+		value = 1,
 	}
 
 
 	-- NON-SIGHT GADGETS AND SHIT
 	-- Tactical Laser Module
 	self.parts.wpn_fps_upg_fl_ass_smg_sho_peqbox.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	-- Assault Light
 	self.parts.wpn_fps_upg_fl_ass_smg_sho_surefire.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	-- Compact Laser Module
 	self.parts.wpn_fps_upg_fl_ass_laser.stats = {
-		value = 0
+		value = 1,
 	}
 	-- Military Laser Module
 	self.parts.wpn_fps_upg_fl_ass_peq15.stats = {
-		value = 0,
+		value = 1,
 		concealment = -2
 	}
 	-- LED Combo
 	self.parts.wpn_fps_upg_fl_ass_utg.stats = {
-		value = 0,
+		value = 2,
 		concealment = -2
 	}
 	
 	-- Signature Magnifier Gadget
 	self.parts.wpn_fps_upg_o_sig.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	
 	-- 45 degree ironsights
 	-- Why why why does this *add* concealment in vanilla?
 	self.parts.wpn_fps_upg_o_45steel.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 
 	-- Pocket Laser
 	self.parts.wpn_fps_upg_fl_pis_laser.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	-- Tactical Pistol Light
 	self.parts.wpn_fps_upg_fl_pis_tlr1.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	-- Polymer Flashlight
 	self.parts.wpn_fps_upg_fl_pis_m3x.stats = {
-		value = 0,
+		value = 1,
 		concealment = -1
 	}
 	-- Micro Laser
 	self.parts.wpn_fps_upg_fl_pis_crimson.stats = {
-		value = 0
+		value = 1,
 	}
 	-- Combined Module
 	self.parts.wpn_fps_upg_fl_pis_x400v.stats = {
-		value = 0,
+		value = 2,
 		concealment = -2
 	}
 
@@ -888,44 +888,44 @@ end
 	-- GENERIC BARREL GARBAGE
 	-- Stubby Compensator
 	self.parts.wpn_fps_upg_ns_ass_smg_stubby.stats = {
-		value = 0,
+		value = 1,
 		spread = 5,
 		concealment = -1
 	}
 	-- Ported Compensator
 	self.parts.wpn_fps_upg_ass_ns_battle.stats = {
-		value = 0,
+		value = 1,
 		recoil = 2,
 		concealment = -1
 	}
 	-- The Tank
 	self.parts.wpn_fps_upg_ns_ass_smg_tank.stats = {
-		value = 0,
+		value = 1,
 		recoil = 2,
 		concealment = -1
 	}
 	-- Fire Breather
 	self.parts.wpn_fps_upg_ns_ass_smg_firepig.stats = {
-		value = 0,
+		value = 1,
 		spread = 2,
 		recoil = 1,
 		concealment = -1
 	}
 	-- Competitor's Compensator
 	self.parts.wpn_fps_upg_ass_ns_jprifles.stats = {
-		value = 0,
+		value = 1,
 		recoil = 2,
 		concealment = -1
 	}
 	-- Tactical Compensator
 	self.parts.wpn_fps_upg_ass_ns_surefire.stats = {
-		value = 0,
+		value = 1,
 		spread = 5,
 		concealment = -1
 	}
 	-- Funnel of Fun Nozzle
 	self.parts.wpn_fps_upg_ass_ns_linear.stats = {
-		value = 0,
+		value = 1,
 		spread = 2,
 		recoil = 1,
 		concealment = -1
@@ -933,20 +933,20 @@ end
 
 	-- IPSC Compensator
 	self.parts.wpn_fps_upg_ns_pis_ipsccomp.stats = {
-		value = 0,
+		value = 1,
 		spread = 5,
 		concealment = -1
 	}
 	-- Facepunch Compensator
 	self.parts.wpn_fps_upg_ns_pis_meatgrinder.stats = {
-		value = 0,
+		value = 1,
 		recoil = 2,
 		concealment = -1
 	}
 	
 	-- Typhoon Compensator
 	self.parts.wpn_fps_upg_ns_pis_typhoon.stats = {
-		value = 0,
+		value = 1,
 		recoil = 1,
 		spread = 2,
 		concealment = -1
@@ -954,7 +954,7 @@ end
 	
 	-- Marmon Compensator
 	self.parts.wpn_fps_upg_ns_ass_smg_v6.stats = {
-		value = 0,
+		value = 1,
 		recoil = 2,
 		concealment = -1
 	}
@@ -977,27 +977,27 @@ end
 	-- Shark Teeth
 	--self.parts.wpn_fps_upg_ns_shot_shark.custom_stats = {armor_piercing_sub = 0.80}
 	self.parts.wpn_fps_upg_ns_shot_shark.stats = {
-		value = 0,
+		value = 1,
 		recoil = 2,
 		concealment = -1
 	}
 	-- King's Crown
 	--self.parts.wpn_fps_upg_shot_ns_king.custom_stats = {armor_piercing_sub = 0.80}
 	self.parts.wpn_fps_upg_shot_ns_king.stats = {
-		value = 0,
+		value = 1,
 		recoil = 2,
 		concealment = -1
 	}
 	-- Donald's Horizontal Leveller
 	self.parts.wpn_fps_upg_ns_duck.stats = {
-		value = 0,
+		value = 1,
 		spread_multi = {2.00, 0.5},
 		concealment = -1
 	}
 	-- Silent Killer
 	self.parts.wpn_fps_upg_ns_shot_thick.custom_stats = shotgunsilencercustomstats
 	self.parts.wpn_fps_upg_ns_shot_thick.stats = {
-		value = 0,
+		value = 1,
 		suppression = 12,
 		alert_size = 12,
 		damage = -3,
@@ -1008,7 +1008,7 @@ end
 	-- Ssh!
 	self.parts.wpn_fps_upg_ns_sho_salvo_large.custom_stats = shotgunsilencercustomstats
 	self.parts.wpn_fps_upg_ns_sho_salvo_large.stats = {
-		value = 0,
+		value = 1,
 		suppression = 12,
 		alert_size = 12,
 		damage = -3,
@@ -1022,7 +1022,7 @@ end
 
 	-- Flash Hider
 	self.parts.wpn_fps_upg_pis_ns_flash.stats = {
-		value = 0,
+		value = 1,
 		spread = 2,
 		recoil = 1,
 		concealment = -1
@@ -1060,12 +1060,12 @@ end
 	-- VARIOUS GADGETS
 	-- Military Laser Module
 	self.parts.wpn_fps_upg_fl_ass_peq15.stats = {
-		value = 0,
+		value = 1,
 		concealment = -2
 	}
 	-- Compact Laser Module
 	self.parts.wpn_fps_upg_fl_ass_laser.stats = {
-		value = 0
+		value = 1
 	}
 	-- lion bipod
 	self.parts.wpn_fps_upg_bp_lmg_lionbipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -1966,7 +1966,9 @@ end
 	self.parts.wpn_fps_ass_galil_fg_sar.stats = deep_clone(nostats)
 	-- Sniper Handguard
 	self.parts.wpn_fps_ass_galil_fg_sniper.stats = deep_clone(barrel_m1)
-if BeardLib.Utils:FindMod("Bipod Galil") then
+
+	-- Add bipod support to GALIL
+	-- This code was originally inside the if-statement below, but this is unnecessary.
 	local galilhandguards = {"wpn_fps_ass_galil_fg_standard", "wpn_fps_ass_galil_fg_sniper"}
 	for a, part in pairs(galilhandguards) do
 		self.parts[part].adds = self.parts[part].adds or {}
@@ -1974,16 +1976,18 @@ if BeardLib.Utils:FindMod("Bipod Galil") then
 		self.parts[part].custom_stats = self.parts[part].custom_stats or {}
 		self.parts[part].custom_stats.recoil_horizontal_mult = 2
 	end
-	self.parts.wpn_fps_ass_galil_bipod_folded.type = "bipod"
-	self.parts.wpn_fps_ass_galil_bipod_folded.custom_stats = {recoil_horizontal_mult = 1/2}
-	self.parts.wpn_fps_ass_galil_bipod_folded.stats = {
-		value = 0,
-		concealment = 1
-	}
-DelayedCalls:Add("galilbipoddelay", delay, function(self, params)
-	table.insert(tweak_data.weapon.factory.parts.wpn_fps_ass_galil_bipod_folded.forbids, "inf_bipod_part")
-end)
-end
+
+	if BeardLib.Utils:FindMod("Bipod Galil") then
+		self.parts.wpn_fps_ass_galil_bipod_folded.type = "bipod"
+		self.parts.wpn_fps_ass_galil_bipod_folded.custom_stats = {recoil_horizontal_mult = 1/2}
+		self.parts.wpn_fps_ass_galil_bipod_folded.stats = {
+			value = 0,
+			concealment = 1
+		}
+		DelayedCalls:Add("galilbipoddelay", delay, function(self, params)
+			table.insert(tweak_data.weapon.factory.parts.wpn_fps_ass_galil_bipod_folded.forbids, "inf_bipod_part")
+		end)
+	end
 	-- Sniper Grip
 	self.parts.wpn_fps_ass_galil_g_sniper.stats = deep_clone(nostats)
 	-- FABulous Stock
@@ -8625,7 +8629,9 @@ end
 
 	for part_id, part_data in pairs(self.parts) do
 		if part_data.stats and part_data.stats.value then
-			part_data.stats.value = 0
+			if InFmenu.settings.changeitemprices then
+				part_data.stats.value = 0
+			end
 			part_data.has_description = true
 		end
 --[[

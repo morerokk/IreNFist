@@ -98,6 +98,7 @@ if not InFmenu then
         reloadbreaksads = true,
         disable_autoreload = true,
         goldeneye = 1,
+        changeitemprices = true,
 
         rainbowassault = true,
         skulldozersahoy = 2,

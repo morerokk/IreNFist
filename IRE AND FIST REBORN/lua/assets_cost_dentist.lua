@@ -1,9 +1,13 @@
-Hooks:PostHook( PrePlanningTweakData , "init" , "gib_preplans_plox" , function( self , params )
+dofile(ModPath .. "infcore.lua")
 
-	for i in pairs(self.types) do
-		self.types[i].cost = 0
-	end
+if InFmenu.settings.changeitemprices then
+	Hooks:PostHook( PrePlanningTweakData , "init" , "gib_preplans_plox" , function( self , params )
 
-	self.gui.MAX_DRAW_POINTS = math.huge
+		for i in pairs(self.types) do
+			self.types[i].cost = 0
+		end
 
-end)
+		self.gui.MAX_DRAW_POINTS = math.huge
+
+	end)
+end

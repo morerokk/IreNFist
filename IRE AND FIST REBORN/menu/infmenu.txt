@@ -164,6 +164,15 @@
 			"default_value" : 1
 		},
 		{
+			"type" : "toggle",
+			"id" : "changeitemprices",
+			"title" : "inf_changeitemprices",
+			"description" : "inf_changeitemprices_desc",
+			"callback" : "infcb_changeitemprices",
+			"value" : "changeitemprices",
+			"default_value" : true
+		},
+		{
 			"type" : "divider",
 			"size" : 16
 		},

@@ -228,7 +228,9 @@ function WeaponTweakData:inf_init_stats(wpn)
 	self[wpn].spreadadd.moving_steelsight = 0
 	self[wpn].reload_speed_mult = 1
 	self[wpn].desc_id_short = self[wpn].desc_id .. "_short"
-	self[wpn].price = 0
+	if InFmenu and InFmenu.settings.changeitemprices then
+		self[wpn].price = 0
+	end
 	self[wpn].BURST_FIRE = false
 	self[wpn].autohit.MIN_RATIO = 0
 	self[wpn].autohit.MAX_RATIO = 0

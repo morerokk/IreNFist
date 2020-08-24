@@ -2125,18 +2125,18 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.r700.CLIP_AMMO_MAX = 10
 	self.r700.stats.concealment = 17
 	self.r700.not_empty_reload_speed_mult = 1.40
-	self.r700.timers.reload_not_empty = 4.8
+	self.r700.timers.reload_not_empty = 3.3
 	self.r700.timers.reload_not_empty_end = 0.70 -- 2.51
 	self.r700.empty_reload_speed_mult = 1.40
-	self.r700.timers.reload_empty = 5.5
-	self.r700.timers.reload_empty_end = 0.50 -- 3.09
+	self.r700.timers.reload_empty = 5
+	self.r700.timers.reload_empty_end = 0.8 -- 3.09
 	--self.r700.price = 300*1000
 	self:apply_standard_bipod_stats("r700")
 	self.r700.custom_bipod = true
-	self.r700.bipod_weapon_translation = Vector3(-2, -6, -4)
-	pivot_shoulder_translation = Vector3(20.555, 48.5, -8.55)
+	self.r700.bipod_weapon_translation = Vector3(-2, 0, -4)
+	pivot_shoulder_translation = Vector3(19.38, 42.8, -8.53)
 	pivot_shoulder_rotation = Rotation(0.1, -0.1, 0.6)
-	pivot_head_translation = Vector3(10, 33, -4)
+	pivot_head_translation = Vector3(11.5, 50, -4.75)
 	pivot_head_rotation = Rotation(0, 0, 0)
 	self.r700.stances.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
 	self.r700.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
@@ -2151,7 +2151,7 @@ function WeaponTweakData:_init_new_weapons(...)
 			{
 				name = "a_bp",
 				base_a_obj = "a_body",
-				position = Vector3(0, 47, 4),
+				position = Vector3(0, 47, 2),
 				rotation = Rotation(0, 0, 0)
 			}
 		})

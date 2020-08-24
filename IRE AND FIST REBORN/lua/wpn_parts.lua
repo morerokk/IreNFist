@@ -2260,7 +2260,7 @@ end
 	-- R700 PARTS
 	-- Military stock
 	self.parts.wpn_fps_snp_r700_s_military.stats = {
-		value = 0,
+		value = 1,
 		reload = 5,
 		concealment = -1
 	}

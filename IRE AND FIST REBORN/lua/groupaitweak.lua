@@ -42,6 +42,10 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "givecoolenemies", fun
 end)
 --]]
 
+if not InFmenu.settings.enablenewassaults then
+	return
+end
+
 -- Expand rushing taser squads. Add calm state hostage rescue squads (which can also have tasers).
 Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_hostagerescueandtasersquads", function(self, difficulty_index)
 	if difficulty_index <= 2 then
@@ -1072,6 +1076,330 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 
 end)
 
+-- "Combined Arms" squads, these are squads that carry both shotgunners and riflemen. Used to break up the monotony of getting just shotgunners/just riflemen.
+Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combinedarmssquads", function(self, difficulty_index)
+	if difficulty_index <= 2 then
+		self.enemy_spawn_groups.tac_swat_combined_arms = {
+			amount = {
+				3,
+				3
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_MP5",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "CS_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 3 then
+		self.enemy_spawn_groups.tac_swat_combined_arms = {
+			amount = {
+				3,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_MP5",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 3,
+					unit = "CS_heavy_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "CS_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 3,
+					unit = "CS_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.tac_swat_combined_arms = {
+			amount = {
+				4,
+				4
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				}
+			}
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.tac_swat_combined_arms = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 0,
+					freq = 0.2,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	elseif difficulty_index == 6 then
+		self.enemy_spawn_groups.tac_swat_combined_arms = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 3,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 3,
+					amount_max = 3,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 0,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	elseif difficulty_index == 7 then
+		self.enemy_spawn_groups.tac_swat_combined_arms = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 0,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.tac_swat_combined_arms = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_M4",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 3,
+					amount_max = 3,
+					rank = 3,
+					unit = "FBI_heavy_G36",
+					tactics = self._tactics.swat_rifle
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 1,
+					freq = 3,
+					amount_max = 3,
+					rank = 3,
+					unit = "FBI_heavy_R870",
+					tactics = self._tactics.swat_shotgun_rush
+				},
+				{
+					amount_min = 0,
+					freq = 0.5,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_M4",
+					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	end
+end)
+
 Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak_initunitcategors", function(self, difficulty_index)
 	if InFmenu.settings.rainbowassault and difficulty_index >= 5 then
 		if difficulty_index > 5 then
@@ -1198,6 +1526,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 		0,
 		0
 	}
+
+	-- Add spawn chances for combined arms squad
+	self.besiege.assault.groups.tac_swat_combined_arms = deep_clone(self.besiege.assault.groups.tac_swat_rifle)
 	
 	-- Reduce spawn rates a little
 	-- max # of simultaneous cops

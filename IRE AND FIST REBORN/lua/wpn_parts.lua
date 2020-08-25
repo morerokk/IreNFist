@@ -8330,6 +8330,51 @@ if BeardLib.Utils:FindMod("McMillan CS5") and self.parts.wpn_fps_upg_cs5_barrel_
 	table.insert(gunlist_snp, {"wpn_fps_snp_cs5", -3})
 end
 
+-- FN SCAR MK17 (Eagle Tactical)
+if BeardLib.Utils:FindMod("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
+	-- Long barrel
+	self.parts.wpn_fps_upg_mk17_b_long.stats = deep_clone(barrel_m1)
+	-- Short barrel
+	self.parts.wpn_fps_upg_mk17_b_smol.stats = deep_clone(barrel_p1)
+
+	-- Heavy Bolt, converts to Heavy AR (basically the Eagle Heavy again)
+	self:convert_part("wpn_fps_upg_mk17_bolt_old", "mrifle", "hrifle")
+
+	-- Extended Rail
+	self.parts.wpn_fps_upg_mk17_ex_rail.stats = deep_clone(nostats)
+
+	-- Night Ops Kit
+	self.parts.wpn_fps_upg_mk17_rec_lower_black.stats = deep_clone(nostats)
+
+	-- Speed-pull mag
+	self.parts.wpn_fps_upg_mk17_m_quick.stats = deep_clone(nostats)
+
+	-- Golden State magazine
+	self.parts.wpn_fps_upg_mk17_m_smol.stats = {
+		value = 0,
+		extra_ammo = -10,
+		concealment = 2
+	}
+
+	-- Extended stock
+	self.parts.wpn_fps_upg_mk17_s_extended.stats = {
+		value = 2,
+		recoil = 2,
+		concealment = -1
+	}
+	-- No stock
+	self.parts.wpn_fps_upg_mk17_s_no.stats = {
+		value = 1,
+		recoil = -2,
+		concealment = 1
+	}
+
+	-- DMR Kit, converts to DMR
+	-- No shield piercing because that only seems to work on "ammo" weaponmod types >:(
+	-- TODO: Give this part no stats, but give it a hidden DMR ammo dummy mod.
+	self:convert_part("wpn_fps_upg_mk17_rec_upper_mk20", "mrifle", "ldmr")
+end
+
 
 
 --!!

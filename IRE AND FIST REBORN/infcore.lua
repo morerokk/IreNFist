@@ -107,6 +107,7 @@ if not InFmenu then
         copmiss = true,
         enablenewcopvoices = true,
         enablenewcopdomination = true,
+        enablenewassaults = true,
 
         runkick = false,
         kickyeet = 1,

@@ -3714,6 +3714,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- M4 SOPMOD
 	bm_w_soppo = "CAR-4 SOPMOD II",
 
+	-- SCAR MK17
+	bm_wp_wpn_fps_upg_mk17_rec_lower_black_desc = "No colours anymore, I want them to turn black.",
+
 	-- Vanilla Styled Mod (and weapon) Pack 1
 	-- 2 when?
 	bm_w_amr12_desc = "A macgyvered shotgun variant of the AMR-16, meant to compete with the SAIGA-12. A total abomination, but gets the job done nonetheless.",
@@ -3765,6 +3768,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_cs5_desc = "A sniper rifle dedicated to being stealthy and concealable in urban environments. Originally meant for the military, but that won't stop you.",
 	bm_wp_wpn_fps_upg_cs5_barrel_suppressed_desc = "It's not a rude surprise if they never see it coming." .. silstr3,
 	bm_wp_wpn_fps_upg_cs5_harris_bipod_desc = "Press $BTN_GADGET to deploy. When deployed, reduce recoil by 50% and increase rate of fire by 25%.",
+
+	-- Mars automatic pistol
+	bm_w_mars_desc = "Basically a high-powered semi-automatic Welrod. Thanks to the massive recoil, those who shot it remarked that they would not want to do so again. Better lay off the soy.",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

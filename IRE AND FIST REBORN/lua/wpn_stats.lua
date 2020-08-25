@@ -1296,17 +1296,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.ak74.timers.reload_empty_end = 0.40 -- 3.23
 	self.ak74.reload_stance_mod = {ads = {translation = Vector3(0, 0, -4), rotation = Rotation(0, 5, 0)}}
 	--self.ak74.price = 50*1000
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.ak74.attachment_points then
-			self.ak74.attachment_points = {}
-		end
-		table.list_append(self.ak74.attachment_points, {
-			{
-				name = "a_m_dmr",
-				base_a_obj = "a_m",
-				position = Vector3(0, 2, 0),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("ak74", {
+			name = "a_m_dmr",
+			base_a_obj = "a_m",
+			position = Vector3(0, 2, 0),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1339,7 +1334,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.aug.equip_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 	self.aug.reload_stance_mod = {ads = {translation = Vector3(0, 0, -4), rotation = Rotation(0, 0, 0)}}
 	--self.aug.price = 150*1000
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
+	if self.SetupAttachmentPoint then
 		self:SetupAttachmentPoint("aug", {
 			name = "nowhere",
 			base_a_obj = "a_o",
@@ -1537,17 +1532,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.akm.timers.reload_empty_end = 1.00 -- 3.29
 	self.akm.reload_stance_mod = {ads = {translation = Vector3(0, 0, -4), rotation = Rotation(0, 5, 0)}}
 	--self.akm.price = 50*1000
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.akm.attachment_points then
-			self.akm.attachment_points = {}
-		end
-		table.list_append(self.akm.attachment_points, {
-			{
-				name = "a_m_dmr",
-				base_a_obj = "a_m",
-				position = Vector3(0, 2, 0),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("akm", {
+			name = "a_m_dmr",
+			base_a_obj = "a_m",
+			position = Vector3(0, 2, 0),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1557,17 +1547,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.akm_gold.stats.concealment = self.akm.stats.concealment - 2
 	self:copy_timers("akm_gold", "akm")
 	self.akm_gold.price = 5*1000000
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.akm_gold.attachment_points then
-			self.akm_gold.attachment_points = {}
-		end
-		table.list_append(self.akm_gold.attachment_points, {
-			{
-				name = "a_m_dmr",
-				base_a_obj = "a_m",
-				position = Vector3(0, 2, 0),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("akm_gold", {
+			name = "a_m_dmr",
+			base_a_obj = "a_m",
+			position = Vector3(0, 2, 0),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1650,23 +1635,18 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.asval.timers.reload_empty = 3.2
 	self.asval.timers.reload_empty_end = 0.70 -- 2.52
 	--self.asval.price = 500*1000
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.asval.attachment_points then
-			self.asval.attachment_points = {}
-		end
-		table.list_append(self.asval.attachment_points, {
-			{
-				name = "a_o_notugly",
-				base_a_obj = "a_o",
-				position = Vector3(0, 2, -3),
-				rotation = Rotation(0, 0, 0)
-			},
-			{
-				name = "a_infrail",
-				base_a_obj = "a_o",
-				position = Vector3(0, 2, -2.75),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("asval", {
+			name = "a_o_notugly",
+			base_a_obj = "a_o",
+			position = Vector3(0, 2, -3),
+			rotation = Rotation(0, 0, 0)
+		})
+		self:SetupAttachmentPoint("asval", {
+			name = "a_infrail",
+			base_a_obj = "a_o",
+			position = Vector3(0, 2, -2.75),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1827,17 +1807,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.winchester1874.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.winchester1874.use_custom_anim_state = true
 	self.winchester1874.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.winchester1874.attachment_points then
-			self.winchester1874.attachment_points = {}
-		end
-		table.list_append(self.winchester1874.attachment_points, {
-			{
-				name = "a_bp",
-				base_a_obj = "a_body",
-				position = Vector3(0, 49, 4),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("winchester1874", {
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 49, 4),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1866,17 +1841,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.msr.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.msr.use_custom_anim_state = true
 	self.msr.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.msr.attachment_points then
-			self.msr.attachment_points = {}
-		end
-		table.list_append(self.msr.attachment_points, {
-			{
-				name = "a_bp",
-				base_a_obj = "a_body",
-				position = Vector3(0, 67, 6),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("msr", {
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 67, 6),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1904,17 +1874,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.model70.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.model70.use_custom_anim_state = true
 	self.model70.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.model70.attachment_points then
-			self.model70.attachment_points = {}
-		end
-		table.list_append(self.model70.attachment_points, {
-			{
-				name = "a_bp",
-				base_a_obj = "a_body",
-				position = Vector3(0, 55.5, 3.5),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("model70", {
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 55.5, 3.5),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1951,17 +1916,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.wa2000.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.wa2000.use_custom_anim_state = true
 	self.wa2000.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.wa2000.attachment_points then
-			self.wa2000.attachment_points = {}
-		end
-		table.list_append(self.wa2000.attachment_points, {
-			{
-				name = "a_bp",
-				base_a_obj = "a_body",
-				position = Vector3(0, 50, 0),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("wa2000", {
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 50, 0),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -1989,17 +1949,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.r93.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.r93.use_custom_anim_state = true
 	self.r93.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.r93.attachment_points then
-			self.r93.attachment_points = {}
-		end
-		table.list_append(self.r93.attachment_points, {
-			{
-				name = "a_bp",
-				base_a_obj = "a_body",
-				position = Vector3(0, 47, 4),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("r93", {
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 47, 4),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -2027,17 +1982,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.mosin.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.mosin.use_custom_anim_state = true
 	self.mosin.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.mosin.attachment_points then
-			self.mosin.attachment_points = {}
-		end
-		table.list_append(self.mosin.attachment_points, {
-			{
-				name = "a_bp",
-				base_a_obj = "a_body",
-				position = Vector3(0, 70, 4),
-				rotation = Rotation(0, 0, 0)
-			}
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("mosin", {
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 70, 4),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -2067,17 +2017,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.desertfox.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.desertfox.use_custom_anim_state = true
 	self.desertfox.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.desertfox.attachment_points then
-			self.desertfox.attachment_points = {}
-		end
-		table.list_append(self.desertfox.attachment_points, {
-			{
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("desertfox", {
 				name = "a_bp",
 				base_a_obj = "a_body",
 				position = Vector3(0, 30, 5),
 				rotation = Rotation(0, 0, 0)
-			}
 		})
 	end
 
@@ -2143,17 +2088,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.r700.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 	self.r700.use_custom_anim_state = true
 	self.r700.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.r700.attachment_points then
-			self.r700.attachment_points = {}
-		end
-		table.list_append(self.r700.attachment_points, {
-			{
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("r700", {
 				name = "a_bp",
 				base_a_obj = "a_body",
 				position = Vector3(0, 47, 2),
 				rotation = Rotation(0, 0, 0)
-			}
 		})
 	end
 
@@ -2589,7 +2529,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.x_shepheard.timers.reload_empty = 2.20
 	self.x_shepheard.timers.reload_empty_half = 2.00 -- fuck this reload animation
 	self.x_shepheard.timers.reload_empty_end = 0.80 -- 2.4
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
+	if self.SetupAttachmentPoint then
 		self:SetupAttachmentPoint( "shepheardprimary", {
 				name = "a_b_long",
 				base_a_obj = "a_b",
@@ -2938,7 +2878,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.lemming.timers.reload_empty = 2.05
 	self.lemming.timers.reload_empty_end = 0.60
 	--self.lemming.price = 200*1000
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
+	if self.SetupAttachmentPoint then
 		self:SetupAttachmentPoint("lemming", {
 			name = "a_ns",
 			base_a_obj = "a_ns",
@@ -3557,7 +3497,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.m37primary.stats.concealment = 21
 	self.m37primary.animations = self.m37primary.animations or {}
 	self.m37primary.animations.reload_shell_by_shell = true
-	if BeardLib.Utils:FindMod("GSPS Various Attachment") and self.SetupAttachmentPoint then
+	if self.SetupAttachmentPoint then
 		self:SetupAttachmentPoint( "m37primary", {
 			name = "a_b_slayer",
 			base_a_obj = "a_b",
@@ -4328,52 +4268,43 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.xs_pm.stats.concealment = 26
 	end
 
-
 	if BeardLib.Utils:FindMod("Remington Various Attachment") then
-		Hooks:RemovePostHook("R870AttachModInit")
-
 		-- removed the stat fix (bitch i got my own stats)
-		if not self.r870.attachment_points then
-			self.r870.attachment_points = {}
-		end
-			table.list_append(self.r870.attachment_points, {
-				{
-					name = "a_o_mcs",
-					base_a_obj = "a_o",
-					position = Vector3(0, 5, -0.35),
-					rotation = Rotation(0, 0, 0)
-				},
-				{
-					name = "a_ns_heat",
-					base_a_obj = "a_ns",
-					position = Vector3(0, 5, 0),
-					rotation = Rotation(0, 0, 0)
-				},
-				{
-					name = "a_fl_mcs",
-					base_a_obj = "a_fl",
-					position = Vector3(2.9, -5.8, 3.9),
-					rotation = Rotation(0, 0, -90)
-				}
+		Hooks:RemovePostHook("R870AttachModInit")
+		
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("r870", {
+				name = "a_o_mcs",
+				base_a_obj = "a_o",
+				position = Vector3(0, 5, -0.35),
+				rotation = Rotation(0, 0, 0)
+			})
+			self:SetupAttachmentPoint("r870", {
+				name = "a_ns_heat",
+				base_a_obj = "a_ns",
+				position = Vector3(0, 5, 0),
+				rotation = Rotation(0, 0, 0)
+			})
+			self:SetupAttachmentPoint("r870", {
+				name = "a_fl_mcs",
+				base_a_obj = "a_fl",
+				position = Vector3(2.9, -5.8, 3.9),
+				rotation = Rotation(0, 0, -90)
 			})
 
-		if not self.serbu.attachment_points then
-			self.serbu.attachment_points = {}
-		end
-			table.list_append(self.serbu.attachment_points, {
-				{
-					name = "a_fl_mcs",
-					base_a_obj = "a_fl",
-					position = Vector3(2.9, -5.8, 3.9),
-					rotation = Rotation(0, 0, -90)
-				},
-				{
-					name = "a_o_mcs",
-					base_a_obj = "a_o",
-					position = Vector3(0, 5, -0.35),
-					rotation = Rotation(0, 0, 0)
-				}
+			self:SetupAttachmentPoint("serbu", {
+				name = "a_fl_mcs",
+				base_a_obj = "a_fl",
+				position = Vector3(2.9, -5.8, 3.9),
+				rotation = Rotation(0, 0, -90)
 			})
+			self:SetupAttachmentPoint("serbu", {
+				name = "a_o_mcs",
+				base_a_obj = "a_o",
+				position = Vector3(0, 5, -0.35),
+				rotation = Rotation(0, 0, 0)
+			})
+		end
 	end
 
 
@@ -4539,106 +4470,106 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.x_seburo.AMMO_PICKUP = self:_pickup_chance(160, 1)
 		self:copy_timers("x_seburo", "x_packrat")
 
-		self.seburo.attachment_points = {
-			{
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5fl",
 				base_a_obj = "a_fl",
 				position = Vector3( 0, -1, -2.5 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5ns",
 				base_a_obj = "a_ns", 
 				position = Vector3( 0.1, -2, 0.1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5rds",
 				base_a_obj = "a_rds", 
 				position = Vector3( 0, 0, -1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5re_body",
 				base_a_obj = "a_body", 
 				position = Vector3( 0, 0, 1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5re_sl",
 				base_a_obj = "a_sl", 
 				position = Vector3( 0, 0, 1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5re_m",
 				base_a_obj = "a_m", 
 				position = Vector3( -0.35, 0, 0.35 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5ext_m",
 				base_a_obj = "a_m", 
 				position = Vector3( 0, -0.2, 0 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("seburo", {
 				name = "a_seburo5re_bolt",
 				base_a_obj = "a_bolt", 
 				position = Vector3( 0.1, 0, 1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			}
-		}
-		self.x_seburo.attachment_points = {
-			{
+			})
+
+			-- Same but for akimbo seburo
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5fl",
 				base_a_obj = "a_fl",
 				position = Vector3( 0, -1, -2.5 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5ns",
 				base_a_obj = "a_ns", 
 				position = Vector3( 0.1, -2, 0.1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5rds",
 				base_a_obj = "a_rds", 
 				position = Vector3( 0, 0, -1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5re_body",
 				base_a_obj = "a_body", 
 				position = Vector3( 0, 0, 1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5re_sl",
 				base_a_obj = "a_sl", 
 				position = Vector3( 0, 0, 1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5re_m",
 				base_a_obj = "a_m", 
 				position = Vector3( -0.35, 0, 0.35 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5ext_m",
 				base_a_obj = "a_m", 
 				position = Vector3( 0, -0.2, 0 ), 
 				rotation = Rotation( 0, 0, 0 )
-			},
-			{
+			})
+			self:SetupAttachmentPoint("x_seburo", {
 				name = "a_seburo5re_bolt",
 				base_a_obj = "a_bolt", 
 				position = Vector3( 0.1, 0, 1 ), 
 				rotation = Rotation( 0, 0, 0 )
-			}
-		}
+			})
+		end
 	end
 
 	if BeardLib.Utils:FindMod("HKG11") then
@@ -4674,34 +4605,34 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("b93r", "b92fs")
 	end
 
-		-- Yoink, the B93R is now actually in the game
-		self:inf_init("beer", "pistol", nil)
-		self.beer.sdesc1 = "caliber_p9x19"
-		self.beer.sdesc2 = "action_shortrecoil"
-		--self.beer.stats.concealment = 29
-		self.beer.AMMO_MAX = 140
-		self.beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
-		--self.beer.BURST_FIRE = 3
-		--self.beer.ADAPTIVE_BURST_SIZE = false
-		--self.beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
-		--self.beer.DELAYED_BURST_RECOIL = false
-		self.beer.stats.spread = self.beer.stats.spread - 15
-		self.beer.fire_mode_data.fire_rate = 60/1100
-		self:copy_timers("beer", "b92fs")
-		
-		self:inf_init("x_beer", "pistol", nil)
-		self.x_beer.sdesc1 = "caliber_p9x19"
-		self.x_beer.sdesc2 = "action_shortrecoil"
-		--self.x_beer.stats.concealment = 29
-		self.x_beer.AMMO_MAX = 140
-		self.x_beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
-		--self.x_beer.BURST_FIRE = 3
-		--self.x_beer.ADAPTIVE_BURST_SIZE = false
-		--self.x_beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
-		--self.x_beer.DELAYED_BURST_RECOIL = false
-		self.x_beer.stats.spread = self.x_beer.stats.spread - 15
-		self.x_beer.fire_mode_data.fire_rate = 60/1100
-		self:copy_timers("x_beer", "x_b92fs")
+	-- Yoink, the B93R is now actually in the game
+	self:inf_init("beer", "pistol", nil)
+	self.beer.sdesc1 = "caliber_p9x19"
+	self.beer.sdesc2 = "action_shortrecoil"
+	--self.beer.stats.concealment = 29
+	self.beer.AMMO_MAX = 140
+	self.beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
+	--self.beer.BURST_FIRE = 3
+	--self.beer.ADAPTIVE_BURST_SIZE = false
+	--self.beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
+	--self.beer.DELAYED_BURST_RECOIL = false
+	self.beer.stats.spread = self.beer.stats.spread - 15
+	self.beer.fire_mode_data.fire_rate = 60/1100
+	self:copy_timers("beer", "b92fs")
+	
+	self:inf_init("x_beer", "pistol", nil)
+	self.x_beer.sdesc1 = "caliber_p9x19"
+	self.x_beer.sdesc2 = "action_shortrecoil"
+	--self.x_beer.stats.concealment = 29
+	self.x_beer.AMMO_MAX = 140
+	self.x_beer.AMMO_PICKUP = self:_pickup_chance(140, 1)
+	--self.x_beer.BURST_FIRE = 3
+	--self.x_beer.ADAPTIVE_BURST_SIZE = false
+	--self.x_beer.BURST_FIRE_RATE_MULTIPLIER = 1100/600
+	--self.x_beer.DELAYED_BURST_RECOIL = false
+	self.x_beer.stats.spread = self.x_beer.stats.spread - 15
+	self.x_beer.fire_mode_data.fire_rate = 60/1100
+	self:copy_timers("x_beer", "x_b92fs")
 
 	if BeardLib.Utils:FindMod("TOZ-34") then
 		self:inf_init("toz34", "shotgun", {"dmg_heavy", "range_long", "rof_db"})
@@ -4725,6 +4656,8 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.toz66.AMMO_PICKUP = self:_pickup_chance(22, 1)
 		self:copy_timers("toz66", "huntsman")
 		self.toz66.reload_speed_mult = self.toz66.reload_speed_mult * 1.4
+	end
+
 	if BeardLib.Utils:FindMod("Akimbo TOZ-66") then
 		self:inf_init("x_toz66", "shotgun", {"dmg_heavy", "rof_db"})
 		self.x_toz66.stats.concealment = 27
@@ -4736,7 +4669,6 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.x_toz66.AMMO_MAX = 30
 		self.x_toz66.AMMO_PICKUP = self:_pickup_chance(30, 1)
 		self:copy_timers("x_toz66", "x_judge")
-	end
 	end
 
 	if BeardLib.Utils:FindMod("pdr") then
@@ -4782,19 +4714,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.l115.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 		self.l115.use_custom_anim_state = true
 		self.l115.bipod_rof_mult = 1.25
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.l115.attachment_points then
-			self.l115.attachment_points = {}
-		end
-		table.list_append(self.l115.attachment_points, {
-			{
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("l115", {
 				name = "a_bp",
 				base_a_obj = "a_body",
 				position = Vector3(0, 53, 4),
 				rotation = Rotation(0, 0, 0)
-			}
-		})
-	end
+			})
+		end
 	end
 
 	if BeardLib.Utils:FindMod("Montana 5.56") then
@@ -4837,7 +4764,6 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("x_sonny", "x_packrat")
 	end
 
-
 	if BeardLib.Utils:FindMod("STG 44") then
 		self:inf_init("stg44", "ar", nil)
 		self.stg44.sdesc1 = "caliber_r792x33"
@@ -4849,9 +4775,9 @@ function WeaponTweakData:_init_new_weapons(...)
 
 		-- fuck your reload timers, i'm using mine
 		--Hooks:RemovePostHook("stg44Init")
-	DelayedCalls:Add("stg44reloaddelay", 0.50, function(self, params)
-		tweak_data.weapon:copy_timers("stg44", "g3")
-	end)
+		DelayedCalls:Add("stg44reloaddelay", 0.50, function(self, params)
+			tweak_data.weapon:copy_timers("stg44", "g3")
+		end)
 	end
 
 	if BeardLib.Utils:FindMod("HK G3A3 M203") then
@@ -4894,7 +4820,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("g3_m203flechette", "contraband_m203")
 		self.g3_m203flechette.reload_speed_mult = 1.20
 
-	--[[
+		--[[
 		self:inf_init("g3_m203slug", "snp", "heavy")
 		self.g3_m203slug.stats.damage = 90 -- 450
 		self.g3_m203slug.stats_modifiers = {damage = 5}
@@ -4905,7 +4831,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.g3_m203slug.AMMO_PICKUP = {1338, 100}
 		self:copy_timers("g3_m203slug", "contraband_m203")
 		self.g3_m203slug.reload_speed_mult = 1.20
-	--]]
+		--]]
 	end
 
 	if BeardLib.Utils:FindMod("AAC Honey Badger") then
@@ -4980,19 +4906,15 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.m200.AMMO_PICKUP = self:_pickup_chance(28, 1)
 		self.m200.reload_speed_mult = self.m200.reload_speed_mult * 1.2
 
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.m200.attachment_points then
-			self.m200.attachment_points = {}
-		end
-		table.list_append(self.m200.attachment_points, {
-			{
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("m200", {
 				name = "a_nowhere",
 				base_a_obj = "a_body",
 				position = Vector3(0, -1000, -1000),
 				rotation = Rotation(0, 0, 0)
-			}
-		})
-	end
+			})
+		end
+
 		self:apply_standard_bipod_stats("m200")
 		self.m200.custom_bipod = true
 		--self.m200.use_bipod_anywhere = true
@@ -5008,7 +4930,6 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.m200.bipod_rof_mult = 1.25
 	end
 
-
 	if BeardLib.Utils:FindMod("Minebea SMG") then
 		self:inf_init("minebea", "smg", nil)
 		self.minebea.sdesc1 = "caliber_p9x19"
@@ -5017,25 +4938,20 @@ function WeaponTweakData:_init_new_weapons(...)
 		--self.minebea.stats.concealment = 27
 		self:copy_timers("minebea", "cobray")
 		self.minebea.reload_speed_mult = self.minebea.reload_speed_mult * 1.15
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-		if not self.minebea.attachment_points then
-			self.minebea.attachment_points = {}
-		end
-		table.list_append(self.minebea.attachment_points, {
-			{
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("minebea", {
 				name = "a_o_notugly",
 				base_a_obj = "a_o",
 				position = Vector3(0, -22, -0.75),
 				rotation = Rotation(0, 0, 0)
-			},
-			{
+			})
+			self:SetupAttachmentPoint("minebea", {
 				name = "a_o_notugly_aimpoint",
 				base_a_obj = "a_o",
 				position = Vector3(0, -18, -0.75),
 				rotation = Rotation(0, 0, 0)
-			}
-		})
-	end
+			})
+		end
 
 		self:inf_init("x_minebea", "smg", nil)
 		self:copy_sdescs("x_minebea", "minebea", true)
@@ -5354,28 +5270,35 @@ function WeaponTweakData:_init_new_weapons(...)
 
 	if BeardLib.Utils:FindMod("M3 Grease Gun") then
 		Hooks:RemovePostHook("m3ModInit")
-		self.x_m3.attachment_points = {
-			{
-					name = "a_fl",
-					base_a_obj = "a_fl",
-					position = Vector3(0.4, -21, 0),
-					rotation = Rotation(0, 0, 0)
-			}
-		}
-		self.m3.attachment_points = {
-			{
-					name = "a_o",
-					base_a_obj = "a_o",
-					position = Vector3(0, -17, 0),
-					rotation = Rotation(0, 0, 0)
-			},
-			{
-					name = "a_fl",
-					base_a_obj = "a_fl",
-					position = Vector3(0.4, -21, 0),
-					rotation = Rotation(0, 0, 0)
-			}
-		}
+
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("x_m3", {
+				name = "a_o",
+				base_a_obj = "a_o",
+				position = Vector3(0, -17, 0),
+				rotation = Rotation(0, 0, 0)
+			})
+			self:SetupAttachmentPoint("x_m3", {
+				name = "a_fl",
+				base_a_obj = "a_fl",
+				position = Vector3(0.4, -21, 0),
+				rotation = Rotation(0, 0, 0)
+			})
+
+			self:SetupAttachmentPoint("m3", {
+				name = "a_o",
+				base_a_obj = "a_o",
+				position = Vector3(0, -17, 0),
+				rotation = Rotation(0, 0, 0)
+			})
+			self:SetupAttachmentPoint("m3", {
+				name = "a_fl",
+				base_a_obj = "a_fl",
+				position = Vector3(0.4, -21, 0),
+				rotation = Rotation(0, 0, 0)
+			})
+		end
+
 		self:inf_init("m3", "smg", {"dmg_50"})
 		self.m3.chamber = 0
 		self.m3.sdesc1 = "caliber_p45acp"
@@ -5505,17 +5428,17 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.dp28.AMMO_MAX = 188
 		self:copy_timers("dp28", "ecp")
 		self.dp28.stats.concealment = 11
-	DelayedCalls:Add("dp28pgtimers", 0.50, function(self, params)
-		tweak_data.weapon:apply_standard_bipod_stats("dp28")
-		tweak_data.weapon.dp28.bipod_weapon_translation = Vector3(-5, 15, -10)
-		local pivot_shoulder_translation = Vector3(0, 0, 0)
-		local pivot_shoulder_rotation = Rotation(0, 0, 0)
-		local pivot_head_translation = Vector3(0, 0, 0)
-		local pivot_head_rotation = Rotation(0, 0, 0)
-		tweak_data.weapon.dp28.stances.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
-		tweak_data.weapon.dp28.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
-		tweak_data.weapon.dp28.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
-	end)
+		DelayedCalls:Add("dp28pgtimers", 0.50, function(self, params)
+			tweak_data.weapon:apply_standard_bipod_stats("dp28")
+			tweak_data.weapon.dp28.bipod_weapon_translation = Vector3(-5, 15, -10)
+			local pivot_shoulder_translation = Vector3(0, 0, 0)
+			local pivot_shoulder_rotation = Rotation(0, 0, 0)
+			local pivot_head_translation = Vector3(0, 0, 0)
+			local pivot_head_rotation = Rotation(0, 0, 0)
+			tweak_data.weapon.dp28.stances.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
+			tweak_data.weapon.dp28.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+			tweak_data.weapon.dp28.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
+		end)
 		self.dp28.reload_speed_mult = self.dp28.reload_speed_mult * 0.80
 		self.dp28.reload_stance_mod = {ads = {translation = Vector3(5, 0, -5), rotation = Rotation(0, 0, 0)}}
 		self.dp28.custom_bipod = true
@@ -6110,17 +6033,12 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.m40a5.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
 		self.m40a5.use_custom_anim_state = true
 		self.m40a5.bipod_rof_mult = 1.25
-		if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
-			if not self.m40a5.attachment_points then
-				self.m40a5.attachment_points = {}
-			end
-			table.list_append(self.m40a5.attachment_points, {
-				{
-					name = "a_bp",
-					base_a_obj = "a_body",
-					position = Vector3(0, 68, 4),
-					rotation = Rotation(0, 0, 0)
-				}
+		if self.SetupAttachmentPoint then
+			self:SetupAttachmentPoint("m40a5", {
+				name = "a_bp",
+				base_a_obj = "a_body",
+				position = Vector3(0, 68, 4),
+				rotation = Rotation(0, 0, 0)
 			})
 		end
 	end
@@ -6490,20 +6408,26 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("mars", "deagle")
 	end
 
+	-- FN MK17 MOD 0 (Eagle Tactical Rifle)
+	if self.mk17 then
+		self:inf_init("mk17", "ar", {"medium"})
+		self.mk17.concealment = 18
+		self.mk17.sdesc1 = "caliber_r556x45"
+		self.mk17.sdesc2 = "action_pistonshort"
+		self:copy_timers("mk17", "scar")
+	end
+
 		-- !!
 
-	if (BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib")) and self.SetupAttachmentPoint then
+	-- Probably not even necessary. Is this used for LMG offset? Can just use a dummy based_on mod
+	-- TODO: remove
+	if self.SetupAttachmentPoint then
 		for a, b in ipairs(lmglist) do
-			if not self[b].attachment_points then
-				self[b].attachment_points = {}
-			end
-			table.list_append(self[b].attachment_points, {
-				{
-					name = "a_nowhere",
-					base_a_obj = "a_body",
-					position = Vector3(0, -1000, -1000),
-					rotation = Rotation(0, 0, 0)
-				}
+			self:SetupAttachmentPoint(b, {
+				name = "a_nowhere",
+				base_a_obj = "a_body",
+				position = Vector3(0, -1000, -1000),
+				rotation = Rotation(0, 0, 0)
 			})
 		end
 	end

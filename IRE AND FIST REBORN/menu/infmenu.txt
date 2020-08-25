@@ -252,6 +252,15 @@
 			"default_value" : true
 		},
 		{
+			"type" : "toggle",
+			"id" : "enablenewassaults",
+			"title" : "inf_enablenewassaults",
+			"description" : "inf_enablenewassaults_desc",
+			"callback" : "infcb_enablenewassaults",
+			"value" : "enablenewassaults",
+			"default_value" : true
+		},
+		{
 			"type" : "divider",
 			"size" : 16
 		},

@@ -6412,9 +6412,23 @@ function WeaponTweakData:_init_new_weapons(...)
 	if self.mk17 then
 		self:inf_init("mk17", "ar", {"medium"})
 		self.mk17.concealment = 18
-		self.mk17.sdesc1 = "caliber_r556x45"
+		self.mk17.sdesc1 = "caliber_r556x45" -- oh no rokk what is you doing
 		self.mk17.sdesc2 = "action_pistonshort"
 		self:copy_timers("mk17", "scar")
+	end
+	
+	
+	-- CARL WAS HERE XDDDXDX
+	
+	-- My own guns.
+	
+	-- FN Five-seveN MK2
+	if self.hoxy then
+		self:inf_init("hoxy", "pistol", nil)
+		self.hoxy.sdesc1 = "caliber_p57"
+		self.hoxy.sdesc2 = "action_blowbackdelayed"
+		self:copy_timers("hoxy", "packrat")
+		--self.hoxy.stats.concealment = 30
 	end
 
 		-- !!

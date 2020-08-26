@@ -95,9 +95,6 @@ else
 		--self.values.player.melee_damage_health_ratio_multiplier = {2.5}
 		self.values.player.damage_health_ratio_multiplier = {0.50} -- 150%
 
-		-- Taser bullets
-		self.values.player.electric_bullets_while_tased = {true}
-
 		-- Moving Target
 		self.values.player.detection_risk_add_movement_speed = {
 			{
@@ -316,6 +313,9 @@ Hooks:PostHook(UpgradesTweakData, "init", "inf_upgradestweak_upgradevalues_alway
 	self.values.player.smg_gives_offhand_reload = {true}
 	self.values.player.shotgun_gives_offhand_reload = {true}
 	self.values.player.xbow_gives_offhand_reload = {true}
+
+	-- Taser bullets
+	self.values.player.electric_bullets_while_tased = {true}
 end)
 
 -- Player upgrade definitions that should always exist regardless of mod compatibility

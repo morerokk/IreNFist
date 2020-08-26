@@ -78,12 +78,14 @@ if not IreNFist then
     IreNFist.mod_compatibility = {}
     -- Sydch's Skill Overhaul
     local sso = BLT.Mods:GetModByName("Sydch's Skill Overhaul")
-    if sso and sso:IsEnabled() then
+    if (sso and sso:IsEnabled()) or BeardLib.Utils:ModLoaded("Sydch's Skill Overhaul") then
+        log("[InF] SSO compatibility enabled")
         IreNFist.mod_compatibility.sso = true
     end
     -- Armor Overhaul
     local armor_overhaul = BLT.Mods:GetModByName("Armor Overhaul")
     if armor_overhaul and armor_overhaul:IsEnabled() then
+        log("[InF] Armor Overhaul compatibility enabled")
         IreNFist.mod_compatibility.armor_overhaul = true
     end
 end

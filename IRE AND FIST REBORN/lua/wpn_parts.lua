@@ -8375,6 +8375,21 @@ if BeardLib.Utils:FindMod("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
 	self:convert_part("wpn_fps_upg_mk17_rec_upper_mk20", "mrifle", "ldmr")
 end
 
+		-- CARL WAS HERE AGAIN
+-- my own guns
+-- FN Five-seveN MK2
+if BeardLib.Utils:FindMod("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_hoxy_o_scopemount then
+			   -- I REGRET NOTHING.
+	-- threaded barrel
+	self.parts.wpn_fps_upg_hoxy_b_threaded.stats = deep_clone(barrel_m1)
+
+	-- +p+ boolet
+	self:convert_part("wpn_fps_upg_hoxy_am_plusp", "lightpis", "mediumpis")
+
+	-- um3 scope mount
+	self.parts.wpn_fps_upg_hoxy_o_scopemount.stats = deep_clone(nostats)
+	-- todo update this for when the gemtech sfn suppressor gets unfucked
+end
 
 
 --!!

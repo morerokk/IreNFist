@@ -6416,6 +6416,17 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.mk17.sdesc2 = "action_pistonshort"
 		self:copy_timers("mk17", "scar")
 	end
+	
+	-- CARL WAS HERE
+	
+	--my own guns
+	if self.hoxy then
+		self:inf_init("hoxy", "pistol", nil)
+		-- self.hoxy.concealment = 69
+		self.hoxy.sdesc1 = "caliber_p57"
+		self.hoxy.sdesc2 = "action_blowbackdelayed"
+		self:copy_timers("hoxy", "packrat")
+	end
 
 		-- !!
 

@@ -95,7 +95,7 @@ if not InFmenu then
     _G.InFmenu = {}
     InFmenu._path = ModPath
     InFmenu._data_path = SavePath .. 'infsave.txt'
-    InFmenu.settings = InFmenu.settings or {
+    InFmenu.settings = {
         allpenwalls = true,
         reloadbreaksads = true,
         disable_autoreload = true,
@@ -217,6 +217,7 @@ if not InFmenu then
         {1.3, 1.3, 0.5, -0.5}
     }
     InFmenu.rtable.ldmr = deep_clone(InFmenu.rtable.dmr)
+    InFmenu.rtable.hdmr = deep_clone(InFmenu.rtable.dmr)
     
     InFmenu.rtable.shotgun = {
         {1.0, 1.0, 0.35, -0.35},
@@ -453,6 +454,7 @@ if not InFmenu then
         crouching = {1.2, 1.2, 0.55, 0.55},
         steelsight = {0.9, 0.9, 0.25, 0.25}
     }
+    InFmenu.rstance.hdmr = InFmenu.rstance.dmr
     
     InFmenu.rstance.snp = {
         standing = {1.5, 1.5, 0.8, 0.8},
@@ -560,6 +562,14 @@ if not InFmenu then
     InFmenu.wpnvalues.dmr.recoil_loop_point = 9
     InFmenu.wpnvalues.dmr.rof = 420
     InFmenu.wpnvalues.dmr.ammo = 50
+    InFmenu.wpnvalues.hdmr = {}
+    InFmenu.wpnvalues.hdmr.damage = 240
+    InFmenu.wpnvalues.hdmr.spread = 91
+    InFmenu.wpnvalues.hdmr.recoil = 35
+    InFmenu.wpnvalues.hdmr.armor_piercing_chance = 1
+    InFmenu.wpnvalues.hdmr.recoil_loop_point = 9
+    InFmenu.wpnvalues.hdmr.rof = 240
+    InFmenu.wpnvalues.hdmr.ammo = 30
 
     -- mag presets
     -- output: mag% * reload%

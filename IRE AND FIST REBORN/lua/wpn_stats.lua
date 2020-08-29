@@ -6428,6 +6428,16 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("hoxy", "packrat")
 	end
 
+	-- ST AR-15
+	if self.flat then
+		self:inf_init("flat", "ar", {"ldmr"})
+		self.flat.sdesc1 = "caliber_r762x51"
+		self.flat.sdesc2 = "action_di"
+		self.flat.stats.concealment = 21
+		self:copy_timers("flat", "new_m14")
+	end
+
+
 		-- !!
 
 	-- Probably not even necessary. Is this used for LMG offset? Can just use a dummy based_on mod

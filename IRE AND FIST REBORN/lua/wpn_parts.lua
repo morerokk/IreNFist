@@ -85,7 +85,7 @@ function WeaponFactoryTweakData:convert_custom_stats(part, valuefrom, valueto)
 	self.parts[part].custom_stats.recoil_loop_point = InFmenu.wpnvalues[valueto].recoil_loop_point
 	self.parts[part].custom_stats.armor_piercing_add = InFmenu.wpnvalues[valueto].armor_piercing_chance - InFmenu.wpnvalues[valuefrom].armor_piercing_chance
 
-	if valueto == "dmr" or valueto == "ldmr" then
+	if valueto == "dmr" or valueto == "ldmr" or valueto == "hdmr" then
 		self.parts[part].custom_stats.taser_hole = true
 		self.parts[part].custom_stats.can_shoot_through_shield = true
 		self.parts[part].custom_stats.can_shoot_through_wall = true
@@ -5916,6 +5916,10 @@ if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
 		value = 0,
 		concealment = -1
 	}
+
+	-- Continental Mag
+	self.parts.wpn_fps_ass_m4_m_wick.stats = deep_clone(mag_66)
+	self.parts.wpn_fps_ass_m4_m_wick.stats.extra_ammo = -10
 end
 
 -- Vanilla styled modpack 2
@@ -5925,6 +5929,8 @@ if self.parts.wpn_fps_shot_minibeck_shells then
 		reload = 5,
 		concealment = -1
 	}
+	self.parts.wpn_fps_upg_ns_ass_smg_pro.stats = deep_clone(silstatsconc2)
+	self.parts.wpn_fps_upg_ns_ass_smg_pro.custom_stats = silencercustomstats
 end
 
 if BeardLib.Utils:FindMod("Zenith 10mm") then
@@ -8375,11 +8381,11 @@ if BeardLib.Utils:FindMod("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
 	self:convert_part("wpn_fps_upg_mk17_rec_upper_mk20", "mrifle", "ldmr")
 end
 
-		-- CARL WAS HERE AGAIN
+-- CARL WAS HERE AGAIN
 -- my own guns
 -- FN Five-seveN MK2
 if BeardLib.Utils:FindMod("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_hoxy_o_scopemount then
-			   -- I REGRET NOTHING.
+	-- I REGRET NOTHING.
 	-- threaded barrel
 	self.parts.wpn_fps_upg_hoxy_b_threaded.stats = deep_clone(barrel_m1)
 
@@ -8389,6 +8395,52 @@ if BeardLib.Utils:FindMod("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_ho
 	-- um3 scope mount
 	self.parts.wpn_fps_upg_hoxy_o_scopemount.stats = deep_clone(nostats)
 	-- todo update this for when the gemtech sfn suppressor gets unfucked
+end
+
+-- ST AR-15
+if BeardLib.Utils:FindMod("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_flat_bolt_sai then
+	self.parts.wpn_fps_upg_flat_bolt_sai.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_flat_fg_blk.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_flat_rec_lower_blk.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_flat_rec_upper_blk.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_flat_s_pod.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_flat_vg_no.stats = deep_clone(nostats)
+
+	-- Silencer barrel ext
+	self.parts.wpn_fps_upg_flat_ns_thic.stats = deep_clone(silstatsconc2)
+	self.parts.wpn_fps_upg_flat_ns_thic.custom_stats = silencercustomstats
+
+	-- Has to be done on a delayed call due to a conflicting hook
+	DelayedCalls:Add("star15_fix_stats", 0.2, function()
+		-- Conversion kits for anti-materiel and regular AR
+		-- Remove all the overrides and multiplications/custom stats first
+		self.parts.wpn_fps_upg_flat_am_woof.custom_stats = {}
+		self.parts.wpn_fps_upg_flat_am_woof.override_weapon_multiply = {}
+		self.parts.wpn_fps_upg_flat_am_woof.override_weapon = {}
+		self.parts.wpn_fps_upg_flat_am_woof.override = {}
+
+		self.parts.wpn_fps_upg_flat_am_weak.custom_stats = {}
+		self.parts.wpn_fps_upg_flat_am_weak.override_weapon_multiply = {}
+		self.parts.wpn_fps_upg_flat_am_weak.override_weapon = {}
+		self.parts.wpn_fps_upg_flat_am_weak.override = {}
+
+		self:convert_part("wpn_fps_upg_flat_am_woof", "ldmr", "hdmr", 80, 30)
+		self.parts.wpn_fps_upg_flat_am_woof.stats.extra_ammo = -20
+		self.parts.wpn_fps_upg_flat_am_woof.custom_stats.sdesc1 = "caliber_r762x51dm151"
+		-- Forbid using this with larger or smaller mags
+		if not self.parts.wpn_fps_upg_flat_am_woof.forbids then
+			self.parts.wpn_fps_upg_flat_am_woof.forbids = {}
+		end
+		table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_upg_m4_m_quad")
+		table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_upg_m4_m_straight")
+		if self.parts.wpn_fps_ass_m4_m_wick then
+			table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_ass_m4_m_wick")
+		end
+
+		self:convert_part("wpn_fps_upg_flat_am_weak", "ldmr", "mrifle", 80, 120)
+		self.parts.wpn_fps_upg_flat_am_weak.custom_stats.sdesc1 = "caliber_r556x45"
+	end)
+
 end
 
 

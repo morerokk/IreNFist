@@ -226,3 +226,9 @@ Hooks:PreHook(CopDamage, "damage_bullet", "inf_copdamage_damagebullet_stopcrashi
 		self._unit:movement():set_team(managers.groupai:state()._teams[tweak_data.levels:get_default_team_ID(self._unit:base():char_tweak().access == "gangster" and "gangster" or "combatant")])
 	end
 end)
+
+Hooks:PreHook(CopDamage, "damage_melee", "inf_copdamage_damagemelee_stopcrashifnoteam", function(self)
+	if not self._unit:movement()._team then
+		self._unit:movement():set_team(managers.groupai:state()._teams[tweak_data.levels:get_default_team_ID(self._unit:base():char_tweak().access == "gangster" and "gangster" or "combatant")])
+	end
+end)

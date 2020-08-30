@@ -174,7 +174,7 @@ end
 	--Semi-override
 	function NewRaycastWeaponBase:toggle_firemode(...)
 		if self._has_burst_fire and not self:gadget_overrides_weapon_functions() then
-			return self:_check_toggle_burst()
+			return self:_check_toggle_burst() or toggle_firemode_original(self, ...)
 		else
 			return toggle_firemode_original(self, ...)
 		end
@@ -184,13 +184,13 @@ end
 	
 	function NewRaycastWeaponBase:_check_toggle_burst()
 		if self:in_burst_mode() then
-			--self:_set_burst_mode(false, self.AKIMBO and not self._has_auto)
 			self:_set_burst_mode(false, false)
 			return true
 		elseif ((self._fire_mode == NewRaycastWeaponBase.IDSTRING_SINGLE) or (self._fire_mode == NewRaycastWeaponBase.IDSTRING_AUTO and not self:can_toggle_firemode())) and self._has_burst_fire then
-			--self:_set_burst_mode(true, self.AKIMBO)
 			self:_set_burst_mode(true, false)
 			return true
+		else
+			return false
 		end
 	end
 

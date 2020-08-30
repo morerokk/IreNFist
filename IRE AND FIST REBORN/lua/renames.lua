@@ -771,6 +771,11 @@ end
 	bm_wp_inf_burst_only_norpm_desc = "Trigger pack capable of semi-automatic and three-shot burst.",
 	bm_wp_inf_burst_norpm = "Burst-Enabled Trigger Group",
 	bm_wp_inf_burst_norpm_desc = "Trigger pack capable of semi-automatic, three-shot burst, and fully automatic.",
+
+	bm_wp_inf_doubleburst_only_norpm = "Burst-Only Trigger Group",
+	bm_wp_inf_doubleburst_only_norpm_desc = "Trigger pack capable of semi-automatic and two-shot burst.",
+	bm_wp_inf_doubleburst_norpm = "Burst-Enabled Trigger Group",
+	bm_wp_inf_doubleburst_norpm_desc = "Trigger pack capable of semi-automatic, two-shot burst, and fully automatic.",
 	
 	--
 	bm_wp_inf_contraband_grip = "German Grip",

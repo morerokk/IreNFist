@@ -11,6 +11,8 @@
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst_only_norpm"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_burst_norpm"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_doubleburst_only_norpm"/>
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_doubleburst_norpm"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_spas_valve"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_spas_sven"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_bar_slowfire"/>
@@ -187,12 +189,15 @@
 	<pcs/>
 </WeaponMod>
 
-<!-- Beretta 93R Burst Mods, same as above but no RPM increase -->
-<!-- Technically the 93R never had full auto to begin with. -->
+<!-- Generic burst mods, same as above but no RPM increase -->
 <WeaponMod id="inf_burst_only_norpm" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<weapons>
 		<value_node value="wpn_fps_pis_beer"/>
 		<value_node value="wpn_fps_pis_x_beer"/>
+		<value_node value="wpn_fps_smg_mp5"/>
+		<value_node value="wpn_fps_smg_mp5primary"/>
+		<value_node value="wpn_fps_ass_s552"/>
+		<value_node value="wpn_fps_ass_famas"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>
@@ -201,6 +206,33 @@
 	<weapons>
 		<value_node value="wpn_fps_pis_beer"/>
 		<value_node value="wpn_fps_pis_x_beer"/>
+		<value_node value="wpn_fps_smg_mp5"/>
+		<value_node value="wpn_fps_smg_mp5primary"/>
+		<value_node value="wpn_fps_ass_s552"/>
+		<value_node value="wpn_fps_ass_famas"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<!-- Burstfire mod that only gives 2 round bursts and not 3. TODO: improve this and add the potential burst max to the weapon instead of the mod -->
+<WeaponMod id="inf_doubleburst_only_norpm" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_smg_schakal"/>
+		<value_node value="wpn_fps_smg_schakalprimary"/>
+		<value_node value="wpn_fps_smg_hajk"/>
+		<value_node value="wpn_fps_smg_hajkprimary"/>
+		<value_node value="wpn_fps_smg_polymer"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_doubleburst_norpm" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_smg_schakal"/>
+		<value_node value="wpn_fps_smg_schakalprimary"/>
+		<value_node value="wpn_fps_smg_hajk"/>
+		<value_node value="wpn_fps_smg_hajkprimary"/>
+		<value_node value="wpn_fps_smg_polymer"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>
@@ -314,7 +346,7 @@
 </WeaponMod>
 
 <!-- deployable bipod part added to custom weapon bipods -->
-<WeaponMod id="inf_bipod_part" based_on="wpn_fps_upg_bp_lmg_lionbipod" a_obj="a_nowhere" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+<WeaponMod id="inf_bipod_part" based_on="wpn_fps_upg_bp_lmg_lionbipod" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<pcs/>
 </WeaponMod>
 
@@ -327,8 +359,8 @@
 	<pcs/>
 </WeaponMod>
 
-<!-- aim to the side with LMGs -->
-<WeaponMod id="inf_lmg_offset" based_on="wpn_fps_upg_o_45iron" type="gadget" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+<!-- aim to the side with LMGs, toggle-able gadget -->
+<WeaponMod id="inf_lmg_offset" based_on="wpn_fps_upg_o_45iron" a_obj="a_nowhere" type="gadget" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<weapons>
 		<value_node value="wpn_fps_lmg_rpk"/>
 		<value_node value="wpn_fps_lmg_m249"/>
@@ -339,8 +371,8 @@
 	<pcs/>
 </WeaponMod>
 
-<!-- standalone aiming to the side with LMGs -->
-<WeaponMod id="inf_lmg_offset_nongadget" based_on="wpn_fps_smg_mp9_b_dummy" type="sight_irons" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+<!-- standalone aiming to the side with LMGs, always on -->
+<WeaponMod id="inf_lmg_offset_nongadget" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_nowhere" type="sight_irons" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<weapons>
 		<value_node value="wpn_fps_lmg_rpk"/>
 		<value_node value="wpn_fps_lmg_m249"/>
@@ -489,18 +521,18 @@
 	<pcs/>
 </WeaponMod>
 
-<WeaponMod id="inf_lapd_556" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_nowhere" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+<WeaponMod id="inf_lapd_556" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<pcs/>
 </WeaponMod>
 
-<WeaponMod id="inf_50bmg_incendiary" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_nowhere" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+<WeaponMod id="inf_50bmg_incendiary" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<pcs/>
 	<weapons>
 		<value_node value="wpn_fps_snp_m95"/>
 	</weapons>
 </WeaponMod>
 
-<WeaponMod id="inf_50bmg_raufoss" based_on="wpn_fps_smg_mp9_b_dummy" a_obj="a_nowhere" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+<WeaponMod id="inf_50bmg_raufoss" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<pcs/>
 	<weapons>
 		<value_node value="wpn_fps_snp_m95"/>

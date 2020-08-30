@@ -797,7 +797,7 @@ end
 	end
 	table.insert(self.parts.wpn_upg_o_marksmansight_rear_vanilla.forbids, "inf_buis")
 	self.wpn_fps_ass_aug.override.inf_buis = {desc_id = "bm_wp_inf_buis_desc_aug"}
-if BeardLib.Utils:FindMod("AUG A1 Kit") then
+if BeardLib.Utils:ModLoaded("AUG A1 Kit") then
 	table.insert(self.wpn_fps_ass_aug.uses_parts, "inf_buis")
 end
 
@@ -1072,7 +1072,7 @@ end
 	--
 	--self.parts.inf_bipod_snp.custom_stats = {recoil_horizontal_mult = 2}
 	self.parts.inf_bipod_snp.forbids = {"wpn_fps_snp_mosin_b_obrez"}
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if BeardLib.Utils:ModLoaded("Custom Attachment Points") or BeardLib.Utils:ModLoaded("WeaponLib") then
 	table.insert(self.wpn_fps_snp_msr.uses_parts, "inf_bipod_snp")
 	table.insert(self.wpn_fps_snp_model70.uses_parts, "inf_bipod_snp")
 	table.insert(self.wpn_fps_snp_wa2000.uses_parts, "inf_bipod_snp") -- REMOVE LATER
@@ -1085,8 +1085,7 @@ if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod(
 end
 
 	-- lmg offset
-	self.parts.inf_lmg_offset.a_obj = "a_nowhere"
-	self.parts.inf_lmg_offset.internal_part = true
+	--self.parts.inf_lmg_offset.internal_part = true
 	self.parts.inf_lmg_offset.forbids = {"inf_lmg_offset_nongadget"}
 	self.parts.inf_lmg_offset.stats = {
 		value = 0,
@@ -1100,7 +1099,7 @@ end
 		wpn_fps_lmg_par = {translation = Vector3(4, 0, -1)},
 		wpn_fps_lmg_m60 = {translation = Vector3(4, 0, -1)},
 	}
-	self.parts.inf_lmg_offset_nongadget.internal_part = true
+	--self.parts.inf_lmg_offset_nongadget.internal_part = true
 	self.parts.inf_lmg_offset_nongadget.forbids = {"inf_lmg_offset"}
 	self.parts.inf_lmg_offset_nongadget.stance_mod = deep_clone(self.parts.inf_lmg_offset.stance_mod)
 
@@ -1231,7 +1230,6 @@ end
 	self.parts.inf_burst.custom_stats = {has_burst_fire = true, burst_size = 3, adaptive_burst_size = false, burst_fire_rate_multiplier = 1.2}
 	self.parts.inf_burst.stats = deep_clone(nostats)
 	
-	-- Beretta 93R burstfire parts
 	-- Same as above but no RoF increase
 	self.parts.inf_burst_only_norpm.internal_part = true
 	self.parts.inf_burst_only_norpm.custom_stats = {has_burst_fire = true, burst_size = 3, adaptive_burst_size = false, inf_rof_mult = 1, anim_speed_mult = 1}
@@ -1240,6 +1238,15 @@ end
 	self.parts.inf_burst_norpm.internal_part = true
 	self.parts.inf_burst_norpm.custom_stats = {has_burst_fire = true, burst_size = 3, adaptive_burst_size = false, burst_fire_rate_multiplier = 1}
 	self.parts.inf_burst_norpm.stats = deep_clone(nostats)
+
+	-- Same as above but 2-round bursts
+	self.parts.inf_doubleburst_only_norpm.internal_part = true
+	self.parts.inf_doubleburst_only_norpm.custom_stats = {has_burst_fire = true, burst_size = 2, adaptive_burst_size = false, inf_rof_mult = 1, anim_speed_mult = 1}
+	self.parts.inf_doubleburst_only_norpm.perks = {"fire_mode_single"}
+	self.parts.inf_doubleburst_only_norpm.stats = deep_clone(nostats)
+	self.parts.inf_doubleburst_norpm.internal_part = true
+	self.parts.inf_doubleburst_norpm.custom_stats = {has_burst_fire = true, burst_size = 2, adaptive_burst_size = false, burst_fire_rate_multiplier = 1}
+	self.parts.inf_doubleburst_norpm.stats = deep_clone(nostats)
 	
 	-- Heavy Barrel
 	self.parts.wpn_fps_upg_ass_m4_b_beowulf.custom_stats = {}
@@ -1396,7 +1403,7 @@ end
 	self.parts.inf_amr16_har.sub_type = "autofire"
 	self:convert_part("inf_amr16_har", "mrifle", "hrifle")
 	self.parts.inf_amr16_har.custom_stats.sdesc1 = "caliber_r556x45m855"
-if BeardLib.Utils:FindMod("BipodM16") then
+if BeardLib.Utils:ModLoaded("BipodM16") then
 	self.parts.wpn_fps_m16_extra_bipod.adds = {"inf_bipod_part"}
 	self.parts.wpn_fps_m16_extra_bipod.type = "bipod"
 	self.parts.wpn_fps_m16_extra_bipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -1473,7 +1480,7 @@ end
 	end
 
 	local akdmr_mag_location = "a_m"
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if BeardLib.Utils:ModLoaded("Custom Attachment Points") or BeardLib.Utils:ModLoaded("WeaponLib") then
 	akdmr_mag_location = "a_m_dmr"
 end
 	-- AK-74 DMR kit
@@ -1675,7 +1682,7 @@ end
 	self.parts.wpn_fps_aug_body_f90.stats = deep_clone(nostats)
 	-- Speed Pull Mag
 	self.parts.wpn_fps_ass_aug_m_quick.stats = deep_clone(nostats)
-if BeardLib.Utils:FindMod("AUG A1 Kit") then
+if BeardLib.Utils:ModLoaded("AUG A1 Kit") then
 	-- A1 body
 	self.parts.wpn_fps_aug_body_aug_a1.stats = deep_clone(nostats)
 	-- A3 body
@@ -1720,7 +1727,7 @@ end
 		zoom = 5,
 		concealment = -2
 	}
-if BeardLib.Utils:FindMod("BipodG36") then
+if BeardLib.Utils:ModLoaded("BipodG36") then
 	Hooks:RemovePostHook("BipodG36") -- was causing g36c handguard to not replace barrel
 	self.parts.wpn_fps_g36_fg_bipod.override = {
 		wpn_fps_upg_g36_fg_long = {unit = "units/override/pd2_dlc_tng/weapons/wpn_fps_ass_g36_fg_long/wpn_fps_upg_g36_fg_long"}
@@ -1918,7 +1925,7 @@ end
 	self.parts.wpn_fps_ass_g3_s_sniper.stats = deep_clone(stock_snp)
 	-- Wooden Stock
 	self.parts.wpn_fps_ass_g3_s_wood.stats = deep_clone(nostats)
-if BeardLib.Utils:FindMod("BipodG3") then
+if BeardLib.Utils:ModLoaded("BipodG3") then
 	self.parts.wpn_fps_g3_fg_expbipod.type = "bipod"
 	self.parts.wpn_fps_g3_fg_expbipod.adds = {"inf_bipod_part"}
 	self.parts.wpn_fps_g3_fg_expbipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -1977,7 +1984,7 @@ end
 		self.parts[part].custom_stats.recoil_horizontal_mult = 2
 	end
 
-	if BeardLib.Utils:FindMod("Bipod Galil") then
+	if BeardLib.Utils:ModLoaded("Bipod Galil") then
 		self.parts.wpn_fps_ass_galil_bipod_folded.type = "bipod"
 		self.parts.wpn_fps_ass_galil_bipod_folded.custom_stats = {recoil_horizontal_mult = 1/2}
 		self.parts.wpn_fps_ass_galil_bipod_folded.stats = {
@@ -2058,7 +2065,7 @@ end
 	self.parts.wpn_fps_ass_m14_body_lower.perks = {"fire_mode_single"}
 	self.parts.wpn_fps_ass_m14_body_lower.forbids = {"wpn_fps_upg_i_singlefire", "wpn_fps_upg_i_autofire"}
 	self.parts.wpn_fps_ass_m14_body_lower.type = "ammo2"
-if BeardLib.Utils:FindMod("BipodM14") then
+if BeardLib.Utils:ModLoaded("BipodM14") then
 	self.parts.wpn_fps_m14_extra_bipod.adds = {"inf_bipod_part"}
 	self.parts.wpn_fps_m14_extra_bipod.type = "bipod"
 	self.parts.wpn_fps_m14_extra_bipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -2143,7 +2150,7 @@ end
 	-- Walnuss Grip
 	self.parts.wpn_fps_snp_wa2000_g_walnut.stats = deep_clone(nostats)
 	--
-if BeardLib.Utils:FindMod("Bipod WA2000") then
+if BeardLib.Utils:ModLoaded("Bipod WA2000") then
 DelayedCalls:Add("wa2000bipoddelay", delay, function(self, params)
 	table.insert(tweak_data.weapon.factory.parts.wpn_fps_snp_wa2000_bipod.adds, "inf_bipod_part")
 
@@ -2309,7 +2316,7 @@ end
 	}
 	self.parts.inf_50bmg_raufoss.stats = deep_clone(nostats)
 	-- don't allow this shit to be used without the crash fix
-	if not BeardLib.Utils:FindMod("Fix Custom Weapon Dragons Breath Crash") then
+	if not BeardLib.Utils:ModLoaded("Fix Custom Weapon Dragons Breath Crash") then
 		self.parts.wpn_fps_snp_m95_magazine.forbids = self.parts.wpn_fps_snp_m95_magazine.forbids or {}
 		table.insert(self.parts.wpn_fps_snp_m95_magazine.forbids, "inf_50bmg_raufoss")
 		table.insert(self.parts.wpn_fps_snp_m95_magazine.forbids, "inf_50bmg_incendiary")
@@ -2449,7 +2456,7 @@ end
 		recoil = -10,
 		concealment = 0
 	}
-if BeardLib.Utils:FindMod("MP5K FG") then
+if BeardLib.Utils:ModLoaded("MP5K FG") then
 	self.parts.wpn_fps_smg_mp5_fg_stripped.stats = {
 		value = 0,
 		spread = -10,
@@ -4135,7 +4142,7 @@ end
 	end
 
 	-- SR EINHERI PARTS
-if BeardLib.Utils:FindMod("SR-3M Vikhr") then
+if BeardLib.Utils:ModLoaded("SR-3M Vikhr") then
 	-- default mag
 	self.parts.wpn_fps_ass_sr3m_mag.stats = {}
 	-- mounting sights in an aesthetic fashion
@@ -4192,7 +4199,7 @@ end
 
 
 	-- CZ-75 SHADOW PARTS
-if BeardLib.Utils:FindMod("cz") then
+if BeardLib.Utils:ModLoaded("cz") then
 	-- prevents from loading after InF and overwriting my clearly-superior stats
 	-- now done via delayed calls
 	--Hooks:RemovePostHook("czInit")
@@ -4216,14 +4223,14 @@ if BeardLib.Utils:FindMod("cz") then
 	self.parts.wpn_fps_pis_cz_g_bling.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_cz_g_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_cz_b_silver.stats = deep_clone(nostats)
-DelayedCalls:Add("cz75shadowdelay", delay, function(self, params)
-	tweak_data.weapon.factory.wpn_fps_pis_x_cz.override.wpn_fps_pis_cz_m_ext.stats = deep_clone(tweak_data.weapon.factory.parts.wpn_fps_pis_cz_m_ext.stats)
-	tweak_data.weapon.factory.wpn_fps_pis_x_cz.override.wpn_fps_pis_cz_m_ext.stats.extra_ammo = tweak_data.weapon.factory.wpn_fps_pis_x_cz.override.wpn_fps_pis_cz_m_ext.stats.extra_ammo * 2
-end)
+	DelayedCalls:Add("cz75shadowdelay", delay, function(self, params)
+		tweak_data.weapon.factory.wpn_fps_pis_x_cz.override.wpn_fps_pis_cz_m_ext.stats = deep_clone(tweak_data.weapon.factory.parts.wpn_fps_pis_cz_m_ext.stats)
+		tweak_data.weapon.factory.wpn_fps_pis_x_cz.override.wpn_fps_pis_cz_m_ext.stats.extra_ammo = tweak_data.weapon.factory.wpn_fps_pis_x_cz.override.wpn_fps_pis_cz_m_ext.stats.extra_ammo * 2
+	end)
 end
 
 	-- M2 HEAVY BARREL
-if BeardLib.Utils:FindMod("M2HB_HMG") then
+if BeardLib.Utils:ModLoaded("M2HB_HMG") then
 	self.parts.inf_lmg_offset.stance_mod.wpn_fps_lmg_m2hb = {translation = Vector3(4, 0, -1)}
 	self.parts.inf_lmg_offset_nongadget.stance_mod.wpn_fps_lmg_m2hb = {translation = Vector3(4, 0, -1)}
 	table.insert(self.wpn_fps_lmg_m2hb.uses_parts, "inf_lmg_offset")
@@ -4231,7 +4238,7 @@ if BeardLib.Utils:FindMod("M2HB_HMG") then
 end
 
 	-- MATEBA 6 UNICA PARTS
-if BeardLib.Utils:FindMod("Mateba Model 6 Unica") then
+if BeardLib.Utils:ModLoaded("Mateba Model 6 Unica") then
 	-- Compensator
 	self.parts.wpn_fps_upg_unica6_comp.stats = {
 		value = 0,
@@ -4243,7 +4250,7 @@ if BeardLib.Utils:FindMod("Mateba Model 6 Unica") then
 end
 
 
-if BeardLib.Utils:FindMod("Contender Special") then
+if BeardLib.Utils:ModLoaded("Contender Special") then
 	-- standard
 	self.parts.wpn_fps_special_contender_shell_rifle.internal_part = true
 	self.parts.wpn_fps_special_contender_shell_rifle.type = "ammo"
@@ -4305,7 +4312,7 @@ end)
 end
 
 
-if BeardLib.Utils:FindMod("m1c") then
+if BeardLib.Utils:ModLoaded("m1c") then
 	-- funnel compensator
 	self.parts.wpn_fps_ass_m1c_comp.stats = {
 		value = 0,
@@ -4319,7 +4326,7 @@ if BeardLib.Utils:FindMod("m1c") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Tokarev SVT-40") then
+if BeardLib.Utils:ModLoaded("Tokarev SVT-40") then
 	-- upgraded muzzle brake
 	self.parts.wpn_fps_upg_svt40_muzzle_brake_upg.stats = deep_clone(nostats)
 	-- PU scopes
@@ -4337,7 +4344,7 @@ if BeardLib.Utils:FindMod("Tokarev SVT-40") then
 	self.parts.wpn_fps_upg_svt40_suppressor.stats = deep_clone(silstatsconc2)
 end
 
-if BeardLib.Utils:FindMod("AN-94 AR") then
+if BeardLib.Utils:ModLoaded("AN-94 AR") then
 	self.parts.wpn_fps_ass_akrocket_s_adjusted.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_akrocket_g_mod.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_akrocket_fg_modern.stats = deep_clone(nostats)
@@ -4350,7 +4357,7 @@ if BeardLib.Utils:FindMod("AN-94 AR") then
 	self.parts.wpn_fps_ass_akrocket_m_fastext.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("tilt") then
+if BeardLib.Utils:ModLoaded("tilt") then
 	self.parts.wpn_fps_ass_tilt_g_wood.stats = deep_clone(nostats)
 	-- bulk magazine
 	self.parts.wpn_fps_ass_tilt_mag_big.stats = deep_clone(self.parts.wpn_fps_upg_ak_m_quad.stats)
@@ -4391,7 +4398,7 @@ end)
 end
 
 
-if BeardLib.Utils:FindMod("Makarov Pistol") then
+if BeardLib.Utils:ModLoaded("Makarov Pistol") then
 	-- pmm 12rnd mag
 	self.parts.wpn_fps_pis_pm_m_custom.stats = deep_clone(mag_150)
 	self.parts.wpn_fps_pis_pm_m_custom.stats.extra_ammo = 4
@@ -4430,7 +4437,7 @@ end)
 end
 
 
-if BeardLib.Utils:FindMod("Remington Various Attachment") then
+if BeardLib.Utils:ModLoaded("Remington Various Attachment") then
 	-- heat-shielded barrel
 	self.parts.wpn_fps_shot_mossberg_b_heat.stats = deep_clone(nostats)
 	-- flashlight grip
@@ -4519,7 +4526,7 @@ end)
 end
 
 
-if BeardLib.Utils:FindMod("Winchester Model 1912") then
+if BeardLib.Utils:ModLoaded("Winchester Model 1912") then
 	-- base receiver
 	self.parts.wpn_fps_shot_m1912_receiver.stats = deep_clone(nostats)
 	-- field barrel
@@ -4562,7 +4569,7 @@ if BeardLib.Utils:FindMod("Winchester Model 1912") then
 end
 
 
-if BeardLib.Utils:FindMod("KS-23") then
+if BeardLib.Utils:ModLoaded("KS-23") then
 	-- shrapnel-25
 	self.parts.wpn_fps_upg_ks23_ammo_buckshot_8pellet.custom_stats = {rays = 8, damage_near_mul = 25/15, damage_far_mul = 35/30, sdesc1 = "caliber_s23mm25"}
 	self.parts.wpn_fps_upg_ks23_ammo_buckshot_8pellet.stats = {
@@ -4615,7 +4622,7 @@ if BeardLib.Utils:FindMod("KS-23") then
 end
 
 
-if BeardLib.Utils:FindMod("Marlin Model 1894 Custom") then
+if BeardLib.Utils:ModLoaded("Marlin Model 1894 Custom") then
 	-- default parts
 	self.parts.wpn_fps_snp_m1894_loading_spring.stats = {}
 	self.parts.wpn_fps_snp_m1894_irons.stats = {
@@ -4628,7 +4635,7 @@ if BeardLib.Utils:FindMod("Marlin Model 1894 Custom") then
 end
 
 -- primary svu/SVU-T
-if BeardLib.Utils:FindMod("svudragunov") then
+if BeardLib.Utils:ModLoaded("svudragunov") then
 	table.insert(gunlist_snp, {"wpn_fps_snp_svu_dragunov", -3})
 	table.insert(self.wpn_fps_snp_svu_dragunov.uses_parts, "wpn_fps_upg_o_spot")
 	table.insert(self.wpn_fps_snp_svu_dragunov.uses_parts, "inf_shortdot")
@@ -4661,7 +4668,7 @@ if BeardLib.Utils:FindMod("svudragunov") then
 end
 
 -- secondary svu
-if BeardLib.Utils:FindMod("SVU") then
+if BeardLib.Utils:ModLoaded("SVU") then
 	-- default parts
 	self.parts.wpn_fps_snp_svu_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_snp_svu_pso.custom_stats = {disallow_ads_while_reloading = true}
@@ -4691,7 +4698,7 @@ if BeardLib.Utils:FindMod("SVU") then
 end
 
 
-if BeardLib.Utils:FindMod("Gewehr 43") then
+if BeardLib.Utils:ModLoaded("Gewehr 43") then
 	table.insert(gunlist_snp, {"wpn_fps_snp_g43", -3})
 	self.parts.wpn_fps_snp_g43_clothwrap.stats = deep_clone(nostats)
 	self.parts.wpn_fps_snp_g43_sling.stats = deep_clone(nostats)
@@ -4731,7 +4738,7 @@ if BeardLib.Utils:FindMod("Gewehr 43") then
 end
 
 -- primary mosin-nagant obrez
-if BeardLib.Utils:FindMod("Mosin Nagant Obrez Kit") then
+if BeardLib.Utils:ModLoaded("Mosin Nagant Obrez Kit") then
 	table.insert(self.parts.wpn_fps_snp_mosin_b_obrez.forbids, "inf_bipod_snp")
 	self.parts.wpn_fps_snp_mosin_b_obrez.custom_stats = {muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash_dragons_breath"}
 	self.parts.wpn_fps_snp_mosin_b_obrez.stats = {
@@ -4747,7 +4754,7 @@ if BeardLib.Utils:FindMod("Mosin Nagant Obrez Kit") then
 end
 
 -- secondary obrez
-if BeardLib.Utils:FindMod("Mosin Nagant M9130 Obrez") then
+if BeardLib.Utils:ModLoaded("Mosin Nagant M9130 Obrez") then
 	-- ridiculous flash is set in wpn_stats
 	-- default part
 	self.parts.wpn_fps_snp_obrez_clip.stats = deep_clone(nostats)
@@ -4765,7 +4772,7 @@ end
 
 
 -- BAR
-if BeardLib.Utils:FindMod("BAR LMG") then
+if BeardLib.Utils:ModLoaded("BAR LMG") then
 	self.parts.wpn_fps_ass_bar_g_monitor.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_bar_bipod.custom_stats = {recoil_horizontal_mult = 2}
 	self.parts.wpn_fps_ass_bar_bipod.adds = {"inf_bipod_part"}
@@ -4800,7 +4807,7 @@ DelayedCalls:Add("bardelaycall", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("QBZ-97B") then
+if BeardLib.Utils:ModLoaded("QBZ-97B") then
 	self.parts.wpn_fps_ass_qbz97b_mag_short.stats = deep_clone(mag_66)
 	self.parts.wpn_fps_ass_qbz97b_mag_short.stats.extra_ammo = -10
 	self.parts.wpn_fps_ass_qbz97b_mag_pmag.stats = deep_clone(nostats)
@@ -4829,7 +4836,7 @@ DelayedCalls:Add("qbz97bdelaycall", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("Seburo M5") then
+if BeardLib.Utils:ModLoaded("Seburo M5") then
 	self.parts.wpn_fps_pis_seburo_g_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_seburo_f_silver.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_seburo_s_silver.stats = deep_clone(nostats)
@@ -4851,7 +4858,7 @@ end)
 end
 
 
-if BeardLib.Utils:FindMod("HKG11") then
+if BeardLib.Utils:ModLoaded("HKG11") then
 	self.parts.wpn_fps_upg_temple_i_matthewreilly.perks = nil
 	self.parts.wpn_fps_upg_temple_i_matthewreilly.custom_stats = {has_burst_fire = false, inf_rof_mult = 2100/460} -- this is fucking stupid
 	self.parts.wpn_fps_upg_temple_i_matthewreilly.stats = {
@@ -4871,7 +4878,7 @@ if BeardLib.Utils:FindMod("HKG11") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Beretta 93R") then
+if BeardLib.Utils:ModLoaded("Beretta 93R") then
 	self.parts.wpn_fps_upg_b93r_comp_93r.stats = {
 		value = 0,
 		recoil = 2,
@@ -4903,7 +4910,7 @@ if BeardLib.Utils:FindMod("Beretta 93R") then
 	self.parts.wpn_fps_upg_b93r_vertgrip_rail.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("TOZ-34") then
+if BeardLib.Utils:ModLoaded("TOZ-34") then
 	self.parts.wpn_fps_shot_toz34_sight_rail.stance_mod = {wpn_fps_shot_toz34 = {translation = Vector3(0, -11, -0.2), rotation = Rotation(0, 0.2, 0)}}
 	self.parts.wpn_fps_shot_toz34_body.stance_mod = {wpn_fps_shot_toz34 = {translation = Vector3(0, 11, 0.2), rotation = Rotation(0, -0.2, 0)}}
 	self.parts.wpn_fps_shot_toz34_body.stats = deep_clone(nostats)
@@ -4929,11 +4936,11 @@ end
 
 
 	-- MEUSOC grip
-if BeardLib.Utils:FindMod("Pachmayr Grip") then
+if BeardLib.Utils:ModLoaded("Pachmayr Grip") then
 	self.parts.wpn_fps_pis_1911_g_pachmayr.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("TOZ-66") then
+if BeardLib.Utils:ModLoaded("TOZ-66") then
 	self.parts.wpn_fps_shot_toz66_body.stats = {}
 	self.parts.wpn_fps_shot_toz66_body.stance_mod = {wpn_fps_shot_toz66 = {translation = Vector3(0, 0, 1.5)}}
 
@@ -4955,11 +4962,11 @@ if BeardLib.Utils:FindMod("TOZ-66") then
 	self.parts.wpn_fps_upg_toz66_duckbill.stats = deep_clone(self.parts.wpn_fps_upg_ns_duck.stats)
 end
 
-if BeardLib.Utils:FindMod("PU Scope") then
+if BeardLib.Utils:ModLoaded("PU Scope") then
 	self.parts.wpn_fps_snp_mosin_pu_scope.custom_stats = {disallow_ads_while_reloading = true}
 end
 
-if BeardLib.Utils:FindMod("pdr") then
+if BeardLib.Utils:ModLoaded("pdr") then
 	-- swift mag
 	self.parts.wpn_fps_smg_pdr_m_pmag.stats = deep_clone(nostats)
 	-- short mag
@@ -4967,7 +4974,7 @@ if BeardLib.Utils:FindMod("pdr") then
 	self.parts.wpn_fps_smg_pdr_m_short.stats.extra_ammo = -10
 end
 
-if BeardLib.Utils:FindMod("Steyr AUG A3 9mm XS") then
+if BeardLib.Utils:ModLoaded("Steyr AUG A3 9mm XS") then
 	self.parts.wpn_fps_smg_aug9mm_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_aug9mm_barrel_long.stats = {
 		value = 0,
@@ -5004,7 +5011,7 @@ if BeardLib.Utils:FindMod("Steyr AUG A3 9mm XS") then
 	self.parts.wpn_fps_upg_aug9mm_vg_troy_short.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("L115") then
+if BeardLib.Utils:ModLoaded("L115") then
 	table.insert(gunlist_snp, {"wpn_fps_snp_l115", -3})
 	self.parts.wpn_fps_snp_l115_mag.stats = nil
 	table.insert(self.wpn_fps_snp_l115.uses_parts, "inf_shortdot")
@@ -5015,12 +5022,12 @@ if BeardLib.Utils:FindMod("L115") then
 	self.parts.wpn_fps_upg_l115_barrel_awc.stats = deep_clone(silstatssnp)
 	self.parts.wpn_fps_upg_l115_supp.custom_stats = snpsilencercustomstats
 	self.parts.wpn_fps_upg_l115_supp.stats = deep_clone(silstatssnp)
-	if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+	if BeardLib.Utils:ModLoaded("Custom Attachment Points") or BeardLib.Utils:ModLoaded("WeaponLib") then
 		table.insert(self.wpn_fps_snp_l115.uses_parts, "inf_bipod_snp")
 	end
 end
 
-if BeardLib.Utils:FindMod("US Optics ST-10 Scope") then
+if BeardLib.Utils:ModLoaded("US Optics ST-10 Scope") then
 	self.parts.wpn_fps_upg_o_st10.customsight = true
 	self.parts.wpn_fps_upg_o_st10.customsighttrans = {}
 	self.parts.wpn_fps_upg_o_st10.customsighttrans.wpn_fps_ass_galil_fg_fab = {translation = Vector3(0, 3, 0)}
@@ -5038,12 +5045,12 @@ if BeardLib.Utils:FindMod("US Optics ST-10 Scope") then
 	}
 end
 
-if BeardLib.Utils:FindMod("ZeissMod") then
+if BeardLib.Utils:ModLoaded("ZeissMod") then
 	self.parts.wpn_fps_upg_o_zeiss.customsight = true
 	self.parts.wpn_fps_upg_o_zeiss.stats = deep_clone(self.parts.wpn_fps_upg_o_t1micro.stats)
 end
 
-if BeardLib.Utils:FindMod("AK Topless") then
+if BeardLib.Utils:ModLoaded("AK Topless") then
 	self.parts.wpn_fps_ass_akm_topless.stats = {
 		value = 0,
 		recoil = -2,
@@ -5057,7 +5064,7 @@ if BeardLib.Utils:FindMod("AK Topless") then
 	table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_ass_akm_topless")
 end
 
-if BeardLib.Utils:FindMod("Montana 5.56") then
+if BeardLib.Utils:ModLoaded("Montana 5.56") then
 	self.parts.wpn_fps_ass_yayo_fg_rail.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_yayo_mag_dual.custom_stats = {alternating_reload = 1.20/0.80}
 	self.parts.wpn_fps_ass_yayo_mag_dual.stats = {
@@ -5087,7 +5094,7 @@ if BeardLib.Utils:FindMod("Montana 5.56") then
 	self.parts.wpn_fps_ass_yayo_flipup.stance_mod.wpn_fps_ass_yayo = {translation = Vector3(0, 0, -1), rotation = Rotation(0, -0.5, 0)}
 end
 
-if BeardLib.Utils:FindMod("Bren Ten") then
+if BeardLib.Utils:ModLoaded("Bren Ten") then
 	self.parts.wpn_fps_pis_sonny_sl_runt.stats = {
 		value = 0,
 		spread = -5,
@@ -5095,7 +5102,7 @@ if BeardLib.Utils:FindMod("Bren Ten") then
 	}
 end
 
-if BeardLib.Utils:FindMod("VisionKing VS1.5-5x30QZ") then
+if BeardLib.Utils:ModLoaded("VisionKing VS1.5-5x30QZ") then
 	self.parts.wpn_fps_upg_o_visionking.customsight = true
 	self.parts.wpn_fps_upg_o_visionking.customsighttrans = {}
 	self.parts.wpn_fps_upg_o_visionking.customsighttrans.wpn_fps_ass_galil_fg_fab = {translation = Vector3(0, 10, 0)}
@@ -5110,7 +5117,7 @@ if BeardLib.Utils:FindMod("VisionKing VS1.5-5x30QZ") then
 	}
 end
 
-if BeardLib.Utils:FindMod("CompM4s Sight") then
+if BeardLib.Utils:ModLoaded("CompM4s Sight") then
 	self.parts.wpn_fps_upg_o_compm4s.customsight = true
 	self.parts.wpn_fps_upg_o_compm4s.stats = {
 		value = 0,
@@ -5119,7 +5126,7 @@ if BeardLib.Utils:FindMod("CompM4s Sight") then
 	}
 end
 
-if BeardLib.Utils:FindMod("STG 44") then
+if BeardLib.Utils:ModLoaded("STG 44") then
 	self.parts.wpn_fps_ass_stg44_b_short.stats = deep_clone(barrel_p2)
 	self.parts.wpn_fps_ass_stg44_b_long.stats = {
 		value = 0,
@@ -5155,7 +5162,7 @@ if BeardLib.Utils:FindMod("STG 44") then
 	self.parts.wpn_fps_ass_stg44_fg_a280.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("HK G3A3 M203") then
+if BeardLib.Utils:ModLoaded("HK G3A3 M203") then
 	self.parts.wpn_fps_ass_g3m203_mag.stats = {}
 	self.parts.wpn_fps_upg_g3m203_barrel_g3ka4.stats = {
 		value = 0,
@@ -5197,7 +5204,7 @@ if BeardLib.Utils:FindMod("HK G3A3 M203") then
 	self.parts.wpn_fps_upg_g3m203_gre_incendiary.custom_stats.sdesc3 = "misc_gl40x46mmIC"
 end
 
-if BeardLib.Utils:FindMod("AAC Honey Badger") then
+if BeardLib.Utils:ModLoaded("AAC Honey Badger") then
 	-- default part
 	self.parts.wpn_fps_ass_bajur_b_std.custom_stats = silencercustomstats
 
@@ -5238,12 +5245,12 @@ DelayedCalls:Add("bajurdelaycall", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("Kobra Sight") then
+if BeardLib.Utils:ModLoaded("Kobra Sight") then
 	self.parts.wpn_fps_upg_o_kobra.customsight = true
 	self.parts.wpn_fps_upg_o_kobra.stats = deep_clone(self.parts.wpn_fps_upg_o_t1micro.stats)
 end
 
-if BeardLib.Utils:FindMod("OKP-7 Sight") then
+if BeardLib.Utils:ModLoaded("OKP-7 Sight") then
 	self.parts.wpn_fps_upg_o_okp7.customsight = true
 	self.parts.wpn_fps_upg_o_okp7.customsighttrans = {}
 	self.parts.wpn_fps_upg_o_okp7.customsighttrans.wpn_fps_ass_galil_fg_fab = {translation = Vector3(0.6, 0, 0.93)}
@@ -5256,7 +5263,7 @@ if BeardLib.Utils:FindMod("OKP-7 Sight") then
 	self.parts.wpn_fps_upg_o_okp7.stats = deep_clone(self.parts.wpn_fps_upg_o_t1micro.stats)
 end
 
-if BeardLib.Utils:FindMod("af2011") then
+if BeardLib.Utils:ModLoaded("af2011") then
 	self.parts.wpn_fps_pis_af2011_body_standard.stats = {
 		value = 0,
 		spread_multi = {2.00, 0.50},
@@ -5296,7 +5303,7 @@ DelayedCalls:Add("af2011delaycall", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("1P69 Giperon Scope CS5") then
+if BeardLib.Utils:ModLoaded("1P69 Giperon Scope CS5") then
 	self.parts.wpn_fps_upg_o_1p69.customsight = true
 	self.parts.wpn_fps_upg_o_1p69.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_1p69.stats = {
@@ -5306,7 +5313,7 @@ if BeardLib.Utils:FindMod("1P69 Giperon Scope CS5") then
 	}
 end
 
-if BeardLib.Utils:FindMod("STF-12") then
+if BeardLib.Utils:ModLoaded("STF-12") then
 	-- it's a short barrel
 	self.parts.wpn_fps_shot_stf12_b_long.stats = deep_clone(barrelsho_p1)
 	self.parts.wpn_fps_shot_stf12_choke.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
@@ -5320,7 +5327,7 @@ if BeardLib.Utils:FindMod("STF-12") then
 	table.insert(customsightaddlist, {"wpn_fps_shot_stf12", "wpn_fps_shot_r870", true})
 end
 
-if BeardLib.Utils:FindMod("PO 4x24P Scope") then
+if BeardLib.Utils:ModLoaded("PO 4x24P Scope") then
 	self.parts.wpn_fps_upg_o_po4.customsight = true
 	self.parts.wpn_fps_upg_o_po4.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_po4.stats = {
@@ -5403,7 +5410,7 @@ if BeardLib.Utils:FindMod("PO 4x24P Scope") then
 	self.parts.wpn_fps_upg_o_po4.stance_mod.wpn_fps_gre_slap = {translation = Vector3(0.18, 0, -0.59)}
 end
 
-if BeardLib.Utils:FindMod("CheyTac M200") then
+if BeardLib.Utils:ModLoaded("CheyTac M200") then
 	-- big default scope with 8 zoom
 	table.insert(gunlist_snp, {"wpn_fps_snp_m200", -4})
 	self.parts.wpn_fps_snp_m200_deltatitanium.custom_stats = {disallow_ads_while_reloading = true}
@@ -5417,7 +5424,7 @@ if BeardLib.Utils:FindMod("CheyTac M200") then
 	self.parts.wpn_fps_upg_m200_supp.stats = deep_clone(silstatssnp)
 end
 
-if BeardLib.Utils:FindMod("EOTech 552 Holographic Sight") then
+if BeardLib.Utils:ModLoaded("EOTech 552 Holographic Sight") then
 	self.parts.wpn_fps_upg_o_eotech552.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 
 	self.parts.wpn_fps_upg_o_eotech552.customsight = true
@@ -5434,7 +5441,7 @@ DelayedCalls:Add("eotech552_grayingmyhair", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("Minebea SMG") then
+if BeardLib.Utils:ModLoaded("Minebea SMG") then
 	self.parts.wpn_fps_smg_minebea_m_standard.stats = deep_clone(nostats)
 	self.parts.wpn_fps_smg_minebea_m_extended.stats = deep_clone(mag_150)
 	self.parts.wpn_fps_smg_minebea_m_extended.stats.extra_ammo = 10
@@ -5470,11 +5477,11 @@ DelayedCalls:Add("minebeadelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("Thermal Scope") then
+if BeardLib.Utils:ModLoaded("Thermal Scope") then
 	self.parts.wpn_fps_upg_o_thersig.stats = deep_clone(self.parts.wpn_fps_upg_o_aimpoint.stats)
 end
 
-if BeardLib.Utils:FindMod("Ghost Ring Sight") then
+if BeardLib.Utils:ModLoaded("Ghost Ring Sight") then
 	self.parts.wpn_fps_upg_p226_o_ghostring.stats = deep_clone(nostats)
 	local r870stocks = {"wpn_fps_shot_r870_s_folding", "wpn_fps_upg_m4_s_standard", "wpn_fps_upg_m4_s_pts", "wpn_fps_upg_m4_s_crane", "wpn_fps_upg_m4_s_mk46", "wpn_fps_upg_m4_s_ubr", "wpn_fps_snp_tti_s_vltor"}
 	for a, stock in pairs(r870stocks) do
@@ -5500,7 +5507,7 @@ end)
 --]]
 end
 
-if BeardLib.Utils:FindMod("HX25 Handheld Grenade Launcher") then
+if BeardLib.Utils:ModLoaded("HX25 Handheld Grenade Launcher") then
 	self.parts.wpn_fps_gre_hx25_barrel.custom_stats = {}
 	self.parts.wpn_fps_gre_hx25_barrel.stats = {
 		value = 0,
@@ -5563,7 +5570,7 @@ if BeardLib.Utils:FindMod("HX25 Handheld Grenade Launcher") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Illuminated Iron Sight Pack") then
+if BeardLib.Utils:ModLoaded("Illuminated Iron Sight Pack") then
 	self.parts.wpn_fps_upg_1911_tritium.stats = {value = 0, concealment = 0}
 	self.parts.wpn_fps_upg_b92fs_tritium.stats = {value = 0, concealment = 0}
 	self.parts.wpn_fps_upg_baka_tritium.stats = {value = 0, concealment = 0}
@@ -5594,7 +5601,7 @@ if BeardLib.Utils:FindMod("Illuminated Iron Sight Pack") then
 	self.parts.wpn_fps_upg_stech_tritium.stats = {value = 0, concealment = 0}
 end
 
-if BeardLib.Utils:FindMod("stock_attachment_pack") then
+if BeardLib.Utils:ModLoaded("stock_attachment_pack") then
 	primarysmgadds_specific.wpn_fps_smg_mp5primary = primarysmgadds_specific.wpn_fps_smg_mp5primary or {}
 	table.insert(primarysmgadds_specific.wpn_fps_smg_mp5primary, "wpn_fps_smg_mp5_s_folded")
 	table.insert(primarysmgadds_specific.wpn_fps_smg_mp5primary, "wpn_fps_smg_mp5_s_adjusted")
@@ -5703,7 +5710,7 @@ if BeardLib.Utils:FindMod("stock_attachment_pack") then
 	self.wpn_fps_smg_x_mp5.override.wpn_fps_smg_mp5_s_nostock = {stats = deep_clone(nostats)}
 end
 
-if BeardLib.Utils:FindMod("amt") then
+if BeardLib.Utils:ModLoaded("amt") then
 	self.parts.wpn_fps_upg_amt_visionking.stats = {
 		value = 0,
 		zoom = 7,
@@ -5716,7 +5723,7 @@ if BeardLib.Utils:FindMod("amt") then
 	self.parts.wpn_fps_pis_amt_m_short.stats.extra_ammo = 4
 end
 
-if BeardLib.Utils:FindMod("Vanilla Styled Weapon Mods") then
+if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") then
 	self.parts.wpn_fps_ass_flint_b_short.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_ass_flint_b_long.stats = deep_clone(barrel_m1)
 	self.parts.wpn_fps_ass_flint_m_long.stats = deep_clone(mag_133)
@@ -5933,7 +5940,7 @@ if self.parts.wpn_fps_shot_minibeck_shells then
 	self.parts.wpn_fps_upg_ns_ass_smg_pro.custom_stats = silencercustomstats
 end
 
-if BeardLib.Utils:FindMod("Zenith 10mm") then
+if BeardLib.Utils:ModLoaded("Zenith 10mm") then
 	self.parts.wpn_fps_upg_zenith_ammo_ap.custom_stats = {sdesc1 = "caliber_p10hr", pen_shield_dmg_mult = 0.20/0.25, ammo_pickup_min_mul = 0.50, ammo_pickup_max_mul = 0.50, can_shoot_through_shield = true, can_shoot_through_wall = true}
 	self.parts.wpn_fps_upg_zenith_ammo_ap.internal_part = true
 	self.parts.wpn_fps_upg_zenith_ammo_ap.stats = {
@@ -5947,7 +5954,7 @@ if BeardLib.Utils:FindMod("Zenith 10mm") then
 	self.parts.wpn_fps_upg_zenith_compact_laser.desc_id = "bm_wp_wpn_fps_upg_zenith_compact_laser_desc"
 end
 
-if BeardLib.Utils:FindMod("Widowmaker TX") then
+if BeardLib.Utils:ModLoaded("Widowmaker TX") then
 	self.parts.wpn_fps_shot_wmtx_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_wmtx_ammo_minishell.custom_stats = {sdesc1 = "caliber_s12dx", rays = 6, ammo_pickup_min_mul = 1.50, ammo_pickup_max_mul = 1.50}
 	self.parts.wpn_fps_upg_wmtx_ammo_minishell.stats = {
@@ -5965,7 +5972,7 @@ if BeardLib.Utils:FindMod("Widowmaker TX") then
 	self.parts.wpn_fps_upg_wmtx_ns_firebull.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("DP12 Shotgun") then
+if BeardLib.Utils:ModLoaded("DP12 Shotgun") then
 	self.parts.wpn_fps_sho_dp12_o_standard.stance_mod = {wpn_fps_sho_dp12 = {translation = Vector3(0, 0, -0.3)}}
 	self.parts.wpn_fps_sho_dp12_ns_breacher.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
 
@@ -5996,7 +6003,7 @@ DelayedCalls:Add("dp12delay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("ELCAN SpecterDR with Docter Sight") then
+if BeardLib.Utils:ModLoaded("ELCAN SpecterDR with Docter Sight") then
 	self.parts.wpn_fps_upg_o_su230_docter.customsight = true
 	self.parts.wpn_fps_upg_o_su230_docter.stats = {
 		value = 0,
@@ -6017,7 +6024,7 @@ DelayedCalls:Add("specdoc_grayingmyhair", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("gsup") then
+if BeardLib.Utils:ModLoaded("gsup") then
 	-- pistol sils
 	self.parts.wpn_fps_ass_ns_g_sup1.custom_stats = silencercustomstats
 	self.parts.wpn_fps_ass_ns_g_sup1.stats = deep_clone(silstatsconc2) --3
@@ -6052,7 +6059,7 @@ if BeardLib.Utils:FindMod("gsup") then
 	table.insert(primarysmgadds, "wpn_fps_ass_ns_g_sup5")
 end
 
-if BeardLib.Utils:FindMod("Lost Gadgets Pack") then
+if BeardLib.Utils:ModLoaded("Lost Gadgets Pack") then
 	self.parts.wpn_fps_upg_fl_anpeq2.desc_id = "bm_wp_wpn_fps_upg_fl_anpeq2_desc"
 	self.parts.wpn_fps_upg_fl_anpeq2.stats = {
 		value = 0,
@@ -6102,7 +6109,7 @@ if BeardLib.Utils:FindMod("Lost Gadgets Pack") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Heavy Metal Muzzle Device Pack") then
+if BeardLib.Utils:ModLoaded("Heavy Metal Muzzle Device Pack") then
 	self.parts.wpn_fps_upg_ns_ass_mb556k.stats = deep_clone(self.parts.wpn_fps_upg_ass_ns_surefire.stats)
 	self.parts.wpn_fps_upg_ns_ass_tbrake.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_tank.stats)
 	self.parts.wpn_fps_upg_ns_ass_vortex.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_stubby.stats)
@@ -6119,7 +6126,7 @@ if BeardLib.Utils:FindMod("Heavy Metal Muzzle Device Pack") then
 	self.parts.wpn_fps_upg_ns_shot_nomad.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
 end
 
-if BeardLib.Utils:FindMod("Magpul Attachments Pack - AK") then
+if BeardLib.Utils:ModLoaded("Magpul Attachments Pack - AK") then
 	self.parts.wpn_fps_upg_fg_ak_moe.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_g_ak_moe.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_s_ak_moe.stats = deep_clone(nostats)
@@ -6132,7 +6139,7 @@ if BeardLib.Utils:FindMod("Magpul Attachments Pack - AK") then
 	table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_upg_ak_m_pmag")
 end
 
-if BeardLib.Utils:FindMod("Magpul Attachments Pack - M4") then
+if BeardLib.Utils:ModLoaded("Magpul Attachments Pack - M4") then
 	self.parts.wpn_fps_upg_fg_moe2.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_g_m4_moe.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_s_m4_sl_c.stats = {
@@ -6177,7 +6184,7 @@ if BeardLib.Utils:FindMod("Magpul Attachments Pack - M4") then
 --]]
 end
 
-if BeardLib.Utils:FindMod("Magpul Attachments Pack - Universal") then
+if BeardLib.Utils:ModLoaded("Magpul Attachments Pack - Universal") then
 	self.parts.wpn_fps_upg_fg_moe2_short.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_s_m4_ubr.stats = deep_clone(nostats)
 	primarysmgadds_specific.wpn_fps_smg_olympicprimary = primarysmgadds_specific.wpn_fps_smg_olympicprimary or {}
@@ -6294,7 +6301,7 @@ if BeardLib.Utils:FindMod("Magpul Attachments Pack - Universal") then
 	table.insert(primarysmgadds_specific.wpn_fps_smg_hajkprimary, "wpn_fps_upg_m4_m_pmag20")
 end
 
-if BeardLib.Utils:FindMod("Lahti L-35") then
+if BeardLib.Utils:ModLoaded("Lahti L-35") then
 	self.parts.wpn_fps_upg_l35_barrel_long.stats = {
 		value = 0,
 		spread = 5,
@@ -6314,7 +6321,7 @@ if BeardLib.Utils:FindMod("Lahti L-35") then
 	self.parts.wpn_fps_upg_l35_mag_long.stats.extra_ammo = 8
 end
 
-if BeardLib.Utils:FindMod("OTs-14-4A Groza") then
+if BeardLib.Utils:ModLoaded("OTs-14-4A Groza") then
 	self.parts.wpn_fps_ass_ots_14_4a_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_ots_14_4a_supp.stats = deep_clone(silstatsconc2)
 	self.parts.wpn_fps_upg_ots_14_4a_supp_b.stats = deep_clone(silstatsconc2)
@@ -6347,13 +6354,13 @@ if BeardLib.Utils:FindMod("OTs-14-4A Groza") then
 	self.parts.inf_groza_556.stats.concealment = mag_150.concealment
 end
 
-if BeardLib.Utils:FindMod("M16A1 Wooden Furniture") then
+if BeardLib.Utils:ModLoaded("M16A1 Wooden Furniture") then
 	self.parts.wpn_fps_ass_m16_fg_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_m16_s_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_m16_g_wood.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("MK18 Specialist") then
+if BeardLib.Utils:ModLoaded("MK18 Specialist") then
 	self.parts.wpn_fps_ass_mk18s_fg_black.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_mk18s_grip_black.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_mk18s_tacstock.stats = deep_clone(nostats)
@@ -6378,7 +6385,7 @@ if BeardLib.Utils:FindMod("MK18 Specialist") then
 	table.insert(self.wpn_fps_ass_mk18s.uses_parts, "inf_mk18_nomagwelldevice")
 end
 
-if BeardLib.Utils:FindMod("Lewis Gun") then
+if BeardLib.Utils:ModLoaded("Lewis Gun") then
 	self.parts.wpn_fps_upg_lewis_bolt_aa.stats = {
 		value = 0,
 		spread = -5,
@@ -6401,7 +6408,7 @@ if BeardLib.Utils:FindMod("Lewis Gun") then
 	}
 end
 
-if BeardLib.Utils:FindMod("HK416") then
+if BeardLib.Utils:ModLoaded("HK416") then
 	self.parts.wpn_fps_ass_hk416_bolt.stats = deep_clone(nostats)
 	--self.parts.wpn_fps_upg_hk416_grip_magpul_miad.stats = deep_clone(nostats)
 	--self.parts.wpn_fps_upg_hk416_grip_magpul_moe.stats = deep_clone(nostats)
@@ -6462,7 +6469,7 @@ if BeardLib.Utils:FindMod("HK416") then
 	self.parts.wpn_fps_upg_hk416_stock_slimline.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("HK416C Standalone") then
+if BeardLib.Utils:ModLoaded("HK416C Standalone") then
 	self.parts.wpn_fps_upg_drongo_s_orig.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_drongo_s_compact.stats = deep_clone(self.parts.wpn_fps_m4_uupg_s_fold.stats)
 	self.parts.wpn_fps_ass_drongo_lower.stance_mod = {
@@ -6498,7 +6505,7 @@ if BeardLib.Utils:FindMod("HK416C Standalone") then
 	self.parts.wpn_fps_upg_o_45rds_v2.stance_mod.wpn_fps_ass_drongo = deep_clone(self.parts.wpn_fps_upg_o_45rds_v2.stance_mod.wpn_fps_ass_m4)
 end
 
-if BeardLib.Utils:FindMod("HK417 Standalone") then
+if BeardLib.Utils:ModLoaded("HK417 Standalone") then
 	self.parts.wpn_fps_upg_recce_s_orig.stats = deep_clone(nostats)
 
 	table.insert(self.wpn_fps_ass_recce.uses_parts, "inf_hk417_dmr")
@@ -6508,7 +6515,7 @@ if BeardLib.Utils:FindMod("HK417 Standalone") then
 	self.parts.inf_hk417_dmr.stats.reload = -20
 end
 
-if BeardLib.Utils:FindMod("acwr") then
+if BeardLib.Utils:ModLoaded("acwr") then
 	self.parts.wpn_fps_ass_acwr_expert.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_acwr_mag_pmag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_acwr_covers.stats = deep_clone(nostats)
@@ -6518,7 +6525,7 @@ if BeardLib.Utils:FindMod("acwr") then
 	self.parts.wpn_fps_ass_acwr_gl_fire.custom_stats = {sdesc3 = "misc_gl40x46mmIC"}
 end
 
-if BeardLib.Utils:FindMod("SAI GRY") then
+if BeardLib.Utils:ModLoaded("SAI GRY") then
 	self.parts.wpn_fps_upg_saigry_mag_pmag.stats = deep_clone(mag_75)
 	self.parts.wpn_fps_upg_saigry_mag_pmag.stats.extra_ammo = -10
 	self.parts.wpn_fps_upg_saigry_mag_stanag.stats = deep_clone(self.parts.wpn_fps_upg_saigry_mag_pmag.stats)
@@ -6532,7 +6539,7 @@ if BeardLib.Utils:FindMod("SAI GRY") then
 	self.parts.wpn_fps_upg_saigry_a_556.custom_stats.sdesc1 = "caliber_r556x45"
 end
 
-if BeardLib.Utils:FindMod("Owen Gun") then
+if BeardLib.Utils:ModLoaded("Owen Gun") then
 	self.parts.wpn_fps_smg_owen_b_43.stats = deep_clone(nostats)
 	self.parts.wpn_fps_smg_owen_s_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_smg_owen_sling.stats = deep_clone(nostats)
@@ -6556,7 +6563,7 @@ if BeardLib.Utils:FindMod("Owen Gun") then
 	}
 end
 
-if BeardLib.Utils:FindMod("PP-19-01 Vityaz") then
+if BeardLib.Utils:ModLoaded("PP-19-01 Vityaz") then
 	self.parts.wpn_fps_smg_vityaz_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vityaz_grip_ak.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vityaz_grip_molot.stats = deep_clone(nostats)
@@ -6602,7 +6609,7 @@ if BeardLib.Utils:FindMod("PP-19-01 Vityaz") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Tactical Operator Attachments") then
+if BeardLib.Utils:ModLoaded("Tactical Operator Attachments") then
 	self.parts.wpn_fps_upg_s_devgru.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_fg_ropup.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_fg_daniel.stats = deep_clone(nostats)
@@ -6689,7 +6696,7 @@ DelayedCalls:Add("carlsoperatorattachdelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("l1a1") then
+if BeardLib.Utils:ModLoaded("l1a1") then
 	self.parts.wpn_fps_ass_l1a1_grip_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_l1a1_foregrip_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_l1a1_stock_wood.stats = deep_clone(nostats)
@@ -6703,7 +6710,7 @@ if BeardLib.Utils:FindMod("l1a1") then
 	self.parts.wpn_fps_ass_l1a1_mag_short.stats.extra_ammo = -10
 end
 
-if BeardLib.Utils:FindMod("Mk14") then
+if BeardLib.Utils:ModLoaded("Mk14") then
 	table.insert(gunlist_snp, {"wpn_fps_snp_wargoddess", -3})
 	--self.parts.wpn_fps_snp_wargoddess_b_ebr.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_snp_wargoddess_o_dummy.stats = {
@@ -6720,7 +6727,7 @@ if BeardLib.Utils:FindMod("Mk14") then
 	self.parts.wpn_fps_snp_wargoddess_supp.stats = deep_clone(silstatssnp)
 end
 
-if BeardLib.Utils:FindMod("sg552") then
+if BeardLib.Utils:ModLoaded("sg552") then
 	self.parts.wpn_fps_ass_sg552_g_ergo.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_sg552_m_milspec.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_sg552_s_tactical.stats = deep_clone(nostats)
@@ -6769,7 +6776,7 @@ DelayedCalls:Add("sg552delay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("Beretta Px4 Storm") then
+if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") then
 	self.parts.wpn_fps_pis_px4_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_px4_barrel_sd.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_px4_grip_backstrap_rubber.stats = deep_clone(nostats)
@@ -6784,11 +6791,11 @@ if BeardLib.Utils:FindMod("Beretta Px4 Storm") then
 	self.parts.wpn_fps_upg_px4_ammo_45acp.internal_part = true
 end
 
-if BeardLib.Utils:FindMod("Sword Cutlass Grips") then
+if BeardLib.Utils:ModLoaded("Sword Cutlass Grips") then
 	self.parts.wpn_fps_pis_beretta_g_cutlass.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("Walther P99 AS") then
+if BeardLib.Utils:ModLoaded("Walther P99 AS") then
 	self:convert_part("wpn_fps_upg_p99_ammo_40sw", "lightpis", "mediumpis", nil, 84)
 	self.parts.wpn_fps_upg_p99_ammo_40sw.custom_stats.sdesc1 = "caliber_p40sw"
 	self.parts.wpn_fps_upg_p99_ammo_40sw.stats.extra_ammo = -3
@@ -6812,7 +6819,7 @@ if BeardLib.Utils:FindMod("Walther P99 AS") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Leupold DeltaPoint Sight") then
+if BeardLib.Utils:ModLoaded("Leupold DeltaPoint Sight") then
 	self.parts.wpn_fps_upg_o_deltapoint.stats = {
 		value = 0,
 		zoom = 0,
@@ -6820,7 +6827,7 @@ if BeardLib.Utils:FindMod("Leupold DeltaPoint Sight") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Tromix Barrel-Ext") then
+if BeardLib.Utils:ModLoaded("Tromix Barrel-Ext") then
 	self.parts.wpn_fps_upg_ns_ass_smg_tromix.stats = {
 		value = 0,
 		recoil = 3,
@@ -6829,12 +6836,12 @@ if BeardLib.Utils:FindMod("Tromix Barrel-Ext") then
 	table.insert(primarysmgadds, "wpn_fps_upg_ns_ass_smg_tromix")
 end
 
-if BeardLib.Utils:FindMod("M45A1 CQBP") then
+if BeardLib.Utils:ModLoaded("M45A1 CQBP") then
 	self.parts.wpn_fps_pis_m45a1_m_ext.stats = deep_clone(mag_150)
 	self.parts.wpn_fps_pis_m45a1_m_ext.stats.extra_ammo = 3
 end
 
-if BeardLib.Utils:FindMod("Mossberg 590") then
+if BeardLib.Utils:ModLoaded("Mossberg 590") then
 	self.parts.wpn_fps_shot_m590_ironsight.stats = deep_clone(nostats)
 	self.parts.wpn_fps_shot_m590_sightrail.stats = deep_clone(nostats)
 
@@ -6856,7 +6863,7 @@ DelayedCalls:Add("mossberg590delay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("Vepr-12") then
+if BeardLib.Utils:ModLoaded("Vepr-12") then
 	self.parts.wpn_fps_upg_vepr12_grip_ak_plastic.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vepr12_grip_ak_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_vepr12_handguard_ak_wood.stats = deep_clone(nostats)
@@ -6872,7 +6879,7 @@ if BeardLib.Utils:FindMod("Vepr-12") then
 	self.parts.wpn_fps_upg_vepr12_barrel_long.stats = deep_clone(barrelsho_m1)
 end
 
-if BeardLib.Utils:FindMod("M3 Grease Gun") then
+if BeardLib.Utils:ModLoaded("M3 Grease Gun") then
 	self.parts.wpn_fps_smg_m3_b_suppressor.custom_stats = silencercustomstats
 	self.parts.wpn_fps_smg_m3_b_suppressor.stats = deep_clone(silstatsconc2)
 	self.parts.wpn_fps_smg_m3_s_ext.stats = {
@@ -6907,7 +6914,7 @@ DelayedCalls:Add("greasegundelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("Howa AR") then
+if BeardLib.Utils:ModLoaded("Howa AR") then
 	self:convert_part("wpn_fps_ass_howa_t64_body", "lrifle", "hrifle")
 	self.parts.wpn_fps_ass_howa_t64_body.custom_stats.sdesc1 = "caliber_r762x51jp"
 	self.parts.wpn_fps_ass_howa_t64_body.custom_stats.use_reload_2 = true
@@ -6931,7 +6938,7 @@ DelayedCalls:Add("howadelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("vp70") then
+if BeardLib.Utils:ModLoaded("vp70") then
 	self.parts.wpn_fps_pis_vp70_body_early.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_vp70_s_scifi.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_vp70_stp_standard.stats = deep_clone(nostats)
@@ -6959,7 +6966,7 @@ if BeardLib.Utils:FindMod("vp70") then
 	self.parts.wpn_fps_pis_vp70_m_ext.stats.extra_ammo = 6
 end
 
-if BeardLib.Utils:FindMod("lapd") then
+if BeardLib.Utils:ModLoaded("lapd") then
 	self.parts.wpn_fps_pis_lapd_grip_pearl.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_lapd_grip_polymer.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_lapd_grip_cherry.stats = deep_clone(nostats)
@@ -6988,7 +6995,7 @@ end)
 --]]
 end
 
-if BeardLib.Utils:FindMod("Valday 1P87") then
+if BeardLib.Utils:ModLoaded("Valday 1P87") then
 	self.parts.wpn_fps_upg_o_valday1p87.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 	self.parts.wpn_fps_upg_o_valday1p87.customsight = true
 	self.parts.wpn_fps_upg_o_valday1p87.customsighttrans = {}
@@ -7002,7 +7009,7 @@ if BeardLib.Utils:FindMod("Valday 1P87") then
 	self.parts.wpn_fps_upg_o_valday1p87.customsighttrans.wpn_fps_upg_o_m14_scopemount = {translation = Vector3(0, 0, valdayoffset)}
 end
 
-if BeardLib.Utils:FindMod("Remington R5 RGP") then
+if BeardLib.Utils:ModLoaded("Remington R5 RGP") then
 	self.parts.wpn_fps_upg_mikon_s_viper.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_mikon_am_parp.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_mikon_am_parp.custom_stats = {sdesc1 = "caliber_r556x45m193"}
@@ -7011,7 +7018,7 @@ if BeardLib.Utils:FindMod("Remington R5 RGP") then
 	self.parts.wpn_fps_upg_mikon_am_spc.stats.extra_ammo = 0
 end
 
-if BeardLib.Utils:FindMod("Parker-Hale PDW") then
+if BeardLib.Utils:ModLoaded("Parker-Hale PDW") then
 	self.parts.wpn_fps_upg_nya_s_nope.stats = {
 		value = 0,
 		recoil = -4,
@@ -7041,7 +7048,7 @@ DelayedCalls:Add("memecatdelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("ARX-160 REBORN") then
+if BeardLib.Utils:ModLoaded("ARX-160 REBORN") then
 	table.insert(self.wpn_fps_ass_lazy.uses_parts, "inf_car4_ironsretain")
 	self.parts.wpn_fps_upg_lazy_b_long.stats = deep_clone(barrel_m2)
 --[[
@@ -7054,7 +7061,7 @@ if BeardLib.Utils:FindMod("ARX-160 REBORN") then
 	--self.parts.wpn_fps_upg_lazy_am_beefish.stats = 
 end
 
-if BeardLib.Utils:FindMod("DP28") then
+if BeardLib.Utils:ModLoaded("DP28") then
 	self.parts.wpn_fps_lmg_dp28_stock_dpm.stats = deep_clone(nostats)
 	self.parts.wpn_fps_lmg_dp28_g_dpm.stats = deep_clone(nostats)
 	self.parts.wpn_fps_lmg_dp28_bipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -7094,7 +7101,7 @@ end
 
 -- Actually ingame now
 --[[
-if BeardLib.Utils:FindMod("M60") then
+if BeardLib.Utils:ModLoaded("M60") then
 	self.parts.wpn_fps_lmg_m60_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_m60_bipod.custom_stats = {recoil_horizontal_mult = 2}
 	self.parts.wpn_fps_upg_m60_bipod.desc_id = "bm_wp_wpn_fps_upg_m60_bipod_desc"
@@ -7116,7 +7123,7 @@ if BeardLib.Utils:FindMod("M60") then
 end
 ]]
 
-if BeardLib.Utils:FindMod("RPD") then
+if BeardLib.Utils:ModLoaded("RPD") then
 	self.parts.wpn_fps_upg_rpd_bipod.custom_stats = {recoil_horizontal_mult = 2}
 	self.parts.wpn_fps_upg_rpd_bipod.desc_id = "bm_wp_wpn_fps_upg_rpd_bipod_desc"
 	self.parts.wpn_fps_lmg_rpd_mag.stats = deep_clone(nostats)
@@ -7126,7 +7133,7 @@ if BeardLib.Utils:FindMod("RPD") then
 	}
 end
 
-if BeardLib.Utils:FindMod("LSAT") then
+if BeardLib.Utils:ModLoaded("LSAT") then
 	self.parts.wpn_fps_lmg_lsat_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_lsat_barrel_long.stats = deep_clone(barrel_m2)
 	self.parts.wpn_fps_upg_lsat_barrel_short.stats = deep_clone(barrel_p2)
@@ -7141,7 +7148,7 @@ if BeardLib.Utils:FindMod("LSAT") then
 	self.parts.wpn_fps_upg_lsat_irons.internal_part = true
 end
 
-if BeardLib.Utils:FindMod("GSPS Various Attachment") then
+if BeardLib.Utils:ModLoaded("GSPS Various Attachment") then
 	self.parts.wpn_fps_shot_m37_b_trench.stats = deep_clone(nostats)
 	self.parts.wpn_fps_shot_m37_b_deerslayer.stats = deep_clone(barrelsho_m2)
 	self.parts.wpn_fps_shot_m37_s_rack.stats = deep_clone(nostats)
@@ -7153,7 +7160,7 @@ if BeardLib.Utils:FindMod("GSPS Various Attachment") then
 	table.insert(self.wpn_fps_shot_m37primary.uses_parts, "wpn_fps_shot_m37_s_stakeout")
 end
 
-if BeardLib.Utils:FindMod("gtt33") then
+if BeardLib.Utils:ModLoaded("gtt33") then
 	self.parts.wpn_fps_pis_gtt33_g_wood.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_gtt33_g_white.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_gtt33_g_bling.stats = deep_clone(nostats)
@@ -7168,7 +7175,7 @@ if BeardLib.Utils:FindMod("gtt33") then
 	--self:convert_part("wpn_fps_pis_gtt33_a_c45", "", "")
 end
 
-if BeardLib.Utils:FindMod("Fang-45") then
+if BeardLib.Utils:ModLoaded("Fang-45") then
 	self.parts.wpn_fps_smg_fang45_m_std.stats = deep_clone(nostats)
 	self.parts.wpn_fps_smg_fang45_s_folded.stats = {
 		value = 0,
@@ -7177,7 +7184,7 @@ if BeardLib.Utils:FindMod("Fang-45") then
 	}
 end
 
-if BeardLib.Utils:FindMod("CZ 75 B") then
+if BeardLib.Utils:ModLoaded("CZ 75 B") then
 	self.parts.wpn_fps_pis_cz75b_g_pre.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_cz75b_g_b.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_cz75b_g_rub.stats = deep_clone(nostats)
@@ -7219,7 +7226,7 @@ DelayedCalls:Add("cz75bdelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("CZ 75 Short Rail") then
+if BeardLib.Utils:ModLoaded("CZ 75 Short Rail") then
 	self.parts.wpn_fps_pis_rally_m_ext.stats = deep_clone(mag_150)
 	self.parts.wpn_fps_pis_rally_m_ext.stats.extra_ammo = 10
 	self.parts.wpn_fps_pis_rally_g_wood.stats = deep_clone(nostats)
@@ -7233,7 +7240,7 @@ DelayedCalls:Add("gunsmithcatsdelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("CZ Auto Pistol") then
+if BeardLib.Utils:ModLoaded("CZ Auto Pistol") then
 	self.parts.wpn_fps_pis_czauto_ns_compensated.stats = deep_clone(self.parts.wpn_fps_pis_g18c_co_1.stats)
 	self.parts.wpn_fps_pis_czauto_m_extended.stats = deep_clone(mag_150)
 	self.parts.wpn_fps_pis_czauto_m_extended.stats.extra_ammo = 10
@@ -7254,7 +7261,7 @@ end)
 --]]
 end
 
-if BeardLib.Utils:FindMod("Chiappa Rhino 60DS") then
+if BeardLib.Utils:ModLoaded("Chiappa Rhino 60DS") then
 	self.parts.wpn_fps_pis_rhino_bullets.stats = deep_clone(nostats)
 	--self.parts.wpn_fps_upg_rhino_grip_rubber_small.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_rhino_grip_wood_small.stats = deep_clone(nostats)
@@ -7273,13 +7280,13 @@ if BeardLib.Utils:FindMod("Chiappa Rhino 60DS") then
 	]]
 end
 
-if BeardLib.Utils:FindMod("Sjögren Inertia") then
+if BeardLib.Utils:ModLoaded("Sjögren Inertia") then
 	self.parts.wpn_fps_upg_sjogren_barrel_medium.stats = deep_clone(barrelsho_p1)
 	self.parts.wpn_fps_upg_sjogren_barrel_short.stats = deep_clone(barrelsho_p3)
 end
 
 
-if BeardLib.Utils:FindMod("ThompsonM1a1") then
+if BeardLib.Utils:ModLoaded("ThompsonM1a1") then
 	self.parts.wpn_fps_smg_tm1a1_ns_ext.stats = deep_clone(nostats)
 	self.parts.wpn_fps_smg_tm1a1_body_black.stats = deep_clone(nostats)
 	self.parts.wpn_fps_smg_tm1a1_body_noiron.stats = deep_clone(nostats)
@@ -7321,7 +7328,7 @@ DelayedCalls:Add("ww2tommydelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("M6G Magnum") then
+if BeardLib.Utils:ModLoaded("M6G Magnum") then
 	self.parts.wpn_fps_pis_m6g_grip_discrete.stats = {
 		value = 0,
 		concealment = 2
@@ -7357,7 +7364,7 @@ if BeardLib.Utils:FindMod("M6G Magnum") then
 	}
 end
 
-if BeardLib.Utils:FindMod("AK-9") then
+if BeardLib.Utils:ModLoaded("AK-9") then
 	self.parts.wpn_fps_ass_heffy_939_ba_tiss.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_939_fh_tiss.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_939_st_tiss.stats = deep_clone(nostats)
@@ -7402,7 +7409,7 @@ if BeardLib.Utils:FindMod("AK-9") then
 --]]
 end
 
-if BeardLib.Utils:FindMod("AK-47") then
+if BeardLib.Utils:ModLoaded("AK-47") then
 	self.parts.wpn_fps_ass_heffy_762_pg_t2.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_762_fh_ak47.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_762_ba_akm.stats = deep_clone(nostats)
@@ -7540,7 +7547,7 @@ if BeardLib.Utils:FindMod("AK-47") then
 end
 
 -- Apparently theres two mods called AK74? Thanks
-if BeardLib.Utils:FindMod("AK-74") and self.parts.wpn_fps_ass_heffy_545_fh_ak74 then
+if BeardLib.Utils:ModLoaded("AK-74") and self.parts.wpn_fps_ass_heffy_545_fh_ak74 then
 	self.parts.wpn_fps_ass_heffy_545_fh_ak74.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_545_fh_aks74u.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_545_lr_aks74u.stats = deep_clone(nostats)
@@ -7600,7 +7607,7 @@ if BeardLib.Utils:FindMod("AK-74") and self.parts.wpn_fps_ass_heffy_545_fh_ak74 
 	--self.parts.wpn_fps_ass_heffy_545_m_poly_60.stats.extra_ammo = 30
 end
 
-if BeardLib.Utils:FindMod("AK-101") and self.parts.wpn_fps_ass_heffy_556_fh_ak101 then
+if BeardLib.Utils:ModLoaded("AK-101") and self.parts.wpn_fps_ass_heffy_556_fh_ak101 then
 	self.parts.wpn_fps_ass_heffy_556_fh_ak101.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_556_fh_ak102.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_556_ba_ak108.stats = deep_clone(nostats)
@@ -7621,13 +7628,13 @@ if BeardLib.Utils:FindMod("AK-101") and self.parts.wpn_fps_ass_heffy_556_fh_ak10
 	}
 end
 
-if BeardLib.Utils:FindMod("AK Color Attachments") then
+if BeardLib.Utils:ModLoaded("AK Color Attachments") then
 	self.parts.wpn_fps_ass_heffy_all_mc_bake_bl.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_all_mc_bake_or.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_all_camo.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("AK Extra Attachments") then
+if BeardLib.Utils:ModLoaded("AK Extra Attachments") then
 	self.parts.wpn_fps_ass_heffy_545_st_ivan.stats = {
 		value = 0,
 		recoil = -4,
@@ -7832,7 +7839,7 @@ if BeardLib.Utils:FindMod("AK Extra Attachments") then
 	self.parts.wpn_fps_ass_heffy_all_sm_cover.adds = {"inf_sightdummy2"}
 end
 
-if BeardLib.Utils:FindMod("Golden-AKMS") then
+if BeardLib.Utils:ModLoaded("Golden-AKMS") then
 	self.parts.wpn_fps_ass_heffy_gold_st_akm.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_gold_st_akms.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_heffy_gold_fh_none.stats = deep_clone(nostats)
@@ -7847,7 +7854,7 @@ if BeardLib.Utils:FindMod("Golden-AKMS") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Saiga-12") then
+if BeardLib.Utils:ModLoaded("Saiga-12") then
 	self.parts.wpn_fps_sho_heffy_12g_ext_saiga12k.stats = deep_clone(nostats)
 	self.parts.wpn_fps_sho_heffy_12g_lfg_utg_short.stats = deep_clone(nostats)
 	self.parts.wpn_fps_sho_heffy_12g_lfg_utg_long.stats = deep_clone(nostats)
@@ -7863,7 +7870,7 @@ if BeardLib.Utils:FindMod("Saiga-12") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Nagant M1895") then
+if BeardLib.Utils:ModLoaded("Nagant M1895") then
 	self.parts.wpn_fps_pis_m1895_cylinder.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_m1895_body_blued.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_m1895_body_gold.stats = deep_clone(nostats)
@@ -7881,7 +7888,7 @@ if BeardLib.Utils:FindMod("Nagant M1895") then
 	self.parts.wpn_fps_upg_m1895_barrel_long.stats = deep_clone(barrel_m1)
 end
 
-if BeardLib.Utils:FindMod("VHS Various Attachment") then
+if BeardLib.Utils:ModLoaded("VHS Various Attachment") then
 	self.parts.wpn_fps_ass_vhs_body_future.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_vhs_m_lsw.stats = {
 		value = 0,
@@ -7896,7 +7903,7 @@ if BeardLib.Utils:FindMod("VHS Various Attachment") then
 	self.parts.wpn_fps_ass_vhs_ub_nade.custom_stats = {sdesc3 = "misc_gl40x46mm"}
 end
 
-if BeardLib.Utils:FindMod("Aimpoint CompM2 Sight") then
+if BeardLib.Utils:ModLoaded("Aimpoint CompM2 Sight") then
 	self.parts.wpn_fps_upg_o_compm2.customsight = true
 	self.parts.wpn_fps_upg_o_compm2.stats = {
 		value = 0,
@@ -7905,12 +7912,12 @@ if BeardLib.Utils:FindMod("Aimpoint CompM2 Sight") then
 	}
 end
 
-if BeardLib.Utils:FindMod("Stealth Flashlights") then
+if BeardLib.Utils:ModLoaded("Stealth Flashlights") then
 	self.parts.wpn_fps_upg_fl_wml.desc_id = "bm_wp_wpn_fps_upg_fl_wml_desc"
 	self.parts.wpn_fps_upg_fl_pis_micro90.desc_id = "bm_wp_wpn_fps_upg_fl_micro90_desc"
 end
 
-if BeardLib.Utils:FindMod("Gepard GM6 Lynx") then
+if BeardLib.Utils:ModLoaded("Gepard GM6 Lynx") then
 	table.insert(gunlist_snp, {"wpn_fps_snp_lynx", -3})
 	self.parts.wpn_fps_snp_lynx_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_snp_lynx_a_low.internal_part = true
@@ -7929,7 +7936,7 @@ DelayedCalls:Add("lynxdelay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:FindMod("PPSh-41") then
+if BeardLib.Utils:ModLoaded("PPSh-41") then
 	--self.parts.wpn_fps_upg_ppsh_barrel_extension.stats = deep_clone(barrel_m1)
 	--self.parts.wpn_fps_upg_ppsh_stock_black.stats = deep_clone(nostats)
 	--self.parts.wpn_fps_upg_ppsh_stock_camo_jungle.stats = deep_clone(nostats)
@@ -7952,7 +7959,7 @@ if BeardLib.Utils:FindMod("PPSh-41") then
 	self.parts.wpn_fps_upg_ppsh_mag_drum.stats.extra_ammo = 36
 end
 
-if BeardLib.Utils:FindMod("PPS-43") then
+if BeardLib.Utils:ModLoaded("PPS-43") then
 	self.parts.wpn_fps_smg_pps43_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_pps43_barrel_extension.stats = deep_clone(barrel_m1)
 	self.parts.wpn_fps_upg_pps43_stock_folded.stats = {
@@ -7965,7 +7972,7 @@ if BeardLib.Utils:FindMod("PPS-43") then
 	self.parts.wpn_fps_upg_pps43_bolt_firerate.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("CSGO Sniper Scope") then
+if BeardLib.Utils:ModLoaded("CSGO Sniper Scope") then
 	self.parts.wpn_fps_upg_o_csgoscope.customsight = true
 	self.parts.wpn_fps_upg_o_csgoscope.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_upg_o_csgoscope.stats = {
@@ -7975,7 +7982,7 @@ if BeardLib.Utils:FindMod("CSGO Sniper Scope") then
 	}
 end
 
-if BeardLib.Utils:FindMod("M1 Garand Modpack") then
+if BeardLib.Utils:ModLoaded("M1 Garand Modpack") then
 	self.parts.wpn_fps_ass_ching_o_m84.customsight = true
 	self.parts.wpn_fps_ass_ching_o_m84.custom_stats = {disallow_ads_while_reloading = true}
 	self.parts.wpn_fps_ass_ching_o_m84.stats = {
@@ -7991,18 +7998,18 @@ if BeardLib.Utils:FindMod("M1 Garand Modpack") then
 	self.parts.wpn_fps_ass_ching_ns_expsilencer.stats = deep_clone(silstatsconc1)
 end
 
-if BeardLib.Utils:FindMod("Kel-Tec RFB") then
+if BeardLib.Utils:ModLoaded("Kel-Tec RFB") then
 	self.parts.wpn_fps_upg_leet_fg_ext.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_leet_b_smol.stats = deep_clone(barrel_p2)
 end
 
-if BeardLib.Utils:FindMod("Silent Killer High Standard HDM") then
+if BeardLib.Utils:ModLoaded("Silent Killer High Standard HDM") then
 	self.parts.wpn_fps_pis_hshdm_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_hshdm_frame_gold.stats = deep_clone(nostats)
 	self.parts.wpn_fps_pis_hshdm_barrel.custom_stats = silencercustomstats
 end
 
-if BeardLib.Utils:FindMod("Silent Killer Maxim 9") then
+if BeardLib.Utils:ModLoaded("Silent Killer Maxim 9") then
 	self.parts.wpn_fps_pis_max9_b_standard.custom_stats = silencercustomstats
 
 	self.parts.wpn_fps_pis_max9_b_short.custom_stats = silencercustomstats
@@ -8026,7 +8033,7 @@ if BeardLib.Utils:FindMod("Silent Killer Maxim 9") then
 	self.parts.wpn_fps_pis_max9_b_nosup.stats.reload = barrel_p2.reload
 end
 
-if BeardLib.Utils:FindMod("Silent Killer Welrod") then
+if BeardLib.Utils:ModLoaded("Silent Killer Welrod") then
 	self.parts.wpn_fps_pis_welrod_b_bolt.custom_stats = silencercustomstats
 	self.parts.wpn_fps_pis_welrod_b_short.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_pis_welrod_b_short.stats.alert_size = -2
@@ -8040,13 +8047,13 @@ if BeardLib.Utils:FindMod("Silent Killer Welrod") then
 	self:convert_total_ammo_mod("wpn_fps_pis_welrod_a_ap", "heavypis", 30)
 end
 
-if BeardLib.Utils:FindMod("PB") then
+if BeardLib.Utils:ModLoaded("PB") then
 	self.parts.wpn_fps_pis_pb_ns_std.custom_stats = silencercustomstats
 	self.parts.wpn_fps_pis_pb_ns_std.stats = deep_clone(silstatsconc2)
 	self.parts.wpn_fps_pis_pb_ns_std.stats.concealment = -1
 end
 
-if BeardLib.Utils:FindMod("G3 Various Attachment") then
+if BeardLib.Utils:ModLoaded("G3 Various Attachment") then
 	--self.parts.wpn_fps_upg_g3_bipod.type = "bipod"
 	--self.parts.wpn_fps_upg_g3_bipod.adds = {"inf_bipod_part"}
 	self.parts.wpn_fps_upg_g3_bipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -8070,7 +8077,7 @@ if BeardLib.Utils:FindMod("G3 Various Attachment") then
 	self.parts.wpn_fps_ass_g3_m_30mag.stats.extra_ammo = 10
 end
 
-if BeardLib.Utils:FindMod("Browning Auto Shotgun") then
+if BeardLib.Utils:ModLoaded("Browning Auto Shotgun") then
 	self.parts.wpn_fps_shot_auto5_b_short.stats = deep_clone(barrelsho_p1)
 	self.parts.wpn_fps_shot_auto5_b_reinforced.stats = deep_clone(nostats)
 	self.parts.wpn_fps_shot_auto5_s_pad.stats = deep_clone(nostats)
@@ -8093,7 +8100,7 @@ if BeardLib.Utils:FindMod("Browning Auto Shotgun") then
 	}
 end
 
-if BeardLib.Utils:FindMod("M40A5") then
+if BeardLib.Utils:ModLoaded("M40A5") then
 	table.insert(self.wpn_fps_snp_m40a5.uses_parts, "inf_bipod_snp")
 	table.insert(gunlist_snp, {"wpn_fps_snp_m40a5", -3})
 	self.parts.wpn_fps_snp_m40a5_m8541.custom_stats = {disallow_ads_while_reloading = true}
@@ -8103,12 +8110,12 @@ if BeardLib.Utils:FindMod("M40A5") then
 	self.parts.wpn_fps_upg_m40a5_omega.stats = deep_clone(silstatssnp)
 end
 
-if BeardLib.Utils:FindMod("PKA-S Sight") then
+if BeardLib.Utils:ModLoaded("PKA-S Sight") then
 	self.parts.wpn_fps_upg_o_pkas.stats = deep_clone(self.parts.wpn_fps_upg_o_aimpoint.stats)
 	self.parts.wpn_fps_upg_o_pkas.customsight = true
 end
 
-if BeardLib.Utils:FindMod("Trijicon ACOG TA648 Scope") then
+if BeardLib.Utils:ModLoaded("Trijicon ACOG TA648 Scope") then
 	self.parts.wpn_fps_upg_o_ta648.stats = {
 		value = 0,
 		zoom = 6,
@@ -8118,7 +8125,7 @@ if BeardLib.Utils:FindMod("Trijicon ACOG TA648 Scope") then
 	self.parts.wpn_fps_upg_o_ta648.custom_stats = {disallow_ads_while_reloading = true}
 end
 
-if BeardLib.Utils:FindMod("Desert Tech MDR") then
+if BeardLib.Utils:ModLoaded("Desert Tech MDR") then
 	self.parts.wpn_fps_ass_mdr_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_mdr_vg_bcm.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_mdr_vg_fab_reg.stats = deep_clone(nostats)
@@ -8136,7 +8143,7 @@ if BeardLib.Utils:FindMod("Desert Tech MDR") then
 	self.parts.wpn_fps_upg_mdr_supp_omega.stats = deep_clone(silstatsconc1)
 end
 
-if BeardLib.Utils:FindMod("FN SCAR-L") then
+if BeardLib.Utils:ModLoaded("FN SCAR-L") then
 	self.parts.wpn_fps_upg_scarl_barrel_cqc.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_upg_scarl_barrel_cqc_mod.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_upg_scarl_upper_pdw.stats = deep_clone(barrel_p2)
@@ -8178,7 +8185,7 @@ if BeardLib.Utils:FindMod("FN SCAR-L") then
 	self.parts.wpn_fps_upg_scarl_rail_midwest_ext.stats = deep_clone(nostats)
 end
 
-if BeardLib.Utils:FindMod("FN SCAR-L M203") then
+if BeardLib.Utils:ModLoaded("FN SCAR-L M203") then
 	self.parts.wpn_fps_upg_scar_m203_barrel_long.stats = deep_clone(barrel_m2)
 
 	self.parts.wpn_fps_upg_scar_m203_stock_collapsed.stats = {
@@ -8205,7 +8212,7 @@ if BeardLib.Utils:FindMod("FN SCAR-L M203") then
 end
 
 --[[
-if BeardLib.Utils:FindMod("Kar98k") then
+if BeardLib.Utils:ModLoaded("Kar98k") then
 	self.parts.wpn_fps_snp_kar98k_b_medium.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_snp_kar98k_b_short.stats = deep_clone(barrel_p2)
 
@@ -8240,7 +8247,7 @@ end)
 end
 --]]
 
-if BeardLib.Utils:FindMod("SKS") then
+if BeardLib.Utils:ModLoaded("SKS") then
 	self.parts.wpn_fps_ass_sks_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_sks_mag_tapco.stats = deep_clone(nostats)
 
@@ -8253,7 +8260,7 @@ if BeardLib.Utils:FindMod("SKS") then
 	self.parts.wpn_fps_upg_sks_dtk2.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_tank.stats)
 end
 
-if BeardLib.Utils:FindMod("MAS-49") then
+if BeardLib.Utils:ModLoaded("MAS-49") then
 	table.insert(gunlist_snp, {"wpn_fps_snp_mas49", -3})
 	self.parts.wpn_fps_snp_mas49_scope_apx.custom_stats = {disallow_ads_while_reloading = true}
 
@@ -8265,7 +8272,7 @@ if BeardLib.Utils:FindMod("MAS-49") then
 	}
 end
 
-if BeardLib.Utils:FindMod("AK-12") then
+if BeardLib.Utils:ModLoaded("AK-12") then
 	self.parts.wpn_fps_ass_ak12_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_ak12_grip_molot.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_ak12_mag_magpul.stats = deep_clone(nostats)
@@ -8290,7 +8297,7 @@ if BeardLib.Utils:FindMod("AK-12") then
 	}
 end
 
-if BeardLib.Utils:FindMod("AK-12/76") and self.parts.wpn_fps_shot_ak12_76_mag then
+if BeardLib.Utils:ModLoaded("AK-12/76") and self.parts.wpn_fps_shot_ak12_76_mag then
 	self.parts.wpn_fps_shot_ak12_76_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_ak12_76_grip_molot.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_ak12_76_mag_magpul.stats = deep_clone(nostats)
@@ -8303,18 +8310,18 @@ if BeardLib.Utils:FindMod("AK-12/76") and self.parts.wpn_fps_shot_ak12_76_mag th
 	}
 end
 
-if BeardLib.Utils:FindMod("RAZOR AMG UH-1") and self.parts.wpn_fps_upg_o_razoramg then
+if BeardLib.Utils:ModLoaded("RAZOR AMG UH-1") and self.parts.wpn_fps_upg_o_razoramg then
 	self.parts.wpn_fps_upg_o_razoramg.customsight = true
 	self.parts.wpn_fps_upg_o_razoramg.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 end
 
-if BeardLib.Utils:FindMod("Trijicon RMR Sight") and self.parts.wpn_fps_upg_o_rmr_riser then
+if BeardLib.Utils:ModLoaded("Trijicon RMR Sight") and self.parts.wpn_fps_upg_o_rmr_riser then
 	self.parts.wpn_fps_upg_o_rmr_riser.customsight = true
 	self.parts.wpn_fps_upg_o_rmr_riser.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 end
 
 -- McMillan CS5
-if BeardLib.Utils:FindMod("McMillan CS5") and self.parts.wpn_fps_upg_cs5_barrel_short then
+if BeardLib.Utils:ModLoaded("McMillan CS5") and self.parts.wpn_fps_upg_cs5_barrel_short then
 	-- Long barrel
 	self.parts.wpn_fps_upg_cs5_barrel_long.stats = deep_clone(barrel_m1)
 	-- Short barrel
@@ -8337,7 +8344,7 @@ if BeardLib.Utils:FindMod("McMillan CS5") and self.parts.wpn_fps_upg_cs5_barrel_
 end
 
 -- FN SCAR MK17 (Eagle Tactical)
-if BeardLib.Utils:FindMod("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
+if BeardLib.Utils:ModLoaded("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
 	-- Long barrel
 	self.parts.wpn_fps_upg_mk17_b_long.stats = deep_clone(barrel_m1)
 	-- Short barrel
@@ -8384,7 +8391,7 @@ end
 -- CARL WAS HERE AGAIN
 -- my own guns
 -- FN Five-seveN MK2
-if BeardLib.Utils:FindMod("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_hoxy_o_scopemount then
+if BeardLib.Utils:ModLoaded("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_hoxy_o_scopemount then
 	-- I REGRET NOTHING.
 	-- threaded barrel
 	self.parts.wpn_fps_upg_hoxy_b_threaded.stats = deep_clone(barrel_m1)
@@ -8398,7 +8405,7 @@ if BeardLib.Utils:FindMod("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_ho
 end
 
 -- ST AR-15
-if BeardLib.Utils:FindMod("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_flat_bolt_sai then
+if BeardLib.Utils:ModLoaded("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_flat_bolt_sai then
 	self.parts.wpn_fps_upg_flat_bolt_sai.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_flat_fg_blk.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_flat_rec_lower_blk.stats = deep_clone(nostats)
@@ -8657,7 +8664,7 @@ end)
 	self.parts.inf_invis_stance.stance_mod = {}
 	self.parts.inf_invis_stance.stance_mod.wpn_fps_ass_drongo = {translation = Vector3(0.07, -7, 1.174)}
 
-if BeardLib.Utils:FindMod("Custom Attachment Points") or BeardLib.Utils:FindMod("WeaponLib") then
+if BeardLib.Utils:ModLoaded("Custom Attachment Points") or BeardLib.Utils:ModLoaded("WeaponLib") then
 	table.insert(self.wpn_fps_ass_asval.uses_parts, "inf_sightrail")
 
 	if self.wpn_fps_smg_minebea then

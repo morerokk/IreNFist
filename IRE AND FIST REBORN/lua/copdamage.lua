@@ -232,3 +232,46 @@ Hooks:PreHook(CopDamage, "damage_melee", "inf_copdamage_damagemelee_stopcrashifn
 		self._unit:movement():set_team(managers.groupai:state()._teams[tweak_data.levels:get_default_team_ID(self._unit:base():char_tweak().access == "gangster" and "gangster" or "combatant")])
 	end
 end)
+
+-- Workaround for a crash
+function CopDamage:_spawn_head_gadget(params)
+	if not self._head_gear or not self._unit then
+		return
+	end
+
+	if self._head_gear_object then
+		if self._nr_head_gear_objects then
+			for i = 1, self._nr_head_gear_objects do
+				local head_gear_obj_name = self._head_gear_object .. tostring(i)
+				-- Sometimes this is nil, no idea why
+				local head_gear_obje = self._unit:get_object(Idstring(head_gear_obj_name))
+				if head_gear_obje then
+					head_gear_obje:set_visibility(false)
+				end
+			end
+		else
+			local head_gear_obje = self._unit:get_object(Idstring(self._head_gear_object))
+			if head_gear_obje then
+				head_gear_obje:set_visibility(false)
+			end
+		end
+
+		if self._head_gear_decal_mesh then
+			local mesh_name_idstr = Idstring(self._head_gear_decal_mesh)
+
+			self._unit:decal_surface(mesh_name_idstr):set_mesh_material(mesh_name_idstr, Idstring("flesh"))
+		end
+	end
+
+	local unit = World:spawn_unit(Idstring(self._head_gear), params.position, params.rotation)
+
+	if not params.skip_push then
+		local dir = math.UP - params.dir / 2
+		dir = dir:spread(25)
+		local body = unit:body(0)
+
+		body:push_at(body:mass(), dir * math.lerp(300, 650, math.random()), unit:position() + Vector3(math.rand(1), math.rand(1), math.rand(1)))
+	end
+
+	self._head_gear = false
+end

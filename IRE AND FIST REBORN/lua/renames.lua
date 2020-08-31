@@ -500,6 +500,7 @@ end
 	caliber_p40sw = ".40 S&W.",
 	caliber_p45acp = ".45 ACP.",
 	caliber_p45s = ".45 Super.",
+	caliber_p45gap = ".45 GAP.",
 	caliber_p32acp = ".32 ACP.",
 	caliber_p46 = "4.6x30mm.",
 	caliber_p57 = "5.7x28mm.",
@@ -508,6 +509,7 @@ end
 	caliber_p763mauser = "7.63x25mm Mauser.",
 	caliber_p45lc = ".45 Long Colt.",
 	caliber_p357 = ".357 Magnum.",
+	caliber_p357sig = ".357 SIG.",
 	caliber_p44 = ".44 Magnum.",
 	caliber_p50ae = ".50 Action Express.",
 	caliber_p545x18 = "5.45x18mm 7N7.",
@@ -3776,6 +3778,23 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	-- Mars automatic pistol
 	bm_w_mars_desc = "Basically a high-powered semi-automatic Welrod. Thanks to the massive recoil, those who shot it remarked that they would not want to do so again. Better lay off the soy.",
+
+	-- Half-Life 1 9mm pistol (Glock)
+	bm_w_hl1g_desc = "Low-poly blurry goodness. Still stands the test of time, as someone special would say.",
+	bm_w_x_hl1g_desc = "The right man in the wrong place can make all the difference in the world.",
+	-- Black Ops Suppressor
+	bm_wp_wpn_fps_pis_hl1g_suppress_desc = silstr,
+
+	-- Glock 17 Gen 3
+	bm_w_glawk_desc = "Used by civilians and police departments, the Glock 17 Gen 3 is known as the \"best\" version of the Glock 17. Despite being discontinued, it is still the most supported pistol by third-parties.",
+
+	-- S&W M&P 40
+	bm_w_swmp40_desc = "Remarkably unremarkable. Features an ambidextrous slide stop. Lack of thumb safety is considered a plus, but this is a videogame so you won't care anyway.",
+
+	-- Glock 19
+	bm_w_g19_desc = "A slightly smaller take on the Glock 17.",
+	-- Change description to an empty one because ammo pickup IS actually modified now
+	bm_wp_wpn_fps_upg_g19_ammo_9mm_p_desc = "Converts the weapon to a medium pistol. Less ammo pickup, more damage.",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

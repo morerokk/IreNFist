@@ -6421,6 +6421,78 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.flat.stats.concealment = 21
 		self:copy_timers("flat", "new_m14")
 	end
+
+	-- Desert Eagle Duet
+	-- Desert Eagle XIX
+	if self.deltaoneniner then
+		self:inf_init("deltaoneniner", "pistol", "heavy")
+		self.deltaoneniner.sdesc1 = "caliber_p50ae"
+		self.deltaoneniner.sdesc2 = "action_gas"
+		self.deltaoneniner.CLIP_AMMO_MAX = 7
+		self.deltaoneniner.stats.concealment = 28
+		self:copy_timers("deltaoneniner", "deagle")
+	end
+
+	-- Desert Eagle L5
+	if self.limafive then
+		self:inf_init("limafive", "pistol", "heavy")
+		self.limafive.sdesc1 = "caliber_p50ae"
+		self.limafive.sdesc2 = "action_gas"
+		self.limafive.stats.concealment = 28
+		self.limafive.CLIP_AMMO_MAX = 7
+		self:copy_timers("limafive", "deagle")
+	end
+
+	-- Half-Life 9mm pistol
+	if self.hl1g then
+		self:inf_init("hl1g", "pistol", nil)
+		self.hl1g.sdesc1 = "caliber_p9x19"
+		self.hl1g.sdesc2 = "action_shortrecoil"
+		self.hl1g.CLIP_AMMO_MAX = 17
+		self.hl1g.AMMO_MAX = 152
+		self.hl1g.AMMO_PICKUP = self:_pickup_chance(152, 1)
+		self.hl1g.recategorize = nil
+		self:copy_timers("hl1g", "b92fs")
+
+		-- Same but Akimbo
+		if self.x_hl1g then
+			self:inf_init("x_hl1g", "pistol", nil)
+			self:copy_sdescs("x_hl1g", "hl1g", true)
+			self.x_hl1g.CLIP_AMMO_MAX = 34
+			self.x_hl1g.AMMO_MAX = 170
+			self.x_hl1g.AMMO_PICKUP = self:_pickup_chance(170, 1)
+			self.x_hl1g.recategorize = nil
+			self:copy_timers("x_hl1g", "x_b92fs")
+		end
+	end
+
+	-- Glock 17 Gen 3
+	if self.glawk then
+		self:inf_init("glawk", "pistol", nil)
+		self.glawk.sdesc1 = "caliber_p9x19"
+		self.glawk.sdesc2 = "action_shortrecoil"
+		self.glawk.CLIP_AMMO_MAX = 15
+		self.glawk.AMMO_MAX = 150
+		self.glawk.AMMO_PICKUP = self:_pickup_chance(150, 1)
+		self.glawk.recategorize = nil
+		self:copy_timers("glawk", "b92fs")
+	end
+
+	-- S&W M&P40
+	if self.swmp40 then
+		self:inf_init("swmp40", "pistol", nil)
+		self.swmp40.sdesc1 = "caliber_p40sw"
+		self.swmp40.sdesc2 = "action_shortrecoil"
+		self:copy_timers("swmp40", "sparrow")
+	end
+
+	-- Glock 19
+	if self.g19 then
+		self:inf_init("g19", "pistol", nil)
+		self.g19.sdesc1 = "caliber_p9x19"
+		self.g19.sdesc2 = "action_shortrecoil"
+		self:copy_timers("g19", "glock_17")
+	end
 end
 
 -- FUCK TURRETS

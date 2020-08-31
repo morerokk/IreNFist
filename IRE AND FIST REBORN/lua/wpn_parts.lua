@@ -8450,6 +8450,76 @@ if BeardLib.Utils:ModLoaded("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_
 
 end
 
+-- Desert Eagle Duet
+-- Deagle XIX
+if BeardLib.Utils:ModLoaded("Desert Eagle XIX") and self.parts.wpn_fps_upg_deltaoneniner_frame_borat then
+	-- Bling Frame
+	self.parts.wpn_fps_upg_deltaoneniner_frame_borat.stats = deep_clone(nostats)
+	-- Sweetheart Grip
+	self.parts.wpn_fps_upg_deltaoneniner_g_waifu.stats = deep_clone(nostats)
+	-- Extended Mag
+	self.parts.wpn_fps_upg_deltaoneniner_m_extended.stats = deep_clone(mag_150)
+	self.parts.wpn_fps_upg_deltaoneniner_m_extended.stats.extra_ammo = 3
+end
+
+-- Deagle L5
+if BeardLib.Utils:ModLoaded("Desert Eagle L5") and self.parts.wpn_fps_upg_limafive_frame_pink then
+	-- Pink Frame
+	self.parts.wpn_fps_upg_limafive_frame_pink.stats = deep_clone(nostats)
+	-- Sweetheart Grip
+	self.parts.wpn_fps_upg_limafive_g_waifu.stats = deep_clone(nostats)
+	-- Extended Mag
+	self.parts.wpn_fps_upg_limafive_m_extended.stats = deep_clone(mag_150)
+	self.parts.wpn_fps_upg_limafive_m_extended.stats.extra_ammo = 3
+	-- Dakota Special Slide
+	self:convert_part("wpn_fps_upg_limafive_sl_morbid", "heavypis", "supermediumpis")
+	self.parts.wpn_fps_upg_limafive_sl_morbid.custom_stats.sdesc1 = "caliber_p38spc"
+end
+
+-- HL1 9mm pistol
+if BeardLib.Utils:ModLoaded("Half Life 1 Glock") and self.parts.wpn_fps_pis_hl1g_suppress then
+	self.parts.wpn_fps_pis_hl1g_suppress.custom_stats = silencercustomstats
+	self.parts.wpn_fps_pis_hl1g_suppress.stats = deep_clone(silstatsconc1)
+end
+
+-- Glock 17 Gen 3
+-- So many calibers, holy
+if BeardLib.Utils:ModLoaded("Glock 17 Gen 3") then
+	-- .22 LR conversion kit
+	self.parts.wpn_fps_pis_glawk_a1_22lr.stats = deep_clone(nostats)
+	self.parts.wpn_fps_pis_glawk_a1_22lr.stats.spread = -2
+	self.parts.wpn_fps_pis_glawk_a1_22lr.stats.recoil = 2
+	self.parts.wpn_fps_pis_glawk_a1_22lr.custom_stats.sdesc1 = "caliber_p22lr"
+
+	-- .40 S&W conversion kit
+	self:convert_part("wpn_fps_pis_glawk_a1_40sw", "lightpis", "mediumpis")
+	self.parts.wpn_fps_pis_glawk_a1_40sw.custom_stats.sdesc1 = "caliber_p40sw"
+
+	-- 10mm auto conversion kit
+	self:convert_part("wpn_fps_pis_glawk_a2_10mm", "lightpis", "mediumpis")
+	self.parts.wpn_fps_pis_glawk_a2_10mm.custom_stats.sdesc1 = "caliber_p10"
+
+	-- .357 SIG conversion kit
+	self:convert_part("wpn_fps_pis_glawk_a3_357sig", "lightpis", "supermediumpis")
+	self.parts.wpn_fps_pis_glawk_a3_357sig.custom_stats.sdesc1 = "caliber_p357sig"
+
+	-- .45 ACP conversion kit
+	self:convert_part("wpn_fps_pis_glawk_a4_45acp", "lightpis", "supermediumpis")
+	self.parts.wpn_fps_pis_glawk_a4_45acp.custom_stats.sdesc1 = "caliber_p45acp"
+
+	-- .45 GAP conversion kit
+	self:convert_part("wpn_fps_pis_glawk_a5_45gap", "lightpis", "supermediumpis")
+	self.parts.wpn_fps_pis_glawk_a5_45gap.custom_stats.sdesc1 = "caliber_p45gap"
+
+	-- Pachmayr Grip
+	self.parts.wpn_fps_pis_glawk_gr_pachmayr.stats = deep_clone(nostats)
+end
+
+-- Glock 19
+if BeardLib.Utils:ModLoaded("Glock 19") and self.parts.wpn_fps_upg_g19_ammo_9mm_p then
+	self:convert_part("wpn_fps_upg_g19_ammo_9mm_p", "lightpis", "mediumpis")
+	self.parts.wpn_fps_upg_g19_ammo_9mm_p.custom_stats.sdesc1 = "caliber_p9x19nade"
+end
 
 --!!
 

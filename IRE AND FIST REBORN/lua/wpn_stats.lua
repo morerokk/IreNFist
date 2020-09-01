@@ -6493,11 +6493,30 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.g19.sdesc2 = "action_shortrecoil"
 		self:copy_timers("g19", "glock_17")
 	end
+
+	-- USP Tactical
+	if self.usptac then
+		self:inf_init("usptac", "pistol", "medium")
+		self.usptac.sdesc1 = "caliber_p40sw"
+		self.usptac.sdesc2 = "action_shortrecoil"
+		self.usptac.stats.concealment = 28
+		self:copy_timers("usptac", "usp")
+	end
+
+	-- TTI TR-1 Ultralight (Wholesome but also gay)
+	if self.hugsforleon then
+		self:inf_init("hugsforleon", "ar", nil)
+		self.hugsforleon.sdesc1 = "caliber_r556x45"
+		self.hugsforleon.sdesc2 = "action_di"
+		self.hugsforleon.FIRE_MODE = "single"
+		self.hugsforleon.CAN_TOGGLE_FIREMODE = false
+		self:copy_timers("hugsforleon", "new_m4")
+	end
 end
 
 -- FUCK TURRETS
 local cancerous = {"swat_van_turret_module", "ceiling_turret_module", "ceiling_turret_module_no_idle", "ceiling_turret_module_longer_range", "aa_turret_module", "crate_turret_module"}
-smallercancerous = {"ceiling_turret_module", "ceiling_turret_module_no_idle", "ceiling_turret_module_longer_range", "crate_turret_module"}
+local smallercancerous = {"ceiling_turret_module", "ceiling_turret_module_no_idle", "ceiling_turret_module_longer_range", "crate_turret_module"}
 
 function WeaponTweakData:setcancerhealth(healthmult, clipmult)
 	for a, turret in pairs(cancerous) do

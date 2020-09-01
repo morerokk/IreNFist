@@ -8406,6 +8406,9 @@ end
 
 -- ST AR-15
 if BeardLib.Utils:ModLoaded("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_flat_bolt_sai then
+	-- Remove ST AR-15 posthook because it causes issues, sorry
+	Hooks:RemovePostHook("star15_init")
+
 	self.parts.wpn_fps_upg_flat_bolt_sai.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_flat_fg_blk.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_flat_rec_lower_blk.stats = deep_clone(nostats)
@@ -8417,37 +8420,41 @@ if BeardLib.Utils:ModLoaded("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_
 	self.parts.wpn_fps_upg_flat_ns_thic.stats = deep_clone(silstatsconc2)
 	self.parts.wpn_fps_upg_flat_ns_thic.custom_stats = silencercustomstats
 
-	-- Has to be done on a delayed call due to a conflicting hook
-	DelayedCalls:Add("star15_fix_stats", 0.2, function()
-		-- Conversion kits for anti-materiel and regular AR
-		-- Remove all the overrides and multiplications/custom stats first
-		self.parts.wpn_fps_upg_flat_am_woof.custom_stats = {}
-		self.parts.wpn_fps_upg_flat_am_woof.override_weapon_multiply = {}
-		self.parts.wpn_fps_upg_flat_am_woof.override_weapon = {}
-		self.parts.wpn_fps_upg_flat_am_woof.override = {}
+	-- Conversion kits for anti-materiel and regular AR
+	-- Remove all the overrides and multiplications/custom stats first
+	self.parts.wpn_fps_upg_flat_am_woof.custom_stats = {}
+	self.parts.wpn_fps_upg_flat_am_woof.override_weapon_multiply = {}
+	self.parts.wpn_fps_upg_flat_am_woof.override_weapon = {}
+	self.parts.wpn_fps_upg_flat_am_woof.override = {}
 
-		self.parts.wpn_fps_upg_flat_am_weak.custom_stats = {}
-		self.parts.wpn_fps_upg_flat_am_weak.override_weapon_multiply = {}
-		self.parts.wpn_fps_upg_flat_am_weak.override_weapon = {}
-		self.parts.wpn_fps_upg_flat_am_weak.override = {}
+	self.parts.wpn_fps_upg_flat_am_weak.custom_stats = {}
+	self.parts.wpn_fps_upg_flat_am_weak.override_weapon_multiply = {}
+	self.parts.wpn_fps_upg_flat_am_weak.override_weapon = {}
+	self.parts.wpn_fps_upg_flat_am_weak.override = {}
 
-		self:convert_part("wpn_fps_upg_flat_am_woof", "ldmr", "hdmr", 80, 30)
-		self.parts.wpn_fps_upg_flat_am_woof.stats.extra_ammo = -20
-		self.parts.wpn_fps_upg_flat_am_woof.custom_stats.sdesc1 = "caliber_r762x51dm151"
-		-- Forbid using this with larger or smaller mags
-		if not self.parts.wpn_fps_upg_flat_am_woof.forbids then
-			self.parts.wpn_fps_upg_flat_am_woof.forbids = {}
-		end
-		table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_upg_m4_m_quad")
-		table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_upg_m4_m_straight")
-		if self.parts.wpn_fps_ass_m4_m_wick then
-			table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_ass_m4_m_wick")
-		end
+	self:convert_part("wpn_fps_upg_flat_am_woof", "ldmr", "hdmr", 80, 30)
+	self.parts.wpn_fps_upg_flat_am_woof.stats.extra_ammo = -20
+	self.parts.wpn_fps_upg_flat_am_woof.custom_stats.sdesc1 = "caliber_r762x51dm151"
+	-- Forbid using this with larger or smaller mags
+	if not self.parts.wpn_fps_upg_flat_am_woof.forbids then
+		self.parts.wpn_fps_upg_flat_am_woof.forbids = {}
+	end
+	table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_upg_m4_m_quad")
+	table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_upg_m4_m_straight")
+	if self.parts.wpn_fps_ass_m4_m_wick then
+		table.insert(self.parts.wpn_fps_upg_flat_am_woof.forbids, "wpn_fps_ass_m4_m_wick")
+	end
 
-		self:convert_part("wpn_fps_upg_flat_am_weak", "ldmr", "mrifle", 80, 120)
-		self.parts.wpn_fps_upg_flat_am_weak.custom_stats.sdesc1 = "caliber_r556x45"
-	end)
+	self:convert_part("wpn_fps_upg_flat_am_weak", "ldmr", "mrifle", 80, 120)
+	self.parts.wpn_fps_upg_flat_am_weak.custom_stats.sdesc1 = "caliber_r556x45"
 
+	self.parts.wpn_fps_upg_flat_am_woof.override_weapon = {
+		categories = { "snp" },
+		sounds = {
+			fire = "spikes_fire_bwlf",
+			fire_single = "spikes_fire_bwlf"
+		}
+	}
 end
 
 -- Desert Eagle Duet
@@ -8519,6 +8526,11 @@ end
 if BeardLib.Utils:ModLoaded("Glock 19") and self.parts.wpn_fps_upg_g19_ammo_9mm_p then
 	self:convert_part("wpn_fps_upg_g19_ammo_9mm_p", "lightpis", "mediumpis")
 	self.parts.wpn_fps_upg_g19_ammo_9mm_p.custom_stats.sdesc1 = "caliber_p9x19nade"
+end
+
+-- TR-1
+if BeardLib.Utils:ModLoaded("TR-1") and self.parts.wpn_fps_ass_hugsforleon_upper then
+	self.parts.wpn_fps_ass_hugsforleon_upper.stats = deep_clone(nostats)
 end
 
 --!!

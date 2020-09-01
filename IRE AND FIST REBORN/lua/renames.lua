@@ -200,7 +200,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_x_g22c = "Akimbo Chimano Customs",
 		bm_wp_pis_g26 = "Chimano 26 Compact",
 		bm_w_jowi = "Akimbo Chimano Compacts",
-		bm_w_usp = "Interceptor Tactical",
+		bm_w_usp = "Interceptor .45",
 		bm_w_x_usp = "Akimbo Interceptors",
 		bm_w_ppk = "Gruber Kurz",
 		bm_w_x_ppk = "Akimbo Gruber Kurzes",
@@ -3795,6 +3795,12 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_g19_desc = "A slightly smaller take on the Glock 17.",
 	-- Change description to an empty one because ammo pickup IS actually modified now
 	bm_wp_wpn_fps_upg_g19_ammo_9mm_p_desc = "Converts the weapon to a medium pistol. Less ammo pickup, more damage.",
+
+	-- USP Tactical
+	bm_w_usptac = "Interceptor Tactical",
+	bm_w_usptac_desc = "A smaller and more compact version of the classic German handgun. Knife not included.",
+
+	
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

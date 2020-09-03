@@ -16,6 +16,7 @@ jobs:
         cd ./Tests
         lua ./runtests.lua
   build:
+    needs: test
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@master

@@ -1,6 +1,6 @@
 {
     "name" : "Ire and Fist",
-    "description" : "Unnecessarily large rebalance mod for gratuitously hypermasculine people. TEST: THIS PHRASE SHOULD NEVER APPEAR INGAME.",
+    "description" : "Unnecessarily large rebalance mod for gratuitously hypermasculine people. TEST: THIS PHRASE SHOULD NEVER APPEAR INGAME for real this time.",
     "author" : "Solo Queue Pixy (maintained by Rokk)",
     "version" : "1.59.9",
 	"image" : "memedaytheheist.png",

@@ -1,4 +1,7 @@
 BLT = {}
 
-ModPath = "../IRE AND FIST REBORN/"
+ModPath = ""
 
+function BLT:mockSetModPath(path)
+    ModPath = path
+end

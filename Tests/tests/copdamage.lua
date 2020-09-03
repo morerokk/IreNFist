@@ -17,5 +17,10 @@ local function copdamage_test_if_stationary_objects_dont_crash()
     LuaU:assert(true)
 end
 
-copdamage_test_if_melee_doesnt_crash()
-copdamage_test_if_stationary_objects_dont_crash()
+local function copdamage_always_fail()
+    LuaU:assert(2 + 2 == 5)
+end
+
+LuaU:runTest(copdamage_test_if_melee_doesnt_crash, "copdamage_test_if_melee_doesnt_crash")
+LuaU:runTest(copdamage_test_if_stationary_objects_dont_crash, "copdamage_test_if_stationary_objects_dont_crash")
+LuaU:runTest(copdamage_always_fail, "copdamage_always_fail")

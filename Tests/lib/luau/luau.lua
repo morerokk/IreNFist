@@ -1,9 +1,21 @@
 LuaU = {}
+LuaU.failedAssertions = 0
+LuaU.failedTests = 0
 
 function LuaU:assert(comparison)
-    if comparison == true then
-        print("TEST PASS: " .. debug.getinfo(2).name)
+    if not (comparison == true) then
+        LuaU.failedAssertions = LuaU.failedAssertions + 1
+        error("Assertion Fail!")
+    end
+end
+
+function LuaU:runTest(func, name)
+    local result, message = pcall(func)
+    if result then
+        print("Test pass: " .. name)
     else
-        print("TEST FAIL: " .. debug.getinfo(2).name)
+        print("Test FAIL: " .. name)
+        print(message)
+        LuaU.failedTests = LuaU.failedTests + 1
     end
 end

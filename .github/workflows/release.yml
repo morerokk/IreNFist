@@ -5,6 +5,15 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: leafo/gh-actions-lua@v6
+    - name: Run Tests
+      id: run-lua-tests
+      run: |
+        lua .\Tests\runtests.lua
   build:
     runs-on: windows-latest
     steps:

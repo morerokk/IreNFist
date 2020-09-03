@@ -1,3 +1,6 @@
+-- Fix package paths
+package.path = package.path .. ";../?.lua"
+
 require("lib/luau/luau")
 require("mocks/PAYDAY/Helpers")
 require("mocks/BLT/Hooks")

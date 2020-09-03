@@ -6,7 +6,7 @@ if IreNFist.mod_compatibility.sso then
 		-- SSO loads its data through BeardLib which isn't guaranteed to respect InF's slightly lower priority.
 		-- Additionally, it uses old_init instead of PostHooks which can make things even muddier
 		-- Normally a lower priority means InF loads *later* and therefore overrides previous changes.
-		DelayedCalls:Add("inf_ssocompat_delayedskilltreeinit", 0.2, function()
+		local do_sso_compat = function()
 			-- Rifleman
 			self.skills.rifleman[1].upgrades = {"weapon_enter_steelsight_speed_multiplier", "snp_reload_speed_multiplier"}
 			self.skills.rifleman[2].upgrades = {"smg_reload_speed_multiplier", "assault_rifle_reload_speed_multiplier"}
@@ -82,7 +82,15 @@ if IreNFist.mod_compatibility.sso then
 			-- Trigger Happy/Coordination
 			self.skills.trigger_happy[1].upgrades = {"pistol_stacking_hit_damage_multiplier_1"}
 			self.skills.trigger_happy[2].upgrades = {"pistol_stacking_hit_damage_multiplier_2"}
-		end)
+		end
+
+		-- Check if SSO has already done its thing. If so, we can apply these skill changes right away.
+		if self.skills.underdog and table.contains(self.skills.underdog[1].upgrades, "saw_consume_no_ammo_chance") then
+			do_sso_compat()
+		else
+			-- If not, do it on a delayed call (which is not ideal)
+			DelayedCalls:Add("inf_ssocompat_delayedskilltweakinit", 0.1, do_sso_compat)
+		end
 	end)
 else
 	Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, params)

@@ -4,6 +4,7 @@ dofile(ModPath .. "infcore.lua")
 if IreNFist.mod_compatibility.sso then
 
 else
+	-- These values are only for if SSO is explicitly *not* enabled. For values that apply to both cases, they're further down
 	Hooks:PostHook(UpgradesTweakData, "init", "inf_fuckyourskills", function(self, params)
 		--self.skill_descs.shotgun_cqb.multibasic2 = "10%"
 		--self.skill_descs.shotgun_cqb.multipro = "20%"
@@ -320,8 +321,6 @@ end)
 
 -- Player upgrade definitions that should always exist regardless of mod compatibility
 Hooks:PostHook(UpgradesTweakData, "_player_definitions", "inf_upgradestweak_playerdefs_always", function(self)
-	-- TODO
-
 	self.definitions.snp_headshot_armor = {
 		category = "feature",
 		name_id = "snp_headshot_armor",

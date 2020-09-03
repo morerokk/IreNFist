@@ -3775,7 +3775,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.gre_m79.stats.concealment = 20
 	self.gre_m79.stats.damage = 60.0
 	self.gre_m79.AMMO_PICKUP = {1338, 20}
-	self.gre_m79.reload_speed_mult = 1.00
+	self.gre_m79.reload_speed_mult = 1.5
 	self.gre_m79.timers.reload_not_empty = 2.40
 	self.gre_m79.timers.reload_not_empty_end = 0.80 -- 3.20
 	self.gre_m79.timers.reload_empty = 2.40
@@ -3799,7 +3799,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.china.stats.damage = 60.0
 	self.china.stats.concealment = 15
 	self.china.chamber = 1
-	self.china.AMMO_MAX = 3
+	self.china.AMMO_MAX = 4
 	self.china.AMMO_PICKUP = {1338, 15}
 	self.china.anim_speed_mult = 1
 	self.china.fire_mode_data.fire_rate = 1.5

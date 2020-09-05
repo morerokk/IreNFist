@@ -8533,6 +8533,55 @@ if BeardLib.Utils:ModLoaded("TR-1") and self.parts.wpn_fps_ass_hugsforleon_upper
 	self.parts.wpn_fps_ass_hugsforleon_upper.stats = deep_clone(nostats)
 end
 
+-- ACR
+if BeardLib.Utils:ModLoaded("acwr") and self.parts.wpn_fps_ass_acwr_b_short then
+	self.parts.wpn_fps_ass_acwr_b_short.stats = deep_clone(barrel_p1)
+end
+
+-- HOW TO ADD CUSTOM WEAPON MOD SUPPORT
+-- This applies to any BeardLib mod that adds custom weapon mods, whether they come with an actual weapon or not.
+-- You first need the weapon mod's ID, which can be found in the mod's XML files (such as main.xml).
+
+-- You need to check if the BeardLib mod is loaded, but also check if at least 1 given part is not nil.
+-- This will help prevent crashes if someone else makes a beardlib mod with the same name, or if the author drastically changes their weapon mods around.
+-- The BeardLib mod's name is actually defined in the main.xml file. This is <table name="mymod">, where the name would then be "mymod".
+
+-- Example:
+-- if BeardLib.Utils:ModLoaded("Glock 19") and self.parts.wpn_fps_upg_g19_ammo_9mm_p then
+	-- This is a "conversion mod". It converts the weapon from A to B. In this case, this higher-caliber ammo changes the glock 19 from a light pistol into a medium pistol,
+	-- effectively making it equal to other medium pistols such as the Crosskill.
+	-- The from/to is based on the weapon values in InfMenu (infcore.lua). So it's not "pistol light", but "lightpis".
+	-- self:convert_part("wpn_fps_upg_g19_ammo_9mm_p", "lightpis", "mediumpis")
+	-- This also changes the caliber in the weapon's short description.
+	-- self.parts.wpn_fps_upg_g19_ammo_9mm_p.custom_stats.sdesc1 = "caliber_p9x19nade"
+-- end
+
+-- One note about conversion kits (especially to/from DMR's) is that shield and enemy piercing gets iffy
+-- if you try to apply that to a weaponmod that isn't of the "ammo" type.
+
+-- This is something you will see a lot. Any weapon mod that shouldn't have any stat changes (grips, front guards etc) should have its stats cloned from the "nostats" table.
+-- self.parts.wpn_fps_pis_glawk_gr_pachmayr.stats = deep_clone(nostats)
+
+-- Silencers are another common feature. Clone their stats from the most appropriate silencer preset (depending on size) and also clone the silencer custom stats.
+-- self.parts.wpn_fps_pis_hl1g_suppress.custom_stats = silencercustomstats
+-- self.parts.wpn_fps_pis_hl1g_suppress.stats = deep_clone(silstatsconc1)
+
+-- Barrels is something you see often, these also have presets. There's long/longer, short/shorter, etc.
+-- m1 and m2 are long/longer, p1 and p2 are short/shorter.
+-- There's more, you can find them further up in this file.
+-- self.parts.wpn_fps_ass_myar_barrel.stats = deep_clone(barrel_m1)
+
+-- For anything else (such as sights) you'll just have to look at other weaponmods added in this file.
+-- The most useful ones for you to look at will probably be other custom ones, but vanilla mods might also give you some insight.
+
+-- For custom weapons that have additional tweakdata in weapontweakdata or weaponfactorytweakdata, sometimes their code runs after InF does.
+-- The best way to fix this is to remove their PostHook using Hooks:RemovePostHook("hook_id")
+-- If that hook normally does some required setup work (such as mod compatibility or custom attachment points) then please do so in your code as well.
+-- A delayed call can also be done to fix the tweakdata but this is incredibly unreliable.
+
+-- Finally, please use a code editor that can spot and highlight syntax errors for you. Test it out and make sure it catches errors.
+-- Visual Studio Code has a few addons that merely highlight Lua syntax, but there are others that also highlight syntax errors. Get one of those.
+
 --!!
 
 --[[

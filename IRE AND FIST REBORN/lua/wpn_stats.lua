@@ -6512,6 +6512,104 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.hugsforleon.CAN_TOGGLE_FIREMODE = false
 		self:copy_timers("hugsforleon", "new_m4")
 	end
+
+	-- Remington ACR
+	-- With grenade launcher
+	if self.acwr then
+		self:inf_init("acwr", "ar", {"has_gl"})
+		self.acwr.sdesc1 = "caliber_r556x45"
+		self.acwr.sdesc2 = "action_di"
+		self:copy_timers("acwr", "contraband")
+	end
+	-- Without GL
+	if self.acwr2 then
+		self:inf_init("acwr2", "ar", nil)
+		self.acwr2.sdesc1 = "caliber_r556x45"
+		self.acwr2.sdesc2 = "action_di"
+		self:copy_timers("acwr2", "new_m4")
+	end
+
+	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
+	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)
+	-- Then do something like this for pistols:
+
+	--[[
+	-- You first check if the weapon's ID exists. This is the most reliable method.
+	if self.g19 then
+		-- Init the weapon as a pistol and give it the pistol stats completely automatically. The third argument decides how heavy the pistol is.
+		-- There's nil (light), medium, supermedium, and heavy. Supermedium isn't used in vanilla.
+		self:inf_init("g19", "pistol", nil)
+
+		-- These two are short descriptions shown in the inventory. The first one is the weapon's default caliber, second is its action.
+		-- You need to set at least one of these two for the description to work nicely.
+		-- You can find these in renames.lua. If you can't find the one you need, add a new one there.
+		self.g19.sdesc1 = "caliber_p9x19"
+		self.g19.sdesc2 = "action_shortrecoil"
+
+		-- Copy the reload timers and the stance mods. First argument is destination, second is source.
+		-- In many cases, the second argument should be whatever the weapon's based_on is (which weapon it'll appear as for others).
+		-- If not, take whatever weapon matches best.
+		self:copy_timers("g19", "glock_17")
+	end
+	]]
+
+	-- For AR's, you need to do pretty much the same thing as pistols.
+	-- For the init there's this:
+	-- self:inf_init("m16", "ar", {"medium"})
+	-- The third argument is a table. Once again, nil means light rifle, medium is medium rifle, heavy is heavy rifle.
+	-- There's also ldmr, dmr and hdmr. hdmr isn't used in vanilla but it does exist.
+	-- If the weapon has an underbarrel, add "has_gl" to the table. If the weapon is a light AR, you don't have to specify "nil". Example:
+	-- self:inf_init("soppo", "ar", {"has_gl"})
+
+	-- SMG's are similar to AR's, but you have to specify a range for them.
+	-- self:inf_init("car9", "smg", {"range_carbine"})
+	-- There's range_carbine, range_mcarbine, range_short and range_long.
+
+	-- Shotguns are a little different. You can specify all sorts of ranges, damage and rates of fire for these.
+	--[[
+		self:inf_init("coach", "shotgun", {"dmg_heavy", "rof_db"})
+
+		self:inf_init("r870", "shotgun", {"rof_slow", "range_slowpump"})
+
+		self:inf_init("ksg", "shotgun", {"dmg_mid"})
+		self:inf_init("benelli", "shotgun", {"dmg_light", "rof_semi"})
+	]]
+	-- Ranges: dmg_vlight, dmg_light, dmg_mid, dmg_heavy, dmg_aa12
+	-- Rates of fire: rof_semi, rof_mag, rof_db
+	-- Ranges: range_short, range_slowpump, range_long
+	-- Not all of these have to be specified. Pump shotguns don't need rate of fire.
+
+	-- Snipers have nil (regular), heavy, superheavy.
+	-- self:inf_init("cs5", "snp", nil)
+
+	-- LMG's only have medium and heavy.
+	-- self:inf_init("m249", "lmg", "medium")
+
+	-- GL's can be initialized but it hardly does anything, just copy the M79, MGL or China Lake or something
+	-- self.my_gl.stats.damage = self.gre_m79.stats.damage
+
+	-- Miniguns and bows/xbows can be initialized too. But it won't do much for bows.
+	-- self:inf_init("myminigun", "minigun")
+	-- self:inf_init("mybow", "bow")
+	-- self:inf_init("mycrossbow", "crossbow")
+
+	-- After calling init on any weapon, feel free to tweak its stats further. Concealment nearly always needs some more tweaks,
+	-- but maybe your custom weapon needs a few more tweaks than that.
+
+	-- If you want to add a custom attachment point to a weapon, do it as follows:
+	--[[
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("ak74", {
+			name = "a_m_dmr",
+			base_a_obj = "a_m",
+			position = Vector3(0, 2, 0),
+			rotation = Rotation(0, 0, 0)
+		})
+	end
+	]]
+
+	-- Don't directly check for WeaponLib or CAP's existence. There might be other mods which will supersede WeaponLib/CAP, but still offer the same function.
+	-- RotationCAP should probably be fine to use instead of Rotation, if you even need it.
 end
 
 -- FUCK TURRETS

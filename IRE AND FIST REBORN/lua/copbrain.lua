@@ -5,6 +5,9 @@ dofile(ModPath .. "infcore.lua")
 Hooks:PreHook(CopBrain, "save", "inf_setbraincopteam", function(self, save_data)
 	if not self._logic_data.team then
 		-- This function on CopMovement will also apply the changes to CopBrain
+		if not self:movement() then
+			return
+		end
 		self:movement():set_team(managers.groupai:state()._teams[tweak_data.levels:get_default_team_ID(self._unit:base():char_tweak().access == "gangster" and "gangster" or "combatant")])
 	end
 end)

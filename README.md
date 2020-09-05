@@ -7,3 +7,9 @@ For VR users, the [VR Recoil mod](https://github.com/HugoZink/PD2VRRecoil) is st
 # Installation
 [Grab the latest release from the Releases Page.](https://github.com/HugoZink/IreNFist/releases/tag/refs%2Fheads%2Fmaster) Extract the contents of `irenfist.zip` to your mods folder.
 SuperBLT and BeardLib are both required.
+
+# Custom Weapons
+This mod supports many different BeardLib Custom Weapons. [A full list can be found on the MWS page.](https://modworkshop.net/mod/28585)
+
+If you want to see support for a custom weapon added, the fastest and best way to do so is to make a Fork of this repository, then make your changes to the fork and open a Pull Request.
+You can also suggest it be added on the Issues page or on the MWS page, but I'm not likely to take suggestions if the weapon isn't sufficiently interesting.

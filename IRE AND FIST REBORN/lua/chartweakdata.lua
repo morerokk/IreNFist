@@ -1028,7 +1028,7 @@ if InFmenu and InFmenu.settings.enablenewcopvoices then
 				p2 = nil,
 				count = 2
 			},
-			taxman_dealer = { -- Sturr's deal in Undercover, gangsters are actually Undercover cops
+			taxman_dealer = { -- Sturr's deal in Undercover, gangsters are actually Undercover cops. TODO: Change their team to cop
 				p1 = "l",
 				p2 = "n",
 				count = 4,

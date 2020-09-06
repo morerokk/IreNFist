@@ -7962,6 +7962,8 @@ if BeardLib.Utils:ModLoaded("PPSh-41") then
 	self.parts.wpn_fps_upg_ppsh_mag_drum.stats.extra_ammo = 36
 end
 
+-- I can't keep up with these weaponmods constantly being removed or renamed, sorry
+--[[
 if BeardLib.Utils:ModLoaded("PPS-43") then
 	self.parts.wpn_fps_smg_pps43_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_pps43_barrel_extension.stats = deep_clone(barrel_m1)
@@ -7974,6 +7976,7 @@ if BeardLib.Utils:ModLoaded("PPS-43") then
 	self.parts.wpn_fps_upg_pps43_bolt_firerate.custom_stats = {rof_mult = 800/700}
 	self.parts.wpn_fps_upg_pps43_bolt_firerate.stats = deep_clone(nostats)
 end
+]]
 
 if BeardLib.Utils:ModLoaded("CSGO Sniper Scope") then
 	self.parts.wpn_fps_upg_o_csgoscope.customsight = true

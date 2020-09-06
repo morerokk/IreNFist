@@ -3,6 +3,8 @@ dofile(ModPath .. "infcore.lua")
 dofile(ModPath .. "lua/assert_config_should_not_crash.lua")
 If_This_Appears_In_Your_Crashlog_Delete_Your_InF_Save_Txt()
 
+Hooks:RegisterHook("inf_weapontweak_initcomplete")
+
 local function checkfolders(subfolder, file)
 	local filename = file or "main.xml"
 	if SystemFS:exists("mods/" .. subfolder .. "/" .. filename) or SystemFS:exists("assets/mod_overrides/" .. subfolder .. "/" .. filename) then
@@ -6610,6 +6612,11 @@ function WeaponTweakData:_init_new_weapons(...)
 
 	-- Don't directly check for WeaponLib or CAP's existence. There might be other mods which will supersede WeaponLib/CAP, but still offer the same function.
 	-- RotationCAP should probably be fine to use instead of Rotation, if you even need it.
+
+
+	-- Don't touch this, this should be the last line in the weapontweakdata init hook
+	-- Enables better compatibility with other mods if they choose to override or supplement something InF does
+	Hooks:Call("inf_weapontweak_initcomplete", self)
 end
 
 -- FUCK TURRETS

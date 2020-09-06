@@ -45,12 +45,6 @@ Hooks:PostHook(FPCameraPlayerBase, "update", "kickaccum_decrement", function(sel
 		if self._parent_unit:inventory() then
 			if self._parent_unit:inventory():equipped_unit() then
 				if self._parent_unit:inventory():equipped_unit():base() then
---[[
-					recoil_recover_time = self._parent_unit:inventory():equipped_unit():base()._recoil_recover_time
-					recoil_recoverfast_num = self._parent_unit:inventory():equipped_unit():base()._recoil_recoverfast_num
-					recoil_recoverfast_delay = self._parent_unit:inventory():equipped_unit():base()._recoil_recoverfast_delay
-					recoil_recoverfast_time = self._parent_unit:inventory():equipped_unit():base()._recoil_recoverfast_time
---]]
 					recoil_recover_delay = self._parent_unit:inventory():equipped_unit():base()._recoil_recover_delay or recoil_recover_delay
 					self._recoil_apply_delay = self._parent_unit:inventory():equipped_unit():base()._recoil_apply_delay or self._recoil_apply_delay
 					factory_id = self._parent_unit:inventory():equipped_unit():base()._factory_id
@@ -73,38 +67,24 @@ Hooks:PostHook(FPCameraPlayerBase, "update", "kickaccum_decrement", function(sel
 end)
 
 
--- removed lines concerning recoil resetting
-local startShootingOrig = FPCameraPlayerBase.start_shooting
-function FPCameraPlayerBase:start_shooting()
-	if _G.IS_VR then
-		return startShootingOrig(self)
+-- Remove recoil auto-reset in desktop
+-- Because of how recoil works in VR (esp. with VR Recoil), it should still reset like normal in VR.
+-- This makes tapfiring the required method in VR, which I'm not sure if I like.
+if not _G.IS_VR then
+	local startShootingOrig = FPCameraPlayerBase.start_shooting
+	function FPCameraPlayerBase:start_shooting()
+		self._recoil_kick.current = self._recoil_kick.current and self._recoil_kick.current or self._recoil_kick.accumulated or 0
+		self._recoil_kick.h.current = self._recoil_kick.h.current and self._recoil_kick.h.current or self._recoil_kick.h.accumulated or 0
 	end
-
-	self._recoil_kick.current = self._recoil_kick.current and self._recoil_kick.current or self._recoil_kick.accumulated or 0
-	self._recoil_kick.h.current = self._recoil_kick.h.current and self._recoil_kick.h.current or self._recoil_kick.h.accumulated or 0
 end
 
-local stopShootingOrig = FPCameraPlayerBase.stop_shooting
-function FPCameraPlayerBase:stop_shooting( wait )
-	if _G.IS_VR then
-		return stopShootingOrig(self, wait)
+if not _G.IS_VR then
+	local stopShootingOrig = FPCameraPlayerBase.stop_shooting
+	function FPCameraPlayerBase:stop_shooting( wait )
+		self._recoil_kick.to_reduce = self._recoil_kick.accumulated or 0
+		self._recoil_kick.h.to_reduce = self._recoil_kick.h.accumulated or 0
+		self._recoil_wait = 0
 	end
-
-	--local weapon = self._parent_unit:inventory():equipped_unit()
---[[
-	local recoil_recover = weapon and self._parent_unit:inventory():equipped_unit():base()._recoil_recover
-	if self._parent_unit:inventory():equipped_unit():base():in_burst_mode() then
-		recoil_recover = recoil_recover * 0.80
-	end
-	if recoil_recover > 1 then
-		recoil_recover = 1
-	elseif recoil_recover < 0 then
-		recoil_recover = 0
-	end
---]]
-	self._recoil_kick.to_reduce = self._recoil_kick.accumulated or 0
-	self._recoil_kick.h.to_reduce = self._recoil_kick.h.accumulated or 0
-	self._recoil_wait = 0
 end
 
 
@@ -156,157 +136,65 @@ function FPCameraPlayerBase:recoil_kick(up, down, left, right)
 	self._accumulated_recoil = self._accumulated_recoil + 1
 end
 
-local verticalKickOrig = FPCameraPlayerBase._vertical_recoil_kick
-function FPCameraPlayerBase:_vertical_recoil_kick(t, dt)
+if not _G.IS_VR then
+	local verticalKickOrig = FPCameraPlayerBase._vertical_recoil_kick
+	function FPCameraPlayerBase:_vertical_recoil_kick(t, dt)
 
-	if _G.IS_VR then
-		return verticalKickOrig(self, t, dt)
-	end
+		local player_state = managers.player:current_state()
 
-	local player_state = managers.player:current_state()
-
-	-- PD2's recoil accumulation values are used to determine camera rotation
-	-- camera movetime is instant and there is no recovery, so we just use the value and reset it immediately
---[[
-	local r_value = 0
-	if self._recoil_kick.accumulated then
-		r_value = self._recoil_kick.accumulated
-		self._recoil_kick.accumulated = 0
-	end
---]]
-	-- firing delay to make akimbos work
-	local r_value = 0
-	if self._recoil_kick.accumulated then
-		if (self._last_unapplied_recoil_time or 18000000) + self._recoil_apply_delay < os.clock() then
-			r_value = self._recoil_kick.accumulated
-			self._recoil_kick.accumulated = nil
-			self._last_unapplied_recoil_time = nil
-		end
-	end
-
-	-- reduce kick while tased
-	if self._parent_unit then
-		if self._parent_unit:movement() then
-			if self._parent_unit:movement():tased() then
-				r_value = r_value * 0.50
+		-- firing delay to make akimbos work
+		local r_value = 0
+		if self._recoil_kick.accumulated then
+			if (self._last_unapplied_recoil_time or 18000000) + self._recoil_apply_delay < os.clock() then
+				r_value = self._recoil_kick.accumulated
+				self._recoil_kick.accumulated = nil
+				self._last_unapplied_recoil_time = nil
 			end
 		end
-	end
 
-	-- reduce recoil instead of removing it
-	if player_state == "bipod" then
-		r_value = r_value * 0.30
-	end
-
-
-
-	return r_value
-end
-
-local horizontalKickOrig = FPCameraPlayerBase._horizonatal_recoil_kick
-function FPCameraPlayerBase:_horizonatal_recoil_kick(t, dt)
-
-	if _G.IS_VR then
-		return horizontalKickOrig(self, t, dt)
-	end
-
-	local player_state = managers.player:current_state()
---[[
-	local r_value = 0
-	if self._recoil_kick.h.accumulated then
-		r_value = self._recoil_kick.h.accumulated
-		self._recoil_kick.h.accumulated = 0
-	end
---]]
-
-	local r_value = 0
-	if self._recoil_kick.h.accumulated then
-		if (self._last_unapplied_recoil_time or 18000000) + self._recoil_apply_delay < os.clock() then
-			r_value = self._recoil_kick.h.accumulated
-			self._recoil_kick.h.accumulated = nil
-		end
-	end
-
-	if self._parent_unit then
-		if self._parent_unit:movement() then
-			if self._parent_unit:movement():tased() then
-				r_value = r_value * 0.50
+		-- reduce kick while tased
+		if self._parent_unit then
+			if self._parent_unit:movement() then
+				if self._parent_unit:movement():tased() then
+					r_value = r_value * 0.50
+				end
 			end
 		end
-	end
 
-	-- reduce horizontal too
-	if player_state == "bipod" then
-		r_value = r_value * 0.30
-	end
-
-	return r_value
-end
-
-
-
---[[
-function FPCameraPlayerBase:clbk_stance_entered(new_shoulder_stance, new_head_stance, new_vel_overshot, new_fov, new_shakers, stance_mod, duration_multiplier, duration)
-	local t = managers.player:player_timer():time()
-
-	if new_shoulder_stance then
-		local transition = {}
-		self._shoulder_stance.transition = transition
-		transition.end_translation = new_shoulder_stance.translation + (stance_mod.translation or Vector3())
-		transition.end_rotation = new_shoulder_stance.rotation * (stance_mod.rotation or Rotation())
-		transition.start_translation = mvector3.copy(self._shoulder_stance.translation)
-		transition.start_rotation = self._shoulder_stance.rotation
-		transition.start_t = t
-		transition.duration = duration * duration_multiplier
-	end
-
-	if new_head_stance then
-		local transition = {}
-		self._head_stance.transition = transition
-		transition.end_translation = new_head_stance.translation
-		transition.end_rotation = new_head_stance.rotation
-		transition.start_translation = mvector3.copy(self._head_stance.translation)
-		transition.start_rotation = self._head_stance.rotation
-		transition.start_t = t
-		transition.duration = duration * duration_multiplier
-	end
-
-	if new_vel_overshot then
-		local transition = {}
-		self._vel_overshot.transition = transition
-		transition.end_pivot = new_vel_overshot.pivot
-		transition.end_yaw_neg = new_vel_overshot.yaw_neg
-		transition.end_yaw_pos = new_vel_overshot.yaw_pos
-		transition.end_pitch_neg = new_vel_overshot.pitch_neg
-		transition.end_pitch_pos = new_vel_overshot.pitch_pos
-		transition.start_pivot = mvector3.copy(self._vel_overshot.pivot)
-		transition.start_yaw_neg = self._vel_overshot.yaw_neg
-		transition.start_yaw_pos = self._vel_overshot.yaw_pos
-		transition.start_pitch_neg = self._vel_overshot.pitch_neg
-		transition.start_pitch_pos = self._vel_overshot.pitch_pos
-		transition.start_t = t
-		transition.duration = duration * duration_multiplier
-	end
-
-	if new_fov then
-		if new_fov == self._fov.fov then
-			self._fov.transition = nil
-		else
-			local transition = {}
-			self._fov.transition = transition
-			transition.end_fov = new_fov
-			transition.start_fov = self._fov.fov
-			transition.start_t = t
-			transition.duration = duration * duration_multiplier
+		-- reduce recoil instead of removing it
+		if player_state == "bipod" then
+			r_value = r_value * 0.30
 		end
+
+		return r_value
 	end
 
-	if new_shakers then
-		for effect, values in pairs(new_shakers) do
-			for parameter, value in pairs(values) do
-				self._parent_unit:camera():set_shaker_parameter(effect, parameter, value)
+	local horizontalKickOrig = FPCameraPlayerBase._horizonatal_recoil_kick
+	function FPCameraPlayerBase:_horizonatal_recoil_kick(t, dt)
+
+		local player_state = managers.player:current_state()
+
+		local r_value = 0
+		if self._recoil_kick.h.accumulated then
+			if (self._last_unapplied_recoil_time or 18000000) + self._recoil_apply_delay < os.clock() then
+				r_value = self._recoil_kick.h.accumulated
+				self._recoil_kick.h.accumulated = nil
 			end
 		end
+
+		if self._parent_unit then
+			if self._parent_unit:movement() then
+				if self._parent_unit:movement():tased() then
+					r_value = r_value * 0.50
+				end
+			end
+		end
+
+		-- reduce horizontal too
+		if player_state == "bipod" then
+			r_value = r_value * 0.30
+		end
+
+		return r_value
 	end
 end
---]]

@@ -1,5 +1,7 @@
 dofile(ModPath .. "infcore.lua")
 
+Hooks:RegisterHook("inf_weaponfactorytweak_initcomplete")
+
 --[[
 anim_speed_mult
 inf_rof_mult
@@ -778,7 +780,14 @@ end
 	-- Riktpunkt Magnifier
 	self.parts.wpn_fps_upg_o_xpsg33_magnifier.stats = {
 		value = 1,
-		gadget_zoom = 10
+		gadget_zoom = 10,
+		concealment = -1
+	}
+	-- The other magnifier (signature magnifier or whatever)
+	self.parts.wpn_fps_upg_o_sig.stats = {
+		value = 1,
+		gadget_zoom = 10,
+		concealment = -1
 	}
 	-- InF BUIS part
 	self.parts.inf_buis.internal_part = true
@@ -843,12 +852,6 @@ end
 	self.parts.wpn_fps_upg_fl_ass_utg.stats = {
 		value = 2,
 		concealment = -2
-	}
-	
-	-- Signature Magnifier Gadget
-	self.parts.wpn_fps_upg_o_sig.stats = {
-		value = 1,
-		concealment = -1
 	}
 	
 	-- 45 degree ironsights
@@ -8833,7 +8836,9 @@ DelayedCalls:Add("gimmeconcealdata", 1, function(self, params)
 end)
 --]]
 
-
+-- Don't touch this, this should be the last line in the weaponfactorytweakdata init hook
+-- Enables better compatibility with other mods if they choose to override something InF does
+Hooks:Call("inf_weaponfactorytweak_initcomplete", self)
 
 end)
 

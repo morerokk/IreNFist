@@ -1,3 +1,5 @@
+dofile(ModPath .. "infcore.lua")
+
 -- Modified file to still reset recoil in VR
 -- Allows recoil to actually work in VR since there is no traditional "camera"
 
@@ -72,23 +74,32 @@ end)
 -- This makes tapfiring the required method in VR, which I'm not sure if I like.
 if not _G.IS_VR then
 	local startShootingOrig = FPCameraPlayerBase.start_shooting
-	function FPCameraPlayerBase:start_shooting()
+	local startShootingNew = function(self)
 		self._recoil_kick.current = self._recoil_kick.current and self._recoil_kick.current or self._recoil_kick.accumulated or 0
 		self._recoil_kick.h.current = self._recoil_kick.h.current and self._recoil_kick.h.current or self._recoil_kick.h.accumulated or 0
 	end
-end
 
-if not _G.IS_VR then
 	local stopShootingOrig = FPCameraPlayerBase.stop_shooting
-	function FPCameraPlayerBase:stop_shooting( wait )
+	local stopShootingNew = function(self, wait)
 		self._recoil_kick.to_reduce = self._recoil_kick.accumulated or 0
 		self._recoil_kick.h.to_reduce = self._recoil_kick.h.accumulated or 0
 		self._recoil_wait = 0
 	end
+
+	FPCameraPlayerBase.start_shooting = startShootingNew
+	FPCameraPlayerBase.stop_shooting = stopShootingNew
+	
+	-- With SSO installed, override these on a delayed call
+	if IreNFist.mod_compatibility.sso then
+		DelayedCalls:Add("inf_fpcamera_recoil_startstopshoot_ssocompat", 1, function()
+			FPCameraPlayerBase.start_shooting = startShootingNew
+			FPCameraPlayerBase.stop_shooting = stopShootingNew
+		end)
+	end
 end
 
 
-function FPCameraPlayerBase:recoil_kick(up, down, left, right)
+local recoilKickNew = function(self, up, down, left, right)
 	-- set default recoil table
 	local recoil_table = {
 		{-1, -1, 0, 0}
@@ -134,6 +145,15 @@ function FPCameraPlayerBase:recoil_kick(up, down, left, right)
 	self._last_unapplied_recoil_time = self._last_unapplied_recoil_time or self._last_shot_time
 	self._current_wpn = self._parent_unit:inventory():equipped_unit():base()._factory_id
 	self._accumulated_recoil = self._accumulated_recoil + 1
+end
+
+FPCameraPlayerBase.recoil_kick = recoilKickNew
+
+-- With SSO installed, override recoil kick on a delayed call
+if IreNFist.mod_compatibility.sso then
+	DelayedCalls:Add("inf_fpcamera_recoil_recoilkick_ssocompat", 1, function()
+		FPCameraPlayerBase.recoil_kick = recoilKickNew
+	end)
 end
 
 if not _G.IS_VR then

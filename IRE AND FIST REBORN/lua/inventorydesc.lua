@@ -1,5 +1,5 @@
 -- make weapon mods display RoF change when selected
-if not BeardLib.Utils:FindMod("WeaponLib") then
+if not BeardLib.Utils:ModLoaded("WeaponLib") then
 	function WeaponDescription._get_weapon_mod_stats(mod_name, weapon_name, base_stats, mods_stats, equipped_mods)
 		local tweak_stats = tweak_data.weapon.stats
 		local tweak_factory = tweak_data.weapon.factory.parts

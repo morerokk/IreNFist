@@ -1,5 +1,6 @@
 -- Copypasted from vanilla with an extra crash guard check
 -- Just in case my spawning code still spawns enemies without objectives
+-- At the time of writing, it *still* crashes sometimes, therefore still making this code necessary.
 function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force, use_last)
 	local nr_units_spawned = 0
 	local produce_data = {

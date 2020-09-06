@@ -1,23 +1,3 @@
---[[
-function ShotgunBase:setup_default()
-	self._damage_near = tweak_data.weapon[self._name_id].damage_near
-	self._damage_far = tweak_data.weapon[self._name_id].damage_far
-	self._rays = tweak_data.weapon[self._name_id].rays or self._ammo_data.rays or 10 -- more pellets
-	self._range = self._damage_far
-
-
-	if tweak_data.weapon[self._name_id].use_shotgun_reload == nil then
-		self._use_shotgun_reload = self._use_shotgun_reload or self._use_shotgun_reload == nil
-	else
-		self._use_shotgun_reload = tweak_data.weapon[self._name_id].use_shotgun_reload
-	end
-
-	if not self:weapon_tweak_data().has_magazine then
-		self._hip_fire_rate_inc = managers.player:upgrade_value("shotgun", "hip_rate_of_fire", 0)
-	end
-end
---]]
-
 Hooks:PostHook(ShotgunBase, "_update_stats_values", "infshotgunnewstats", function(self, params)
 	--self._rays = self._ammo_data.rays or tweak_data.weapon[self._name_id].rays or 10 -- more pellets
 	self._can_breach = self._can_breach or false
@@ -447,31 +427,6 @@ end
 	
 		return fire_rate_multiplier_original(self, ...) * mult
 	end
-
---[[
-	function ShotgunBase:recoil_multiplier(...)
-		local multiplier = 1
-
-		for _, category in ipairs(self:weapon_tweak_data().categories) do
-			multiplier = multiplier * managers.player:upgrade_value(category, "recoil_multiplier", 1)
-
-			if managers.player:has_team_category_upgrade(category, "recoil_multiplier") then
-				multiplier = multiplier * managers.player:team_upgrade_value(category, "recoil_multiplier", 1)
-			elseif managers.player:player_unit() and managers.player:player_unit():character_damage():is_suppressed() then
-				multiplier = multiplier * managers.player:team_upgrade_value(category, "suppression_recoil_multiplier", 1)
-			end
-		end
-
-		multiplier = multiplier * managers.player:upgrade_value(self._name_id, "recoil_multiplier", 1)
-
-		local mult = 1
-		if self._delayed_burst_recoil and self:in_burst_mode() and self:burst_rounds_remaining() then
-			mult = 0
-		end
-		
-		return multiplier * mult
-	end
---]]
 	
 	function ShotgunBase:on_enabled(...)
 		self:cancel_burst()

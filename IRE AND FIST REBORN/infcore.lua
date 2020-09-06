@@ -62,11 +62,24 @@ if not IreNFist then
             force_pool = { 50, 55, 60 },
             force_pool_balance_mul = { 1, 2, 3, 4 }
         },
-        kenaz = { -- Golden grin casino. Not *actually* a bad heist at all, but the lowered max cop count makes this too easy otherwise
+        kenaz = { -- Golden grin casino. Not actually a bad heist at all, but the lowered max cop count makes this too easy otherwise
             force = {14, 16, 18},
             force_balance_mul = { 1, 2, 3, 4 },
             force_pool = {45, 50, 55},
             force_pool_balance_mul = { 1, 2, 3, 4 }
+        },
+        brb = { -- Brooklyn Bank, similar to Shacklethorne auction
+            force = { 12, 13, 14 },
+            force_balance_mul = { 1, 2, 3, 4 },
+            force_pool = { 50, 55, 60 },
+            force_pool_balance_mul = { 1, 2, 3, 4 },
+            initial_spawn_delay = 30
+        },
+        mex_cooking = { -- Border Crystals spawns them literally on top of you
+            force = { 12, 13, 14 },
+            force_balance_mul = { 1, 2, 3, 4 },
+            force_pool = { 50, 55, 60 },
+            force_pool_balance_mul = { 1, 2, 3, 4 },
         }
     }
 
@@ -77,8 +90,8 @@ if not IreNFist then
     -- Detect if a mod is installed and enabled, if it is then add a table entry so we can keep track of the mod
     IreNFist.mod_compatibility = {}
     -- Sydch's Skill Overhaul
-    local sso = BLT.Mods:GetModByName("Sydch's Skill Overhaul")
-    if (sso and sso:IsEnabled()) or BeardLib.Utils:ModLoaded("Sydch's Skill Overhaul") then
+    local sso = BLT.Mods:GetModByName("Skill Overhaul")
+    if (sso and sso:IsEnabled()) or BeardLib.Utils:ModLoaded("Skill Overhaul") then
         log("[InF] SSO compatibility enabled")
         IreNFist.mod_compatibility.sso = true
     end

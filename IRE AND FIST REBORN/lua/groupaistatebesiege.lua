@@ -1,3 +1,9 @@
+dofile(ModPath .. "infcore.lua")
+
+if not InFmenu.settings.enablenewassaults then
+	return
+end
+
 -- Copypasted from vanilla with an extra crash guard check
 -- Just in case my spawning code still spawns enemies without objectives
 -- At the time of writing, it *still* crashes sometimes, therefore still making this code necessary.
@@ -56,6 +62,11 @@ function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force, use_last
 					end
 
 					local u_data = self._police[u_key]
+
+					-- Override weapon
+					if category.primary_weapon_override or category.secondary_weapon_override then
+						u_data.unit:movement():_override_weapons(category.primary_weapon_override, category.secondary_weapon_override)
+					end
 
 					self:set_enemy_assigned(objective.area, u_key)
 

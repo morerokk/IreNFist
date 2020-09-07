@@ -1442,6 +1442,12 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak
 		-- Add Benelli guys to R870 units
 		table.insert(self.unit_categories.FBI_swat_R870.unit_types.america, Idstring("units/payday2/characters/ene_city_swat_2/ene_city_swat_2"))
 	end
+
+	-- Give ZEAL shotgunners their deserved R870's
+	if difficulty_index >= 8 then
+		self.unit_categories.FBI_heavy_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
+		self.unit_categories.FBI_swat_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
+	end
 end)
 
 

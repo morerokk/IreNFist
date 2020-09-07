@@ -6598,7 +6598,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	-- After calling init on any weapon, feel free to tweak its stats further. Concealment nearly always needs some more tweaks,
 	-- but maybe your custom weapon needs a few more tweaks than that.
 
-	-- If you want to add a custom attachment point to a weapon, do it as follows:
+	-- If you want to add a custom attachment point to a weapon, do it as follows, the standard WeaponLib/CAP way:
 	--[[
 	if self.SetupAttachmentPoint then
 		self:SetupAttachmentPoint("ak74", {
@@ -6609,9 +6609,9 @@ function WeaponTweakData:_init_new_weapons(...)
 		})
 	end
 	]]
-
 	-- Don't directly check for WeaponLib or CAP's existence. There might be other mods which will supersede WeaponLib/CAP, but still offer the same function.
 	-- RotationCAP should probably be fine to use instead of Rotation, if you even need it.
+	-- Don't push elements to the attachment_points table, these functions might do something extra
 
 
 	-- Don't touch this, this should be the last line in the weapontweakdata init hook

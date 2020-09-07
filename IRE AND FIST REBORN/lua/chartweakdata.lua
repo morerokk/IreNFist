@@ -879,6 +879,13 @@ Hooks:PostHook(CharacterTweakData, "_set_sm_wish", "sethealthbraincancer", funct
 --]]
 end)
 
+-- Make winters no longer invincible, should be a guaranteed fix for him refusing to leave
+Hooks:PostHook(CharacterTweakData, "_init_phalanx_vip", "inf_chartweak_wintersdieswhenheiskilled", function(self, presets)
+	-- People die when you shoot at them
+	self.phalanx_vip.LOWER_HEALTH_PERCENTAGE_LIMIT = nil
+	self.phalanx_vip.FINAL_LOWER_HEALTH_PERCENTAGE_LIMIT = nil
+end)
+
 -- Change the surrender preset to a harder one
 -- Thanks, Kuziz
 if InFmenu and InFmenu.settings.enablenewcopdomination then
@@ -966,9 +973,8 @@ if InFmenu and InFmenu.settings.enablenewcopdomination then
 		self.fbi_swat.surrender = surrender_preset_hard
 		self.city_swat.surrender = surrender_preset_hard
 
-		-- Give the guards and "scared cop" an easy preset
+		-- Give the guards an easy preset
 		self.security.surrender = surrender_preset_easy
-		self.cop_scared.surrender = surrender_preset_easy
 
 		-- And override the HRT's and first responder presets with "normal" ones
 		self.cop.surrender = surrender_preset_normal

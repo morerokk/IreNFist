@@ -140,7 +140,7 @@ else
 		
 
 		-- Add extra ammo to the flak jacket *only*
-		-- Has overlap with armor overhaul
+		-- Has overlap with armor overhaul and with SSO, and is therefore disabled if either are present
 		if not IreNFist.mod_compatibility.armor_overhaul then
 			self.values.player.body_armor.skill_ammo_mul = {
 				1,

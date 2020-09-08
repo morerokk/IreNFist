@@ -2046,40 +2046,10 @@ end
 	-- Scope Mount
 	self.parts.wpn_fps_upg_o_m14_scopemount.stats = deep_clone(nostats)
 
-	-- Surplus special is just an ammo type based on a dummy, this stuff below isn't necessary
+	-- Surplus special is just an ammo type based on a dummy, this is all you have to do
 	self:convert_part("inf_m308_20rnd", "ldmr", "hrifle", nil, nil, 600, 700)
 	self.parts.inf_m308_20rnd.sub_type = "autofire"
-	
-	-- Don't do this, wtf
-	--self.parts.inf_m308_20rnd.unit = "units/payday2/weapons/wpn_fps_ass_m14_pts/wpn_fps_ass_m14_body_lower"
-	--self.parts.inf_m308_20rnd.third_unit = "units/payday2/weapons/wpn_third_ass_m14_pts/wpn_third_ass_m14_body_lower"
 
-	-- Don't do this either
-	-- self.parts.inf_m308_20rnd.type = "ammo2" -- hacky-ass way to get this thing to the beginning of the mods list
-
-	--self.parts.inf_m308_20rnd.internal_part = true
-	--self.parts.inf_m308_20rnd.adds = {"inf_m308_20rnd_ammo"}
-	--[[
-	-- dummy part to make certain stats work while also letting me fuck with fire modes
-	self.parts.inf_m308_20rnd_ammo = {
-		a_obj = "a_b",
-		type = "ammo",
-		name_id = "bm_wp_mp9_b_dummy",
-		unit = "units/payday2/weapons/wpn_fps_smg_mp9_pts/wpn_fps_smg_mp9_b_dummy"
-	}
-	
-	-- m308 ammo is set up oddly because it needs to replace a default blueprint part that restricts fire mode to single
-	-- set up stats on the base part, and custom stats on the ammo because it won't work on the base part
-	self:convert_part_half_a("inf_m308_20rnd", "ldmr", "hrifle", nil, nil, 600, 700)
-	self:convert_part_half_b("inf_m308_20rnd_ammo", "ldmr", "hrifle", nil, nil, 600, 700)
-	self.parts.inf_m308_20rnd_ammo.custom_stats.sdesc1 = "caliber_r762x51m80"
-	]]
-	-- default part, restricts m308 to singlefire when not using 20rnd mod
-	--[[
-	self.parts.wpn_fps_ass_m14_body_lower.perks = {"fire_mode_single"}
-	self.parts.wpn_fps_ass_m14_body_lower.forbids = {"wpn_fps_upg_i_singlefire", "wpn_fps_upg_i_autofire"}
-	self.parts.wpn_fps_ass_m14_body_lower.type = "ammo2"
-	]]
 if BeardLib.Utils:ModLoaded("BipodM14") then
 	self.parts.wpn_fps_m14_extra_bipod.adds = {"inf_bipod_part"}
 	self.parts.wpn_fps_m14_extra_bipod.type = "bipod"

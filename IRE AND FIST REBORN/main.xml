@@ -136,7 +136,7 @@
 	</Sounds>
 
 <!-- Surplus Special -->
-<WeaponMod id="inf_m308_20rnd" based_on="wpn_fps_ass_m14_body_lower" type="lower_body" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" >
+<WeaponMod id="inf_m308_20rnd" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" >
 	<weapons>
 		<value_node value="wpn_fps_ass_m14"/>
 	</weapons>

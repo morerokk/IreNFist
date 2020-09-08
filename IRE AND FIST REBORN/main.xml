@@ -222,6 +222,7 @@
 		<value_node value="wpn_fps_smg_hajk"/>
 		<value_node value="wpn_fps_smg_hajkprimary"/>
 		<value_node value="wpn_fps_smg_polymer"/>
+		<value_node value="wpn_fps_ass_flint"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>
@@ -233,6 +234,7 @@
 		<value_node value="wpn_fps_smg_hajk"/>
 		<value_node value="wpn_fps_smg_hajkprimary"/>
 		<value_node value="wpn_fps_smg_polymer"/>
+		<value_node value="wpn_fps_ass_flint"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>

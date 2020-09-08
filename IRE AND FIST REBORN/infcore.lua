@@ -73,7 +73,7 @@ if not IreNFist then
             force_balance_mul = { 1, 2, 3, 4 },
             force_pool = { 50, 55, 60 },
             force_pool_balance_mul = { 1, 2, 3, 4 },
-            initial_spawn_delay = 30
+            initial_spawn_delay = 60 -- Spawn delay has to be even longer here
         },
         mex_cooking = { -- Border Crystals spawns them literally on top of you
             force = { 12, 13, 14 },

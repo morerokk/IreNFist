@@ -3674,6 +3674,11 @@ end
 	self.parts.wpn_fps_lmg_hk21_fg_short.stats = deep_clone(barrel_p3)
 	-- Ergo Grip
 	self.parts.wpn_fps_lmg_hk21_g_ergo.stats = deep_clone(nostats)
+	-- Slowfire internal
+	self.parts.inf_hk21_slowfire.stats = deep_clone(nostats)
+	self.parts.inf_hk21_slowfire.custom_stats = {
+		inf_rof_mult = 450/800
+	}
 
 	-- Brenner leftie grip part
 	-- BeardLibs findmod seems to return false (because its not a mod_override?) so we only check if the part exists
@@ -8508,6 +8513,49 @@ end
 -- ACR
 if BeardLib.Utils:ModLoaded("acwr") and self.parts.wpn_fps_ass_acwr_b_short then
 	self.parts.wpn_fps_ass_acwr_b_short.stats = deep_clone(barrel_p1)
+end
+
+-- Dokkaebi M14
+if BeardLib.Utils:ModLoaded("Dokkaebi M14 modpack") and self.parts.wpn_fps_ass_m14_body_goblin then
+	self.parts.wpn_fps_ass_m14_body_goblin.stats = deep_clone(nostats)
+	self.parts.wpn_fps_ass_m14_body_goblin.custom_stats = {}
+	
+	-- By default this mod forbids the firemode mods, the M14 doesn't have these anymore
+	-- There's no real reason to forbid anything except the scope mount then
+	self.parts.wpn_fps_ass_m14_body_goblin.forbids = {
+		"wpn_fps_upg_o_m14_scopemount"
+	}
+end
+
+-- Dokkaebi SMG-12
+if BeardLib.Utils:ModLoaded("Dokkaebi SMG12 modpack") and self.parts.wpn_fps_mp_master_m_standard then
+	-- No speedpull speed
+	self.parts.wpn_fps_mp_master_m_standard.stats = deep_clone(nostats)
+
+	-- Large mag
+	self.parts.wpn_fps_mp_master_m_extended.stats = deep_clone(mag_200)
+	self.parts.wpn_fps_mp_master_m_extended.stats.extra_ammo = 15
+
+	-- No stock
+	self.parts.wpn_fps_mp_master_s_no.stats = {
+		value = 0,
+		recoil = -2,
+		concealment = 2
+	}
+	-- Folded stock
+	self.parts.wpn_fps_mp_master_s_extended.stats = {
+		value = 0,
+		recoil = -1,
+		concealment = 1
+	}
+
+	-- Silencer
+	self.parts.wpn_fps_mp_master_ns_silent.custom_stats = silencercustomstats
+	self.parts.wpn_fps_mp_master_ns_silent.stats = deep_clone(silstatsconc2)
+
+	-- Foregrips
+	self.parts.wpn_fps_mp_master_vg_angle.stats = deep_clone(nostats)
+	self.parts.wpn_fps_mp_master_vg_straight.stats = deep_clone(nostats)
 end
 
 -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT

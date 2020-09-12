@@ -239,6 +239,14 @@
 	<pcs/>
 </WeaponMod>
 
+<!-- Brenner slowfire mod -->
+<WeaponMod id="inf_hk21_slowfire" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_lmg_hk21"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
 <!-- spas half-life style -->
 <WeaponMod id="inf_spas_valve" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<weapons>

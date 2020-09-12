@@ -6240,6 +6240,9 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.lebman.AMMO_PICKUP = self:_pickup_chance(77, 1)
 		self.lebman.stats.concealment = 26
 		self:copy_timers("lebman", "beer")
+		-- The sounds are currently the B93R's which is inconsistent. Change it to the crosskill sounds since we use an autofire sound fix anyway
+		self.lebman.sounds.fire = "c45_fire"
+		self.lebman.sounds.fire_single = "c45_fire"
 
 		self:inf_init("x_lebman", "pistol", "medium")
 		self.x_lebman.sdesc1 = "caliber_p38sup"
@@ -6250,6 +6253,8 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.x_lebman.CLIP_AMMO_MAX = self.lebman.CLIP_AMMO_MAX * 2
 		self.x_lebman.AMMO_MAX = 98
 		self.x_lebman.AMMO_PICKUP = self:_pickup_chance(98, 1)
+		self.x_lebman.sounds.fire = "c45_fire"
+		self.x_lebman.sounds.fire_single = "c45_fire"
 
 		-- Classic Crosskill
 		self:inf_init("cold", "pistol", "medium")
@@ -6531,6 +6536,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("acwr2", "new_m4")
 	end
 
+	-- Dokkaebi SMG-12
+	if self.master then
+		self:inf_init("master", "smg", {"dmg_50"})
+		self.master.sdesc1 = "caliber_r380acp"
+		self.master.sdesc2 = "action_shortrecoil"
+		self:copy_timers("master", "mac10")
+	end
+
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)
 	-- Then do something like this for pistols:
@@ -6566,6 +6579,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	-- SMG's are similar to AR's, but you have to specify a range for them.
 	-- self:inf_init("car9", "smg", {"range_carbine"})
 	-- There's range_carbine, range_mcarbine, range_short and range_long.
+	-- There's also dmg_50, check the default weapons up top
 
 	-- Shotguns are a little different. You can specify all sorts of ranges, damage and rates of fire for these.
 	--[[

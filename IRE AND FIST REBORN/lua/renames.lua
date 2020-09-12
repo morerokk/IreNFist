@@ -486,6 +486,7 @@ end
 	caliber_r303 = ".303 British.",
 	caliber_r127x108 = "12.7x108mm.",
 	caliber_r75x54 = "7.5x54mm French.",
+	caliber_r380acp = ".380 ACP.",
 
 	caliber_p9x18 = "9x18mm Makarov.",
 	caliber_p9x19 = "9x19mm Parabellum.",
@@ -778,6 +779,10 @@ end
 	bm_wp_inf_doubleburst_only_norpm_desc = "Trigger pack capable of semi-automatic and two-shot burst.",
 	bm_wp_inf_doubleburst_norpm = "Burst-Enabled Trigger Group",
 	bm_wp_inf_doubleburst_norpm_desc = "Trigger pack capable of semi-automatic, two-shot burst, and fully automatic.",
+
+	-- Brenner slowfire internals
+	bm_wp_inf_hk21_slowfire = "Brenner 21 Heat Kit",
+	bm_wp_inf_hk21_slowfire_desc = "Knock, knock. Who's there? Another police assault, and it's here in 20 seconds.",
 	
 	--
 	bm_wp_inf_contraband_grip = "German Grip",

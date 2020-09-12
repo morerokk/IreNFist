@@ -509,14 +509,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					rank = 2,
 					unit = "FBI_swat_R870",
 					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_heavy_R870",
-					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
 		}
@@ -528,19 +520,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 			},
 			spawn = {
 				{
-					amount_min = 2,
+					amount_min = 3,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 2,
-					freq = 2,
-					amount_max = 2,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
@@ -563,17 +547,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 				{
 					amount_min = 3,
 					freq = 3,
-					amount_max = 3,
+					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
@@ -594,19 +570,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 			},
 			spawn = {
 				{
-					amount_min = 2,
+					amount_min = 3,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 5,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 2,
-					freq = 2,
-					amount_max = 2,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
@@ -627,19 +595,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 			},
 			spawn = {
 				{
-					amount_min = 1,
+					amount_min = 3,
 					freq = 1,
-					amount_max = 1,
+					amount_max = 5,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 3,
-					freq = 3,
-					amount_max = 3,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
@@ -715,17 +675,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 				{
 					amount_min = 3,
 					freq = 1,
-					amount_max = 3,
+					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				}
 			}
@@ -740,17 +692,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 				{
 					amount_min = 2,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 2,
-					freq = 2,
-					amount_max = 2,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				},
 				{
@@ -773,17 +717,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 				{
 					amount_min = 3,
 					freq = 3,
-					amount_max = 3,
+					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				},
 				{
@@ -804,19 +740,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 			},
 			spawn = {
 				{
-					amount_min = 2,
+					amount_min = 3,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 2,
-					freq = 2,
-					amount_max = 2,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				},
 				{
@@ -837,19 +765,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 			},
 			spawn = {
 				{
-					amount_min = 1,
+					amount_min = 3,
 					freq = 1,
-					amount_max = 1,
+					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 3,
-					freq = 3,
-					amount_max = 3,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				},
 				{
@@ -1178,7 +1098,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 1,
-					amount_max = 1,
+					amount_max = 2,
 					rank = 3,
 					unit = "FBI_heavy_G36",
 					tactics = self._tactics.swat_rifle
@@ -1189,14 +1109,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
@@ -1211,7 +1123,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_M4",
 					tactics = self._tactics.swat_rifle
@@ -1230,14 +1142,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					amount_max = 2,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 1,
-					freq = 2,
-					amount_max = 2,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
@@ -1268,7 +1172,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 1,
-					amount_max = 1,
+					amount_max = 2,
 					rank = 3,
 					unit = "FBI_heavy_G36",
 					tactics = self._tactics.swat_rifle
@@ -1279,14 +1183,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
@@ -1309,7 +1205,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_M4",
 					tactics = self._tactics.swat_rifle
@@ -1317,7 +1213,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 3,
 					rank = 3,
 					unit = "FBI_heavy_G36",
 					tactics = self._tactics.swat_rifle
@@ -1325,17 +1221,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 1,
-					freq = 2,
-					amount_max = 2,
-					rank = 3,
-					unit = "FBI_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
@@ -1366,7 +1254,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 3,
-					amount_max = 3,
+					amount_max = 4,
 					rank = 3,
 					unit = "FBI_heavy_G36",
 					tactics = self._tactics.swat_rifle
@@ -1380,20 +1268,120 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_shotgun_rush
 				},
 				{
-					amount_min = 1,
-					freq = 3,
-					amount_max = 3,
-					rank = 3,
-					unit = "FBI_heavy_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
 					amount_min = 0,
 					freq = 0.5,
 					amount_max = 1,
 					rank = 2,
 					unit = "medic_M4",
 					tactics = self._tactics.swat_rifle
+				}
+			}
+		}
+	end
+end)
+
+-- Remove tan shotgunners from various vanilla groups (currently only the shield wall charge has them anyway)
+-- Replace them with SWAT shotgunners
+Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_removetanshotgunners", function(self, difficulty_index)
+
+	-- Tan shotgunners only start at difficulty 5 in this squad, we don't have to touch the lower ones
+	if difficulty_index == 5 then
+		self.enemy_spawn_groups.tac_shield_wall_charge = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.shield_support_charge
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_shield",
+					tactics = self._tactics.shield_wall_charge
+				},
+				{
+					amount_min = 0,
+					freq = 0.2,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.shield_support_charge
+				}
+			}
+		}
+		-- Difficulty 6 intentionally left out, has no tan shotgunners in vanilla
+	elseif difficulty_index == 7 then
+		self.enemy_spawn_groups.tac_shield_wall_charge = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.shield_support_charge
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_shield",
+					tactics = self._tactics.shield_wall_charge
+				},
+				{
+					amount_min = 0,
+					freq = 0.35,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.shield_support_charge
+				}
+			}
+		}
+	elseif difficulty_index >= 8 then -- Used to be the "else" condition, but we're leaving out some difficulties so this condition has to explicitly check for DS or higher
+		self.enemy_spawn_groups.tac_shield_wall_charge = {
+			amount = {
+				4,
+				5
+			},
+			spawn = {
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 2,
+					unit = "FBI_swat_R870",
+					tactics = self._tactics.shield_support_charge
+				},
+				{
+					amount_min = 2,
+					freq = 2,
+					amount_max = 2,
+					rank = 3,
+					unit = "FBI_shield",
+					tactics = self._tactics.shield_wall_charge
+				},
+				{
+					amount_min = 0,
+					freq = 0.5,
+					amount_max = 1,
+					rank = 2,
+					unit = "medic_R870",
+					tactics = self._tactics.shield_support_charge
 				}
 			}
 		}
@@ -1425,7 +1413,7 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak
 	
 	-- Rokks tweaks start here
 
-	-- I forgot why
+	-- I forgot why this was necessary
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"))
 
 	-- Overkill made yet another typo which crashes the game on Federales heists, fixing it by setting the Federales FBI groups to be identical to America
@@ -1442,6 +1430,17 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak
 		-- Add Benelli guys to R870 units
 		table.insert(self.unit_categories.FBI_swat_R870.unit_types.america, Idstring("units/payday2/characters/ene_city_swat_2/ene_city_swat_2"))
 	end
+
+	-- Remove tan shotgunners (yes, really).
+	-- Before hoxton's housewarming, tan shotgunners didn't actually exist.
+	-- the shotguns were unique to the lighter units which gave units more variety.
+	-- The "downside" is that you'll see a bit less tans overall. This could possibly be tweaked manually by making the tans more likely.
+	-- I'm unsure how this will affect other factions. Technically this removes a bit of unit variety, but they were copypasted weaponswaps anyway.
+
+	-- UPDATE: Tests show that this makes tans too uncommon.
+	-- The next best possible course of action is to tweak every spawngroup that has tan shotgunners and just remove them from the group (which I did further up).
+	-- This means that instead of 75% of the shotgunner cops being light units, 66% are.
+	-- self.unit_categories.FBI_heavy_R870 = deep_clone(self.unit_categories.FBI_swat_R870)
 
 	-- Give ZEAL shotgunners their deserved R870's
 	if difficulty_index >= 8 then
@@ -1542,7 +1541,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	self.besiege.assault.force_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
 
 	-- max # of cops in an entire assault wave
-	-- I'm pretty happy with these values on Overkill
+	-- I'm pretty happy with these values on Overkill/Mayhem/DW
 	self.besiege.assault.force_pool = {40, 45, 50} -- 150, 175, 225
 	self.besiege.assault.force_pool_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
 
@@ -1555,7 +1554,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 		self.besiege.assault.force_pool = IreNFist.bad_heist_overrides[job].force_pool
 		self.besiege.assault.force_pool_balance_mul = IreNFist.bad_heist_overrides[job].force_pool_balance_mul
 
-		log("[IreNFist] Bad heist " .. job .. " found, applying relevant assault overrides")
+		log("[IREnFIST] Bad heist " .. job .. " found, applying relevant assault overrides")
 	end
 	
 end)

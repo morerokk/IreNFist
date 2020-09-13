@@ -3721,10 +3721,10 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.m60.CLIP_AMMO_MAX = 200
 	self.m60.taser_reload_amount = 50
 	self.m60.reload_speed_mult = 1.35
-	self.m60.timers.reload_not_empty = 9.1
-	self.m60.timers.reload_not_empty_end = 1.0 -- 5.41
-	self.m60.timers.reload_empty = 9.1
-	self.m60.timers.reload_empty_end = 1.0 -- 5.41
+	self.m60.timers.reload_not_empty = 5
+	self.m60.timers.reload_not_empty_end = 2 -- 5.41
+	self.m60.timers.reload_empty = 5
+	self.m60.timers.reload_empty_end = 2 -- 5.41
 	self.m60.equip_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 	self.m60.reload_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 
@@ -6402,9 +6402,9 @@ function WeaponTweakData:_init_new_weapons(...)
 
 	-- FN MK17 MOD 0 (Eagle Tactical Rifle)
 	if self.mk17 then
-		self:inf_init("mk17", "ar", {"medium"})
+		self:inf_init("mk17", "ar", {"heavy"})
 		self.mk17.concealment = 18
-		self.mk17.sdesc1 = "caliber_r556x45"
+		self.mk17.sdesc1 = "caliber_r762x51"
 		self.mk17.sdesc2 = "action_pistonshort"
 		self:copy_timers("mk17", "scar")
 	end

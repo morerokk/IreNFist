@@ -134,6 +134,26 @@ Hooks:PostHook(PlayerTweakData, "_init_new_stances", "stopswingingtheguns", func
 	self.stances.par.bipod.vel_overshot.pitch_pos = 0
 	self.stances.par.bipod.shakers = {breathing = {amplitude = 0}}
 
+	-- M60
+	pivot_shoulder_translation = Vector3(10.7056, 4.38842, -0.747177)
+	pivot_shoulder_rotation = Rotation(0.106618, -0.084954, 0.62858)
+	pivot_head_translation = Vector3(-0.01, 12, -0.7)
+	pivot_head_rotation = Rotation(0.05, 0.1, 0)
+	self.stances.m60.steelsight.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
+	self.stances.m60.steelsight.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+	pivot_shoulder_translation = Vector3(10.7056, 2.38842, -0.747177)
+	pivot_shoulder_rotation = Rotation(0.106618, -0.084954, 0.62858)
+	pivot_head_translation = Vector3(-0.01, 12, -0.7)
+	pivot_head_rotation = Rotation(0.05, 0.1, 0)
+	self.stances.m60.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
+	self.stances.m60.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+	self.stances.m60.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
+	self.stances.m60.bipod.vel_overshot.yaw_neg = 0
+	self.stances.m60.bipod.vel_overshot.yaw_pos = 0
+	self.stances.m60.bipod.vel_overshot.pitch_neg = 0
+	self.stances.m60.bipod.vel_overshot.pitch_pos = 0
+	self.stances.m60.bipod.shakers = {breathing = {amplitude = 0}}
+
 
 if BeardLib.Utils:FindMod("M2HB") then
 	self.stances.m2hb = deep_clone(self.stances.hk21)

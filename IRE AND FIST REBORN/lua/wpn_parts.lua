@@ -1075,6 +1075,12 @@ end
 	--
 	--self.parts.inf_bipod_snp.custom_stats = {recoil_horizontal_mult = 2}
 	self.parts.inf_bipod_snp.forbids = {"wpn_fps_snp_mosin_b_obrez"}
+
+	-- Internal bipod part
+	self.parts.inf_bipod_part.perks = {
+		"bipod"
+	}
+
 if BeardLib.Utils:ModLoaded("Custom Attachment Points") or BeardLib.Utils:ModLoaded("WeaponLib") then
 	table.insert(self.wpn_fps_snp_msr.uses_parts, "inf_bipod_snp")
 	table.insert(self.wpn_fps_snp_model70.uses_parts, "inf_bipod_snp")
@@ -8327,8 +8333,8 @@ if BeardLib.Utils:ModLoaded("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
 	-- Short barrel
 	self.parts.wpn_fps_upg_mk17_b_smol.stats = deep_clone(barrel_p1)
 
-	-- Heavy Bolt, converts to Heavy AR (basically the Eagle Heavy again)
-	self:convert_part("wpn_fps_upg_mk17_bolt_old", "mrifle", "hrifle")
+	-- Heavy Bolt, converts to light DMR
+	self:convert_part("wpn_fps_upg_mk17_bolt_old", "hrifle", "ldmr")
 
 	-- Extended Rail
 	self.parts.wpn_fps_upg_mk17_ex_rail.stats = deep_clone(nostats)
@@ -8362,7 +8368,7 @@ if BeardLib.Utils:ModLoaded("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
 	-- DMR Kit, converts to DMR
 	-- No shield piercing because that only seems to work on "ammo" weaponmod types >:(
 	-- TODO: Give this part no stats, but give it a hidden DMR ammo dummy mod.
-	self:convert_part("wpn_fps_upg_mk17_rec_upper_mk20", "mrifle", "ldmr")
+	self:convert_part("wpn_fps_upg_mk17_rec_upper_mk20", "hrifle", "dmr")
 end
 
 -- CARL WAS HERE AGAIN

@@ -1,0 +1,11 @@
+<dynamic_object>
+	<diesel materials="units/pd2_crimefest_2015/update_5/weapons/wpn_fps_upg_bp_lmg_lionbipod/wpn_fps_upg_bp_lmg_lionbipod" orientation_object="rp_wpn_fps_upg_bp_lmg_lionbipod" />
+	<animations>
+		<animation_group name="deploy">
+			<object name="anim_deploy" enabled="true" />
+		</animation_group>
+		<animation_group name="undeploy">
+			<object name="anim_undeploy" enabled="true" />
+		</animation_group>
+	</animations>
+</dynamic_object>

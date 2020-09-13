@@ -2052,7 +2052,9 @@ function PlayerStandard:_check_action_deploy_bipod(t, input)
 		if bipod_part and bipod_part[1] then
 			local bipod_unit = bipod_part[1].unit:base()
 
-			bipod_unit:check_state()
+			if bipod_unit then
+				bipod_unit:check_state()
+			end
 
 			new_action = true
 		end

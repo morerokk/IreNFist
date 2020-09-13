@@ -83,6 +83,8 @@
 
         <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m37primary"/>
 		<unit path="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary"/>
+
+		<unit_obj path="units/infparts/inf_bipod_part/inf_bipod_part"/>
 </AddFiles>
 
 	<Sounds directory="sounds">
@@ -356,7 +358,7 @@
 </WeaponMod>
 
 <!-- deployable bipod part added to custom weapon bipods -->
-<WeaponMod id="inf_bipod_part" based_on="wpn_fps_upg_bp_lmg_lionbipod" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+<WeaponMod id="inf_bipod_part" based_on="wpn_fps_upg_bp_lmg_lionbipod" unit="units/infparts/inf_bipod_part/inf_bipod_part" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<pcs/>
 </WeaponMod>
 
@@ -377,6 +379,7 @@
 		<value_node value="wpn_fps_lmg_hk21"/>
 		<value_node value="wpn_fps_lmg_mg42"/>
 		<value_node value="wpn_fps_lmg_par"/>
+		<value_node value="wpn_fps_lmg_m60"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>
@@ -389,6 +392,7 @@
 		<value_node value="wpn_fps_lmg_hk21"/>
 		<value_node value="wpn_fps_lmg_mg42"/>
 		<value_node value="wpn_fps_lmg_par"/>
+		<value_node value="wpn_fps_lmg_m60"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>

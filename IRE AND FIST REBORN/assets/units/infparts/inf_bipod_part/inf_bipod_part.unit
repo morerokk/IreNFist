@@ -1,0 +1,7 @@
+<unit type="wpn" slot="1">
+	<object file="units/infparts/inf_bipod_part/inf_bipod_part" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="WeaponLionGadget1" />
+	</extensions>
+</unit>

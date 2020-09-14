@@ -188,9 +188,12 @@ else
 		-- fire control
 		self.skills.fire_control[1].upgrades = {"recoil_h_mult"}
 		self.skills.fire_control[2].upgrades = {"recoil_h_mult_2"}
-
-
-
+		-- body expertise
+		self.skills.body_expertise[1].upgrades = {"weapon_lmg_pierce_enemies"}
+		self.skills.body_expertise[2].upgrades = {
+			"weapon_automatic_head_shot_add_1",
+			"weapon_automatic_head_shot_add_2"
+		}
 
 		-- lock 'n load
 		--self.skills.shock_and_awe[1].upgrades = {}

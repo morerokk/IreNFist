@@ -2048,12 +2048,14 @@ end
 	-- Jaeger Body
 	self.parts.wpn_fps_ass_m14_body_jae.stats = deep_clone(nostats)
 	-- B-Team Stock
+	-- Seriously fuck this thing's stats in vanilla, absolutely bullshit. Who thought of this?
 	self.parts.wpn_fps_ass_m14_body_ruger.stats = deep_clone(nostats)
 	-- Scope Mount
 	self.parts.wpn_fps_upg_o_m14_scopemount.stats = deep_clone(nostats)
 
 	-- Surplus special is just an ammo type based on a dummy, this is all you have to do
 	self:convert_part("inf_m308_20rnd", "ldmr", "hrifle", nil, nil, 600, 700)
+	self.parts.inf_m308_20rnd.custom_stats.sdesc1 = "caliber_r3006surplus"
 	self.parts.inf_m308_20rnd.sub_type = "autofire"
 
 if BeardLib.Utils:ModLoaded("BipodM14") then
@@ -5719,7 +5721,7 @@ if BeardLib.Utils:ModLoaded("amt") then
 	self.parts.wpn_fps_pis_amt_m_short.stats.extra_ammo = 4
 end
 
-if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") then
+if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") and self.parts.wpn_fps_pis_lebman_body_classic then
 	self.parts.wpn_fps_ass_flint_b_short.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_ass_flint_b_long.stats = deep_clone(barrel_m1)
 	self.parts.wpn_fps_ass_flint_m_long.stats = deep_clone(mag_133)
@@ -5923,10 +5925,13 @@ if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") then
 	-- Continental Mag
 	self.parts.wpn_fps_ass_m4_m_wick.stats = deep_clone(mag_66)
 	self.parts.wpn_fps_ass_m4_m_wick.stats.extra_ammo = -10
+
+	-- M308 classic body
+	self.parts.wpn_fps_ass_m14_body_old.stats = deep_clone(nostats)
 end
 
 -- Vanilla styled modpack 2
-if self.parts.wpn_fps_shot_minibeck_shells then
+if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods Volume 2") and self.parts.wpn_fps_shot_minibeck_shells then
 	self.parts.wpn_fps_shot_minibeck_shells.stats = {
 		value = 0,
 		reload = 5,
@@ -5934,6 +5939,9 @@ if self.parts.wpn_fps_shot_minibeck_shells then
 	}
 	self.parts.wpn_fps_upg_ns_ass_smg_pro.stats = deep_clone(silstatsconc2)
 	self.parts.wpn_fps_upg_ns_ass_smg_pro.custom_stats = silencercustomstats
+
+	-- M60 long barrel
+	self.parts.wpn_fps_lmg_m60_b_longer.stats = deep_clone(barrel_m1)
 end
 
 if BeardLib.Utils:ModLoaded("Zenith 10mm") then

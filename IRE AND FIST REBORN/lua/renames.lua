@@ -973,7 +973,9 @@ else
 		menu_shock_and_awe_beta_desc = "BASIC: ##$basic##\nYou can now hipfire your weapons while sprinting.\n\nACE: ##$pro##\nYour automatic rifles, sniper rifles, shotguns, SMGs, LMGs, and miniguns reload up to ##25%## faster as the magazine runs low.",
 		-- fire control
 		menu_fire_control_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
-
+		-- Body Expertise
+		menu_body_expertise_beta = "Sweep and Clear",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.\n\nACE: ##$pro##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some #Special Weapons## fired in full-auto mode.",
 
 
 

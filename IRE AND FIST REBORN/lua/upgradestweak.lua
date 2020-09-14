@@ -159,6 +159,8 @@ else
 			1,
 			1.5
 		}
+
+		self.values.weapon.lmg_pierce_enemies = {true}
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills", function(self, params)	
@@ -258,6 +260,16 @@ else
 				category = "player",
 				upgrade = "detection_risk_add_movement_speed",
 				value = 2
+			}
+		}
+
+		self.definitions.weapon_lmg_pierce_enemies = {
+			name_id = "menu_weapon_lmg_pierce_enemies",
+			category = "feature",
+			upgrade = {
+				value = 1,
+				upgrade = "lmg_pierce_enemies",
+				category = "weapon"
 			}
 		}
 	end)

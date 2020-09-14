@@ -389,6 +389,10 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 		end
 	end
 
+	if managers.player and managers.player:has_category_upgrade("weapon", "lmg_pierce_enemies") and self:is_category("lmg") then
+		self._can_shoot_through_enemy = true
+	end
+
 end)
 
 

@@ -57,6 +57,13 @@ if IreNFist.mod_compatibility.sso then
 		-- Shockproof, add taser bullets
 		table.insert(self.skills.hitman[2].upgrades, "player_electric_bullets_while_tased")
 
+		-- body expertise
+		self.skills.body_expertise[1].upgrades = {"weapon_lmg_pierce_enemies"}
+		self.skills.body_expertise[2].upgrades = {
+			"weapon_automatic_head_shot_add_1",
+			"weapon_automatic_head_shot_add_2"
+		}
+
 		-- Specialized Killing, remove the silencer damage bonus and spread the other bonuses out over the 2 tiers
 		self.skills.unseen_strike[1].upgrades = {
 			"weapon_silencer_recoil_index_addend"

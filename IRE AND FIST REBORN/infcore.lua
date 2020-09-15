@@ -133,6 +133,7 @@ if not InFmenu then
         dashcontrols = 4,
 
         txt_wpnname = 2,
+        because_of_training = false,
 
         disablefrogmanwarnings = false
     }

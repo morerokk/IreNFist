@@ -38,8 +38,18 @@ local speedpulldesc = "Magazine with speed pull tab to ease removal of magazines
 
 local tritiumdesc = "Illuminated sights that are easier to see at night. Not like you go outside often."
 
-
-
+-- Lol
+if InFmenu.settings.because_of_training then
+	local loc_text_orig = LocalizationManager.text
+	function LocalizationManager:text(...)
+		local result = loc_text_orig(self, ...)
+		if string.sub(result, -1) ~= "." then
+			result = result .. "."
+		end
+		result = result .. " Because of training."
+		return result
+	end
+end
 
 Hooks:Add("LocalizationManagerPostInit", "inf_fuckyourtext", function(loc)
 
@@ -885,6 +895,9 @@ if IreNFist.mod_compatibility.sso then
 		menu_shock_and_awe_beta_desc = "BASIC ##$basic##\nYou gain the ability to ##Reload## your weapons while sprinting.\n\nACE ##$pro##\nYou gain the ability to ##Hip-Fire## with your weapons while sprinting.\n\nYour weapons reload up to ##25%## faster as the magazine runs low.",
 		menu_fast_fire_beta = "Fire Control",
 		menu_fast_fire_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
+		-- Body Expertise
+		menu_body_expertise_beta = "Sweep and Clear",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.\n\nACE: ##$pro##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.",
 
 		menu_dance_instructor = "Gun Kata",
 		menu_dance_instructor_desc = "BASIC: ##$basic##\nHaving a pistol equipped as your secondary increases all weapon switch speed by ##10%##.\n\nACE: ##$pro##\nThe weapon switch speed bonus is increased to ##20%##.",
@@ -975,7 +988,7 @@ else
 		menu_fire_control_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
 		-- Body Expertise
 		menu_body_expertise_beta = "Sweep and Clear",
-		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.\n\nACE: ##$pro##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some #Special Weapons## fired in full-auto mode.",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.\n\nACE: ##$pro##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.",
 
 
 

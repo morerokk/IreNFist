@@ -159,8 +159,6 @@ else
 			1,
 			1.5
 		}
-
-		self.values.weapon.lmg_pierce_enemies = {true}
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills", function(self, params)	
@@ -262,16 +260,6 @@ else
 				value = 2
 			}
 		}
-
-		self.definitions.weapon_lmg_pierce_enemies = {
-			name_id = "menu_weapon_lmg_pierce_enemies",
-			category = "feature",
-			upgrade = {
-				value = 1,
-				upgrade = "lmg_pierce_enemies",
-				category = "weapon"
-			}
-		}
 	end)
 end
 
@@ -329,6 +317,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "inf_upgradestweak_upgradevalues_alway
 
 	-- Taser bullets
 	self.values.player.electric_bullets_while_tased = {true}
+
+	self.values.weapon.lmg_pierce_enemies = {true}
 end)
 
 -- Player upgrade definitions that should always exist regardless of mod compatibility
@@ -617,6 +607,16 @@ Hooks:PostHook(UpgradesTweakData, "_player_definitions", "inf_upgradestweak_play
 			category = "player",
 			upgrade = "xbow_gives_offhand_reload",
 			value = 1
+		}
+	}
+
+	self.definitions.weapon_lmg_pierce_enemies = {
+		name_id = "menu_weapon_lmg_pierce_enemies",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "lmg_pierce_enemies",
+			category = "weapon"
 		}
 	}
 end)

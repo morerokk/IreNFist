@@ -1601,14 +1601,6 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak
 	if difficulty_index >= 8 then
 		self.unit_categories.FBI_heavy_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
 		self.unit_categories.FBI_swat_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
-
-		-- Zeals normally have no G36 either and I have been informed that giving them G36's would be a warcrime
-		-- Just hard-set them to M4's, it's fine
-		self.unit_categories.FBI_heavy_G36.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_m4/wpn_npc_m4")
-
-		-- Hard-set the MP5 on light zeals because why not
-		-- They're supposed to carry this anyway, but sometimes these guys are weaponless
-		self.unit_categories.FBI_swat_M4.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_mp5/wpn_npc_mp5")
 	end
 end)
 

@@ -13,21 +13,15 @@ Hooks:PreHook(CopMovement, "team", "inf_setcopteamifnoteam", function(self)
 end)
 
 function CopMovement:_override_weapons(primary, secondary)
-    log("[INF] CopMovement _override weapons called!")
 
     if not primary or secondary then
         return
     end
 
-    -- Weapon has to be dropped twice because I guess cops can sometimes have two weapons?
-    -- I very seriously doubt that this is *ever* the case, but you never know.
-    self._unit:inventory():drop_weapon()
-    self._unit:inventory():drop_weapon()
-
     if primary then
-        self._unit:inventory():add_unit_by_name(primary)
+        self._unit:inventory():add_unit_by_name(primary, true)
     end
     if secondary then
-        self._unit:inventory():add_unit_by_name(secondary)
+        self._unit:inventory():add_unit_by_name(secondary, true)
     end
 end

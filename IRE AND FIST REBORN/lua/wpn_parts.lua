@@ -5848,7 +5848,7 @@ if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") and self.parts.wpn_fps
 		concealment = -2
 	}
 	self.parts.wpn_fps_pis_x_cold_m_extended.stats = {
-		extra_ammo = 5,
+		extra_ammo = 10,
 		concealment = -2
 	}
 

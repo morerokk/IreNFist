@@ -1088,3 +1088,30 @@ if InFmenu and InFmenu.settings.enablenewcopvoices then
 		}
 	end)
 end
+
+if InFmenu.settings.enablenewassaults then
+	-- A bit of tweakdata that's required to make shotguns work on tasers
+	Hooks:PostHook(CharacterTweakData, "_init_taser", "inf_chartweak_taser_defineshotgunproficiency", function(self, presets)
+		-- Save the original taser weapon proficiency preset
+		local taser_original_weapon_proficiency = self.taser.weapon
+
+		-- Give the taser the default "good" preset
+		self.taser.weapon = deep_clone(presets.weapon.good)
+		self.taser.weapon.is_rifle = taser_original_weapon_proficiency.is_rifle
+
+		-- Add the necessary taser variables to the shotguns
+		self.taser.weapon.is_shotgun_pump.tase_sphere_cast_radius = 30
+		self.taser.weapon.is_shotgun_pump.tase_distance = 1500
+		self.taser.weapon.is_shotgun_pump.aim_delay_tase = {
+			0,
+			0
+		}
+
+		self.taser.weapon.is_shotgun_mag.tase_sphere_cast_radius = 30
+		self.taser.weapon.is_shotgun_mag.tase_distance = 1500
+		self.taser.weapon.is_shotgun_mag.aim_delay_tase = {
+			0,
+			0
+		}
+	end)
+end

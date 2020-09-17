@@ -2001,6 +2001,10 @@ function PlayerStandard:_end_action_running(t)
 	end
 end
 
+-- Temporarily(?) disabled until I can figure out how to fix this.
+-- Spam-tapping the sprint button at certain times during a reload makes the sprint animation stuck.
+-- It can happen at the very start, *or* after the bullets have been refilled.
+--[[
 Hooks:PostHook(PlayerStandard, "_update_running_timers", "inf_applyrunanim", function(self, t)
 	if self._check_run_anim and not self:_changing_weapon() and self._running then
 		if not self._equipped_unit:base():run_and_shoot_allowed() then
@@ -2011,7 +2015,7 @@ Hooks:PostHook(PlayerStandard, "_update_running_timers", "inf_applyrunanim", fun
 		self._check_run_anim = nil
 	end
 end)
-
+]]
 
 
 -- bow charging mult

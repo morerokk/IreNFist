@@ -489,16 +489,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_min = 2,
 					freq = 1,
 					amount_max = 2,
-					rank = 2,
-					unit = "CS_heavy_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
 					rank = 3,
-					unit = "CS_tazer_R870",
+					unit = "CS_heavy_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
@@ -516,14 +508,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
@@ -550,14 +534,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					rank = 2,
 					unit = "medic_R870",
 					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 2,
-					unit = "CS_tazer_R870",
-					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
 		}
@@ -582,14 +558,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_max = 1,
 					rank = 2,
 					unit = "medic_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
@@ -616,14 +584,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					rank = 2,
 					unit = "medic_R870",
 					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
-					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
 		}
@@ -648,14 +608,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_max = 1,
 					rank = 2,
 					unit = "medic_R870",
-					tactics = self._tactics.swat_shotgun_rush
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
 					tactics = self._tactics.swat_shotgun_rush
 				}
 			}
@@ -707,16 +659,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_min = 2,
 					freq = 1,
 					amount_max = 2,
-					rank = 2,
-					unit = "CS_heavy_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
 					rank = 3,
-					unit = "CS_tazer_R870",
+					unit = "CS_heavy_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				}
 			}
@@ -734,14 +678,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_max = 4,
 					rank = 2,
 					unit = "FBI_swat_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				}
 			}
@@ -768,14 +704,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					rank = 2,
 					unit = "medic_R870",
 					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
-					tactics = self._tactics.swat_shotgun_flank
 				}
 			}
 		}
@@ -800,14 +728,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_max = 1,
 					rank = 2,
 					unit = "medic_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				}
 			}
@@ -834,14 +754,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					rank = 2,
 					unit = "medic_R870",
 					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 0,
-					freq = 0.35,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
-					tactics = self._tactics.swat_shotgun_flank
 				}
 			}
 		}
@@ -866,14 +778,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_shotgu
 					amount_max = 1,
 					rank = 2,
 					unit = "medic_R870",
-					tactics = self._tactics.swat_shotgun_flank
-				},
-				{
-					amount_min = 0,
-					freq = 0.5,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_tazer_R870",
 					tactics = self._tactics.swat_shotgun_flank
 				}
 			}
@@ -1485,64 +1389,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_remove
 end)
 
 Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak_initunitcategors", function(self, difficulty_index)
-
-	local access_type_walk_only = {
-		walk = true
-	}
-	local access_type_all = {
-		acrobatic = true,
-		walk = true
-	}
-
-	-- Taser shotgunners?
-	if difficulty_index == 8 then
-		self.unit_categories.CS_tazer_R870 = {
-			special_type = "taser",
-			unit_types = {
-				america = {
-					Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_tazer/ene_zeal_tazer")
-				},
-				russia = {
-					Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_tazer_ak47_ass/ene_akan_cs_tazer_ak47_ass")
-				},
-				zombie = {
-					Idstring("units/pd2_dlc_hvh/characters/ene_tazer_hvh_1/ene_tazer_hvh_1")
-				},
-				murkywater = {
-					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_tazer/ene_murkywater_tazer")
-				},
-				federales = {
-					Idstring("units/pd2_dlc_bex/characters/ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale")
-				}
-			},
-			access = access_type_all,
-			primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
-		}
-	else
-		self.unit_categories.CS_tazer_R870 = {
-			special_type = "taser",
-			unit_types = {
-				america = {
-					Idstring("units/payday2/characters/ene_tazer_1/ene_tazer_1")
-				},
-				russia = {
-					Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_tazer_ak47_ass/ene_akan_cs_tazer_ak47_ass")
-				},
-				zombie = {
-					Idstring("units/pd2_dlc_hvh/characters/ene_tazer_hvh_1/ene_tazer_hvh_1")
-				},
-				murkywater = {
-					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_tazer/ene_murkywater_tazer")
-				},
-				federales = {
-					Idstring("units/pd2_dlc_bex/characters/ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale")
-				}
-			},
-			access = access_type_all,
-			primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
-		}
-	end
-
 	if InFmenu.settings.rainbowassault and difficulty_index >= 5 then
 		if difficulty_index > 5 then
 			-- greens
@@ -1566,6 +1412,8 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak
 	end
 	
 	-- Rokks tweaks start here
+
+	-- No taser shotgunners since they crash unmodded clients :/
 
 	-- I forgot why this was necessary
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"))
@@ -1597,7 +1445,6 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "irenfist_groupaitweak
 	-- self.unit_categories.FBI_heavy_R870 = deep_clone(self.unit_categories.FBI_swat_R870)
 
 	-- Give ZEAL shotgunners their deserved R870's
-	-- Also fix missing unit weapons on occasion
 	if difficulty_index >= 8 then
 		self.unit_categories.FBI_heavy_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
 		self.unit_categories.FBI_swat_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")

@@ -712,36 +712,6 @@ end
 	local sniper_concealment_parts = {{"wpn_fps_upg_o_leupold", -4+1}, {"wpn_fps_upg_o_box", -4+1}, {"inf_shortdot", -3}, {"wpn_fps_upg_o_shortdot", -3}, {"wpn_fps_upg_o_shortdot_vanilla", -3}} -- number is ('correct' concealment) - (actual part concealment)
 
 
-	-- fix r870/loco sights
---[[
-	local r870 = {"wpn_fps_shot_r870", "wpn_fps_shot_serbu"}
-	for a, b in ipairs(r870) do
-		for c, d in ipairs(sightlist) do
-			self.parts[d].stance_mod[b] = {translation = Vector3(0.01, 0, -4.75)}
-		end
-	end
---]]
---[[
-	for a, b in pairs(self.wpn_fps_shot_r870.adds) do
-		if b[1] == "wpn_fps_shot_r870_ris_special" then
-			table.insert(b, "wpn_fps_ass_scar_o_flipups_down")
-		end
-	end
-	for a, b in pairs(self.wpn_fps_shot_serbu.adds) do
-		if b[1] == "wpn_fps_shot_r870_ris_special" then
-			table.insert(b, "wpn_fps_ass_scar_o_flipups_down")
-		end
-	end
---]]
-	self.parts.wpn_fps_shot_r870_body_standard.adds = {"wpn_fps_ass_scar_o_flipups_up"}
-	self.wpn_fps_shot_r870.override = self.wpn_fps_shot_r870.override or {}
-	self.wpn_fps_shot_r870.override.wpn_fps_ass_scar_o_flipups_up = {unit = dummy, third_unit = dummy}
-	self.wpn_fps_shot_serbu.override.wpn_fps_ass_scar_o_flipups_up = {unit = dummy, third_unit = dummy}
-	self.parts.wpn_fps_ass_scar_o_flipups_up.stance_mod = self.parts.wpn_fps_ass_scar_o_flipups_up.stance_mod or {}
-	self.parts.wpn_fps_ass_scar_o_flipups_up.stance_mod.wpn_fps_shot_r870 = {translation = Vector3(0, 0, 1.45)}
-	self.parts.wpn_fps_ass_scar_o_flipups_up.stance_mod.wpn_fps_shot_serbu = {translation = Vector3(0, 0, 1.45)}
-	--self.parts.wpn_fps_ass_scar_o_flipups_up.stance_mod.wpn_fps_ass_heffy_939 = {translation = Vector3(0, 0, -1), rotation = Rotation(0, 0.6, 0)}
-
 	-- descriptions for sights on tiny weapons that mount them on some ridiculous front rail
 	local wtfstopthat = {"wpn_fps_smg_cobray", "wpn_fps_smg_scorpion"}
 	for a, wpn in pairs(wtfstopthat) do
@@ -2892,13 +2862,12 @@ end
 			concealment = -2
 		}
 	}
+
 	self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_standard = self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_standard
 	self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_pts = self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_standard
 	self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_crane = self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_standard
 	self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_mk46 = self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_standard
 	self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_ubr = self.wpn_fps_shot_serbu.override.wpn_fps_upg_m4_s_standard
-
-
 
 	-- MOSCONI PARTS
 	self.wpn_fps_shot_huntsman.override.wpn_fps_upg_a_explosive = nil
@@ -7272,13 +7241,19 @@ end)
 --]]
 end
 
-if BeardLib.Utils:ModLoaded("Chiappa Rhino 60DS") then
+if BeardLib.Utils:ModLoaded("Chiappa Rhino 60DS") and self.parts.wpn_fps_pis_rhino_bullets then
 	self.parts.wpn_fps_pis_rhino_bullets.stats = deep_clone(nostats)
 	--self.parts.wpn_fps_upg_rhino_grip_rubber_small.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_rhino_grip_wood_small.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_rhino_sight_fiber.stats = deep_clone(nostats)
+
+	self.parts.wpn_fps_upg_rhino_ammo_40sw.override_weapon_add = {}
+	self.parts.wpn_fps_upg_rhino_ammo_40sw.override_weapon_multiply = {}
+	self.parts.wpn_fps_upg_rhino_ammo_40sw.override_weapon = {}
+	self.parts.wpn_fps_upg_rhino_ammo_40sw.override = {}
 	self:convert_part("wpn_fps_upg_rhino_ammo_40sw", "heavypis", "supermediumpis")
 	self.parts.wpn_fps_upg_rhino_ammo_40sw.custom_stats.sdesc1 = "caliber_p40sw"
+
 	-- self.parts.wpn_fps_upg_rhino_frame_200ds.custom_stats = {switchspeed_mult = switch_snubnose}
 	--[[
 	self.parts.wpn_fps_upg_rhino_frame_200ds.stats = {
@@ -7388,36 +7363,6 @@ if BeardLib.Utils:ModLoaded("AK-9") then
 		recoil = -6,
 		concealment = 3
 	}
-
---[[
-	-- irons ADS wrong, sights OK
-	self.parts.wpn_fps_ass_heffy_939_lfg_tiss.weapon_stance_override = nil
-	self.parts.wpn_fps_ass_heffy_939_lfg_tiss.adds = {"wpn_fps_ass_scar_o_flipups_up"}
-	self.parts.wpn_fps_ass_heffy_939_ufg_tiss.weapon_stance_override = nil
-	self.parts.wpn_fps_ass_heffy_939_ufg_tiss.adds = {"wpn_fps_ass_scar_o_flipups_up"}
-	self.parts.wpn_fps_ass_heffy_939_ro_tiss.weapon_stance_override = nil
-	self.parts.wpn_fps_ass_heffy_939_ro_tiss.adds = {"wpn_fps_ass_scar_o_flipups_up"}
-	self.parts.wpn_fps_ass_heffy_939_ro_tiss.override = {
-		wpn_fps_ass_scar_o_flipups_up = {
-			stance_mod = {wpn_fps_ass_heffy_939 = {translation = Vector3(0, 0, -1), rotation = Rotation(0, 0.6, 0)}},
-			unit = dummy,
-			third_unit = dummy
-		}
-	}
-	-- irons ADS wrong, sights OK
-	self.parts.wpn_fps_ass_heffy_939_ro_ak9.adds = {"wpn_fps_ass_scar_o_flipups_up"}
-	self.parts.wpn_fps_ass_heffy_939_ro_ak9.override = {
-		wpn_fps_ass_scar_o_flipups_up = {
-			stance_mod = {wpn_fps_ass_heffy_939 = {translation = Vector3(0, 0, -0.2), rotation = Rotation(0, 0, 0)}},
-			unit = dummy,
-			third_unit = dummy
-		}
-	}
---]]
---[[
-	self.wpn_fps_ass_heffy_939.override = self.wpn_fps_ass_heffy_939.override or {}
-	self.wpn_fps_ass_heffy_939.override.wpn_fps_ass_scar_o_flipups_up = {unit = dummy, third_unit = dummy}
---]]
 end
 
 if BeardLib.Utils:ModLoaded("AK-47") then

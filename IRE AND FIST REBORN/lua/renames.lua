@@ -745,7 +745,7 @@ end
 
 	-- inf
 	bm_wp_inf_bipod_snp = "Sniper Bipod",
-	bm_wp_inf_bipod_snp_desc = "Press $BTN_GADGET to deploy. When deployed, reduce recoil by 50% and increase rate of fire by 25%.",
+	bm_wp_inf_bipod_snp_desc = "Press $BTN_BIPOD to deploy. When deployed, reduce recoil by 50% and increase rate of fire by 25%.",
 
 	-- backup irons
 	bm_wp_inf_buis = "Backup Ironsights",

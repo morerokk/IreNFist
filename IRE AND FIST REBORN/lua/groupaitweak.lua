@@ -1088,7 +1088,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 			},
 			spawn = {
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 1,
 					amount_max = 3,
 					rank = 2,
@@ -1104,7 +1104,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_rifle
 				},
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 1,
 					amount_max = 3,
 					rank = 2,
@@ -1121,7 +1121,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 			},
 			spawn = {
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 2,
 					amount_max = 3,
 					rank = 2,
@@ -1137,9 +1137,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_rifle
 				},
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 2,
-					amount_max = 2,
+					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_R870",
 					tactics = self._tactics.swat_shotgun_rush
@@ -1162,7 +1162,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 			},
 			spawn = {
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 3,
 					amount_max = 3,
 					rank = 2,
@@ -1170,7 +1170,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_rifle
 				},
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 1,
 					amount_max = 2,
 					rank = 3,
@@ -1178,7 +1178,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_rifle
 				},
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 3,
 					amount_max = 3,
 					rank = 2,
@@ -1203,7 +1203,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 			},
 			spawn = {
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 2,
 					amount_max = 3,
 					rank = 2,
@@ -1211,7 +1211,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_rifle
 				},
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 2,
 					amount_max = 3,
 					rank = 3,
@@ -1219,7 +1219,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_rifle
 				},
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 2,
 					amount_max = 3,
 					rank = 2,
@@ -1244,7 +1244,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 			},
 			spawn = {
 				{
-					amount_min = 1,
+					amount_min = 2,
 					freq = 1,
 					amount_max = 2,
 					rank = 2,
@@ -1252,7 +1252,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 					tactics = self._tactics.swat_rifle
 				},
 				{
-					amount_min = 1,
+					amount_min = 3,
 					freq = 3,
 					amount_max = 4,
 					rank = 3,
@@ -1262,7 +1262,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupai_combin
 				{
 					amount_min = 1,
 					freq = 1,
-					amount_max = 2,
+					amount_max = 3,
 					rank = 2,
 					unit = "FBI_swat_R870",
 					tactics = self._tactics.swat_shotgun_rush
@@ -1539,7 +1539,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	
 	-- Reduce spawn rates a little
 	-- max # of simultaneous cops
-	self.besiege.assault.force = {14, 15, 16} -- 14, 16, 18
+	self.besiege.assault.force = {14, 16, 18} -- 14, 16, 18
 	self.besiege.assault.force_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
 
 	-- max # of cops in an entire assault wave

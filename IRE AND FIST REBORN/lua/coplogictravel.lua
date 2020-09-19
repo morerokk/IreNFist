@@ -10,7 +10,7 @@ local coplogictravel_enter_orig = CopLogicTravel.enter
 function CopLogicTravel.enter(data, new_logic_name, enter_params)
     if not data.team then
         -- Calling movement:team() will also force-initialize the team if it doesn't exist yet
-        data.team = unit:movement():team()
+        data.team = data.unit:movement():team()
     end
 
     return coplogictravel_enter_orig(data, new_logic_name, enter_params)

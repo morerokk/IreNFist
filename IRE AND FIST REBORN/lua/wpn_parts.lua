@@ -6780,17 +6780,24 @@ DelayedCalls:Add("sg552delay", delay, function(self, params)
 end)
 end
 
-if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") then
+if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") and self.parts.wpn_fps_pis_px4_mag then
 	self.parts.wpn_fps_pis_px4_mag.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_px4_barrel_sd.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_px4_grip_backstrap_rubber.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_px4_sight_dot.stats = deep_clone(nostats)
 	self.parts.wpn_fps_upg_px4_sight_tritium.stats = deep_clone(nostats)
 
-	self:convert_part("wpn_fps_upg_px4_ammo_9mm", "mediumpis", "lightpis", 84, 160)
+	self.parts.wpn_fps_upg_px4_ammo_9mm.override = {}
+	self.parts.wpn_fps_upg_px4_ammo_9mm.override_weapon_add = {}
+	self.parts.wpn_fps_upg_px4_ammo_9mm.override_weapon_multiply = {}
+	self:convert_part("wpn_fps_upg_px4_ammo_9mm", "mediumpis", "lightpis")
 	self.parts.wpn_fps_upg_px4_ammo_9mm.custom_stats.sdesc1 = "caliber_p9x19"
 	self.parts.wpn_fps_upg_px4_ammo_9mm.internal_part = true
-	self:convert_part("wpn_fps_upg_px4_ammo_45acp", "mediumpis", "supermediumpis", 84, InFmenu.wpnvalues.supermediumpis.ammo)
+
+	self.parts.wpn_fps_upg_px4_ammo_45acp.override = {}
+	self.parts.wpn_fps_upg_px4_ammo_45acp.override_weapon_add = {}
+	self.parts.wpn_fps_upg_px4_ammo_45acp.override_weapon_multiply = {}
+	self:convert_part("wpn_fps_upg_px4_ammo_45acp", "mediumpis", "supermediumpis")
 	self.parts.wpn_fps_upg_px4_ammo_45acp.custom_stats.sdesc1 = "caliber_p45s"
 	self.parts.wpn_fps_upg_px4_ammo_45acp.internal_part = true
 end

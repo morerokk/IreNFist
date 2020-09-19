@@ -5208,14 +5208,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.sg552.stats.concealment = 24
 	end
 
-	if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") then
+	if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") and self.px4 then
 		self:inf_init("px4", "pistol", "medium")
 		self.px4.sdesc1 = "caliber_p40sw"
 		self.px4.sdesc2 = "action_shortrecoil"
 		self:copy_timers("px4", "sparrow")
 		self.px4.AMMO_MAX = 84
 		self.px4.AMMO_PICKUP = self:_pickup_chance(84, 1)
-		--self.px4.stats.concealment = 29
+		self.px4.stats.concealment = 28
 	end
 
 	if BeardLib.Utils:ModLoaded("Walther P99 AS") then

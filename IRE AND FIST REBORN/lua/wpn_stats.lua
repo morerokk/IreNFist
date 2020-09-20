@@ -6549,6 +6549,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("master", "mac10")
 	end
 
+	-- Triton TR-15
+	if self.hometown then
+		self:inf_init("hometown", "ar", {"medium"})
+		self:copy_sdescs("hometown", "m16")
+		self:copy_timers("hometown", "m16")
+		self.hometown.concealment = 20
+	end
+
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)
 	-- Then do something like this for pistols:

@@ -5319,7 +5319,10 @@ end
 
 if BeardLib.Utils:ModLoaded("STF-12") then
 	-- it's a short barrel
-	self.parts.wpn_fps_shot_stf12_b_long.stats = deep_clone(barrelsho_p1)
+	-- it's fixed by now
+	self.parts.wpn_fps_shot_stf12_b_short.stats = deep_clone(barrelsho_p1)
+	-- long barrel here
+	self.parts.wpn_fps_shot_stf12_b_long.stats = deep_clone(barrel_m1)
 	self.parts.wpn_fps_shot_stf12_choke.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
 
 	-- fix ADS
@@ -8561,6 +8564,13 @@ if BeardLib.Utils:ModLoaded("Dokkaebi SMG12 modpack") and self.parts.wpn_fps_mp_
 	-- Foregrips
 	self.parts.wpn_fps_mp_master_vg_angle.stats = deep_clone(nostats)
 	self.parts.wpn_fps_mp_master_vg_straight.stats = deep_clone(nostats)
+end
+
+-- Triton TR-15
+if BeardLib.Utils:ModLoaded("Triton TR-15") and self.parts.wpn_fps_ass_hometown_ba_wylde then
+	self.parts.wpn_fps_ass_hometown_ba_wylde.stats = deep_clone(nostats)
+	self.parts.wpn_fps_ass_hometown_st_moe_bp.stats = deep_clone(nostats)
+	self.parts.wpn_fps_ass_hometown_st_slk.stats = deep_clone(nostats)
 end
 
 -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT

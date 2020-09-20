@@ -1539,7 +1539,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	
 	-- Reduce spawn rates a little
 	-- max # of simultaneous cops
-	self.besiege.assault.force = {14, 16, 18} -- 14, 16, 18
+	self.besiege.assault.force = {14, 15, 16} -- 14, 16, 18
 	self.besiege.assault.force_balance_mul = {1, 2, 3, 4} -- 1, 2, 3, 4
 
 	-- max # of cops in an entire assault wave

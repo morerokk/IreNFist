@@ -448,6 +448,15 @@
 	<pcs/>
 </WeaponMod>
 
+<!-- Full-auto conversion -->
+<WeaponMod id="inf_fullauto_conversion" based_on="wpn_fps_smg_mp9_b_dummy" type="custom" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<weapons>
+		<value_node value="wpn_fps_smg_tec9"/>
+		<value_node value="wpn_fps_smg_x_tec9"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
 <!-- RIFLE IS FINE -->
 <WeaponMod id="inf_ivan" based_on="wpn_fps_smg_mp9_b_dummy" type="zzzz" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<weapons>

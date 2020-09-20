@@ -2095,6 +2095,8 @@ function WeaponTweakData:_init_new_weapons(...)
 
 	self.tec9.sdesc1 = "caliber_p9x19"
 	self.tec9.sdesc2 = "action_blowback"
+	self.tec9.FIRE_MODE = "single"
+	self.tec9.CAN_TOGGLE_FIREMODE = false
 	self.tec9.fire_mode_data.fire_rate = 60/900
 	self.tec9.auto.fire_rate = 60/900
 	self.tec9.chamber = 0
@@ -2124,6 +2126,8 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.x_tec9.timers.reload_empty = 2.70
 	self.x_tec9.timers.reload_empty_half = 2.30
 	self.x_tec9.timers.reload_empty_end = 1.00 -- 3.2
+	self.x_tec9.FIRE_MODE = "single"
+	self.x_tec9.CAN_TOGGLE_FIREMODE = false
 
 
 
@@ -3637,6 +3641,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.rpk.timers.reload_empty_end = 1.20 -- 4.40
 	self.rpk.equip_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 	self.rpk.reload_stance_mod = {ads = {translation = Vector3(0, 0, -6), rotation = Rotation(0, 5, 0)}}
+	self.rpk.CAN_TOGGLE_FIREMODE = true
 
 
 	self.m249.sdesc1 = "caliber_r556x45"

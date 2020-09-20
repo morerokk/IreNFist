@@ -1865,6 +1865,10 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- just bend it
 	bm_wp_tec9_s_unfolded_desc = "A little wire can go a long way.",
 
+	-- Full-auto conversion
+	bm_wp_inf_fullauto_conversion = "Full-Auto Conversion",
+	bm_wp_inf_fullauto_conversion_desc = "Converts the weapon to full-auto.",
+
 
 	-- CHICAGO TYPEWRITER
 	bm_w_m1928_desc = "The Tommy Gun. Most famously seen in the hands of old school gangsters from back when religion and fedoras were still fashionable.",

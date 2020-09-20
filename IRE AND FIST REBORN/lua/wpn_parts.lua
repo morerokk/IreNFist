@@ -2549,6 +2549,43 @@ end
 		concealment = -2
 	}
 
+	-- Remove firemode internals from tec9
+
+	local autofire_index = nil
+	local singlefire_index = nil
+	for i,v in pairs(self.wpn_fps_smg_tec9.uses_parts) do
+		if v == "wpn_fps_upg_i_autofire" then
+			autofire_index = i
+		end
+		if v == "wpn_fps_upg_i_singlefire" then
+			singlefire_index = i
+		end
+	end
+
+	-- One weird trick to remove elements from a table without jumbling up the indexes of the next elements to remove, software engineers hate him!
+	table.remove(self.wpn_fps_smg_tec9.uses_parts, math.max(autofire_index, singlefire_index))
+	table.remove(self.wpn_fps_smg_tec9.uses_parts, math.min(autofire_index, singlefire_index))
+
+	autofire_index = nil
+	singlefire_index = nil
+
+	for i,v in pairs(self.wpn_fps_smg_x_tec9.uses_parts) do
+		if v == "wpn_fps_upg_i_autofire" then
+			autofire_index = i
+		end
+		if v == "wpn_fps_upg_i_singlefire" then
+			singlefire_index = i
+		end
+	end
+
+	table.remove(self.wpn_fps_smg_x_tec9.uses_parts, math.max(autofire_index, singlefire_index))
+	table.remove(self.wpn_fps_smg_x_tec9.uses_parts, math.min(autofire_index, singlefire_index))
+
+	-- Full-auto conversion
+	self.parts.inf_fullauto_conversion.sub_type = "autofire"
+	self.parts.inf_fullauto_conversion.perks = {
+		"fire_mode_auto"
+	}
 
 	-- VERTEX PARTS/VECTOR PARTS
 	-- Precision Barrel
@@ -6757,6 +6794,7 @@ if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") and self.parts.wpn_fps_pis_px4_
 	self.parts.wpn_fps_upg_px4_sight_tritium.stats = deep_clone(nostats)
 
 	self.parts.wpn_fps_upg_px4_ammo_9mm.override = {}
+	self.parts.wpn_fps_upg_px4_ammo_9mm.override_weapon = {}
 	self.parts.wpn_fps_upg_px4_ammo_9mm.override_weapon_add = {}
 	self.parts.wpn_fps_upg_px4_ammo_9mm.override_weapon_multiply = {}
 	self:convert_part("wpn_fps_upg_px4_ammo_9mm", "mediumpis", "lightpis")
@@ -6764,6 +6802,7 @@ if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") and self.parts.wpn_fps_pis_px4_
 	self.parts.wpn_fps_upg_px4_ammo_9mm.internal_part = true
 
 	self.parts.wpn_fps_upg_px4_ammo_45acp.override = {}
+	self.parts.wpn_fps_upg_px4_ammo_45acp.override_weapon = {}
 	self.parts.wpn_fps_upg_px4_ammo_45acp.override_weapon_add = {}
 	self.parts.wpn_fps_upg_px4_ammo_45acp.override_weapon_multiply = {}
 	self:convert_part("wpn_fps_upg_px4_ammo_45acp", "mediumpis", "supermediumpis")

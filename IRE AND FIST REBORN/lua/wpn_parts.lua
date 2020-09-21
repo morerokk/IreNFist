@@ -5937,6 +5937,31 @@ if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") and self.parts.wpn_fps
 
 	-- M308 classic body
 	self.parts.wpn_fps_ass_m14_body_old.stats = deep_clone(nostats)
+
+	-- SG-416 long barrel
+	self.parts.wpn_fps_ass_sg416_b_long.stats = deep_clone(barrel_m1)
+
+	-- Charging handle
+	self.parts.wpn_fps_ass_sg416_dh_custom.stats = deep_clone(nostats)
+
+	self.parts.wpn_fps_ass_sg416_fg_custom.stats = deep_clone(nostats)
+
+	-- Pistol mag
+	-- Wait what the fuck are you doing?
+	self:convert_part("wpn_fps_ass_m4_m_stick", "lrifle", "lightpis")
+	self.parts.wpn_fps_ass_m4_m_stick.stats.total_ammo_mod = nil
+	self.parts.wpn_fps_ass_m4_m_stick.custom_stats.sdesc1 = "caliber_p9x19"
+
+	self:convert_part("wpn_fps_ass_m4_m_stick_heavy", "lrifle", "mediumpis")
+	self.parts.wpn_fps_ass_m4_m_stick_heavy.custom_stats.sdesc1 = "caliber_p9x19"
+
+	self:convert_part("wpn_fps_ass_m4_m_stick_sg", "lrifle", "lightpis")
+	self.parts.wpn_fps_ass_m4_m_stick_sg.stats.total_ammo_mod = nil
+	self.parts.wpn_fps_ass_m4_m_stick_sg.custom_stats.sdesc1 = "caliber_p9x19"
+
+	self:convert_part("wpn_fps_ass_m4_m_stick_amcar", "lrifle", "lightpis")
+	self.parts.wpn_fps_ass_m4_m_stick_amcar.stats.total_ammo_mod = nil
+	self.parts.wpn_fps_ass_m4_m_stick_amcar.custom_stats.sdesc1 = "caliber_p9x19"
 end
 
 -- Vanilla styled modpack 2
@@ -5951,6 +5976,14 @@ if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods Volume 2") and self.part
 
 	-- M60 long barrel
 	self.parts.wpn_fps_lmg_m60_b_longer.stats = deep_clone(barrel_m1)
+
+	-- R700 ironsights
+	self.parts.wpn_fps_snp_r700_o_is.stats = {
+		value = 1,
+		concealment = 3
+	}
+
+	self.parts.wpn_fps_snp_r700_s_redwood.stats = deep_clone(nostats)
 end
 
 if BeardLib.Utils:ModLoaded("Zenith 10mm") then

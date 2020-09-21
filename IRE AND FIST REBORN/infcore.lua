@@ -56,8 +56,8 @@ if not IreNFist then
             force_pool_balance_mul = { 1, 2, 3, 4 },
             initial_spawn_delay = 30 -- Add a 30 second spawn delay because a literal 0 second response time is dumb
         },
-        nmh = { -- No Mercy, same as Shacklethorne Auction
-            force = { 12, 13, 14 },
+        nmh = { -- No Mercy, same as Shacklethorne Auction but more cops at a time
+            force = { 14, 15, 16 },
             force_balance_mul = { 1, 2, 3, 4 },
             force_pool = { 50, 55, 60 },
             force_pool_balance_mul = { 1, 2, 3, 4 }

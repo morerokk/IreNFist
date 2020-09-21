@@ -5108,8 +5108,8 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("hk416", "new_m4")
 		self.hk416.stats.concealment = 18
 		-- shift 3 left to actually visually confirm instead of just tilting for the sake of it
-		self.hk416.reload_timed_stance_mod.empty.hip[1].translation = Vector3(-25, 0, -5)
-		self.hk416.reload_timed_stance_mod.empty.ads[2].translation = Vector3(-13, -3, -15)
+		--self.hk416.reload_timed_stance_mod.empty.hip[1].translation = Vector3(-25, 0, -5)
+		--self.hk416.reload_timed_stance_mod.empty.ads[2].translation = Vector3(-13, -3, -15)
 	end
 
 	if BeardLib.Utils:ModLoaded("HK416C Standalone") then
@@ -6198,7 +6198,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:inf_init("sg416", "ar", nil)
 		self.sg416.sdesc1 = "caliber_r556x45"
 		self.sg416.sdesc2 = "action_pistonshort"
-		self:copy_timers("sg416", "new_m4")
+		self:copy_timers("sg416", "amcar")
 		self.sg416.stats.concealment = 18
 
 		-- Mamba 5.56

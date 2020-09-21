@@ -705,7 +705,11 @@ end
 	infcodex_flace = "Fully Loaded Aced",
 	infcodex_flace_desc = "SCAVENGE CHANCE AND QUANTITY\nIncendiary Grenade: 1.5x base chance\nStun Grenade: 2x base chance\nJavelin: 2x base chance\nShuriken: 2x base chance, 3 per scavenge\nThrowing Knives: 2x base chance, 3 per scavenge\nThrowing Axes: 2x base chance, 2 per scavenge\nThrowing Cards: 4x base chance, 4 per scavenge\nAll others: no change",
 
-
+	infcodex_assaulttweaks = "Assault Tweaks",
+	infcodex_assaulttweaks_desc = "ASSAULT TWEAKS\nLess cops will be on the map at the same time, and the maximum number of spawns in an assault has been lowered. This means that if you play aggressively, you can exhaust an assault's spawns and end it early.",
+	infcodex_assaulttweaks2_desc = "UNIT TWEAKS\nFBI Tan shotgunners were removed in favor of light shotgunners (greens). On Mayhem and above, some GenSec riflemen may carry UMP's, and some shotgunners may carry Benelli M4's. On Death Sentence, some enemies still have shotguns.",
+	infcodex_assaulttweaks3_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
+	infcodex_assaulttweaks4_desc = "HEIST-SPECIFIC TWEAKS:\nGolden Grin: More max cops, more spawns in an assault.\nShacklethorne Auction: 30 second initial response delay, less cops.\nBrooklyn Bank: Same as Shacklethorne.\nNo Mercy: Bigger spawn pools.",
 
 
 

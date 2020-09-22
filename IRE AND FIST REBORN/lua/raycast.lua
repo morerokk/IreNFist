@@ -942,6 +942,12 @@ end
 -- If you are tased with Shockproof Ace, your bullets will tase cops hit by them
 local instantbullet_give_impact_dmg_orig = InstantBulletBase.give_impact_damage
 function InstantBulletBase:give_impact_damage(col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
+
+	-- This shouldn't do anything on bows and crossbows due to crashes
+	if weapon_unit:base():is_category("bow") or weapon_unit:base():is_category("crossbow") then
+		return instantbullet_give_impact_dmg_orig(self, col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
+	end
+
 	if managers.player:has_category_upgrade("player", "electric_bullets_while_tased") and user_unit == managers.player:player_unit() and managers.player:current_state() == "tased" then
 		local hit_unit = col_ray.unit
 		local action_data = {}

@@ -29,6 +29,8 @@
 	
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_pdw_apkit"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_lemming_apkit"/>
+	
+	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_lightpis_to_mediumpis_ammo"/>
 <!--
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_svu_unsil"/>
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_c96_auto"/>
@@ -85,6 +87,8 @@
 		<unit path="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary"/>
 
 		<unit_obj path="units/infparts/inf_bipod_part/inf_bipod_part"/>
+
+		<unit_obj path="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg"/>
 </AddFiles>
 
 	<Sounds directory="sounds">
@@ -405,6 +409,13 @@
 	<pcs/>
 </WeaponMod>
 
+<!-- Cobray foregrip removal -->
+<WeaponMod id="cobray_body_lower_nofg" based_on="wpn_fps_smg_cobray_body_lower_jacket" inherit="true" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" unit="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg" ver="2">
+	<weapons>
+		<value_node value="wpn_fps_smg_cobray"/>
+	</weapons>
+</WeaponMod>
+
 <!-- hyperion-cr default sight (w/reticle change) -->
 <WeaponMod id="inf_shortdot" based_on="wpn_fps_upg_o_shortdot" type="sight" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
 	<weapons>
@@ -444,6 +455,13 @@
 <WeaponMod id="inf_fnfal_classickit" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" desc_id="bm_wp_inf_fnfal_classickit_desc">
 	<weapons>
 		<value_node value="wpn_fps_ass_fal"/>
+	</weapons>
+	<pcs/>
+</WeaponMod>
+
+<WeaponMod id="inf_lightpis_to_mediumpis_ammo" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" desc_id="bm_wp_inf_lightpis_to_mediumpis_ammo_desc">
+	<weapons>
+		<value_node value="wpn_fps_pis_sparrow"/>
 	</weapons>
 	<pcs/>
 </WeaponMod>

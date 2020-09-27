@@ -123,6 +123,7 @@ if not InFmenu then
         enablenewcopvoices = true,
         enablenewcopdomination = true,
         enablenewassaults = true,
+        enablenewcopbehavior = true,
 
         runkick = false,
         kickyeet = 1,

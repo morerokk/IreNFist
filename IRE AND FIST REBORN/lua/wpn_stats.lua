@@ -2908,40 +2908,31 @@ function WeaponTweakData:_init_new_weapons(...)
 	--self.x_legacy.price = self.legacy.price * 1.5
 	self:copy_timers("x_legacy", "x_b92fs")
 
-
 	-- baby deagle/jericho
+	self:inf_init("sparrow", "pistol", nil)
 	self.sparrow.sdesc1 = "caliber_p9x19"
 	self.sparrow.sdesc2 = "action_shortrecoil"
-	self.sparrow.stats.concealment = 30
-	self.sparrow.CLIP_AMMO_MAX = 16
-	self.sparrow.AMMO_MAX = 144
-	self.sparrow.AMMO_PICKUP = self:_pickup_chance(144, 1)
+	self.sparrow.stats.concealment = 28
 	self:copy_timers("sparrow", "b92fs")
-	--self.sparrow.price = 150*1000
-	self:copy_sdescs("x_sparrow", "sparrow", true)
-	self.x_sparrow.stats.concealment = 30
-	self.x_sparrow.CLIP_AMMO_MAX = self.sparrow.CLIP_AMMO_MAX * 2
-	self.x_sparrow.AMMO_MAX = 192
-	self.x_sparrow.AMMO_PICKUP = self:_pickup_chance(192, 1)
-	--self.x_sparrow.price = self.sparrow.price
+
+	self:inf_init("x_sparrow", "pistol", nil)
+	self.x_sparrow.sdesc1 = "caliber_p9x19"
+	self.x_sparrow.sdesc2 = "action_shortrecoil"
+	self.sparrow.stats.concealment = 27
 	self:copy_timers("x_sparrow", "x_b92fs")
 
-
+	-- Walther PPK/Gruber Kurz
+	self:inf_init("ppk", "pistol", nil)
 	self.ppk.sdesc1 = "caliber_p32acp"
 	self.ppk.sdesc2 = "action_blowbackstraight"
-	--self.ppk.stats.concealment = 30
-	self.ppk.CLIP_AMMO_MAX = 7
+	self.ppk.stats.concealment = 30
 	self:copy_timers("ppk", "b92fs")
-	self.ppk.reload_speed_mult = self.ppk.reload_speed_mult * self:convert_reload_to_mult("mag_50")
-	--self.ppk.price = 100*1000
-	self:copy_sdescs("x_ppk", "ppk", true)
-	self.x_ppk.stats.concealment = 30
-	self.x_ppk.CLIP_AMMO_MAX = self.ppk.CLIP_AMMO_MAX * 2
-	self.x_ppk.AMMO_MAX = 98
-	self.x_ppk.AMMO_PICKUP = self:_pickup_chance(98, 1)
-	--self.x_ppk.price = self.ppk.price * 1.5
+
+	self:inf_init("x_ppk", "pistol", nil)
+	self.x_ppk.sdesc1 = "caliber_p32acp"
+	self.x_ppk.sdesc2 = "action_blowbackstraight"
+	self.x_ppk.stats.concealment = 28
 	self:copy_timers("x_ppk", "x_b92fs")
-	self.x_ppk.reload_speed_mult = self.x_ppk.reload_speed_mult * self:convert_reload_to_mult("mag_50")
 
 
 	self.g26.sdesc1 = "caliber_p9x19"
@@ -4351,6 +4342,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.m1894.stats.damage = 56 -- 280
 		self.m1894.stats.spread = self.m1894.stats.spread - 10
 		self.m1894.stats.recoil = self.m1894.stats.recoil - 5
+		self.m1894.stats.concealment = 26
 		--self.m1894.stats.concealment = 23
 		--self.m1894.anim_speed_mult = 1.20
 		--self.m1894.hipfire_uses_ads_anim = true
@@ -6192,7 +6184,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.amr12.sdesc1 = "caliber_s12g" -- The AMR12 is not real and it cant hurt you
 		self.amr12.sdesc2 = "action_di"
 		self.amr12.recategorize = "shotgun"
-		self:copy_timers("amr12", "saiga")
+		self:copy_timers("amr12", "olympic")
 
 		-- SG 416 (HK416)
 		self:inf_init("sg416", "ar", nil)

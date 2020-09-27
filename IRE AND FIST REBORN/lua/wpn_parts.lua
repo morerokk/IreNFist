@@ -1444,6 +1444,9 @@ end
 	}
 
 
+	-- Lightpis to mediumpis parts
+	self:convert_part("inf_lightpis_to_mediumpis_ammo", "lightpis", "mediumpis")
+	self.parts.inf_lightpis_to_mediumpis_ammo.custom_stats.sdesc1 = "caliber_p45acp"
 
 
 	-- SHARED AK FAMILY PARTS
@@ -2756,9 +2759,24 @@ end
 	self.parts.wpn_fps_smg_cobray_ns_silencer.custom_stats = silencercustomstats
 	self.parts.wpn_fps_smg_cobray_ns_silencer.stats = deep_clone(silstatsconc2)
 
+	-- Gripless
+	self.parts.cobray_body_lower_nofg.stats = deep_clone(nostats)
+	self.parts.cobray_body_lower_nofg.weapon_hold_override = {
+		wpn_fps_smg_cobray = "scorpion",
+		bm_w_cobray = "scorpion"
+	}
 
-
-
+	-- Gripless steelsight tweak
+	local pivot_shoulder_translation = Vector3(1.4316, 28.7626, -1.04143)
+	local pivot_shoulder_rotation = Rotation(0.106668, -0.0849211, 0.628574)
+	local pivot_head_translation = Vector3(0, 15, 0)
+	local pivot_head_rotation = Rotation(0, 0, 0)
+	self.parts.cobray_body_lower_nofg.stance_mod = {
+		wpn_fps_smg_cobray = {
+			translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation),
+			rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+		}
+	}
 
 
 	-- IMPACT-45 PARTS/JACKAL PARTS
@@ -4632,7 +4650,7 @@ if BeardLib.Utils:ModLoaded("Marlin Model 1894 Custom") then
 	self.parts.wpn_fps_snp_m1894_irons.stats = {
 		value = 0,
 		zoom = 0,
-		concealment = 3
+		concealment = 0
 	}
 	self.parts.wpn_fps_upg_m1894_supp_gemtech_gm45.custom_stats = snpsilencercustomstats
 	self.parts.wpn_fps_upg_m1894_supp_gemtech_gm45.stats = deep_clone(silstatsconc2)
@@ -4808,35 +4826,6 @@ DelayedCalls:Add("bardelaycall", delay, function(self, params)
 		desc_id = "bar_sil_desc",
 		forbids = {"wpn_fps_ass_bar_bipod"}
 	}
-end)
-end
-
-if BeardLib.Utils:ModLoaded("QBZ-97B") then
-	self.parts.wpn_fps_ass_qbz97b_mag_short.stats = deep_clone(mag_66)
-	self.parts.wpn_fps_ass_qbz97b_mag_short.stats.extra_ammo = -10
-	self.parts.wpn_fps_ass_qbz97b_mag_pmag.stats = deep_clone(nostats)
-	self.parts.wpn_fps_ass_qbz97b_mag_magpul.stats = deep_clone(nostats)
-	self.parts.wpn_fps_ass_qbz97b_95b_body.custom_stats = {sdesc1 = "caliber_r58x42"}
-	self.parts.wpn_fps_ass_qbz97b_95b_body.stats = deep_clone(nostats)
-	-- fuck these sights
-	self.parts.wpn_fps_ass_qbz97b_sights_95b.pcs = nil
-	self.parts.wpn_fps_ass_qbz97b_rec_upper.stance_mod = {
-		wpn_fps_ass_qbz97b = {translation = Vector3(0, 3, -2.35), rotation = Rotation(0, 1.5, 0)}
-	}
-	self.parts.wpn_fps_ass_qbz97b_rail.stance_mod = {
-		wpn_fps_ass_qbz97b = {translation = Vector3(0, 0, 2.565), rotation = Rotation(0, -1.6, 0)}
-	}
-	self.parts.wpn_fps_ass_qbz97b_95b_body.stance_mod = {
-		wpn_fps_ass_qbz97b = {translation = Vector3(0, 0, 1.7), rotation = Rotation(0, -0.7, 0)}
-	}
-	self.parts.wpn_fps_ass_qbz97b_95b_body.adds = {"wpn_fps_ass_qbz97b_95b_wrap", "wpn_fps_ass_qbz97b_sights_95b"}
-	self.parts.wpn_fps_ass_qbz97b_95b_body.override.wpn_fps_ass_qbz97b_sights = {unit = dummy, third_unit = dummy}
-	self.parts.wpn_fps_ass_qbz97b_95b_body.override.wpn_fps_ass_qbz97b_rail.stance_mod = {
-		wpn_fps_ass_qbz97b = {translation = Vector3(0, 0, 0.15), rotation = Rotation(0, 0.6, 0)}
-	}
-DelayedCalls:Add("qbz97bdelaycall", delay, function(self, params)
-	tweak_data.weapon.factory.parts.wpn_fps_ass_qbz97b_sights.stance_mod = {}
-	tweak_data.weapon.factory.parts.wpn_fps_ass_qbz97b_sights_95b.stance_mod = {}
 end)
 end
 
@@ -6625,8 +6614,14 @@ if BeardLib.Utils:ModLoaded("PP-19-01 Vityaz") then
 	self.parts.wpn_fps_smg_vityaz_stock.stats = deep_clone(nostats)
 	self.parts.wpn_fps_smg_vityaz_stock.pcs = nil
 
+	self.parts.wpn_fps_upg_vityaz_ammo_9mm_p.override = {}
+	self.parts.wpn_fps_upg_vityaz_ammo_9mm_p.override_weapon = {}
+	self.parts.wpn_fps_upg_vityaz_ammo_9mm_p.override_weapon_add = {}
+	self.parts.wpn_fps_upg_vityaz_ammo_9mm_p.override_weapon_multiply = {}
+	
 	self.parts.wpn_fps_upg_vityaz_ammo_9mm_p.internal_part = true
 	self.parts.wpn_fps_upg_vityaz_ammo_9mm_p.custom_stats = {sdesc1 = "caliber_p10", armor_piercing_add = 0.13}
+	
 	self.parts.wpn_fps_upg_vityaz_ammo_9mm_p.stats = {
 		value = 0,
 		damage = 10,
@@ -6757,7 +6752,8 @@ if BeardLib.Utils:ModLoaded("l1a1") then
 end
 
 if BeardLib.Utils:ModLoaded("Mk14") then
-	table.insert(gunlist_snp, {"wpn_fps_snp_wargoddess", -3})
+	-- Mk14 has ironsights, no need for this
+	--table.insert(gunlist_snp, {"wpn_fps_snp_wargoddess", -3})
 	--self.parts.wpn_fps_snp_wargoddess_b_ebr.stats = deep_clone(barrel_p1)
 	self.parts.wpn_fps_snp_wargoddess_o_dummy.stats = {
 		value = 0,
@@ -8604,6 +8600,23 @@ if BeardLib.Utils:ModLoaded("Triton TR-15") and self.parts.wpn_fps_ass_hometown_
 	self.parts.wpn_fps_ass_hometown_ba_wylde.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_hometown_st_moe_bp.stats = deep_clone(nostats)
 	self.parts.wpn_fps_ass_hometown_st_slk.stats = deep_clone(nostats)
+end
+
+-- TTI Pack
+if BeardLib.Utils:ModLoaded("TTI Attachment Pack") and self.parts.wpn_fps_upg_g22c_body_tti then
+	self.parts.wpn_fps_upg_g22c_body_tti.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_m_tti.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_g22c_sl_tti.stats = deep_clone(barrel_m1)
+	self.parts.wpn_fps_upg_shepheard_m_tti.stats = deep_clone(nostats)
+	self.parts.wpn_fps_upg_s_tti.stats = deep_clone(nostats)
+
+	-- Extended mag for MPX
+	self.parts.wpn_fps_upg_shepheard_m_tti_ext.stats = deep_clone(mag_200)
+	self.parts.wpn_fps_upg_shepheard_m_tti_ext.stats.extra_ammo = 15
+	self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext = self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext or {}
+	self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats = deep_clone(self.parts.wpn_fps_upg_shepheard_m_tti_ext.stats)
+	self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.extra_ammo = self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.extra_ammo * 2
+	self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.reload = self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.reload - 15
 end
 
 -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT

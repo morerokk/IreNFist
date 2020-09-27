@@ -227,6 +227,20 @@ Hooks:PreHook(CopDamage, "damage_bullet", "inf_copdamage_damagebullet_stopcrashi
 	end
 end)
 
+-- Melee headshot multiplier, flat 1.5x
+local copdamage_damagemelee_orig = CopDamage.damage_melee
+function CopDamage:damage_melee(attack_data)
+
+	local body_index = self._unit:get_body_index(attack_data.col_ray.body:name())
+	local head = self._head_body_name and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_head_body_name
+
+	if head and attack_data and attack_data.damage then
+		attack_data.damage = attack_data.damage * 1.5
+	end
+
+	copdamage_damagemelee_orig(self, attack_data)
+end
+
 Hooks:PreHook(CopDamage, "damage_melee", "inf_copdamage_damagemelee_stopcrashifnoteam", function(self)
 	if self._unit:movement() and not self._unit:movement()._team then
 		self._unit:movement():set_team(managers.groupai:state()._teams[tweak_data.levels:get_default_team_ID(self._unit:base():char_tweak().access == "gangster" and "gangster" or "combatant")])

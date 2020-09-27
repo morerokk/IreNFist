@@ -768,9 +768,17 @@ end
 	bm_wp_inf_contraband_ironsretain = ironsights.keepname,
 	bm_wp_inf_contraband_ironsretain_desc = ironsights.keepdesc,
 
+	-- Cobray gripless lower body
+	bm_wp_cobray_body_lower_nofg = "Stone Cold Lower",
+	bm_wp_cobray_body_lower_nofg_desc = "Gotta get a grip!",
+
 
 	bm_wp_inf_m231fpw = "FPW Kit",
 	bm_wp_inf_m231fpw_desc = "Experimental firing port weapon conversion kit. Fast, finicky, and wild.\n\nConverts weapon to open bolt.",
+
+	-- Pistol light to medium
+	bm_wp_inf_lightpis_to_mediumpis_ammo = ".45 ACP",
+	bm_wp_inf_lightpis_to_mediumpis_ammo_desc = "Converts the weapon to a medium pistol. More damage, less ammo pickup.",
 
 
 	bm_wp_inf_amr16_har = "M855A1 EPR",
@@ -3802,7 +3810,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- McMillan CS5
 	bm_w_cs5_desc = "A sniper rifle dedicated to being stealthy and concealable in urban environments. Originally meant for the military, but that won't stop you.",
 	bm_wp_wpn_fps_upg_cs5_barrel_suppressed_desc = "It's not a rude surprise if they never see it coming." .. silstr3,
-	bm_wp_wpn_fps_upg_cs5_harris_bipod_desc = "Press $BTN_GADGET to deploy. When deployed, reduce recoil by 50% and increase rate of fire by 25%.",
+	bm_wp_wpn_fps_upg_cs5_harris_bipod_desc = "Press $BTN_BIPOD to deploy. When deployed, reduce recoil by 50% and increase rate of fire by 25%.",
 
 	-- Mars automatic pistol
 	bm_w_mars_desc = "Basically a high-powered semi-automatic Welrod. Thanks to the massive recoil, those who shot it remarked that they would not want to do so again. Better lay off the soy.",
@@ -3828,7 +3836,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_usptac = "Interceptor Tactical",
 	bm_w_usptac_desc = "A smaller and more compact version of the classic German handgun. Knife not included.",
 
-	
+	-- Master 12 SMG
+	bm_w_master_desc = "A deadly machine pistol designed for close-quarters warfare. Don't get peeked.",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

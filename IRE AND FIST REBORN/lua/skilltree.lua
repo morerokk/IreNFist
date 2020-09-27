@@ -58,11 +58,11 @@ if IreNFist.mod_compatibility.sso then
 		table.insert(self.skills.hitman[2].upgrades, "player_electric_bullets_while_tased")
 
 		-- body expertise
-		self.skills.body_expertise[1].upgrades = {"weapon_lmg_pierce_enemies"}
-		self.skills.body_expertise[2].upgrades = {
+		self.skills.body_expertise[1].upgrades = {
 			"weapon_automatic_head_shot_add_1",
 			"weapon_automatic_head_shot_add_2"
 		}
+		self.skills.body_expertise[2].upgrades = {"weapon_lmg_pierce_enemies"}
 
 		-- Specialized Killing, remove the silencer damage bonus and spread the other bonuses out over the 2 tiers
 		self.skills.unseen_strike[1].upgrades = {
@@ -196,11 +196,11 @@ else
 		self.skills.fire_control[1].upgrades = {"recoil_h_mult"}
 		self.skills.fire_control[2].upgrades = {"recoil_h_mult_2"}
 		-- body expertise
-		self.skills.body_expertise[1].upgrades = {"weapon_lmg_pierce_enemies"}
-		self.skills.body_expertise[2].upgrades = {
+		self.skills.body_expertise[1].upgrades = {
 			"weapon_automatic_head_shot_add_1",
 			"weapon_automatic_head_shot_add_2"
 		}
+		self.skills.body_expertise[2].upgrades = {"weapon_lmg_pierce_enemies"}
 
 		-- lock 'n load
 		--self.skills.shock_and_awe[1].upgrades = {}

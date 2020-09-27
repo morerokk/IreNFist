@@ -1536,6 +1536,11 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 
 	-- Add spawn chances for combined arms squad
 	self.besiege.assault.groups.tac_swat_combined_arms = deep_clone(self.besiege.assault.groups.tac_swat_rifle)
+	-- Make them less likely to spawn compared to other groups
+	-- This is a little dirty but this saves me having to write the same thing 7 times, once for every difficulty
+	self.besiege.assault.groups.tac_swat_combined_arms[1] = self.besiege.assault.groups.tac_swat_combined_arms[1] * 0.3
+	self.besiege.assault.groups.tac_swat_combined_arms[2] = self.besiege.assault.groups.tac_swat_combined_arms[2] * 0.3
+	self.besiege.assault.groups.tac_swat_combined_arms[3] = self.besiege.assault.groups.tac_swat_combined_arms[3] * 0.3
 	
 	-- Reduce spawn rates a little
 	-- max # of simultaneous cops

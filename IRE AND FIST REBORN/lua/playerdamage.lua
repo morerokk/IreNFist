@@ -28,7 +28,7 @@ if InFmenu.settings.enablenewcopbehavior then
 			return playerdamage_damagemelee_orig(self, attack_data)
 		end
 
-		local current_interact_t = self._interact_params.timer - self._interact_expire_t
+		local current_interact_t = state._interact_params.timer - state._interact_expire_t
 		if current_interact_t < 0.5 then
 			return playerdamage_damagemelee_orig(self, attack_data)
 		end

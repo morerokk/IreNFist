@@ -471,66 +471,59 @@ end
 -- These fixes break in VR and I don't care about them enough to fix it there. For the time being, VR reloading acts like vanilla.
 
 -- based on custom weapon animation fixes
--- fabarm stf-12/mossberg 590 screwing with me
--- nobody screws with me binch
-DelayedCalls:Add("fuckyourreloadfunc", 0.25, function(self, params)
 
-	local startReloadEnterOrig = PlayerStandard._start_action_reload_enter
-	function PlayerStandard:_start_action_reload_enter(t)
-		if _G.IS_VR then
-			return startReloadEnterOrig(self, t)
-		end
-	
-		if self._equipped_unit:base():can_reload() then
-			local weapon = self._equipped_unit:base()
-			local tweak_data = weapon:weapon_tweak_data()
-			managers.player:send_message_now(Message.OnPlayerReload, nil, self._equipped_unit)
-			if not self:_can_ads_while_reloading() or InFmenu.settings.reloadbreaksads == true then
-				self:_interupt_action_steelsight(t)
-			end
-
-			-- clear previously tracked queued shell reload
-			self._equipped_unit:base()._queued_shell_loaded = nil
-
-			if not self.RUN_AND_RELOAD then
-				self:_interupt_action_running(t)
-			end
-			if self._equipped_unit:base():reload_enter_expire_t() and not tweak_data.animations.reload_shell_by_shell then
-				local speed_multiplier = self._equipped_unit:base():reload_speed_multiplier()
-				speed_multiplier = speed_multiplier * (tweak_data.timers.shotgun_reload_enter_mult or 1)
-				self._ext_camera:play_redirect(Idstring("reload_enter_" .. self._equipped_unit:base().name_id), speed_multiplier)
-				self._state_data.reload_enter_expire_t = t + self._equipped_unit:base():reload_enter_expire_t() / speed_multiplier
-				self._equipped_unit:base():tweak_data_anim_play("reload_enter", speed_multiplier)
-				--self:_stance_entered() -- update zoom
-				managers.menu:set_mouse_sensitivity(false)
-				if BeardLib.Utils:FindMod("Modern Sights") then
-					self:set_ads_objects(false)
-				end
-				return
-			elseif self._equipped_unit:base():reload_enter_expire_t() and tweak_data.animations.reload_shell_by_shell == true then
-				local speed_multiplier = self._equipped_unit:base():reload_speed_multiplier()
-				speed_multiplier = speed_multiplier * (tweak_data.timers.shotgun_reload_enter_mult or 1)
-				self._ext_camera:play_redirect(Idstring("reload_enter_" .. weapon:weapon_tweak_data().animations.reload_name_id), speed_multiplier)
-				self._state_data.reload_enter_expire_t = t + self._equipped_unit:base():reload_enter_expire_t() / speed_multiplier
-				self._equipped_unit:base():tweak_data_anim_play("reload_enter", speed_multiplier)
-				--self:_stance_entered() -- update zoom
-				managers.menu:set_mouse_sensitivity(false)
-				if BeardLib.Utils:FindMod("Modern Sights") then
-					self:set_ads_objects(false)
-				end
-				return
-			end
-			self:_stance_entered()
-			self:_start_action_reload(t)
-		end
+local startReloadEnterOrig = PlayerStandard._start_action_reload_enter
+function PlayerStandard:_start_action_reload_enter(t)
+	if _G.IS_VR then
+		return startReloadEnterOrig(self, t)
 	end
-end)
+
+	if self._equipped_unit:base():can_reload() then
+		local weapon = self._equipped_unit:base()
+		local tweak_data = weapon:weapon_tweak_data()
+		managers.player:send_message_now(Message.OnPlayerReload, nil, self._equipped_unit)
+		if not self:_can_ads_while_reloading() or InFmenu.settings.reloadbreaksads == true then
+			self:_interupt_action_steelsight(t)
+		end
+
+		-- clear previously tracked queued shell reload
+		self._equipped_unit:base()._queued_shell_loaded = nil
+
+		if not self.RUN_AND_RELOAD then
+			self:_interupt_action_running(t)
+		end
+		if self._equipped_unit:base():reload_enter_expire_t() and not tweak_data.animations.reload_shell_by_shell then
+			local speed_multiplier = self._equipped_unit:base():reload_speed_multiplier()
+			speed_multiplier = speed_multiplier * (tweak_data.timers.shotgun_reload_enter_mult or 1)
+			self._ext_camera:play_redirect(Idstring("reload_enter_" .. self._equipped_unit:base().name_id), speed_multiplier)
+			self._state_data.reload_enter_expire_t = t + self._equipped_unit:base():reload_enter_expire_t() / speed_multiplier
+			self._equipped_unit:base():tweak_data_anim_play("reload_enter", speed_multiplier)
+			--self:_stance_entered() -- update zoom
+			managers.menu:set_mouse_sensitivity(false)
+			if BeardLib.Utils:FindMod("Modern Sights") then
+				self:set_ads_objects(false)
+			end
+			return
+		elseif self._equipped_unit:base():reload_enter_expire_t() and tweak_data.animations.reload_shell_by_shell == true then
+			local speed_multiplier = self._equipped_unit:base():reload_speed_multiplier()
+			speed_multiplier = speed_multiplier * (tweak_data.timers.shotgun_reload_enter_mult or 1)
+			self._ext_camera:play_redirect(Idstring("reload_enter_" .. weapon:weapon_tweak_data().animations.reload_name_id), speed_multiplier)
+			self._state_data.reload_enter_expire_t = t + self._equipped_unit:base():reload_enter_expire_t() / speed_multiplier
+			self._equipped_unit:base():tweak_data_anim_play("reload_enter", speed_multiplier)
+			--self:_stance_entered() -- update zoom
+			managers.menu:set_mouse_sensitivity(false)
+			if BeardLib.Utils:FindMod("Modern Sights") then
+				self:set_ads_objects(false)
+			end
+			return
+		end
+		self:_stance_entered()
+		self:_start_action_reload(t)
+	end
+end
 
 -- add a post-reload wait, the mag updating and being allowed to shoot are no longer the exact same timer
 -- custom wpn animation fixes also implemented
-
--- delay because gm6 lynx will override this otherwise
-DelayedCalls:Add("fuckyourshitgm6", 0.5, function(self, params)
 
 local startActionReloadOrig = PlayerStandard._start_action_reload
 function PlayerStandard:_start_action_reload(t)
@@ -604,7 +597,6 @@ function PlayerStandard:_start_action_reload(t)
 		self._ext_network:send("reload_weapon", empty_reload, speed_multiplier)
 	end
 end
-end)
 
 -- read from newraycast base before reading from wpn_stats tweak data
 function PlayerStandard:_get_timer_reload_empty()

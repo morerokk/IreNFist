@@ -2,5 +2,7 @@
 	<diesel materials="units/pd2_dlc_hotline2/weapons/wpn_fps_smg_cobray_pts/wpn_fps_smg_cobray_body_lower" orientation_object="rp_wpn_fps_smg_cobray_body_lower" />
 	<graphics>
 		<object name="g_lower_lod0" enabled="true" />
+		<object name="g_lower_lod1" enabled="false" />
+		<object name="g_lower_lod2" enabled="false" />
 	</graphics>
 </dynamic_object>

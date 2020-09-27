@@ -6208,9 +6208,9 @@ function WeaponTweakData:_init_new_weapons(...)
 		-- And now you turn it into an AR again
 		-- RIFLE IS FINE
 
-		-- based_on should be used for sync purposes and such, not which weapon most closely resembles it visually.
+		-- based_on should be used for sync purposes and such, not which weapon most closely resembles it visually
 		-- This weapon oughta be based_on the AKM instead
-		-- Now I get to un-shotgunify it, and clients still see you rapid-firing a 60rnd mag GRIMM at the enemy a mile away
+		-- Now I have to unshotgun-ify it
 		self.spike.sdesc3_type = nil
 		self.spike.fulldesc_show_range = nil
 		self.spike.damage_near = nil
@@ -6220,8 +6220,9 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:inf_init("spike", "ar", {"medium"})
 		self.spike.sdesc1 = "caliber_r762x39"
 		self.spike.sdesc2 = "action_gaslong"
-		self:copy_timers("spike", "akm")
+		self:copy_timers("spike", "basset")
 		self.spike.stats.damage = 15 -- 75 damage. Somehow this isnt working in inf_init despite initializing the weapon properly
+		-- UPDATE: This is probably because the Spiker is based on the GRIMM and is internally still a shotgun using the ShotgunBase class
 
 		-- Commando/SG552 DMR
 		self:inf_init("sgs", "ar", {"ldmr"})
@@ -6229,10 +6230,11 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.sgs.sdesc2 = "action_gas"
 		self.sgs.stats.concealment = 20
 		self.sgs.CLIP_AMMO_MAX = 20
-		self:copy_timers("sgs", "new_m14")
+		self:copy_timers("sgs", "shepheard")
 
 		-- Full auto crosskill lebman
 		-- These fire .38 super which is comparable in terms of both velocity and energy, so the damage is still the same.
+		-- Hella recoil though
 		self:inf_init("lebman", "pistol", "medium")
 		self.lebman.sdesc1 = "caliber_p38sup"
 		self.lebman.sdesc2 = "action_shortrecoil"
@@ -6565,7 +6567,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:inf_init("g19", "pistol", nil)
 
 		-- These two are short descriptions shown in the inventory. The first one is the weapon's default caliber, second is its action.
-		-- You need to set at least one of these two for the description to work nicely.
+		-- You need to set at least one of these two for the description to work nicely, but preferably set both.
 		-- You can find these in renames.lua. If you can't find the one you need, add a new one there.
 		self.g19.sdesc1 = "caliber_p9x19"
 		self.g19.sdesc2 = "action_shortrecoil"
@@ -6573,6 +6575,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		-- Copy the reload timers and the stance mods. First argument is destination, second is source.
 		-- In many cases, the second argument should be whatever the weapon's based_on is (which weapon it'll appear as for others).
 		-- If not, take whatever weapon matches best.
+		-- Some reload timer tweaking may be necessary if you're copying them from a weapon that isn't the based_on (or if the animation was changed)
 		self:copy_timers("g19", "glock_17")
 	end
 	]]
@@ -6610,7 +6613,8 @@ function WeaponTweakData:_init_new_weapons(...)
 	-- LMG's only have medium and heavy.
 	-- self:inf_init("m249", "lmg", "medium")
 
-	-- GL's can be initialized but it hardly does anything, just copy the M79, MGL or China Lake or something
+	-- GL's can be initialized but it hardly does anything (is just for the blackmarket stats screen), just copy the M79, MGL or China Lake or something
+	-- Actual grenade damage is probably defined elsewhere in projectiletweakdata
 	-- self.my_gl.stats.damage = self.gre_m79.stats.damage
 
 	-- Miniguns and bows/xbows can be initialized too. But it won't do much for bows.
@@ -6634,7 +6638,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	]]
 	-- Don't directly check for WeaponLib or CAP's existence. There might be other mods which will supersede WeaponLib/CAP, but still offer the same function.
 	-- RotationCAP should probably be fine to use instead of Rotation, if you even need it.
-	-- Don't push elements to the attachment_points table, these functions might do something extra
+	-- Don't push elements to the attachment_points table, the SetupAttachmentPoint function might do something extra either now or in the future
 
 
 	-- Don't touch this, this should be the last line in the weapontweakdata init hook

@@ -10,7 +10,8 @@ end
 
 CopDamage = {}
 CopDamage._unit = {
-    movement = movement_yes
+    movement = movement_yes,
+	get_body_index = function() return "head" end
 }
 
 function CopDamage:mock_make_movable()
@@ -28,3 +29,5 @@ end
 function CopDamage:damage_melee()
 
 end
+
+

@@ -6555,6 +6555,21 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.hometown.concealment = 20
 	end
 
+	-- No weapon
+	-- Am I really adding support for this
+	
+	-- Secondary (based on glock)
+	if self.nothing then
+		self.nothing.sdesc3_type = nil
+		self.nothing.sdesc1 = "caliber_nothing"
+	end
+
+	-- Primary (based on amcar)
+	if self.nothing2 then
+		self.nothing2.stats.damage = 0
+		self.nothing2.sdesc1 = "caliber_nothing"
+	end
+
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)
 	-- Then do something like this for pistols:

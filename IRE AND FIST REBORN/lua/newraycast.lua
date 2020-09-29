@@ -389,7 +389,13 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 		end
 	end
 
+	-- LMG Sweep and Clear skill
 	if managers.player and managers.player:has_category_upgrade("weapon", "lmg_pierce_enemies") and self:is_category("lmg") then
+		self._can_shoot_through_enemy = true
+	end
+
+	-- Rogue piercing perk
+	if managers.player and managers.player:has_category_upgrade("weapon", "all_pierce_enemies") and not self:is_category("bow") and not self:is_category("crossbow") then
 		self._can_shoot_through_enemy = true
 	end
 

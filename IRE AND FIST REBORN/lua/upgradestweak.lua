@@ -29,6 +29,12 @@ else
 		-- berserker
 		self.skill_descs.wolverine.multipro2 = "50%"
 
+		-- Rogue dodge bonus #4
+		-- Definition made it into the game but the value didn't, time to fix that for rogue
+		self.values.player.passive_dodge_chance[4] = 0.55
+
+		-- Rogue general weapon penetration bonus
+		self.values.weapon.all_pierce_enemies = {true}
 
 		for a = 1, 21, 1 do
 			-- set 25% headshot bonus text to 0%
@@ -171,7 +177,16 @@ else
 				value = 1
 			}
 		}
-	
+
+		self.definitions.weapon_all_pierce_enemies = {
+			name_id = "menu_weapon_all_pierce_enemies",
+			category = "feature",
+			upgrade = {
+				value = 1,
+				upgrade = "all_pierce_enemies",
+				category = "weapon"
+			}
+		}	
 	
 		self.definitions.ugh_its_a_reload_bonus = {
 			category = "feature",

@@ -585,6 +585,8 @@ end
 	caliber_forcommies = "Fast-burning gas mix.",
 	caliber_forjournalists = "Long-burning gas mix.",
 
+	caliber_nothing = "",
+
 
 	action_gas = "Gas-operated action.",
 	action_gaslong = "Long-stroke gas-operated action.",
@@ -1000,7 +1002,7 @@ else
 		menu_fire_control_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
 		-- Body Expertise
 		menu_body_expertise_beta = "Sweep and Clear",
-		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.",
 
 
 
@@ -1015,9 +1017,14 @@ else
 		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.",
 		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.",
 
+		-- Rogue last perk tweaks
+		menu_deck4_9_desc = "All your weapons pierce through enemies.\n\nYour dodge chance is increased by ##10%##.\n\nIncreases weapon swap speed by ##80%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
 		-- Sicario cooldown reduction
 		menu_deck18_1_desc = "Unlocks and equips the throwable Smoke Bomb.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for ##10## seconds. While standing inside the smoke screen, you and any of your allies automatically avoid ##50%## of all bullets. Any enemies that stand in the smoke will see their accuracy reduced by ##50%##.\n\nAfter the smoke screen dissipates, the Smoke Bomb is on a cooldown for ##30## seconds, but killing enemies will reduce this cooldown by ##1## second.",
-
+		-- Hacker description fix
+		-- Hacker already has the dodge chances in vanilla, but it's unlisted
+		menu_deck21_5_desc = "Killing an enemy while the feedback effect is active will regenerate ##20## health.\n\nYour dodge chance is increased by ##15%##.",
+		menu_deck21_9_desc = "Crew members killing enemies while the feedback effect is active will regenerate ##10## health.\n\nYour dodge chance is increased by ##15%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
 
 
 
@@ -3829,7 +3836,6 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	-- Glock 19
 	bm_w_g19_desc = "A slightly smaller take on the Glock 17.",
-	-- Change description to an empty one because ammo pickup IS actually modified now
 	bm_wp_wpn_fps_upg_g19_ammo_9mm_p_desc = "Converts the weapon to a medium pistol. Less ammo pickup, more damage.",
 
 	-- USP Tactical
@@ -3838,6 +3844,10 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	-- Master 12 SMG
 	bm_w_master_desc = "A deadly machine pistol designed for close-quarters warfare. Don't get peeked.",
+
+	-- "No weapon" descriptions
+	bm_w_nothing_desc = "And you thought bringing a knife to a gunfight was bad.",
+	bm_w_nothing2_desc = "And you thought bringing a knife to a gunfight was bad.",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

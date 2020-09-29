@@ -99,6 +99,7 @@ end
 
 -- Disable autoaim
 -- Note: uncommenting this will also glitch out the game's accuracy stat counter, making it always 0% or always 100%.
+-- Note 2: this isn't even necessary because InF already handles the lack of autoaim
 --[[
 Hooks:PostHook(RaycastWeaponBase, "setup", "inf_removeautoaim", function(self, setup_data, damage_multiplier)
 	self._autoaim = false

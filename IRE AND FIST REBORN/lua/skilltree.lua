@@ -115,6 +115,15 @@ else
 			self.specializations[a][8].upgrades = {"passive_doctor_bag_interaction_speed_multiplier"}
 		end
 
+		-- Rogue
+		-- Give yet more dodge to the final perk, replace "pierce body armor" with "pierce enemies" since piercing body armor is redundant
+		self.specializations[4][9].upgrades = {
+			"player_passive_loot_drop_multiplier",
+			"weapon_all_pierce_enemies",
+			"weapon_passive_swap_speed_multiplier_1",
+			"player_passive_dodge_chance_4"
+		}
+
 		-- MASTERMIND
 		-- tier 1 cool under pressure
 		self.skills.stable_shot[1].upgrades = {"ugh_its_a_reload_bonus"}

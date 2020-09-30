@@ -26,6 +26,6 @@ if InFmenu.settings.enablenewcopbehavior then
 			return huskplayerdamage_damagemelee_orig(self, attack_data)
 		end
 
-		self._unit:movement():change_state("arrested")
+		self._unit:movement():on_cuffed()
 	end
 end

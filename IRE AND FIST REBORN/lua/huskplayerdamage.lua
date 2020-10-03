@@ -4,7 +4,9 @@ if InFmenu.settings.enablenewcopbehavior then
 	-- Cops put you in gay baby jail if they happen to catch you while you're interacting with something
 	local huskplayerdamage_damagemelee_orig = HuskPlayerDamage.damage_melee
     function HuskPlayerDamage:damage_melee(attack_data)
-        
+		
+		-- This function override *should* allow an InF host to dictate that a client should be cuffed, but I'm not sure.
+		-- Either way, this code should never run as a client.
 		if Network and Network:is_client() then
 			return
 		end

@@ -2345,8 +2345,18 @@ Hooks:PostHook(PlayerStandard, "_end_action_ducking", "slide_stopducking", funct
 	self:_cancel_slide()
 end)
 
+-- Workaround for when the player enables wallrunning mid-heist
+-- This basically copies the menu setting into a variable that will only update after the next loading screen
+local wallrunenabled = false
+if InFmenu.settings.enablewallrun then
+	wallrunenabled = true
+end
+
 Hooks:PostHook(PlayerStandard, "_update_movement", "slide_update", function(self, t, dt)
-	self:_check_wallkick(t, dt)
+	-- If I just checked the settings here directly, the game would crash when you re-enabled wallrunning mid-heist
+	if wallrunenabled then
+		self:_check_wallkick(t, dt)
+	end
 
 	if self._is_sliding then
 		if not self._state_data.in_air then
@@ -2460,136 +2470,137 @@ Hooks:PostHook(PlayerStandard, "_update_movement", "slide_update", function(self
 	end
 end)
 
-Hooks:PostHook(PlayerStandard, "_update_movement", "check_wallrun_update", function(self, t, dt)
-	local tapping_sprint = self._controller:get_input_pressed("run")
-	-- relaxed wallrun conditions to enable jump maps
-	-- allow wallrunning while bouncing from wall to wall without explicitly enabling 
-	local wallkick_off_cooldown = (self._is_wallkicking and ((t - self._last_wallkick_t) > 0.2))
-	local dmgkick_off_cooldown = ((t - self._last_movekick_enemy_t) > 1)
-	local holding_jump = self._controller:get_input_bool("jump")
-	if not holding_jump and self._state_data.in_air and (tapping_sprint or wallkick_off_cooldown) and dmgkick_off_cooldown and mvector3.normalize(self:_get_sampled_xy()) > 0 then
-		-- reduce cooldown if hitting a different wall
-		local lenghtmult = 1
-		if wallkick_off_cooldown then
-			lengthmult = 1.5
-		end
-		local nearest_ray1 = self:_get_nearest_wall_ray_dir(lenghtmult, nil, nil, 0)
-		local nearest_ray2 = self:_get_nearest_wall_ray_dir(lenghtmult, nil, nil, 40)
-		local nearest_ray = nearest_ray1 or nearest_ray2
-		if nearest_ray and self._last_wallrun_dir then
-			local last_angle = math.atan2(self._last_wallrun_dir.y, self._last_wallrun_dir.x)
-			local current_angle = math.atan2(nearest_ray.dir.y, nearest_ray.dir.x)
-			local angle_diff = 180 - math.abs(((last_angle - current_angle) % 360) - 180)
-			if angle_diff < 45 then
-				self._new_wallrun_delay = 1.0
-				if self._last_zdiff and self._last_zdiff < -0.25 then
-					-- prevent wallrun from catching on the wall you just tried to jump up
-					-- positive zdiff = downwards
-					self._new_wallrun_delay = self._new_wallrun_delay * 3
+if InFmenu.settings.enablewallrun then
+	Hooks:PostHook(PlayerStandard, "_update_movement", "check_wallrun_update", function(self, t, dt)
+		local tapping_sprint = self._controller:get_input_pressed("run")
+		-- relaxed wallrun conditions to enable jump maps
+		-- allow wallrunning while bouncing from wall to wall without explicitly enabling 
+		local wallkick_off_cooldown = (self._is_wallkicking and ((t - self._last_wallkick_t) > 0.2))
+		local dmgkick_off_cooldown = ((t - self._last_movekick_enemy_t) > 1)
+		local holding_jump = self._controller:get_input_bool("jump")
+		if not holding_jump and self._state_data.in_air and (tapping_sprint or wallkick_off_cooldown) and dmgkick_off_cooldown and mvector3.normalize(self:_get_sampled_xy()) > 0 then
+			-- reduce cooldown if hitting a different wall
+			local lenghtmult = 1
+			if wallkick_off_cooldown then
+				lengthmult = 1.5
+			end
+			local nearest_ray1 = self:_get_nearest_wall_ray_dir(lenghtmult, nil, nil, 0)
+			local nearest_ray2 = self:_get_nearest_wall_ray_dir(lenghtmult, nil, nil, 40)
+			local nearest_ray = nearest_ray1 or nearest_ray2
+			if nearest_ray and self._last_wallrun_dir then
+				local last_angle = math.atan2(self._last_wallrun_dir.y, self._last_wallrun_dir.x)
+				local current_angle = math.atan2(nearest_ray.dir.y, nearest_ray.dir.x)
+				local angle_diff = 180 - math.abs(((last_angle - current_angle) % 360) - 180)
+				if angle_diff < 45 then
+					self._new_wallrun_delay = 1.0
+					if self._last_zdiff and self._last_zdiff < -0.25 then
+						-- prevent wallrun from catching on the wall you just tried to jump up
+						-- positive zdiff = downwards
+						self._new_wallrun_delay = self._new_wallrun_delay * 3
+					end
+				else
+					self._new_wallrun_delay = 0
 				end
-			else
-				self._new_wallrun_delay = 0
+			end
+			local wallrun_on_cooldown = (t - self._last_wallrun_t) < (self._new_wallrun_delay or 0)
+			if not self._is_wallrunning and not wallrun_on_cooldown and self._unit:movement():is_above_stamina_threshold() and not self:on_ladder() and nearest_ray then
+				self._sprinting_speed = self:_get_modified_move_speed("run")
+				self._wallrun_speed = self._sprinting_speed * 1.5
+				self._wallrun_last_speed = self._wallrun_speed
+				self._wallrun_end_speed = self:_get_modified_move_speed("crouch")
+				self._wallrun_speed_factor = self._wallrun_speed/(self._tweak_data.movement.speed.RUNNING_MAX * 1.3)
+				self._is_wallrunning = true
+				self:_stance_entered()
+				if self._unit:mover() then
+					--log("starting wallrun")
+					local sampled_xy = mvector3.copy(self:_get_sampled_xy())
+					mvector3.normalize(sampled_xy)
+					mvector3.multiply(sampled_xy, self._wallrun_last_speed)
+					self._unit:mover():set_gravity(Vector3(0, 0, 0))
+					self._unit:mover():set_velocity(sampled_xy)
+				end
+				self._last_wallrun_dir = nearest_ray.dir
 			end
 		end
-		local wallrun_on_cooldown = (t - self._last_wallrun_t) < (self._new_wallrun_delay or 0)
-		if not self._is_wallrunning and not wallrun_on_cooldown and self._unit:movement():is_above_stamina_threshold() and not self:on_ladder() and nearest_ray then
-			self._sprinting_speed = self:_get_modified_move_speed("run")
-			self._wallrun_speed = self._sprinting_speed * 1.5
-			self._wallrun_last_speed = self._wallrun_speed
-			self._wallrun_end_speed = self:_get_modified_move_speed("crouch")
-			self._wallrun_speed_factor = self._wallrun_speed/(self._tweak_data.movement.speed.RUNNING_MAX * 1.3)
-			self._is_wallrunning = true
-			self:_stance_entered()
+
+		if self._is_wallrunning then
+			-- drain stamina, prevent regen
+			self._unit:movement():subtract_stamina(tweak_data.player.movement_state.stamina.STAMINA_DRAIN_RATE * dt * (self._wallrun_last_speed/self._sprinting_speed))
+				self._unit:movement():_restart_stamina_regen_timer()
+
+			-- keep pushing player along the wall
 			if self._unit:mover() then
-				--log("starting wallrun")
 				local sampled_xy = mvector3.copy(self:_get_sampled_xy())
 				mvector3.normalize(sampled_xy)
 				mvector3.multiply(sampled_xy, self._wallrun_last_speed)
-				self._unit:mover():set_gravity(Vector3(0, 0, 0))
 				self._unit:mover():set_velocity(sampled_xy)
 			end
-			self._last_wallrun_dir = nearest_ray.dir
-		end
-	end
 
-	if self._is_wallrunning then
-		-- drain stamina, prevent regen
-		self._unit:movement():subtract_stamina(tweak_data.player.movement_state.stamina.STAMINA_DRAIN_RATE * dt * (self._wallrun_last_speed/self._sprinting_speed))
-			self._unit:movement():_restart_stamina_regen_timer()
-
-		-- keep pushing player along the wall
-		if self._unit:mover() then
-			local sampled_xy = mvector3.copy(self:_get_sampled_xy())
-			mvector3.normalize(sampled_xy)
-			mvector3.multiply(sampled_xy, self._wallrun_last_speed)
-			self._unit:mover():set_velocity(sampled_xy)
-		end
-
-		-- slow wallrun down as it continues
-		self._wallrun_last_speed = math.clamp(self._wallrun_last_speed - ((300 + (self._wallrun_slow_add or 0)) * dt * self._wallrun_speed_factor^2), 0, 1500)
-		if self._wallrun_last_speed < self._wallrun_end_speed then
-			self:_cancel_wallrun(t, "fall", 3)
-			--log("ending wallrun: too slow")
-		end
---[[
-		if not self._state_data.in_air then
-			self:_cancel_wallrun(t)
-			--log("ending wallrun: hit ground")
-		end
---]]
-		if (t - self._last_wallrun_t > 0.1) then
-			self._last_wallrun_t = t
-			if self:on_ladder() or not self:_get_nearest_wall_ray_dir(1.5) then
-				self._end_wallrun_kick_dir = self:_get_end_wallrun_kick_dir()
-				self:_cancel_wallrun(t, fall)
-				--log("ending wallrun: failed to detect wall")
+			-- slow wallrun down as it continues
+			self._wallrun_last_speed = math.clamp(self._wallrun_last_speed - ((300 + (self._wallrun_slow_add or 0)) * dt * self._wallrun_speed_factor^2), 0, 1500)
+			if self._wallrun_last_speed < self._wallrun_end_speed then
+				self:_cancel_wallrun(t, "fall", 3)
+				--log("ending wallrun: too slow")
 			end
-		end
-	end
-end)
-
-
-function PlayerStandard:_check_action_jump(t, input)
-	local new_action = nil
-	local action_wanted = input.btn_jump_press
-
-	-- kick off with force if jumping from wallrun
-	if self._is_wallrunning and action_wanted then
---[[
-		--log("ending wallrun: jumped")
-		-- put wallhang on cooldown
---]]
-		self:_cancel_wallrun(t, "jump")
-	elseif action_wanted then
-		local action_forbidden = self._jump_t and t < self._jump_t + 0.55
-		action_forbidden = action_forbidden or self._unit:base():stats_screen_visible() or self._state_data.in_air or self:_interacting() or self:_on_zipline() or self:_does_deploying_limit_movement() or self:_is_using_bipod()
-
-		if not action_forbidden then
-			-- don't check for ducking anymore
-			if self._state_data.on_ladder then
-				self:_interupt_action_ladder(t)
+	--[[
+			if not self._state_data.in_air then
+				self:_cancel_wallrun(t)
+				--log("ending wallrun: hit ground")
 			end
-
-			local action_start_data = {}
-			local jump_vel_z = tweak_data.player.movement_state.standard.movement.jump_velocity.z
-			action_start_data.jump_vel_z = jump_vel_z
-
-			if self._move_dir then
-				local is_running = self._running and self._unit:movement():is_above_stamina_threshold() and t - self._start_running_t > 0.4
-				local jump_vel_xy = tweak_data.player.movement_state.standard.movement.jump_velocity.xy[is_running and "run" or "walk"]
-				action_start_data.jump_vel_xy = jump_vel_xy
-
-				if is_running then
-					self._unit:movement():subtract_stamina(tweak_data.player.movement_state.stamina.JUMP_STAMINA_DRAIN)
+	--]]
+			if (t - self._last_wallrun_t > 0.1) then
+				self._last_wallrun_t = t
+				if self:on_ladder() or not self:_get_nearest_wall_ray_dir(1.5) then
+					self._end_wallrun_kick_dir = self:_get_end_wallrun_kick_dir()
+					self:_cancel_wallrun(t, fall)
+					--log("ending wallrun: failed to detect wall")
 				end
 			end
-
-			--self._slide_has_played_shaker = nil -- play shaker again after landing
-			new_action = self:_start_action_jump(t, action_start_data)
 		end
-	end
+	end)
 
-	return new_action
+	function PlayerStandard:_check_action_jump(t, input)
+		local new_action = nil
+		local action_wanted = input.btn_jump_press
+	
+		-- kick off with force if jumping from wallrun
+		if self._is_wallrunning and action_wanted then
+	--[[
+			--log("ending wallrun: jumped")
+			-- put wallhang on cooldown
+	--]]
+			self:_cancel_wallrun(t, "jump")
+		elseif action_wanted then
+			local action_forbidden = self._jump_t and t < self._jump_t + 0.55
+			action_forbidden = action_forbidden or self._unit:base():stats_screen_visible() or self._state_data.in_air or self:_interacting() or self:_on_zipline() or self:_does_deploying_limit_movement() or self:_is_using_bipod()
+	
+			if not action_forbidden then
+				-- don't check for ducking anymore
+				if self._state_data.on_ladder then
+					self:_interupt_action_ladder(t)
+				end
+	
+				local action_start_data = {}
+				local jump_vel_z = tweak_data.player.movement_state.standard.movement.jump_velocity.z
+				action_start_data.jump_vel_z = jump_vel_z
+	
+				if self._move_dir then
+					local is_running = self._running and self._unit:movement():is_above_stamina_threshold() and t - self._start_running_t > 0.4
+					local jump_vel_xy = tweak_data.player.movement_state.standard.movement.jump_velocity.xy[is_running and "run" or "walk"]
+					action_start_data.jump_vel_xy = jump_vel_xy
+	
+					if is_running then
+						self._unit:movement():subtract_stamina(tweak_data.player.movement_state.stamina.JUMP_STAMINA_DRAIN)
+					end
+				end
+	
+				--self._slide_has_played_shaker = nil -- play shaker again after landing
+				new_action = self:_start_action_jump(t, action_start_data)
+			end
+		end
+	
+		return new_action
+	end
 end
 
 function PlayerStandard:_cancel_slide(timemult)
@@ -2957,153 +2968,155 @@ function PlayerStandard:_do_wallkick()
 	self._is_wallkicking = true
 end
 
-function PlayerStandard:_check_wallkick(t, dt)
-	if ((t - self._last_wallkick_t) > 1.0) or self._is_wallkicking then
-		local action_wanted = self._controller:get_input_bool("jump")
-		local ads_mult = 1
-		if self:in_steelsight() then
-			ads_mult = 0.25
-		end
-
-		if action_wanted and self._state_data.in_air then
-			local nearest_ray = self:_get_nearest_wall_ray_dir()
-
-			-- check if wall angle is too close to the last one to prevent chain-jumping across single flat walls
-			-- if you're gonna break a map you gotta at least earn it with some sick zig-zag hopping
-			if nearest_ray and self._last_wallkick_dir then
-				local last_angle = math.atan2(self._last_wallkick_dir.y, self._last_wallkick_dir.x)
-				local current_angle = math.atan2(nearest_ray.dir.y, nearest_ray.dir.x)
-				local angle_diff = 180 - math.abs(((last_angle - current_angle) % 360) - 180)
-				if angle_diff < 45 then
-					self._new_wallhang_delay = 0.75
-				else
-					self._new_wallhang_delay = 0
-				end
+if InFmenu.settings.enablewallrun then
+	function PlayerStandard:_check_wallkick(t, dt)
+		if ((t - self._last_wallkick_t) > 1.0) or self._is_wallkicking then
+			local action_wanted = self._controller:get_input_bool("jump")
+			local ads_mult = 1
+			if self:in_steelsight() then
+				ads_mult = 0.25
 			end
-			local wallkick_on_cooldown = (self._is_wallkicking and (t - self._last_wallkick_t) < 0.25 + (self._new_wallhang_delay or 0))
 
-			if not self._wallkick_hold_start_t then
-				-- check if holding jump for long enough to cling (don't have to be touching wall yet, just prevent cases of clinging to things you're trying to jump on top of)
-				self._wallkick_hold_start_t = t
-			elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 6) then
-				-- slide down at full speed w/o ADS slowdown
-				if self._unit:mover() then
-					self._unit:mover():set_gravity(Vector3(0, 0, -982))
-				end
-				self._wallkick_is_clinging = nil
-			elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 4) then
-				-- slide down at full speed w/ADS slowdown
-				if self._unit:mover() then
-					self._unit:mover():set_gravity(Vector3(0, 0, -550 * ads_mult))
-				end
-			elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 2) then
-				-- slide down at full speed w/ADS slowdown
-				if self._unit:mover() then
-					self._unit:mover():set_gravity(Vector3(0, 0, -300 * ads_mult))
-				end
-			elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 0.3) then
-				-- slide down wall very slowly while clinging
-				if self._unit:mover() then
-					self._unit:mover():set_gravity(Vector3(0, 0, -150 * ads_mult))
-				end
-			elseif ((t - self._wallkick_hold_start_t) > 0.15 or self._is_wallrunning) and not self._wallkick_is_clinging then
-				if not wallkick_on_cooldown and nearest_ray and nearest_ray.raydata and nearest_ray.raydata.unit and not managers.enemy:is_enemy(nearest_ray.raydata.unit) and not nearest_ray.raydata.unit:in_slot(8) then
-					-- cling to wall
-					-- cancel out remaining vertical velocity since we're literally disabling the player's gravity
-					if self._unit:mover() then
-						self._unit:mover():set_gravity(Vector3(0, 0, 0))
-						self._unit:mover():set_velocity(Vector3(0, 0, 0))
+			if action_wanted and self._state_data.in_air then
+				local nearest_ray = self:_get_nearest_wall_ray_dir()
+
+				-- check if wall angle is too close to the last one to prevent chain-jumping across single flat walls
+				-- if you're gonna break a map you gotta at least earn it with some sick zig-zag hopping
+				if nearest_ray and self._last_wallkick_dir then
+					local last_angle = math.atan2(self._last_wallkick_dir.y, self._last_wallkick_dir.x)
+					local current_angle = math.atan2(nearest_ray.dir.y, nearest_ray.dir.x)
+					local angle_diff = 180 - math.abs(((last_angle - current_angle) % 360) - 180)
+					if angle_diff < 45 then
+						self._new_wallhang_delay = 0.75
+					else
+						self._new_wallhang_delay = 0
 					end
-					mvector3.multiply(self._last_velocity_xy, 0.05)
-					mvector3.set_z(self._last_velocity_xy, 0)
-					self._wallkick_is_clinging = true
+				end
+				local wallkick_on_cooldown = (self._is_wallkicking and (t - self._last_wallkick_t) < 0.25 + (self._new_wallhang_delay or 0))
 
-					-- set last wall dir
-					self._last_wallkick_dir = nearest_ray.dir
+				if not self._wallkick_hold_start_t then
+					-- check if holding jump for long enough to cling (don't have to be touching wall yet, just prevent cases of clinging to things you're trying to jump on top of)
+					self._wallkick_hold_start_t = t
+				elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 6) then
+					-- slide down at full speed w/o ADS slowdown
+					if self._unit:mover() then
+						self._unit:mover():set_gravity(Vector3(0, 0, -982))
+					end
+					self._wallkick_is_clinging = nil
+				elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 4) then
+					-- slide down at full speed w/ADS slowdown
+					if self._unit:mover() then
+						self._unit:mover():set_gravity(Vector3(0, 0, -550 * ads_mult))
+					end
+				elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 2) then
+					-- slide down at full speed w/ADS slowdown
+					if self._unit:mover() then
+						self._unit:mover():set_gravity(Vector3(0, 0, -300 * ads_mult))
+					end
+				elseif self._wallkick_is_clinging and ((t - self._wallkick_hold_start_t) > 0.3) then
+					-- slide down wall very slowly while clinging
+					if self._unit:mover() then
+						self._unit:mover():set_gravity(Vector3(0, 0, -150 * ads_mult))
+					end
+				elseif ((t - self._wallkick_hold_start_t) > 0.15 or self._is_wallrunning) and not self._wallkick_is_clinging then
+					if not wallkick_on_cooldown and nearest_ray and nearest_ray.raydata and nearest_ray.raydata.unit and not managers.enemy:is_enemy(nearest_ray.raydata.unit) and not nearest_ray.raydata.unit:in_slot(8) then
+						-- cling to wall
+						-- cancel out remaining vertical velocity since we're literally disabling the player's gravity
+						if self._unit:mover() then
+							self._unit:mover():set_gravity(Vector3(0, 0, 0))
+							self._unit:mover():set_velocity(Vector3(0, 0, 0))
+						end
+						mvector3.multiply(self._last_velocity_xy, 0.05)
+						mvector3.set_z(self._last_velocity_xy, 0)
+						self._wallkick_is_clinging = true
+
+						-- set last wall dir
+						self._last_wallkick_dir = nearest_ray.dir
+					end
 				end
 			end
-		end
 
-		-- end wallhang if not holding jump or has landed
-		if not action_wanted or not self._state_data.in_air then
-			if self._wallkick_is_clinging and self._state_data.in_air and self._unit:movement():is_above_stamina_threshold() then
---[[
-				-- ending wallhang by wallkicking
-				-- kick off of wall in the direction you're facing
-				local fast_kickoff = false
-				local final_vel = Vector3(0, 0, 0)
-				local nearest_wall_ray = self:_get_nearest_wall_ray_dir(2) -- extra long or the player can end up floating instead of wallkicking because the nearest wall isn't detected
-				local speed = self:_get_modified_move_speed("run")
-				local kick_dir = Vector3(0, speed * 1.50, 0)
-				local rotation = self._ext_camera:rotation()
-				local rotation_flat = self._ext_camera:rotation()
-				mvector3.set_x(rotation_flat, 0)
-				mvector3.set_y(rotation_flat, 0)
+			-- end wallhang if not holding jump or has landed
+			if not action_wanted or not self._state_data.in_air then
+				if self._wallkick_is_clinging and self._state_data.in_air and self._unit:movement():is_above_stamina_threshold() then
+	--[[
+					-- ending wallhang by wallkicking
+					-- kick off of wall in the direction you're facing
+					local fast_kickoff = false
+					local final_vel = Vector3(0, 0, 0)
+					local nearest_wall_ray = self:_get_nearest_wall_ray_dir(2) -- extra long or the player can end up floating instead of wallkicking because the nearest wall isn't detected
+					local speed = self:_get_modified_move_speed("run")
+					local kick_dir = Vector3(0, speed * 1.50, 0)
+					local rotation = self._ext_camera:rotation()
+					local rotation_flat = self._ext_camera:rotation()
+					mvector3.set_x(rotation_flat, 0)
+					mvector3.set_y(rotation_flat, 0)
 
-				-- i have no idea how to read from rotations so you get this instead
-				-- actual facing with vertical component
-				local facing_vec = Vector3(0, 1, 0)
-				mvector3.rotate_with(facing_vec, rotation)
-				-- same xy direction, no elevation
-				local forward_vec = Vector3(0, 1, 0)
-				mvector3.rotate_with(forward_vec, rotation_flat)
-				-- get difference to determine if player is facing over or under horizon
-				--log(forward_vec.z - facing_vec.z)
-				if (forward_vec.z - facing_vec.z) > 0 then
-					fast_kickoff = true
-				end
+					-- i have no idea how to read from rotations so you get this instead
+					-- actual facing with vertical component
+					local facing_vec = Vector3(0, 1, 0)
+					mvector3.rotate_with(facing_vec, rotation)
+					-- same xy direction, no elevation
+					local forward_vec = Vector3(0, 1, 0)
+					mvector3.rotate_with(forward_vec, rotation_flat)
+					-- get difference to determine if player is facing over or under horizon
+					--log(forward_vec.z - facing_vec.z)
+					if (forward_vec.z - facing_vec.z) > 0 then
+						fast_kickoff = true
+					end
 
-				if nearest_wall_ray and nearest_wall_ray.dir then
-					if fast_kickoff then
-						-- kick in direction player is facing
-						mvector3.multiply(kick_dir, 1.50)
-						mvector3.rotate_with(kick_dir, rotation)
-						mvector3.add(final_vel, kick_dir)
+					if nearest_wall_ray and nearest_wall_ray.dir then
+						if fast_kickoff then
+							-- kick in direction player is facing
+							mvector3.multiply(kick_dir, 1.50)
+							mvector3.rotate_with(kick_dir, rotation)
+							mvector3.add(final_vel, kick_dir)
 
-						-- vertical boost so you don't automatically fly into the ground regardless of trajectory
-						mvector3.add(final_vel, Vector3(0, 0, 200))
+							-- vertical boost so you don't automatically fly into the ground regardless of trajectory
+							mvector3.add(final_vel, Vector3(0, 0, 200))
+
+							if self._unit:mover() then
+								self._unit:mover():set_velocity(final_vel)
+								self._unit:mover():set_gravity(Vector3(0, 0, -982))
+							end
+						else
+							-- only apply horizontal direction
+							mvector3.rotate_with(kick_dir, rotation_flat)
+							mvector3.add(final_vel, kick_dir)
+
+							-- scale jump value down if aiming too close to nearest wall
+							local jump_amount = tweak_data.player.movement_state.standard.movement.jump_velocity.z
+							local kick_angle = math.atan2(kick_dir.y, kick_dir.x)
+							local wall_angle = math.atan2(nearest_wall_ray.dir.y, nearest_wall_ray.dir.x)
+							-- the math continues to drive me up the wall
+							local angle_diff = 180 - math.abs(((kick_angle - wall_angle) % 360) - 180)
+							if angle_diff < 120 then
+								jump_amount = (jump_amount*angle_diff)/120
+							end
+							mvector3.add(final_vel, Vector3(0, 0, jump_amount * 0.50))
+						end
 
 						if self._unit:mover() then
 							self._unit:mover():set_velocity(final_vel)
 							self._unit:mover():set_gravity(Vector3(0, 0, -982))
 						end
-					else
-						-- only apply horizontal direction
-						mvector3.rotate_with(kick_dir, rotation_flat)
-						mvector3.add(final_vel, kick_dir)
-
-						-- scale jump value down if aiming too close to nearest wall
-						local jump_amount = tweak_data.player.movement_state.standard.movement.jump_velocity.z
-						local kick_angle = math.atan2(kick_dir.y, kick_dir.x)
-						local wall_angle = math.atan2(nearest_wall_ray.dir.y, nearest_wall_ray.dir.x)
-						-- the math continues to drive me up the wall
-						local angle_diff = 180 - math.abs(((kick_angle - wall_angle) % 360) - 180)
-						if angle_diff < 120 then
-							jump_amount = (jump_amount*angle_diff)/120
-						end
-						mvector3.add(final_vel, Vector3(0, 0, jump_amount * 0.50))
 					end
+	--]]
+					self:_do_wallkick()
 
-					if self._unit:mover() then
-						self._unit:mover():set_velocity(final_vel)
+					-- put wallrun on cooldown
+					self._last_wallrun_t = t
+					self._is_wallkicking = true
+					self._wallkick_is_clinging = nil
+					self._wallkick_hold_start_t = nil
+					self._last_wallkick_t = t
+				else
+					-- ending wallhang by landing
+					self._wallkick_hold_start_t = nil
+					self._wallkick_is_clinging = nil
+					if self._unit:mover() and not self._state_data.on_ladder and not self._is_wallrunning then -- zipline don't have no mover lmao
 						self._unit:mover():set_gravity(Vector3(0, 0, -982))
 					end
-				end
---]]
-				self:_do_wallkick()
-
-				-- put wallrun on cooldown
-				self._last_wallrun_t = t
-				self._is_wallkicking = true
-				self._wallkick_is_clinging = nil
-				self._wallkick_hold_start_t = nil
-				self._last_wallkick_t = t
-			else
-				-- ending wallhang by landing
-				self._wallkick_hold_start_t = nil
-				self._wallkick_is_clinging = nil
-				if self._unit:mover() and not self._state_data.on_ladder and not self._is_wallrunning then -- zipline don't have no mover lmao
-					self._unit:mover():set_gravity(Vector3(0, 0, -982))
 				end
 			end
 		end

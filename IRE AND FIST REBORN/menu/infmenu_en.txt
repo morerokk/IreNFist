@@ -44,6 +44,8 @@
 	"inf_txt_wpnname_2": "2: Apply IREnFIST text",
 
 	"inf_slide_header": "--- ADVANCED MOVEMENT OPTIONS ---",
+	"inf_enablewallrun": "Enable Wallrunning",
+	"inf_enablewallrun_desc": "Enables/disables wallrunning. Required for the wallrun options to do anything.",
 	"inf_runkick": "Sprint Kicks",
 	"inf_runkick_desc": "Determines if kicking from a non-jumping sprint is allowed. Disable if you're tired of being pinballed in tight spaces or something. Setting is applied immediately. DEFAULT: OFF",
 	"inf_kickyeet": "Kick Ragdoll Launch Multiplier",
@@ -74,7 +76,8 @@
 
 
 
-
+	"inf_clearnewdrops": "Clear New Drops",
+	"inf_clearnewdrops_desc": "If enabled, this forcibly clears the new item notification in your inventory. Also logs the cleared weapon mods to your BLT log. Useful for stuck new parts.",
 	"inf_txt_wpnname_3": "3: Real names",
 	"inf_txt_partname": "Weapon Mod Names",
 	"inf_txt_partname_desc": "Determines which set of part names to use. Use 'no change' for more compatibility with other text mods. DEFAULT: 2",

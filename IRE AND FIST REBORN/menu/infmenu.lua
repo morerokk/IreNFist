@@ -15,6 +15,11 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		-- do nothing
 	end
 
+	MenuCallbackHandler.infcb_enablewallrun = function(this, item)
+		InFmenu.settings[item:name()] = item:value() == 'on'
+		InFmenu:Save()
+	end
+
 	MenuCallbackHandler.infcb_runkick = function(this, item)
 		InFmenu.settings[item:name()] = item:value() == 'on'
 		InFmenu:Save()
@@ -74,6 +79,11 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu:Save()
 	end
 	MenuCallbackHandler.infcb_ene_copmiss = function(this, item)
+		InFmenu.settings[item:name()] = item:value() == 'on'
+		InFmenu:Save()
+	end
+
+	MenuCallbackHandler.infcb_clearnewdrops = function(this, item)
 		InFmenu.settings[item:name()] = item:value() == 'on'
 		InFmenu:Save()
 	end

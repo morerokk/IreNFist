@@ -3771,7 +3771,7 @@ function WeaponTweakData:_init_new_weapons(...)
 
 
 
-
+	-- M79
 	self.gre_m79.sdesc1 = "caliber_g40mm"
 	self.gre_m79.sdesc2 = "action_breakopen"
 	self.gre_m79.stats.concealment = 20
@@ -3783,6 +3783,13 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.gre_m79.timers.reload_empty = 2.40
 	self.gre_m79.timers.reload_empty_end = 0.80 -- 3.20
 
+	-- Secondary M79
+	self:copy_sdescs("gre_m79secondary", "gre_m79")
+	self.gre_m79secondary.stats.concealment = 20
+	self.gre_m79secondary.stats.damage = 60.0
+	self.gre_m79secondary.AMMO_PICKUP = {1000, 20}
+	self.gre_m79secondary.AMMO_MAX = 4
+	self:copy_timers("gre_m79secondary", "gre_m79")
 
 	-- m32
 	self.m32.sdesc1 = "caliber_g40mm"
@@ -3816,7 +3823,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.slap.sdesc2 = "action_breakopen"
 	self.slap.stats.damage = 60.0
 	--self.slap.stats.concealment = 22
-	self.slap.AMMO_MAX = 3
+	self.slap.AMMO_MAX = 4 -- Only way to properly get the china lake cool guy reload to work for now was to raise its max ammo, so this one now also needs a raise.
 	self.slap.AMMO_PICKUP = {1338, 15}
 	self.slap.reload_speed_mult = 1.00
 	self.slap.timers.reload_not_empty = 2.30

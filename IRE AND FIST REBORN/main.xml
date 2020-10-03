@@ -86,6 +86,9 @@
         <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m37primary"/>
 		<unit path="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary"/>
 
+		<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/gre_m79secondary"/>
+		<unit path="units/primarysmg/weapons/wpn_fps_gre_m79secondary/wpn_fps_gre_m79secondary"/>
+
 		<unit_obj path="units/infparts/inf_bipod_part/inf_bipod_part"/>
 
 		<unit_obj path="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg"/>
@@ -597,7 +600,31 @@
 
 
 
+	<WeaponNew unlock_level="46">
+		<weapon id="gre_m79secondary" based_on="gre_m79" texture_bundle_folder="primarysmg" weapon_hold="gre_m79" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="gre_m79"/>
+		</weapon>
+        <factory id="wpn_fps_gre_m79secondary" unit="units/primarysmg/weapons/wpn_fps_gre_m79secondary/wpn_fps_gre_m79secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_gre_m79_barrel"/>
+				<value_node value="wpn_fps_gre_m79_barrelcatch"/>
+				<value_node value="wpn_fps_gre_m79_grenade"/>
+				<value_node value="wpn_fps_gre_m79_stock"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_gre_m79_barrel"/>
+				<value_node value="wpn_fps_gre_m79_barrel_short"/>
+				<value_node value="wpn_fps_gre_m79_barrelcatch"/>
 
+				<value_node value="wpn_fps_gre_m79_stock"/>
+				<value_node value="wpn_fps_gre_m79_stock_short"/>
+				<value_node value="wpn_fps_gre_m79_sight_up"/>
+				<value_node value="wpn_fps_gre_m79_grenade"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
 
 
 	<WeaponNew unlock_level="38">

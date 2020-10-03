@@ -238,6 +238,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_x_chinchilla = "Akimbo Castigos",
 
 		bm_w_gre_m79 = "GL40",
+		bm_w_gre_m79secondary = "GL40",
 		bm_w_slap = "GL320",
 		bm_w_m32 = "Seraph MGL",
 		bm_w_china = "China Lake Launcher",
@@ -911,7 +912,7 @@ if IreNFist.mod_compatibility.sso then
 		menu_fast_fire_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
 		-- Body Expertise
 		menu_body_expertise_beta = "Sweep and Clear",
-		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's## and ##Miniguns##.",
 
 		menu_dance_instructor = "Gun Kata",
 		menu_dance_instructor_desc = "BASIC: ##$basic##\nHaving a pistol equipped as your secondary increases all weapon switch speed by ##10%##.\n\nACE: ##$pro##\nThe weapon switch speed bonus is increased to ##20%##.",
@@ -1002,7 +1003,7 @@ else
 		menu_fire_control_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
 		-- Body Expertise
 		menu_body_expertise_beta = "Sweep and Clear",
-		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's##.",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's## and ##Miniguns##.",
 
 
 
@@ -2397,6 +2398,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	-- GL40
 	bm_w_gre_m79_desc = "Thump Gun. Pro Pipe. Noob Tube. Blooper. The things we love have many names. Many sizes too, if you feel like sawing it down.",
+	bm_w_gre_m79secondary_desc = "Thump Gun. Pro Pipe. Noob Tube. Blooper. The things we love have many names. Many sizes too, if you feel like sawing it down.",
 
 
 	-- COMPACT 40MM

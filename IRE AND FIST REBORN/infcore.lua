@@ -114,6 +114,7 @@ if not InFmenu then
         disable_autoreload = true,
         goldeneye = 1,
         changeitemprices = true,
+        clearnewdrops = true,
 
         rainbowassault = true,
         skulldozersahoy = 2,
@@ -125,6 +126,7 @@ if not InFmenu then
         enablenewassaults = true,
         enablenewcopbehavior = true,
 
+        enablewallrun = true,
         runkick = false,
         kickyeet = 1,
         slidestealth = 2,

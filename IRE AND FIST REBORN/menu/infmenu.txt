@@ -15,6 +15,15 @@
 		},
 		{
 			"type" : "toggle",
+			"id" : "enablewallrun",
+			"title" : "inf_enablewallrun",
+			"description" : "inf_enablewallrun_desc",
+			"callback" : "infcb_enablewallrun",
+			"value" : "enablewallrun",
+			"default_value" : true
+		},
+		{
+			"type" : "toggle",
 			"id" : "runkick",
 			"title" : "inf_runkick",
 			"description" : "inf_runkick_desc",
@@ -121,6 +130,15 @@
 			"title" : "inf_weapon_header",
 			"description" : "inf_blank",
 			"callback" : "infcb_donothing"
+		},
+		{
+			"type" : "toggle",
+			"id" : "clearnewdrops",
+			"title" : "inf_clearnewdrops",
+			"description" : "inf_clearnewdrops_desc",
+			"callback" : "infcb_clearnewdrops",
+			"value" : "clearnewdrops",
+			"default_value" : true
 		},
 		{
 			"type" : "toggle",

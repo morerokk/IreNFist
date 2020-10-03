@@ -390,7 +390,7 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 	end
 
 	-- LMG Sweep and Clear skill
-	if managers.player and managers.player:has_category_upgrade("weapon", "lmg_pierce_enemies") and self:is_category("lmg") then
+	if managers.player and managers.player:has_category_upgrade("weapon", "lmg_pierce_enemies") and (self:is_category("lmg") or self:is_category("minigun")) then
 		self._can_shoot_through_enemy = true
 	end
 

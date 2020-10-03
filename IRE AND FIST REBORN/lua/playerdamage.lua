@@ -12,7 +12,8 @@ if InFmenu.settings.enablenewcopbehavior then
 	local playerdamage_damagemelee_orig = PlayerDamage.damage_melee
 	function PlayerDamage:damage_melee(attack_data)
 
-		if Network and Network:is_client() then
+		-- Check if this is our own player unit
+		if self._unit ~= managers.player:player_unit() then
 			return
 		end
 

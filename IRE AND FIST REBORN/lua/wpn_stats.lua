@@ -3789,7 +3789,12 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.gre_m79secondary.stats.damage = 60.0
 	self.gre_m79secondary.AMMO_PICKUP = {1000, 20}
 	self.gre_m79secondary.AMMO_MAX = 4
+	self.gre_m79secondary.CLIP_AMMO_MAX = 1
+	self.gre_m79secondary.chamber = 0
 	self:copy_timers("gre_m79secondary", "gre_m79")
+	-- Hacky workaround to sync this as a China Puff/China Lake
+	-- We can't fully base this weapon on the china lake in main.xml because that causes crashes and other issues
+	self.gre_m79secondary.based_on = "china"
 
 	-- m32
 	self.m32.sdesc1 = "caliber_g40mm"

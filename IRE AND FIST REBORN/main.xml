@@ -599,7 +599,7 @@
 
 
 
-
+	<!-- Secondary M79 (stats-wise a clone of the M320). I wanted to base this on the china lake for better sync but that crashes the game -->
 	<WeaponNew unlock_level="46">
 		<weapon id="gre_m79secondary" based_on="gre_m79" texture_bundle_folder="primarysmg" weapon_hold="gre_m79" global_value="infmod">
 			<use_data selection_index="1"/>

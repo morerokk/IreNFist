@@ -3787,7 +3787,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:copy_sdescs("gre_m79secondary", "gre_m79")
 	self.gre_m79secondary.stats.concealment = 20
 	self.gre_m79secondary.stats.damage = 60.0
-	self.gre_m79secondary.AMMO_PICKUP = {1000, 20}
+	self.gre_m79secondary.AMMO_PICKUP = {1338, 15}
 	self.gre_m79secondary.AMMO_MAX = 4
 	self.gre_m79secondary.CLIP_AMMO_MAX = 1
 	self.gre_m79secondary.chamber = 0

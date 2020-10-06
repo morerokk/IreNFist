@@ -47,6 +47,7 @@ function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force, use_last
 						-- TODO: Test if this was fixed and remove this whole function override
 						if not spawn_task or not spawn_task.group or not spawn_task.group.objective or not spawn_task.group.objective.element then
 							log("[COPSPAWNDEBUG] Fatal error: a cop spawned without an objective set!")
+							spawned_unit:set_slot(0)
 							return true
 						end
 					
@@ -165,109 +166,4 @@ function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force, use_last
 			self._groups[spawn_task.group.id] = nil
 		end
 	end
-end
-
-function GroupAIStateBesiege:_upd_reenforce_tasks()
-	local reenforce_tasks = self._task_data.reenforce.tasks
-	local t = self._t
-	local i = #reenforce_tasks
-
-	while i > 0 do
-		local task_data = reenforce_tasks[i]
-		local force_settings = task_data.target_area.factors.force
-		local force_required = force_settings and force_settings.force
-
-		if force_required then
-			local force_occupied = 0
-
-			for group_id, group in pairs(self._groups) do
-				if (group.objective.target_area or group.objective.area) == task_data.target_area and group.objective.type == "reenforce_area" then
-					force_occupied = force_occupied + (group.has_spawned and group.size or group.initial_size)
-				end
-			end
-
-			local undershot = force_required - force_occupied
-
-			if undershot > 0 and not self._task_data.regroup.active and self._task_data.assault.phase ~= "fade" and self._task_data.reenforce.next_dispatch_t < t and self:is_area_safe(task_data.target_area) then
-				local used_event = nil
-
-				if task_data.use_spawn_event then
-					task_data.use_spawn_event = false
-
-					if self:_try_use_task_spawn_event(t, task_data.target_area, "reenforce") then
-						used_event = true
-					end
-				end
-
-				local used_group, spawning_groups = nil
-
-				if not used_event then
-					if next(self._spawning_groups) then
-						spawning_groups = true
-					else
-						local spawn_group, spawn_group_type = self:_find_spawn_group_near_area(task_data.target_area, self._tweak_data.reenforce.groups, nil, nil, nil)
-
-						if spawn_group then
-							local grp_objective = {
-								attitude = "avoid",
-								scan = true,
-								pose = "stand",
-								type = "reenforce_area",
-								stance = "hos",
-								area = spawn_group.area,
-								target_area = task_data.target_area
-							}
-
-							self:_spawn_in_group(spawn_group, spawn_group_type, grp_objective)
-
-							used_group = true
-						end
-					end
-				end
-
-				if used_event or used_group then
-					self._task_data.reenforce.next_dispatch_t = t + self:_get_difficulty_dependent_value(self._tweak_data.reenforce.interval)
-				end
-			elseif undershot < 0 then
-				local force_defending = 0
-
-				for group_id, group in pairs(self._groups) do
-					if group.objective.area == task_data.target_area and group.objective.type == "reenforce_area" then
-						force_defending = force_defending + (group.has_spawned and group.size or group.initial_size)
-					end
-				end
-
-				local overshot = force_defending - force_required
-
-				if overshot > 0 then
-					local closest_group, closest_group_size = nil
-
-					for group_id, group in pairs(self._groups) do
-						if group.has_spawned and (group.objective.target_area or group.objective.area) == task_data.target_area and group.objective.type == "reenforce_area" and (not closest_group_size or closest_group_size < group.size) and group.size <= overshot then
-							closest_group = group
-							closest_group_size = group.size
-						end
-					end
-
-					if closest_group then
-						self:_assign_group_to_retire(closest_group)
-					end
-				end
-			end
-		else
-			for group_id, group in pairs(self._groups) do
-				if group.has_spawned and (group.objective.target_area or group.objective.area) == task_data.target_area and group.objective.type == "reenforce_area" then
-					self:_assign_group_to_retire(group)
-				end
-			end
-
-			reenforce_tasks[i] = reenforce_tasks[#reenforce_tasks]
-
-			table.remove(reenforce_tasks)
-		end
-
-		i = i - 1
-	end
-
-	self:_assign_enemy_groups_to_reenforce()
 end

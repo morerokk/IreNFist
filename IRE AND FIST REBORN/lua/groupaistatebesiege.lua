@@ -48,6 +48,21 @@ function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force, use_last
 						if not spawn_task or not spawn_task.group or not spawn_task.group.objective or not spawn_task.group.objective.element then
 							log("[COPSPAWNDEBUG] Fatal error: a cop spawned without an objective set!")
 							spawned_unit:set_slot(0)
+							
+							log("Start nil checks:")
+							if not spawn_task then
+								log("spawn_task is nil")
+							end
+							if not spawn_task or not spawn_task.group then
+								log("spawn_task.group is nil")
+							end
+							if not spawn_task or not spawn_task.group or not spawn_task.group.objective then
+								log("spawn_task.group.objective is nil")
+							end
+							if not spawn_task or not spawn_task.group or not spawn_task.group.objective or not spawn_task.group.objective.element then
+								log("spawn_task.group.objective.element is nil")
+							end
+							log("End nil checks.")
 							return true
 						end
 					

@@ -5972,7 +5972,11 @@ if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods Volume 2") and self.part
 		concealment = 3
 	}
 
+	-- R700 wood
 	self.parts.wpn_fps_snp_r700_s_redwood.stats = deep_clone(nostats)
+
+	-- Uzi barrel
+	self.parts.wpn_fps_smg_uzi_b_longue.stats = deep_clone(barrel_m2)
 end
 
 if BeardLib.Utils:ModLoaded("Zenith 10mm") then

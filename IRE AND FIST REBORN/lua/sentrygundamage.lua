@@ -39,7 +39,7 @@ Hooks:Add("NetworkReceivedData", "NetworkReceivedData_InF_SwatTurretDied", funct
             end
 
             -- Probably safe to call without parameters, the game does it on load() too
-            turret_unit:character_damage():die()
+            unit:character_damage():die()
             break
         end
     end

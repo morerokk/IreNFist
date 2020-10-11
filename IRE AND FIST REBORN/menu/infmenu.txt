@@ -294,7 +294,7 @@
 			"description" : "inf_thinkfaster_throughput_desc",
 			"callback" : "infcb_thinkfaster_throughput",
 			"value" : "thinkfaster_throughput",
-			"default_value" : 600,
+			"default_value" : 400,
 			"min" : 100,
 			"max" : 5000,
 			"step" : 10

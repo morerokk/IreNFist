@@ -279,6 +279,27 @@
 			"default_value" : true
 		},
 		{
+			"type" : "toggle",
+			"id" : "thinkfaster",
+			"title" : "inf_thinkfaster",
+			"description" : "inf_thinkfaster_desc",
+			"callback" : "infcb_thinkfaster",
+			"value" : "thinkfaster",
+			"default_value" : true
+		},
+		{
+			"type" : "slider",
+			"id" : "thinkfaster_throughput",
+			"title" : "inf_thinkfaster_throughput",
+			"description" : "inf_thinkfaster_throughput_desc",
+			"callback" : "infcb_thinkfaster_throughput",
+			"value" : "thinkfaster_throughput",
+			"default_value" : 800,
+			"min" : 100,
+			"max" : 5000,
+			"step" : 10
+		},
+		{
 			"type" : "divider",
 			"size" : 16
 		},

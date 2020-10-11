@@ -1541,6 +1541,15 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	self.besiege.assault.groups.tac_swat_combined_arms[1] = self.besiege.assault.groups.tac_swat_combined_arms[1] * 0.3
 	self.besiege.assault.groups.tac_swat_combined_arms[2] = self.besiege.assault.groups.tac_swat_combined_arms[2] * 0.3
 	self.besiege.assault.groups.tac_swat_combined_arms[3] = self.besiege.assault.groups.tac_swat_combined_arms[3] * 0.3
+
+	-- Make shotgunner squads just slightly less likely to spawn
+	self.besiege.assault.groups.tac_swat_shotgun_rush[1] = self.besiege.assault.groups.tac_swat_shotgun_rush[1] * 0.7
+	self.besiege.assault.groups.tac_swat_shotgun_rush[2] = self.besiege.assault.groups.tac_swat_shotgun_rush[2] * 0.7
+	self.besiege.assault.groups.tac_swat_shotgun_rush[3] = self.besiege.assault.groups.tac_swat_shotgun_rush[3] * 0.7
+
+	self.besiege.assault.groups.tac_swat_shotgun_flank[1] = self.besiege.assault.groups.tac_swat_shotgun_flank[1] * 0.7
+	self.besiege.assault.groups.tac_swat_shotgun_flank[2] = self.besiege.assault.groups.tac_swat_shotgun_flank[2] * 0.7
+	self.besiege.assault.groups.tac_swat_shotgun_flank[3] = self.besiege.assault.groups.tac_swat_shotgun_flank[3] * 0.7
 	
 	-- Reduce spawn rates a little
 	-- max # of simultaneous cops

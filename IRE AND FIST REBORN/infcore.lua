@@ -101,6 +101,12 @@ if not IreNFist then
         log("[InF] Armor Overhaul compatibility enabled")
         IreNFist.mod_compatibility.armor_overhaul = true
     end
+    -- Think Faster
+    local think_faster = BLT.Mods:GetModByName("Think Faster")
+    if think_faster and think_faster:IsEnabled() then
+        log("[InF] Think Faster compatibility enabled")
+        IreNFist.mod_compatibility.think_faster = true
+    end
 end
 
 -- Old table that I don't wanna refactor right now, holds menu settings but also holds tweakdata for the various weapon categories.
@@ -125,6 +131,8 @@ if not InFmenu then
         enablenewcopdomination = true,
         enablenewassaults = true,
         enablenewcopbehavior = true,
+        thinkfaster = true,
+        thinkfaster_throughput = 800,
 
         enablewallrun = true,
         runkick = false,
@@ -137,6 +145,7 @@ if not InFmenu then
 
         txt_wpnname = 2,
         because_of_training = false,
+        debug = false,
 
         disablefrogmanwarnings = false
     }
@@ -586,7 +595,7 @@ if not InFmenu then
     InFmenu.wpnvalues.hdmr.armor_piercing_chance = 1
     InFmenu.wpnvalues.hdmr.recoil_loop_point = 9
     InFmenu.wpnvalues.hdmr.rof = 240
-    InFmenu.wpnvalues.hdmr.ammo = 30
+    InFmenu.wpnvalues.hdmr.ammo = 40
 
     -- mag presets
     -- output: mag% * reload%

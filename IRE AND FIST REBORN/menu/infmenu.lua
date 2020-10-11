@@ -123,6 +123,16 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu:Save()
 	end
 
+	MenuCallbackHandler.infcb_thinkfaster = function(this, item)
+		InFmenu.settings[item:name()] = item:value() == 'on'
+		InFmenu:Save()
+	end
+
+	MenuCallbackHandler.infcb_thinkfaster_throughput = function(this, item)
+		InFmenu.settings[item:name()] = tonumber(item:value())
+		InFmenu:Save()
+	end
+
 	InFmenu:Load()
 
 	MenuHelper:LoadFromJsonFile(InFmenu._path .. 'menu/infmenu.txt', InFmenu, InFmenu.settings)

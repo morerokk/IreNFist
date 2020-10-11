@@ -6755,6 +6755,8 @@ Hooks:PostHook(WeaponTweakData, "_set_sm_wish", "gundmgds", function(self)
 		-- restore defaults instead of 225 damage ass cancer
 		self.m4_npc.DAMAGE = 1
 		self.m4_yellow_npc.DAMAGE = 1
-		self.r870_npc.DAMAGE = 5
+		self.r870_npc.DAMAGE = 3
+		self.benelli_npc.DAMAGE = 3
+
 	end
 end)

@@ -15,7 +15,7 @@ function CoreUnitDamage:update_proximity(unit, t, dt, data, range_data)
 	for _, unit in ipairs(units) do
 		-- crash occurs because unit:movement() is nil apparently
 		-- but Y THO
-		if unit:movement() and (mvector3.distance(pos, unit:movement():m_newest_pos()) < range_data.range) then
+		if unit.movement and unit:movement() and (mvector3.distance(pos, unit:movement():m_newest_pos()) < range_data.range) then
 			table.insert(unit_list, unit)
 		end
 	end

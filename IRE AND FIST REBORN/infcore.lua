@@ -132,7 +132,7 @@ if not InFmenu then
         enablenewassaults = true,
         enablenewcopbehavior = true,
         thinkfaster = true,
-        thinkfaster_throughput = 800,
+        thinkfaster_throughput = 600,
 
         enablewallrun = true,
         runkick = false,

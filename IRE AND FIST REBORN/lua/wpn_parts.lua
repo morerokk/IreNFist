@@ -1197,7 +1197,25 @@ end
 
 
 
-
+	-- Add CAR-4 parts to AMCAR
+	-- Be honest, you just want this for the Throwback skin
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_upper_reciever_edge")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_upper_reciever_round")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_uupg_b_long")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_uupg_b_short")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_ass_m4_b_beowulf")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_uupg_draghandle_ballos")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_uupg_draghandle_core")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_ass_m4_upper_reciever_ballos")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_ass_m4_upper_reciever_core")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_ass_m4_lower_reciever_core")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_uupg_fg_rail")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_uupg_fg_lr300")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_vg_ass_smg_afg")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_fg_jp")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_fg_smr")
+	
+	
 
 	-- SHARED AMCAR FAMILY/STANAG MAG PARTS
 	-- burst-fire
@@ -5939,6 +5957,7 @@ if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") and self.parts.wpn_fps
 	-- Wait what the fuck are you doing?
 	self:convert_part("wpn_fps_ass_m4_m_stick", "lrifle", "lightpis")
 	self.parts.wpn_fps_ass_m4_m_stick.stats.total_ammo_mod = nil
+	self.parts.wpn_fps_ass_m4_m_stick.stats.spread = 0
 	self.parts.wpn_fps_ass_m4_m_stick.custom_stats.sdesc1 = "caliber_p9x19"
 
 	self:convert_part("wpn_fps_ass_m4_m_stick_heavy", "lrifle", "mediumpis")
@@ -5946,10 +5965,12 @@ if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") and self.parts.wpn_fps
 
 	self:convert_part("wpn_fps_ass_m4_m_stick_sg", "lrifle", "lightpis")
 	self.parts.wpn_fps_ass_m4_m_stick_sg.stats.total_ammo_mod = nil
+	self.parts.wpn_fps_ass_m4_m_stick_sg.stats.spread = 0
 	self.parts.wpn_fps_ass_m4_m_stick_sg.custom_stats.sdesc1 = "caliber_p9x19"
 
 	self:convert_part("wpn_fps_ass_m4_m_stick_amcar", "lrifle", "lightpis")
 	self.parts.wpn_fps_ass_m4_m_stick_amcar.stats.total_ammo_mod = nil
+	self.parts.wpn_fps_ass_m4_m_stick_amcar.stats.spread = 0
 	self.parts.wpn_fps_ass_m4_m_stick_amcar.custom_stats.sdesc1 = "caliber_p9x19"
 end
 
@@ -8450,7 +8471,7 @@ if BeardLib.Utils:ModLoaded("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_
 	self.parts.wpn_fps_upg_flat_am_weak.override_weapon = {}
 	self.parts.wpn_fps_upg_flat_am_weak.override = {}
 
-	self:convert_part("wpn_fps_upg_flat_am_woof", "ldmr", "hdmr", 80, 30)
+	self:convert_part("wpn_fps_upg_flat_am_woof", "ldmr", "hdmr", 80, 40)
 	self.parts.wpn_fps_upg_flat_am_woof.stats.extra_ammo = -20
 	self.parts.wpn_fps_upg_flat_am_woof.custom_stats.sdesc1 = "caliber_r762x51dm151"
 	-- Forbid using this with larger or smaller mags

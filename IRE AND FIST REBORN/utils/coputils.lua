@@ -8,9 +8,11 @@ CopUtils = {}
 local this = {}
 -- Determines how big the search radius is for getting an eligible cop to arrest the player
 -- For reference, the medic's heal radius is 400
-this.arrest_search_radius = 600
+this.arrest_search_radius = 900
 -- How big the radius for the actual arrest is
-this.arrest_action_radius = 100
+this.arrest_action_radius = 350
+-- Must be interacting for at least this long to be arrested
+this.minimum_interact_time = 0.35
 
 -- Checks if the local player should be arrested
 function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit)
@@ -32,7 +34,7 @@ function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit)
     end
 
     local current_interact_t = state._interact_params.timer - state._interact_expire_t
-    if current_interact_t < 0.35 then
+    if current_interact_t < this.minimum_interact_time then
         return false
     end
 
@@ -85,8 +87,8 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         return
     end
 
-	local enemies = World:find_units_quick(unit, "sphere", player_unit:position(), this.arrest_search_radius, managers.slot:get_mask("enemies"))
-	if not enemies or #enemies <= 0 then
+	local enemies = World:find_units_quick(player_unit, "sphere", player_unit:position(), this.arrest_search_radius, managers.slot:get_mask("enemies"))
+    if not enemies or #enemies <= 0 then
 		return
 	end
 
@@ -114,9 +116,14 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
 		end
 	end
 
-	if closest_enemy then
+    if closest_enemy then
         closest_enemy:brain():set_objective(objective)
         closest_enemy:brain():set_logic("travel")
+        closest_enemy:movement():action_request({
+            type = "idle",
+            body_part = 1,
+            sync = true
+        })
 	end
 end
 

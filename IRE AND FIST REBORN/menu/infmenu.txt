@@ -300,6 +300,24 @@
 			"step" : 10
 		},
 		{
+			"type" : "toggle",
+			"id" : "enablenewcopbehavior",
+			"title" : "inf_enablenewcopbehavior",
+			"description" : "inf_enablenewcopbehavior_desc",
+			"callback" : "infcb_enablenewcopbehavior",
+			"value" : "enablenewcopbehavior",
+			"default_value" : true
+		},
+		{
+			"type" : "toggle",
+			"id" : "cbt",
+			"title" : "inf_cbt",
+			"description" : "inf_cbt_desc",
+			"callback" : "infcb_cbt",
+			"value" : "cbt",
+			"default_value" : false
+		},
+		{
 			"type" : "divider",
 			"size" : 16
 		},

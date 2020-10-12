@@ -12,7 +12,7 @@ if InFmenu.settings.enablenewcopbehavior then
 	local playerdamage_damagemelee_orig = PlayerDamage.damage_melee
 	function PlayerDamage:damage_melee(attack_data)
 
-		local result = CopUtils:CheckLocalMeleeDamageArrest(self._unit, attack_data.attacker_unit)
+		local result = CopUtils:CheckLocalMeleeDamageArrest(self._unit, attack_data.attacker_unit, true)
 
 		if result == "countered" then
 			-- TODO: Arrest the cop instead of just knocking them down

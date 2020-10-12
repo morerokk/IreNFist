@@ -1105,3 +1105,25 @@ if InFmenu.settings.sanehp == true then
 		self.fbi_heavy_swat.headgear_flyoff_chance = 0.5
 	end)
 end
+
+-- All cops can arrest the player if they melee them during interaction, but only some will specifically seek out players to arrest them.
+-- Some are also prioritized over others.
+if InFmenu.settings.enablenewcopbehavior then
+	Hooks:PostHook(CharacterTweakData, "init", "inf_chartweak_init_cop_arrest_tactics", function(self)
+		self.fbi_heavy_swat.arrest_player_priority = 0 -- Tans/MFR's, they can arrest the player but only if no better cop is available
+		self.heavy_swat.arrest_player_priority = 1 -- Whiteheads, yellow cops, whatever you want to call them
+		self.swat.arrest_player_priority = 2 -- Blues (formerly this also included one type of HRT but that is fucked)
+		self.cop.arrest_player_priority = 3 -- First responders, boys in blue
+		self.fbi.arrest_player_priority = 3 -- HRT's
+
+		-- If enabled, ALL cops will aggressively try to arrest you.
+		-- I tried this and it's great fun but it's also CBT
+		if InFmenu.settings.cbt then
+			for i,v in pairs(self) do
+				if type(v) == "table" and v.access and v.weapon then
+					v.arrest_player_priority = 0
+				end
+			end
+		end
+	end)
+end

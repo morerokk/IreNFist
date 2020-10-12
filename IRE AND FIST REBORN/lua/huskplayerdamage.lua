@@ -16,7 +16,7 @@ if InFmenu.settings.enablenewcopbehavior then
 			return huskplayerdamage_damagemelee_orig(self, attack_data)
 		end
 
-		local result = CopUtils:CheckClientMeleeDamageArrest(self._unit, attack_data.attacker_unit)
+		local result = CopUtils:CheckClientMeleeDamageArrest(self._unit, attack_data.attacker_unit, true)
 
 		if result == "countered" then
 			-- TODO: Arrest the cop instead of just knocking them down

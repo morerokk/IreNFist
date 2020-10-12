@@ -24,16 +24,29 @@ CopDamage._ARMOR_DAMAGE_REDUCTION = 1	--Damage reduction of armor plate hits
 local damage_bullet_original = CopDamage.damage_bullet
 
 function CopDamage:damage_bullet(attack_data, ...)
-	if not self:_chk_armor_piercing(attack_data) then
-		return
+
+	-- Apply headgear damage reduction
+	if self._head_gear and self._char_tweak.headgear_dmg_penalty then
+		attack_data = self:_chk_headgear_damage_reduction(attack_data)
 	end
 
+	-- Apply plate damage reduction
 	if self._char_tweak.body_armor_dmg_penalty then
 		attack_data = self:_chk_armor_damage_reduction(attack_data)
 	end
 
-	if self._head_gear and self._char_tweak.headgear_dmg_penalty then
-		attack_data = self:_chk_headgear_damage_reduction(attack_data)
+	-- This one goes last because it messes with the attack data by modifying the body
+	-- EDIT: It now no longer goes at all, this should be merged into armor damage reduction because otherwise this can falsely block bullets
+	-- Did this function ever even do anything? The variable up there is set to 1
+	--[[
+	if not self:_chk_armor_piercing(attack_data) then
+		return
+	end
+	]]
+
+	-- But still set the hit body to be "body" so the game doesn't still eat our bullet damage
+	if self._has_plate and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_plate_name then
+		attack_data.col_ray.body = self._unit:body("body")
 	end
 
 	return damage_bullet_original(self, attack_data, ...)
@@ -53,28 +66,32 @@ function CopDamage:_chk_headgear_damage_reduction(attack_data)
 
 	-- Helmet already missing, return
 	if not self._head_gear then
+		log("No headgear")
 		return attack_data
 	end
 
 	-- Not a headshot, return
 	local is_headshot = self._head_body_name and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_head_body_name
 	if not is_headshot then
+		log("Not headshot")
 		return attack_data
 	end
 
 	-- Check if this unit has a damage reduction for headgear hits
 	if not self._char_tweak or not self._char_tweak.headgear_dmg_penalty then
+		log("No chartweak data")
 		return attack_data
 	end
 
 	-- Apply the damage penalty
 	-- As with body armor, certain weapons are less susceptible to this penalty
 	local penalty = self._char_tweak.headgear_dmg_penalty
-	attack_data.damage = attack_data.damage * (1 - penalty)
 	local penalty_mul = attack_data.weapon_unit:base()._body_armor_dmg_penalty_mul
 	if penalty_mul then
 		penalty = penalty * penalty_mul
 	end
+
+	attack_data.damage = attack_data.damage * (1 - penalty)
 
 	-- Randomly make their helmet fly off, which will in turn make them more vulnerable for followup shots
 	if self._char_tweak.headgear_flyoff_chance and math.random() < self._char_tweak.headgear_flyoff_chance then
@@ -125,6 +142,7 @@ function CopDamage:_chk_armor_damage_reduction(attack_data)
 
 	-- Apply damage reduction
 	attack_data.damage = attack_data.damage * (1 - penalty)
+	log("Bodyhit, multiplying damage by " .. tostring(attack_data.damage * (1 - penalty)))
 
 	-- Clamp damage to 0
 	if attack_data.damage < 0 then
@@ -392,5 +410,6 @@ function CopDamage:_spawn_head_gadget(params)
 		body:push_at(body:mass(), dir * math.lerp(300, 650, math.random()), unit:position() + Vector3(math.rand(1), math.rand(1), math.rand(1)))
 	end
 
+	log("Removed headgear")
 	self._head_gear = false
 end

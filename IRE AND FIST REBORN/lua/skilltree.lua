@@ -175,6 +175,9 @@ else
 		self.skills.equilibrium[1].upgrades = {"pistol_base_switchspeed_add"}
 		self.skills.equilibrium[2].upgrades = {"pistol_base_switchspeed_add_2"}
 
+		-- Counter-Strike
+		table.insert(self.skills.drop_soap[2].upgrades, "player_counter_arrest")
+
 
 		-- ENFORCER
 		-- overkill

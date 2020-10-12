@@ -3389,3 +3389,14 @@ function PlayerStandard:_get_ground_normal()
 	return ground_ray = Utils:GetCrosshairRay(playerpos, downpos)	
 end
 --]]
+
+-- When you start interacting, send a cop to try and arrest you
+if InFmenu.settings.enablenewcopbehavior then
+	Hooks:PostHook(PlayerStandard, "_start_action_interact", "inf_startinteract_arrestplayer", function(self)
+		if Network and Network:is_client() then
+			return
+		end
+
+		CopUtils:SendCopToArrestPlayer(self._unit)
+	end)
+end

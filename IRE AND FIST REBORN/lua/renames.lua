@@ -714,6 +714,9 @@ end
 	infcodex_assaulttweaks3_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
 	infcodex_assaulttweaks4_desc = "HEIST-SPECIFIC TWEAKS:\nGolden Grin: More max cops, more spawns in an assault.\nShacklethorne Auction: 30 second initial response delay, less cops.\nBrooklyn Bank: Same as Shacklethorne.\nNo Mercy: Bigger spawn pools.",
 
+	infcodex_copbehavior = "Cop Behavior",
+	infcodex_copbehavior_desc = "Enemies are slightly smarter and more aggressive, sometimes even employing new tactics.",
+	infcodex_copbehavior2_desc = "While interacting with something, you are defenseless on your own. Cops might take advantage of this opportunity to try and handcuff you.\n\nWork together and cover each other to prevent this from happening.",
 
 
 	-- BOOSTS
@@ -990,6 +993,8 @@ else
 		menu_equilibrium_beta = "Plan B",
 		menu_equilibrium_beta_desc = "BASIC: ##$basic##\nSwitch speed bonus for secondary pistols is increased to ##25%##.\n\nACE: ##$pro##\nSwitch speed bonus for secondary pistols is increased to ##30%##.",
 
+		-- Counter-Strike
+		menu_drop_soap_beta_desc = "BASIC: ##$basic##\nWhen charging your melee weapon you will counterattack enemies that try to strike you, knocking them down. The knockdown does not deal any damage.\n\nACE: ##$pro##\nYou gain the ability to counter attack cloakers and their kicks.\n\nYou will always counter attack any enemies that try to arrest you.",
 
 		-- TECHNICIAN
 		-- surefire

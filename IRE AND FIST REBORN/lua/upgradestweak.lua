@@ -36,6 +36,9 @@ else
 		-- Rogue general weapon penetration bonus
 		self.values.weapon.all_pierce_enemies = {true}
 
+		-- Counter-Strike counter arrest
+		self.values.player.counter_arrest = {true}
+
 		for a = 1, 21, 1 do
 			-- set 25% headshot bonus text to 0%
 			self.specialization_descs[a][2].multiperk = "0%"
@@ -273,6 +276,16 @@ else
 				category = "player",
 				upgrade = "detection_risk_add_movement_speed",
 				value = 2
+			}
+		}
+
+		self.definitions.player_counter_arrest = {
+			category = "feature",
+			name_id = "player_counter_arrest",
+			upgrade = {
+				category = "player",
+				upgrade = "counter_arrest",
+				value = 1
 			}
 		}
 	end)

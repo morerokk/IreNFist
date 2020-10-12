@@ -39,6 +39,10 @@ if not IreNFist then
     -- This is for the skill that allows you to call converted cops over to revive you
     IreNFist._converts = {}
 
+    -- List of peers that have InF installed
+    -- Needed for some networking functions
+    IreNFist.peersWithMod = {}
+
     -- Heist-specific overrides for assault values
     -- This has to be done because some poorly designed heists like Shacklethorne have assaults that end way too quickly with these tweaks
     -- Default values:
@@ -107,6 +111,33 @@ if not IreNFist then
         log("[InF] Think Faster compatibility enabled")
         IreNFist.mod_compatibility.think_faster = true
     end
+
+    -- Include utils
+    dofile(ModPath .. "utils/coputils.lua")
+
+    -- Networking functions
+    -- Tell others that you have the mod installed
+    Hooks:Add('BaseNetworkSessionOnLoadComplete', 'BaseNetworkSessionOnLoadComplete_IREnFIST', function(local_peer, id)
+        LuaNetworking:SendToPeers("irenfist_hello", "hello")
+    end)
+
+    -- Same as above, if a single peer joins then tell them your dice roll.
+    Hooks:Add('BaseNetworkSessionOnPeerEnteredLobby', 'BaseNetworkSessionOnPeerEnteredLobby_IREnFIST', function(peer, peer_id)
+        LuaNetworking:SendToPeer(peer_id, "irenfist_hello", "hello")
+    end)
+    
+    -- Network data receiving function
+    Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_IREnFIST', function(sender, messageType, data)
+        -- Acknowledge that a peer has InF installed
+        if messageType == "irenfist_hello" then
+            IreNFist.peersWithMod[sender] = true
+        end
+    end)
+
+    -- If a peer leaves, remove them from the list
+    Hooks:Add('BaseNetworkSessionOnPeerRemoved', 'BaseNetworkSessionOnPeerRemoved_VocalHeisters', function(peer, peer_id, reason)
+        VocalHeisters.peersWithMod[peer_id] = nil
+    end)
 end
 
 -- Old table that I don't wanna refactor right now, holds menu settings but also holds tweakdata for the various weapon categories.

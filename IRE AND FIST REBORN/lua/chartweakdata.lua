@@ -1088,3 +1088,20 @@ if InFmenu and InFmenu.settings.enablenewcopvoices then
 		}
 	end)
 end
+
+-- Buff tans a little by giving their body armor an incoming damage penalty
+-- Penalty depends on weapon
+if InFmenu.settings.sanehp == true then
+	Hooks:PostHook(CharacterTweakData, "_init_fbi_heavy_swat", "inf_chartweak_init_tan_bodyarmor", function(self)
+		-- This penalty will be reduced for heavier weapons only, depending on the weapon type
+		-- In the end, the damage multiplier is (1 - penalty)
+		self.fbi_heavy_swat.body_armor_dmg_penalty = 0.9
+
+		-- Headshot damage penalty for if they still have their helmets
+		self.fbi_heavy_swat.headgear_dmg_penalty = 0.75
+
+		-- The chance for their helmet to fly off on a non-lethal shot
+		-- Value between 0-1, higher is more chance
+		self.fbi_heavy_swat.headgear_flyoff_chance = 0.5
+	end)
+end

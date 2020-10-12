@@ -136,7 +136,7 @@ if not IreNFist then
 
     -- If a peer leaves, remove them from the list
     Hooks:Add('BaseNetworkSessionOnPeerRemoved', 'BaseNetworkSessionOnPeerRemoved_VocalHeisters', function(peer, peer_id, reason)
-        VocalHeisters.peersWithMod[peer_id] = nil
+        IreNFist.peersWithMod[peer_id] = nil
     end)
 end
 

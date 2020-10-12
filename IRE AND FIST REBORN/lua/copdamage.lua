@@ -24,9 +24,114 @@ CopDamage._ARMOR_DAMAGE_REDUCTION = 1	--Damage reduction of armor plate hits
 local damage_bullet_original = CopDamage.damage_bullet
 
 function CopDamage:damage_bullet(attack_data, ...)
-	if self:_chk_armor_piercing(attack_data) then
-		return damage_bullet_original(self, attack_data, ...)
+	if not self:_chk_armor_piercing(attack_data) then
+		return
 	end
+
+	if self._char_tweak.body_armor_dmg_penalty then
+		attack_data = self:_chk_armor_damage_reduction(attack_data)
+	end
+
+	if self._head_gear and self._char_tweak.headgear_dmg_penalty then
+		attack_data = self:_chk_headgear_damage_reduction(attack_data)
+	end
+
+	return damage_bullet_original(self, attack_data, ...)
+end
+
+-- Reduce tan headshot damage IF they still have their helmet
+function CopDamage:_chk_headgear_damage_reduction(attack_data)
+	-- Don't do anything if the target can't be damaged
+	if self._dead or self._invulnerable then
+		return attack_data
+	end
+
+	-- Check if the attack data is sane
+	if not attack_data.damage then
+		return attack_data
+	end
+
+	-- Helmet already missing, return
+	if not self._head_gear then
+		return attack_data
+	end
+
+	-- Not a headshot, return
+	local is_headshot = self._head_body_name and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_head_body_name
+	if not is_headshot then
+		return attack_data
+	end
+
+	-- Check if this unit has a damage reduction for headgear hits
+	if not self._char_tweak or not self._char_tweak.headgear_dmg_penalty then
+		return attack_data
+	end
+
+	-- Apply the damage penalty
+	-- As with body armor, certain weapons are less susceptible to this penalty
+	local penalty = self._char_tweak.headgear_dmg_penalty
+	attack_data.damage = attack_data.damage * (1 - penalty)
+	local penalty_mul = attack_data.weapon_unit:base()._body_armor_dmg_penalty_mul
+	if penalty_mul then
+		penalty = penalty * penalty_mul
+	end
+
+	-- Randomly make their helmet fly off, which will in turn make them more vulnerable for followup shots
+	if self._char_tweak.headgear_flyoff_chance and math.random() < self._char_tweak.headgear_flyoff_chance then
+		self:_spawn_head_gadget({
+			position = attack_data.col_ray.body:position(),
+			rotation = attack_data.col_ray.body:rotation(),
+			dir = attack_data.col_ray.ray
+		})
+	end
+
+	-- Clamp damage to 0
+	if attack_data.damage < 0 then
+		attack_data.damage = 0
+	end
+
+	return attack_data
+end
+
+-- Reduce tan chicken plate hit damage
+function CopDamage:_chk_armor_damage_reduction(attack_data)
+	-- Don't do anything if the target can't be damaged
+	if self._dead or self._invulnerable then
+		return attack_data
+	end
+
+	-- Check if the attack data is sane
+	if not attack_data.damage then
+		return attack_data
+	end
+
+	-- Check if the bullet hit the chicken plate
+	if not self._has_plate or not attack_data.col_ray.body or attack_data.col_ray.body:name() ~= self._ids_plate_name then
+		return attack_data
+	end
+
+	-- Check if this unit has a damage reduction for plate hits
+	if not self._char_tweak or not self._char_tweak.body_armor_dmg_penalty then
+		return attack_data
+	end
+
+	-- Calculate the penalty by taking the unit's body armor damage penalty, and multiplying that penalty by the weapon penalty multiplier
+	-- This means that heavier weapons will be penalized less
+	local penalty = self._char_tweak.body_armor_dmg_penalty
+	local penalty_mul = attack_data.weapon_unit:base()._body_armor_dmg_penalty_mul
+	if penalty_mul then
+		penalty = penalty * penalty_mul
+	end
+
+	-- Apply damage reduction
+	attack_data.damage = attack_data.damage * (1 - penalty)
+
+	-- Clamp damage to 0
+	if attack_data.damage < 0 then
+		attack_data.damage = 0
+	end
+
+	return attack_data
 end
 
 function CopDamage:_chk_armor_piercing(attack_data)

@@ -240,6 +240,9 @@ function WeaponTweakData:inf_init_stats(wpn)
 	self[wpn].autohit.MIN_RATIO = 0
 	self[wpn].autohit.MAX_RATIO = 0
 	self[wpn].autohit.INIT_RATIO = 0
+	-- If an enemy has body armor damage penalties, multiply the penalty by this number.
+	-- Should be 1 for lighter weapons, up to 0 for the heaviest guns
+	self[wpn].body_armor_dmg_penalty_mul = 1
 	--self[wpn].aim_assist = {
 end
 
@@ -428,6 +431,7 @@ function WeaponTweakData:inf_init_ar(wpn, subtype)
 	self[wpn].armor_piercing_chance = InFmenu.wpnvalues.lrifle.armor_piercing_chance -- 40dmg
 	self[wpn].shake.fire_multiplier = 0.50
 	self[wpn].shake.fire_steelsight_multiplier = 0.15
+	self[wpn].body_armor_dmg_penalty_mul = 1
 	if type(subtype) == "table" then
 		if self:has_in_table(subtype, "has_gl") then
 			self[wpn].AMMO_MAX = InFmenu.wpnvalues.lrifle_gl.ammo
@@ -447,6 +451,7 @@ function WeaponTweakData:inf_init_ar(wpn, subtype)
 			self[wpn].recategorize = "rifle_m"
 			self[wpn].shake.fire_multiplier = 1.00
 			self[wpn].shake.fire_steelsight_multiplier = 0.20
+			self[wpn].body_armor_dmg_penalty_mul = 0.8
 			if self:has_in_table(subtype, "has_gl") then
 				self[wpn].AMMO_MAX = InFmenu.wpnvalues.mrifle_gl.ammo
 				self[wpn].AMMO_PICKUP = self:_pickup_chance(InFmenu.wpnvalues.mrifle_gl.ammo, 1)
@@ -466,6 +471,7 @@ function WeaponTweakData:inf_init_ar(wpn, subtype)
 			self[wpn].recategorize = "rifle_h"
 			self[wpn].shake.fire_multiplier = 1.00
 			self[wpn].shake.fire_steelsight_multiplier = 0.20
+			self[wpn].body_armor_dmg_penalty_mul = 0.6
 			if self:has_in_table(subtype, "has_gl") then
 				self[wpn].AMMO_MAX = InFmenu.wpnvalues.hrifle_gl.ammo
 				self[wpn].AMMO_PICKUP = self:_pickup_chance(InFmenu.wpnvalues.hrifle_gl.ammo, 1)
@@ -492,6 +498,7 @@ function WeaponTweakData:inf_init_ar(wpn, subtype)
 			self[wpn].shake.fire_multiplier = 1.25
 			self[wpn].shake.fire_steelsight_multiplier = 0.20
 			self[wpn].fire_mode_data = {fire_rate = 60/InFmenu.wpnvalues.ldmr.rof}
+			self[wpn].body_armor_dmg_penalty_mul = 0.4
 			if not self[wpn].stats_modifiers then
 				self[wpn].stats_modifiers = {}
 			end
@@ -518,6 +525,34 @@ function WeaponTweakData:inf_init_ar(wpn, subtype)
 			self[wpn].shake.fire_multiplier = 1.25
 			self[wpn].shake.fire_steelsight_multiplier = 0.20
 			self[wpn].fire_mode_data = {fire_rate = 60/InFmenu.wpnvalues.dmr.rof}
+			self[wpn].body_armor_dmg_penalty_mul = 0.2
+			if not self[wpn].stats_modifiers then
+				self[wpn].stats_modifiers = {}
+			end
+			self[wpn].stats_modifiers.damage = 1
+		end
+		if self:has_in_table(subtype, "hdmr") then
+			self[wpn].pen_wall_dist_mult = 0.75
+			self[wpn].categories = {"assault_rifle"}
+			self[wpn].recategorize = "dmr"
+			self[wpn].recoil_table = InFmenu.rtable.hdmr
+			self[wpn].recoil_loop_point = InFmenu.wpnvalues.hdmr.recoil_loop_point
+			self[wpn].stats.damage = InFmenu.wpnvalues.hdmr.damage
+			self[wpn].stats.spread = InFmenu.wpnvalues.hdmr.spread
+			self[wpn].stats.recoil = InFmenu.wpnvalues.hdmr.recoil
+			self[wpn].stats.zoom = 3
+			self[wpn].kick = InFmenu.rstance.hdmr
+			self[wpn].AMMO_MAX = InFmenu.wpnvalues.hdmr.ammo
+			self[wpn].AMMO_PICKUP = self:_pickup_chance(InFmenu.wpnvalues.hdmr.ammo, 1)
+			self[wpn].armor_piercing_chance = InFmenu.wpnvalues.hdmr.armor_piercing_chance
+			self[wpn].can_shoot_through_enemy = false
+			self[wpn].can_shoot_through_shield = true
+			self[wpn].can_shoot_through_wall = true
+			self[wpn].taser_hole = true
+			self[wpn].shake.fire_multiplier = 1.25
+			self[wpn].shake.fire_steelsight_multiplier = 0.20
+			self[wpn].fire_mode_data = {fire_rate = 60/InFmenu.wpnvalues.hdmr.rof}
+			self[wpn].body_armor_dmg_penalty_mul = 0
 			if not self[wpn].stats_modifiers then
 				self[wpn].stats_modifiers = {}
 			end
@@ -629,6 +664,7 @@ function WeaponTweakData:inf_init_pistol(wpn, subtype)
 	self[wpn].reload_speed_mult = 1.20
 	self[wpn].shake.fire_multiplier = 0.50
 	self[wpn].shake.fire_steelsight_multiplier = 0.20
+	self[wpn].body_armor_dmg_penalty_mul = 1
 	if subtype == "medium" then
 		self[wpn].pen_wall_dist_mult = 0.25
 		self[wpn].recoil_table = InFmenu.rtable.mediumpis
@@ -644,6 +680,7 @@ function WeaponTweakData:inf_init_pistol(wpn, subtype)
 		self[wpn].shake.fire_multiplier = 1.00
 		self[wpn].shake.fire_steelsight_multiplier = 0.50
 		self[wpn].fire_mode_data = {fire_rate = 60/InFmenu.wpnvalues.mediumpis.rof}
+		self[wpn].body_armor_dmg_penalty_mul = 0.7
 	elseif subtype == "supermedium" then
 		self[wpn].pen_wall_dist_mult = 0.33
 		self[wpn].recoil_table = InFmenu.rtable.supermediumpis
@@ -659,6 +696,7 @@ function WeaponTweakData:inf_init_pistol(wpn, subtype)
 		self[wpn].shake.fire_multiplier = 1.00
 		self[wpn].shake.fire_steelsight_multiplier = 0.50
 		self[wpn].fire_mode_data = {fire_rate = 60/InFmenu.wpnvalues.supermediumpis.rof}
+		self[wpn].body_armor_dmg_penalty_mul = 0.55
 	elseif subtype == "heavy" then
 		self[wpn].pen_wall_dist_mult = 0.50
 		self[wpn].recoil_table = InFmenu.rtable.heavypis
@@ -676,6 +714,7 @@ function WeaponTweakData:inf_init_pistol(wpn, subtype)
 		self[wpn].shake.fire_multiplier = 1.50
 		self[wpn].shake.fire_steelsight_multiplier = 1.00
 		--self[wpn].falloff_min_dmg = 13.0
+		self[wpn].body_armor_dmg_penalty_mul = 0.3
 	elseif not self:has_category(wpn, "akimbo") then
 		-- non-akimbo lights get faster reload
 		self[wpn].reload_speed_mult = 1.40
@@ -712,6 +751,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 	self[wpn].AMMO_MAX = 42
 	self[wpn].AMMO_PICKUP = self:_pickup_chance(42, 1)
 	self[wpn].armor_piercing_chance = 0.50
+	self[wpn].body_armor_dmg_penalty_mul = 1
 	if not self[wpn].stats_modifiers then
 		self[wpn].stats_modifiers = {}
 	end
@@ -751,6 +791,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 			self[wpn].AMMO_PICKUP = self:_pickup_chance(48, 1)
 			self[wpn].shake.fire_multiplier = 1.25
 			self[wpn].shake.fire_steelsight_multiplier = 1.25
+			self[wpn].body_armor_dmg_penalty_mul = 0.85
 		end
 		if self:has_in_table(subtype, "dmg_light") then
 			self[wpn].stats.damage = 38 -- 190
@@ -783,6 +824,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 			self[wpn].AMMO_PICKUP = self:_pickup_chance(24, 1)
 			self[wpn].shake.fire_multiplier = 2.00
 			self[wpn].shake.fire_steelsight_multiplier = 2.00
+			self[wpn].body_armor_dmg_penalty_mul = 0.75
 		end
 
 		if self:has_in_table(subtype, "rof_semi") then
@@ -831,6 +873,7 @@ function WeaponTweakData:inf_init_smg(wpn, subtype)
 	self[wpn].armor_piercing_chance = InFmenu.wpnvalues.shortsmg.armor_piercing_chance -- 27-30dmg
 	self[wpn].shake.fire_multiplier = 0.30
 	self[wpn].shake.fire_steelsight_multiplier = 0.10
+	self[wpn].body_armor_dmg_penalty_mul = 1
 
 	if type(subtype) == "table" then
 		-- don't use carbine with other modifiers
@@ -853,6 +896,7 @@ function WeaponTweakData:inf_init_smg(wpn, subtype)
 			self[wpn].recategorize = "carbine"
 			self[wpn].shake.fire_multiplier = 0.50
 			self[wpn].shake.fire_steelsight_multiplier = 0.15
+			self[wpn].body_armor_dmg_penalty_mul = 0.9
 		end
 		if self:has_in_table(subtype, "range_mcarbine") then
 			self[wpn].pen_wall_dist_mult = 0.50
@@ -873,6 +917,7 @@ function WeaponTweakData:inf_init_smg(wpn, subtype)
 			self[wpn].recategorize = "carbine"
 			self[wpn].shake.fire_multiplier = 0.50
 			self[wpn].shake.fire_steelsight_multiplier = 0.15
+			self[wpn].body_armor_dmg_penalty_mul = 0.85
 		end
 
 		if self:has_in_table(subtype, "range_long") then
@@ -935,6 +980,7 @@ function WeaponTweakData:inf_init_lmg(wpn, subtype)
 	self[wpn].shake.fire_multiplier = 0.50
 	self[wpn].shake.fire_steelsight_multiplier = 0.20
 	self[wpn].allow_ads_while_reloading = false
+	self[wpn].body_armor_dmg_penalty_mul = 1
 	if subtype == "medium" then
 		self[wpn].pen_wall_dist_mult = 0.50
 		self[wpn].stats.damage = 65
@@ -942,6 +988,7 @@ function WeaponTweakData:inf_init_lmg(wpn, subtype)
 		self[wpn].armor_piercing_chance = 0.80
 		self[wpn].AMMO_MAX = 300
 		self[wpn].AMMO_PICKUP = self:_pickup_chance(250, 1)
+		self[wpn].body_armor_dmg_penalty_mul = 0.9
 	elseif subtype == "heavy" then
 		self[wpn].pen_wall_dist_mult = 0.66
 		self[wpn].stats.damage = 75
@@ -949,6 +996,7 @@ function WeaponTweakData:inf_init_lmg(wpn, subtype)
 		self[wpn].armor_piercing_chance = 0.80
 		self[wpn].AMMO_MAX = 200
 		self[wpn].AMMO_PICKUP = self:_pickup_chance(167, 1)
+		self[wpn].body_armor_dmg_penalty_mul = 0.7
 	end
 end
 
@@ -972,6 +1020,7 @@ function WeaponTweakData:inf_init_snp(wpn, subtype)
 	self[wpn].single.fire_rate = 60/80
 	self[wpn].shake.fire_multiplier = 1.25
 	self[wpn].shake.fire_steelsight_multiplier = 1.00
+	self[wpn].body_armor_dmg_penalty_mul = 0.25
 	if not self[wpn].stats_modifiers then
 		self[wpn].stats_modifiers = {}
 	end
@@ -985,6 +1034,7 @@ function WeaponTweakData:inf_init_snp(wpn, subtype)
 		self[wpn].AMMO_PICKUP = self:_pickup_chance(30, 1)
 		self[wpn].fire_mode_data.fire_rate = 60/60
 		self[wpn].single.fire_rate = 60/60
+		self[wpn].body_armor_dmg_penalty_mul = 0
 	end
 	if subtype == "superheavy" then
 		self[wpn].pen_wall_dist_mult = 4
@@ -996,6 +1046,7 @@ function WeaponTweakData:inf_init_snp(wpn, subtype)
 		self[wpn].fire_mode_data.fire_rate = 60/60
 		self[wpn].single.fire_rate = 60/60
 		self[wpn].stats_modifiers.damage = 50
+		self[wpn].body_armor_dmg_penalty_mul = 0
 	end
 end
 
@@ -1005,6 +1056,7 @@ function WeaponTweakData:inf_init_gl(wpn, subtype)
 	self[wpn].kick = InFmenu.rstance.shotgun
 	self[wpn].spread.steelsight = 0.20
 	self[wpn].spread.moving_steelsight = 0.20
+	self[wpn].body_armor_dmg_penalty_mul = 1
 end
 
 -- AKIMBO
@@ -1073,6 +1125,7 @@ function WeaponTweakData:inf_init_minigun(wpn, subtype)
 	self[wpn].sdesc3_type = "spinup"
 	self[wpn].spin_up_time = 0.50
 	self[wpn].spin_down_speed_mult = self[wpn].spin_up_time/0.35 -- (+0.15)
+	self[wpn].body_armor_dmg_penalty_mul = 1
 end
 
 -- lmao
@@ -1088,6 +1141,7 @@ function WeaponTweakData:inf_init_bow(wpn, subtype)
 	self[wpn].kick = InFmenu.rstance.norecoil
 	self[wpn].not_allowed_in_bleedout = false
 	self[wpn].armor_piercing_chance = 1
+	self[wpn].body_armor_dmg_penalty_mul = 0.5
 end
 
 -- For some ungodly reason, turning this function override into a proper PostHook crashes the game.

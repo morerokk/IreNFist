@@ -389,16 +389,25 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 		end
 	end
 
+	-- Tan body armor damage penalty multiplier
+	local body_armor_dmg_penalty_mul = self:weapon_tweak_data().body_armor_dmg_penalty_mul
+	if body_armor_dmg_penalty_mul then
+		self._body_armor_dmg_penalty_mul = body_armor_dmg_penalty_mul
+	else
+		self._body_armor_dmg_penalty_mul = 1
+	end
+
 	-- LMG Sweep and Clear skill
 	if managers.player and managers.player:has_category_upgrade("weapon", "lmg_pierce_enemies") and (self:is_category("lmg") or self:is_category("minigun")) then
 		self._can_shoot_through_enemy = true
+		self._body_armor_dmg_penalty_mul = self._body_armor_dmg_penalty_mul * 0.75 -- Improve armor piercing a little further for this skill
 	end
 
 	-- Rogue piercing perk
 	if managers.player and managers.player:has_category_upgrade("weapon", "all_pierce_enemies") and not self:is_category("bow") and not self:is_category("crossbow") then
 		self._can_shoot_through_enemy = true
+		self._body_armor_dmg_penalty_mul = self._body_armor_dmg_penalty_mul * 0.75
 	end
-
 end)
 
 

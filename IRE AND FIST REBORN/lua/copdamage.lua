@@ -66,20 +66,17 @@ function CopDamage:_chk_headgear_damage_reduction(attack_data)
 
 	-- Helmet already missing, return
 	if not self._head_gear then
-		log("No headgear")
 		return attack_data
 	end
 
 	-- Not a headshot, return
 	local is_headshot = self._head_body_name and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_head_body_name
 	if not is_headshot then
-		log("Not headshot")
 		return attack_data
 	end
 
 	-- Check if this unit has a damage reduction for headgear hits
 	if not self._char_tweak or not self._char_tweak.headgear_dmg_penalty then
-		log("No chartweak data")
 		return attack_data
 	end
 
@@ -142,7 +139,6 @@ function CopDamage:_chk_armor_damage_reduction(attack_data)
 
 	-- Apply damage reduction
 	attack_data.damage = attack_data.damage * (1 - penalty)
-	log("Bodyhit, multiplying damage by " .. tostring(attack_data.damage * (1 - penalty)))
 
 	-- Clamp damage to 0
 	if attack_data.damage < 0 then

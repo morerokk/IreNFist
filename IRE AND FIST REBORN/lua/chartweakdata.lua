@@ -1112,9 +1112,13 @@ if InFmenu.settings.enablenewcopbehavior then
 	Hooks:PostHook(CharacterTweakData, "init", "inf_chartweak_init_cop_arrest_tactics", function(self)
 		self.fbi_heavy_swat.arrest_player_priority = 0 -- Tans/MFR's, they can arrest the player but only if no better cop is available
 		self.heavy_swat.arrest_player_priority = 1 -- Whiteheads, yellow cops, whatever you want to call them
-		self.swat.arrest_player_priority = 2 -- Blues (formerly this also included one type of HRT but that is fucked)
+		self.swat.arrest_player_priority = 2 -- Blues (formerly this also included one type of HRT but that is now un-fucked)
 		self.cop.arrest_player_priority = 3 -- First responders, boys in blue
 		self.fbi.arrest_player_priority = 3 -- HRT's
+		self.medic.arrest_player_priority = 3 -- Medics
+		self.taser.arrest_player_priority = 3 -- Tasers
+		self.spooc.arrest_player_priority = 3 -- Cloakers
+
 
 		-- If enabled, ALL cops will aggressively try to arrest you.
 		-- I tried this and it's great fun but it's also CBT

@@ -9,13 +9,13 @@ local this = {}
 -- Determines how big the search radius is for getting an eligible cop to arrest the player
 -- For reference, the medic's heal radius is 400
 this.arrest_search_radius = 900
--- How big the radius for the actual arrest is
-this.arrest_action_radius = 350
+-- How big the radius for the actual (non-melee) arrest is
+this.arrest_action_radius = 100
 -- Must be interacting for at least this long to be arrested
 this.minimum_interact_time = 0.35
 
 -- Checks if the local player should be arrested
-function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit)
+function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit, is_melee)
     -- Check if this is our own player unit
     if player_unit ~= managers.player:player_unit() then
         return
@@ -39,7 +39,7 @@ function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit)
     end
 
     -- Check if the cop isn't too far away to do this
-    if attacker_unit and alive(attacker_unit) then
+    if not is_melee and attacker_unit and alive(attacker_unit) then
         local dist = mvector3.distance(player_unit:position(), attacker_unit:position())
         if dist > this.arrest_action_radius then
             return false
@@ -57,7 +57,7 @@ end
 -- Check if another unmodded player should be arrested
 -- Modded players can do this check themselves
 -- Since husks are too simplistic, unmodded clients will always be arrested since getting their timer isn't as easy. Such is life
-function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit)
+function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_melee)
     if Network and Network:is_client() then
         return
     end
@@ -67,7 +67,7 @@ function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit)
     end
 
     -- Check if the cop isn't too far away to do this
-    if attacker_unit and alive(attacker_unit) then
+    if not is_melee and attacker_unit and alive(attacker_unit) then
         local dist = mvector3.distance(player_unit:position(), attacker_unit:position())
         if dist > this.arrest_action_radius then
             return false
@@ -87,6 +87,11 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         return
     end
 
+    -- Don't do this in stealth
+    if managers.groupai:state():whisper_mode() then
+        return
+    end
+
 	local enemies = World:find_units_quick(player_unit, "sphere", player_unit:position(), this.arrest_search_radius, managers.slot:get_mask("enemies"))
     if not enemies or #enemies <= 0 then
 		return
@@ -94,7 +99,8 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
 
 	-- Get the closest enemy that's available for this assignment
 	local lowest_distance = 999999
-	local closest_enemy = nil
+    local closest_enemy = nil
+    local highest_found_priority = -100
     local playerpos = player_unit:position()
 
     local objective = {
@@ -108,12 +114,27 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         important = true
     }
 
-	for i, enemy in pairs(enemies) do
-		local dist = mvector3.distance(enemy:position(), playerpos)
-		if dist < lowest_distance and enemy:brain():is_available_for_assignment(objective) then
-			lowest_distance = dist
-			closest_enemy = enemy
-		end
+    for i, enemy in pairs(enemies) do
+        -- Check if their chartweak allows them to arrest players (or if this is currently not an assault)
+        local enemy_chartweak = enemy:base():char_tweak()
+
+        if enemy_chartweak.arrest_player_priority or not managers.groupai:state():get_assault_mode() then
+
+            -- Only take the highest priority enemies, then the closest
+            local dist = mvector3.distance(enemy:position(), playerpos)
+            local is_available = enemy:brain():is_available_for_assignment(objective)
+
+            if enemy_chartweak.arrest_player_priority and enemy_chartweak.arrest_player_priority > highest_found_priority and is_available then
+                lowest_distance = dist
+                highest_found_priority = enemy_chartweak.arrest_player_priority
+                closest_enemy = enemy
+            elseif dist < lowest_distance and is_available then
+                lowest_distance = dist
+                highest_found_priority = enemy_chartweak.arrest_player_priority
+                closest_enemy = enemy
+            end
+
+        end
 	end
 
     if closest_enemy then

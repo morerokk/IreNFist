@@ -177,6 +177,7 @@ if not InFmenu then
         txt_wpnname = 2,
         because_of_training = false,
         debug = false,
+        cbt = false,
 
         disablefrogmanwarnings = false
     }

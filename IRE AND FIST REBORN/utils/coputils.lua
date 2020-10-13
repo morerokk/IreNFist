@@ -125,11 +125,11 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
             local dist = mvector3.distance(enemy:position(), playerpos)
             local is_available = enemy:brain():is_available_for_assignment(objective)
 
-            if enemy_chartweak.arrest_player_priority and enemy_chartweak.arrest_player_priority > highest_found_priority and is_available then
+            if prio > highest_found_priority and is_available then -- Enemy has higher priority
                 lowest_distance = dist
                 highest_found_priority = prio
                 closest_enemy = enemy
-            elseif dist < lowest_distance and is_available then
+            elseif prio == highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority and is closer
                 lowest_distance = dist
                 highest_found_priority = prio
                 closest_enemy = enemy

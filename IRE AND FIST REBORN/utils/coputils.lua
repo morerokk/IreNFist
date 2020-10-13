@@ -117,6 +117,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
     for i, enemy in pairs(enemies) do
         -- Check if their chartweak allows them to arrest players (or if this is currently not an assault)
         local enemy_chartweak = enemy:base():char_tweak()
+        local prio = enemy_chartweak.arrest_player_priority or -10
 
         if enemy_chartweak.arrest_player_priority or not managers.groupai:state():get_assault_mode() then
 
@@ -126,11 +127,11 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
 
             if enemy_chartweak.arrest_player_priority and enemy_chartweak.arrest_player_priority > highest_found_priority and is_available then
                 lowest_distance = dist
-                highest_found_priority = enemy_chartweak.arrest_player_priority
+                highest_found_priority = prio
                 closest_enemy = enemy
             elseif dist < lowest_distance and is_available then
                 lowest_distance = dist
-                highest_found_priority = enemy_chartweak.arrest_player_priority
+                highest_found_priority = prio
                 closest_enemy = enemy
             end
 

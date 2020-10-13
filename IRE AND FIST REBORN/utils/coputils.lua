@@ -131,7 +131,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
                 lowest_distance = dist
                 highest_found_priority = prio
                 closest_enemy = enemy
-            elseif prio == highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority but is closer
+            elseif prio <= highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority but is closer
                 lowest_distance = dist
                 highest_found_priority = prio
                 closest_enemy = enemy
@@ -236,7 +236,7 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_coputils', functi
         return
     end
 
-    local cop = Coputils:GetCopFromId(unit_id)
+    local cop = CopUtils:GetCopFromId(unit_id)
     if not cop then
         return
     end

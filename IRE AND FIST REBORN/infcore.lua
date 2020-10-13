@@ -163,7 +163,7 @@ if not InFmenu then
         enablenewassaults = true,
         enablenewcopbehavior = true,
         thinkfaster = true,
-        thinkfaster_throughput = 400, -- The defaults are skewed a bit low to not fry people's PC's without asking
+        thinkfaster_throughput = 180, -- The defaults are skewed a bit low to not fry people's PC's without asking
 
         enablewallrun = true,
         runkick = false,

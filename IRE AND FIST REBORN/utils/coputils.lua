@@ -114,6 +114,8 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         important = true
     }
 
+    -- Find the highest-priority enemy
+    -- If tied, select the closest among them
     for i, enemy in pairs(enemies) do
         -- Check if their chartweak allows them to arrest players (or if this is currently not an assault)
         local enemy_chartweak = enemy:base():char_tweak()
@@ -129,7 +131,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
                 lowest_distance = dist
                 highest_found_priority = prio
                 closest_enemy = enemy
-            elseif prio == highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority and is closer
+            elseif prio == highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority but is closer
                 lowest_distance = dist
                 highest_found_priority = prio
                 closest_enemy = enemy
@@ -138,6 +140,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         end
 	end
 
+    -- If an enemy was found, send them to arrest the player
     if closest_enemy then
         closest_enemy:brain():set_objective(objective)
         closest_enemy:brain():set_logic("travel")
@@ -149,6 +152,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
 	end
 end
 
+-- Callback is executed when the cop arrives at their arrest position
 function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
     if Network and Network:is_client() then
         return

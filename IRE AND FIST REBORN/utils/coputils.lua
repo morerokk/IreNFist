@@ -109,7 +109,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         pose = "stand",
         nav_seg = managers.navigation:get_nav_seg_from_pos(player_unit:position(), true),
         pos = mvector3.copy(player_unit:position()),
-        complete_clbk = callback(self, self, '_onCopArrivedAtArrestPosition', {cop = closest_enemy, target = player_unit}),
+        --complete_clbk = callback(self, self, '_onCopArrivedAtArrestPosition', {cop = closest_enemy, target = player_unit}),
         forced = true,
         important = true
     }
@@ -142,6 +142,16 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
 
     -- If an enemy was found, send them to arrest the player
     if closest_enemy then
+        objective = {
+            type = "free",
+            haste = "run",
+            pose = "stand",
+            nav_seg = managers.navigation:get_nav_seg_from_pos(player_unit:position(), true),
+            pos = mvector3.copy(player_unit:position()),
+            complete_clbk = callback(self, self, '_onCopArrivedAtArrestPosition', {cop = closest_enemy, target = player_unit}),
+            forced = true,
+            important = true
+        }
         closest_enemy:brain():set_objective(objective)
         closest_enemy:brain():set_logic("travel")
         closest_enemy:movement():action_request({
@@ -160,6 +170,11 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
 
     local cop = clbk_data.cop
     local player_unit = clbk_data.target
+
+    if not cop or not player_unit then
+        log("[InF] Cop arrived at arrest position but there was no cop or player set")
+        return
+    end
 
     -- Check whether we are evaluating an actual player or a husk
     local result = nil

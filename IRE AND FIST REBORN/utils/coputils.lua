@@ -206,7 +206,9 @@ end
 function CopUtils:GetCopFromId(unit_id)
     local enemies = managers.enemy:all_enemies()
     for i, unit in pairs(enemies) do
-        if unit and alive(unit) and unit.id and tostring(unit:id()) == unit_id then
+        -- Some maps are ridiculously cursed and will have units exist but don't have an alive function
+        -- This is almost certainly related to "why primary smg crash meltdown.lua"
+        if unit and unit.alive and alive(unit) and unit.id and tostring(unit:id()) == unit_id then
             return unit
         end
     end

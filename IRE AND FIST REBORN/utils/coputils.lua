@@ -206,7 +206,7 @@ end
 function CopUtils:GetCopFromId(unit_id)
     local enemies = managers.enemy:all_enemies()
     for i, unit in pairs(enemies) do
-        if tostring(unit:id()) == unit_id then
+        if unit and alive(unit) and unit.id and tostring(unit:id()) == unit_id then
             return unit
         end
     end

@@ -25,3 +25,10 @@ Hooks:PostHook(CopBrain, "convert_to_criminal", "InF_SkillOverhaulCopBrainDoConv
 
     table.insert(IreNFist._converts, self._unit)    
 end)
+
+-- Winters, for the love of god end the assault already when you die
+Hooks:PostHook(CopBrain, "clbk_death", "InF_CopBrain_wintersdeath_endassault", function(self)
+	if unit and unit.base and unit:base() and unit:base()._tweak_table and unit:base()._tweak_table == "phalanx_vip" then
+		managers.groupai:state():unregister_phalanx_vip()
+	end
+end)

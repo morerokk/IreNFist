@@ -349,6 +349,15 @@
 			"callback" : "infcb_disablefrogmanwarnings",
 			"value" : "disablefrogmanwarnings",
 			"default_value" : false
+		},
+		{
+			"type" : "toggle",
+			"id" : "debug",
+			"title" : "inf_debug",
+			"description" : "inf_debug_desc",
+			"callback" : "infcb_debug",
+			"value" : "debug",
+			"default_value" : false
 		}
 	]
 }

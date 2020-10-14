@@ -12,3 +12,5 @@ Hooks:PostHook(CopBase, "init", "inf_copbase_init_fixfbitweaktable_post", functi
         self._char_tweak = tweak_data.character.fbi
     end
 end)
+
+

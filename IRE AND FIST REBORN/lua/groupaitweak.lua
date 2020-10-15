@@ -1519,13 +1519,25 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 	
 	-- Taser squads part 2, actually add them to the recon teams
 	-- Wipe the other cops from the recon groups, ONLY add hostage rescues
+	-- HOWEVER, need to add cloakers and phalanxes because otherwise the game can crash
+	-- Thank you so much for pinpointing this issue Hoppip
 	self.besiege.recon.groups = {
 		tac_hostagerescue_flanking = {
 			0.1,
 			0.1,
 			0.1
+		},
+		single_spooc = {
+			0,
+			0,
+			0
+		},
+		Phalanx = {
+			0,
+			0,
+			0
 		}
-	}
+	}	
 	
 	-- Remove the HRT flanking group from the assault, but still define it.
 	self.besiege.assault.groups.tac_hostagerescue_flanking = {

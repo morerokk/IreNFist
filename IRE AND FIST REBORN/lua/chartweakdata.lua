@@ -1098,11 +1098,11 @@ if InFmenu.settings.sanehp == true then
 		self.fbi_heavy_swat.body_armor_dmg_penalty = 0.9
 
 		-- Headshot damage penalty for if they still have their helmets
-		self.fbi_heavy_swat.headgear_dmg_penalty = 0.75
+		self.fbi_heavy_swat.headgear_dmg_penalty = 0.8
 
 		-- The chance for their helmet to fly off on a non-lethal shot
 		-- Value between 0-1, higher is more chance
-		self.fbi_heavy_swat.headgear_flyoff_chance = 0.5
+		self.fbi_heavy_swat.headgear_flyoff_chance = 0.35
 	end)
 end
 

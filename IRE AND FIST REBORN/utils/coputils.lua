@@ -62,7 +62,7 @@ function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_me
         return
     end
 
-    if not player_unit:movement()._interaction_tweak then
+    if not player_unit or not player_unit.movement or not player_unit:movement() or not player_unit:movement()._interaction_tweak then
         return false
     end
 

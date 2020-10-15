@@ -92,13 +92,13 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         return
     end
 
-	local enemies = World:find_units_quick(player_unit, "sphere", player_unit:position(), this.arrest_search_radius, managers.slot:get_mask("enemies"))
+    local enemies = World:find_units_quick(player_unit, "sphere", player_unit:position(), this.arrest_search_radius, managers.slot:get_mask("enemies"))
     if not enemies or #enemies <= 0 then
-		return
-	end
+        return
+    end
 
-	-- Get the closest enemy that's available for this assignment
-	local lowest_distance = 999999
+    -- Get the closest enemy that's available for this assignment
+    local lowest_distance = 999999
     local closest_enemy = nil
     local highest_found_priority = -100
     local playerpos = player_unit:position()
@@ -117,28 +117,31 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
     -- Find the highest-priority enemy
     -- If tied, select the closest among them
     for i, enemy in pairs(enemies) do
-        -- Check if their chartweak allows them to arrest players (or if this is currently not an assault)
-        local enemy_chartweak = enemy:base():char_tweak()
-        local prio = enemy_chartweak.arrest_player_priority or -10
+        -- If the guy is not actually an enemy (go figure, thanks Locke), don't
+        if self:AreUnitsEnemies(player_unit, enemy) then
+            -- Check if their chartweak allows them to arrest players (or if this is currently not an assault)
+            local enemy_chartweak = enemy:base():char_tweak()
+            local prio = enemy_chartweak.arrest_player_priority or -10
 
-        if enemy_chartweak.arrest_player_priority or not managers.groupai:state():get_assault_mode() then
+            if enemy_chartweak.arrest_player_priority or not managers.groupai:state():get_assault_mode() then
 
-            -- Only take the highest priority enemies, then the closest
-            local dist = mvector3.distance(enemy:position(), playerpos)
-            local is_available = enemy:brain():is_available_for_assignment(objective)
+                -- Only take the highest priority enemies, then the closest
+                local dist = mvector3.distance(enemy:position(), playerpos)
+                local is_available = enemy:brain():is_available_for_assignment(objective)
 
-            if prio > highest_found_priority and is_available then -- Enemy has higher priority
-                lowest_distance = dist
-                highest_found_priority = prio
-                closest_enemy = enemy
-            elseif prio <= highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority but is closer
-                lowest_distance = dist
-                highest_found_priority = prio
-                closest_enemy = enemy
+                if prio > highest_found_priority and is_available then -- Enemy has higher priority
+                    lowest_distance = dist
+                    highest_found_priority = prio
+                    closest_enemy = enemy
+                elseif prio <= highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority but is closer
+                    lowest_distance = dist
+                    highest_found_priority = prio
+                    closest_enemy = enemy
+                end
+
             end
-
         end
-	end
+    end
 
     -- If an enemy was found, send them to arrest the player
     if closest_enemy then
@@ -159,7 +162,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
             body_part = 1,
             sync = true
         })
-	end
+    end
 end
 
 -- Callback is executed when the cop arrives at their arrest position
@@ -182,9 +185,9 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
         result = self:CheckLocalMeleeDamageArrest(player_unit, cop)
     else
         -- If the client has InF, they can figure it out for themselves
-		local peer = managers.network:session():peer_by_unit(player_unit)
-		if peer and IreNFist.peersWithMod[peer:id()] then
-			return CopUtils:TellClientCheckArrest(peer:id(), cop:id())
+        local peer = managers.network:session():peer_by_unit(player_unit)
+        if peer and IreNFist.peersWithMod[peer:id()] then
+            return CopUtils:TellClientCheckArrest(peer:id(), cop:id())
         end
 
         -- Client does not have InF, do a simple check ourselves
@@ -211,6 +214,15 @@ function CopUtils:GetCopFromId(unit_id)
         end
     end
     return nil
+end
+
+-- Find out if unit A is an enemy of unit B
+function CopUtils:AreUnitsEnemies(unit_a, unit_b)
+    if not unit_a or not unit_b or not unit_a:movement() or not unit_b:movement() then
+        return false
+    end
+
+    return unit_a:movement():team().foes[unit_b:movement():team().id] and true or false
 end
 
 -- Network receive function for arrest check

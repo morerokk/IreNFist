@@ -1,5 +1,15 @@
 dofile(ModPath .. "infcore.lua")
 
+local mvec3_set = mvector3.set
+local mvec3_set_z = mvector3.set_z
+local mvec3_sub = mvector3.subtract
+local mvec3_dir = mvector3.direction
+local mvec3_dot = mvector3.dot
+local mvec3_dis = mvector3.distance
+local mvec3_dis_sq = mvector3.distance_sq
+local tmp_vec1 = Vector3()
+local tmp_vec2 = Vector3()
+
 -- Debug
 if not InFmenu.settings.debug then
     return
@@ -169,6 +179,14 @@ function CopLogicBase._upd_attention_obj_detection(data, min_reaction, max_react
 
 	local function _angle_and_dis_chk(handler, settings, attention_pos)
 		attention_pos = attention_pos or handler:get_detection_m_pos()
+		if not tmp_vec1 or not my_pos or not attention_pos then
+			log("Fuck!!!")
+			if managers and managers.chat and InFmenu.settings.debug then
+				managers.chat:feed_system_message(1, "[InFDEBUG] A cop oofed in the angle and distance check.")
+				managers.chat:feed_system_message(1, "Please report this on Github with your BLT log attached (PAYDAY 2/mods/logs).")
+			end
+			return
+		end
 		local dis = mvector3.direction(tmp_vec1, my_pos, attention_pos)
 		local dis_multiplier, angle_multiplier = nil
 		local max_dis = math.min(my_data.detection.dis_max, settings.max_range or my_data.detection.dis_max)

@@ -7317,6 +7317,7 @@ end
         end)
     end
 
+    --[[
     if BeardLib.Utils:ModLoaded("CZ Auto Pistol") then
         self.parts.wpn_fps_pis_czauto_ns_compensated.stats = deep_clone(self.parts.wpn_fps_pis_g18c_co_1.stats)
         self.parts.wpn_fps_pis_czauto_m_extended.stats = deep_clone(mag_150)
@@ -7329,14 +7330,14 @@ end
         self.parts.wpn_fps_pis_czauto_g_wooden.stats = deep_clone(nostats)
         self.parts.wpn_fps_pis_czauto_g_walnut.stats = deep_clone(nostats)
         self.parts.wpn_fps_pis_czauto_g_pearl.stats = deep_clone(nostats)
-    --[[
-    DelayedCalls:Add("czopdelay", delay, function(self, params)
-        if tweak_data.weapon.factory.parts.wpn_fps_pis_czauto_vg_mag.override_weapon then
-            tweak_data.weapon.factory.parts.wpn_fps_pis_czauto_vg_mag.override_weapon.use_stance = nil -- fix this shit later
-        end
-    end)
-    --]]
+
+        DelayedCalls:Add("czopdelay", delay, function(self, params)
+            if tweak_data.weapon.factory.parts.wpn_fps_pis_czauto_vg_mag.override_weapon then
+                tweak_data.weapon.factory.parts.wpn_fps_pis_czauto_vg_mag.override_weapon.use_stance = nil -- fix this shit later
+            end
+        end)
     end
+    ]]
 
     if BeardLib.Utils:ModLoaded("Chiappa Rhino 60DS") and self.parts.wpn_fps_pis_rhino_bullets then
         self.parts.wpn_fps_pis_rhino_bullets.stats = deep_clone(nostats)

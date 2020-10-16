@@ -9,11 +9,13 @@ require("mocks/BLT/Globals")
 BLT:mockSetModPath("../IRE AND FIST REBORN/")
 
 local tests = {
-    "tests/copdamage.lua"
+    "tests/copdamage.lua",
+    "tests/coputils.lua"
 }
 
 local function runTests()
     for _, test in pairs(tests) do
+        LuaU:_clearBeforeEach()
         dofile(test)
     end
 end

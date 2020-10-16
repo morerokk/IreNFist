@@ -1755,7 +1755,7 @@ function WeaponTweakData:_init_new_weapons(...)
 
 	self.new_m14.sdesc1 = "caliber_r762x51"
 	self.new_m14.sdesc2 = "action_gas"
-	--self.new_m14.CAN_TOGGLE_FIREMODE = false
+	self.new_m14.CAN_TOGGLE_FIREMODE = false
 	self.new_m14.CLIP_AMMO_MAX = 20
 	self.new_m14.stats.concealment = 20
 	self.new_m14.not_empty_reload_speed_mult = 1.50

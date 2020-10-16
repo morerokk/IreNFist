@@ -18,31 +18,35 @@ this.minimum_interact_time = 0.35
 function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit, is_melee)
     -- Check if this is our own player unit
     if player_unit ~= managers.player:player_unit() then
-        return
+        return nil, "not local player unit"
     end
 
     local state = player_unit:movement():current_state()
     -- Check if we're interacting
     local is_interacting = state._interacting and state:_interacting()
     if not is_interacting then
-        return false
+        return false, "not interacting"
     end
 
     -- But also check how long they've been interacting. It should be at least 0.35 seconds to avoid instant BS moments.
     if not state._interact_params or not state._interact_params.timer or not state._interact_expire_t then
-        return false
+        return false, "interaction params invalid"
     end
 
+    -- Since I broke my brain making tests for this:
+    -- interact_params.timer is the total time it takes to interact with a particular object, such as 5 seconds.
+    -- interact_expire_t is the *remaining time* in the interaction, such as 3.8
+    -- Therefore, state._interact_params.timer - state._interact_expire_t gives you how long you've been interacting for.
     local current_interact_t = state._interact_params.timer - state._interact_expire_t
     if current_interact_t < this.minimum_interact_time then
-        return false
+        return false, "interaction too short"
     end
 
     -- Check if the cop isn't too far away to do this
     if not is_melee and attacker_unit and alive(attacker_unit) then
         local dist = mvector3.distance(player_unit:position(), attacker_unit:position())
         if dist > this.arrest_action_radius then
-            return false
+            return false, "too far away for non-melee arrest"
         end
     end
 
@@ -50,7 +54,7 @@ function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit, is_mel
     if managers.player:has_category_upgrade("player", "counter_arrest") then
         return "countered"
     end
-    
+
     return "arrested"
 end
 
@@ -59,18 +63,18 @@ end
 -- Since husks are too simplistic, unmodded clients will always be arrested since getting their timer isn't as easy. Such is life
 function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_melee)
     if Network and Network:is_client() then
-        return
+        return nil, "not host, no husk check"
     end
 
     if not player_unit or not player_unit.movement or not player_unit:movement() or not player_unit:movement()._interaction_tweak then
-        return false
+        return false, "husk not interacting"
     end
 
     -- Check if the cop isn't too far away to do this
     if not is_melee and attacker_unit and alive(attacker_unit) then
         local dist = mvector3.distance(player_unit:position(), attacker_unit:position())
         if dist > this.arrest_action_radius then
-            return false
+            return false, "cop too far away from husk"
         end
     end
 

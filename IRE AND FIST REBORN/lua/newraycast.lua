@@ -387,6 +387,11 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 		if stats.visor_dmg_mult then
 			self._visor_dmg_mult = stats.visor_dmg_mult
 		end
+
+		-- Get fire mode switch
+		if stats.CAN_TOGGLE_FIREMODE then
+			self._weaponmod_firemode_switch_override = stats.CAN_TOGGLE_FIREMODE
+		end
 	end
 
 	-- Tan body armor damage penalty multiplier
@@ -696,4 +701,18 @@ function NewRaycastWeaponBase:reload_not_empty_exit_expire_t(...)
 		timer = timer / (self:weapon_tweak_data().timers.shotgun_reload_exit_not_empty_mult or 1)
 	end
 	return timer
+end
+
+-- Allow weapon mods to override a weapon's firemode switch capabilities
+function NewRaycastWeaponBase:can_toggle_firemode()
+	if self:gadget_overrides_weapon_functions() then
+		return self:gadget_function_override("can_toggle_firemode")
+	end
+
+	-- Allow weaponmods to override firemode switches (M14 surplus special for instance)
+	if self._weaponmod_firemode_switch_override ~= nil then
+		return self._weaponmod_firemode_switch_override
+	end
+
+	return tweak_data.weapon[self._name_id].CAN_TOGGLE_FIREMODE
 end

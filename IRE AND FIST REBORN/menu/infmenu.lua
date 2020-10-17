@@ -123,6 +123,11 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu:Save()
 	end
 
+	MenuCallbackHandler.infcb_beta = function(this, item)
+		InFmenu.settings[item:name()] = item:value() == 'on'
+		InFmenu:Save()
+	end
+
 	MenuCallbackHandler.infcb_enablenewcopbehavior = function(this, item)
 		InFmenu.settings[item:name()] = item:value() == 'on'
 		InFmenu:Save()

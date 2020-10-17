@@ -43,6 +43,9 @@ if not IreNFist then
     -- Needed for some networking functions
     IreNFist.peersWithMod = {}
 
+    -- Index of newly inserted bunker/holdout perk deck
+    IreNFist.holdout_deck_index = nil
+
     -- Heist-specific overrides for assault values
     -- This has to be done because some poorly designed heists like Shacklethorne have assaults that end way too quickly with these tweaks
     -- Default values:
@@ -178,6 +181,7 @@ if not InFmenu then
         because_of_training = false,
         debug = false,
         cbt = false,
+        beta = false,
 
         disablefrogmanwarnings = false
     }

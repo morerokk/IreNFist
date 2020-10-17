@@ -17,12 +17,171 @@ Hooks:PostHook(PlayerManager, "on_headshot_dealt", "sniperarmor", function(self,
 end)
 
 Hooks:PreHook(PlayerManager, "on_killshot", "stamonkill", function(self, killed_unit, variant, headshot, weapon_id)
+	if CopDamage.is_civilian(killed_unit:base()._tweak_table) then
+		return
+	end
+
 	if self:get_current_state() and self:get_current_state():_is_doing_advanced_movement() then
 		local value = managers.player:upgrade_value("player", "advmov_stamina_on_kill", 0)
 		self:get_current_state()._unit:movement():_change_stamina(value)
 	end
 end)
 
+-- Holdout perk deck, gives you dropped ammo pickups from enemies provided you stand still
+-- And gives armor for distant kills
+if InFmenu.settings.beta then
+
+	-- Copied function from playerstandard, find pickups around a dead cop's corpse
+	local pickup_area = 20
+	local function pickupPickupsAtDeadUnitPos(self, killed_unit)
+		local pickup_slotmask = managers.slot:get_mask("pickups")
+
+		local pickups = World:find_units_quick("sphere", killed_unit:movement():m_pos(), pickup_area, pickup_slotmask)
+		local grenade_tweak = tweak_data.blackmarket.projectiles[managers.blackmarket:equipped_grenade()]
+		local may_find_grenade = not grenade_tweak.base_cooldown and self:has_category_upgrade("player", "regain_throwable_from_ammo")
+	
+		for _, pickup in ipairs(pickups) do
+			if pickup:pickup() and pickup:pickup():pickup(self:player_unit()) then
+				if may_find_grenade then
+					local data = self:upgrade_value("player", "regain_throwable_from_ammo", nil)
+	
+					if data then
+						self:add_coroutine("regain_throwable_from_ammo", PlayerAction.FullyLoaded, self, data.chance, data.chance_inc)
+					end
+				end
+	
+				for id, weapon in pairs(self:player_unit():inventory():available_selections()) do
+					managers.hud:set_ammo_amount(id, weapon.unit:base():ammo_info())
+				end
+			end
+		end
+	end
+
+	local holdout_pos = nil
+	local max_dist = 200
+	local holdout_active = false
+	local kills_made_in_zone = 0
+	local last_regen_t = 0
+	local regen_cooldown = 5
+	-- Executed when the player kills someone
+	Hooks:PostHook(PlayerManager, "on_killshot", "stationary_kill_ammo", function(self, killed_unit, variant, headshot, weapon_id)
+		local player_unit = self:player_unit()
+
+		if not player_unit then
+			return
+		end
+
+		if CopDamage.is_civilian(killed_unit:base()._tweak_table) then
+			return
+		end
+
+		-- Check for the perk deck
+		if not self:has_category_upgrade("player", "holdout_consecutive_kills") then
+			return
+		end
+
+		-- First kill outside of zone sets a new zone position
+		local pos = player_unit:position()
+		if not holdout_pos or mvector3.distance(pos, holdout_pos) > max_dist then
+			holdout_pos = pos
+			holdout_active = false
+			kills_made_in_zone = 0
+			return
+		end
+
+		local required_kills_in_zone = self:upgrade_value("player", "holdout_killcount", 3)
+		kills_made_in_zone = kills_made_in_zone + 1
+
+		-- If the amount of kills made is at the threshold, then activate the zone
+		if not holdout_active then
+			if kills_made_in_zone >= required_kills_in_zone then
+				holdout_active = true
+			end
+			return
+		end
+
+		-- From here on out, killing enemies will give you their dropped ammo box
+		-- Sadly this function runs after the cop spawned the pickup, so the best way forward here is to simply have the player remotely vacuum the pickup
+
+		-- Much like the Enforcer skill, spawn extra ammo at the feet of the killed enemy by piggybacking off of that skill.
+		local consecutive_kills_required_for_ammo_bonus = self:upgrade_value("player", "holdout_consecutive_kill_ammo", 0)
+		if consecutive_kills_required_for_ammo_bonus > 0 then
+			-- Check if this is the nth kill
+			if required_kills_in_zone % consecutive_kills_required_for_ammo_bonus == 0 then
+				-- Award extra ammo
+				log("[InF] Extra ammo awarded for nth kill in zone")
+				if Network:is_client() then
+					managers.network:session():send_to_host("sync_spawn_extra_ammo", killed_unit)
+				else
+					self:spawn_extra_ammo(killed_unit)
+				end
+			end
+		end
+
+		-- Vacuum up the enemy drops
+		-- TODO: As a client this could be subject to latency.
+		-- Ideally I'd like to simply intercept the ammo drop and drop it at the Guardian player's position,
+		-- but that's not something I have control over.
+		-- Workaround: add a delayed call to try again, or just ignore it and it'll be picked up with the next kill?
+		pickupPickupsAtDeadUnitPos(self, killed_unit)
+
+		-- Check if we are past the cooldown for the health/armor restore
+		local t = Application:time()
+		if t - last_regen_t < regen_cooldown then
+			return
+		end
+
+		-- Perform the health/armor restore
+		local health_restore_amount = self:upgrade_value("player", "holdout_distant_kill_health_regen", 0)
+		local armor_restore_amount = self:upgrade_value("player", "holdout_close_kill_armor_regen", 0)
+		if health_restore_amount <= 0 or armor_restore_amount <= 0 then
+			return
+		end
+
+		local damage_ext = player_unit:character_damage()
+		if not damage_ext then
+			return
+		end
+
+		local healthrestore_min_dist = tweak_data.upgrades.holdout_distant_kill_min_distance
+		local armorrestore_max_dist = tweak_data.upgrades.holdout_close_kill_max_distance
+
+		local distance_to_killed_unit = mvector3.distance(player_unit:movement():m_pos(), killed_unit:movement():m_pos())
+		if distance_to_killed_unit >= healthrestore_min_dist then
+			-- Restore health
+			damage_ext:restore_health(health_restore_amount)
+		elseif distance_to_killed_unit <= armorrestore_max_dist then
+			-- Restore armor
+			damage_ext:restore_armor(armor_restore_amount)
+		end
+
+		last_regen_t = Application:time()
+	end)
+
+	Hooks:PostHook(PlayerManager, "update", "inf_playermanager_update_updateholdouthud", function(self, t, dt)
+		local player_unit = self:player_unit()
+
+		if not player_unit then
+			-- Do nothing at all
+			return
+		end
+
+		if not holdout_active or not holdout_pos then
+			-- Set hud false
+			managers.hud:set_holdout_indicator_enabled(false)
+			return
+		end
+
+		local dist = mvector3.distance(player_unit:position(), holdout_pos)
+		if dist <= max_dist then
+			-- Set hud true
+			managers.hud:set_holdout_indicator_enabled(true)
+		else
+			-- Set hud false
+			managers.hud:set_holdout_indicator_enabled(false)
+		end
+	end)
+end
 
 local old_sdc = PlayerManager.skill_dodge_chance
 function PlayerManager:skill_dodge_chance(...)

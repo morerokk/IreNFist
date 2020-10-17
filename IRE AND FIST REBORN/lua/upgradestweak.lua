@@ -39,6 +39,9 @@ else
 		-- Counter-Strike counter arrest
 		self.values.player.counter_arrest = {true}
 
+		-- Enabling holdout/bunker
+		self.values.player.holdout_consecutive_kills = {true}
+
 		for a = 1, 21, 1 do
 			-- set 25% headshot bonus text to 0%
 			self.specialization_descs[a][2].multiperk = "0%"
@@ -168,6 +171,34 @@ else
 			1,
 			1.5
 		}
+
+		-- Bunker/Holdout minimum distance for activating the health regen
+		-- For reference, self.close_combat_distance = 1800
+		self.holdout_distant_kill_min_distance = 2400
+		-- Maximum distance for the close-range version of the regen instead, which regenerates armor
+		self.holdout_close_kill_max_distance = 600
+
+		-- Displayed health and armor ingame is x10 its actual value, so this is 10 and 20
+		self.values.player.holdout_distant_kill_health_regen = {
+			1,
+			2
+		}
+		-- Close-by armor regen
+		self.values.player.holdout_close_kill_armor_regen = {
+			1,
+			2
+		}
+
+		-- How many kills are required inside a newly dropped zone to activate it
+		self.values.player.holdout_killcount = {
+			3,
+			2
+		}
+
+		-- Every X kills, you get an extra ammo drop from a kill inside a zone, where X is the upgrade value
+		self.values.player.holdout_consecutive_kill_ammo = {
+			10
+		}
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills", function(self, params)	
@@ -281,13 +312,93 @@ else
 
 		self.definitions.player_counter_arrest = {
 			category = "feature",
-			name_id = "player_counter_arrest",
+			name_id = "menu_player_counter_arrest",
 			upgrade = {
 				category = "player",
 				upgrade = "counter_arrest",
 				value = 1
 			}
 		}
+		
+		-- Bunker/Holdout stuff
+		self.definitions.player_holdout_consecutive_kills = {
+			category = "feature",
+			name_id = "menu_player_holdout_consecutive_kills",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_consecutive_kills",
+				value = 1
+			}
+		}
+
+		self.definitions.player_holdout_killcount_1 = {
+			category = "feature",
+			name_id = "menu_player_holdout_killcount_1",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_killcount",
+				value = 1
+			}
+		}
+		self.definitions.player_holdout_killcount_2 = {
+			category = "feature",
+			name_id = "menu_player_holdout_killcount_2",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_killcount",
+				value = 2
+			}
+		}
+
+		-- Distant kill health regen
+		self.definitions.player_holdout_distant_kill_health_regen_1 = {
+			category = "feature",
+			name_id = "menu_player_holdout_distant_kill_health_regen_1",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_distant_kill_health_regen",
+				value = 1
+			}
+		}
+		self.definitions.player_holdout_distant_kill_health_regen_2 = {
+			category = "feature",
+			name_id = "menu_player_holdout_distant_kill_health_regen_2",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_distant_kill_health_regen",
+				value = 2
+			}
+		}
+		-- Close-by armor regen
+		self.definitions.player_holdout_close_kill_armor_regen_1 = {
+			category = "feature",
+			name_id = "menu_player_holdout_close_kill_armor_regen_1",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_close_kill_armor_regen_1",
+				value = 1
+			}
+		}
+		self.definitions.player_holdout_close_kill_armor_regen_2 = {
+			category = "feature",
+			name_id = "menu_player_holdout_close_kill_armor_regen_2",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_close_kill_armor_regen_2",
+				value = 2
+			}
+		}
+
+		self.definitions.player_holdout_consecutive_kill_ammo = {
+			category = "feature",
+			name_id = "menu_player_holdout_consecutive_kill_ammo",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_consecutive_kill_ammo",
+				value = 1
+			}
+		}
+
 	end)
 end
 

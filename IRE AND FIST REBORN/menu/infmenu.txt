@@ -358,6 +358,15 @@
 			"callback" : "infcb_debug",
 			"value" : "debug",
 			"default_value" : false
+		},
+		{
+			"type" : "toggle",
+			"id" : "beta",
+			"title" : "inf_beta",
+			"description" : "inf_beta_desc",
+			"callback" : "infcb_beta",
+			"value" : "beta",
+			"default_value" : false
 		}
 	]
 }

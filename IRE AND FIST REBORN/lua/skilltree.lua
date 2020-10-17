@@ -106,13 +106,162 @@ else
 			digest(16)
 		}
 
-		for a = 1, 21, 1 do
-			-- remove 25% headshot bonus, add xp multiplier
-			self.specializations[a][2].upgrades = {"passive_player_xp_multiplier"}
-			-- remove xp multiplier and concealment modifier
-			self.specializations[a][4].upgrades = {"player_passive_armor_movement_penalty_multiplier"}
-			-- remove 5% damage bonus
-			self.specializations[a][8].upgrades = {"passive_doctor_bag_interaction_speed_multiplier"}
+		if InFmenu.settings.beta then
+			-- Common decks
+
+			-- Remove headshot dmg multiplier, replace with XP
+			local deck2 = {
+				cost = 300,
+				desc_id = "menu_deckall_2_desc",
+				name_id = "menu_deckall_2",
+				upgrades = {
+					"passive_player_xp_multiplier"
+				},
+				icon_xy = {
+					1,
+					0
+				}
+			}
+			-- Remove XP and detection buffs
+			local deck4 = {
+				cost = 600,
+				desc_id = "menu_deckall_4_desc",
+				name_id = "menu_deckall_4",
+				upgrades = {
+					"player_passive_armor_movement_penalty_multiplier"
+				},
+				icon_xy = {
+					3,
+					0
+				}
+			}
+			-- No ammo pickup multiplier
+			local deck6 = {
+				cost = 1600,
+				desc_id = "menu_deckall_6_desc",
+				name_id = "menu_deckall_6",
+				upgrades = {
+					"armor_kit"
+				},
+				icon_xy = {
+					5,
+					0
+				}
+			}
+			-- No random damage multiplier
+			local deck8 = {
+				cost = 3200,
+				desc_id = "menu_deckall_8_desc",
+				name_id = "menu_deckall_8",
+				upgrades = {
+					"passive_doctor_bag_interaction_speed_multiplier"
+				},
+				icon_xy = {
+					7,
+					0
+				}
+			}
+
+			-- Change common perks in each deck
+			for a = 1, #self.specializations, 1 do
+				self.specializations[a][2] = deck2
+				self.specializations[a][4] = deck4
+				self.specializations[a][6] = deck6
+				self.specializations[a][8] = deck8
+			end
+
+			-- Add brand-new Bunker/Holdout/Defender perk deck
+			local holdout_deck = {
+				{
+					cost = 200,
+					desc_id = "menu_deck_holdout1_desc",
+					name_id = "menu_deck_holdout1",
+					upgrades = {
+						"player_holdout_consecutive_kills", -- Enables the holdout feature to begin with
+						"player_holdout_killcount_1" -- Required kills in zone is 3
+					},
+					icon_xy = {
+						0,
+						5
+					}
+				},
+				deck2,
+				{
+					cost = 400,
+					desc_id = "menu_deck_holdout3_desc",
+					name_id = "menu_deck_holdout3",
+					texture_bundle_folder = "opera",
+					upgrades = {
+						"player_holdout_distant_kill_health_regen_1", -- Far away kills regenerate 10 health
+						"player_holdout_close_kill_armor_regen_1" -- Close-by kills regenerate 10 armor instead
+					},
+					icon_xy = {
+						0,
+						1
+					}
+				},
+				deck4,
+				{
+					cost = 1000,
+					desc_id = "menu_deck_holdout5_desc",
+					name_id = "menu_deck_holdout5",
+					texture_bundle_folder = "opera",
+					upgrades = {
+						"player_holdout_killcount_2" -- Lower required kills to 2
+					},
+					icon_xy = {
+						0,
+						0
+					}
+				},
+				deck6,
+				{
+					cost = 2400,
+					desc_id = "menu_deck_holdout7_desc",
+					name_id = "menu_deck_holdout7",
+					upgrades = {
+						"player_holdout_distant_kill_health_regen_2", -- Far away kills regenerate 20 health instead of 10
+						"player_holdout_close_kill_armor_regen_2" -- Close-by kills regenerate 20 armor instead of 10
+					},
+					icon_xy = {
+						0,
+						3
+					}
+				},
+				deck8,
+				{
+					cost = 4000,
+					desc_id = "menu_deck_holdout9_desc",
+					name_id = "menu_deck_holdout9",
+					upgrades = {
+						"player_holdout_consecutive_kill_ammo", -- Every 10th consecutive zone kill drops 1 extra ammo
+						"player_passive_loot_drop_multiplier" -- Should always be in any perk deck, is infamous chance
+					},
+					icon_xy = {
+						4,
+						5
+					}
+				},
+				desc_id = "menu_deck_holdout_desc",
+				name_id = "menu_deck_holdout",
+				custom = true,
+				custom_id = "inf_holdout_perkdeck",
+			}
+
+			-- Insert the new perk deck and remember its ID
+			-- This is better compatible with other perkdeck-adding mods and also future-proof
+			local i = #self.specializations + 1
+			self.specializations[i] = holdout_deck
+			IreNFist.holdout_deck_index = i
+		else
+			for a = 1, 21, 1 do
+				-- remove 25% headshot bonus, add xp multiplier
+				self.specializations[a][2].upgrades = {"passive_player_xp_multiplier"}
+				-- remove xp multiplier and concealment modifier
+				self.specializations[a][4].upgrades = {"player_passive_armor_movement_penalty_multiplier"}
+				-- remove 5% damage bonus
+				self.specializations[a][8].upgrades = {"passive_doctor_bag_interaction_speed_multiplier"}
+			end
 		end
 
 		-- Rogue

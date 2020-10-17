@@ -46,6 +46,8 @@
 	"inf_cbt_desc": "If enabled, *ALL* cops will actively try to arrest interacting players (instead of only a few enemy types being able to do so). Has no effect if new cop behavior is disabled. Default: off",
 	"inf_debug": "Debug",
 	"inf_debug_desc": "If enabled, this will log potential errors in your BLT log. Some important errors might also be printed to chat. Default: off",
+	"inf_beta": "Beta Features",
+	"inf_beta_desc": "If enabled, early access to beta features will be enabled. These might be full of bugs. Please report any crashes to the Github repo!",
 
 	"inf_txt_header": "--- TEXT OPTIONS ---",
 	"inf_txt_wpnname": "Use IREnFIST Text",

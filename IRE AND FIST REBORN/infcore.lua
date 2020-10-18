@@ -182,6 +182,7 @@ if not InFmenu then
         debug = false,
         cbt = false,
         beta = false,
+        holdout_waypoint = false,
 
         disablefrogmanwarnings = false
     }

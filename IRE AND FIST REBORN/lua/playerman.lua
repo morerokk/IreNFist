@@ -63,6 +63,19 @@ if InFmenu.settings.beta then
 	local kills_made_in_zone = 0
 	local last_regen_t = 0
 	local regen_cooldown = 5
+
+	local waypoint_data = {
+		position = Vector3(0,0,0),
+		icon = "pd2_defend",
+		distance = true,
+		no_sync = false,
+		present_timer = 0,
+		state = "present",
+		radius = 50,
+		color = Color(0.1, 1, 0.1),
+		blend_mode = "add"
+	}
+
 	-- Executed when the player kills someone
 	Hooks:PostHook(PlayerManager, "on_killshot", "stationary_kill_ammo", function(self, killed_unit, variant, headshot, weapon_id)
 		local player_unit = self:player_unit()
@@ -86,6 +99,7 @@ if InFmenu.settings.beta then
 			holdout_pos = pos
 			holdout_active = false
 			kills_made_in_zone = 0
+			self:update_holdout_waypoint()
 			return
 		end
 
@@ -181,6 +195,20 @@ if InFmenu.settings.beta then
 			managers.hud:set_holdout_indicator_enabled(false)
 		end
 	end)
+
+	function PlayerManager:update_holdout_waypoint()
+		if InFmenu.settings.holdout_waypoint then
+			if holdout_pos and holdout_active then
+				waypoint_data.position = holdout_pos
+				managers.hud:remove_waypoint("inf_guardian_waypoint")
+				managers.hud:add_waypoint("inf_guardian_waypoint", waypoint_data)
+			else
+				managers.hud:remove_waypoint("inf_guardian_waypoint")
+			end
+		else
+			managers.hud:remove_waypoint("inf_guardian_waypoint")
+		end
+	end
 end
 
 local old_sdc = PlayerManager.skill_dodge_chance

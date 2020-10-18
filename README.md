@@ -13,3 +13,7 @@ This mod supports many different BeardLib Custom Weapons. [A full list can be fo
 
 If you want to see support for a custom weapon added, the fastest and best way to do so is to make a Fork of this repository, then make your changes to the fork and open a Pull Request.
 You can also suggest it be added on the Issues page or on the MWS page, but I'm not likely to take suggestions if the weapon isn't sufficiently interesting.
+
+# Beta Features
+This mod has beta features that can be enabled in the options. The current beta features are:
+* **Guardian:** A perk deck that favors camping in one place, either from close by or far away. Regains ammo drops from killed enemies, regardless of distance.

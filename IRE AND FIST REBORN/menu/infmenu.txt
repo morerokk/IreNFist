@@ -352,6 +352,15 @@
 		},
 		{
 			"type" : "toggle",
+			"id" : "holdout_waypoint",
+			"title" : "inf_holdout_waypoint",
+			"description" : "inf_holdout_waypoint_desc",
+			"callback" : "infcb_holdout_waypoint",
+			"value" : "holdout_waypoint",
+			"default_value" : false
+		},
+		{
+			"type" : "toggle",
 			"id" : "debug",
 			"title" : "inf_debug",
 			"description" : "inf_debug_desc",

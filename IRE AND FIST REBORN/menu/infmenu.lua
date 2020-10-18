@@ -153,6 +153,16 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu:Save()
 	end
 
+	MenuCallbackHandler.infcb_holdout_waypoint = function(this, item)
+		local enabled = item:value() == 'on'
+		InFmenu.settings[item:name()] = enabled
+		InFmenu:Save()
+
+		if InFmenu.settings.beta and managers and managers.player then
+			managers.player:update_holdout_waypoint()
+		end
+	end
+
 	InFmenu:Load()
 
 	MenuHelper:LoadFromJsonFile(InFmenu._path .. 'menu/infmenu.txt', InFmenu, InFmenu.settings)

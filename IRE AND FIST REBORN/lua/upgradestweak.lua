@@ -42,13 +42,24 @@ else
 		-- Enabling holdout/bunker
 		self.values.player.holdout_consecutive_kills = {true}
 
-		for a = 1, 21, 1 do
-			-- set 25% headshot bonus text to 0%
-			self.specialization_descs[a][2].multiperk = "0%"
-			-- set 35% ammo pickup bonus text to 0%
-			self.specialization_descs[a][6].multiperk = "100%"
-			-- set 5% damage bonus text to 0%
-			self.specialization_descs[a][8].multiperk = "0%"
+		if InFmenu.settings.beta then
+			for a = 1, 22, 1 do
+				-- set 25% headshot bonus text to 0%
+				self.specialization_descs[a][2].multiperk = "0%"
+				-- set 35% ammo pickup bonus text to 0%
+				self.specialization_descs[a][6].multiperk = "100%"
+				-- set 5% damage bonus text to 0%
+				self.specialization_descs[a][8].multiperk = "0%"
+			end
+		else
+			for a = 1, 21, 1 do
+				-- set 25% headshot bonus text to 0%
+				self.specialization_descs[a][2].multiperk = "0%"
+				-- set 35% ammo pickup bonus text to 0%
+				self.specialization_descs[a][6].multiperk = "100%"
+				-- set 5% damage bonus text to 0%
+				self.specialization_descs[a][8].multiperk = "0%"
+			end
 		end
 	end)
 
@@ -375,7 +386,7 @@ else
 			name_id = "menu_player_holdout_close_kill_armor_regen_1",
 			upgrade = {
 				category = "player",
-				upgrade = "holdout_close_kill_armor_regen_1",
+				upgrade = "holdout_close_kill_armor_regen",
 				value = 1
 			}
 		}
@@ -384,7 +395,7 @@ else
 			name_id = "menu_player_holdout_close_kill_armor_regen_2",
 			upgrade = {
 				category = "player",
-				upgrade = "holdout_close_kill_armor_regen_2",
+				upgrade = "holdout_close_kill_armor_regen",
 				value = 2
 			}
 		}

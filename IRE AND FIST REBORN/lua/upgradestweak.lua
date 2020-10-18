@@ -182,9 +182,9 @@ else
 
 		-- Bunker/Holdout minimum distance for activating the health regen
 		-- For reference, self.close_combat_distance = 1800
-		self.holdout_distant_kill_min_distance = 1800
+		self.holdout_distant_kill_min_distance = 1200
 		-- Maximum distance for the close-range version of the regen instead, which regenerates armor
-		self.holdout_close_kill_max_distance = 600
+		self.holdout_close_kill_max_distance = 1200
 
 		-- Displayed health and armor ingame is x10 its actual value, so this is 10 and 20
 		self.values.player.holdout_distant_kill_health_regen = {

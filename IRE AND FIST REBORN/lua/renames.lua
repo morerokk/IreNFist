@@ -1046,13 +1046,13 @@ else
 		menu_deck_holdout1 = "Resourceful",
 		menu_deck_holdout1_desc = "The first time you make a kill, a killzone with a ##2## meter radius is dropped at your location. When you make ##3## more kills while you are in this zone, the zone is activated. When you kill an enemy while you are inside your active zone, you will automatically pick up their ammo drops, no matter how far away.\n\nKilling an enemy while you are outside of this zone will reset the zone to your new location, requiring you to activate it again.\n\nYou can leave and re-enter the zone at any time without the zone resetting, as long as you do not make any kills outside the zone.",
 		menu_deck_holdout3 = "Bunker",
-		menu_deck_holdout3_desc = "When inside your active killzone:\n\nKilling an enemy more than ##18## meters from your current location regenerates ##10## health.\n\nIf the enemy is within ##6## meters, you regenerate ##10## armor instead.\n\nThese effects have a cooldown of ##5## seconds.",
+		menu_deck_holdout3_desc = "When inside your active killzone:\n\nKilling an enemy more than ##12## meters from your current location regenerates ##10## health.\n\nIf the enemy is within ##12## meters, you regenerate ##10## armor instead.\n\nThese effects each have their own individual cooldown of ##5## seconds.",
 		menu_deck_holdout5 = "Defender",
 		menu_deck_holdout5_desc = "Your killzone now only needs ##2## kills to activate.\n\nWhile inside your active killzone, you gain ##12%## damage reduction.",
 		menu_deck_holdout7 = "Bastion",
 		menu_deck_holdout7_desc = "Health and armor regeneration from this perk deck is both increased to ##20##.",
 		menu_deck_holdout9 = "Holdout",
-		menu_deck_holdout9_desc = "Every ##10## kills you make inside your active killzone will drop an additional ammo box.\n\nThe distance-based health and armor regeneration cooldown is reduced to ##4## seconds.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
+		menu_deck_holdout9_desc = "Every ##10## kills you make inside your active killzone will drop an additional ammo box.\n\nThe distance-based health and armor regeneration cooldowns are reduced to ##4## seconds.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
 
 		-- crew bonuses
 		-- interact inspire scavenge ai ap ammo

@@ -29,10 +29,10 @@ end)
 
 -- Holdout perk deck, gives you dropped ammo pickups from enemies provided you stand still
 -- And gives armor for distant kills
-if InFmenu.settings.beta then
+if InFmenu.settings.beta then	
 
 	-- Copied function from playerstandard, find pickups around a dead cop's corpse
-	local pickup_area = 20
+	local pickup_area = 50
 	local function pickupPickupsAtDeadUnitPos(self, killed_unit)
 		local pickup_slotmask = managers.slot:get_mask("pickups")
 
@@ -57,11 +57,16 @@ if InFmenu.settings.beta then
 		end
 	end
 
+	-- Holds killed units as a client, so we can check their positions for ammo later.
+	local killed_units = {}
+	local killed_ammo_wait_delay = 0.5
+
 	local holdout_pos = nil
 	local max_dist = 200
 	local holdout_active = false
 	local kills_made_in_zone = 0
-	local last_regen_t = 0
+	local last_health_regen_t = 0
+	local last_armor_regen_t = 0
 
 	local waypoint_data = {
 		position = Vector3(0,0,0),
@@ -132,18 +137,17 @@ if InFmenu.settings.beta then
 		end
 
 		-- Vacuum up the enemy drops
-		-- TODO: As a client this could be subject to latency.
-		-- Ideally I'd like to simply intercept the ammo drop and drop it at the Guardian player's position,
-		-- but that's not something I have control over.
-		-- Workaround: add a delayed call to try again, or just ignore it and it'll be picked up with the next kill?
 		pickupPickupsAtDeadUnitPos(self, killed_unit)
 
-		-- Check if we are past the cooldown for the health/armor restore
-		local regen_cooldown = self:upgrade_value("player", "holdout_regen_cooldown", 0)
-		local t = Application:time()
-		if regen_cooldown == 0 or t - last_regen_t < regen_cooldown then
-			return
+		-- Clients don't see the extra ammo straight away.
+		-- Schedule a delayed ammo pickup check for the client.
+		if Network and Network:is_client() then
+			killed_units[killed_unit:id()] = { unit = killed_unit, kill_t = Application:time() }
 		end
+
+		-- Check if we are past the cooldown for the health/armor restore
+		local regen_cooldown = self:upgrade_value("player", "holdout_regen_cooldown", 5)
+		local t = Application:time()
 
 		-- Perform the health/armor restore
 		local health_restore_amount = self:upgrade_value("player", "holdout_distant_kill_health_regen", 0)
@@ -161,23 +165,33 @@ if InFmenu.settings.beta then
 		local armorrestore_max_dist = tweak_data.upgrades.holdout_close_kill_max_distance
 
 		local distance_to_killed_unit = mvector3.distance(player_unit:movement():m_pos(), killed_unit:movement():m_pos())
-		if distance_to_killed_unit >= healthrestore_min_dist then
+		if distance_to_killed_unit > healthrestore_min_dist and (t - last_health_regen_t > regen_cooldown) then
 			-- Restore health
-			damage_ext:restore_health(health_restore_amount)
-		elseif distance_to_killed_unit <= armorrestore_max_dist then
+			damage_ext:restore_health(health_restore_amount, true)
+			last_health_regen_t = Application:time()
+		elseif distance_to_killed_unit <= armorrestore_max_dist and (t - last_armor_regen_t > regen_cooldown) then
 			-- Restore armor
 			damage_ext:restore_armor(armor_restore_amount)
+			last_armor_regen_t = Application:time()
 		end
-
-		last_regen_t = Application:time()
 	end)
 
-	Hooks:PostHook(PlayerManager, "update", "inf_playermanager_update_updateholdouthud", function(self, t, dt)
+	Hooks:PostHook(PlayerManager, "update", "inf_playermanager_update_updateholdouthudandammo", function(self, t, dt)
 		local player_unit = self:player_unit()
 
 		if not player_unit then
 			-- Do nothing at all
 			return
+		end
+
+		-- As client, check for ammo drops around earlier killed enemies
+		if Network and Network:is_client() then
+			for unit_id, data in pairs(killed_units) do
+				if data.kill_t + killed_ammo_wait_delay > Application:time() then
+					pickupPickupsAtDeadUnitPos(self, killed_unit)
+					killed_units[unit_id] = nil
+				end
+			end
 		end
 
 		if not holdout_active or not holdout_pos then

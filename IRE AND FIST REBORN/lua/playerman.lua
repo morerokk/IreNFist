@@ -188,7 +188,7 @@ if InFmenu.settings.beta then
 		if Network and Network:is_client() then
 			for unit_id, data in pairs(killed_units) do
 				if data.kill_t + killed_ammo_wait_delay > Application:time() then
-					pickupPickupsAtDeadUnitPos(self, killed_unit)
+					pickupPickupsAtDeadUnitPos(self, data.unit)
 					killed_units[unit_id] = nil
 				end
 			end

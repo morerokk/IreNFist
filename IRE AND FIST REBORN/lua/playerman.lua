@@ -32,7 +32,7 @@ end)
 if InFmenu.settings.beta then	
 
 	-- Copied function from playerstandard, find pickups around a dead cop's corpse
-	local pickup_area = 50
+	local pickup_area = 100
 	local function pickupPickupsAtDeadUnitPos(self, killed_unit_pos)
 		local pickup_slotmask = managers.slot:get_mask("pickups")
 
@@ -41,6 +41,7 @@ if InFmenu.settings.beta then
 		local may_find_grenade = not grenade_tweak.base_cooldown and self:has_category_upgrade("player", "regain_throwable_from_ammo")
 	
 		for _, pickup in ipairs(pickups) do
+			log("Pickup logic")
 			if pickup:pickup() and pickup:pickup():pickup(self:player_unit()) then
 				if may_find_grenade then
 					local data = self:upgrade_value("player", "regain_throwable_from_ammo", nil)
@@ -53,13 +54,15 @@ if InFmenu.settings.beta then
 				for id, weapon in pairs(self:player_unit():inventory():available_selections()) do
 					managers.hud:set_ammo_amount(id, weapon.unit:base():ammo_info())
 				end
+			else
+				log("Pickup FAILED!!!!!?!?!?!")
 			end
 		end
 	end
 
 	-- Holds killed units as a client, so we can check their positions for ammo later.
 	local killed_units = {}
-	local killed_ammo_wait_delay = 1
+	local killed_ammo_wait_delay = 0.8
 
 	local holdout_pos = nil
 	local max_dist = 200
@@ -67,18 +70,6 @@ if InFmenu.settings.beta then
 	local kills_made_in_zone = 0
 	local last_health_regen_t = 0
 	local last_armor_regen_t = 0
-
-	local waypoint_data = {
-		position = Vector3(0,0,0),
-		icon = "pd2_defend",
-		distance = true,
-		no_sync = false,
-		present_timer = 0,
-		state = "present",
-		radius = 50,
-		color = Color(0.1, 1, 0.1),
-		blend_mode = "add"
-	}
 
 	-- Executed when the player kills someone
 	Hooks:PostHook(PlayerManager, "on_killshot", "stationary_kill_ammo", function(self, killed_unit, variant, headshot, weapon_id)
@@ -114,6 +105,7 @@ if InFmenu.settings.beta then
 		if not holdout_active then
 			if kills_made_in_zone >= required_kills_in_zone then
 				holdout_active = true
+				self:update_holdout_waypoint()
 			end
 			return
 		end
@@ -141,8 +133,9 @@ if InFmenu.settings.beta then
 
 		-- Clients don't see the extra ammo straight away.
 		-- Schedule a delayed ammo pickup check for the client.
+		-- Also the cop's position has to be copied because apparently their position is a reference that can change? Disgusting
 		if Network and Network:is_client() then
-			killed_units[killed_unit:id()] = { unit_pos = killed_unit:movement():m_pos(), kill_t = Application:time() }
+			killed_units[killed_unit:id()] = { unit_pos = mvector3.copy(killed_unit:movement():m_pos()), kill_expiry_t = killed_ammo_wait_delay }
 		end
 
 		-- Check if we are past the cooldown for the health/armor restore
@@ -187,7 +180,8 @@ if InFmenu.settings.beta then
 		-- As client, check for ammo drops around earlier killed enemies
 		if Network and Network:is_client() then
 			for unit_id, data in pairs(killed_units) do
-				if data.kill_t + killed_ammo_wait_delay > Application:time() then
+				data.kill_expiry_t = data.kill_expiry_t - dt
+				if data.kill_expiry_t <= 0 then
 					pickupPickupsAtDeadUnitPos(self, data.unit_pos)
 					killed_units[unit_id] = nil
 				end
@@ -218,9 +212,18 @@ if InFmenu.settings.beta then
 
 		if InFmenu.settings.holdout_waypoint then
 			if holdout_pos and holdout_active then
-				waypoint_data.position = holdout_pos
 				managers.hud:remove_waypoint("inf_guardian_waypoint")
-				managers.hud:add_waypoint("inf_guardian_waypoint", waypoint_data)
+				managers.hud:add_waypoint("inf_guardian_waypoint", {
+					position = holdout_pos,
+					icon = "pd2_defend",
+					distance = true,
+					no_sync = false,
+					present_timer = 0,
+					state = "present",
+					radius = 50,
+					color = Color(0.1, 1, 0.1),
+					blend_mode = "add"
+				})
 			else
 				managers.hud:remove_waypoint("inf_guardian_waypoint")
 			end

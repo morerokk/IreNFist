@@ -17,3 +17,4 @@ You can also suggest it be added on the Issues page or on the MWS page, but I'm 
 # Beta Features
 This mod has beta features that can be enabled in the options. The current beta features are:
 * **Guardian:** A perk deck that favors camping in one place, either from close by or far away. Regains ammo drops from killed enemies, regardless of distance.
+* Various "meta-game" skills like Chameleon Ace's extra money have been moved to perk decks instead.

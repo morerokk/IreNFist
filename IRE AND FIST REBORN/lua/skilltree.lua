@@ -110,12 +110,14 @@ else
 			-- Common decks
 
 			-- Remove headshot dmg multiplier, replace with XP
+			-- Also add the former Parkour movement speed bonus to it
 			local deck2 = {
 				cost = 300,
 				desc_id = "menu_deckall_2_desc",
 				name_id = "menu_deckall_2",
 				upgrades = {
-					"passive_player_xp_multiplier"
+					"passive_player_xp_multiplier",
+					"player_movement_speed_multiplier"
 				},
 				icon_xy = {
 					1,
@@ -304,7 +306,7 @@ else
 				"player_stamina_regen_multiplier"
 			}
 
-			-- Chameleon, make extra loot value default to a common perk instead
+			-- Chameleon, make extra loot value innate to a shared perk instead of some random skill
 			self.skills.jail_workout[2].upgrades = {
 				"player_mask_off_pickup"
 			}
@@ -319,7 +321,7 @@ else
 		-- Shockproof Ace: taser bullets (lol)
 		table.insert(self.skills.insulation[2].upgrades, "player_electric_bullets_while_tased")
 
-		-- Parkour skill: replace movement speed with the ability to break your fall with advanced movement
+		-- Parkour skill: replace movement speed bonus with the ability to break your fall with advanced movement
 		if InFmenu.settings.beta then
 			self.skills.awareness[1].upgrades = {
 				"player_climb_speed_multiplier_1",

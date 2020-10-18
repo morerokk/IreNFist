@@ -1025,7 +1025,7 @@ else
 		menu_deck9_1_desc = "When you are surrounded by three or more enemies, you receive ##12%## less damage from enemies.\n\nYour second and each consecutive melee hit within ##5## seconds of the last one will deal ##2## times the damage. Missing a swing will reset this.",
 
 		menu_deckall_2 = "Get Cracking",
-		menu_deckall_2_desc = "You gain ##45%## more experience from heists.",
+		menu_deckall_2_desc = "You gain ##45%## more experience from heists.\n\nYour movement speed is increased by ##10%##.",
 		menu_deckall_4 = "Hustle",
 		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.\n\nYou gain ##30%## more value for valuables and cash that you pick up.",
 		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.\n\nYou can throw bags ##50%## further.",

@@ -33,10 +33,10 @@ if InFmenu.settings.beta then
 
 	-- Copied function from playerstandard, find pickups around a dead cop's corpse
 	local pickup_area = 50
-	local function pickupPickupsAtDeadUnitPos(self, killed_unit)
+	local function pickupPickupsAtDeadUnitPos(self, killed_unit_pos)
 		local pickup_slotmask = managers.slot:get_mask("pickups")
 
-		local pickups = World:find_units_quick("sphere", killed_unit:movement():m_pos(), pickup_area, pickup_slotmask)
+		local pickups = World:find_units_quick("sphere", killed_unit_pos, pickup_area, pickup_slotmask)
 		local grenade_tweak = tweak_data.blackmarket.projectiles[managers.blackmarket:equipped_grenade()]
 		local may_find_grenade = not grenade_tweak.base_cooldown and self:has_category_upgrade("player", "regain_throwable_from_ammo")
 	
@@ -59,7 +59,7 @@ if InFmenu.settings.beta then
 
 	-- Holds killed units as a client, so we can check their positions for ammo later.
 	local killed_units = {}
-	local killed_ammo_wait_delay = 0.5
+	local killed_ammo_wait_delay = 1
 
 	local holdout_pos = nil
 	local max_dist = 200
@@ -137,12 +137,12 @@ if InFmenu.settings.beta then
 		end
 
 		-- Vacuum up the enemy drops
-		pickupPickupsAtDeadUnitPos(self, killed_unit)
+		pickupPickupsAtDeadUnitPos(self, killed_unit:movement():m_pos())
 
 		-- Clients don't see the extra ammo straight away.
 		-- Schedule a delayed ammo pickup check for the client.
 		if Network and Network:is_client() then
-			killed_units[killed_unit:id()] = { unit = killed_unit, kill_t = Application:time() }
+			killed_units[killed_unit:id()] = { unit_pos = killed_unit:movement():m_pos(), kill_t = Application:time() }
 		end
 
 		-- Check if we are past the cooldown for the health/armor restore
@@ -188,7 +188,7 @@ if InFmenu.settings.beta then
 		if Network and Network:is_client() then
 			for unit_id, data in pairs(killed_units) do
 				if data.kill_t + killed_ammo_wait_delay > Application:time() then
-					pickupPickupsAtDeadUnitPos(self, data.unit)
+					pickupPickupsAtDeadUnitPos(self, data.unit_pos)
 					killed_units[unit_id] = nil
 				end
 			end

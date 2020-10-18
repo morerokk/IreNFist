@@ -42,16 +42,7 @@ else
 		-- Enabling holdout/bunker
 		self.values.player.holdout_consecutive_kills = {true}
 
-		if InFmenu.settings.beta then
-			for a = 1, 21, 1 do
-				-- set 25% headshot bonus text to 0%
-				self.specialization_descs[a][2].multiperk = "0%"
-				-- set 35% ammo pickup bonus text to 0%
-				self.specialization_descs[a][6].multiperk = "100%"
-				-- set 5% damage bonus text to 0%
-				self.specialization_descs[a][8].multiperk = "0%"
-			end
-		else
+		if not InFmenu.settings.beta then
 			for a = 1, 21, 1 do
 				-- set 25% headshot bonus text to 0%
 				self.specialization_descs[a][2].multiperk = "0%"
@@ -185,7 +176,7 @@ else
 
 		-- Bunker/Holdout minimum distance for activating the health regen
 		-- For reference, self.close_combat_distance = 1800
-		self.holdout_distant_kill_min_distance = 2000
+		self.holdout_distant_kill_min_distance = 1800
 		-- Maximum distance for the close-range version of the regen instead, which regenerates armor
 		self.holdout_close_kill_max_distance = 600
 

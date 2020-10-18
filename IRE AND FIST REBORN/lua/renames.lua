@@ -1022,6 +1022,7 @@ else
 		menu_deckall_4 = "Hustle",
 		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.",
 		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.",
+		menu_deckall_8_desc = "Your doctor bag interaction speed is increased by ##20%##.",
 
 		-- Rogue last perk tweaks
 		menu_deck4_9_desc = "All your weapons pierce through enemies.\n\nYour dodge chance is increased by ##10%##.\n\nIncreases weapon swap speed by ##80%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",

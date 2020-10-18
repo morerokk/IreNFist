@@ -185,7 +185,7 @@ else
 
 		-- Bunker/Holdout minimum distance for activating the health regen
 		-- For reference, self.close_combat_distance = 1800
-		self.holdout_distant_kill_min_distance = 2400
+		self.holdout_distant_kill_min_distance = 2000
 		-- Maximum distance for the close-range version of the regen instead, which regenerates armor
 		self.holdout_close_kill_max_distance = 600
 
@@ -209,6 +209,12 @@ else
 		-- Every X kills, you get an extra ammo drop from a kill inside a zone, where X is the upgrade value
 		self.values.player.holdout_consecutive_kill_ammo = {
 			10
+		}
+
+		-- Defines the cooldown for the health/armor regen effect
+		self.values.player.holdout_regen_cooldown = {
+			5,
+			4
 		}
 	end)
 
@@ -400,6 +406,27 @@ else
 			}
 		}
 
+		-- Cooldowns for the regen
+		self.definitions.player_holdout_regen_cooldown_1 = {
+			category = "feature",
+			name_id = "menu_player_holdout_regen_cooldown_1",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_regen_cooldown",
+				value = 1
+			}
+		}
+		self.definitions.player_holdout_regen_cooldown_2 = {
+			category = "feature",
+			name_id = "menu_player_holdout_regen_cooldown_2",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_regen_cooldown",
+				value = 2
+			}
+		}
+
+		-- Every nth kill drops extra ammo
 		self.definitions.player_holdout_consecutive_kill_ammo = {
 			category = "feature",
 			name_id = "menu_player_holdout_consecutive_kill_ammo",

@@ -62,7 +62,6 @@ if InFmenu.settings.beta then
 	local holdout_active = false
 	local kills_made_in_zone = 0
 	local last_regen_t = 0
-	local regen_cooldown = 5
 
 	local waypoint_data = {
 		position = Vector3(0,0,0),
@@ -140,8 +139,9 @@ if InFmenu.settings.beta then
 		pickupPickupsAtDeadUnitPos(self, killed_unit)
 
 		-- Check if we are past the cooldown for the health/armor restore
+		local regen_cooldown = self:upgrade_value("player", "holdout_regen_cooldown", 0)
 		local t = Application:time()
-		if t - last_regen_t < regen_cooldown then
+		if regen_cooldown == 0 or t - last_regen_t < regen_cooldown then
 			return
 		end
 

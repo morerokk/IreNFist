@@ -193,7 +193,8 @@ else
 					texture_bundle_folder = "opera",
 					upgrades = {
 						"player_holdout_distant_kill_health_regen_1", -- Far away kills regenerate 10 health
-						"player_holdout_close_kill_armor_regen_1" -- Close-by kills regenerate 10 armor instead
+						"player_holdout_close_kill_armor_regen_1", -- Close-by kills regenerate 10 armor instead
+						"player_holdout_regen_cooldown_1" -- Cooldown is 5 seconds
 					},
 					icon_xy = {
 						0,
@@ -235,6 +236,7 @@ else
 					name_id = "menu_deck_holdout9",
 					upgrades = {
 						"player_holdout_consecutive_kill_ammo", -- Every 10th consecutive zone kill drops 1 extra ammo
+						"player_holdout_regen_cooldown_2", -- Cooldown of Bunker reduced to 4 seconds
 						"player_passive_loot_drop_multiplier" -- Should always be in any perk deck, is infamous chance
 					},
 					icon_xy = {

@@ -43,7 +43,7 @@ else
 		self.values.player.holdout_consecutive_kills = {true}
 
 		if InFmenu.settings.beta then
-			for a = 1, 22, 1 do
+			for a = 1, 21, 1 do
 				-- set 25% headshot bonus text to 0%
 				self.specialization_descs[a][2].multiperk = "0%"
 				-- set 35% ammo pickup bonus text to 0%

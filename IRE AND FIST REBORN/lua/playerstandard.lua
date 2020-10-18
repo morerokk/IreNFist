@@ -2966,9 +2966,24 @@ function PlayerStandard:_do_wallkick()
 	self._unit:movement():subtract_stamina(tweak_data.player.movement_state.stamina.JUMP_STAMINA_DRAIN)
 	self._unit:movement():_restart_stamina_regen_timer()
 	self._is_wallkicking = true
+	self:_check_advmovement_reset_fallheight()
 end
 
 if InFmenu.settings.enablewallrun then
+	-- Allow parkour skill to reset fall height when you wallrun, cling or jump
+	function PlayerStandard:_check_advmovement_reset_fallheight()
+		if not self._state_data or not self._state_data.enter_air_pos_z or not self._pos or not self._pos.z then
+			return
+		end
+
+		if not managers.player:has_category_upgrade("player", "adv_movement_breaks_fall") then
+			return
+		end
+
+		-- Reset fall height to this height
+		self._state_data.enter_air_pos_z = self._pos.z
+	end
+
 	function PlayerStandard:_check_wallkick(t, dt)
 		if ((t - self._last_wallkick_t) > 1.0) or self._is_wallkicking then
 			local action_wanted = self._controller:get_input_bool("jump")
@@ -3017,6 +3032,8 @@ if InFmenu.settings.enablewallrun then
 					-- slide down wall very slowly while clinging
 					if self._unit:mover() then
 						self._unit:mover():set_gravity(Vector3(0, 0, -150 * ads_mult))
+						-- Set last fall height
+						self:_check_advmovement_reset_fallheight()
 					end
 				elseif ((t - self._wallkick_hold_start_t) > 0.15 or self._is_wallrunning) and not self._wallkick_is_clinging then
 					if not wallkick_on_cooldown and nearest_ray and nearest_ray.raydata and nearest_ray.raydata.unit and not managers.enemy:is_enemy(nearest_ray.raydata.unit) and not nearest_ray.raydata.unit:in_slot(8) then
@@ -3025,6 +3042,7 @@ if InFmenu.settings.enablewallrun then
 						if self._unit:mover() then
 							self._unit:mover():set_gravity(Vector3(0, 0, 0))
 							self._unit:mover():set_velocity(Vector3(0, 0, 0))
+							self:_check_advmovement_reset_fallheight()
 						end
 						mvector3.multiply(self._last_velocity_xy, 0.05)
 						mvector3.set_z(self._last_velocity_xy, 0)

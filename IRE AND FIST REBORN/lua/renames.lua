@@ -683,7 +683,7 @@ end
 
 	infcodex_ap = "Armor Piercing",
 	infcodex_ap_desc = "Tan chestplates are always penetrated, but usually at a damage penalty. The multiplier depends on base weapon type and can be affected by weapon mods.",
-	infcodex_ap2_desc = "- Light Rifle/Medium/Heavy Rifle/DMR: 75%/66%/75%/100%\n- Sniper Rifle: 100%\n- Light/Medium/Heavy Pistol: 64%/75%/100%\n- Shotgun/KS-23: 50%/100%\n- SMG/Carbine: 60%/75%\n- 50dmg LMG/55dmg LMG/Minigun: 60%/80%/50%",
+	infcodex_ap2_desc = "Tan helmets will offer a little bit of damage resistance. Their helmets can be shot off, opening them up to full damage from headshots.",
 
 	infcodex_enehp = "Enemy Health",
 	infcodex_enehp_desc = "OVERKILL TRASH\nNAME: HEALTH/HS MULT (HEAD HEALTH)\nBlues: 135/3 (45)\nGreens: 150/3 (50)\nGrays: 165/3 (55)\nWhiteheads: 175/2.5 (70)\nTans: 200/2 (100)",
@@ -915,7 +915,7 @@ if IreNFist.mod_compatibility.sso then
 		menu_fast_fire_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
 		-- Body Expertise
 		menu_body_expertise_beta = "Sweep and Clear",
-		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's## and ##Miniguns##.",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's## and ##Miniguns##.\n\nLMG's and Miniguns gain ##50%## armor piercing.",
 
 		menu_dance_instructor = "Gun Kata",
 		menu_dance_instructor_desc = "BASIC: ##$basic##\nHaving a pistol equipped as your secondary increases all weapon switch speed by ##10%##.\n\nACE: ##$pro##\nThe weapon switch speed bonus is increased to ##20%##.",
@@ -946,6 +946,9 @@ else
 		menu_stockholm_syndrome_beta_desc = "BASIC: ##$basic##\nCivilians are intimidated by the noise you make and remain intimidated ##50%## longer.\n\nYou can call over civilians and converted enemies to revive you. The civilian can be tied or untied.\n\nACE: ##$pro##\nYour hostages will not flee when they have been rescued by law enforcers. Whenever you get into custody, your hostages will trade themselves for your safe return. This effect can occur during assaults, but only ##1## time during a heist.",
 
 		-- ENFORCER
+		-- Transporter
+		menu_pack_mule_beta_desc = "BASIC: ##$basic##\nYou can sprint with any bag.\n\nACE: ##$pro##\nFor each ##10## armor points, the bag movement penalty is reduced by ##1%##.",
+
 		-- fully loaded
 		menu_bandoliers_beta_desc = "BASIC: ##$basic##\nYou hold ##25%## more total ammo.\n\nACE: ##$pro##\nYour ammo scavenge rate is set to ##150%##. You also have a base ##5%## chance to get a throwable from scavenging, increasing by ##1%## for every ammo pickup without a throwable. This chance resets upon finding a throwable. Throwables with higher capacities have higher scavenge rate and quantity.\n\nSee the Contact Database for exact values.",
 		-- overkill
@@ -966,12 +969,16 @@ else
 
 		-- GHOST
 		-- duck and cover
-		menu_sprinter_beta_desc = "BASIC: ##$basic##\nYour stamina starts regenerating ##25%## earlier and ##25%## faster. You also sprint ##25%## faster.\n\nACE: ##$pro##\nYou have a ##10%## increased chance to dodge while sprinting or sliding.",
+		menu_sprinter_beta_desc = "BASIC: ##$basic##\nYour stamina starts regenerating ##25%## earlier and ##25%## faster.\n\nACE: ##$pro##\nYou have a ##10%## increased chance to dodge while sprinting or sliding.",
+		-- parkour
+		menu_awareness_beta_desc = "BASIC: ##$basic##\nYou gain ##20%## increased speed when climbing ladders.\n\nWallkicking, wallrunning or wallclinging will now break your fall.\n\nACE: ##$pro##\nYou gain the ability to sprint in any direction.\n\nRun and reload - you can reload your weapons while sprinting.",
 		-- dire need (moving target)
 		menu_moving_target = "Moving Target",
 		menu_moving_target_desc = "BASIC: ##$basic##\nYou gain ##2%## extra movement speed for every ##3## points of detection risk under ##35##, up to ##20%##.\n\nACE: ##$pro##\nYou gain ##2%## extra movement speed for every ##1## point of detection risk under ##35##, up to ##20%##.",
 		-- shockproof
 		menu_insulation_beta_desc = "BASIC: ##$basic##\nWhen tased, the shock effect has a ##30%## chance to backfire on the Taser, knocking them back.\n\nACE: ##$pro##\nWhen tased, you are able to free yourself from the taser by interacting with it within ##2## seconds of getting tased.\n\nWhile being tased, your bullets will electrify enemies.",
+		-- chameleon
+		menu_jail_workout_beta_desc = "BASIC: ##$basic##\nIncreases the time before you start getting detected by ##25%## while in casing mode. You can also mark enemies and cameras while in casing mode.\n\nACE: ##$pro##\nYou can pick up items while in casing mode.",
 
 		-- FUGITIVE
 		-- desperado
@@ -1020,12 +1027,12 @@ else
 		menu_deckall_2 = "Get Cracking",
 		menu_deckall_2_desc = "You gain ##45%## more experience from heists.",
 		menu_deckall_4 = "Hustle",
-		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.",
-		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.",
-		menu_deckall_8_desc = "Your doctor bag interaction speed is increased by ##20%##.",
+		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.\n\nYou gain ##30%## more value for valuables and cash that you pick up.",
+		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.\n\nYou can throw bags ##50%## further.",
+		menu_deckall_8_desc = "Your doctor bag interaction speed is increased by ##20%##.\n\nYou sprint ##25%## faster.",
 
 		-- Rogue last perk tweaks
-		menu_deck4_9_desc = "All your weapons pierce through enemies.\n\nYour dodge chance is increased by ##10%##.\n\nIncreases weapon swap speed by ##80%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
+		menu_deck4_9_desc = "All your weapons pierce through enemies. Your armor piercing is increased by ##50%##.\n\nYour dodge chance is increased by ##10%##.\n\nIncreases weapon swap speed by ##80%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
 		-- Sicario cooldown reduction
 		menu_deck18_1_desc = "Unlocks and equips the throwable Smoke Bomb.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for ##10## seconds. While standing inside the smoke screen, you and any of your allies automatically avoid ##50%## of all bullets. Any enemies that stand in the smoke will see their accuracy reduced by ##50%##.\n\nAfter the smoke screen dissipates, the Smoke Bomb is on a cooldown for ##30## seconds, but killing enemies will reduce this cooldown by ##1## second.",
 		-- Hacker description fix
@@ -1041,7 +1048,7 @@ else
 		menu_deck_holdout3 = "Bunker",
 		menu_deck_holdout3_desc = "When inside your active killzone:\n\nKilling an enemy more than ##18## meters from your current location regenerates ##10## health.\n\nIf the enemy is within ##6## meters, you regenerate ##10## armor instead.\n\nThese effects have a cooldown of ##5## seconds.",
 		menu_deck_holdout5 = "Defender",
-		menu_deck_holdout5_desc = "Your killzone now only needs ##2## kills to activate.",
+		menu_deck_holdout5_desc = "Your killzone now only needs ##2## kills to activate.\n\nWhile inside your active killzone, you gain ##12%## damage reduction.",
 		menu_deck_holdout7 = "Bastion",
 		menu_deck_holdout7_desc = "Health and armor regeneration from this perk deck is both increased to ##20##.",
 		menu_deck_holdout9 = "Holdout",
@@ -3867,6 +3874,9 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- "No weapon" descriptions
 	bm_w_nothing_desc = "And you thought bringing a knife to a gunfight was bad.",
 	bm_w_nothing2_desc = "And you thought bringing a knife to a gunfight was bad.",
+
+	-- Serious Sam Minigun
+	bm_w_xm214a_desc = "Here comes trouble!",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

@@ -39,6 +39,12 @@ else
 		-- Counter-Strike counter arrest
 		self.values.player.counter_arrest = {true}
 
+		-- Sprint with any bag
+		self.values.player.sprint_any_bag = {true}
+
+		-- Advanced movement (walljump, run, cling) breaks fall
+		self.values.player.adv_movement_breaks_fall = {true}
+
 		-- Enabling holdout/bunker
 		self.values.player.holdout_consecutive_kills = {true}
 
@@ -207,6 +213,11 @@ else
 			5,
 			4
 		}
+
+		-- Damage reduction when inside your zone
+		self.values.player.holdout_dmg_reduction = {
+			0.88
+		}
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills", function(self, params)	
@@ -327,6 +338,17 @@ else
 				value = 1
 			}
 		}
+
+		-- Transporter, sprint with any bag
+		self.definitions.player_sprint_any_bag = {
+			category = "feature",
+			name_id = "menu_player_sprint_any_bag",
+			upgrade = {
+				category = "player",
+				upgrade = "sprint_any_bag",
+				value = 1
+			}
+		}
 		
 		-- Bunker/Holdout stuff
 		self.definitions.player_holdout_consecutive_kills = {
@@ -424,6 +446,27 @@ else
 			upgrade = {
 				category = "player",
 				upgrade = "holdout_consecutive_kill_ammo",
+				value = 1
+			}
+		}
+		-- Holdout damage reduction
+		self.definitions.player_holdout_dmg_reduction_1 = {
+			category = "feature",
+			name_id = "menu_player_holdout_dmg_reduction_1",
+			upgrade = {
+				category = "player",
+				upgrade = "holdout_dmg_reduction",
+				value = 1
+			}	
+		}
+
+		-- Advanced movement breaks your fall
+		self.definitions.player_adv_movement_breaks_fall = {
+			category = "feature",
+			name_id = "menu_player_adv_movement_breaks_fall",
+			upgrade = {
+				category = "player",
+				upgrade = "adv_movement_breaks_fall",
 				value = 1
 			}
 		}

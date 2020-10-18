@@ -122,39 +122,42 @@ else
 					0
 				}
 			}
-			-- Remove XP and detection buffs
+			-- Remove XP and detection buffs, add instant cash pickup value
 			local deck4 = {
 				cost = 600,
 				desc_id = "menu_deckall_4_desc",
 				name_id = "menu_deckall_4",
 				upgrades = {
-					"player_passive_armor_movement_penalty_multiplier"
+					"player_passive_armor_movement_penalty_multiplier",
+					"player_small_loot_multiplier_1"
 				},
 				icon_xy = {
 					3,
 					0
 				}
 			}
-			-- No ammo pickup multiplier
+			-- No ammo pickup multiplier, add further bag throwing
 			local deck6 = {
 				cost = 1600,
 				desc_id = "menu_deckall_6_desc",
 				name_id = "menu_deckall_6",
 				upgrades = {
-					"armor_kit"
+					"armor_kit",
+					"carry_throw_distance_multiplier"
 				},
 				icon_xy = {
 					5,
 					0
 				}
 			}
-			-- No random damage multiplier
+			-- No random damage multiplier, add sprint speed from Sprinter skill
 			local deck8 = {
 				cost = 3200,
 				desc_id = "menu_deckall_8_desc",
 				name_id = "menu_deckall_8",
 				upgrades = {
-					"passive_doctor_bag_interaction_speed_multiplier"
+					"passive_doctor_bag_interaction_speed_multiplier",
+					"player_run_speed_multiplier"
 				},
 				icon_xy = {
 					7,
@@ -208,7 +211,8 @@ else
 					name_id = "menu_deck_holdout5",
 					texture_bundle_folder = "opera",
 					upgrades = {
-						"player_holdout_killcount_2" -- Lower required kills to 2
+						"player_holdout_killcount_2", -- Lower required kills to 2
+						"player_holdout_dmg_reduction_1" -- Add 12% damage reduction while inside your zone
 					},
 					icon_xy = {
 						0,
@@ -292,7 +296,19 @@ else
 		table.insert(self.skills.stockholm_syndrome[1].upgrades, "player_civilian_reviver")
 
 		-- GHOST
-		-- duck and cover
+		
+		if InFmenu.settings.beta then
+			-- Duck and cover
+			self.skills.sprinter[1].upgrades = {
+				"player_stamina_regen_timer_multiplier",
+				"player_stamina_regen_multiplier"
+			}
+
+			-- Chameleon, make extra loot value default to a common perk instead
+			self.skills.jail_workout[2].upgrades = {
+				"player_mask_off_pickup"
+			}
+		end
 		self.skills.sprinter[2].upgrades = {"player_run_dodge_chance", "slide_dodge_chance"}
 		-- replace dire need with moving target
 		self.skills.dire_need[1].upgrades = {"player_detection_risk_add_movement_speed_1"}
@@ -302,6 +318,14 @@ else
 		self.skills.dire_need.icon_xy = {2, 4} -- Moving Target icon
 		-- Shockproof Ace: taser bullets (lol)
 		table.insert(self.skills.insulation[2].upgrades, "player_electric_bullets_while_tased")
+
+		-- Parkour skill: replace movement speed with the ability to break your fall with advanced movement
+		if InFmenu.settings.beta then
+			self.skills.awareness[1].upgrades = {
+				"player_climb_speed_multiplier_1",
+				"player_adv_movement_breaks_fall"
+			}
+		end
 
 
 		-- FUGITIVE
@@ -331,6 +355,10 @@ else
 
 
 		-- ENFORCER
+		-- Transporter
+		if InFmenu.settings.beta then
+			self.skills.pack_mule[1].upgrades = { "player_sprint_any_bag" }
+		end
 		-- overkill
 		self.skills.overkill[1].upgrades = {"shotgun_last_shell_amount", "shotgun_last_shell_dmg_mult"}
 		self.skills.overkill[2].upgrades = {"shotgun_last_shell_amount_2"}

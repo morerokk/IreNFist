@@ -196,7 +196,12 @@ if InFmenu.settings.beta then
 		end
 	end)
 
+	-- Update the Guardian waypoint marker
 	function PlayerManager:update_holdout_waypoint()
+		if not managers or not managers.hud then
+			return
+		end
+
 		if InFmenu.settings.holdout_waypoint then
 			if holdout_pos and holdout_active then
 				waypoint_data.position = holdout_pos
@@ -208,6 +213,25 @@ if InFmenu.settings.beta then
 		else
 			managers.hud:remove_waypoint("inf_guardian_waypoint")
 		end
+	end
+
+	-- Add Guardian damage reduction while in the zone
+	local playerman_dmg_reduction_skill_mul_orig = PlayerManager.damage_reduction_skill_multiplier
+	function PlayerManager:damage_reduction_skill_multiplier(...)
+		local multiplier = playerman_dmg_reduction_skill_mul_orig(self, ...)
+
+		local player_unit = self:player_unit()
+		if not player_unit then
+			return multiplier
+		end
+
+		local pos = self:player_unit():position()
+
+		if pos and holdout_active and holdout_pos and mvector3.distance(pos, holdout_pos) <= max_dist then
+			multiplier = multiplier * self:upgrade_value("player", "holdout_dmg_reduction", 1)
+		end
+
+		return multiplier
 	end
 end
 

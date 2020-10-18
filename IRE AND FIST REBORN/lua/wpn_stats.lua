@@ -6636,6 +6636,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.nothing2.sdesc1 = "caliber_nothing"
 	end
 
+	-- Serious Sam Minigun
+	if self.xm214a then
+		self:inf_init("xm214a", "minigun")
+		self:copy_sdescs("xm214a", "m134")
+		self:copy_stats("xm214a", "m134")
+		self:copy_timers("xm214a", "m134")
+	end
+
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)
 	-- Then do something like this for pistols:

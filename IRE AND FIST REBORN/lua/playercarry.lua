@@ -1,9 +1,5 @@
 dofile(ModPath .. "infcore.lua")
 
-if not InFmenu.settings.beta then
-    return
-end
-
 -- Sprint with any bag skill
 function PlayerCarry:_check_action_run(...)
 	if tweak_data.carry.types[self._tweak_data_name].can_run or managers.player:has_category_upgrade("player", "sprint_any_bag") or managers.player:has_category_upgrade("carry", "movement_penalty_nullifier") then
@@ -21,7 +17,7 @@ function PlayerCarry:_check_slide(...)
 	end
 end
 
--- Disallow wallkicking with heavier bags too
+-- Disallow wallkicking/running with heavier bags too
 function PlayerCarry:_check_wallkick(...)
 	if tweak_data.carry.types[self._tweak_data_name].can_run then
 		return PlayerCarry.super._check_wallkick(self, ...)

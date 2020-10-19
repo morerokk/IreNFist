@@ -1,9 +1,5 @@
 dofile(ModPath .. "infcore.lua")
 
-if not InFmenu.settings.beta then
-    return
-end
-
 -- Spoof perk deck as armorer to prevent crashes (and to prevent malicious mods like Full Speed Swarm from kicking us)
 local skilltreemanager_pack_string_orig = SkillTreeManager.pack_to_string
 function SkillTreeManager:pack_to_string()

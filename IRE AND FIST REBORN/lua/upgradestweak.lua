@@ -47,17 +47,6 @@ else
 
 		-- Enabling holdout/bunker
 		self.values.player.holdout_consecutive_kills = {true}
-
-		if not InFmenu.settings.beta then
-			for a = 1, 21, 1 do
-				-- set 25% headshot bonus text to 0%
-				self.specialization_descs[a][2].multiperk = "0%"
-				-- set 35% ammo pickup bonus text to 0%
-				self.specialization_descs[a][6].multiperk = "100%"
-				-- set 5% damage bonus text to 0%
-				self.specialization_descs[a][8].multiperk = "0%"
-			end
-		end
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "inf_fuckyourskills2", function(self, params)

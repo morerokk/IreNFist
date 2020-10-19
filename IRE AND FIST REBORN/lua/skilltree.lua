@@ -106,171 +106,160 @@ else
 			digest(16)
 		}
 
-		if InFmenu.settings.beta then
-			-- Common decks
+		-- Common decks
 
-			-- Remove headshot dmg multiplier, replace with XP
-			-- Also add the former Parkour movement speed bonus to it
-			local deck2 = {
-				cost = 300,
-				desc_id = "menu_deckall_2_desc",
-				name_id = "menu_deckall_2",
-				upgrades = {
-					"passive_player_xp_multiplier",
-					"player_movement_speed_multiplier"
-				},
-				icon_xy = {
-					1,
-					0
-				}
+		-- Remove headshot dmg multiplier, replace with XP
+		-- Also add the former Parkour movement speed bonus to it
+		local deck2 = {
+			cost = 300,
+			desc_id = "menu_deckall_2_desc",
+			name_id = "menu_deckall_2",
+			upgrades = {
+				"passive_player_xp_multiplier",
+				"player_movement_speed_multiplier"
+			},
+			icon_xy = {
+				1,
+				0
 			}
-			-- Remove XP and detection buffs, add instant cash pickup value
-			local deck4 = {
-				cost = 600,
-				desc_id = "menu_deckall_4_desc",
-				name_id = "menu_deckall_4",
-				upgrades = {
-					"player_passive_armor_movement_penalty_multiplier",
-					"player_small_loot_multiplier_1"
-				},
-				icon_xy = {
-					3,
-					0
-				}
+		}
+		-- Remove XP and detection buffs, add instant cash pickup value
+		local deck4 = {
+			cost = 600,
+			desc_id = "menu_deckall_4_desc",
+			name_id = "menu_deckall_4",
+			upgrades = {
+				"player_passive_armor_movement_penalty_multiplier",
+				"player_small_loot_multiplier_1"
+			},
+			icon_xy = {
+				3,
+				0
 			}
-			-- No ammo pickup multiplier, add further bag throwing
-			local deck6 = {
-				cost = 1600,
-				desc_id = "menu_deckall_6_desc",
-				name_id = "menu_deckall_6",
-				upgrades = {
-					"armor_kit",
-					"carry_throw_distance_multiplier"
-				},
-				icon_xy = {
-					5,
-					0
-				}
+		}
+		-- No ammo pickup multiplier, add further bag throwing
+		local deck6 = {
+			cost = 1600,
+			desc_id = "menu_deckall_6_desc",
+			name_id = "menu_deckall_6",
+			upgrades = {
+				"armor_kit",
+				"carry_throw_distance_multiplier"
+			},
+			icon_xy = {
+				5,
+				0
 			}
-			-- No random damage multiplier, add sprint speed from Sprinter skill
-			local deck8 = {
-				cost = 3200,
-				desc_id = "menu_deckall_8_desc",
-				name_id = "menu_deckall_8",
-				upgrades = {
-					"passive_doctor_bag_interaction_speed_multiplier",
-					"player_run_speed_multiplier"
-				},
-				icon_xy = {
-					7,
-					0
-				}
+		}
+		-- No random damage multiplier, add sprint speed from Sprinter skill
+		local deck8 = {
+			cost = 3200,
+			desc_id = "menu_deckall_8_desc",
+			name_id = "menu_deckall_8",
+			upgrades = {
+				"passive_doctor_bag_interaction_speed_multiplier",
+				"player_run_speed_multiplier"
+			},
+			icon_xy = {
+				7,
+				0
 			}
+		}
 
-			-- Change common perks in each deck
-			for a = 1, #self.specializations, 1 do
-				self.specializations[a][2] = deck2
-				self.specializations[a][4] = deck4
-				self.specializations[a][6] = deck6
-				self.specializations[a][8] = deck8
-			end
-
-			-- Add brand-new Bunker/Holdout/Defender perk deck
-			local holdout_deck = {
-				{
-					cost = 200,
-					desc_id = "menu_deck_holdout1_desc",
-					name_id = "menu_deck_holdout1",
-					upgrades = {
-						"player_holdout_consecutive_kills", -- Enables the holdout feature to begin with
-						"player_holdout_killcount_1" -- Required kills in zone is 3
-					},
-					icon_xy = {
-						0,
-						5
-					}
-				},
-				deck2,
-				{
-					cost = 400,
-					desc_id = "menu_deck_holdout3_desc",
-					name_id = "menu_deck_holdout3",
-					texture_bundle_folder = "opera",
-					upgrades = {
-						"player_holdout_distant_kill_health_regen_1", -- Far away kills regenerate 10 health
-						"player_holdout_close_kill_armor_regen_1", -- Close-by kills regenerate 10 armor instead
-						"player_holdout_regen_cooldown_1" -- Cooldown is 5 seconds
-					},
-					icon_xy = {
-						0,
-						1
-					}
-				},
-				deck4,
-				{
-					cost = 1000,
-					desc_id = "menu_deck_holdout5_desc",
-					name_id = "menu_deck_holdout5",
-					texture_bundle_folder = "opera",
-					upgrades = {
-						"player_holdout_killcount_2", -- Lower required kills to 2
-						"player_holdout_dmg_reduction_1" -- Add 12% damage reduction while inside your zone
-					},
-					icon_xy = {
-						0,
-						0
-					}
-				},
-				deck6,
-				{
-					cost = 2400,
-					desc_id = "menu_deck_holdout7_desc",
-					name_id = "menu_deck_holdout7",
-					upgrades = {
-						"player_holdout_distant_kill_health_regen_2", -- Far away kills regenerate 20 health instead of 10
-						"player_holdout_close_kill_armor_regen_2" -- Close-by kills regenerate 20 armor instead of 10
-					},
-					icon_xy = {
-						0,
-						3
-					}
-				},
-				deck8,
-				{
-					cost = 4000,
-					desc_id = "menu_deck_holdout9_desc",
-					name_id = "menu_deck_holdout9",
-					upgrades = {
-						"player_holdout_consecutive_kill_ammo", -- Every 10th consecutive zone kill drops 1 extra ammo
-						"player_holdout_regen_cooldown_2", -- Cooldown of Bunker reduced to 4 seconds
-						"player_passive_loot_drop_multiplier" -- Should always be in any perk deck, is infamous chance
-					},
-					icon_xy = {
-						4,
-						5
-					}
-				},
-				desc_id = "menu_deck_holdout_desc",
-				name_id = "menu_deck_holdout",
-				custom = true,
-				custom_id = "inf_holdout_perkdeck",
-			}
-
-			-- Insert the new perk deck and remember its ID
-			-- This is better compatible with other perkdeck-adding mods and also future-proof
-			local i = #self.specializations + 1
-			self.specializations[i] = holdout_deck
-			IreNFist.holdout_deck_index = i
-		else
-			for a = 1, 21, 1 do
-				-- remove 25% headshot bonus, add xp multiplier
-				self.specializations[a][2].upgrades = {"passive_player_xp_multiplier"}
-				-- remove xp multiplier and concealment modifier
-				self.specializations[a][4].upgrades = {"player_passive_armor_movement_penalty_multiplier"}
-				-- remove 5% damage bonus
-				self.specializations[a][8].upgrades = {"passive_doctor_bag_interaction_speed_multiplier"}
-			end
+		-- Change common perks in each deck
+		for a = 1, #self.specializations, 1 do
+			self.specializations[a][2] = deck2
+			self.specializations[a][4] = deck4
+			self.specializations[a][6] = deck6
+			self.specializations[a][8] = deck8
 		end
+
+		-- Add brand-new Bunker/Holdout/Defender perk deck
+		local holdout_deck = {
+			{
+				cost = 200,
+				desc_id = "menu_deck_holdout1_desc",
+				name_id = "menu_deck_holdout1",
+				upgrades = {
+					"player_holdout_consecutive_kills", -- Enables the holdout feature to begin with
+					"player_holdout_killcount_1" -- Required kills in zone is 3
+				},
+				icon_xy = {
+					0,
+					5
+				}
+			},
+			deck2,
+			{
+				cost = 400,
+				desc_id = "menu_deck_holdout3_desc",
+				name_id = "menu_deck_holdout3",
+				texture_bundle_folder = "opera",
+				upgrades = {
+					"player_holdout_distant_kill_health_regen_1", -- Far away kills regenerate 10 health
+					"player_holdout_close_kill_armor_regen_1", -- Close-by kills regenerate 10 armor instead
+					"player_holdout_regen_cooldown_1" -- Cooldown is 5 seconds
+				},
+				icon_xy = {
+					0,
+					1
+				}
+			},
+			deck4,
+			{
+				cost = 1000,
+				desc_id = "menu_deck_holdout5_desc",
+				name_id = "menu_deck_holdout5",
+				texture_bundle_folder = "opera",
+				upgrades = {
+					"player_holdout_killcount_2", -- Lower required kills to 2
+					"player_holdout_dmg_reduction_1" -- Add 12% damage reduction while inside your zone
+				},
+				icon_xy = {
+					0,
+					0
+				}
+			},
+			deck6,
+			{
+				cost = 2400,
+				desc_id = "menu_deck_holdout7_desc",
+				name_id = "menu_deck_holdout7",
+				upgrades = {
+					"player_holdout_distant_kill_health_regen_2", -- Far away kills regenerate 20 health instead of 10
+					"player_holdout_close_kill_armor_regen_2" -- Close-by kills regenerate 20 armor instead of 10
+				},
+				icon_xy = {
+					0,
+					3
+				}
+			},
+			deck8,
+			{
+				cost = 4000,
+				desc_id = "menu_deck_holdout9_desc",
+				name_id = "menu_deck_holdout9",
+				upgrades = {
+					"player_holdout_consecutive_kill_ammo", -- Every 10th consecutive zone kill drops 1 extra ammo
+					"player_holdout_regen_cooldown_2", -- Cooldown of Bunker reduced to 4 seconds
+					"player_passive_loot_drop_multiplier" -- Should always be in any perk deck, is infamous chance
+				},
+				icon_xy = {
+					4,
+					5
+				}
+			},
+			desc_id = "menu_deck_holdout_desc",
+			name_id = "menu_deck_holdout",
+			custom = true,
+			custom_id = "inf_holdout_perkdeck",
+		}
+
+		-- Insert the new perk deck and remember its ID
+		-- This is better compatible with other perkdeck-adding mods and also future-proof
+		local i = #self.specializations + 1
+		self.specializations[i] = holdout_deck
+		IreNFist.holdout_deck_index = i
 
 		-- Rogue
 		-- Give yet more dodge to the final perk, replace "pierce body armor" with "pierce enemies" since piercing body armor is redundant
@@ -298,19 +287,18 @@ else
 		table.insert(self.skills.stockholm_syndrome[1].upgrades, "player_civilian_reviver")
 
 		-- GHOST
-		
-		if InFmenu.settings.beta then
-			-- Duck and cover
-			self.skills.sprinter[1].upgrades = {
-				"player_stamina_regen_timer_multiplier",
-				"player_stamina_regen_multiplier"
-			}
+		-- Duck and cover
+		-- Extra sprint speed moved to perk
+		self.skills.sprinter[1].upgrades = {
+			"player_stamina_regen_timer_multiplier",
+			"player_stamina_regen_multiplier"
+		}
 
-			-- Chameleon, make extra loot value innate to a shared perk instead of some random skill
-			self.skills.jail_workout[2].upgrades = {
-				"player_mask_off_pickup"
-			}
-		end
+		-- Chameleon, make extra loot value innate to a shared perk instead of some random skill
+		self.skills.jail_workout[2].upgrades = {
+			"player_mask_off_pickup"
+		}
+
 		self.skills.sprinter[2].upgrades = {"player_run_dodge_chance", "slide_dodge_chance"}
 		-- replace dire need with moving target
 		self.skills.dire_need[1].upgrades = {"player_detection_risk_add_movement_speed_1"}
@@ -322,12 +310,10 @@ else
 		table.insert(self.skills.insulation[2].upgrades, "player_electric_bullets_while_tased")
 
 		-- Parkour skill: replace movement speed bonus with the ability to break your fall with advanced movement
-		if InFmenu.settings.beta then
-			self.skills.awareness[1].upgrades = {
-				"player_climb_speed_multiplier_1",
-				"player_adv_movement_breaks_fall"
-			}
-		end
+		self.skills.awareness[1].upgrades = {
+			"player_climb_speed_multiplier_1",
+			"player_adv_movement_breaks_fall"
+		}
 
 
 		-- FUGITIVE
@@ -358,9 +344,7 @@ else
 
 		-- ENFORCER
 		-- Transporter
-		if InFmenu.settings.beta then
-			self.skills.pack_mule[1].upgrades = { "player_sprint_any_bag" }
-		end
+		self.skills.pack_mule[1].upgrades = { "player_sprint_any_bag" }
 		-- overkill
 		self.skills.overkill[1].upgrades = {"shotgun_last_shell_amount", "shotgun_last_shell_dmg_mult"}
 		self.skills.overkill[2].upgrades = {"shotgun_last_shell_amount_2"}

@@ -1,4 +1,4 @@
-# IreNFist
+# IREnFIST
 A comprehensive rebalance mod for PAYDAY 2, which rebalances weapons, enemies, and even assault squads. This is a fork of the original IreNFist mod by Solo Queue Pixy, which was discontinued.
 This fork was updated to include the newest DLC weapons and weapon mods, and full VR compatibility has been added. Assaults were also tweaked (re-added shotgunners and hostage rescue teams).
 
@@ -16,5 +16,4 @@ You can also suggest it be added on the Issues page or on the MWS page, but I'm 
 
 # Beta Features
 This mod has beta features that can be enabled in the options. The current beta features are:
-* **Guardian:** A perk deck that favors camping in one place, either from close by or far away. Regains ammo drops from killed enemies, regardless of distance.
-* Various "meta-game" skills like Chameleon Ace's extra money have been moved to perk decks instead.
+* **New Assaults:** The entire police force has been given a makeover in the classic style. Enemies will now greatly resemble that of pre-Hoxton Housewarming, both in variety, damage output and numbers.

@@ -1,5 +1,9 @@
 dofile(ModPath .. "infcore.lua")
 
+if InFmenu.settings.beta then
+    return
+end
+
 --[[
 GRAY JP36: units/payday2/characters/ene_city_swat_1/ene_city_swat_1
 

@@ -1,9 +1,5 @@
 dofile(ModPath .. "infcore.lua")
 
-if not InFmenu.settings.beta then
-    return
-end
-
 -- Create guardian perk deck indicator inside the health meter
 Hooks:PostHook(HUDTeammate, "_create_radial_health", "inf_create_holdout_indicator", function(self, radial_health_panel)
     if not self._main_player then

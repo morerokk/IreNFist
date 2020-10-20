@@ -714,6 +714,11 @@ end
 	infcodex_assaulttweaks3_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
 	infcodex_assaulttweaks4_desc = "HEIST-SPECIFIC TWEAKS:\nGolden Grin: More max cops, more spawns in an assault.\nShacklethorne Auction: 30 second initial response delay, less cops.\nBrooklyn Bank: Same as Shacklethorne.\nNo Mercy: Bigger spawn pools.",
 
+	infcodex_assaulttweaks_beta = "Assault Tweaks (BETA)",
+	infcodex_assaulttweaks_beta_desc = "ASSAULT TWEAKS\nCurrently in beta, meaning the Beta option in the InF options must be enabled. This replaces the old assault tweaks.\n\nLess cops will be on the map at the same time, and the maximum number of spawns in an assault has been lowered. This means that if you play aggressively, you can exhaust an assault's spawns and end it early.",
+	infcodex_assaulttweaks2_beta_desc = "SPAWNGROUP TWEAKS\nNearly every single spawngroup has been faithfully restored to their pre-hoxton housewarming counterparts (with the occasional medic thrown in). Expect more dangerous combinations of specials and *WAY* more variety in enemy unit types.\n\nEnabling \"assault variety\" is strongly recommended, even more so than before.",
+	infcodex_assaulttweaks3_beta_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
+
 	infcodex_copbehavior = "Cop Behavior",
 	infcodex_copbehavior_desc = "Enemies are slightly smarter and more aggressive, sometimes even employing new tactics.",
 	infcodex_copbehavior2_desc = "While interacting with something, you are defenseless on your own. Cops might take advantage of this opportunity to try and handcuff you.\n\nWork together and cover each other to prevent this from happening.",

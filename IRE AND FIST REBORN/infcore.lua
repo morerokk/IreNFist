@@ -43,6 +43,10 @@ if not IreNFist then
     -- Needed for some networking functions
     IreNFist.peersWithMod = {}
 
+    -- List of peers that have the standalone cop cuffing mod installed
+    -- Interop with irenfist
+    IreNFist.arrestModPeers = {}
+
     -- Index of newly inserted bunker/holdout perk deck
     IreNFist.holdout_deck_index = nil
 
@@ -93,29 +97,53 @@ if not IreNFist then
     -- Not sure which one of these two names Golden Grin uses, so just override them both.
     IreNFist.bad_heist_overrides.cas = deep_clone(IreNFist.bad_heist_overrides.kenaz)
 
+    -- Fucking sexy NEW overrides
+    -- Because some heists just need a little extra care put into their police force counts
+    -- This time I made it level-based and not job-based
+    -- Beta only for now
+    -- NOTE: These force_muls are applied on top of the existing force balance muls, not on the force values directly
+    -- and they don't replace anything either, they *multiply* the existing value.
+    -- Maybe they *should* multiply the base values instead of the balance_muls?
+    IreNFist.level_force_overrides = {
+        hox_1 = { -- Hoxout day 1
+            force_mul = { 2, 2, 2, 2 },
+            force_pool_mul = { 1.2, 1.2, 1.2, 1.2 } -- Barely matters here, assault is assault
+        },
+        hox_2 = { -- Hoxout day 2
+            force_mul = { 1.5, 1.5, 1.5, 1.5 },
+            force_pool_mul = { 1.2, 1.2, 1.2, 1.2 }
+        }
+    }
+
     -- Mod compatibility detection
     -- Detect if a mod is installed and enabled, if it is then add a table entry so we can keep track of the mod
     IreNFist.mod_compatibility = {}
     -- Sydch's Skill Overhaul
-    local sso = BLT.Mods:GetModByName("Skill Overhaul")
-    if (sso and sso:IsEnabled()) or BeardLib.Utils:ModLoaded("Skill Overhaul") then
+    local sso_compat = BLT.Mods:GetModByName("Skill Overhaul")
+    if (sso_compat and sso_compat:IsEnabled()) or BeardLib.Utils:ModLoaded("Skill Overhaul") then
         log("[InF] SSO compatibility enabled")
         IreNFist.mod_compatibility.sso = true
     end
     -- Armor Overhaul
-    local armor_overhaul = BLT.Mods:GetModByName("Armor Overhaul")
-    if armor_overhaul and armor_overhaul:IsEnabled() then
+    local armor_overhaul_compat = BLT.Mods:GetModByName("Armor Overhaul")
+    if armor_overhaul_compat and armor_overhaul_compat:IsEnabled() then
         log("[InF] Armor Overhaul compatibility enabled")
         IreNFist.mod_compatibility.armor_overhaul = true
     end
     -- Think Faster
-    local think_faster = BLT.Mods:GetModByName("Think Faster")
-    if think_faster and think_faster:IsEnabled() then
+    local think_faster_compat = BLT.Mods:GetModByName("Think Faster")
+    if think_faster_compat and think_faster_compat:IsEnabled() then
         log("[InF] Think Faster compatibility enabled")
         IreNFist.mod_compatibility.think_faster = true
     end
+    -- WolfHUD
+    local wolfhud_compat = BLT.Mods:GetModByName("WolfHUD")
+    if wolfhud_compat and wolfhud_compat:IsEnabled() then
+        log("[InF] WolfHUD compatibility enabled")
+        IreNFist.mod_compatibility.wolfhud = true
+    end
 
-    -- Include utils
+    -- Include arrest utils
     dofile(ModPath .. "utils/coputils.lua")
 
     -- Networking functions
@@ -135,11 +163,17 @@ if not IreNFist then
         if messageType == "irenfist_hello" then
             IreNFist.peersWithMod[sender] = true
         end
+
+        -- Cop arrest interop
+        if messageType == "coparrest_hello" then
+            IreNFist.arrestModPeers[sender] = true
+        end
     end)
 
     -- If a peer leaves, remove them from the list
     Hooks:Add('BaseNetworkSessionOnPeerRemoved', 'BaseNetworkSessionOnPeerRemoved_VocalHeisters', function(peer, peer_id, reason)
         IreNFist.peersWithMod[peer_id] = nil
+        IreNFist.arrestModPeers[peer_id] = nil
     end)
 end
 

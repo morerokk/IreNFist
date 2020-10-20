@@ -1157,6 +1157,37 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 			1
 		}
 	}
+
+	-- Add winters
+	self.besiege.assault.groups.Phalanx = {
+		0,
+		0,
+		0
+	}
+	self.besiege.recon.groups.Phalanx = {
+		0,
+		0,
+		0
+	}
+
+	-- Apply extra level-based multipliers on the force pool balance multiplier
+	-- Some heists need a little extra care
+	local current_level_id = Global.game_settings and Global.game_settings.level_id
+	if current_level_id and IreNFist.level_force_overrides[current_level_id] then
+		local override = IreNFist.level_force_overrides[current_level_id]
+		if override.force_mul then
+			for i, v in ipairs(self.besiege.assault.force_balance_mul) do
+				self.besiege.assault.force_balance_mul[i] = self.besiege.assault.force_balance_mul[i] * override.force_mul[i]
+			end
+		end
+
+		if override.force_pool_mul then
+			for i, v in ipairs(self.besiege.assault.force_pool_balance_mul) do
+				self.besiege.assault.force_pool_balance_mul[i] = self.besiege.assault.force_pool_balance_mul[i] * override.force_pool_mul[i]
+			end
+		end
+	end
+
 	-- Wtf is this?
 	self.street = deep_clone(self.besiege)
 end)
@@ -1333,21 +1364,6 @@ end
 
 function GroupAITweakData:inf_init_taskdata_veryhard()
 	self.besiege.assault.groups = {
-		CS_swats = {
-			0.1,
-			0.1,
-			0.1
-		},
-		CS_heavys = {
-			0.1,
-			0.2,
-			0.4
-		},
-		CS_shields = {
-			0.0,
-			0.02,
-			0.1
-		},
 		FBI_swats = {
 			0.1,
 			1,
@@ -1385,24 +1401,27 @@ function GroupAITweakData:inf_init_taskdata_veryhard()
 		}
 	}
 
+	if InFmenu.settings.rainbowassault then
+		self.besiege.assault.groups.CS_swats = {
+			0.1,
+			0.1,
+			0.1
+		}
+		self.besiege.assault.groups.CS_heavys = {
+			0.1,
+			0.2,
+			0.4
+		}
+		self.besiege.assault.groups.CS_shields = {
+			0.0,
+			0.02,
+			0.1
+		}
+	end
+
 	self.besiege.reenforce.groups = {
-		CS_defend_a = {
-			1,
-			0,
-			0
-		},
-		CS_defend_b = {
-			1.5,
-			1,
-			0
-		},
-		CS_defend_c = {
-			0,
-			0,
-			1
-		},
 		FBI_defend_a = {
-			0,
+			0.1,
 			1,
 			0
 		},
@@ -1412,6 +1431,24 @@ function GroupAITweakData:inf_init_taskdata_veryhard()
 			1
 		}
 	}
+
+	if InFmenu.settings.rainbowassault then
+		self.besiege.reenforce.groups.CS_defend_a = {
+			1,
+			0,
+			0
+		}
+		self.besiege.reenforce.groups.CS_defend_b = {
+			1,
+			0.8,
+			0
+		}
+		self.besiege.reenforce.groups.CS_defend_c = {
+			0.1,
+			0.1,
+			0.8
+		}
+	end
 
 	self.besiege.recon.groups = {
 		FBI_stealth_a = {
@@ -1453,21 +1490,6 @@ end
 
 function GroupAITweakData:inf_init_taskdata_overkill()
 	self.besiege.assault.groups = {
-		CS_swats = {
-			0.1,
-			0.1,
-			0.1
-		},
-		CS_heavys = {
-			0.1,
-			0.1,
-			0.25
-		},
-		CS_shields = {
-			0.02,
-			0.02,
-			0.01
-		},
 		FBI_swats = {
 			0.2,
 			1,
@@ -1500,12 +1522,25 @@ function GroupAITweakData:inf_init_taskdata_overkill()
 		}
 	}
 
-	self.besiege.reenforce.groups = {
-		CS_defend_a = {
+	if InFmenu.settings.rainbowassault then
+		self.besiege.assault.groups.CS_swats = {
 			0.1,
-			0,
-			0
-		},
+			0.1,
+			0.1
+		}
+		self.besiege.assault.groups.CS_heavys = {
+			0.1,
+			0.1,
+			0.25
+		}
+		self.besiege.assault.groups.CS_shields = {
+			0.02,
+			0.02,
+			0.01
+		}
+	end
+
+	self.besiege.reenforce.groups = {
 		FBI_defend_b = {
 			1,
 			1,
@@ -1522,6 +1557,24 @@ function GroupAITweakData:inf_init_taskdata_overkill()
 			1
 		}
 	}
+
+	if InFmenu.settings.rainbowassault then
+		self.besiege.reenforce.groups.CS_defend_a = {
+			0.1,
+			0.05,
+			0
+		}
+		self.besiege.reenforce.groups.CS_defend_b = {
+			0.1,
+			0.05,
+			0
+		}
+		self.besiege.reenforce.groups.CS_defend_c = {
+			0.1,
+			0.05,
+			0
+		}
+	end
 
 	self.besiege.recon.groups = {
 		FBI_stealth_a = {
@@ -1563,21 +1616,6 @@ end
 
 function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 	self.besiege.assault.groups = {
-		CS_swats = {
-			0.15,
-			0.1,
-			0.08
-		},
-		CS_heavys = {
-			0.1,
-			0.1,
-			0.1
-		},
-		CS_shields = {
-			0.05,
-			0.02,
-			0.01
-		},
 		FBI_swats = {
 			0.2,
 			0.8,
@@ -1594,7 +1632,7 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 			0.4
 		},
 		FBI_tanks = {
-			0.1,
+			0.05,
 			0.5,
 			0.5
 		},
@@ -1615,12 +1653,25 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 		}
 	}
 
+	if InFmenu.settings.rainbowassault then
+		self.besiege.assault.groups.CS_swats = {
+			0.15,
+			0.1,
+			0.08
+		}
+		self.besiege.assault.groups.CS_heavys = {
+			0.1,
+			0.1,
+			0.1
+		}
+		self.besiege.assault.groups.CS_shields = {
+			0.05,
+			0.02,
+			0.01
+		}
+	end
+
 	self.besiege.reenforce.groups = {
-		CS_defend_a = {
-			0.25,
-			0.2,
-			0
-		},
 		FBI_defend_b = {
 			1,
 			1,
@@ -1637,6 +1688,24 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 			1
 		}
 	}
+
+	if InFmenu.settings.rainbowassault then
+		self.besiege.reenforce.groups.CS_defend_a = {
+			0.1,
+			0.05,
+			0
+		}
+		self.besiege.reenforce.groups.CS_defend_b = {
+			0.1,
+			0.05,
+			0
+		}
+		self.besiege.reenforce.groups.CS_defend_c = {
+			0.1,
+			0.05,
+			0
+		}
+	end
 
 	self.besiege.recon.groups = {
 		FBI_stealth_a = {

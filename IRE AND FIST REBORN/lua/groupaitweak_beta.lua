@@ -38,23 +38,23 @@ local access_type_all = {
 Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_chatter_beta", function(self)
 	self.enemy_chatter.aggressive = {
 		radius = 1000,
-		max_nr = 5,
+		max_nr = 7,
 		duration = {1, 3},
 		interval = {2, 5},
-		group_min = 3,
+		group_min = 2,
 		queue = "g90"
 	}
 	self.enemy_chatter.retreat = {
 		radius = 900,
-		max_nr = 4,
+		max_nr = 7,
 		duration = {2, 4},
 		interval = {0.75, 1.5},
-		group_min = 3,
+		group_min = 2,
 		queue = "m01"
 	}
 	self.enemy_chatter.follow_me = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {5, 10},
 		interval = {0.75, 1.5},
 		group_min = 2,
@@ -62,15 +62,15 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.clear = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 5,
 		duration = {60, 60},
 		interval = {0.75, 1.5},
-		group_min = 3,
+		group_min = 2,
 		queue = "clr"
 	}
 	self.enemy_chatter.go_go = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 5,
 		duration = {60, 60},
 		interval = {0.75, 1.2},
 		group_min = 0,
@@ -78,31 +78,31 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.ready = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 5,
 		duration = {60, 60},
 		interval = {0.75, 1.2},
-		group_min = 3,
+		group_min = 2,
 		queue = "rdy"
 	}
 	self.enemy_chatter.smoke = {
-		radius = 0,
-		max_nr = 2,
+		radius = 600,
+		max_nr = 4,
 		duration = {0, 0},
-		interval = {0, 0},
-		group_min = 2,
+		interval = {0.2, 0.8},
+		group_min = 1,
 		queue = "d01"
 	}
 	self.enemy_chatter.flash_grenade = {
-		radius = 0,
-		max_nr = 2,
+		radius = 600,
+		max_nr = 4,
 		duration = {0, 0},
-		interval = {0, 0},
+		interval = {0.2, 0.8},
 		group_min = 2,
 		queue = "d02"
 	}
 	self.enemy_chatter.incomming_tank = {
 		radius = 1500,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,
@@ -110,7 +110,7 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.incomming_spooc = {
 		radius = 1200,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,
@@ -118,7 +118,7 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.incomming_shield = {
 		radius = 1500,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,
@@ -126,7 +126,7 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.incomming_taser = {
 		radius = 1500,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,

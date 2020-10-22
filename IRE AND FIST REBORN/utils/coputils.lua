@@ -190,7 +190,7 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
     else
         -- If the client has InF, they can figure it out for themselves
         local peer = managers.network:session():peer_by_unit(player_unit)
-        if peer and IreNFist.peersWithMod[peer:id()] or IreNFist.arrestModPeers[peer:id()] then
+        if peer and (IreNFist.peersWithMod[peer:id()] or IreNFist.arrestModPeers[peer:id()]) then
             return CopUtils:TellClientCheckArrest(peer:id(), cop:id())
         end
 

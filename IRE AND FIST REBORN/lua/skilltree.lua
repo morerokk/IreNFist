@@ -92,6 +92,115 @@ if IreNFist.mod_compatibility.sso then
 		-- Trigger Happy/Coordination
 		self.skills.trigger_happy[1].upgrades = {"pistol_stacking_hit_damage_multiplier_1"}
 		self.skills.trigger_happy[2].upgrades = {"pistol_stacking_hit_damage_multiplier_2"}
+
+		-- Add guardian perk deck
+		-- Re-use common perks from SSO
+		
+		-- Get the default perks from crew chief
+		-- Except perk 2. I like SSO, but vanilla PD2's take on headshot damage is bad
+		--local deck2 = deep_clone(self.specializations[1][2])
+		local deck2 = {
+			cost = 300,
+			desc_id = "menu_deckall_2_desc",
+			name_id = "menu_deckall_2",
+			upgrades = {
+				"passive_player_xp_multiplier"
+			},
+			icon_xy = {
+				1,
+				0
+			}
+		}
+		local deck4 = deep_clone(self.specializations[1][4])
+		local deck6 = deep_clone(self.specializations[1][6])
+		local deck8 = deep_clone(self.specializations[1][8])
+
+		-- Define the deck
+		local holdout_deck = {
+			{
+				cost = 200,
+				desc_id = "menu_deck_holdout1_desc",
+				name_id = "menu_deck_holdout1",
+				upgrades = {
+					"player_holdout_consecutive_kills", -- Enables the holdout feature to begin with
+					"player_holdout_killcount_1" -- Required kills in zone is 3
+				},
+				icon_xy = {
+					0,
+					5
+				}
+			},
+			deck2,
+			{
+				cost = 400,
+				desc_id = "menu_deck_holdout3_desc",
+				name_id = "menu_deck_holdout3",
+				texture_bundle_folder = "opera",
+				upgrades = {
+					"player_holdout_distant_kill_health_regen_1", -- Far away kills regenerate 10 health
+					"player_holdout_close_kill_armor_regen_1", -- Close-by kills regenerate 10 armor instead
+					"player_holdout_regen_cooldown_1" -- Cooldown is 5 seconds
+				},
+				icon_xy = {
+					0,
+					1
+				}
+			},
+			deck4,
+			{
+				cost = 1000,
+				desc_id = "menu_deck_holdout5_desc",
+				name_id = "menu_deck_holdout5",
+				texture_bundle_folder = "opera",
+				upgrades = {
+					"player_holdout_killcount_2", -- Lower required kills to 2
+					"player_holdout_dmg_reduction_1" -- Add 12% damage reduction while inside your zone
+				},
+				icon_xy = {
+					0,
+					0
+				}
+			},
+			deck6,
+			{
+				cost = 2400,
+				desc_id = "menu_deck_holdout7_desc",
+				name_id = "menu_deck_holdout7",
+				upgrades = {
+					"player_holdout_distant_kill_health_regen_2", -- Far away kills regenerate 20 health instead of 10
+					"player_holdout_close_kill_armor_regen_2" -- Close-by kills regenerate 20 armor instead of 10
+				},
+				icon_xy = {
+					0,
+					3
+				}
+			},
+			deck8,
+			{
+				cost = 4000,
+				desc_id = "menu_deck_holdout9_desc",
+				name_id = "menu_deck_holdout9",
+				upgrades = {
+					"player_holdout_consecutive_kill_ammo", -- Every 10th consecutive zone kill drops 1 extra ammo
+					"player_holdout_regen_cooldown_2", -- Cooldown of Bunker reduced to 4 seconds
+					"player_passive_loot_drop_multiplier" -- Should always be in any perk deck, is infamous chance
+				},
+				icon_xy = {
+					4,
+					5
+				}
+			},
+			desc_id = "menu_deck_holdout_desc",
+			name_id = "menu_deck_holdout",
+			custom = true,
+			custom_id = "inf_holdout_perkdeck",
+		}
+
+		-- Insert the new perk deck and remember its ID
+		-- This is better compatible with other perkdeck-adding mods and also future-proof
+		local i = #self.specializations + 1
+		self.specializations[i] = holdout_deck
+		IreNFist.holdout_deck_index = i
 	end)
 else
 	Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, params)

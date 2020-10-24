@@ -17,14 +17,6 @@ end
 function EnemyManager:_update_queued_tasks(t, dt)
     local tasks_executed = 0
 
-    -- Log
-    --[[
-    if math.random() > 0.99 then
-        local tps = #self._queued_tasks / dt
-        log("Amount of tasks per second: " .. tostring(tps))
-    end
-    ]]
-
     -- Get the max task allowance for this frame
     local max_tasks_this_frame = math.ceil(InFmenu.settings.thinkfaster_throughput * dt)
 

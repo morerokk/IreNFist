@@ -4431,7 +4431,7 @@ end
             tweak_data.weapon.factory:convert_ammo_pickup("wpn_fps_ass_tilt_a_fuerte", InFmenu.wpnvalues.lrifle.ammo, InFmenu.wpnvalues.mrifle.ammo)
             tweak_data.weapon.factory.parts.wpn_fps_upg_o_tilt_scopemount.stance_mod = {
                 wpn_fps_ass_tilt = {
-                    translation = Vector3(0, -10, -2.6), -- bring it closer to the face
+                    translation = Vector3(0, -10, 0), -- bring it closer to the face and fix that weird ADS offset that makes the sight unusable
                     rotation = Rotation(0, 0, 0)
                 }
             }
@@ -8641,6 +8641,11 @@ end
         self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats = deep_clone(self.parts.wpn_fps_upg_shepheard_m_tti_ext.stats)
         self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.extra_ammo = self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.extra_ammo * 2
         self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.reload = self.wpn_fps_smg_x_shepheard.override.wpn_fps_upg_shepheard_m_tti_ext.stats.reload - 15
+    end
+
+    -- M45 MEUSOC threaded barrel
+    if self.parts.wpn_fps_pis_meusoc_b_thr then
+        self.parts.wpn_fps_pis_meusoc_b_thr.stats = deep_clone(nostats)
     end
 
     -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT

@@ -6644,6 +6644,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("xm214a", "m134")
 	end
 
+	-- M45 MEUSOC
+	if self.meusoc then
+		self:inf_init("meusoc", "pistol", "medium")
+		self:copy_sdescs("meusoc", "colt_1911")
+		self:copy_stats("meusoc", "colt_1911")
+		self:copy_timers("meusoc", "pl14")
+	end
+
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)
 	-- Then do something like this for pistols:

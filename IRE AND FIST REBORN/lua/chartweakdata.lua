@@ -1034,7 +1034,7 @@ if InFmenu and InFmenu.settings.enablenewcopvoices then
 				p2 = nil,
 				count = 2
 			},
-			taxman_dealer = { -- Sturr's deal in Undercover, gangsters are actually Undercover cops. TODO: Change their team to cop
+			taxman_dealer = { -- Sturr's deal in Undercover, gangsters are actually Undercover cops. TODO: Change their team to cops(?)
 				p1 = "l",
 				p2 = "n",
 				count = 4,
@@ -1054,7 +1054,8 @@ if InFmenu and InFmenu.settings.enablenewcopvoices then
 			spa = job_speech_prefixes.russian,
 			alex_2 = job_speech_prefixes.ovkmc,
 			welcome_to_the_jungle_1 = job_speech_prefixes.ovkmc,
-			man = job_speech_prefixes.taxman_dealer
+			man = job_speech_prefixes.taxman_dealer,
+			mex = job_speech_prefixes.ovkmc
 		}
 
 		local job = Global.level_data and Global.level_data.level_id
@@ -1121,6 +1122,7 @@ if InFmenu.settings.enablenewcopbehavior then
 
 
 		-- If enabled, ALL cops will aggressively try to arrest you.
+		-- Priorities are also ignored, so the closest cop will always try it.
 		-- I tried this and it's great fun but it's also CBT
 		if InFmenu.settings.cbt then
 			for i,v in pairs(self) do

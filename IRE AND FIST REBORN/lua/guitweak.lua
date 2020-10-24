@@ -75,6 +75,12 @@ Hooks:PostHook(GuiTweakData, "init", "infwpncategories", function(self, params)
 			name_id = "infcodex_assaulttweaks", id = "infcodex_assaulttweaks"
 		},
 		{
+			{desc_id = "infcodex_assaulttweaks_beta_desc"},
+			{desc_id = "infcodex_assaulttweaks2_beta_desc"},
+			{desc_id = "infcodex_assaulttweaks3_beta_desc"},
+			name_id = "infcodex_assaulttweaks_beta", id = "infcodex_assaulttweaks_beta"
+		},
+		{
 			{desc_id = "infcodex_copbehavior_desc"},
 			{desc_id = "infcodex_copbehavior2_desc"},
 			name_id = "infcodex_copbehavior", id = "infcodex_copbehavior"

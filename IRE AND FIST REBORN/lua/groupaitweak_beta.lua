@@ -38,23 +38,23 @@ local access_type_all = {
 Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_chatter_beta", function(self)
 	self.enemy_chatter.aggressive = {
 		radius = 1000,
-		max_nr = 5,
+		max_nr = 7,
 		duration = {1, 3},
 		interval = {2, 5},
-		group_min = 3,
+		group_min = 2,
 		queue = "g90"
 	}
 	self.enemy_chatter.retreat = {
 		radius = 900,
-		max_nr = 4,
+		max_nr = 7,
 		duration = {2, 4},
 		interval = {0.75, 1.5},
-		group_min = 3,
+		group_min = 2,
 		queue = "m01"
 	}
 	self.enemy_chatter.follow_me = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {5, 10},
 		interval = {0.75, 1.5},
 		group_min = 2,
@@ -62,15 +62,15 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.clear = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 5,
 		duration = {60, 60},
 		interval = {0.75, 1.5},
-		group_min = 3,
+		group_min = 2,
 		queue = "clr"
 	}
 	self.enemy_chatter.go_go = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 5,
 		duration = {60, 60},
 		interval = {0.75, 1.2},
 		group_min = 0,
@@ -78,31 +78,31 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.ready = {
 		radius = 700,
-		max_nr = 2,
+		max_nr = 5,
 		duration = {60, 60},
 		interval = {0.75, 1.2},
-		group_min = 3,
+		group_min = 2,
 		queue = "rdy"
 	}
 	self.enemy_chatter.smoke = {
-		radius = 0,
-		max_nr = 2,
+		radius = 600,
+		max_nr = 4,
 		duration = {0, 0},
-		interval = {0, 0},
-		group_min = 2,
+		interval = {0.2, 0.8},
+		group_min = 1,
 		queue = "d01"
 	}
 	self.enemy_chatter.flash_grenade = {
-		radius = 0,
-		max_nr = 2,
+		radius = 600,
+		max_nr = 4,
 		duration = {0, 0},
-		interval = {0, 0},
+		interval = {0.2, 0.8},
 		group_min = 2,
 		queue = "d02"
 	}
 	self.enemy_chatter.incomming_tank = {
 		radius = 1500,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,
@@ -110,7 +110,7 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.incomming_spooc = {
 		radius = 1200,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,
@@ -118,7 +118,7 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.incomming_shield = {
 		radius = 1500,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,
@@ -126,7 +126,7 @@ Hooks:PostHook(GroupAITweakData, "_init_chatter_data", "inf_groupaitweak_init_ch
 	}
 	self.enemy_chatter.incomming_taser = {
 		radius = 1500,
-		max_nr = 2,
+		max_nr = 4,
 		duration = {60, 60},
 		interval = {0.5, 1},
 		group_min = 0,
@@ -151,7 +151,7 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_init
 	self.unit_categories.FBI_suit_M4_MP5.unit_types.murkywater = self.unit_categories.FBI_suit_M4_MP5.unit_types.america
 
 	-- Re-add Benelli and UMP GenSec greys on Mayhem/DW/DS
-	if difficulty_index == 6 or difficulty_index == 7 then
+	if difficulty_index >= 6 then
 		self.unit_categories.FBI_swat_M4.unit_types.america = {
 			Idstring("units/payday2/characters/ene_city_swat_1/ene_city_swat_1"),
 			Idstring("units/payday2/characters/ene_city_swat_2/ene_city_swat_2")
@@ -160,18 +160,6 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_init
 		self.unit_categories.FBI_swat_R870.unit_types.america = {
 			Idstring("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"),
 			Idstring("units/payday2/characters/ene_city_swat_3/ene_city_swat_3")
-		}
-	elseif difficulty_index >= 8 then
-		self.unit_categories.FBI_swat_M4.unit_types.america = {
-			Idstring("units/payday2/characters/ene_city_swat_1/ene_city_swat_1"),
-			Idstring("units/payday2/characters/ene_city_swat_2/ene_city_swat_2"),
-			Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat")
-		}
-
-		self.unit_categories.FBI_swat_R870.unit_types.america = {
-			Idstring("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"),
-			Idstring("units/payday2/characters/ene_city_swat_3/ene_city_swat_3"),
-			Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat")
 		}
 	end
 
@@ -245,11 +233,182 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_init
 		}
 	end
 
-    -- Give ZEAL shotgunners their deserved R870's
+	-- On DS, un-fuck the blue SWATs being turned into ZEALs
 	if difficulty_index >= 8 then
+		-- Tan heavies with R870 are gone anyway so who cares, but let's give them back their shotguns
 		self.unit_categories.FBI_heavy_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
-		self.unit_categories.FBI_swat_R870.primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
+
+		self.unit_categories.CS_swat_MP5 = {
+			unit_types = {
+				america = {
+					Idstring("units/payday2/characters/ene_swat_1/ene_swat_1")
+				},
+				russia = {
+					Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass")
+				},
+				zombie = {
+					Idstring("units/pd2_dlc_hvh/characters/ene_swat_hvh_1/ene_swat_hvh_1")
+				},
+				murkywater = {
+					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light")
+				},
+				federales = {
+					Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale")
+				}
+			},
+			access = access_type_all
+		}
+		self.unit_categories.CS_swat_R870 = {
+			unit_types = {
+				america = {
+					Idstring("units/payday2/characters/ene_swat_2/ene_swat_2")
+				},
+				russia = {
+					Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_r870/ene_akan_cs_swat_r870")
+				},
+				zombie = {
+					Idstring("units/pd2_dlc_hvh/characters/ene_swat_hvh_2/ene_swat_hvh_2")
+				},
+				murkywater = {
+					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_r870/ene_murkywater_light_r870")
+				},
+				federales = {
+					Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_federale_r870/ene_swat_policia_federale_r870")
+				}
+			},
+			access = access_type_all
+		}
 	end
+
+	-- Define ZEAL unit categories
+	self.unit_categories.cringe_spooc = {
+		special_type = "spooc",
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_cloaker/ene_zeal_cloaker")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_spooc_asval_smg/ene_akan_fbi_spooc_asval_smg")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_spook_hvh_1/ene_spook_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_cloaker/ene_murkywater_cloaker")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale")
+			}
+		},
+		access = access_type_all
+	}
+	
+	self.unit_categories.cringe_swat_MP5 = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_swat_hvh_1/ene_swat_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale")
+			}
+		},
+		access = access_type_all
+	}
+
+	self.unit_categories.cringe_swat_R870 = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_r870/ene_akan_cs_swat_r870")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_swat_hvh_2/ene_swat_hvh_2")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale")
+			}
+		},
+		access = access_type_all,
+		primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
+	}
+
+	self.unit_categories.cringe_heavy_M4 = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_heavy_ak47_ass/ene_akan_cs_heavy_ak47_ass")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_swat_heavy_hvh_1/ene_swat_heavy_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_heavy/ene_murkywater_heavy")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale")
+			}
+		},
+		access = access_type_all,
+		primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_m4/wpn_npc_m4")
+	}
+	self.unit_categories.cringe_heavy_R870 = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_heavy_r870/ene_akan_cs_heavy_r870")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_swat_heavy_hvh_r870/ene_swat_heavy_hvh_r870")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_heavy/ene_murkywater_heavy")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870")
+			}
+		},
+		access = access_type_all,
+		primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_r870/wpn_npc_r870")
+	}
+	self.unit_categories.cringe_heavy_M4_w = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_heavy_ak47_ass/ene_akan_cs_heavy_ak47_ass")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_swat_heavy_hvh_1/ene_swat_heavy_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_heavy/ene_murkywater_heavy")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale")
+			}
+		},
+		access = access_type_walk_only,
+		primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_m4/wpn_npc_m4")
+	}
 end)
 
 
@@ -803,6 +962,45 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 		}
 	end
 	if difficulty_index < 6 then
+		self.enemy_spawn_groups.FBI_stealth_c = {
+			amount = {2, 3},
+			spawn = {
+				{
+					unit = "FBI_suit_C45_M4",
+					freq = 1,
+					amount_min = 1,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 1
+				},
+				{
+					unit = "FBI_suit_M4_MP5",
+					freq = 0.75,
+					tactics = self._tactics.FBI_suit,
+					rank = 2
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.FBI_stealth_c = {
+			amount = {4, 4},
+			spawn = {
+				{
+					unit = "FBI_suit_stealth_MP5",
+					freq = 1,
+					amount_min = 1,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 1
+				},
+				{
+					unit = "FBI_suit_M4_MP5",
+					freq = 0.75,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 2
+				}
+			}
+		}
+	end
+	if difficulty_index < 6 then
 		self.enemy_spawn_groups.FBI_swats = {
 			amount = {3, 4},
 			spawn = {
@@ -1107,17 +1305,17 @@ end)
 -- This one has a ton of difficulty-specific code so let's split that up into functions
 Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskdata_beta", function(self, difficulty_index, difficulty)
 	if difficulty_index <= 2 then
-		self:inf_init_taskdata_normal()
+		self:inf_init_taskdata_normal(difficulty_index)
 	elseif difficulty_index == 3 then
-		self:inf_init_taskdata_hard()
+		self:inf_init_taskdata_hard(difficulty_index)
 	elseif difficulty_index == 4 then
-		self:inf_init_taskdata_veryhard()
+		self:inf_init_taskdata_veryhard(difficulty_index)
 	elseif difficulty_index == 5 then
-		self:inf_init_taskdata_overkill()
+		self:inf_init_taskdata_overkill(difficulty_index)
 	elseif difficulty_index == 6 or difficulty_index == 7 then
-		self:inf_init_taskdata_mayhem_deathwish()
+		self:inf_init_taskdata_mayhem_deathwish(difficulty_index)
 	else
-		self:inf_init_taskdata_deathsentence()
+		self:inf_init_taskdata_deathsentence(difficulty_index)
 	end
 
 	-- Make the assault breaks substantially longer if players have hostages
@@ -1172,6 +1370,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 
 	-- Apply extra level-based multipliers on the force pool balance multiplier
 	-- Some heists need a little extra care
+	-- TODO: Refactor this to actually multiply the "base" values instead of the multipliers
+	-- This means that the balance muls can be adjusted on a per-assault "difficulty" basis, instead of being adjustable by playercount.
+	-- Playercount is basically always 3 or 4 anyway (3 with bots, 4 with at least one other player).
 	local current_level_id = Global.game_settings and Global.game_settings.level_id
 	if current_level_id and IreNFist.level_force_overrides[current_level_id] then
 		local override = IreNFist.level_force_overrides[current_level_id]
@@ -1190,18 +1391,19 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 
 	-- Wtf is this?
 	self.street = deep_clone(self.besiege)
+	self.safehouse = deep_clone(self.besiege)
 end)
 
-function GroupAITweakData:inf_init_taskdata_normal()
+function GroupAITweakData:inf_init_taskdata_normal(difficulty_index)
 	self.besiege.assault.groups = {
 		CS_swats = {
-			0,
+			0.1,
 			1,
 			0.85
 		},
 		CS_shields = {
 			0,
-			0,
+			0.05,
 			0.15
 		},
 		single_spooc = {
@@ -1262,25 +1464,25 @@ function GroupAITweakData:inf_init_taskdata_normal()
 	}
 end
 
-function GroupAITweakData:inf_init_taskdata_hard()
+function GroupAITweakData:inf_init_taskdata_hard(difficulty_index)
 	self.besiege.assault.groups = {
 		CS_swats = {
-			0,
+			0.01,
 			1,
 			0
 		},
 		CS_heavys = {
-			0,
+			0.05,
 			0.2,
 			0.7
 		},
 		CS_shields = {
-			0,
+			0.01,
 			0.02,
 			0.2
 		},
 		CS_tazers = {
-			0,
+			0.01,
 			0.05,
 			0.15
 		},
@@ -1362,7 +1564,7 @@ function GroupAITweakData:inf_init_taskdata_hard()
 	}
 end
 
-function GroupAITweakData:inf_init_taskdata_veryhard()
+function GroupAITweakData:inf_init_taskdata_veryhard(difficulty_index)
 	self.besiege.assault.groups = {
 		FBI_swats = {
 			0.1,
@@ -1454,12 +1656,17 @@ function GroupAITweakData:inf_init_taskdata_veryhard()
 		FBI_stealth_a = {
 			1,
 			0.5,
-			0
+			0.1
 		},
 		FBI_stealth_b = {
 			0,
 			0,
 			1
+		},
+		FBI_stealth_c = {
+			0.5,
+			0.5,
+			0.4
 		},
 		single_spooc = {
 			0,
@@ -1488,7 +1695,7 @@ function GroupAITweakData:inf_init_taskdata_veryhard()
 	}
 end
 
-function GroupAITweakData:inf_init_taskdata_overkill()
+function GroupAITweakData:inf_init_taskdata_overkill(difficulty_index)
 	self.besiege.assault.groups = {
 		FBI_swats = {
 			0.2,
@@ -1524,17 +1731,17 @@ function GroupAITweakData:inf_init_taskdata_overkill()
 
 	if InFmenu.settings.rainbowassault then
 		self.besiege.assault.groups.CS_swats = {
-			0.1,
-			0.1,
-			0.1
+			0.4,
+			0.3,
+			0.2
 		}
 		self.besiege.assault.groups.CS_heavys = {
-			0.1,
-			0.1,
-			0.25
+			0.3,
+			0.25,
+			0.2
 		}
 		self.besiege.assault.groups.CS_shields = {
-			0.02,
+			0.05,
 			0.02,
 			0.01
 		}
@@ -1586,6 +1793,11 @@ function GroupAITweakData:inf_init_taskdata_overkill()
 			0.25,
 			0.5,
 			1
+		},
+		FBI_stealth_c = {
+			0.5,
+			0.5,
+			0.4
 		},
 		single_spooc = {
 			0,
@@ -1614,7 +1826,7 @@ function GroupAITweakData:inf_init_taskdata_overkill()
 	}
 end
 
-function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
+function GroupAITweakData:inf_init_taskdata_mayhem_deathwish(difficulty_index)
 	self.besiege.assault.groups = {
 		FBI_swats = {
 			0.2,
@@ -1627,24 +1839,24 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 			0.4
 		},
 		FBI_shields = {
-			0.1,
-			0.5,
+			0.2,
+			0.52,
 			0.4
 		},
 		FBI_tanks = {
-			0.05,
-			0.5,
+			0.01,
+			0.35,
 			0.5
 		},
 		CS_tazers = {
-			0.1,
+			0.05,
 			0.5,
 			0.45
 		},
 		FBI_spoocs = {
 			0,
-			0.45,
-			0.45
+			0.3,
+			0.3
 		},
 		single_spooc = {
 			0,
@@ -1653,15 +1865,24 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 		}
 	}
 
+	-- No dozer fucksquads on first mayhem assault, less likely dozers afterwards
+	if difficulty_index == 6 then
+		self.besiege.assault.groups.FBI_tanks = {
+			0,
+			0.25,
+			0.35
+		}
+	end
+
 	if InFmenu.settings.rainbowassault then
 		self.besiege.assault.groups.CS_swats = {
+			0.3,
 			0.15,
-			0.1,
 			0.08
 		}
 		self.besiege.assault.groups.CS_heavys = {
-			0.1,
-			0.1,
+			0.3,
+			0.15,
 			0.1
 		}
 		self.besiege.assault.groups.CS_shields = {
@@ -1718,6 +1939,11 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 			0.5,
 			1
 		},
+		FBI_stealth_c = {
+			0.5,
+			0.5,
+			0.4
+		},
 		single_spooc = {
 			0,
 			0,
@@ -1731,22 +1957,38 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish()
 		40
 	}
 
-	self.besiege.assault.force_balance_mul = {
-		4.2,
-		4.5,
-		4.9,
-		5.4
-	}
-	self.besiege.assault.force_pool_balance_mul = {
-		2.2,
-		2.8,
-		3.3,
-		3.8
-	}
+	-- Slightly lighter assaults on Mayhem
+	if difficulty_index == 6 then
+		self.besiege.assault.force_balance_mul = {
+			3.9,
+			4.2,
+			4.6,
+			5.1
+		}
+		self.besiege.assault.force_pool_balance_mul = {
+			1.9,
+			2.4,
+			2.9,
+			3.4
+		}
+	else
+		self.besiege.assault.force_balance_mul = {
+			4.2,
+			4.5,
+			4.9,
+			5.4
+		}
+		self.besiege.assault.force_pool_balance_mul = {
+			2.2,
+			2.8,
+			3.3,
+			3.8
+		}
+	end
 end
 
-function GroupAITweakData:inf_init_taskdata_deathsentence()
-	self:inf_init_taskdata_mayhem_deathwish()
+function GroupAITweakData:inf_init_taskdata_deathsentence(difficulty_index)
+	self:inf_init_taskdata_mayhem_deathwish(difficulty_index)
 
 	self.besiege.assault.delay = {
 		40,

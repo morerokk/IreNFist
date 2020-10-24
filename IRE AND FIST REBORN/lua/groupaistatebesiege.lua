@@ -192,26 +192,29 @@ function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force, use_last
 end
 
 -- Debug lack of team and objective
-function GroupAIStateBesiege:set_char_team(unit, team_id)
-	local u_key = unit:key()
-	local team = self._teams[team_id]
-	local u_data = self._police[u_key]
-	
-	if not u_data then
-		log("[COPSPAWNDEBUG] Cop u_data was nil!")
-	elseif not u_data.group then
-		log("[COPSPAWNDEBUG] Cop u_data.group was nil!")
-	end
-
-	if u_data and u_data.group then
-		u_data.group.team = team
-
-		for _, other_u_data in pairs(u_data.group.units) do
-			other_u_data.unit:movement():set_team(team)
+-- Probably fixed by now thanks to Hoppip
+if InFmenu.settings.debug then
+	function GroupAIStateBesiege:set_char_team(unit, team_id)
+		local u_key = unit:key()
+		local team = self._teams[team_id]
+		local u_data = self._police[u_key]
+		
+		if not u_data then
+			log("[COPSPAWNDEBUG] Cop u_data was nil!")
+		elseif not u_data.group then
+			log("[COPSPAWNDEBUG] Cop u_data.group was nil!")
 		end
 
-		return
-	end
+		if u_data and u_data.group then
+			u_data.group.team = team
 
-	unit:movement():set_team(team)
+			for _, other_u_data in pairs(u_data.group.units) do
+				other_u_data.unit:movement():set_team(team)
+			end
+
+			return
+		end
+
+		unit:movement():set_team(team)
+	end
 end

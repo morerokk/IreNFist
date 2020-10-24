@@ -714,6 +714,11 @@ end
 	infcodex_assaulttweaks3_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
 	infcodex_assaulttweaks4_desc = "HEIST-SPECIFIC TWEAKS:\nGolden Grin: More max cops, more spawns in an assault.\nShacklethorne Auction: 30 second initial response delay, less cops.\nBrooklyn Bank: Same as Shacklethorne.\nNo Mercy: Bigger spawn pools.",
 
+	infcodex_assaulttweaks_beta = "Assault Tweaks (BETA)",
+	infcodex_assaulttweaks_beta_desc = "ASSAULT TWEAKS\nCurrently in beta, meaning the Beta option in the InF options must be enabled. This replaces the old assault tweaks.\n\nLess cops will be on the map at the same time, and the maximum number of spawns in an assault has been lowered. This means that if you play aggressively, you can exhaust an assault's spawns and end it early.",
+	infcodex_assaulttweaks2_beta_desc = "SPAWNGROUP TWEAKS\nNearly every single spawngroup has been faithfully restored to their pre-hoxton housewarming counterparts (with the occasional medic thrown in). Expect more dangerous combinations of specials and *WAY* more variety in enemy unit types.\n\nEnabling \"assault variety\" is strongly recommended, even more so than before.",
+	infcodex_assaulttweaks3_beta_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
+
 	infcodex_copbehavior = "Cop Behavior",
 	infcodex_copbehavior_desc = "Enemies are slightly smarter and more aggressive, sometimes even employing new tactics.",
 	infcodex_copbehavior2_desc = "While interacting with something, you are defenseless on your own. Cops might take advantage of this opportunity to try and handcuff you.\n\nWork together and cover each other to prevent this from happening.",
@@ -885,6 +890,23 @@ end
 	inf_xidw_cpu_turbo_desc = "Decreases rate of fire per gun from 1400 to 800.",
 	inf_xidw_cpu_slow_desc = "Decreases rate of fire per gun from 1400 to 600.",
 
+	menu_deckall_2 = "Get Cracking",
+	menu_deckall_2_desc = "You gain ##45%## more experience from heists.\n\nYour movement speed is increased by ##10%##.",
+
+	-- Holdout/Bunker deck
+	menu_deck_holdout = "Guardian",
+	menu_deck_holdout_desc = "The Guardian excels at taking a point and holding it. Whether at range or close by, you can expect the Guardian to always have your back.",
+	menu_deck_holdout1 = "Resourceful",
+	menu_deck_holdout1_desc = "The first time you make a kill, a killzone with a ##2## meter radius is dropped at your location. When you make ##3## more kills while you are in this zone, the zone is activated. When you kill an enemy while you are inside your active zone, you will automatically pick up their ammo drops, no matter how far away.\n\nKilling an enemy while you are outside of this zone will reset the zone to your new location, requiring you to activate it again.\n\nYou can leave and re-enter the zone at any time without the zone resetting, as long as you do not make any kills outside the zone.",
+	menu_deck_holdout3 = "Bunker",
+	menu_deck_holdout3_desc = "When inside your active killzone:\n\nKilling an enemy more than ##12## meters from your current location regenerates ##10## health.\n\nIf the enemy is within ##12## meters, you regenerate ##10## armor instead.\n\nThese effects each have their own individual cooldown of ##5## seconds.",
+	menu_deck_holdout5 = "Defender",
+	menu_deck_holdout5_desc = "Your killzone now only needs ##2## kills to activate.\n\nWhile inside your active killzone, you gain ##12%## damage reduction.",
+	menu_deck_holdout7 = "Bastion",
+	menu_deck_holdout7_desc = "Health and armor regeneration from this perk deck is both increased to ##20##.",
+	menu_deck_holdout9 = "Holdout",
+	menu_deck_holdout9_desc = "Every ##10## kills you make inside your active killzone will drop an additional ammo box.\n\nThe distance-based health and armor regeneration cooldowns are reduced to ##4## seconds.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
+
 	hahabenis = "fuck commas"
 })
 
@@ -928,6 +950,8 @@ if IreNFist.mod_compatibility.sso then
 		menu_gun_fighter_beta_desc = "BASIC: ##$basic##\nAfter switching to your secondary pistol, your primary weapon will automatically begin reloading itself. This reload takes ##4## times as long as a standard reload and is interrupted if you switch back to your primary.\n\nACE: ##$pro##\nYour off-hand reloads now only take ##3## times as long as a standard reload, and can also be initiated by switching to a secondary SMG, carbine, shotgun, or crossbow.",
 
 		menu_expert_handling_desc = "BASIC: ##$basic##\nFor every hit with a pistol you gain a ##20%## damage boost that lasts for ##2## seconds. Stacks up to ##2## times.\n\nACE: ##$pro##\nIncreases the damage boost duration to ##15## seconds.",
+		
+		menu_deckall_2_desc = "You gain ##45%## more experience from heists."
 	})
 else
 	LocalizationManager:add_localized_strings({
@@ -944,6 +968,8 @@ else
 		menu_speedy_reload_beta_desc = "BASIC: ##$basic##\nYou regain ##5## armor after headshotting with a sniper rifle.\n\nACE: ##$pro##\nThe armor regain is increased to ##50##.",
 		-- Stockholm Syndrome
 		menu_stockholm_syndrome_beta_desc = "BASIC: ##$basic##\nCivilians are intimidated by the noise you make and remain intimidated ##50%## longer.\n\nYou can call over civilians and converted enemies to revive you. The civilian can be tied or untied.\n\nACE: ##$pro##\nYour hostages will not flee when they have been rescued by law enforcers. Whenever you get into custody, your hostages will trade themselves for your safe return. This effect can occur during assaults, but only ##1## time during a heist.",
+		-- Inspire
+		menu_inspire_beta_desc = "BASIC: ##$basic##\nYou revive crew members ##100%## faster. Shouting at your teammates will increase their movement and reload speed by ##20%## for ##10## seconds.\n\nACE: ##$pro##\nYou can revive crew members from up to ##9## meters away by shouting at them. This cannot occur more than once every ##60## seconds.",
 
 		-- ENFORCER
 		-- Transporter
@@ -1024,8 +1050,6 @@ else
 		menu_deck8_7_desc = "When you are surrounded by three or more enemies, you receive ##12%## less damage from enemies.\n\nYour second and each consecutive melee hit within ##5## seconds of the last one will deal ##2## times the damage. Missing a swing will reset this.",
 		menu_deck9_1_desc = "When you are surrounded by three or more enemies, you receive ##12%## less damage from enemies.\n\nYour second and each consecutive melee hit within ##5## seconds of the last one will deal ##2## times the damage. Missing a swing will reset this.",
 
-		menu_deckall_2 = "Get Cracking",
-		menu_deckall_2_desc = "You gain ##45%## more experience from heists.\n\nYour movement speed is increased by ##10%##.",
 		menu_deckall_4 = "Hustle",
 		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.\n\nYou gain ##30%## more value for valuables and cash that you pick up.",
 		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.\n\nYou can throw bags ##50%## further.",
@@ -1039,20 +1063,6 @@ else
 		-- Hacker already has the dodge chances in vanilla, but it's unlisted
 		menu_deck21_5_desc = "Killing an enemy while the feedback effect is active will regenerate ##20## health.\n\nYour dodge chance is increased by ##15%##.",
 		menu_deck21_9_desc = "Crew members killing enemies while the feedback effect is active will regenerate ##10## health.\n\nYour dodge chance is increased by ##15%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
-
-		-- Holdout/Bunker deck
-		menu_deck_holdout = "Guardian",
-		menu_deck_holdout_desc = "The Guardian excels at taking a point and holding it. Whether at range or close by, you can expect the Guardian to always have your back.",
-		menu_deck_holdout1 = "Resourceful",
-		menu_deck_holdout1_desc = "The first time you make a kill, a killzone with a ##2## meter radius is dropped at your location. When you make ##3## more kills while you are in this zone, the zone is activated. When you kill an enemy while you are inside your active zone, you will automatically pick up their ammo drops, no matter how far away.\n\nKilling an enemy while you are outside of this zone will reset the zone to your new location, requiring you to activate it again.\n\nYou can leave and re-enter the zone at any time without the zone resetting, as long as you do not make any kills outside the zone.",
-		menu_deck_holdout3 = "Bunker",
-		menu_deck_holdout3_desc = "When inside your active killzone:\n\nKilling an enemy more than ##12## meters from your current location regenerates ##10## health.\n\nIf the enemy is within ##12## meters, you regenerate ##10## armor instead.\n\nThese effects each have their own individual cooldown of ##5## seconds.",
-		menu_deck_holdout5 = "Defender",
-		menu_deck_holdout5_desc = "Your killzone now only needs ##2## kills to activate.\n\nWhile inside your active killzone, you gain ##12%## damage reduction.",
-		menu_deck_holdout7 = "Bastion",
-		menu_deck_holdout7_desc = "Health and armor regeneration from this perk deck is both increased to ##20##.",
-		menu_deck_holdout9 = "Holdout",
-		menu_deck_holdout9_desc = "Every ##10## kills you make inside your active killzone will drop an additional ammo box.\n\nThe distance-based health and armor regeneration cooldowns are reduced to ##4## seconds.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
 
 		-- crew bonuses
 		-- interact inspire scavenge ai ap ammo

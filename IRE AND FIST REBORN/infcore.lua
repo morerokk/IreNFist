@@ -110,8 +110,8 @@ if not IreNFist then
             force_pool_mul = { 1.2, 1.2, 1.2, 1.2 } -- Barely matters here, assault is assault
         },
         hox_2 = { -- Hoxout day 2
-            force_mul = { 1.5, 1.5, 1.5, 1.5 },
-            force_pool_mul = { 1.2, 1.2, 1.2, 1.2 }
+            force_mul = { 1.75, 1.75, 1.75, 1.75 },
+            force_pool_mul = { 1.35, 1.35, 1.35, 1.35 }
         }
     }
 

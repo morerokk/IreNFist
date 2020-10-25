@@ -2209,7 +2209,8 @@ end
         max_damage = 10.0,
         min_damage_effect = 0.10,
         max_damage_effect = 0.10,
-        concealment = -2
+        concealment = -2,
+        range = 100
     }
     -- Ironsight
     self.parts.wpn_fps_snp_mosin_iron_sight.custom_stats = {sdesc3 = "misc_irons"}
@@ -7002,6 +7003,9 @@ end
         self.parts.wpn_fps_ass_howa_m_supido.stats = deep_clone(nostats)
 
         self.parts.wpn_fps_ass_howa_bayonet.stats = deep_clone(self.parts.wpn_fps_snp_mosin_ns_bayonet.stats)
+        self.parts.wpn_fps_ass_howa_bayonet.perks = {
+            "bayonet"
+        }
         self.parts.wpn_fps_ass_howa_b_para.stats = deep_clone(barrel_p2)
         self.parts.wpn_fps_ass_howa_s_skeletal.stats = {
             value = 0,
@@ -8658,7 +8662,11 @@ end
             max_damage = 10.0,
             min_damage_effect = 0.10,
             max_damage_effect = 0.10,
-            concealment = -2
+            concealment = -2,
+            range = 100
+        }
+        self.parts.wpn_fps_shot_trench_bayonet.perks = {
+            "bayonet"
         }
         self.parts.wpn_fps_shot_trench_s_rack.stats = {
             value = 1,

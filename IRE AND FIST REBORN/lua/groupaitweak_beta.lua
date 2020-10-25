@@ -1321,15 +1321,15 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 	-- Make the assault breaks substantially longer if players have hostages
 	if difficulty_index <= 5 then
 		self.besiege.assault.hostage_hesitation_delay = {
-			50,
-			45,
-			40
-		}
-	else
-		self.besiege.assault.hostage_hesitation_delay = {
 			45,
 			40,
 			35
+		}
+	else
+		self.besiege.assault.hostage_hesitation_delay = {
+			40,
+			35,
+			30
 		}
 	end
 
@@ -1342,7 +1342,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 	}
 	-- Total max cop spawns per assault
 	self.besiege.assault.force_pool = {
-		10,
+		12,
 		30,
 		50
 	}
@@ -1807,16 +1807,33 @@ function GroupAITweakData:inf_init_taskdata_overkill(difficulty_index)
 	}
 
 	self.besiege.assault.delay = {
-		65,
 		55,
-		50
+		50,
+		45
 	}
 
+	-- Old Overkill muls
+	--[[
 	self.besiege.assault.force_balance_mul = {
 		2,
 		2.5,
 		2.9,
 		3.2
+	}
+	self.besiege.assault.force_pool_balance_mul = {
+		2,
+		2.5,
+		3,
+		3.5
+	}
+	]]
+
+	-- Overkill assaults similar to Mayhem, maybe a little lower
+	self.besiege.assault.force_balance_mul = {
+		3,
+		3.3,
+		3.5,
+		4
 	}
 	self.besiege.assault.force_pool_balance_mul = {
 		2,
@@ -1952,9 +1969,9 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish(difficulty_index)
 	}
 
 	self.besiege.assault.delay = {
-		50,
 		45,
-		40
+		40,
+		35
 	}
 
 	-- Slightly lighter assaults on Mayhem

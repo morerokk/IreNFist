@@ -142,6 +142,12 @@ if not IreNFist then
         log("[InF] WolfHUD compatibility enabled")
         IreNFist.mod_compatibility.wolfhud = true
     end
+    -- PDTH HUD Reborn
+    local pdthhud_compat = BLT.Mods:GetModByName("PAYDAY: The Heist HUD Reborn")
+    if pdthhud_compat and pdthhud_compat:IsEnabled() then
+        log("[InF] PDTH HUD Reborn compatibility enabled")
+        IreNFist.mod_compatibility.pdthhud = true
+    end
 
     -- Include arrest utils
     dofile(ModPath .. "utils/coputils.lua")

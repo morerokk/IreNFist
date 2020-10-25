@@ -396,6 +396,7 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 
 		-- Get fire mode switch
 		-- This doesn't notify the HUD correctly, but this currently applies to 1 weapon only anyway (M308 with surplus special)
+		-- So the firemode indicator might be a shade of red but still work, who cares
 		if stats.CAN_TOGGLE_FIREMODE then
 			self._weaponmod_firemode_switch_override = stats.CAN_TOGGLE_FIREMODE
 		end

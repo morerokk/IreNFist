@@ -422,6 +422,16 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		if _G.IS_VR then
 			return
 		end
+
+		-- Don't run for PDTH HUD
+		-- Functions are named differently so it's kind of a pain, but basically just reroute it to PDTH HUD if the function exists
+		if IreNFist.mod_compatibility.pdthhud then
+			if self.set_weapon_firemode_custom then
+				return self:set_weapon_firemode_custom(id, firemode, burst_fire)
+			end
+			-- This should never happen, but if it does, return early since the next lines would just crash otherwise
+			return
+		end
 	
 		local is_secondary = id == 1
 		local secondary_weapon_panel = self._player_panel:child("weapons_panel"):child("secondary_weapon_panel")

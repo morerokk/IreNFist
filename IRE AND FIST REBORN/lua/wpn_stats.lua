@@ -5633,7 +5633,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_timers("rhino", "chinchilla")
 	end
 
-	if BeardLib.Utils:ModLoaded("Trench Shotgun") then
+	if BeardLib.Utils:ModLoaded("Trench Shotgun") and self.trench then
 		self:inf_init("trench", "shotgun", {"rof_slow", "range_slowpump"})
 		self.trench.sdesc1 = "caliber_s12g"
 		self.trench.sdesc2 = "action_pump"

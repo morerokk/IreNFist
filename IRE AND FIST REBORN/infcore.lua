@@ -623,6 +623,7 @@ if not InFmenu then
     InFmenu.wpnvalues.lrifle.armor_piercing_chance = 0.75
     InFmenu.wpnvalues.lrifle.recoil_loop_point = 12
     InFmenu.wpnvalues.lrifle.ammo = 180
+    InFmenu.wpnvalues.lrifle.body_armor_dmg_penalty_mul = 1
     InFmenu.wpnvalues.lrifle_gl = deep_clone(InFmenu.wpnvalues.lrifle)
     InFmenu.wpnvalues.lrifle_gl.ammo = 120
     InFmenu.wpnvalues.mrifle = {}
@@ -632,6 +633,7 @@ if not InFmenu then
     InFmenu.wpnvalues.mrifle.armor_piercing_chance = 0.67
     InFmenu.wpnvalues.mrifle.recoil_loop_point = 9
     InFmenu.wpnvalues.mrifle.ammo = 120
+    InFmenu.wpnvalues.mrifle.body_armor_dmg_penalty_mul = 0.95
     InFmenu.wpnvalues.mrifle_gl = deep_clone(InFmenu.wpnvalues.mrifle)
     InFmenu.wpnvalues.mrifle_gl.ammo = 80
     InFmenu.wpnvalues.hrifle = {}
@@ -641,6 +643,7 @@ if not InFmenu then
     InFmenu.wpnvalues.hrifle.armor_piercing_chance = 0.75
     InFmenu.wpnvalues.hrifle.recoil_loop_point = 9
     InFmenu.wpnvalues.hrifle.ammo = 120
+    InFmenu.wpnvalues.hrifle.body_armor_dmg_penalty_mul = 0.8
     InFmenu.wpnvalues.hrifle_gl = deep_clone(InFmenu.wpnvalues.hrifle)
     InFmenu.wpnvalues.hrifle_gl.ammo = 80
     InFmenu.wpnvalues.ldmr = {}
@@ -651,6 +654,7 @@ if not InFmenu then
     InFmenu.wpnvalues.ldmr.recoil_loop_point = 9
     InFmenu.wpnvalues.ldmr.rof = 600
     InFmenu.wpnvalues.ldmr.ammo = 80
+    InFmenu.wpnvalues.ldmr.body_armor_dmg_penalty_mul = 0.7
     InFmenu.wpnvalues.dmr = {}
     InFmenu.wpnvalues.dmr.damage = 170
     InFmenu.wpnvalues.dmr.spread = 86
@@ -659,6 +663,7 @@ if not InFmenu then
     InFmenu.wpnvalues.dmr.recoil_loop_point = 9
     InFmenu.wpnvalues.dmr.rof = 420
     InFmenu.wpnvalues.dmr.ammo = 50
+    InFmenu.wpnvalues.dmr.body_armor_dmg_penalty_mul = 0.5
     InFmenu.wpnvalues.hdmr = {}
     InFmenu.wpnvalues.hdmr.damage = 240
     InFmenu.wpnvalues.hdmr.spread = 91
@@ -667,6 +672,7 @@ if not InFmenu then
     InFmenu.wpnvalues.hdmr.recoil_loop_point = 9
     InFmenu.wpnvalues.hdmr.rof = 240
     InFmenu.wpnvalues.hdmr.ammo = 40
+    InFmenu.wpnvalues.hdmr.body_armor_dmg_penalty_mul = 0.3
 
     -- mag presets
     -- output: mag% * reload%
@@ -706,6 +712,7 @@ if not InFmenu then
     InFmenu.wpnvalues.lightpis.recoil_loop_point = 6
     InFmenu.wpnvalues.lightpis.ammo = 150
     InFmenu.wpnvalues.lightpis.rof = 600
+    InFmenu.wpnvalues.lightpis.body_armor_dmg_penalty_mul = 1
     InFmenu.wpnvalues.mediumpis = {}
     InFmenu.wpnvalues.mediumpis.damage = 85
     InFmenu.wpnvalues.mediumpis.spread = 71
@@ -714,6 +721,7 @@ if not InFmenu then
     InFmenu.wpnvalues.mediumpis.recoil_loop_point = 6
     InFmenu.wpnvalues.mediumpis.ammo = 80
     InFmenu.wpnvalues.mediumpis.rof = 600
+    InFmenu.wpnvalues.mediumpis.body_armor_dmg_penalty_mul = 0.85
     InFmenu.wpnvalues.supermediumpis = {}
     InFmenu.wpnvalues.supermediumpis.damage = 110
     InFmenu.wpnvalues.supermediumpis.spread = 71
@@ -722,6 +730,7 @@ if not InFmenu then
     InFmenu.wpnvalues.supermediumpis.recoil_loop_point = 3
     InFmenu.wpnvalues.supermediumpis.ammo = 60
     InFmenu.wpnvalues.supermediumpis.rof = 600
+    InFmenu.wpnvalues.supermediumpis.body_armor_dmg_penalty_mul = 0.75
     InFmenu.wpnvalues.heavypis = {}
     InFmenu.wpnvalues.heavypis.damage = 170
     InFmenu.wpnvalues.heavypis.spread = 71
@@ -730,6 +739,7 @@ if not InFmenu then
     InFmenu.wpnvalues.heavypis.recoil_loop_point = 3
     InFmenu.wpnvalues.heavypis.ammo = 42
     InFmenu.wpnvalues.heavypis.rof = 300
+    InFmenu.wpnvalues.heavypis.body_armor_dmg_penalty_mul = 0.5
 
     -- SUBMACHINE GUNS
     InFmenu.wpnvalues.shortsmg = {}
@@ -739,6 +749,7 @@ if not InFmenu then
     InFmenu.wpnvalues.shortsmg.armor_piercing_chance = 0.60
     InFmenu.wpnvalues.shortsmg.recoil_loop_point = 12
     InFmenu.wpnvalues.shortsmg.ammo = 150
+    InFmenu.wpnvalues.shortsmg.body_armor_dmg_penalty_mul = 1
     InFmenu.wpnvalues.longsmg = {}
     InFmenu.wpnvalues.longsmg.damage = 50
     InFmenu.wpnvalues.longsmg.spread = 61
@@ -753,6 +764,7 @@ if not InFmenu then
     InFmenu.wpnvalues.carbine.armor_piercing_chance = 0.75
     InFmenu.wpnvalues.carbine.recoil_loop_point = 12
     InFmenu.wpnvalues.carbine.ammo = 120
+    InFmenu.wpnvalues.carbine.body_armor_dmg_penalty_mul = 0.95
     InFmenu.wpnvalues.mcarbine = {}
     InFmenu.wpnvalues.mcarbine.damage = 75
     InFmenu.wpnvalues.mcarbine.spread = 66
@@ -760,4 +772,28 @@ if not InFmenu then
     InFmenu.wpnvalues.mcarbine.armor_piercing_chance = 0.67
     InFmenu.wpnvalues.mcarbine.recoil_loop_point = 9
     InFmenu.wpnvalues.mcarbine.ammo = 90
+    InFmenu.wpnvalues.mcarbine.body_armor_dmg_penalty_mul = 0.9
+
+    -- LMG's
+    InFmenu.wpnvalues.lmg = {}
+    InFmenu.wpnvalues.lmg.damage = 50
+    InFmenu.wpnvalues.lmg.spread = 46
+    InFmenu.wpnvalues.lmg.recoil = 61
+    InFmenu.wpnvalues.lmg.ammo = 300
+    InFmenu.wpnvalues.lmg.body_armor_dmg_penalty_mul = 1
+    InFmenu.wpnvalues.lmg.recoil_loop_point = 12
+    InFmenu.wpnvalues.mlmg = {}
+    InFmenu.wpnvalues.mlmg.damage = 65
+    InFmenu.wpnvalues.mlmg.spread = 46
+    InFmenu.wpnvalues.mlmg.recoil = 56
+    InFmenu.wpnvalues.mlmg.ammo = 300
+    InFmenu.wpnvalues.mlmg.body_armor_dmg_penalty_mul = 0.95
+    InFmenu.wpnvalues.mlmg.recoil_loop_point = 12
+    InFmenu.wpnvalues.hlmg = {}
+    InFmenu.wpnvalues.hlmg.damage = 75
+    InFmenu.wpnvalues.hlmg.spread = 46
+    InFmenu.wpnvalues.hlmg.recoil = 46
+    InFmenu.wpnvalues.hlmg.ammo = 200
+    InFmenu.wpnvalues.hlmg.body_armor_dmg_penalty_mul = 0.75
+    InFmenu.wpnvalues.hlmg.recoil_loop_point = 12
 end

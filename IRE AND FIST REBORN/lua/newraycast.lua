@@ -164,7 +164,13 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 	-- dmg mult when hitting bulldozer visor
 	self._visor_dmg_mult = self:weapon_tweak_data().visor_dmg_mult or nil
 
-
+	-- Tan body armor damage penalty multiplier
+	local body_armor_dmg_penalty_mul = self:weapon_tweak_data().body_armor_dmg_penalty_mul
+	if body_armor_dmg_penalty_mul then
+		self._body_armor_dmg_penalty_mul = body_armor_dmg_penalty_mul
+	else
+		self._body_armor_dmg_penalty_mul = 1
+	end
 
 
 	local custom_stats = managers.weapon_factory:get_custom_stats_from_weapon(self._factory_id, self._blueprint)
@@ -389,17 +395,15 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "infnewstats", func
 		end
 
 		-- Get fire mode switch
+		-- This doesn't notify the HUD correctly, but this currently applies to 1 weapon only anyway (M308 with surplus special)
 		if stats.CAN_TOGGLE_FIREMODE then
 			self._weaponmod_firemode_switch_override = stats.CAN_TOGGLE_FIREMODE
 		end
-	end
 
-	-- Tan body armor damage penalty multiplier
-	local body_armor_dmg_penalty_mul = self:weapon_tweak_data().body_armor_dmg_penalty_mul
-	if body_armor_dmg_penalty_mul then
-		self._body_armor_dmg_penalty_mul = body_armor_dmg_penalty_mul
-	else
-		self._body_armor_dmg_penalty_mul = 1
+		-- Tan body armor piercing
+		if stats.body_armor_dmg_penalty_mul then
+			self._body_armor_dmg_penalty_mul = stats.body_armor_dmg_penalty_mul
+		end
 	end
 
 	-- LMG Sweep and Clear skill

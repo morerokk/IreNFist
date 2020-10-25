@@ -937,7 +937,7 @@ if IreNFist.mod_compatibility.sso then
 		menu_fast_fire_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
 		-- Body Expertise
 		menu_body_expertise_beta = "Sweep and Clear",
-		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's## and ##Miniguns##.\n\nLMG's and Miniguns gain ##50%## armor piercing.",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies, and armor piercing is increased by ##25%##. Can only be triggered by ##LMG's## and ##Miniguns##.\n\nLMG's and Miniguns gain ##50%## armor piercing.",
 
 		menu_dance_instructor = "Gun Kata",
 		menu_dance_instructor_desc = "BASIC: ##$basic##\nHaving a pistol equipped as your secondary increases all weapon switch speed by ##10%##.\n\nACE: ##$pro##\nThe weapon switch speed bonus is increased to ##20%##.",
@@ -1041,7 +1041,7 @@ else
 		menu_fire_control_beta_desc = "BASIC: ##$basic##\nYour weapons now have ##10%## less horizontal recoil.\n\nACE: ##$pro##\nYour horizontal recoil is now reduced by ##30%##.",
 		-- Body Expertise
 		menu_body_expertise_beta = "Sweep and Clear",
-		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies. Can only be triggered by ##LMG's## and ##Miniguns##.",
+		menu_body_expertise_beta_desc = "BASIC: ##$basic##\nBodyshots with weapons do ##90%## of your headshot damage. Can only be triggered by ##LMG's##, ##SMG's##, ##Assault Rifles## and some ##Special Weapons## fired in full-auto mode.\n\nACE: ##$pro##\nYour bullets pierce through enemies, and armor piercing is increased by ##25%##. Can only be triggered by ##LMG's## and ##Miniguns##.",
 
 
 
@@ -1056,7 +1056,7 @@ else
 		menu_deckall_8_desc = "Your doctor bag interaction speed is increased by ##20%##.\n\nYou sprint ##25%## faster.",
 
 		-- Rogue last perk tweaks
-		menu_deck4_9_desc = "All your weapons pierce through enemies. Your armor piercing is increased by ##50%##.\n\nYour dodge chance is increased by ##10%##.\n\nIncreases weapon swap speed by ##80%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
+		menu_deck4_9_desc = "All your weapons pierce through enemies. Your armor piercing is increased by ##25%## for all weapons.\n\nYour dodge chance is increased by ##10%##.\n\nIncreases weapon swap speed by ##80%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
 		-- Sicario cooldown reduction
 		menu_deck18_1_desc = "Unlocks and equips the throwable Smoke Bomb.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for ##10## seconds. While standing inside the smoke screen, you and any of your allies automatically avoid ##50%## of all bullets. Any enemies that stand in the smoke will see their accuracy reduced by ##50%##.\n\nAfter the smoke screen dissipates, the Smoke Bomb is on a cooldown for ##30## seconds, but killing enemies will reduce this cooldown by ##1## second.",
 		-- Hacker description fix

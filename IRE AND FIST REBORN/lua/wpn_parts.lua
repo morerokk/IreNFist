@@ -86,6 +86,7 @@ function WeaponFactoryTweakData:convert_custom_stats(part, valuefrom, valueto)
     self.parts[part].custom_stats.recoil_table = InFmenu.rtable[valueto]
     self.parts[part].custom_stats.recoil_loop_point = InFmenu.wpnvalues[valueto].recoil_loop_point
     self.parts[part].custom_stats.armor_piercing_add = InFmenu.wpnvalues[valueto].armor_piercing_chance - InFmenu.wpnvalues[valuefrom].armor_piercing_chance
+    self.parts[part].custom_stats.body_armor_dmg_penalty_mul = InFmenu.wpnvalues[valueto].body_armor_dmg_penalty_mul or 1
 
     if valueto == "dmr" or valueto == "ldmr" or valueto == "hdmr" then
         self.parts[part].custom_stats.taser_hole = true
@@ -4427,9 +4428,9 @@ end
         self:convert_part("wpn_fps_ass_tilt_a_fuerte", "lrifle", "mrifle")
         self.parts.wpn_fps_ass_tilt_a_fuerte.custom_stats.sdesc1 = "caliber_r762x39"
         self.parts.wpn_fps_ass_tilt_a_fuerte.internal_part = true
-        DelayedCalls:Add("an92delayedcall", delay, function(self, params)
-            tweak_data.weapon.factory:convert_ammo_pickup("wpn_fps_ass_tilt_a_fuerte", InFmenu.wpnvalues.lrifle.ammo, InFmenu.wpnvalues.mrifle.ammo)
-            tweak_data.weapon.factory.parts.wpn_fps_upg_o_tilt_scopemount.stance_mod = {
+        DelayedCalls:Add("an92delayedcallaa", delay, function()
+            self:convert_ammo_pickup("wpn_fps_ass_tilt_a_fuerte", InFmenu.wpnvalues.lrifle.ammo, InFmenu.wpnvalues.mrifle.ammo)
+            self.parts.wpn_fps_upg_o_tilt_scopemount.stance_mod = {
                 wpn_fps_ass_tilt = {
                     translation = Vector3(0, -10, 0), -- bring it closer to the face and fix that weird ADS offset that makes the sight unusable
                     rotation = Rotation(0, 0, 0)
@@ -8646,6 +8647,28 @@ end
     -- M45 MEUSOC threaded barrel
     if self.parts.wpn_fps_pis_meusoc_b_thr then
         self.parts.wpn_fps_pis_meusoc_b_thr.stats = deep_clone(nostats)
+    end
+
+    -- Trench Gun 1897
+    if BeardLib.Utils:ModLoaded("Trench Shotgun") and self.parts.wpn_fps_shot_trench_b_long then
+        self.parts.wpn_fps_shot_trench_b_long.stats = deep_clone(barrelsho_m1)
+        self.parts.wpn_fps_shot_trench_bayonet.stats = {
+            value = 0,
+            min_damage = 10.0,
+            max_damage = 10.0,
+            min_damage_effect = 0.10,
+            max_damage_effect = 0.10,
+            concealment = -2
+        }
+        self.parts.wpn_fps_shot_trench_s_rack.stats = {
+            value = 1,
+            reload = 5,
+            concealment = -1
+        }
+        self.parts.wpn_fps_shot_trench_s_chinrest.stats = deep_clone(nostats)
+
+        -- Remove stats override from shell rack
+        self.wpn_fps_shot_trench.override.wpn_fps_shot_r870_body_rack = nil
     end
 
     -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT

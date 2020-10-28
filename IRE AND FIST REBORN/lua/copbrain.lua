@@ -21,9 +21,9 @@ end
 
 -- Taken verbatim from Skill Overhaul, registers a converted cop so we can call them over more easily later to revive the player.
 Hooks:PostHook(CopBrain, "convert_to_criminal", "InF_SkillOverhaulCopBrainDoConvert", function(self)
-    self._unit:unit_data().is_convert = true
+	self._unit:unit_data().is_convert = true
 
-    table.insert(IreNFist._converts, self._unit)    
+	table.insert(IreNFist._converts, self._unit)    
 end)
 
 -- Winters, for the love of god end the assault already when you die
@@ -32,3 +32,13 @@ Hooks:PostHook(CopBrain, "clbk_death", "InF_CopBrain_wintersdeath_endassault", f
 		managers.groupai:state():unregister_phalanx_vip()
 	end
 end)
+
+-- If the pager was snatched, auto-answer it
+if InFmenu.settings.beta then
+	Hooks:PostHook(CopBrain, "clbk_alarm_pager", "SkillOverhaulSnatchPagerDo", function(self, ignore_this, data)
+		if self._unit:base().inf_pagersnatched then
+			self._unit:interaction():interact(managers.player:player_unit())
+			return
+		end
+	end)
+end

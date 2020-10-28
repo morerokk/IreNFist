@@ -44,6 +44,9 @@ else
 
 		-- Advanced movement (walljump, run, cling) breaks fall
 		self.values.player.adv_movement_breaks_fall = {true}
+
+		-- Pager snatching
+		self.values.player.inf_snatch_pager = {true}
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "inf_fuckyourskills2", function(self, params)
@@ -317,6 +320,17 @@ else
 			}
 		}
 
+		-- Snatch pagers on melee kill
+		self.definitions.player_inf_snatch_pager = {
+			category = "feature",
+			name_id = "menu_player_inf_snatch_pager",
+			upgrade = {
+				category = "player",
+				upgrade = "inf_snatch_pager",
+				value = 1
+			}
+		}
+
 	end)
 end
 
@@ -414,7 +428,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "inf_upgradestweak_pd2valu
 	-- Defines the cooldown for the health/armor regen effect
 	self.values.player.holdout_regen_cooldown = {
 		5,
-		4
+		3
 	}
 
 	-- Damage reduction when inside your zone

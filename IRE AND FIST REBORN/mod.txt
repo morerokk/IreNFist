@@ -60,6 +60,7 @@
 		{"hook_id": "lib/units/enemies/cop/logics/coplogicbase", "script_path" : "lua/coplogicbase.lua"},
 		{"hook_id": "lib/units/enemies/cop/logics/coplogictravel", "script_path" : "lua/coplogictravel.lua"},
 		{"hook_id": "lib/units/enemies/cop/logics/coplogicphalanxvip", "script_path" : "lua/coplogicphalanxvip.lua"},
+		{"hook_id": "lib/units/enemies/cop/actions/full_body/copactionhurt", "script_path": "lua/copactionhurt.lua"},
 
 		{"hook_id": "lib/tweak_data/blackmarket/meleeweaponstweakdata", "script_path" : "lua/melee.lua"},
 		{"hook_id": "lib/tweak_data/weapontweakdata", "script_path" : "lua/wpn_stats.lua"},

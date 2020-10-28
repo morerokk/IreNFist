@@ -4681,6 +4681,10 @@ function WeaponTweakData:_init_new_weapons(...)
 	--self.beer.DELAYED_BURST_RECOIL = false
 	self.beer.stats.spread = self.beer.stats.spread - 15
 	self.beer.fire_mode_data.fire_rate = 60/1100
+	-- Hawk please save me from these awful sounds
+	self.beer.sounds.fire = "beretta_fire"
+	self.beer.sounds.fire_single = "beretta_fire"
+	self.beer.sounds.fire_auto = "beretta_fire"
 	self:copy_timers("beer", "b92fs")
 	
 	self:inf_init("x_beer", "pistol", nil)
@@ -4695,6 +4699,9 @@ function WeaponTweakData:_init_new_weapons(...)
 	--self.x_beer.DELAYED_BURST_RECOIL = false
 	self.x_beer.stats.spread = self.x_beer.stats.spread - 15
 	self.x_beer.fire_mode_data.fire_rate = 60/1100
+	self.x_beer.sounds.fire = "beretta_fire"
+	self.x_beer.sounds.fire_single = "beretta_fire"
+	self.x_beer.sounds.fire_auto = "beretta_fire"
 	self:copy_timers("x_beer", "x_b92fs")
 
 	if BeardLib.Utils:ModLoaded("TOZ-34") then

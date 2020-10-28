@@ -905,7 +905,7 @@ end
 	menu_deck_holdout7 = "Bastion",
 	menu_deck_holdout7_desc = "Health and armor regeneration from this perk deck is both increased to ##20##.",
 	menu_deck_holdout9 = "Holdout",
-	menu_deck_holdout9_desc = "Every ##10## kills you make inside your active killzone will drop an additional ammo box.\n\nThe distance-based health and armor regeneration cooldowns are reduced to ##4## seconds.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
+	menu_deck_holdout9_desc = "Every ##10## kills you make inside your active killzone will drop an additional ammo box.\n\nThe distance-based health and armor regeneration cooldowns are reduced to ##3## seconds.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",
 
 	hahabenis = "fuck commas"
 })
@@ -1005,6 +1005,8 @@ else
 		menu_insulation_beta_desc = "BASIC: ##$basic##\nWhen tased, the shock effect has a ##30%## chance to backfire on the Taser, knocking them back.\n\nACE: ##$pro##\nWhen tased, you are able to free yourself from the taser by interacting with it within ##2## seconds of getting tased.\n\nWhile being tased, your bullets will electrify enemies.",
 		-- chameleon
 		menu_jail_workout_beta_desc = "BASIC: ##$basic##\nIncreases the time before you start getting detected by ##25%## while in casing mode. You can also mark enemies and cameras while in casing mode.\n\nACE: ##$pro##\nYou can pick up items while in casing mode.",
+		-- sixth sense
+		menu_chameleon_beta_desc = "BASIC: ##$basic##\nYou gain the ability to automatically mark enemies within a ##10## meter radius around you after standing still for ##3.5## seconds while in stealth.\n\nACE: ##$pro##\nMelee kills on unalerted guards will automatically answer the pager, unless you are already over 4 pagers.\n\nCleaning costs after killing a civilian are reduced by ##75%##.",
 
 		-- FUGITIVE
 		-- desperado
@@ -1053,7 +1055,7 @@ else
 		menu_deckall_4 = "Hustle",
 		menu_deckall_4_desc = "When wearing armor, your movement speed is ##15%## less affected.\n\nYou gain ##30%## more value for valuables and cash that you pick up.",
 		menu_deckall_6_desc = "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.\n\nYou can throw bags ##50%## further.",
-		menu_deckall_8_desc = "Your doctor bag interaction speed is increased by ##20%##.\n\nYou sprint ##25%## faster.",
+		menu_deckall_8_desc = "Your doctor bag interaction speed is increased by ##20%##.\n\nYou sprint ##25%## faster.\n\nYou gain access to insider assets.",
 
 		-- Rogue last perk tweaks
 		menu_deck4_9_desc = "All your weapons pierce through enemies. Your armor piercing is increased by ##25%## for all weapons.\n\nYour dodge chance is increased by ##10%##.\n\nIncreases weapon swap speed by ##80%##.\n\nDeck completion bonus: your chance of getting a higher quality item during a Payday is increased by ##10%##.",

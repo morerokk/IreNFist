@@ -261,13 +261,20 @@ else
 			}
 		}
 		-- No random damage multiplier, add sprint speed from Sprinter skill
+		-- Also add insider assets because limiting expert driver to a skill is kinda gay
+		-- And you never need them outside of stealth anyway
+		-- Dumb goldfarb era holdover that doesn't really work well anymore
 		local deck8 = {
 			cost = 3200,
 			desc_id = "menu_deckall_8_desc",
 			name_id = "menu_deckall_8",
 			upgrades = {
 				"passive_doctor_bag_interaction_speed_multiplier",
-				"player_run_speed_multiplier"
+				"player_run_speed_multiplier",
+				"player_buy_bodybags_asset",
+				"player_additional_assets",
+				"player_cleaner_cost_multiplier",
+				"player_buy_spotter_asset"
 			},
 			icon_xy = {
 				7,
@@ -406,6 +413,12 @@ else
 		-- Chameleon, make extra loot value innate to a shared perk instead of some random skill
 		self.skills.jail_workout[2].upgrades = {
 			"player_mask_off_pickup"
+		}
+		-- Sixth Sense, replace insider assets with pager snatch
+		-- Pager snatch auto-answers pagers if you kill an unalerted ("cool") guard with melee
+		self.skills.chameleon[2].upgrades = {
+			"player_cleaner_cost_multiplier",
+			"player_inf_snatch_pager" -- Inf prefix added because I vaguely remember other mods or even PD2 itself using this
 		}
 
 		self.skills.sprinter[2].upgrades = {"player_run_dodge_chance", "slide_dodge_chance"}

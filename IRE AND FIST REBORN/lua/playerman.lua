@@ -115,7 +115,6 @@ Hooks:PostHook(PlayerManager, "on_killshot", "stationary_kill_ammo", function(se
 		-- Check if this is the nth kill
 		if required_kills_in_zone % consecutive_kills_required_for_ammo_bonus == 0 then
 			-- Award extra ammo
-			log("[InF] Extra ammo awarded for nth kill in zone")
 			if Network:is_client() then
 				managers.network:session():send_to_host("sync_spawn_extra_ammo", killed_unit)
 			else

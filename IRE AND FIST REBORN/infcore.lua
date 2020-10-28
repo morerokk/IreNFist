@@ -223,6 +223,7 @@ if not InFmenu then
         cbt = false,
         beta = false,
         holdout_waypoint = false,
+        homeruncontest = false,
 
         disablefrogmanwarnings = false
     }

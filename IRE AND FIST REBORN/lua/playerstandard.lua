@@ -3229,6 +3229,12 @@ function PlayerStandard:_do_movement_melee_damage(forward_only, strongkick)
 			-- don't push live targets, they'll ragdoll
 			if finaltarget:character_damage()._health <= 0 then
 				local hit_pos = mvector3.copy(finaltarget:movement():m_pos())
+
+				-- How far can you kick the cop???
+				if InFmenu.settings.homeruncontest and finaltarget:base() then
+					finaltarget:base().homeruncontest_deathpos = mvector3.copy(hit_pos)
+				end
+
 				local attack_dir = hit_pos - self._unit:movement():m_head_pos() - Vector3(0, 0, atk_dir_z_offset)
 				local distance = mvector3.normalize(attack_dir)
 				-- attack dir also controls how ridiculous the ragdoll push is

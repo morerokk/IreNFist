@@ -375,8 +375,6 @@ function CopDamage:damage_melee(attack_data)
 				end
 			end			
 		end
-	else
-		managers.chat:feed_system_message(1, "[InFDEBUG] Beta not enabled!")
 	end
 
 	return result

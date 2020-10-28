@@ -1,6 +1,11 @@
 require("tests/mocks/copdamage")
+require("tests/mocks/playermanager")
 
-InFmenu = {true}
+InFmenu = {
+	settings = {
+		homeruncontest = false
+	}
+}
 IreNFist = {true}
 
 dofile("../IRE AND FIST REBORN/lua/copdamage.lua")

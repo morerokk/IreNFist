@@ -280,6 +280,51 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_init
 		}
 	end
 
+	-- Unfuck regular cloaker on DS
+	self.unit_categories.spooc = {
+		special_type = "spooc",
+		unit_types = {
+			america = {
+				Idstring("units/payday2/characters/ene_spook_1/ene_spook_1")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_spooc_asval_smg/ene_akan_fbi_spooc_asval_smg")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_spook_hvh_1/ene_spook_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_cloaker/ene_murkywater_cloaker")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale")
+			}
+		},
+		access = access_type_all
+	}
+	-- Unfuck shields on DS
+	self.unit_categories.FBI_shield = {
+		special_type = "shield",
+		unit_types = {
+			america = {
+				Idstring("units/payday2/characters/ene_shield_1/ene_shield_1")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_shield_sr2_smg/ene_akan_fbi_shield_sr2_smg")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_shield_hvh_1/ene_shield_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_shield/ene_murkywater_shield")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9")
+			}
+		},
+		access = access_type_walk_only
+	}
+
 	-- Define ZEAL unit categories
 	self.unit_categories.cringe_spooc = {
 		special_type = "spooc",
@@ -408,6 +453,60 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_init
 		},
 		access = access_type_walk_only,
 		primary_weapon_override = Idstring("units/payday2/weapons/wpn_npc_m4/wpn_npc_m4")
+	}
+
+	self.unit_categories.cringe_shield = {
+		special_type = "shield",
+		unit_types = {
+			america = {
+				Idstring("units/payday2/characters/ene_city_shield/ene_city_shield")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_shield_dw_sr2_smg/ene_akan_fbi_shield_dw_sr2_smg")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_shield_hvh_1/ene_shield_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_shield/ene_murkywater_shield")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9")
+			}
+		},
+		access = access_type_walk_only
+	}
+
+	self.unit_categories.cringe_tank = {
+		special_type = "tank",
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer/ene_zeal_bulldozer"),
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2/ene_zeal_bulldozer_2"),
+				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_3/ene_zeal_bulldozer_3")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_r870/ene_akan_fbi_tank_r870"),
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_saiga/ene_akan_fbi_tank_saiga"),
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_rpk_lmg/ene_akan_fbi_tank_rpk_lmg")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_1/ene_bulldozer_hvh_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_1/ene_bulldozer_hvh_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_1/ene_bulldozer_hvh_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_1/ene_murkywater_bulldozer_1"),
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_2/ene_murkywater_bulldozer_2"),
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_3/ene_murkywater_bulldozer_3")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_r870/ene_swat_dozer_policia_federale_r870"),
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_saiga/ene_swat_dozer_policia_federale_saiga"),
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249")
+			}
+		},
+		access = access_type_all
 	}
 end)
 
@@ -611,6 +710,73 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 			"shield_cover",
 			"smoke_grenade",
 			"flash_grenade"
+		},
+		-- ZEAL tactics
+		cringe_swat_rifle = {
+			"smoke_grenade",
+			"flash_grenade",
+			"provide_coverfire",
+			"charge",
+			"provide_support",
+			"ranged_fire"
+		},
+		cringe_heavy = {
+			"smoke_grenade",
+			"flash_grenade",
+			"provide_coverfire",
+			"provide_support",
+			"shield_cover",
+			"deathguard"
+		},
+		cringe_swat_shotgun = {
+			"smoke_grenade",
+			"flash_grenade",
+			"charge",
+			"provide_coverfire",
+			"provide_support"
+		},
+		cringe_swat_rifle_flank = {
+			"flank",
+			"smoke_grenade",
+			"flash_grenade",
+			"charge",
+			"provide_coverfire",
+			"provide_support"
+		},
+		cringe_swat_shotgun_flank = {
+			"flank",
+			"smoke_grenade",
+			"flash_grenade",
+			"charge",
+			"provide_coverfire",
+			"provide_support"
+		},
+		cringe_heavy_flank = {
+			"flank",
+			"smoke_grenade",
+			"flash_grenade",
+			"provide_coverfire",
+			"provide_support",
+			"shield_cover"
+		},
+		cringe_spooc = {
+			"charge",
+			"shield_cover",
+			"smoke_grenade",
+			"flash_grenade"
+		},
+		cringe_shield = {
+			"smoke_grenade",
+			"provide_coverfire",
+			"provide_support",
+			"shield",
+			"deathguard"
+		},
+		cringe_tank = {
+			"charge",
+			"deathguard",
+			"shield_cover",
+			"smoke_grenade"
 		}
 	}
 
@@ -996,6 +1162,13 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 					freq = 0.75,
 					tactics = self._tactics.FBI_suit_stealth,
 					rank = 2
+				},
+				{
+					unit = "FBI_suit_C45_M4",
+					freq = 0.75,
+					amount_min = 1,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 3
 				}
 			}
 		}
@@ -1271,6 +1444,106 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 		}
 	}
 	self.enemy_spawn_groups.FBI_spoocs = self.enemy_spawn_groups.single_spooc
+
+	-- DS Zeal units
+	-- SWATs with MP5's and shotguns
+	self.enemy_spawn_groups.cringe_swats = {
+		amount = {3, 4},
+		spawn = {
+			{
+				unit = "cringe_swat_MP5",
+				freq = 1,
+				amount_min = 3,
+				tactics = self._tactics.cringe_swat_rifle,
+				rank = 1
+			},
+			{
+				unit = "cringe_swat_R870",
+				amount_min = 2,
+				freq = 1,
+				tactics = self._tactics.cringe_swat_shotgun,
+				rank = 3
+			},
+			{
+				unit = "cringe_spooc",
+				freq = 0.1,
+				amount_max = 2,
+				tactics = self._tactics.cringe_spooc,
+				rank = 1
+			},
+			{
+				unit = "medic_M4",
+				freq = 0.4,
+				tactics = self._tactics.cringe_swat_rifle,
+				rank = 3
+			}
+		}
+	}
+	-- Heavy squads
+	self.enemy_spawn_groups.cringe_heavys = {
+		amount = {2, 3},
+		spawn = {
+			{
+				unit = "cringe_heavy_M4",
+				freq = 1,
+				tactics = self._tactics.cringe_swat_rifle,
+				rank = 1
+			},
+			{
+				unit = "cringe_heavy_M4",
+				freq = 0.75,
+				tactics = self._tactics.cringe_swat_rifle_flank,
+				rank = 2
+			},
+			{
+				unit = "CS_tazer",
+				freq = 0.25,
+				amount_max = 1,
+				tactics = self._tactics.CS_tazer,
+				rank = 3
+			},
+			{
+				unit = "medic_M4",
+				freq = 0.2,
+				tactics = self._tactics.cringe_swat_rifle,
+				rank = 3
+			}
+		}
+	}
+	-- Dozers
+	self.enemy_spawn_groups.cringe_tanks = {
+		amount = {3, 4},
+		spawn = {
+			{
+				unit = "cringe_tank",
+				freq = 1,
+				amount_max = 1,
+				tactics = self._tactics.cringe_tank,
+				rank = 1
+			},
+			{
+				unit = "cringe_shield",
+				freq = 0.5,
+				amount_min = 1,
+				amount_max = 2,
+				tactics = self._tactics.cringe_shield,
+				rank = 3
+			},
+			{
+				unit = "cringe_heavy_M4",
+				freq = 0.75,
+				amount_min = 1,
+				tactics = self._tactics.cringe_heavy_flank,
+				rank = 1
+			},
+			{
+				unit = "medic_R870",
+				freq = 0.2,
+				tactics = self._tactics.cringe_swat_shotgun_flank,
+				rank = 3
+			}
+		}
+	}
 
 	-- Required Winters bullshit
 	self.enemy_spawn_groups.Phalanx = {
@@ -2006,6 +2279,35 @@ end
 
 function GroupAITweakData:inf_init_taskdata_deathsentence(difficulty_index)
 	self:inf_init_taskdata_mayhem_deathwish(difficulty_index)
+
+	-- Add cringe squads
+	self.besiege.assault.groups.cringe_swats = {
+		0.2,
+		0.4,
+		0.6
+	}
+	self.besiege.assault.groups.cringe_spoocs = {
+		0.1,
+		0.11,
+		0.12
+	}
+	self.besiege.assault.groups.cringe_heavys = {
+		0.1,
+		0.2,
+		0.3
+	}
+	self.besiege.assault.groups.cringe_tanks = {
+		0,
+		0.1,
+		0.2
+	}
+
+	-- Regular cloakers are now slightly less common since ZEAL cloakers are added
+	self.besiege.assault.groups.FBI_spoocs = {
+		0.01,
+		0.1,
+		0.1
+	}
 
 	self.besiege.assault.delay = {
 		40,

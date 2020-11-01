@@ -52,6 +52,11 @@ function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit, is_mel
 
     -- Counterstrike Aced
     if managers.player:has_category_upgrade("player", "counter_arrest") then
+        return "counterarrest"
+    end
+
+    -- Counterstrike Basic
+    if managers.player:has_category_upgrade("player", "arrest_knockdown") then
         return "countered"
     end
 
@@ -60,7 +65,7 @@ end
 
 -- Check if another unmodded player should be arrested
 -- Modded players can do this check themselves
--- Since husks are too simplistic, unmodded clients will always be arrested since getting their timer isn't as easy. Such is life
+-- Since husks are too simplistic, unmodded clients will always be arrested since getting their timer isn't as easy and they won't have counterstrike. Such is life
 function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_melee)
     if Network and Network:is_client() then
         return nil, "not host, no husk check"
@@ -82,8 +87,73 @@ function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_me
 end
 
 function CopUtils:CounterArrestAttacker(player_unit, attacker_unit)
-    -- TODO
-    return "countered"
+    if not InFmenu.settings.beta then
+        return
+    end
+
+    -- Sorry, I haven't gotten this to work yet, it just crashes
+    -- For now, a knockdown to the face will have to suffice
+    return self:KnockDownAttacker(player_unit, attacker_unit)
+
+    --[[
+    CopLogicBase._exit(attacker_unit, "intimidated", {
+        aggressor_unit = player_unit
+    })
+
+    managers.chat:feed_system_message(1, "Exited into intimidated logic")
+
+    -- Most of this is copied from coplogicintimidated
+	attacker_unit:inventory():destroy_all_items()
+    attacker_unit:brain():set_update_enabled_state(false)
+    
+	attacker_unit:brain():rem_pos_rsrv("stand")
+	managers.groupai:state():on_enemy_tied(attacker_unit:key())
+    attacker_unit:base():set_slot(attacker_unit, 22)
+    
+	if attacker_unit:unit_data().mission_element then
+		attacker_unit:unit_data().mission_element:event("tied", attacker_unit)
+    end
+    
+    attacker_unit:character_damage():drop_pickup()
+    attacker_unit:character_damage():set_pickup(nil)
+
+    if player_unit == managers.player:player_unit() then
+        managers.statistics:tied({
+            name = attacker_unit:base()._tweak_table
+        })
+    else
+        player_unit:network():send_to_unit({
+            "statistics_tied",
+            attacker_unit:base()._tweak_table
+        })
+    end
+
+	managers.groupai:state():on_criminal_suspicion_progress(nil, attacker_unit, nil)
+
+    managers.chat:feed_system_message(1, "Went and tied the fuck")
+    ]]
+end
+
+function CopUtils:KnockDownAttacker(player_unit, attacker_unit)
+    if not InFmenu.settings.beta then
+        return
+    end
+
+    -- Strike them with a low damage high knockdown melee attack
+    local action_data = {
+        damage_effect = 1,
+        damage = 0,
+        variant = "counter_spooc",
+        attacker_unit = player_unit,
+        col_ray = {
+            body = attacker_unit:body("body"),
+            position = attacker_unit:position() + math.UP * 100
+        },
+        name_id = managers.blackmarket:equipped_melee_weapon(),
+        attack_dir = Vector3(0,1,0)
+    }
+
+    attacker_unit:character_damage():damage_melee(action_data)
 end
 
 function CopUtils:SendCopToArrestPlayer(player_unit)
@@ -121,7 +191,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
     -- Find the highest-priority enemy
     -- If tied, select the closest among them
     for i, enemy in pairs(enemies) do
-        -- If the guy is not actually an enemy (go figure, thanks Locke), don't
+        -- If the guy is not actually an enemy (thanks for arresting me Locke), don't
         if self:AreUnitsEnemies(player_unit, enemy) then
             -- Check if their chartweak allows them to arrest players (or if this is currently not an assault)
             local enemy_chartweak = enemy:base():char_tweak()
@@ -201,6 +271,10 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
     if result == "arrested" then
         -- This works on both the local player and husks thankfully
         player_unit:movement():on_cuffed()
+    elseif result == "counterarrest" then
+        self:CounterArrestAttacker(player_unit, cop)
+    elseif result == "countered" then
+        self:KnockDownAttacker(player_unit, cop)
     end
 end
 
@@ -257,11 +331,18 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_coputils', functi
         return
     end
 
+    local player_unit = managers.player and managers.player:player_unit()
+    if not player_unit then
+        return
+    end
+
     -- Check if this cop should arrest us
     local result = CopUtils:CheckLocalMeleeDamageArrest(managers.player:player_unit(), cop)
-    if result == "countered" then
-        -- TODO: Arrest the cop instead of just knocking them down
+    if result == "counterarrest" then
         CopUtils:CounterArrestAttacker(managers.player:player_unit(), cop)
+        return
+    elseif result == "countered" then
+        CopUtils:KnockDownAttacker(managers.player:player_unit(), cop)
         return
     elseif result == "arrested" then
         managers.player:player_unit():movement():on_cuffed()

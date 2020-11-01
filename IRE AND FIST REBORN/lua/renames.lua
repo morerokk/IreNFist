@@ -1029,7 +1029,7 @@ else
 		menu_equilibrium_beta_desc = "BASIC: ##$basic##\nSwitch speed bonus for secondary pistols is increased to ##25%##.\n\nACE: ##$pro##\nSwitch speed bonus for secondary pistols is increased to ##30%##.",
 
 		-- Counter-Strike
-		menu_drop_soap_beta_desc = "BASIC: ##$basic##\nWhen charging your melee weapon you will counterattack enemies that try to strike you, knocking them down. The knockdown does not deal any damage.\n\nACE: ##$pro##\nYou gain the ability to counter attack cloakers and their kicks.\n\nYou will always counter attack any enemies that try to arrest you.",
+		menu_drop_soap_beta_desc = "BASIC: ##$basic##\nWhen charging your melee weapon you will counterattack enemies that try to strike you, knocking them down. The knockdown does not deal any damage.\n\nYou will always counterattack any enemies that try to arrest you.\n\nACE: ##$pro##\nYou gain the ability to counter attack cloakers and their kicks.\n\nYou will now arrest non-special enemies that try to arrest you. Because of training.",
 
 		-- TECHNICIAN
 		-- surefire

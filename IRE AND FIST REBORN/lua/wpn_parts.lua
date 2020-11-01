@@ -3278,7 +3278,6 @@ end
     self.wpn_fps_pis_x_pl14.override.wpn_fps_pis_pl14_m_extended.stats = deep_clone(self.parts.wpn_fps_pis_pl14_m_extended.stats)
     self.wpn_fps_pis_x_pl14.override.wpn_fps_pis_pl14_m_extended.stats.extra_ammo = self.wpn_fps_pis_x_pl14.override.wpn_fps_pis_pl14_m_extended.stats.extra_ammo * 2
 
-
     -- M13 PARTS
     -- Threaded Barrel
     self.parts.wpn_fps_pis_pl14_m_extended.stats = {
@@ -6001,6 +6000,9 @@ end
 
         -- Uzi barrel
         self.parts.wpn_fps_smg_uzi_b_longue.stats = deep_clone(barrel_m2)
+
+        -- B93R expert slide
+        self.parts.wpn_fps_pis_beer_sl_expert.stats = deep_clone(nostats)
     end
 
     if BeardLib.Utils:ModLoaded("Zenith 10mm") then
@@ -8973,6 +8975,39 @@ DelayedCalls:Add("gimmeconcealdata", 1, function(self, params)
     end
 end)
 --]]
+
+    -- SECONDARY AKIMBOS
+    -- These mostly work already through main.xml, but they need animation fixes so the slides and mags aren't just static while firing/reloading
+    -- They also need their uses_parts and default blueprint copied over, no way in hell am I going to do that shit manually
+    -- Has to come after custom part support in case these parts add anything to the pistols
+
+    -- Table of original akimbos as key, and new akimbos as value
+    local primary_to_secondary_akimbos = {
+        wpn_fps_pis_x_pl14 = "wpn_fps_pis_x_pl14_secondary",
+        wpn_fps_pis_x_sparrow = "wpn_fps_pis_x_sparrow_secondary",
+        wpn_fps_pis_x_legacy = "wpn_fps_pis_x_legacy_secondary",
+        wpn_fps_jowi = "wpn_fps_pis_x_jowi_secondary",
+        wpn_fps_x_b92fs = "wpn_fps_pis_x_b92fs_secondary",
+        wpn_fps_pis_x_g17 = "wpn_fps_pis_x_g17_secondary",
+        wpn_fps_x_packrat = "wpn_fps_pis_x_packrat_secondary",
+        wpn_fps_pis_x_holt = "wpn_fps_pis_x_holt_secondary"
+    }
+    
+    -- Copy animations, uses_parts and default blueprint
+    -- This will save us a ton of unnecessary XML work
+    for pri, sec in pairs(primary_to_secondary_akimbos) do
+        -- Animations don't always exist, thank you so much
+        if self[pri].animations then
+            self[sec].animations = deep_clone(self[pri].animations)
+        end
+        -- Sometimes they're on the overrides instead
+        if self[pri].override then
+            self[sec].override = deep_clone(self[pri].override)
+        end
+
+        self[sec].uses_parts = deep_clone(self[pri].uses_parts)
+        self[sec].default_blueprint = deep_clone(self[pri].default_blueprint)
+    end
 
     -- Don't touch this, this should be the last line in the weaponfactorytweakdata init hook
     -- Enables better compatibility with other mods if they choose to override something InF does

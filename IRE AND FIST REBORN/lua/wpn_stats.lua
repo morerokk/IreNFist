@@ -2894,6 +2894,16 @@ function WeaponTweakData:_init_new_weapons(...)
 	--self.x_pl14.price = self.pl14.price * 1.5
 	self:copy_timers("x_pl14", "x_b92fs")
 
+	-- Secondary akimbo test
+	--[[
+	self:inf_init("x_pl14_secondary", "pistol", "light")
+	self:copy_stats("x_pl14_secondary", "x_pl14")
+	self:copy_sdescs("x_pl14_secondary", "x_pl14")
+	self:copy_timers("x_pl14_secondary", "x_pl14")
+	self.x_pl14_secondary.name_id = self.x_pl14.name_id
+	self.x_pl14_secondary.desc_id = self.x_pl14.desc_id
+	self.x_pl14_secondary.categories = {"akimbo", "pistol"}
+	]]
 
 	self.packrat.sdesc1 = "caliber_p9x19"
 	self.packrat.sdesc2 = "action_shortrecoil"
@@ -4099,10 +4109,50 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.saw_secondary.recoil_table = InFmenu.rtable.norecoil
 
 
+    -- SECONDARY AKIMBOS
+    -- These mostly work already through main.xml, but they need stats fixes
+    
+    -- Table of original akimbos as key, and new akimbos as value
+    local primary_to_secondary_akimbos = {
+		x_pl14 = "x_pl14_secondary",
+		x_sparrow = "x_sparrow_secondary",
+		x_legacy = "x_legacy_secondary",
+		jowi = "x_jowi_secondary", -- Thanks for the inconsistent naming Overkill
+		x_b92fs = "x_b92fs_secondary",
+		x_g17 = "x_g17_secondary",
+		x_packrat = "x_packrat_secondary",
+		x_holt = "x_holt_secondary"
+	}
+	
+    -- Normally the ammo akimbos have is (primary ammo)/1.8
+    -- But max ammo doesn't quite match up with mag sizes most of the time, let's fix that
+    local secondary_akimbo_ammo_overrides = {
+		x_sparrow_secondary = 96,
+		x_g17_secondary = 102,
+		x_b92fs_secondary = 90,
+		x_pl14_secondary = 90,
+		x_legacy_secondary = 104,
+		x_jowi_secondary = 96,
+		x_packrat_secondary = 90,
+		x_holt_secondary = 90
+    }
 
+	-- Copy name/description and fix some stats automagically
+    -- This will save us a ton of unnecessary XML work
+    for pri, sec in pairs(primary_to_secondary_akimbos) do
+		self:inf_init(sec, "pistol", nil)
+		self:copy_stats(sec, pri)
+		self:copy_sdescs(sec, pri)
+		self:copy_timers(sec, pri)
+		self[sec].name_id = self[pri].name_id
+		self[sec].desc_id = self[pri].desc_id
 
-
-
+		-- Set max ammo
+		-- Base ammo for a lot of lighter primary akimbos is 180, so the new max ammo for secondaries will be ~100 (or slightly higher/lower so the mags match up)
+		local max_ammo = secondary_akimbo_ammo_overrides[sec] or math.ceil(self[pri].AMMO_MAX / 1.8)
+		self[sec].AMMO_MAX = max_ammo
+		self[sec].AMMO_PICKUP = self:_pickup_chance(max_ammo, 1)
+    end
 
 
 
@@ -4685,6 +4735,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.beer.sounds.fire = "beretta_fire"
 	self.beer.sounds.fire_single = "beretta_fire"
 	self.beer.sounds.fire_auto = "beretta_fire"
+
 	self:copy_timers("beer", "b92fs")
 	
 	self:inf_init("x_beer", "pistol", nil)
@@ -6617,6 +6668,7 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:inf_init("master", "smg", {"dmg_50"})
 		self.master.sdesc1 = "caliber_r380acp"
 		self.master.sdesc2 = "action_shortrecoil"
+		self.master.recategorize = "smg"
 		self:copy_timers("master", "mac10")
 	end
 
@@ -6630,7 +6682,6 @@ function WeaponTweakData:_init_new_weapons(...)
 
 	-- No weapon
 	-- Am I really adding support for this
-	
 	-- Secondary (based on glock)
 	if self.nothing then
 		self.nothing.sdesc3_type = nil
@@ -6657,6 +6708,13 @@ function WeaponTweakData:_init_new_weapons(...)
 		self:copy_sdescs("meusoc", "colt_1911")
 		self:copy_stats("meusoc", "colt_1911")
 		self:copy_timers("meusoc", "pl14")
+	end
+	-- Akimbo version
+	if self.x_meusoc then
+		self:inf_init("x_meusoc", "pistol", "medium")
+		self:copy_sdescs("x_meusoc", "x_1911")
+		self:copy_stats("x_meusoc", "x_1911")
+		self:copy_timers("x_meusoc", "x_pl14")
 	end
 
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:

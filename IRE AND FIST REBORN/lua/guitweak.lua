@@ -28,6 +28,7 @@ Hooks:PostHook(GuiTweakData, "init", "infwpncategories", function(self, params)
 			{"smg_h"},
 			{"carbine"},
 			{"shotgun"}, -- reordered to go before wpn_special
+			{"akimbo", "pistol"},
 			{"wpn_special"}
 		}
 	}

@@ -461,6 +461,7 @@ else
 		self.skills.equilibrium[2].upgrades = {"pistol_base_switchspeed_add_2"}
 
 		-- Counter-Strike
+		table.insert(self.skills.drop_soap[1].upgrades, "player_arrest_knockdown")
 		table.insert(self.skills.drop_soap[2].upgrades, "player_counter_arrest")
 
 

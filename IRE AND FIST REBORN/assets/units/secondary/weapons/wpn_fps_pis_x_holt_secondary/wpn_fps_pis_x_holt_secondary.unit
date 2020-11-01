@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2">
+	<object file="units/pd2_dlc_atw/weapons/wpn_fps_pis_x_holt/wpn_fps_pis_x_holt" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_holt"/>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="AkimboWeaponBase" >
+			<var name="name_id" value="x_holt_secondary" />
+		</extension>
+	</extensions>
+</unit>

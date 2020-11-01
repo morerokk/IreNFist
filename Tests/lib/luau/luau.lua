@@ -53,7 +53,7 @@ end
 function LuaU:assertEqual(expected, actual)
     if expected ~= actual then
         self.failedAssertions = self.failedAssertions + 1
-        error("Expected assert value to be " + tostring(expected) + ", was " + tostring(actual))
+        error("Expected assert value to be " .. tostring(expected) .. ", was " .. tostring(actual))
     end
 end
 

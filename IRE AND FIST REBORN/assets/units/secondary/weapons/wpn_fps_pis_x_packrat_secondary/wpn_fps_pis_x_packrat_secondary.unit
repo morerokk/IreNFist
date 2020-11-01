@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2" >
+	<object file="units/pd2_dlc_pim/weapons/wpn_fps_x_packrat/wpn_fps_x_packrat" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_packrat"/>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="AkimboWeaponBase" >
+			<var name="name_id" value="x_packrat_secondary" />
+		</extension>
+	</extensions>
+</unit>

@@ -36,6 +36,8 @@ else
 		-- Rogue general weapon penetration bonus
 		self.values.weapon.all_pierce_enemies = {true}
 
+		-- Counter-Strike arrest knockdown
+		self.values.player.arrest_knockdown = {true}
 		-- Counter-Strike counter arrest
 		self.values.player.counter_arrest = {true}
 
@@ -288,6 +290,17 @@ else
 			}
 		}
 
+		-- Knockdown enemies that try to arrest you
+		self.definitions.player_arrest_knockdown = {
+			category = "feature",
+			name_id = "menu_player_arrest_knockdown",
+			upgrade = {
+				category = "player",
+				upgrade = "arrest_knockdown",
+				value = 1
+			}
+		}
+		-- Counter-arrest enemies that try to arrest you
 		self.definitions.player_counter_arrest = {
 			category = "feature",
 			name_id = "menu_player_counter_arrest",
@@ -297,6 +310,7 @@ else
 				value = 1
 			}
 		}
+
 
 		-- Transporter, sprint with any bag
 		self.definitions.player_sprint_any_bag = {

@@ -1,5 +1,4 @@
 <table name="irenfist" color="Color(0, 0.5, 0)"> <!-- priority="-33" -->
-<AssetUpdates id="24208" version="1.50" provider="modworkshop"/>
 <GlobalValue id="infmod" color="Color(0, 0.5, 0)"/>
 
 <AddFiles directory="assets">
@@ -54,44 +53,70 @@
 	<texture path="guis/dlcs/infimg/textures/pd2/blackmarket/icons/mods/inf_lapd_556"/>
 -->
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/hajkprimary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_hajkprimary/wpn_fps_smg_hajkprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/hajkprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_hajkprimary/wpn_fps_smg_hajkprimary"/>
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/shepheardprimary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_shepheardprimary/wpn_fps_smg_shepheardprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/shepheardprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_shepheardprimary/wpn_fps_smg_shepheardprimary"/>
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/coalprimary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_coalprimary/wpn_fps_smg_coalprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/coalprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_coalprimary/wpn_fps_smg_coalprimary"/>
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m1928primary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_m1928primary/wpn_fps_smg_thompsonprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m1928primary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_m1928primary/wpn_fps_smg_thompsonprimary"/>
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/olympicprimary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_olympicprimary/wpn_fps_smg_olympicprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/olympicprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_olympicprimary/wpn_fps_smg_olympicprimary"/>
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/new_mp5primary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_mp5primary/wpn_fps_smg_mp5primary"/>
-		<!-- <unit path="units/primarysmg/weapons/wpn_fps_smg_mp5primary/wpn_fps_smg_mp5primary_npc"/> -->
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/new_mp5primary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_mp5primary/wpn_fps_smg_mp5primary"/>
+	<!-- <unit path="units/primarysmg/weapons/wpn_fps_smg_mp5primary/wpn_fps_smg_mp5primary_npc"/> -->
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/schakalprimary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_schakalprimary/wpn_fps_smg_schakalprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/schakalprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_schakalprimary/wpn_fps_smg_schakalprimary"/>
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/akmsuprimary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_smg_akmsuprimary/wpn_fps_smg_akmsuprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/akmsuprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_akmsuprimary/wpn_fps_smg_akmsuprimary"/>
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/coachprimary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_sho_coachprimary/wpn_fps_sho_coachprimary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/coachprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_sho_coachprimary/wpn_fps_sho_coachprimary"/>
 
 
-        <texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m37primary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m37primary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary"/>
 
-		<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/gre_m79secondary"/>
-		<unit path="units/primarysmg/weapons/wpn_fps_gre_m79secondary/wpn_fps_gre_m79secondary"/>
 
-		<unit_obj path="units/infparts/inf_bipod_part/inf_bipod_part"/>
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/gre_m79secondary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_gre_m79secondary/wpn_fps_gre_m79secondary"/>
 
-		<unit_obj path="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg"/>
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_pl14_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_pl14_secondary/wpn_fps_pis_x_pl14_secondary"/>
+
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_sparrow_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_sparrow_secondary/wpn_fps_pis_x_sparrow_secondary"/>
+
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_legacy_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_legacy_secondary/wpn_fps_pis_x_legacy_secondary"/>
+
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_jowi_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_jowi_secondary/wpn_fps_pis_x_jowi_secondary"/>
+
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_b92fs_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_b92fs_secondary/wpn_fps_pis_x_b92fs_secondary"/>
+
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_g17_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_g17_secondary/wpn_fps_pis_x_g17_secondary"/>
+
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_packrat_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_packrat_secondary/wpn_fps_pis_x_packrat_secondary"/>
+
+	<texture path="guis/dlcs/secondary/textures/pd2/blackmarket/icons/weapons/x_holt_secondary"/>
+	<unit path="units/secondary/weapons/wpn_fps_pis_x_holt_secondary/wpn_fps_pis_x_holt_secondary"/>
+
+
+	<unit_obj path="units/infparts/inf_bipod_part/inf_bipod_part"/>
+
+	<unit_obj path="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg"/>
 </AddFiles>
 
 	<Sounds directory="sounds">
@@ -620,7 +645,9 @@
 				<value_node value="wpn_fps_gre_m79_stock"/>
 				<value_node value="wpn_fps_gre_m79_stock_short"/>
 				<value_node value="wpn_fps_gre_m79_sight_up"/>
+
 				<value_node value="wpn_fps_gre_m79_grenade"/>
+				<value_node value="wpn_fps_upg_a_grenade_launcher_incendiary"/>
 			</uses_parts>
 		</factory>
 		<stance/>
@@ -1354,4 +1381,142 @@
 		<stance/>
 	</WeaponNew>
 
+	<!-- Secondary Akimbos with gimped ammo. Light pistols only, no burst/full-auto pistols either -->
+	<!-- This also needs some data to be copied over in weapontweakdata and weaponfactory -->
+	<!-- PL-14 -->
+	<WeaponNew unlock_level="14">
+		<weapon id="x_pl14_secondary" based_on="x_pl14" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="x_pl14"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_pl14_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_pl14_secondary/wpn_fps_pis_x_pl14_secondary">
+			<default_blueprint>
+				<!-- I can't leave this empty but I can just copy these in weaponfactorytweakdata, so here's a dummy -->
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<!-- Sparrow (Baby Deagle) -->
+	<WeaponNew unlock_level="14">
+		<weapon id="x_sparrow_secondary" based_on="x_sparrow" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="x_sparrow"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_sparrow_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_sparrow_secondary/wpn_fps_pis_x_sparrow_secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<!-- M13 -->
+	<WeaponNew unlock_level="15">
+		<weapon id="x_legacy_secondary" based_on="x_legacy" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="x_legacy"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_legacy_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_legacy_secondary/wpn_fps_pis_x_legacy_secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<!-- Chimano Compact -->
+	<WeaponNew unlock_level="27">
+		<weapon id="x_jowi_secondary" based_on="jowi" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="jowi"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_jowi_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_jowi_secondary/wpn_fps_pis_x_jowi_secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<!-- Beretta 92FS -->
+	<WeaponNew unlock_level="6">
+		<weapon id="x_b92fs_secondary" based_on="x_b92fs" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="x_b92fs"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_b92fs_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_b92fs_secondary/wpn_fps_pis_x_b92fs_secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<!-- Glock 17 -->
+	<WeaponNew unlock_level="0">
+		<weapon id="x_g17_secondary" based_on="x_g17" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="x_g17"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_g17_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_g17_secondary/wpn_fps_pis_x_g17_secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<!-- Contractor/Packrat (John Wick weapon pack pistol) -->
+	<WeaponNew unlock_level="26">
+		<weapon id="x_packrat_secondary" based_on="x_packrat" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="x_g17"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_packrat_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_packrat_secondary/wpn_fps_pis_x_packrat_secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<!-- Hudson H9 -->
+	<WeaponNew unlock_level="30">
+		<weapon id="x_holt_secondary" based_on="x_holt" texture_bundle_folder="secondary" weapon_hold="jowi_pistol" global_value="infmod">
+			<use_data selection_index="1"/>
+			<animations reload_name_id="x_g17"/>
+		</weapon>
+		<factory id="wpn_fps_pis_x_holt_secondary" unit="units/secondary/weapons/wpn_fps_pis_x_holt_secondary/wpn_fps_pis_x_holt_secondary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_mp9_b_dummy"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
 </table>

@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2">
+	<object file="units/pd2_dlc_khp/weapons/wpn_fps_pis_x_legacy/wpn_fps_pis_x_legacy" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_legacy"/>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="AkimboWeaponBase" >
+			<var name="name_id" value="x_legacy_secondary" />
+		</extension>
+	</extensions>
+</unit>

@@ -1,0 +1,14 @@
+<unit type="wpn" slot="2" >
+	<object file="units/pd2_dlc_butcher_mods/weapons/wpn_fps_pis_x_g17/wpn_fps_pis_x_g17" />
+	
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_g17"/>
+	</dependencies>
+	
+    <extensions>
+        <extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="AkimboWeaponBase" >
+			<var name="name_id" value="x_g17_secondary" />
+		</extension>
+    </extensions>
+</unit>

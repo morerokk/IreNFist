@@ -81,14 +81,32 @@ local function coputils_testsuccessfularrest_meleealwaysworks()
     LuaU:assertNil(reason)
 end
 
--- Arrest on a counter-strike aced player should fail and be countered.
-local function coputils_testunsuccessfularrest_counterstrike()
+-- Arrest on a counter-strike aced player should fail and be countered with an arrest.
+local function coputils_testunsuccessfularrest_counterstrike_counterarrest()
     local player_unit = managers.player:player_unit()
     player_unit:_mockSetInteracting(true, 5, 2)
     mvector3:_mockDistance(100)
     managers.player:_mockSetUpgrades({
         player = {
-            counter_arrest = true
+            counter_arrest = true,
+            arrest_knockdown = true
+        }
+    })
+
+    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, true)
+
+    LuaU:assertEqual("counterarrest", result)
+    LuaU:assertNil(reason)
+end
+
+-- On a counter-strike basic player, arrest should fail and be countered with a knockdown.
+local function coputils_testunsuccessfularrest_counterstrike_knockdown()
+    local player_unit = managers.player:player_unit()
+    player_unit:_mockSetInteracting(true, 5, 2)
+    mvector3:_mockDistance(100)
+    managers.player:_mockSetUpgrades({
+        player = {
+            arrest_knockdown = true
         }
     })
 
@@ -106,4 +124,5 @@ LuaU:runTest(coputils_testunsuccessfularrest_coptoofaraway, "coputils_testunsucc
 
 LuaU:runTest(coputils_testsuccessfularrest_copcloseby, "coputils_testsuccessfularrest_copcloseby")
 LuaU:runTest(coputils_testsuccessfularrest_meleealwaysworks, "coputils_testsuccessfularrest_meleealwaysworks")
-LuaU:runTest(coputils_testunsuccessfularrest_counterstrike, "coputils_testunsuccessfularrest_counterstrike")
+LuaU:runTest(coputils_testunsuccessfularrest_counterstrike_counterarrest, "coputils_testunsuccessfularrest_counterstrike_counterarrest")
+LuaU:runTest(coputils_testunsuccessfularrest_counterstrike_knockdown, "coputils_testunsuccessfularrest_counterstrike_knockdown")

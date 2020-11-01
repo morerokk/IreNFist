@@ -261,9 +261,12 @@ function CopDamage:_check_special_death_conditions(variant, body, attacker_unit,
 				self._unit:damage():run_sequence_simple(body_data.sequence)
 			end
 
+			-- TEST: Don't prevent the "taser killed" line from happening
+			--[[
 			if body_data.special_comment and attacker_unit == managers.player:player_unit() then
 				return body_data.special_comment
 			end
+			]]
 		end
 	end
 end

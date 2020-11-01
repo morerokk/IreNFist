@@ -50,6 +50,8 @@ if not IreNFist then
     -- Index of newly inserted bunker/holdout perk deck
     IreNFist.holdout_deck_index = nil
 
+    -- NOTE: The below values are not used with the newest assault tweaks.
+    -- Only the spawn delay is used.
     -- Heist-specific overrides for assault values
     -- This has to be done because some poorly designed heists like Shacklethorne have assaults that end way too quickly with these tweaks
     -- Default values:
@@ -65,7 +67,7 @@ if not IreNFist then
             force_balance_mul = { 1, 2, 3, 4 },
             force_pool = { 50, 55, 60 },
             force_pool_balance_mul = { 1, 2, 3, 4 },
-            initial_spawn_delay = 30 -- Add a 30 second spawn delay because a literal 0 second response time is dumb
+            initial_spawn_delay = 45 -- Add a 45 second spawn delay because a literal 0 second response time is dumb
         },
         nmh = { -- No Mercy, same as Shacklethorne Auction but more cops at a time
             force = { 14, 15, 16 },
@@ -105,11 +107,11 @@ if not IreNFist then
     -- and they don't replace anything either, they *multiply* the existing value.
     -- Maybe they *should* multiply the base values instead of the balance_muls?
     IreNFist.level_force_overrides = {
-        hox_1 = { -- Hoxout day 1
+        hox_1 = { -- Hoxout day 1, the "first assault is very light" mechanic doesn't really work if the whole gauntlet is assault 1
             force_mul = { 2, 2, 2, 2 },
             force_pool_mul = { 1.2, 1.2, 1.2, 1.2 } -- Barely matters here, assault is assault
         },
-        hox_2 = { -- Hoxout day 2
+        hox_2 = { -- Hoxout day 2, this just needed a bit more oomph
             force_mul = { 1.75, 1.75, 1.75, 1.75 },
             force_pool_mul = { 1.35, 1.35, 1.35, 1.35 }
         }

@@ -18,9 +18,11 @@ if InFmenu.settings.enablenewcopbehavior then
 
 		local result = CopUtils:CheckClientMeleeDamageArrest(self._unit, attack_data.attacker_unit, true)
 
-		if result == "countered" then
+		if result == "counterarrest" then
 			-- TODO: Arrest the cop instead of just knocking them down
 			return CopUtils:CounterArrestAttacker(self._unit, attack_data.attacker_unit)
+		elseif result == "countered" then
+			return CopUtils:KnockDownAttacker(self._unit, attack_data.attacker_unit)
 		elseif result == "arrested" then
 			self._unit:movement():on_cuffed()
 			return

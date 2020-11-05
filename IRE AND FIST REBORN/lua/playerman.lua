@@ -183,6 +183,12 @@ Hooks:PostHook(PlayerManager, "update", "inf_playermanager_update_updateholdouth
 		end
 	end
 
+	-- Update bulletstorm charge HUD
+	if managers.player:has_category_upgrade("player", "inf_charge_bulletstorm") then
+		self:update_bulletstorm(t, dt)
+	end
+
+	-- Holdout perk deck stuff
 	if not holdout_active or not holdout_pos then
 		-- Set hud false
 		managers.hud:set_holdout_indicator_enabled(false)
@@ -197,9 +203,11 @@ Hooks:PostHook(PlayerManager, "update", "inf_playermanager_update_updateholdouth
 		-- Set hud false
 		managers.hud:set_holdout_indicator_enabled(false)
 	end
+
 end)
 
 -- Update the Guardian waypoint marker
+-- This is not called every frame, only on kill
 function PlayerManager:update_holdout_waypoint()
 	if not managers or not managers.hud then
 		return
@@ -275,4 +283,82 @@ if not IreNFist.mod_compatibility.sso then
 		added_speed = added_speed + self:get_value_from_risk_upgrade(detection_risk_add_movement_speed)
 		return added_speed
 	end
+end
+
+-- Bullet Storm
+-- I'm reimplementing the "temporary upgrade" functionality myself so I can update the HUD properly
+function PlayerManager:update_bulletstorm(t, dt)
+	if not self:has_category_upgrade("player", "inf_charge_bulletstorm") then
+		return
+	end
+
+	if IreNFist.bulletstorm_active then
+		-- Deduct elapsed time from our charge level
+		IreNFist.current_bulletstorm_charge = IreNFist.current_bulletstorm_charge - dt
+		-- If we are at or below 0, clamp the value to 0 and disable bulletstorm
+		if IreNFist.current_bulletstorm_charge <= 0 then
+			IreNFist.current_bulletstorm_charge = 0
+			IreNFist.bulletstorm_active = false
+		end
+	end
+
+	managers.hud:set_bulletstorm_charge_enabled(true)
+	managers.hud:set_bulletstorm_charge_level({ current = IreNFist.current_bulletstorm_charge, max = tweak_data.upgrades.bulletstorm_max_seconds })
+end
+
+-- Try to activate bulletstorm
+function PlayerManager:try_activate_bulletstorm()
+	-- Needs upgrade
+	if not self:has_category_upgrade("player", "inf_charge_bulletstorm") then
+		return false
+	end
+
+	-- Must not already be active
+	if IreNFist.bulletstorm_active then
+		return false
+	end
+
+	-- Must have reached the minimum charge level
+	if IreNFist.current_bulletstorm_charge < tweak_data.upgrades.bulletstorm_min_seconds then
+		return false
+	end
+
+	-- Everything seems ok, activate it
+	IreNFist.bulletstorm_active = true
+	return true
+end
+
+local last_ammo_refill_t = -1000
+-- Try to refill nearby ammo bags
+function PlayerManager:try_refill_nearby_ammo_bag()
+	-- Needs upgrade
+	if not self:has_category_upgrade("player", "inf_refill_ammobag") then
+		return false
+	end
+
+	-- Player unit has to exist
+	local player_unit = self:player_unit()
+	if not player_unit then
+		return false
+	end
+
+	-- Check if the cooldown has expired
+	local cooldown = tweak_data.upgrades.ammobag_refill_cooldown_seconds
+	local max_dist = tweak_data.upgrades.ammobag_refill_search_dist
+	if not cooldown or not max_dist or (Application:time() - last_ammo_refill_t) < cooldown then
+		return false
+	end
+
+	-- Find nearest bag to refill
+	local ammobag = AmmoBagBase.find_refill_bag(player_unit:position(), max_dist)
+	if ammobag and ammobag:refill_ammo(player_unit) then
+		-- Ammo successfully refilled, set cooldown and play a sound
+		last_ammo_refill_t = Application:time()
+		player_unit:sound():play("pickup_ammo")
+		-- Forbid bulletstorm on this bag
+		ammobag:forbid_bulletstorm()
+		return true
+	end
+
+	return false
 end

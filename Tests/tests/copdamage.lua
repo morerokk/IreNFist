@@ -3,7 +3,8 @@ require("tests/mocks/playermanager")
 
 InFmenu = {
 	settings = {
-		homeruncontest = false
+		homeruncontest = false,
+		beta = true
 	}
 }
 IreNFist = {true}

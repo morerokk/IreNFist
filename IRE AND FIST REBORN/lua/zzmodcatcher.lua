@@ -5,13 +5,15 @@ dofile(ModPath .. "infcore.lua")
 
 if InFmenu.settings.clearnewdrops then
     function BlackMarketManager:remove_all_new_drop()
-        log("[InF] CHECKING NEW DROPS LIST")
-        for a, b in pairs(self._global.new_drops) do
-            log(a)
-            for c, d in pairs(b) do
-                log(c)
-                for e, f in pairs(d) do
-                    log(e)
+        if InFmenu.settings.debug then
+            log("[InF] CHECKING NEW DROPS LIST")
+            for a, b in pairs(self._global.new_drops) do
+                log(a)
+                for c, d in pairs(b) do
+                    log(c)
+                    for e, f in pairs(d) do
+                        log(e)
+                    end
                 end
             end
         end
@@ -19,10 +21,12 @@ if InFmenu.settings.clearnewdrops then
         local cleared = table.size(self._global.new_drops) > 0
         self._global.new_drops = {}
 
-        if cleared == true then
-            log("[InF] cleared some new weapon mods")
-        else
-            log("[InF] cleared no weapon mods")
+        if InFmenu.settings.debug then
+            if cleared == true then
+                log("[InF] cleared some new weapon mods")
+            else
+                log("[InF] cleared no weapon mods")
+            end
         end
 
         return cleared

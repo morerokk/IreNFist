@@ -1,6 +1,6 @@
 dofile(ModPath .. "infcore.lua")
 
-if not InFmenu.settings.beta then
+if not InFmenu.settings.beta or (managers.skirmish and managers.skirmish:is_skirmish()) then
     return
 end
 
@@ -780,6 +780,17 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 		}
 	}
 
+	-- Apply spawn chance multipliers to cloakers if the map spams them with scripted spawns
+	local spooc_chance_mul = 1
+	local current_level_id = Global.game_settings and Global.game_settings.level_id
+	if current_level_id and IreNFist.level_force_overrides[current_level_id] then
+		local override = IreNFist.level_force_overrides[current_level_id]
+		-- Too many cloakers on some heists due to map-specific spawns
+		if override.too_many_cloakers then
+			spooc_chance_mul = 0.2
+		end
+	end
+
     -- Mostly copied from U87 but it works
 	self.enemy_spawn_groups.CS_defend_a = {
 		amount = {3, 4},
@@ -1199,7 +1210,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 				},
 				{
 					unit = "spooc",
-					freq = 0.15,
+					freq = 0.15 * spooc_chance_mul,
 					amount_max = 2,
 					tactics = self._tactics.spooc,
 					rank = 1
@@ -1238,7 +1249,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 				},
 				{
 					unit = "spooc",
-					freq = 0.1,
+					freq = 0.1 * spooc_chance_mul,
 					amount_max = 2,
 					tactics = self._tactics.spooc,
 					rank = 1
@@ -1347,7 +1358,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 				},
 				{
 					unit = "spooc",
-					freq = 0.15,
+					freq = 0.15 * spooc_chance_mul,
 					amount_max = 2,
 					tactics = self._tactics.spooc,
 					rank = 1
@@ -1466,7 +1477,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 			},
 			{
 				unit = "cringe_spooc",
-				freq = 0.1,
+				freq = 0.1 * spooc_chance_mul,
 				amount_max = 2,
 				tactics = self._tactics.cringe_spooc,
 				rank = 1
@@ -1658,6 +1669,15 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 		if override.force_pool_mul then
 			for i, v in ipairs(self.besiege.assault.force_pool_balance_mul) do
 				self.besiege.assault.force_pool_balance_mul[i] = self.besiege.assault.force_pool_balance_mul[i] * override.force_pool_mul[i]
+			end
+		end
+
+		-- Too many cloakers on some heists due to map-specific spawns
+		if override.too_many_cloakers then
+			if self.besiege.assault.groups.FBI_spoocs then
+				self.besiege.assault.FBI_spoocs[1] = self.besiege.assault.FBI_spoocs[1] * 0.2
+				self.besiege.assault.FBI_spoocs[2] = self.besiege.assault.FBI_spoocs[2] * 0.2
+				self.besiege.assault.FBI_spoocs[3] = self.besiege.assault.FBI_spoocs[3] * 0.2
 			end
 		end
 	end

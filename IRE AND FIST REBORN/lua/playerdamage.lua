@@ -25,3 +25,14 @@ if InFmenu.settings.enablenewcopbehavior then
 		end
 	end
 end
+
+-- Turrets that died on other people's ends should never be able to damage you
+-- Because apparently forcing the turret to die sometimes still doesn't work
+local playerdamage_dmgbullet_orig = PlayerDamage.damage_bullet
+function PlayerDamage:damage_bullet(attack_data, ...)
+	if attack_data and attack_data.attacker_unit and attack_data.attacker_unit:base().inf_dead then
+		return
+	end
+
+	return playerdamage_dmgbullet_orig(self, attack_data, ...)
+end

@@ -50,6 +50,12 @@ if not IreNFist then
     -- Index of newly inserted bunker/holdout perk deck
     IreNFist.holdout_deck_index = nil
 
+    -- Bullet storm charge
+    IreNFist.current_bulletstorm_charge = 0
+
+    -- Whether bullet storm is active
+    IreNFist.bulletstorm_active = false
+
     -- NOTE: The below values are not used with the newest assault tweaks.
     -- Only the spawn delay is used.
     -- Heist-specific overrides for assault values
@@ -114,6 +120,9 @@ if not IreNFist then
         hox_2 = { -- Hoxout day 2, this just needed a bit more oomph
             force_mul = { 1.75, 1.75, 1.75, 1.75 },
             force_pool_mul = { 1.35, 1.35, 1.35, 1.35 }
+        },
+        branchbank = {
+            too_many_cloakers = true -- Should be enabled for heists that spam too many scripted cloaker spawns. This lessens/removes the cloakers from regular squads.
         }
     }
 

@@ -40,6 +40,8 @@ Hooks:Add("NetworkReceivedData", "NetworkReceivedData_InF_SwatTurretDied", funct
 
             -- Probably safe to call without parameters, the game does it on load() too
             unit:character_damage():die()
+            -- Ok well fuck the turret, this doesn't always work, so set a flag on the turret that makes you unable to be damaged by it
+            unit:base().inf_dead = true
             break
         end
     end

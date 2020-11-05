@@ -260,7 +260,7 @@ else
 				0
 			}
 		}
-		-- No random damage multiplier, add sprint speed from Sprinter skill
+		-- No random damage multiplier, add sprint speed from Sprinter skillf
 		-- Also add insider assets because limiting expert driver to a skill is kinda gay
 		-- And you never need them outside of stealth anyway
 		-- Dumb goldfarb era holdover that doesn't really work well anymore
@@ -483,6 +483,47 @@ else
 		--self.skills.shotgun_impact[2].upgrades = {"shotgun_damage_addend_2"}
 		self.skills.shotgun_impact[1].upgrades = {"advmov_stamina_on_kill"}
 		self.skills.shotgun_impact[2].upgrades = {"advmov_stamina_on_kill_2"}
+
+		-- Carbon Blade replaced, saw skills merged down into Portable Saw skill
+		self.skills.portable_saw[1].upgrades = {
+			"saw_secondary",
+			"saw_enemy_slicer"
+		}
+		self.skills.portable_saw[2].upgrades = {
+			"saw_extra_ammo_multiplier",
+			"player_saw_speed_multiplier_2",
+			"saw_lock_damage_multiplier_2",
+			"saw_ignore_shields_1",
+			"saw_panic_when_kill_1"
+		}
+
+		-- Weird discount "bulletstorm" mechanic
+		-- Pick up ammo boxes and you'll charge up a bar
+		-- Press a keybind to gain temporary bulletstorm during that time
+		-- NOTE: Bulletstorm no longer gives you a bottomless mag, it only prevents ammo consumption.
+		-- You still have to reload but your reserve ammo temporarily doesn't run out.
+		self.skills.carbon_blade[1].upgrades = {
+			"player_inf_charge_bulletstorm"
+		}
+
+		-- Use your own ammo to refill an ammo bag
+		self.skills.carbon_blade[2].upgrades = {
+			"player_inf_refill_ammobag"
+		}
+		-- Change icon to a pack mule originally used for Transporter pre-U100
+		self.skills.carbon_blade.icon_xy = { 6, 0 }
+
+		-- Fully loaded
+		-- Basic now contains a 25% ammo pickup bonus
+		-- Aced now gives an additional 25% ammo pickup (so 150% scavenge rate total, aced is same as before but basic feels less useless)
+		self.skills.bandoliers[1].upgrades = {
+			"extra_ammo_multiplier1",
+			"player_pick_up_ammo_multiplier",
+		}
+		self.skills.bandoliers[2].upgrades = {
+			"player_pick_up_ammo_multiplier_2",
+			"player_regain_throwable_from_ammo_1"
+		}
 
 
 		-- TECHNICIAN

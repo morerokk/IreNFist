@@ -49,13 +49,21 @@ else
 
 		-- Pager snatching
 		self.values.player.inf_snatch_pager = {true}
+
+		-- Bulletstorm charge skill
+		self.values.player.inf_charge_bulletstorm = {true}
+
+		-- Hoarder refill ammobag skill
+		self.values.player.inf_refill_ammobag = {true}
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "inf_fuckyourskills2", function(self, params)
 		-- STOP JUMPING MY SCREEN AROUND
+		--[[
 		if not IreNFist.mod_compatibility.armor_overhaul then
 			self.values.player.body_armor.damage_shake = {0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10}
 		end
+		]]
 
 		-- walk slower with coolguy weapons
 		self.weapon_movement_penalty.minigun = 0.70
@@ -108,6 +116,8 @@ else
 		self.values.player.damage_health_ratio_multiplier = {0.50} -- 150%
 
 		-- Moving Target
+		-- Adds 2% movement speed for every 3 points of detection risk below 35, up to 20%
+		-- Aced is the same except for every 1 point
 		self.values.player.detection_risk_add_movement_speed = {
 			{
 				0.02,
@@ -164,10 +174,9 @@ else
 			}
 		end
 
-		-- Remove ammo pickup bonus from walk in closet
-		-- Also nerf fully loaded aced from 1.75x to 1.5x
+		-- Fully loaded is now +25% basic, +50% aced
 		self.values.player.pick_up_ammo_multiplier = {
-			1,
+			1.25,
 			1.5
 		}
 
@@ -179,6 +188,21 @@ else
 				60
 			}
 		}
+
+		-- Bulletstorm tweakdata
+		-- How long is the Fully Loaded bulletstorm allowed to be?
+		self.bulletstorm_max_seconds = 10
+		-- How much do we gain per ammo box pickup?
+		self.bulletstorm_second_gain = 0.2
+		-- What's the minimum charge before we are allowed to use it?
+		-- This prevents people from just using up 0.2 seconds and fire an RPG
+		self.bulletstorm_min_seconds = 5
+
+		-- Ammo bag refills
+		-- Cooldown
+		self.ammobag_refill_cooldown_seconds = 30
+		-- Max search distance in meters
+		self.ammobag_refill_search_dist = 200
 	end)
 
 	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "gonnamakemyownskills", function(self, params)	
@@ -341,6 +365,28 @@ else
 			upgrade = {
 				category = "player",
 				upgrade = "inf_snatch_pager",
+				value = 1
+			}
+		}
+
+		-- Bulletstorm
+		self.definitions.player_inf_charge_bulletstorm = {
+			category = "feature",
+			name_id = "menu_player_inf_charge_bulletstorm",
+			upgrade = {
+				category = "player",
+				upgrade = "inf_charge_bulletstorm",
+				value = 1
+			}
+		}
+
+		-- Refill ammobag
+		self.definitions.player_inf_refill_ammobag = {
+			category = "feature",
+			name_id = "menu_player_inf_refill_ammobag",
+			upgrade = {
+				category = "player",
+				upgrade = "inf_refill_ammobag",
 				value = 1
 			}
 		}

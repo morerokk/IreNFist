@@ -117,6 +117,7 @@
 	<unit_obj path="units/infparts/inf_bipod_part/inf_bipod_part"/>
 
 	<unit_obj path="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg"/>
+	<unit_obj path="units/infparts/cobray_body_lower_jacket_nofg/cobray_body_lower_jacket_nofg"/>
 </AddFiles>
 
 	<Sounds directory="sounds">
@@ -438,9 +439,28 @@
 </WeaponMod>
 
 <!-- Cobray foregrip removal -->
-<WeaponMod id="cobray_body_lower_nofg" based_on="wpn_fps_smg_cobray_body_lower_jacket" inherit="true" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" unit="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg" ver="2">
+<WeaponMod id="cobray_body_lower_nofg" based_on="wpn_fps_smg_cobray_body_lower_jacket" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" unit="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg" ver="2">
 	<weapons>
 		<value_node value="wpn_fps_smg_cobray"/>
+	</weapons>
+</WeaponMod>
+
+<WeaponMod id="x_cobray_body_lower_nofg" based_on="wpn_fps_smg_cobray_body_lower_jacket" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" unit="units/infparts/cobray_body_lower_nofg/cobray_body_lower_nofg" ver="2">
+	<weapons>
+		<value_node value="wpn_fps_smg_x_cobray"/>
+	</weapons>
+</WeaponMod>
+
+<!-- Same but with 80's calling skin -->
+<WeaponMod id="cobray_body_lower_jacket_nofg" based_on="wpn_fps_smg_cobray_body_lower_jacket" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" unit="units/infparts/cobray_body_lower_jacket_nofg/cobray_body_lower_jacket_nofg" ver="2">
+	<weapons>
+		<value_node value="wpn_fps_smg_cobray"/>
+	</weapons>
+</WeaponMod>
+
+<WeaponMod id="x_cobray_body_lower_jacket_nofg" based_on="wpn_fps_smg_cobray_body_lower_jacket" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg" unit="units/infparts/cobray_body_lower_jacket_nofg/cobray_body_lower_jacket_nofg" ver="2">
+	<weapons>
+		<value_node value="wpn_fps_smg_x_cobray"/>
 	</weapons>
 </WeaponMod>
 

@@ -780,8 +780,15 @@ end
 	bm_wp_inf_contraband_ironsretain_desc = ironsights.keepdesc,
 
 	-- Cobray gripless lower body
-	bm_wp_cobray_body_lower_nofg = "Stone Cold Lower",
-	bm_wp_cobray_body_lower_nofg_desc = "Gotta get a grip!",
+	bm_wp_cobray_body_lower_nofg = "Stone Cold Receiver",
+	bm_wp_cobray_body_lower_nofg_desc = "Removed foregrip for that real gangster feel.",
+	bm_wp_cobray_body_lower_jacket_nofg = "Death Wish Receiver",
+	bm_wp_cobray_body_lower_jacket_nofg_desc = "Gotta get a grip!",
+
+	bm_wp_x_cobray_body_lower_nofg = "Stone Cold Receiver",
+	bm_wp_x_cobray_body_lower_nofg_desc = "Removed foregrip for that real gangster feel.",
+	bm_wp_x_cobray_body_lower_jacket_nofg = "Death Wish Receiver",
+	bm_wp_x_cobray_body_lower_jacket_nofg_desc = "Gotta get a grip!",
 
 
 	bm_wp_inf_m231fpw = "FPW Kit",
@@ -975,8 +982,13 @@ else
 		-- Transporter
 		menu_pack_mule_beta_desc = "BASIC: ##$basic##\nYou can sprint with any bag.\n\nACE: ##$pro##\nFor each ##10## armor points, the bag movement penalty is reduced by ##1%##.",
 
+		-- Portable Saw, carbon blade was merged into this
+		menu_portable_saw_beta_desc = "BASIC: ##$basic##\nUnlocks the OVE9000 portable saw for you to use as secondary weapon. The wear-down of the blades on enemies is reduced by ##50%##.\n\nACE: ##$pro##\nYou gain ##1## extra saw blade for the OVE9000 Portable Saw. You replace your saw blades with Carbon Blades, increasing your saw efficiency by ##40%##.\n\nYou can now saw through shields. Killing an enemy with the saw has a ##50%## chance to cause panic in enemies within ##10## meters.",
+		-- Carbon Blade replaced with new skill
+		menu_carbon_blade_beta = "Hoarder",
+		menu_carbon_blade_beta_desc = "BASIC: ##$basic##\nPicking up an ammo pickup adds ##0.2## seconds to your Bullet Storm meter, up to a maximum of ##10## seconds. When you have at least ##5## seconds saved up, press the ##Bullet Storm## keybind to expend the gauge and gain that amount of seconds of Bullet Storm, allowing you to fire without using ammo.\n\nACE: ##$pro##\nYou can spend up to ##50%## of your current ammo to refill a nearby ammo bag by pressing the ##Refill Ammobag## keybind. This can not happen more than once every ##30## seconds.\n\nThe amount of ammo restored depends on how much ammo you spent. Refilling an ammo bag makes you unable to trigger the Bulletstorm skill on it.",
 		-- fully loaded
-		menu_bandoliers_beta_desc = "BASIC: ##$basic##\nYou hold ##25%## more total ammo.\n\nACE: ##$pro##\nYour ammo scavenge rate is set to ##150%##. You also have a base ##5%## chance to get a throwable from scavenging, increasing by ##1%## for every ammo pickup without a throwable. This chance resets upon finding a throwable. Throwables with higher capacities have higher scavenge rate and quantity.\n\nSee the Contact Database for exact values.",
+		menu_bandoliers_beta_desc = "BASIC: ##$basic##\nYou hold ##25%## more total ammo. Your ammo scavenge rate is set to ##125%##.\n\nACE: ##$pro##\nYour ammo scavenge rate is set to ##150%##. You also have a base ##5%## chance to get a throwable from scavenging, increasing by ##1%## for every ammo pickup without a throwable. This chance resets upon finding a throwable. Throwables with higher capacities have higher scavenge rate and quantity.\n\nSee the Contact Database for exact values.",
 		-- overkill
 		menu_overkill_beta = "Last Word",
 		menu_overkill_beta_desc = "BASIC: ##$basic##\nOn shotguns with a base capacity of at least ##4##, the last shell deals ##100%## more damage.\n\nACE: ##$pro##\nThe second-to-last shell also deals ##100%## more damage.",

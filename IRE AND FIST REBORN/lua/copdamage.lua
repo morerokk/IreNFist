@@ -365,8 +365,9 @@ function CopDamage:damage_melee(attack_data)
 	if InFmenu.settings.beta then
 		local attacker_unit = attack_data and attack_data.attacker_unit
 		local player_unit = managers.player:player_unit()
+		local copmove = self._unit and self._unit.movement and self._unit:movement()
 		-- First check if the unit is cool and if the attacker was the player
-		if attacker_unit == player_unit and self._unit:movement():cool() then
+		if attacker_unit == player_unit and copmove and copmove:cool() then
 			-- Check for pager snatching
 			if result and result.type and result.type == "death" and managers.player:has_category_upgrade("player", "inf_snatch_pager") and managers.groupai:state():whisper_mode() and managers.groupai:state():get_nr_successful_alarm_pager_bluffs() < 4 then
 				-- If the host did it, we can just set a flag

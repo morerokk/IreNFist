@@ -1,6 +1,6 @@
 dofile(ModPath .. "infcore.lua")
 
-if InFmenu.settings.beta then
+if InFmenu.settings.beta and not (managers.skirmish and managers.skirmish:is_skirmish()) then
     return
 end
 

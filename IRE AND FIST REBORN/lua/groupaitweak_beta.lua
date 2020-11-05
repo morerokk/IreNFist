@@ -1,6 +1,17 @@
 dofile(ModPath .. "infcore.lua")
 
-if not InFmenu.settings.beta or (managers.skirmish and managers.skirmish:is_skirmish()) then
+local function string_startswith(String, Start)
+	return string.sub(String,1,string.len(Start))==Start
+end
+	 
+
+-- Check for holdout, if so don't make any changes here at all
+local level = Global.level_data and Global.level_data.level_id
+if level and string_startswith(level, "skm_") then
+	return
+end
+
+if not InFmenu.settings.beta then
     return
 end
 

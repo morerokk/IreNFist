@@ -4193,7 +4193,7 @@ function WeaponTweakData:_init_new_weapons(...)
             if not errmessage then
                 errmessage = "(Unable to obtain error message)"
             end
-            log(errmessage)
+			log(errmessage)
         end
 	end
 	

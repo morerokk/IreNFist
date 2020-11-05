@@ -4211,7 +4211,7 @@ end
     if InFmenu.settings.debug then
         self:_init_inf_custom_weapon_parts(gunlist_snp, customsightaddlist, primarysmgadds, primarysmgadds_specific)
     else
-        local successful, errmessage = pcall(WeaponFactoryTweakData.custom_parts_init_func, self, gunlist_snp, customsightaddlist, primarysmgadds, primarysmgadds_specific)
+        local successful, errmessage = pcall(WeaponFactoryTweakData._init_inf_custom_weapon_parts, self, gunlist_snp, customsightaddlist, primarysmgadds, primarysmgadds_specific)
         if not successful then
             log("[InF] FATAL ERROR while loading custom weapon parts:")
             if not errmessage then

@@ -6,7 +6,7 @@ If_This_Appears_In_Your_Crashlog_Delete_Your_InF_Save_Txt()
 Hooks:RegisterHook("inf_weaponfactorytweak_initcomplete")
 
 -- Obtain function for custom weapon part support
-dofile(InFmenu._path .. "lua/wpn_parts_custom.lua")
+dofile(ModPath .. "lua/wpn_parts_custom.lua")
 
 --[[
 anim_speed_mult
@@ -209,7 +209,7 @@ end
 
 
 
-Hooks:PostHook(WeaponFactoryTweakData, "init", "infpartstats", function(self, params)
+Hooks:PostHook(WeaponFactoryTweakData, "init", "inf_initweaponfactory_partstats", function(self, params)
     local shotgun_slug_mult = 0.20/0.50
     local silencercustomstats = {falloff_min_dmg_penalty = 10, falloff_begin_mult = 0.75, falloff_end_mult = 0.75}
     local shotgunsilencercustomstats = {}

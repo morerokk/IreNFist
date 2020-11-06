@@ -1686,9 +1686,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 		-- Too many cloakers on some heists due to map-specific spawns
 		if override.too_many_cloakers then
 			if self.besiege.assault.groups.FBI_spoocs then
-				self.besiege.assault.FBI_spoocs[1] = self.besiege.assault.FBI_spoocs[1] * 0.2
-				self.besiege.assault.FBI_spoocs[2] = self.besiege.assault.FBI_spoocs[2] * 0.2
-				self.besiege.assault.FBI_spoocs[3] = self.besiege.assault.FBI_spoocs[3] * 0.2
+				self.besiege.assault.groups.FBI_spoocs[1] = self.besiege.assault.groups.FBI_spoocs[1] * 0.2
+				self.besiege.assault.groups.FBI_spoocs[2] = self.besiege.assault.groups.FBI_spoocs[2] * 0.2
+				self.besiege.assault.groups.FBI_spoocs[3] = self.besiege.assault.groups.FBI_spoocs[3] * 0.2
 			end
 		end
 	end

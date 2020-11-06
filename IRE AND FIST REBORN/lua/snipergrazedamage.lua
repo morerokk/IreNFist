@@ -41,8 +41,8 @@ local function weaponUnitCanHaveGraze(weapon_unit)
     return false
 end
 
--- Allow graze on slug pump shotguns
--- Also fix civilians being affected by graze
+-- Allow graze on slug pump shotguns (not implemented, might not be a good idea)
+-- Also fix civilians being affected by graze (this is a good idea)
 function SniperGrazeDamage:on_weapon_fired(weapon_unit, result)
 	if not alive(weapon_unit) then
 		return

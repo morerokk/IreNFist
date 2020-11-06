@@ -253,6 +253,20 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 	managers.player:send_message(Message.OnWeaponFired, nil, self._unit, ray_res)
 
+	if not IreNFist.mod_compatibility.afsf_compat then
+		return ray_res
+	end
+
+	-- AFSF compatibility
+	if self:_soundfix_should_play_normal() then
+		return ray_res
+	end
+
+	if ray_res and self._setup.user_unit == managers.player:player_unit() then
+		self:play_tweak_data_sound("fire_single","fire")
+		self:play_tweak_data_sound("stop_fire")
+	end
+
 	return ray_res
 end
 

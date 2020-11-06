@@ -159,6 +159,12 @@ if not IreNFist then
         log("[InF] PDTH HUD Reborn compatibility enabled")
         IreNFist.mod_compatibility.pdthhud = true
     end
+    -- Auto-Fire Sound Fix 2
+    local afsf_compat = BLT.Mods:GetModByName("Auto-Fire Sound Fix")
+    if afsf_compat and afsf_compat:IsEnabled() then
+        log("[InF] Auto Fire Sound Fix compatibility enabled")
+        IreNFist.mod_compatibility.afsf_compat = true
+    end
 
     -- Include arrest utils
     dofile(ModPath .. "utils/coputils.lua")

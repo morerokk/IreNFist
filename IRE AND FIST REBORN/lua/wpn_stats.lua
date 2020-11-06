@@ -4,7 +4,7 @@ dofile(ModPath .. "lua/assert_config_should_not_crash.lua")
 If_This_Appears_In_Your_Crashlog_Delete_Your_InF_Save_Txt()
 
 -- Obtain function for custom weapon support
-dofile(InFmenu._path .. "lua/wpn_stats_custom.lua")
+dofile(ModPath .. "lua/wpn_stats_custom.lua")
 
 Hooks:RegisterHook("inf_weapontweak_initcomplete")
 

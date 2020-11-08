@@ -71,7 +71,8 @@ function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_me
         return nil, "not host, no husk check"
     end
 
-    if not player_unit or not player_unit.movement or not player_unit:movement() or not player_unit:movement()._interaction_tweak then
+    -- Stop crashing wtf
+    if not player_unit or not player_unit.alive or not player_unit:alive() or not player_unit.movement or not player_unit:movement() or not player_unit:movement()._interaction_tweak then
         return false, "husk not interacting"
     end
 
@@ -157,12 +158,18 @@ function CopUtils:KnockDownAttacker(player_unit, attacker_unit)
 end
 
 function CopUtils:SendCopToArrestPlayer(player_unit)
+    -- Only the host may do this
     if Network and Network:is_client() then
         return
     end
 
     -- Don't do this in stealth
     if managers.groupai:state():whisper_mode() then
+        return
+    end
+
+    -- Check if the guy is a valid target
+    if not player_unit or not player_unit.alive or not player_unit:alive() then
         return
     end
 

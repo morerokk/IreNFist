@@ -129,9 +129,12 @@ function PlayerIncapacitated:_get_unit_intimidation_action(intimidate_enemies, i
         
         if IreNFist._converts then
             for u_key, u_data in pairs(IreNFist._converts) do
-                if not u_data:movement():cool() and not u_data:anim_data().long_dis_interact_disabled then
-                    self:_add_unit_to_char_table(char_table, u_data, unit_type_enemy, highlight_range, false, false, 100, my_head_pos, cam_fwd)
-                end
+				-- Argh, more crash checks
+				if u_data and u_data.alive and u_data:alive() and u_data.movement and u_data:movement() then
+					if not u_data:movement():cool() and not u_data:anim_data().long_dis_interact_disabled then
+						self:_add_unit_to_char_table(char_table, u_data, unit_type_enemy, highlight_range, false, false, 100, my_head_pos, cam_fwd)
+					end
+				end
             end
         end 
 	end

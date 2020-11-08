@@ -835,6 +835,7 @@ end
     -- Why why why does this *add* concealment in vanilla?
     self.parts.wpn_fps_upg_o_45steel.stats = {
         value = 1,
+        gadget_zoom = 1,
         concealment = -1
     }
 

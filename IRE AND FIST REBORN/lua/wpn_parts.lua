@@ -1257,6 +1257,7 @@ end
     self.parts.wpn_fps_upg_ass_m4_b_beowulf.custom_stats = {}
     self.parts.wpn_fps_upg_ass_m4_b_beowulf.stats = deep_clone(barrel_m2)
     self.wpn_fps_ass_m16.override.wpn_fps_upg_ass_m4_b_beowulf = {}
+    self.wpn_fps_ass_amcar.override.wpn_fps_upg_ass_m4_b_beowulf = {}
     -- CAR-4 300 blackout
     self.parts.inf_car4_blk.sub_type = "autofire"
 --[[

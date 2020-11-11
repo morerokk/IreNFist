@@ -21,6 +21,7 @@ local disallowed_groups = {
 	single_spooc = true
 }
 
+-- Note: neither of these below variations will work in custom heists whose spawngroups weren't set up in the standard way.
 if InFmenu.settings.beta then
 	Hooks:PostHook(ElementSpawnEnemyGroup, "_finalize_values", "inf_elementspawnenemygroup_replacespawngroups_beta", function(self)	
 		-- If we have an ordinary spawn with exactly the old group elements, throw away this group and define all our own groups in it.

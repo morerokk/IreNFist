@@ -529,7 +529,7 @@ end)
 -- The big one
 Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_initenemyspawngroups_beta", function(self, difficulty_index)
     -- First of all, fuck off
-    self.enemy_spawn_groups = {}
+	self.enemy_spawn_groups = {}
 	
 	-- Huge list of tactics, blabla
 	self._tactics = {

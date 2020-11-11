@@ -2118,6 +2118,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.m95.use_custom_anim_state = true
 	self.m95.bipod_rof_mult = 1.25
 
+	-- R700
 	self.r700.sdesc1 = "caliber_r762x51"
 	self.r700.sdesc2 = "action_bolt"
 	self.r700.CLIP_AMMO_MAX = 10
@@ -2147,6 +2148,45 @@ function WeaponTweakData:_init_new_weapons(...)
 				base_a_obj = "a_body",
 				position = Vector3(0, 47, 2),
 				rotation = Rotation(0, 0, 0)
+		})
+	end
+
+	-- Gunslinger pack rifle
+	-- Some winchester, TODO find out what it even is
+	self:inf_init("sbl", "snp")
+	self.sbl.sdesc1 = "caliber_r4440"
+	self.sbl.sdesc2 = "action_lever"
+	self.sbl.stats.concealment = 17
+	self.sbl.reload_speed_mult = self.sbl.reload_speed_mult * 1.20
+	self.sbl.anim_speed_mult = 1.20
+	self.sbl.hipfire_uses_ads_anim = true
+	self.sbl.fire_mode_data.fire_rate = 60/100
+	self.sbl.stats.damage = 56 -- 280
+	self.sbl.stats.spread = self.sbl.stats.spread - 5
+	self.sbl.AMMO_MAX = 45
+	self.sbl.AMMO_PICKUP = self:_pickup_chance(45, 1)
+	self.sbl.reload_stance_mod = {ads = {translation = Vector3(5, 0, -4), rotation = Rotation(0, 0, 0)}}
+	--self.winchester1874.price = 100*1000
+	self.sbl.timers.unequip = 0.60
+	self.sbl.timers.equip = 0.60
+	self:apply_standard_bipod_stats("sbl")
+	self.sbl.custom_bipod = true
+	self.sbl.bipod_weapon_translation = Vector3(-2, -4, -2)
+	pivot_shoulder_translation = Vector3(21.56, 55.3, -14.1)
+	pivot_shoulder_rotation = Rotation(0, -0.1, 0.5)
+	pivot_head_translation = Vector3(11, 48, -5.5)
+	pivot_head_rotation = Rotation(0, 0, 0)
+	self.sbl.stances.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
+	self.sbl.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+	self.sbl.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
+	self.sbl.use_custom_anim_state = true
+	self.sbl.bipod_rof_mult = 1.25
+	if self.SetupAttachmentPoint then
+		self:SetupAttachmentPoint("sbl", {
+			name = "a_bp",
+			base_a_obj = "a_body",
+			position = Vector3(0, 49, 4),
+			rotation = Rotation(0, 0, 0)
 		})
 	end
 
@@ -2495,7 +2535,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:inf_init("coalprimary", "smg", {"range_long"})
 	self:copy_sdescs("coalprimary", "coal")
 	self:copy_stats("coalprimary", "coal")
-	--self.coalprimary.stats.concealment = 24
+	self.coalprimary.stats.concealment = 25
 	self.coalprimary.AMMO_MAX = 192
 	self.coalprimary.AMMO_PICKUP = self:_pickup_chance(192, 1)
 	self:copy_timers("coalprimary", "coal")
@@ -2526,7 +2566,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:inf_init("new_mp5primary", "smg", {"range_long"})
 	self:copy_sdescs("new_mp5primary", "new_mp5")
 	self:copy_stats("new_mp5primary", "new_mp5")
-	--self.new_mp5primary.stats.concealment = 24
+	self.new_mp5primary.stats.concealment = 27
 	self.new_mp5primary.AMMO_MAX = 180
 	self.new_mp5primary.AMMO_PICKUP = self:_pickup_chance(180, 1)
 	self:copy_timers("new_mp5primary", "new_mp5")
@@ -2565,7 +2605,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:inf_init("shepheardprimary", "smg", {"range_long"})
 	self:copy_sdescs("shepheardprimary", "shepheard")
 	self:copy_stats("shepheardprimary", "shepheard")
-	self.shepheardprimary.stats.concealment = 25
+	self.shepheardprimary.stats.concealment = 28
 	self.shepheardprimary.CLIP_AMMO_MAX = 15
 	self.shepheardprimary.AMMO_MAX = 180
 	self.shepheardprimary.AMMO_PICKUP = self:_pickup_chance(180, 1)
@@ -2613,7 +2653,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:inf_init("schakalprimary", "smg", {"range_long", "dmg_50"})
 	self:copy_sdescs("schakalprimary", "schakal")
 	self:copy_stats("schakalprimary", "schakal")
-	--self.schakalprimary.stats.concealment = 24
+	self.schakalprimary.stats.concealment = 27
 	self.schakalprimary.CLIP_AMMO_MAX = 25
 	self.schakalprimary.AMMO_MAX = 175
 	self.schakalprimary.AMMO_PICKUP = self:_pickup_chance(175, 1)
@@ -2706,7 +2746,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:inf_init("m1928primary", "smg", {"range_long", "dmg_50"})
 	self:copy_sdescs("m1928primary", "m1928")
 	self:copy_stats("m1928primary", "m1928")
-	self.m1928.stats.concealment = 22
+	self.m1928primary.stats.concealment = 24
 	self.m1928primary.AMMO_MAX = 200
 	self.m1928primary.AMMO_PICKUP = self:_pickup_chance(200, 1)
 	self:copy_timers("m1928primary", "m1928")
@@ -3274,7 +3314,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.x_chinchilla.timers.reload_empty_half = nil
 	self.x_chinchilla.timers.reload_empty_end = 0.50
 
-
+	-- Peacemaker
 	self.peacemaker.sdesc1 = "caliber_p45lc"
 	self.peacemaker.sdesc2 = "action_sa"
 	self.peacemaker.stats.concealment = 28
@@ -3294,6 +3334,21 @@ function WeaponTweakData:_init_new_weapons(...)
 		self.peacemaker.stats_modifiers = {}
 	end
 	self.peacemaker.stats_modifiers.damage = 5
+
+	-- Model 3 revolver
+	self:inf_init("model3", "pistol", "heavy")
+	self.model3.sdesc1 = "caliber_p45lc"
+	self.model3.sdesc2 = "action_sa"
+	self.model3.chamber = 0
+	self:copy_stats("model3", "new_raging_bull")
+	self:copy_timers("model3", "new_raging_bull")
+
+	self:inf_init("x_model3", "pistol", "heavy")
+	self.x_model3.sdesc1 = "caliber_p45lc"
+	self.x_model3.sdesc2 = "action_sa"
+	self.x_model3.chamber = 0
+	self:copy_stats("x_model3", "x_rage")
+	self:copy_timers("x_model3", "x_rage")
 
 	-- Igor/Stechkin
 	self.stech.sdesc1 = "caliber_p9x19"
@@ -3681,7 +3736,16 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.x_judge.timers.reload_not_empty_end = 1.50
 	self.x_judge.timers.reload_empty_half = self.x_b92fs.timers.reload_empty_half - 0.20
 
-
+	-- Winchester 1897
+	self:inf_init("m1897", "shotgun", {"rof_slow", "range_slowpump"})
+	self.m1897.sdesc1 = "caliber_s12g"
+	self.m1897.sdesc2 = "action_pump"
+	self.m1897.CLIP_AMMO_MAX = 5
+	self.m1897.AMMO_MAX = 40
+	self.m1897.AMMO_PICKUP = self:_pickup_chance(40, 1)
+	self.m1897.stats.spread = self.m1897.stats.spread + 10
+	self.m1897.stats.concealment = 24
+	self:copy_timers("m1897", "m37")
 
 
 

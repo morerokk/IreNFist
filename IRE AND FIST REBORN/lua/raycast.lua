@@ -168,11 +168,20 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 		end
 	end
 
+	if self._bullets_fired then
+		if self._bullets_fired == 1 and self:weapon_tweak_data().sounds.fire_single then
+			self:play_tweak_data_sound("stop_fire")
+			self:play_tweak_data_sound("fire_auto", "fire")
+		end
+
+		self._bullets_fired = self._bullets_fired + 1
+	end
+
 	local is_player = self._setup.user_unit == managers.player:player_unit()
 	-- Added InF bulletstorm check
 	local consume_ammo = not IreNFist.bulletstorm_active and not managers.player:has_active_temporary_property("bullet_storm") and (not managers.player:has_activate_temporary_upgrade("temporary", "berserker_damage_multiplier") or not managers.player:has_category_upgrade("player", "berserker_no_ammo_cost")) or not is_player
 
-	-- Consume ammo from the mag but not from the max ammo with bulletstorm active
+	-- Always consume mag ammo, the consume_ammo check was moved down
 	--if consume_ammo and (is_player or Network:is_server()) then
 	if is_player or Network:is_server() then
 		local base = self:ammo_base()
@@ -221,7 +230,8 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 		base:set_ammo_remaining_in_clip(base:get_ammo_remaining_in_clip() - ammo_usage)
 
-		-- Moved down here to ensure that the mag is used up but the max ammo isn't
+		-- consume_ammo check moved down here to ensure that the mag is used up, but the max ammo isn't
+		-- No bulletstorm RPG spam or magical 120 bullets Deagle magazines for you
 		if consume_ammo then
 			self:use_ammo(base, ammo_usage)
 		end
@@ -253,23 +263,8 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 	managers.player:send_message(Message.OnWeaponFired, nil, self._unit, ray_res)
 
-	if not IreNFist.mod_compatibility.afsf_compat then
-		return ray_res
-	end
-
-	-- AFSF compatibility
-	if self:_soundfix_should_play_normal() then
-		return ray_res
-	end
-
-	if ray_res and self._setup.user_unit == managers.player:player_unit() then
-		self:play_tweak_data_sound("fire_single","fire")
-		self:play_tweak_data_sound("stop_fire")
-	end
-
 	return ray_res
 end
-
 
 -- fire, but twice
 local original_fire = RaycastWeaponBase.fire

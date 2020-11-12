@@ -107,6 +107,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_siltstone = "SVD",
 
 		bm_w_winchester1874 = "Repeater 1873",
+		bm_w_sbl = "Marlin Model 1895BSL",
 		bm_w_msr = "Rattlesnake MSR",
 		bm_w_wa2000 = "LA2000", -- lakner arms
 		bm_w_model70 = "Winchester Model 70",
@@ -183,6 +184,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_x_basset = "Brothers GRIMM",
 		bm_w_coach = "Claire Exposed-Hammer SxS",
 		bm_w_coachprimary = "Claire Exposed-Hammer SxS",
+		bm_w_m1897 = "Winchester Model 1897",
 
 		bm_w_rpk = "RPK",
 		bm_w_m249 = "KSP 249",
@@ -498,6 +500,7 @@ end
 	caliber_r127x108 = "12.7x108mm.",
 	caliber_r75x54 = "7.5x54mm French.",
 	caliber_r380acp = ".380 ACP.",
+	caliber_r4570govt = ".45/70 Gov't.",
 
 	caliber_p9x18 = "9x18mm Makarov.",
 	caliber_p9x19 = "9x19mm Parabellum.",
@@ -537,6 +540,7 @@ end
 	caliber_p22lr = ".22 Long Rifle.",
 	caliber_pscaramanga = "4.2mm Gold-Nickel.",
 	caliber_p45mars = ".45 Mars.",
+	caliber_p44russian = ".44 Russian.",
 
 	caliber_s12g = "12 gauge 2 3/4\".",
 	caliber_s12g_ap = "12 gauge 2 3/4\" AP slug.",
@@ -1829,6 +1833,12 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_winchester_b_suppressed_desc = "Most likely a modern fabrication not used by historical outlaws." .. silstr3,
 	bm_wp_winchester_sniper_scope_desc = "An old-fashioned way of looking at things.\n\nZoom level 10.",
 
+	-- BERNETTI RANGEHITTER/MARLIN MODEL 1895
+	bm_w_sbl_desc = "A more refined version of the 1895GS, featuring an oversized lever loop reminiscent of John Wayne.",
+	bm_wp_sbl_b_long_desc = "A longer barrel with built-in compensator but a shorter magazine tube, sacrificing capacity for accuracy.",
+	bm_wp_sbl_b_short_desc = "This would probably work better on the Dark Series." .. silstr3,
+	bm_wp_inf_marlin1895_ironsights = "Iron Sights",
+	bm_wp_inf_marlin1895_ironsights_desc = "Use the weapon's ironsights instead of that big scope.",
 
 	-- RATTLESNAKE
 	bm_w_msr_desc = "SOCOM sniper rifle currently replacing all bolt-action sniper rifles in US special forces. Theoretically capable of putting five shots into a half-foot circle a kilometer away.",
@@ -2241,7 +2251,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_coach_desc = "A non-descript break-open shotgun with exposed hammers. When what you have are two hammers, everything starts looking like a nail.",
 	bm_w_coachprimary_desc = "A non-descript break-open shotgun with exposed hammers. When what you have are two hammers, everything starts looking like a nail.",
 
-
+	-- M1897 (Reinfeld 88?)
+	bm_w_m1897_desc = "*The* trench gun. Owes its nickname to its trench-clearing ability, which was terrifying enough that the Germans lodged a diplomatic protest against it. Fire away.",
 
 
 	-- RPK
@@ -2427,7 +2438,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	
 	-- CZ 75
 	bm_w_czech = "CZ-75 Auto",
-	bm_w_czech_desc = "A classic Czech handgun modified for full-auto firing mode.",
+	bm_w_czech_desc = "One of the original \"wonder nines\". This select-fire variant was made for law enforcement and military use.",
 	bm_w_x_czech = "Akimbo CZ-75 Auto",
 	bm_w_x_czech_desc = "Violence is for the weak, yet the weak are the ones at the receiving end of it.",
 	
@@ -2443,6 +2454,13 @@ if InFmenu.settings.txt_wpnname > 1 then
 	
 	bm_w_x_holt = "Akimbo Hudson H9",
 	bm_w_x_holt_desc = "Even when you can do something better than anyone else, it won't mean a thing if you don't do it.",
+
+	-- Model 3
+	-- Miss me with that "frenchman" shit, wtf Overkill?
+	bm_w_model3 = "S&W Model 3 Russian",
+	bm_w_x_model3 = "Akimbo S&W Model 3 Russian",
+	bm_w_model3_desc = "The Russian take on the Smith & Wesson Model 3. Nearly bankrupted Smith & Wesson after the Russians ordered large amounts of revolvers, copied the design, then canceled their orders while refusing to pay for handguns that were already delivered.",
+	bm_w_x_model3_desc = "Bullets are like words, you can't take them back.",
 
 	-- GL40
 	bm_w_gre_m79_desc = "Thump Gun. Pro Pipe. Noob Tube. Blooper. The things we love have many names. Many sizes too, if you feel like sawing it down.",

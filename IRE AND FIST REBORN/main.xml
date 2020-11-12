@@ -628,7 +628,17 @@
 	</weapons>
 </WeaponMod>
 
+<!--
+Marlin Model 1895 ironsights
+Seriously, these are already there, why can't we use these normally?
+-->
 
+<WeaponMod id="inf_marlin1895_ironsights" based_on="wpn_fps_smg_mp9_b_dummy" type="sight" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
+	<pcs/>
+	<weapons>
+		<value_node value="wpn_fps_snp_sbl"/>
+	</weapons>
+</WeaponMod>
 
 
 

@@ -2152,9 +2152,9 @@ function WeaponTweakData:_init_new_weapons(...)
 	end
 
 	-- Gunslinger pack rifle
-	-- Some winchester, TODO find out what it even is
+	-- Marlin Model 1895 SBL
 	self:inf_init("sbl", "snp")
-	self.sbl.sdesc1 = "caliber_r4440"
+	self.sbl.sdesc1 = "caliber_r4570govt"
 	self.sbl.sdesc2 = "action_lever"
 	self.sbl.stats.concealment = 17
 	self.sbl.reload_speed_mult = self.sbl.reload_speed_mult * 1.20
@@ -2163,6 +2163,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.sbl.fire_mode_data.fire_rate = 60/100
 	self.sbl.stats.damage = 56 -- 280
 	self.sbl.stats.spread = self.sbl.stats.spread - 5
+	self.sbl.CLIP_AMMO_MAX = 6
 	self.sbl.AMMO_MAX = 45
 	self.sbl.AMMO_PICKUP = self:_pickup_chance(45, 1)
 	self.sbl.reload_stance_mod = {ads = {translation = Vector3(5, 0, -4), rotation = Rotation(0, 0, 0)}}
@@ -3337,14 +3338,14 @@ function WeaponTweakData:_init_new_weapons(...)
 
 	-- Model 3 revolver
 	self:inf_init("model3", "pistol", "heavy")
-	self.model3.sdesc1 = "caliber_p45lc"
+	self.model3.sdesc1 = "caliber_p44russian"
 	self.model3.sdesc2 = "action_sa"
 	self.model3.chamber = 0
 	self:copy_stats("model3", "new_raging_bull")
 	self:copy_timers("model3", "new_raging_bull")
 
 	self:inf_init("x_model3", "pistol", "heavy")
-	self.x_model3.sdesc1 = "caliber_p45lc"
+	self.x_model3.sdesc1 = "caliber_p44russian"
 	self.x_model3.sdesc2 = "action_sa"
 	self.x_model3.chamber = 0
 	self:copy_stats("x_model3", "x_rage")

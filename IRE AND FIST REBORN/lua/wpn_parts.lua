@@ -1223,7 +1223,8 @@ end
     table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_fg_jp")
     table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_fg_smr")
     
-    
+    -- Fix sound missing on non-Hawks soundpack heavy barrel
+    self.parts.wpn_fps_upg_ass_m4_b_beowulf.sound_switch = nil
 
     -- SHARED AMCAR FAMILY/STANAG MAG PARTS
     -- burst-fire
@@ -2319,8 +2320,47 @@ end
         self.parts.inf_50bmg_incendiary.desc_id = "bm_wp_inf_50bmg_raufoss_restricted_desc"
     end
 
+    -- Marlin Model 1895/Bernetti Rangehitter parts
+    -- Long barrel
+    -- The barrel shortens the mag tube for some reason, so the gun should get better stats than other long barrels at the cost of capacity
+    self.parts.wpn_fps_snp_sbl_b_long.stats = {
+        value = 2,
+        spread = 8,
+        recoil = 5,
+        concealment = -1,
+        extra_ammo = -1
+    }
+    -- Silenced barrel (wind whistler)
+    -- NOT a short barrel at all. Not even slightly.
+    -- This also basically halves the tube so also cut down the mag capacity here
+    self.parts.wpn_fps_snp_sbl_b_short.stats = {
+        value = 2,
+        suppression = 12,
+        alert_size = 12,
+        recoil = 6,
+        concealment = -1,
+        extra_ammo = -2
+    }
+    self.parts.wpn_fps_snp_sbl_b_short.custom_stats = deep_clone(snpsilencercustomstats)
+    -- Magpouch stock
+    self.parts.wpn_fps_snp_sbl_s_saddle.stats = deep_clone(nostats)
 
-
+    -- Ironsights (scope removal)
+    self.parts.inf_marlin1895_ironsights.stats = {
+        value = 0,
+        concealment = 3
+    }
+    local pivot_shoulder_translation = Vector3(0, 0, 0)
+    local pivot_shoulder_rotation = Rotation(0, 0, 0)
+    local pivot_head_translation = Vector3(0, 0, -0.8)
+    local pivot_head_rotation = Rotation(0, 0, 0)
+    self.parts.inf_marlin1895_ironsights.stance_mod = {
+        wpn_fps_snp_sbl = {
+            translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation),
+            rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+        }
+    }
+    
 
 
     -- CMP PARTS
@@ -3154,7 +3194,14 @@ end
     -- Custom Reinforced Frame
     self.parts.wpn_fps_pis_judge_body_modern.stats = deep_clone(nostats)
 
-
+    -- TRENCH GUN/WINCHESTER MODEL 1897/REINFELD 88 PARTS
+    -- Long barrel
+    self.parts.wpn_fps_shot_m1897_b_long.stats = deep_clone(barrelsho_m1)
+    -- Ventilated barrel, not actually that much shorter so we'll take it
+    self.parts.wpn_fps_shot_m1897_b_short.stats = deep_clone(nostats)
+    -- Artisan Stock
+    -- You should be ashamed of yourself
+    self.parts.wpn_fps_shot_m1897_s_short.stats = deep_clone(nostats)
 
 
 
@@ -3722,6 +3769,15 @@ end
     self.parts.wpn_fps_pis_holt_g_bling.stats = {
         value = 1
     }
+
+    -- Model 3 parts
+    -- Shorter barrel (napoleon barrel)
+    self.parts.wpn_fps_pis_model3_b_short.stats = deep_clone(barrel_p1)
+    -- Longer barrel (opera long barrel)
+    self.parts.wpn_fps_pis_model3_b_long.stats = deep_clone(barrel_m1)
+    -- Bling grip (mule bone grip)
+    self.parts.wpn_fps_pis_model3_g_bling.stats = deep_clone(nostats)
+
 
     -- RPK PARTS
     -- Tactical Handguard

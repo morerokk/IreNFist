@@ -156,6 +156,58 @@ Hooks:PreHook(FlameBulletBase, "on_collision", "bumpovershieldsplz", function(se
 --]]
 end)
 
+-- Autofire soundfix
+-- Now updated for U200
+-- First, a weapon blacklist that it should still play the original sounds for
+local autofirefix_blacklist = {
+	["saw"] = true,
+	["saw_secondary"] = true,
+	["flamethrower_mk2"] = true,
+	["m134"] = true,
+	["mg42"] = true,
+	["shuno"] = true,
+	["system"] = true,
+	["xm214a"] = true
+}
+
+-- Check if the normal fire sound should be played
+-- i.e. if the player is using a minigun or if this weapon isn't used by the local player
+function RaycastWeaponBase:_soundfix_should_play_normal()
+	local name_id = self:get_name_id()
+	if not name_id then
+		return true
+	end
+
+	if not self._setup.user_unit == managers.player:player_unit() then
+		return true
+	elseif autofirefix_blacklist[name_id] then
+		return true
+	elseif not tweak_data.weapon[name_id].sounds.fire_single then
+		return true
+	end
+	
+	return false
+end
+
+function RaycastWeaponBase:start_shooting()
+	if self:_soundfix_should_play_normal() then
+		self:_fire_sound()
+	end
+
+	self._next_fire_allowed = math.max(self._next_fire_allowed, self._unit:timer():time())
+	self._shooting = true
+	self._bullets_fired = 0
+end
+
+function RaycastWeaponBase:stop_shooting()
+	if self:_soundfix_should_play_normal() then
+		self:play_tweak_data_sound("stop_fire")
+	end
+
+	self._shooting = nil
+	self._kills_without_releasing_trigger = nil
+	self._bullets_fired = nil
+end
 
 -- I really don't like this, but we have to override the whole raycastweaponbase fire function to make bulletstorm still consume the mag but not the max ammo
 -- It's a gun rebalance anyway so whatever
@@ -169,7 +221,7 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 	end
 
 	if self._bullets_fired then
-		if self._bullets_fired == 1 and self:weapon_tweak_data().sounds.fire_single then
+		if self._bullets_fired == 1 and self:weapon_tweak_data().sounds.fire_single and self:_soundfix_should_play_normal() then
 			self:play_tweak_data_sound("stop_fire")
 			self:play_tweak_data_sound("fire_auto", "fire")
 		end
@@ -200,8 +252,6 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 					if roll < chance then
 						ammo_usage = 0
-
-						print("NO AMMO COST")
 					end
 				end
 			end
@@ -249,11 +299,11 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 	local ray_res = self:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 
-	if self._alert_events and ray_res.rays then
+	if self._alert_events and ray_res and ray_res.rays then
 		self:_check_alert(ray_res.rays, from_pos, direction, user_unit)
 	end
 
-	if ray_res.enemies_in_cone then
+	if ray_res and ray_res.enemies_in_cone then
 		for enemy_data, dis_error in pairs(ray_res.enemies_in_cone) do
 			if not enemy_data.unit:movement():cool() then
 				enemy_data.unit:character_damage():build_suppression(suppr_mul * dis_error * self._suppression, self._panic_suppression_chance)
@@ -262,6 +312,12 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 	end
 
 	managers.player:send_message(Message.OnWeaponFired, nil, self._unit, ray_res)
+
+	-- Play a fire sound if ray_res is successful and we are the local player
+	if ray_res and self._setup.user_unit == managers.player:player_unit() and not self:_soundfix_should_play_normal() then
+		self:play_tweak_data_sound("fire_single", "fire")
+		self:play_tweak_data_sound("stop_fire")
+	end
 
 	return ray_res
 end

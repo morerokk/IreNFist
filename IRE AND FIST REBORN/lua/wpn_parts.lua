@@ -210,6 +210,14 @@ end
 
 
 Hooks:PostHook(WeaponFactoryTweakData, "init", "inf_initweaponfactory_partstats", function(self, params)
+	-- Check if BeardLib is installed, THIS IS NECESSARY for InF to work. Apparently this isn't clear enough for some people,
+	-- so I'll let the crashlogs speak for themselves.
+	-- I'm not going to hardcode a check for BeardLib's existence, instead I am simply going to check if the primary SMG's are loaded.
+	-- Just in case another mod comes around to replace BeardLib
+	if not self.parts.inf_bipod_part then
+		error("Could not initialize IREnFIST weaponmods (weaponfactorytweakdata self.parts.inf_bipod_part)! Is BeardLib installed?")
+	end
+
     local shotgun_slug_mult = 0.20/0.50
     local silencercustomstats = {falloff_min_dmg_penalty = 10, falloff_begin_mult = 0.75, falloff_end_mult = 0.75}
     local shotgunsilencercustomstats = {}
@@ -4276,6 +4284,18 @@ end
                 errmessage = "(Unable to obtain error message)"
             end
             log(errmessage)
+            
+            -- Open a message dialog box in the menu, notifying the user that an error occurred trying to intitialize weaponmods
+            -- Don't just leave them hanging
+            Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_weaponfactorytweak_failedinit", function(menu_manager, nodes)            
+                QuickMenu:new("IREnFIST - Error initializing parts", "An error occurred while trying to initialize support for custom weapon mods. Some weaponmods may have incorrect stats.\n\nIt is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs).", {
+                    [1] = {
+                        text = "OK",
+                        is_cancel_button = true
+                    }
+                }):show()
+            end)
+
         end
     end
 

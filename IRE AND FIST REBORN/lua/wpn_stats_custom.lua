@@ -43,7 +43,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
     -- Any errors in this file means that custom weapons won't have proper stats,
     -- and this might very rarely cause you to lose some custom weapons you have in your inventory 
     -- if something would be "wrong with them".
-    -- You can just rebuy them of course, but still.
+	-- You can just rebuy them of course, but still.
 
 	-- Vikhr/SR Einheri
 	if BeardLib.Utils:ModLoaded("SR-3M Vikhr") then

@@ -1155,6 +1155,14 @@ local old_wep_tweak_init = WeaponTweakData._init_new_weapons
 function WeaponTweakData:_init_new_weapons(...)
 	old_wep_tweak_init(self, ...)
 
+	-- Check if BeardLib is installed, THIS IS NECESSARY for InF to work. Apparently this isn't clear enough for some people,
+	-- so I'll let the crashlogs speak for themselves.
+	-- I'm not going to hardcode a check for BeardLib's existence, instead I am simply going to check if the primary SMG's are loaded.
+	-- Just in case another mod comes around to replace BeardLib
+	if not self.coalprimary then
+		error("Could not initialize IREnFIST weapons (weapontweakdata self.coalprimary)! Is BeardLib installed?")
+	end
+
 	self.stats.total_ammo_mod = {}
 	for i = -1000, 10000, 1 do
 		table.insert(self.stats.total_ammo_mod, i / 1000)
@@ -4259,6 +4267,17 @@ function WeaponTweakData:_init_new_weapons(...)
                 errmessage = "(Unable to obtain error message)"
             end
 			log(errmessage)
+
+            -- Open a message dialog box in the menu, notifying the user that an error occurred trying to intitialize weapons
+            -- Don't just leave them hanging
+            Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_weapontweak_failedinit", function(menu_manager, nodes)            
+                QuickMenu:new("IREnFIST - Error initializing custom weapons", "An error occurred while trying to initialize support for custom weapons. Some custom weapons may have incorrect stats.\n\nIt is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs).", {
+                    [1] = {
+                        text = "OK",
+                        is_cancel_button = true
+                    }
+                }):show()
+            end)
         end
 	end
 	

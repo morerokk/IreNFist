@@ -503,12 +503,14 @@ else
 		-- NOTE: Bulletstorm no longer gives you a bottomless mag, it only prevents ammo consumption.
 		-- You still have to reload but your reserve ammo temporarily doesn't run out.
 		self.skills.carbon_blade[1].upgrades = {
-			"player_inf_charge_bulletstorm"
+			"player_inf_charge_bulletstorm",
+			"player_inf_bulletstorm_second_gain_1"
 		}
 
 		-- Use your own ammo to refill an ammo bag
 		self.skills.carbon_blade[2].upgrades = {
-			"player_inf_refill_ammobag"
+			"player_inf_refill_ammobag",
+			"player_inf_bulletstorm_second_gain_2"
 		}
 		-- Change icon to a pack mule originally used for Transporter pre-U100
 		self.skills.carbon_blade.icon_xy = { 6, 0 }

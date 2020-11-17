@@ -25,6 +25,7 @@ if InFmenu.settings.enablenewcopbehavior then
 			return CopUtils:KnockDownAttacker(self._unit, attack_data.attacker_unit)
 		elseif result == "arrested" then
 			self._unit:movement():on_cuffed()
+			attack_data.attacker_unit:sound():say("i03", true, false)
 			return
 		else
 			return huskplayerdamage_damagemelee_orig(self, attack_data)

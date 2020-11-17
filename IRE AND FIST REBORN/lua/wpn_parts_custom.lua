@@ -4765,6 +4765,11 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
         self.wpn_fps_shot_trench.override.wpn_fps_shot_r870_body_rack = nil
     end
 
+    -- Costanza Grips
+    if self.parts.wpn_fps_upg_1911_g_costanza then
+        self.parts.wpn_fps_upg_1911_g_costanza.stats = deep_clone(nostats)
+    end
+
     -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT
     -- This applies to any BeardLib mod that adds custom weapon mods, whether they come with an actual weapon or not.
     -- You first need the weapon mod's ID, which can be found in the mod's XML files (such as main.xml).

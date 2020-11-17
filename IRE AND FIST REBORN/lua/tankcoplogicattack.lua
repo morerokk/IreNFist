@@ -1,6 +1,6 @@
 dofile(ModPath .. "infcore.lua")
 
-if not InFmenu.settings.beta then
+if not InFmenu.settings.enablenewcopbehavior then
     return
 end
 

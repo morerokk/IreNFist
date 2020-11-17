@@ -71,7 +71,7 @@ local last_armor_regen_t = 0
 Hooks:PostHook(PlayerManager, "on_killshot", "stationary_kill_ammo", function(self, killed_unit, variant, headshot, weapon_id)
 	local player_unit = self:player_unit()
 
-	if not player_unit then
+	if not alive(player_unit) then
 		return
 	end
 
@@ -167,7 +167,7 @@ end)
 Hooks:PostHook(PlayerManager, "update", "inf_playermanager_update_updateholdouthudandammo", function(self, t, dt)
 	local player_unit = self:player_unit()
 
-	if not player_unit then
+	if not alive(player_unit) then
 		-- Do nothing at all
 		return
 	end

@@ -255,7 +255,7 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
     local cop = clbk_data.cop
     local player_unit = clbk_data.target
 
-    if not cop or not player_unit then
+    if not alive(cop) or not alive(player_unit) then
         log("[InF] Cop arrived at arrest position but there was no cop or player set")
         return
     end
@@ -278,6 +278,8 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
     if result == "arrested" then
         -- This works on both the local player and husks thankfully
         player_unit:movement():on_cuffed()
+        -- Make the cop say a line
+        cop:sound():say("i03", true, false)
     elseif result == "counterarrest" then
         self:CounterArrestAttacker(player_unit, cop)
     elseif result == "countered" then
@@ -334,12 +336,12 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_coputils', functi
     end
 
     local cop = CopUtils:GetCopFromId(unit_id)
-    if not cop then
+    if not alive(cop) then
         return
     end
 
     local player_unit = managers.player and managers.player:player_unit()
-    if not player_unit then
+    if not alive(player_unit) then
         return
     end
 
@@ -353,6 +355,7 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_coputils', functi
         return
     elseif result == "arrested" then
         managers.player:player_unit():movement():on_cuffed()
+        cop:sound():say("i03", true, false)
         return
     end
 

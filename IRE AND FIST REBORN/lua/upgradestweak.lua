@@ -192,8 +192,13 @@ else
 		-- Bulletstorm tweakdata
 		-- How long is the Fully Loaded bulletstorm allowed to be?
 		self.bulletstorm_max_seconds = 10
+
 		-- How much do we gain per ammo box pickup?
-		self.bulletstorm_second_gain = 0.2
+		self.values.player.inf_bulletstorm_second_gain = {
+			0.25,
+			0.4
+		}
+
 		-- What's the minimum charge before we are allowed to use it?
 		-- This prevents people from just using up 0.2 seconds and fire an RPG
 		self.bulletstorm_min_seconds = 5
@@ -377,6 +382,24 @@ else
 				category = "player",
 				upgrade = "inf_charge_bulletstorm",
 				value = 1
+			}
+		}
+		self.definitions.player_inf_bulletstorm_second_gain_1 = {
+			category = "feature",
+			name_id = "menu_player_inf_bulletstorm_second_gain_1",
+			upgrade = {
+				category = "player",
+				upgrade = "inf_bulletstorm_second_gain",
+				value = 1
+			}
+		}
+		self.definitions.player_inf_bulletstorm_second_gain_2 = {
+			category = "feature",
+			name_id = "menu_player_inf_bulletstorm_second_gain_2",
+			upgrade = {
+				category = "player",
+				upgrade = "inf_bulletstorm_second_gain",
+				value = 2
 			}
 		}
 

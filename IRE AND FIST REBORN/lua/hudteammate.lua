@@ -5,6 +5,10 @@ if IreNFist.mod_compatibility.wolfhud or IreNFist.mod_compatibility.pdthhud then
 
     end
 
+    function HUDTeammate:set_bulletstorm_charge_enabled(enabled)
+
+    end
+
     function HUDTeammate:set_bulletstorm_charge_level(level)
 
     end

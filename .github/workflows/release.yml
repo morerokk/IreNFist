@@ -8,6 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: leafo/gh-actions-lua@v6
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Run Tests
       id: run-lua-tests
       run: |

@@ -3853,6 +3853,8 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.mg42.equip_stance_mod = {ads = {translation = Vector3(0, 0, -2), rotation = Rotation(0, 0, 0)}}
 	self.mg42.reload_stance_mod = {ads = {translation = Vector3(5, 8, -5), rotation = Rotation(0, 0, 0)}}
 	self.mg42.bipod_deploy_multiplier = self.mg42.bipod_deploy_multiplier * 1.3
+	-- The MG42 *has no* singlefire sound, Overkill. All you did was break it.
+	self.mg42.sounds.fire_single = nil
 
 
 	-- ksp58

@@ -1041,16 +1041,20 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.ots_14_4a.reload_speed_mult = self.ots_14_4a.reload_speed_mult * self:convert_reload_to_mult("mag_66")
 
 		if self.SetupAttachmentPoint then
+
+			local y1 = -13.75
+			local y2 = y1 + 2.25
+
 			self:SetupAttachmentPoint("ots_14_4a", {
 				name = "a_m_ak",
 				base_a_obj = "a_m",
-				position = Vector3(0, -1.25, 1),
+				position = Vector3(0, y1, -5),
 				rotation = Rotation(0, 0, 0)
 			})
 			self:SetupAttachmentPoint("ots_14_4a", {
 				name = "a_m_m4",
 				base_a_obj = "a_m",
-				position = Vector3(0, 0.5, 1),
+				position = Vector3(0, y2, -5),
 				rotation = Rotation(0, 0, 0)
 			})
 		end

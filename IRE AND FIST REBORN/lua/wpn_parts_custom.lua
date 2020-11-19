@@ -2067,6 +2067,12 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
         self.parts.wpn_fps_ass_m4_m_stick_amcar.stats.total_ammo_mod = nil
         self.parts.wpn_fps_ass_m4_m_stick_amcar.stats.spread = 0
         self.parts.wpn_fps_ass_m4_m_stick_amcar.custom_stats.sdesc1 = "caliber_p9x19"
+
+        -- Signature chrome frame
+        self.parts.wpn_fps_pis_p226_body_silver.stats = deep_clone(nostats)
+
+        -- G36 sniper grip
+        self.parts.wpn_fps_ass_g36_g_sniper.stats = deep_clone(nostats)
     end
 
     -- Vanilla styled modpack 2

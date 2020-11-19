@@ -26,6 +26,10 @@ Weapon tweak data attributes:
 		true/false	-	Build up and delay recoil until last shot in burst is fired
 ]]
 
+if IreNFist.mod_compatibility.vanillahudplus then
+	return
+end
+
 if RequiredScript == "lib/units/weapons/newraycastweaponbase" then
 
 	local _update_stats_values_original = NewRaycastWeaponBase._update_stats_values
@@ -420,16 +424,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		-- TODO: if VR even has a firemode display, implement burst into it here
 		-- UPDATE: It doesn't
 		if _G.IS_VR then
-			return
-		end
-
-		-- Don't run for PDTH HUD
-		-- Functions are named differently so it's kind of a pain, but basically just reroute it to PDTH HUD if the function exists
-		if IreNFist.mod_compatibility.pdthhud then
-			if self.set_weapon_firemode_custom then
-				return self:set_weapon_firemode_custom(id, firemode, burst_fire)
-			end
-			-- This should never happen, but if it does, return early since the next lines would just crash otherwise
 			return
 		end
 	

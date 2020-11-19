@@ -160,10 +160,19 @@ if not IreNFist then
         IreNFist.mod_compatibility.pdthhud = true
     end
     -- Auto-Fire Sound Fix 2
+    -- Currently not necessary in InF and therefore not supported anymore either
+    --[[
     local afsf_compat = BLT.Mods:GetModByName("Auto-Fire Sound Fix")
     if afsf_compat and afsf_compat:IsEnabled() then
         log("[InF] Auto Fire Sound Fix compatibility enabled")
         IreNFist.mod_compatibility.afsf_compat = true
+    end
+    ]]
+    -- Vanilla HUD Plus
+    local vanillahudplus_compat = BLT.Mods:GetModByName("VanillaHUDPlus")
+    if vanillahudplus_compat and vanillahudplus_compat:IsEnabled() then
+        log("[InF] Vanilla HUD Plus compatibility enabled")
+        IreNFist.mod_compatibility.vanillahudplus = true
     end
 
     -- Include arrest utils

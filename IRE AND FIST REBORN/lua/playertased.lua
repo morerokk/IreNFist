@@ -169,7 +169,7 @@ function PlayerTased:_check_action_primary_attack(t, input)
 					new_action = true
 
 					if fired then
-						if weap_base.akimbo and weap_base:_in_burst_or_auto_mode() then
+						if not IreNFist.mod_compatibility.vanillahudplus and weap_base.akimbo and weap_base:_in_burst_or_auto_mode() then
 							-- increment accumulated recoil by one
 							self._camera_unit:base():recoil_kick(0, 0, 0, 0)
 						else

@@ -199,12 +199,14 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
     -- If tied, select the closest among them
     for i, enemy in pairs(enemies) do
         -- If the guy is not actually an enemy (thanks for arresting me Locke), don't
+        -- Also skip gangsters
         if self:AreUnitsEnemies(player_unit, enemy) then
             -- Check if their chartweak allows them to arrest players (or if this is currently not an assault)
+            -- Always skip gangsters
             local enemy_chartweak = enemy:base():char_tweak()
             local prio = enemy_chartweak.arrest_player_priority or -10
 
-            if enemy_chartweak.arrest_player_priority or not managers.groupai:state():get_assault_mode() then
+            if enemy_chartweak.access ~= "gangster" and (enemy_chartweak.arrest_player_priority or not managers.groupai:state():get_assault_mode()) then
 
                 -- Only take the highest priority enemies, then the closest
                 local dist = mvector3.distance(enemy:position(), playerpos)

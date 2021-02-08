@@ -4278,48 +4278,6 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
         self.parts.wpn_fps_upg_mdr_supp_omega.stats = deep_clone(silstatsconc1)
     end
 
-    if BeardLib.Utils:ModLoaded("FN SCAR-L") then
-        self.parts.wpn_fps_upg_scarl_barrel_cqc.stats = deep_clone(barrel_p1)
-        self.parts.wpn_fps_upg_scarl_barrel_cqc_mod.stats = deep_clone(barrel_p1)
-        self.parts.wpn_fps_upg_scarl_upper_pdw.stats = deep_clone(barrel_p2)
-        self.parts.wpn_fps_upg_scarl_barrel_long.stats = deep_clone(barrel_m2)
-
-        self.parts.wpn_fps_upg_scarl_stock_cheek.stats = {
-            value = 0,
-            recoil = 2,
-            concealment = -1
-        }
-        self.parts.wpn_fps_upg_scarl_stock_collapsed.stats = {
-            value = 0,
-            recoil = -2,
-            concealment = 1
-        }
-        self.parts.wpn_fps_upg_scarl_stock_pdw.stats = {
-            value = 0,
-            recoil = -4,
-            concealment = 2
-        }
-        self.parts.wpn_fps_upg_scarl_stock_pdw_collapsed.stats = {
-            value = 0,
-            recoil = -6,
-            concealment = 3
-        }
-
-        self.parts.wpn_fps_upg_scarl_mag_pdw.stats = deep_clone(mag_66)
-        self.parts.wpn_fps_upg_scarl_mag_pdw.stats.extra_ammo = -10
-
-        --self.parts.wpn_fps_upg_scarl_grip_magpul_miad.stats = deep_clone(nostats)
-        --self.parts.wpn_fps_upg_scarl_grip_magpul_moe.stats = deep_clone(nostats)
-        --self.parts.wpn_fps_upg_scarl_grip_vindicator.stats = deep_clone(nostats)
-        self.parts.wpn_fps_upg_scarl_mag_pull_assist.stats = deep_clone(nostats)
-
-        self.parts.wpn_fps_upg_scarl_rail_nitro_v.stats = deep_clone(nostats)
-        self.parts.wpn_fps_upg_scarl_rail_pws_srx.stats = deep_clone(nostats)
-        self.parts.wpn_fps_upg_scarl_rail_vltor_casv.stats = deep_clone(nostats)
-        self.parts.wpn_fps_upg_scarl_rail_kinetic_mrex.stats = deep_clone(nostats)
-        self.parts.wpn_fps_upg_scarl_rail_midwest_ext.stats = deep_clone(nostats)
-    end
-
     if BeardLib.Utils:ModLoaded("FN SCAR-L M203") then
         self.parts.wpn_fps_upg_scar_m203_barrel_long.stats = deep_clone(barrel_m2)
 

@@ -27,6 +27,13 @@ Weapon tweak data attributes:
 ]]
 
 if IreNFist.mod_compatibility.vanillahudplus then
+	local fire_original = NewRaycastWeaponBase.fire
+	-- used for shotgun bursts
+	function NewRaycastWeaponBase:fire2(...)
+		local result = fire_original(self, ...)
+		return result
+	end
+
 	return
 end
 

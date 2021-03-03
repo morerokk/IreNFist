@@ -2102,6 +2102,26 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 
         -- B93R expert slide
         self.parts.wpn_fps_pis_beer_sl_expert.stats = deep_clone(nostats)
+
+        -- BS-23 rear sight
+        self.parts.wpn_fps_shot_bs23_rec_sight_rear.stats = deep_clone(nostats)
+        -- Full-sized stock
+        self.parts.wpn_fps_shot_bs23_stock_full.stats = {
+            value = 1,
+            concealment = -1,
+            recoil = 5
+        }
+        -- No stock (ouch)
+        self.parts.wpn_fps_shot_bs23_stock_none.stats = {
+            value = 0,
+            concealment = 1,
+            recoil = -5
+        }
+        -- Short barrel
+        self.parts.wpn_fps_shot_bs23_barrel_short.stats = deep_clone(barrelsho_p1)
+        
+        -- M37 classic sights
+        self.parts.wpn_fps_shot_m37_o_classic.stats = deep_clone(nostats)
     end
 
     if BeardLib.Utils:ModLoaded("Zenith 10mm") then
@@ -3013,24 +3033,24 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
     end
 
     if BeardLib.Utils:ModLoaded("Mossberg 590") then
-        self.parts.wpn_fps_shot_m590_ironsight.stats = deep_clone(nostats)
-        self.parts.wpn_fps_shot_m590_sightrail.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_ironsight.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_ironsight_dummy.stats = deep_clone(nostats)
 
-        self.parts.wpn_fps_shot_m590_s_old.stats = deep_clone(nostats)
-        self.parts.wpn_fps_shot_m590_heat_shield.stats = deep_clone(nostats)
-        self.parts.wpn_fps_shot_m590_s_wood.stats = deep_clone(nostats)
-        self.parts.wpn_fps_shot_m590_fg_wood.stats = deep_clone(nostats)
-        self.parts.wpn_fps_shot_m590_fg_hdtf.stats = deep_clone(nostats)
-        self.parts.wpn_fps_shot_m590_s_hdtf.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_s_old.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_heat_shield.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_s_wood.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_fg_wood.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_fg_hdtf.stats = deep_clone(nostats)
+        self.parts.wpn_fps_shot_mossberg590_s_hdtf.stats = deep_clone(nostats)
 
-        self.parts.wpn_fps_shot_m590_b_short.stats = deep_clone(barrelsho_p2)
-        self.parts.wpn_fps_shot_m590_b_short.stats.extra_ammo = -1
+        self.parts.wpn_fps_shot_mossberg590_b_short.stats = deep_clone(barrelsho_p2)
+        self.parts.wpn_fps_shot_mossberg590_b_short.stats.extra_ammo = -1
 
-        self.parts.wpn_fps_shot_m590_b_silencer.custom_stats = shotgunsilencercustomstats
-        self.parts.wpn_fps_shot_m590_b_silencer.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_thick.stats)
+        self.parts.wpn_fps_shot_mossberg590_b_silencer.custom_stats = shotgunsilencercustomstats
+        self.parts.wpn_fps_shot_mossberg590_b_silencer.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_thick.stats)
 
         DelayedCalls:Add("mossberg590delay", delay, function(self, params)
-            tweak_data.weapon.factory.wpn_fps_shot_m590.override.wpn_fps_shot_r870_body_rack.stats = nil
+            tweak_data.weapon.factory.wpn_fps_shot_mossberg590.override.wpn_fps_shot_r870_body_rack.stats = nil
         end)
     end
 
@@ -4733,6 +4753,8 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
     if self.parts.wpn_fps_upg_1911_g_costanza then
         self.parts.wpn_fps_upg_1911_g_costanza.stats = deep_clone(nostats)
     end
+
+    
 
     -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT
     -- This applies to any BeardLib mod that adds custom weapon mods, whether they come with an actual weapon or not.

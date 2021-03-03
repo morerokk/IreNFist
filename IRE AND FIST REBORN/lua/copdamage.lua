@@ -119,7 +119,7 @@ function CopDamage:_chk_armor_damage_reduction(attack_data)
 		return attack_data
 	end
 
-	-- Check if the bullet hit the chicken plate
+	-- Check if the bullet hit the plate
 	if not self._has_plate or not attack_data.col_ray.body or attack_data.col_ray.body:name() ~= self._ids_plate_name then
 		return attack_data
 	end

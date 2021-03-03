@@ -786,6 +786,10 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 			self[wpn].damage_far = 1500
 			--self[wpn].sdesc3 = "range_shotshort"
 		end
+		if self:has_in_table(subtype, "range_verylong") then
+			self[wpn].damage_near = 2000
+			self[wpn].damage_far = 4500
+		end
 
 		if self:has_in_table(subtype, "dmg_mid") then
 			self[wpn].stats.damage = 43 -- 215 --38 -- 190
@@ -851,6 +855,10 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 		if self:has_in_table(subtype, "rof_slow") then
 			self[wpn].fire_mode_data = {fire_rate = 60/90}
 			self[wpn].single = {fire_rate = 60/90}
+		end
+		if self:has_in_table(subtype, "rof_veryslow") then
+			self[wpn].fire_mode_data = {fire_rate = 60/45}
+			self[wpn].single = {fire_rate = 60/45}
 		end
 	end
 	if self:has_category(wpn, "akimbo") then

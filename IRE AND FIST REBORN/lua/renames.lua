@@ -3526,8 +3526,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_wpn_fps_pis_m45a1_gr_ball_desc = "I seriously hope you guys don't use these.",
 
 	-- mossberg 590
-	bm_w_m590_desc = "Hunters. Soldiers. Cops. Homeowners. Crooks. Everyone's fired a Mossberg for a reason.",
-	bm_wp_wpn_fps_shot_m590_b_silencer_desc = "" .. silstr2,
+	bm_w_mossberg590_desc = "Hunters. Soldiers. Cops. Homeowners. Crooks. Everyone's fired a Mossberg for a reason.",
+	bm_wp_wpn_fps_shot_mossberg590_b_silencer_desc = "" .. silstr2,
 
 	-- vepr-12
 	bm_w_vepr12_desc = "A direct competitor to the more famous Russian mag-loading shotgun, from the same manufacturer. Patterned after the RPK receiver, which is more heavily-built than the standard AK receiver.",
@@ -3919,6 +3919,10 @@ if InFmenu.settings.txt_wpnname > 1 then
 
 	-- Serious Sam Minigun
 	bm_w_xm214a_desc = "Here comes trouble!",
+
+	-- BS-23
+	bm_w_bs23 = "BS-23M",
+	bm_w_bs23_desc = "Built using flawed barrels from anti-aircraft guns, earning it the title of the largest-bored shotgun in use today. Show them how it's done.",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

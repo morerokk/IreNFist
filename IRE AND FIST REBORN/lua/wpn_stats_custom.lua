@@ -1207,15 +1207,15 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.m45a1.stats.concealment = 29
 	end
 
-	if BeardLib.Utils:ModLoaded("Mossberg 590") then
-		self:inf_init("m590", "shotgun", {"rof_slow", "range_slowpump"})
-		self.m590.sdesc1 = "caliber_s12g"
-		self.m590.sdesc2 = "action_pump"
-		self.m590.stats.spread = self.m590.stats.spread + 10
-		self.m590.AMMO_MAX = 40
-		self.m590.AMMO_PICKUP = self:_pickup_chance(40, 1)
-		self:copy_timers("m590", "m37")
-		self.m590.stats.concealment = 21
+	if BeardLib.Utils:ModLoaded("Mossberg 590") and self.mossberg590 then
+		self:inf_init("mossberg590", "shotgun", {"rof_slow", "range_slowpump"})
+		self.mossberg590.sdesc1 = "caliber_s12g"
+		self.mossberg590.sdesc2 = "action_pump"
+		self.mossberg590.stats.spread = self.mossberg590.stats.spread + 10
+		self.mossberg590.AMMO_MAX = 40
+		self.mossberg590.AMMO_PICKUP = self:_pickup_chance(40, 1)
+		self:copy_timers("mossberg590", "m37")
+		self.mossberg590.stats.concealment = 21
 	end
 
 	if BeardLib.Utils:ModLoaded("Vepr-12") then
@@ -2203,7 +2203,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.sgs.CLIP_AMMO_MAX = 20
 		self:copy_timers("sgs", "shepheard")
 
-		-- Full auto crosskill lebman
+		-- Full auto crosskill
 		-- These fire .38 super which is comparable in terms of both velocity and energy, so the damage is still the same.
 		-- Hella recoil though
 		self:inf_init("lebman", "pistol", "medium")
@@ -2347,6 +2347,24 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.bdgr.AMMO_MAX = 180
 		self.bdgr.AMMO_PICKUP = self:_pickup_chance(180, 1)
 		self:copy_timers("bdgr", "olympic")
+	end
+
+	-- Vanilla modpack 2, KS-23 shotgun
+	-- based_on a grenade launcher? questionable
+	if self.bs23 then
+		self:inf_init("bs23", "shotgun", {"rof_veryslow", "range_verylong"})
+		self:copy_timers("bs23", "china")
+		self.bs23.sdesc1 = "caliber_s23mm"
+		self.bs23.sdesc2 = "action_pump"
+
+		-- Most stats are similar enough to the reinfeld, but this monstrosity needs a lower RoF, more range and more damage
+		self.bs23.stats.damage = self.bs23.stats.damage + 15
+		self.bs23.stats.recoil = self.bs23.stats.recoil - 3
+		self.bs23.CLIP_AMMO_MAX = 3
+		self.bs23.AMMO_MAX = 30
+
+		-- Based_on changed to R870 to prevent weird sync issues
+		self.bs23.based_on = "r870"
 	end
 
 	-- Mini reinbeck, Secondary Locomotive shotgun ("Reinbeck Auto Shotgun")

@@ -362,5 +362,4 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_coputils', functi
     end
 
     -- Nothing happened
-    return
 end)

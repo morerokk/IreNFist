@@ -2913,7 +2913,18 @@ end
     -- Medium Barrel
     self.parts.wpn_fps_smg_hajk_b_medium.stats = deep_clone(barrel_p1)
 
-
+    -- Vityaz parts
+    -- Silenced barrel
+    self.parts.wpn_fps_smg_vityaz_b_supressed.stats = deep_clone(silstatsconc1)
+    self.parts.wpn_fps_smg_vityaz_b_supressed.custom_stats = deep_clone(silencercustomstats)
+    -- Long barrel
+    self.parts.wpn_fps_smg_vityaz_b_long.stats = deep_clone(barrel_m1)
+    -- Bull stock (no stock)
+    self.parts.wpn_fps_smg_vityaz_s_short.stats = {
+        value = 1,
+        concealment = 2,
+        recoil = -5
+    }
 
 
 
@@ -3211,6 +3222,15 @@ end
     -- You should be ashamed of yourself
     self.parts.wpn_fps_shot_m1897_s_short.stats = deep_clone(nostats)
 
+    -- Mossberg 590/Mosconi 12G Tactical Shotgun parts
+    -- Silenced barrel
+    self.parts.wpn_fps_sho_m590_b_suppressor.stats = deep_clone(silstatssho)
+    self.parts.wpn_fps_sho_m590_b_suppressor.custom_stats = deep_clone(silencercustomstats)
+    -- Long barrel+long tube
+    self.parts.wpn_fps_sho_m590_b_long.stats = deep_clone(barrelsho_m1)
+    self.parts.wpn_fps_sho_m590_b_long.stats.extra_ammo = 1
+    -- Rail body
+    self.parts.wpn_fps_sho_m590_body_rail.stats = deep_clone(nostats)
 
 
 
@@ -3454,7 +3474,17 @@ end
     -- what the fuck is this garbage
     self.parts.wpn_fps_pis_shrew_sl_milled.stats = deep_clone(nostats)
 
-
+    -- CROSSKILL CHUNKY COMPACT PARTS
+    -- Extended mag
+    self.parts.wpn_fps_pis_m1911_m_extended.stats = {
+        extra_ammo = 1,
+        concealment = -1,
+        reload = -1
+    }
+    -- Chunky hunter barrel/slide
+    self.parts.wpn_fps_pis_m1911_sl_hardballer.stats = deep_clone(barrel_m1)
+    -- Platinum slide
+    self.parts.wpn_fps_pis_m1911_sl_match.stats = deep_clone(nostats)
 
 
     -- INTERCEPTOR PARTS

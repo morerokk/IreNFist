@@ -246,7 +246,12 @@ function WeaponTweakData:inf_init_stats(wpn)
 	-- If an enemy has body armor damage penalties, multiply the penalty by this number.
 	-- Should be 1 for lighter weapons, up to 0 for the heaviest guns
 	self[wpn].body_armor_dmg_penalty_mul = 1
-	--self[wpn].aim_assist = {
+	
+	-- Fuck off with your new damage falloff Overkill, it's dumb and broken in every way
+	if self[wpn].damage_falloff then
+		self[wpn].damage_falloff.near_multiplier = 1
+		self[wpn].damage_falloff.far_multiplier = 1
+	end
 end
 
 -- sets base stats for all non-custom weapons
@@ -2873,6 +2878,24 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:copy_timers("x_hajk", "x_tec9")
 	self.x_hajk.reload_speed_mult = self.x_hajk.reload_speed_mult * 0.85
 
+	-- Vityaz
+	self:inf_init("vityaz", "smg", {"range_long"})
+	self.vityaz.sdesc1 = "caliber_p9x19"
+	self.vityaz.sdesc2 = "action_blowback"
+	self:copy_timers("vityaz", "ak5")
+	self.vityaz.stats.concealment = 22
+
+	self:inf_init("vityazprimary", "smg", {"range_long", "dmg_50"})
+	self:copy_sdescs("vityazprimary", "vityaz")
+	self:copy_stats("vityazprimary", "vityaz")
+	self:copy_timers("vityazprimary", "vityaz")
+	self.vityazprimary.stats.concealment = 23
+	self.vityazprimary.AMMO_MAX = 180
+
+	self:inf_init("vityaz", "smg", {"range_long"})
+	self:copy_sdescs("x_vityaz", "vityaz", true)
+	self:copy_stats("x_vityaz", "vityaz", true)
+	self:copy_timers("x_vityaz", "vityaz", true)
 
 
 	self.b92fs.sdesc1 = "caliber_p9x19"
@@ -2953,17 +2976,6 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.x_pl14.AMMO_PICKUP = self:_pickup_chance(180, 1)
 	--self.x_pl14.price = self.pl14.price * 1.5
 	self:copy_timers("x_pl14", "x_b92fs")
-
-	-- Secondary akimbo test
-	--[[
-	self:inf_init("x_pl14_secondary", "pistol", "light")
-	self:copy_stats("x_pl14_secondary", "x_pl14")
-	self:copy_sdescs("x_pl14_secondary", "x_pl14")
-	self:copy_timers("x_pl14_secondary", "x_pl14")
-	self.x_pl14_secondary.name_id = self.x_pl14.name_id
-	self.x_pl14_secondary.desc_id = self.x_pl14.desc_id
-	self.x_pl14_secondary.categories = {"akimbo", "pistol"}
-	]]
 
 	self.packrat.sdesc1 = "caliber_p9x19"
 	self.packrat.sdesc2 = "action_shortrecoil"
@@ -3178,6 +3190,16 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:copy_timers("x_shrew", "x_b92fs")
 	self.x_shrew.reload_speed_mult = self.x_shrew.reload_speed_mult * self:convert_reload_to_mult("mag_50") * 0.95
 
+	-- Crosskill chunky compact (why does this even exist)
+	self:inf_init("m1911", "pistol", "medium")
+	self:copy_stats("m1911", "colt_1911")
+	self:copy_sdescs("m1911", "colt_1911")
+	self:copy_timers("m1911", "colt_1911")
+
+	self:inf_init("x_m1911", "pistol", "medium")
+	self:copy_stats("x_m1911", "x_1911")
+	self:copy_sdescs("x_m1911", "x_1911")
+	self:copy_timers("x_m1911", "x_1911")
 
 	self.hs2000.sdesc1 = "caliber_p45acp"
 	self.hs2000.sdesc2 = "action_shortrecoil"
@@ -3764,6 +3786,15 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.m1897.stats.concealment = 24
 	self:copy_timers("m1897", "m37")
 
+	-- Mossberg 590 (Mosconi 12G Tactical Shotgun)
+	self:inf_init("m590", "shotgun", {"rof_slow", "range_slowpump"})
+	self.m590.sdesc1 = "caliber_s12g"
+	self.m590.sdesc2 = "action_pump"
+	self.m590.stats.spread = self.m590.stats.spread + 10
+	self.m590.AMMO_MAX = 40
+	self.m590.AMMO_PICKUP = self:_pickup_chance(40, 1)
+	self:copy_timers("m590", "m37")
+	self.m590.stats.concealment = 21
 
 
 	self.tecci.sdesc1 = "caliber_r556x45"

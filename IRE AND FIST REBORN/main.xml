@@ -78,9 +78,12 @@
 	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/akmsuprimary"/>
 	<unit path="units/primarysmg/weapons/wpn_fps_smg_akmsuprimary/wpn_fps_smg_akmsuprimary"/>
 
+	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/vityazprimary"/>
+	<unit path="units/primarysmg/weapons/wpn_fps_smg_vityazprimary/wpn_fps_smg_vityazprimary"/>
+
+
 	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/coachprimary"/>
 	<unit path="units/primarysmg/weapons/wpn_fps_sho_coachprimary/wpn_fps_sho_coachprimary"/>
-
 
 	<texture path="guis/dlcs/primarysmg/textures/pd2/blackmarket/icons/weapons/m37primary"/>
 	<unit path="units/primarysmg/weapons/wpn_fps_shot_m37primary/wpn_fps_shot_m37primary"/>
@@ -1406,6 +1409,80 @@ Seriously, these are already there, why can't we use these normally?
 				<value_node value="wpn_fps_upg_a_explosive"/>
 				<value_node value="wpn_fps_upg_a_piercing"/>
 				<value_node value="wpn_fps_upg_a_dragons_breath"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+
+	<WeaponNew unlock_level="35">
+		<weapon id="vityazprimary" based_on="vityaz" texture_bundle_folder="primarysmg" weapon_hold="vityaz" global_value="infmod">
+			<use_data selection_index="2"/>
+			<animations reload_name_id="vityaz"/>
+		</weapon>
+		<factory id="wpn_fps_smg_vityazprimary" unit="units/primarysmg/weapons/wpn_fps_smg_vityazprimary/wpn_fps_smg_vityazprimary">
+			<default_blueprint>
+				<value_node value="wpn_fps_smg_vityaz_b_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_ns_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_g_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_s_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_m_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_body_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_bolt_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_fg_standard"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_smg_vityaz_b_supressed"/>
+				<value_node value="wpn_fps_smg_vityaz_b_long"/>
+				<value_node value="wpn_fps_smg_vityaz_b_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_ns_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_s_short"/>
+				<value_node value="wpn_fps_smg_vityaz_s_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_g_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_m_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_body_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_bolt_standard"/>
+				<value_node value="wpn_fps_smg_vityaz_fg_standard"/>
+				<value_node value="wpn_fps_upg_o_specter"/>
+				<value_node value="wpn_fps_upg_o_aimpoint"/>
+				<value_node value="wpn_fps_upg_o_docter"/>
+				<value_node value="wpn_fps_upg_o_eotech"/>
+				<value_node value="wpn_fps_upg_o_t1micro"/>
+				<value_node value="wpn_fps_upg_o_cmore"/>
+				<value_node value="wpn_fps_upg_o_aimpoint_2"/>
+				<value_node value="wpn_fps_upg_o_acog"/>
+				<value_node value="wpn_fps_upg_o_eotech_xps"/>
+				<value_node value="wpn_fps_upg_o_reflex"/>
+				<value_node value="wpn_fps_upg_o_rx01"/>
+				<value_node value="wpn_fps_upg_o_rx30"/>
+				<value_node value="wpn_fps_upg_o_cs"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_large"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_medium"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_small"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_firepig"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_stubby"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_tank"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_peqbox"/>
+				<value_node value="wpn_fps_upg_fl_ass_smg_sho_surefire"/>
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+				<value_node value="wpn_fps_upg_ass_ns_jprifles"/>
+				<value_node value="wpn_fps_upg_ass_ns_linear"/>
+				<value_node value="wpn_fps_upg_ass_ns_surefire"/>
+				<value_node value="wpn_fps_upg_fl_ass_peq15"/>
+				<value_node value="wpn_fps_upg_fl_ass_laser"/>
+				<value_node value="wpn_fps_upg_ass_ns_battle"/>
+				<value_node value="wpn_fps_upg_fl_ass_utg"/>
+				<value_node value="wpn_fps_upg_ak_g_rk3"/>
+				<value_node value="wpn_fps_upg_ns_ass_pbs1"/>
+				<value_node value="wpn_fps_upg_ak_g_hgrip"/>
+				<value_node value="wpn_fps_upg_ak_g_pgrip"/>
+				<value_node value="wpn_fps_upg_ak_g_wgrip"/>
+				<value_node value="wpn_fps_upg_o_bmg"/>
+				<value_node value="wpn_fps_upg_o_uh"/>
+				<value_node value="wpn_fps_upg_o_fc1"/>
+				<value_node value="wpn_fps_upg_ns_ass_smg_v6"/>
+				<value_node value="wpn_fps_upg_o_spot"/>
+				<value_node value="wpn_fps_upg_o_tf90"/>
 			</uses_parts>
 		</factory>
 		<stance/>

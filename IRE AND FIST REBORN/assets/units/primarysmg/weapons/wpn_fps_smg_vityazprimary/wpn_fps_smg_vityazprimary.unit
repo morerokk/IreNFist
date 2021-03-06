@@ -1,0 +1,12 @@
+<unit type="wpn" slot="2">
+	<object file="units/pd2_dlc_fawp/weapons/wpn_fps_smg_vityaz/wpn_fps_smg_vityaz" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_vityaz"/>
+	</dependencies>
+    <extensions>
+        <extension name="unit_data" class="ScriptUnitData" />
+        <extension name="base" class="NewRaycastWeaponBase" >
+			<var name="name_id" value="vityazprimary" />
+		</extension>
+    </extensions>
+</unit>

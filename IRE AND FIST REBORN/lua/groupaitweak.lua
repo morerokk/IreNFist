@@ -11,7 +11,7 @@ if level and string_startswith(level, "skm_") then
 	return
 end
 
-if InFmenu.settings.beta then
+if InFmenu.settings.assaulttweakstype ~= 2 then
     return
 end
 

@@ -34,11 +34,9 @@ Hooks:PostHook(CopBrain, "clbk_death", "InF_CopBrain_wintersdeath_endassault", f
 end)
 
 -- If the pager was snatched, auto-answer it
-if InFmenu.settings.beta then
-	Hooks:PostHook(CopBrain, "clbk_alarm_pager", "SkillOverhaulSnatchPagerDo", function(self, ignore_this, data)
-		if self._unit:base().inf_pagersnatched then
-			self._unit:interaction():interact(managers.player:player_unit())
-			return
-		end
-	end)
-end
+Hooks:PostHook(CopBrain, "clbk_alarm_pager", "Inf_pagersnatch_do", function(self, ignore_this, data)
+	if self._unit:base().inf_pagersnatched then
+		self._unit:interaction():interact(managers.player:player_unit())
+		return
+	end
+end)

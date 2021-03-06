@@ -185,6 +185,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_coach = "Claire Exposed-Hammer SxS",
 		bm_w_coachprimary = "Claire Exposed-Hammer SxS",
 		bm_w_m1897 = "Winchester Model 1897",
+		bm_w_m590 = "Mossberg 590",
 
 		bm_w_rpk = "RPK",
 		bm_w_m249 = "KSP 249",
@@ -220,6 +221,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_x_1911 = "Akimbo Crosskill Operators",
 		bm_w_shrew = "Crosskill Guard",
 		bm_w_x_shrew = "Akimbo Crosskill Guards",
+		bm_w_m1911 = "Crosskill",
 		bm_w_p226 = "Signature 40",
 		bm_w_x_p226 = "Akimbo Signatures",
 		bm_w_hs2000 = "LEO-45",
@@ -305,7 +307,6 @@ if InFmenu.settings.txt_wpnname > 1 then
 		bm_w_acwr2 = "Masada ACR",
 		bm_w_acwr = "Masada ACR + M203",
 		bm_w_saigry = "SAIGYO",
-		bm_w_vityaz = "SN Vityaz",
 		bm_w_wargoddess = "Mk 14 EBR",
 		bm_w_px4 = "Px4 Storm",
 		bm_w_p99 = "P99AS",
@@ -712,14 +713,14 @@ end
 	infcodex_flace = "Fully Loaded Aced",
 	infcodex_flace_desc = "SCAVENGE CHANCE AND QUANTITY\nIncendiary Grenade: 1.5x base chance\nStun Grenade: 2x base chance\nJavelin: 2x base chance\nShuriken: 2x base chance, 3 per scavenge\nThrowing Knives: 2x base chance, 3 per scavenge\nThrowing Axes: 2x base chance, 2 per scavenge\nThrowing Cards: 4x base chance, 4 per scavenge\nAll others: no change",
 
-	infcodex_assaulttweaks = "Assault Tweaks",
+	infcodex_assaulttweaks = "Assault Tweaks (Old)",
 	infcodex_assaulttweaks_desc = "ASSAULT TWEAKS\nLess cops will be on the map at the same time, and the maximum number of spawns in an assault has been lowered. This means that if you play aggressively, you can exhaust an assault's spawns and end it early.",
 	infcodex_assaulttweaks2_desc = "UNIT TWEAKS\nFBI Tan shotgunners were removed in favor of light shotgunners (greens). On Mayhem and above, some GenSec riflemen may carry UMP's, and some shotgunners may carry Benelli M4's. On Death Sentence, some enemies still have shotguns.",
 	infcodex_assaulttweaks3_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
 	infcodex_assaulttweaks4_desc = "HEIST-SPECIFIC TWEAKS:\nGolden Grin: More max cops, more spawns in an assault.\nShacklethorne Auction: 30 second initial response delay, less cops.\nBrooklyn Bank: Same as Shacklethorne.\nNo Mercy: Bigger spawn pools.",
 
-	infcodex_assaulttweaks_beta = "Assault Tweaks (BETA)",
-	infcodex_assaulttweaks_beta_desc = "ASSAULT TWEAKS\nCurrently in beta, meaning the Beta option in the InF options must be enabled. This replaces the old assault tweaks.\n\nLess cops will be on the map at the same time, and the maximum number of spawns in an assault has been lowered. This means that if you play aggressively, you can exhaust an assault's spawns and end it early.",
+	infcodex_assaulttweaks_beta = "Assault Tweaks (New)",
+	infcodex_assaulttweaks_beta_desc = "ASSAULT TWEAKS\nThis replaces the old assault tweaks.\n\nLess cops will be on the map at the same time, and the maximum number of spawns in an assault has been lowered. This means that if you play aggressively, you can exhaust an assault's spawns and end it early.",
 	infcodex_assaulttweaks2_beta_desc = "SPAWNGROUP TWEAKS\nNearly every single spawngroup has been faithfully restored to their pre-hoxton housewarming counterparts (with the occasional medic thrown in). Expect more dangerous combinations of specials and *WAY* more variety in enemy unit types.\n\nEnabling \"assault variety\" is strongly recommended, even more so than before.",
 	infcodex_assaulttweaks3_beta_desc = "ASSAULT BREAKS\nAssault breaks are far longer in general. The breaks can be extended even further by having at least 1 hostage. Having hostages or untied civilians on the map spawns unique Hostage Rescue Teams who will try and free the hostages.",
 
@@ -2254,6 +2255,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- M1897 (Reinfeld 88?)
 	bm_w_m1897_desc = "*The* trench gun. Owes its nickname to its trench-clearing ability, which was terrifying enough that the Germans lodged a diplomatic protest against it. Fire away.",
 
+	-- Mossberg 590 (Mosconi 12G Tactical Shotgun)
+	bm_w_m590_desc = "Hunters. Soldiers. Cops. Homeowners. Crooks. Everyone's fired a Mossberg for a reason.",
 
 	-- RPK
 	bm_w_rpk_desc = "Developed alongside its rifle cousin as a support weapon. Besides the obvious barrel difference, the RPK also has a modified receiver and mechanism.",
@@ -2376,6 +2379,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_shrew_desc = "A shortened Crosskill, suitable for concealed carry. Unlike previous attempts at a short Crosskill, this one maintains reliable feeding and shooting.",
 	bm_w_x_shrew_desc = "There was a time when the way your father did it was the way his father did it too. Those times are behind us.",
 
+	bm_w_m1911_desc = "The grandfather of the modern handgun, used as a standard-issue firearm for US forces in the 20th century.",
+	bm_w_x_m1911_desc = "Nothing ever comes for free. You will surely be the one paying for it in the end.",
 
 	-- SIGNATURE 40
 	bm_w_p226_desc = "Competed with the Bernetti for the privilege of being the US Army's next sidearm. Though it narrowly lost, it nevertheless saw international success.",
@@ -3457,7 +3462,12 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_wpn_fps_smg_owen_m_double_desc = "Two magazines joined together.\n\nEvery other reload is 50% faster.",
 
 	-- pp-19-01 vityaz
-	bm_w_vityaz_desc = "An evolution of the Bizon. The standard SMG for Russian military and police forces. ",
+	bm_w_vityaz = "SN Vityaz",
+	bm_w_vityazprimary = "SN Vityaz",
+	bm_w_x_vityaz = "Akimbo SN Vityaz",
+	bm_w_vityaz_desc = "An evolution of the Bizon. The standard SMG for Russian military and police forces.",
+	bm_w_vityazprimary_desc = "An evolution of the Bizon. The standard SMG for Russian military and police forces.",
+	bm_w_x_vityaz_desc = "Incompetent thieves get hanged, only the great ones escape.",
 	bm_wp_wpn_fps_upg_vityaz_supp = "Icepick Suppressor",
 	bm_wp_wpn_fps_upg_vityaz_supp_desc = "When the going gets tough, drink copiously and fire at will." .. silstr,
 	bm_wp_wpn_fps_upg_vityaz_mag_dual_desc = "Two magazines joined together.\n\nEvery other reload is 50% faster.",
@@ -3921,7 +3931,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_xm214a_desc = "Here comes trouble!",
 
 	-- BS-23
-	bm_w_bs23 = "BS-23M",
+	bm_w_bs23 = "KS-23M",
 	bm_w_bs23_desc = "Built using flawed barrels from anti-aircraft guns, earning it the title of the largest-bored shotgun in use today. Show them how it's done.",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot

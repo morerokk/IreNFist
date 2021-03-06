@@ -88,10 +88,6 @@ function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_me
 end
 
 function CopUtils:CounterArrestAttacker(player_unit, attacker_unit)
-    if not InFmenu.settings.beta then
-        return
-    end
-
     -- Sorry, I haven't gotten this to work yet, it just crashes
     -- For now, a knockdown to the face will have to suffice
     return self:KnockDownAttacker(player_unit, attacker_unit)
@@ -136,10 +132,6 @@ function CopUtils:CounterArrestAttacker(player_unit, attacker_unit)
 end
 
 function CopUtils:KnockDownAttacker(player_unit, attacker_unit)
-    if not InFmenu.settings.beta then
-        return
-    end
-
     -- Strike them with a low damage high knockdown melee attack
     local action_data = {
         damage_effect = 1,
@@ -216,7 +208,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
                     lowest_distance = dist
                     highest_found_priority = prio
                     closest_enemy = enemy
-                elseif prio <= highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority but is closer
+                elseif prio == highest_found_priority and dist < lowest_distance and is_available then -- Enemy has *same* priority but is closer
                     lowest_distance = dist
                     highest_found_priority = prio
                     closest_enemy = enemy

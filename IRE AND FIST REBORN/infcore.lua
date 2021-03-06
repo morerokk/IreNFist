@@ -108,7 +108,6 @@ if not IreNFist then
     -- Fucking sexy NEW overrides
     -- Because some heists just need a little extra care put into their police force counts
     -- This time I made it level-based and not job-based
-    -- Beta only for now
     -- NOTE: These force_muls are applied on top of the existing force balance muls, not on the force values directly
     -- and they don't replace anything either, they *multiply* the existing value.
     -- Maybe they *should* multiply the base values instead of the balance_muls?
@@ -229,10 +228,11 @@ if not InFmenu then
         copmiss = true,
         enablenewcopvoices = true,
         enablenewcopdomination = true,
-        enablenewassaults = true,
+        enablenewassaults = true, -- No longer used
         enablenewcopbehavior = true,
         thinkfaster = true,
         thinkfaster_throughput = 180, -- The defaults are skewed a bit low to not fry people's PC's without asking
+        assaulttweakstype = 3, -- The new assault tweaks type. 1 is off, 2 is old, 3 is new.
 
         enablewallrun = true,
         runkick = false,

@@ -118,6 +118,11 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu:Save()
 	end
 
+	MenuCallbackHandler.infcb_assaulttweakstype = function(this, item)
+		InFmenu.settings[item:name()] = tonumber(item:value())
+		InFmenu:Save()
+	end
+
 	MenuCallbackHandler.infcb_debug = function(this, item)
 		InFmenu.settings[item:name()] = item:value() == 'on'
 		InFmenu:Save()
@@ -158,7 +163,7 @@ Hooks:Add('MenuManagerInitialize', 'infmenu_init', function(menu_manager)
 		InFmenu.settings[item:name()] = enabled
 		InFmenu:Save()
 
-		if InFmenu.settings.beta and managers and managers.player then
+		if managers and managers.player then
 			managers.player:update_holdout_waypoint()
 		end
 	end

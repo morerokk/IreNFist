@@ -2,7 +2,7 @@ dofile(ModPath .. "infcore.lua")
 
 -- Debug only
 -- Debugging a weird crash
-if not InFmenu.settings.beta then
+if not InFmenu.settings.debug then
     return
 end
 

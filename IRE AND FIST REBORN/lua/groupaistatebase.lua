@@ -100,3 +100,45 @@ function GroupAIStateBase:check_gameover_conditions()
 
 	return gameover
 end
+
+if InFmenu.settings.assaulttweakstype == 3 then
+	-- Fix difficulty scaling in newer heists (starting at max procedural difficulty instead of a lower one)
+	function GroupAIStateBase:set_difficulty(script_value, manual_value)
+		if self._difficulty_value == 1 then
+			return
+		end
+	
+		if script_value then
+			if script_value == 0 then
+				self._difficulty_value = 0
+
+				self._loud_diff_set = false 
+				self:_calculate_difficulty_ratio()
+	
+				return
+			elseif not self._loud_diff_set and script_value > 0  then
+
+				self._difficulty_value = self._difficulty_value + 0.5
+				self:_calculate_difficulty_ratio()
+				self._loud_diff_set = true
+	
+				return
+			end
+	
+		end
+	
+		if not manual_value then
+			return
+		end
+	
+	
+
+		self._difficulty_value = self._difficulty_value + manual_value
+	
+		if self._difficulty_value > 1 then
+			self._difficulty_value = 1
+		end
+	
+		self:_calculate_difficulty_ratio()
+	end
+end

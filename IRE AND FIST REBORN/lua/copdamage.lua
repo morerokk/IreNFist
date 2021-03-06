@@ -362,61 +362,57 @@ function CopDamage:damage_melee(attack_data)
 
 	local result = copdamage_damagemelee_orig(self, attack_data)
 
-	if InFmenu.settings.beta then
-		local attacker_unit = attack_data and attack_data.attacker_unit
-		local player_unit = managers.player:player_unit()
-		local copmove = self._unit and self._unit.movement and self._unit:movement()
-		-- First check if the unit is cool and if the attacker was the player
-		if attacker_unit == player_unit and copmove and copmove:cool() then
-			-- Check for pager snatching
-			if result and result.type and result.type == "death" and managers.player:has_category_upgrade("player", "inf_snatch_pager") and managers.groupai:state():whisper_mode() and managers.groupai:state():get_nr_successful_alarm_pager_bluffs() < 4 then
-				-- If the host did it, we can just set a flag
-				-- If we're the client, we have to tell the host
-				if not Network or Network:is_server() then
-					self._unit:base().inf_pagersnatched = true
-				else
-					LuaNetworking:SendToPeer(1, "irenfist_pagersnatched", tostring(self._unit:id()))
-				end
-			end			
-		end
+	local attacker_unit = attack_data and attack_data.attacker_unit
+	local player_unit = managers.player:player_unit()
+	local copmove = self._unit and self._unit.movement and self._unit:movement()
+	-- First check if the unit is cool and if the attacker was the player
+	if attacker_unit == player_unit and copmove and copmove:cool() then
+		-- Check for pager snatching
+		if result and result.type and result.type == "death" and managers.player:has_category_upgrade("player", "inf_snatch_pager") and managers.groupai:state():whisper_mode() and managers.groupai:state():get_nr_successful_alarm_pager_bluffs() < 4 then
+			-- If the host did it, we can just set a flag
+			-- If we're the client, we have to tell the host
+			if not Network or Network:is_server() then
+				self._unit:base().inf_pagersnatched = true
+			else
+				LuaNetworking:SendToPeer(1, "irenfist_pagersnatched", tostring(self._unit:id()))
+			end
+		end			
 	end
 
 	return result
 end
 
 -- If we're the host, we need to be able to receive messages from clients that this dude's pager should be snatched
-if InFmenu.settings.beta and Network and Network:is_server() then
-	Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_copdamage_meleesnatchpager', function(sender, messageType, data)
-		-- Only check pager messages
-		if messageType ~= "irenfist_pagersnatched" then
-			return
-		end
+Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_copdamage_meleesnatchpager', function(sender, messageType, data)
+	-- Only check pager messages
+	if messageType ~= "irenfist_pagersnatched" then
+		return
+	end
 
-		-- Attempt to get the actual cop unit from their ID
-		local unit_id = tonumber(data)
-		if not unit_id then
-			return
-		end
+	-- Attempt to get the actual cop unit from their ID
+	local unit_id = tonumber(data)
+	if not unit_id then
+		return
+	end
 
-		local cop = CopUtils:GetCopFromId(unit_id)
-		if not cop then
-			return
-		end
+	local cop = CopUtils:GetCopFromId(unit_id)
+	if not cop then
+		return
+	end
 
-		-- If we're loud, don't do it
-		if not managers.groupai:state():whisper_mode() then
-			return
-		end
+	-- If we're loud, don't do it
+	if not managers.groupai:state():whisper_mode() then
+		return
+	end
 
-		-- If we are already at 4 pagers, don't snatch, this would be a dick move
-		if managers.groupai:state():get_nr_successful_alarm_pager_bluffs() >= 4 then
-			return
-		end
+	-- If we are already at 4 pagers, don't snatch, this would be a dick move
+	if managers.groupai:state():get_nr_successful_alarm_pager_bluffs() >= 4 then
+		return
+	end
 
-		-- Everything seems fine, set the flag on the cop
-		cop:base().inf_pagersnatched = true
-	end)
-end
+	-- Everything seems fine, set the flag on the cop
+	cop:base().inf_pagersnatched = true
+end)
 
 Hooks:PreHook(CopDamage, "damage_melee", "inf_copdamage_damagemelee_stopcrashifnoteam", function(self)
 	if self._unit:movement() and not self._unit:movement()._team then

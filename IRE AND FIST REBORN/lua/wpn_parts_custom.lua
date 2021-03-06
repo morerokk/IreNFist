@@ -3027,12 +3027,12 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
         table.insert(primarysmgadds, "wpn_fps_upg_ns_ass_smg_tromix")
     end
 
-    if BeardLib.Utils:ModLoaded("M45A1 CQBP") then
+    if BeardLib.Utils:ModLoaded("M45A1 CQBP") and self.parts.wpn_fps_pis_m45a1_m_ext then
         self.parts.wpn_fps_pis_m45a1_m_ext.stats = deep_clone(mag_150)
         self.parts.wpn_fps_pis_m45a1_m_ext.stats.extra_ammo = 3
     end
 
-    if BeardLib.Utils:ModLoaded("Mossberg 590") then
+    if BeardLib.Utils:ModLoaded("Mossberg 590") and self.parts.wpn_fps_shot_mossberg590_s_old then
         self.parts.wpn_fps_shot_mossberg590_ironsight.stats = deep_clone(nostats)
         self.parts.wpn_fps_shot_mossberg590_ironsight_dummy.stats = deep_clone(nostats)
 
@@ -4754,7 +4754,11 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
         self.parts.wpn_fps_upg_1911_g_costanza.stats = deep_clone(nostats)
     end
 
-    
+    -- Beretta M9 Parts
+    if BeardLib.Utils:ModLoaded("Beretta M9 Base") and self.parts.wpn_fps_pis_m92fs_g_ergo then
+        -- Ergo grip
+        self.parts.wpn_fps_pis_m92fs_g_ergo.stats = deep_clone(nostats)
+    end
 
     -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT
     -- This applies to any BeardLib mod that adds custom weapon mods, whether they come with an actual weapon or not.

@@ -270,13 +270,18 @@
 			"default_value" : true
 		},
 		{
-			"type" : "toggle",
-			"id" : "enablenewassaults",
-			"title" : "inf_enablenewassaults",
-			"description" : "inf_enablenewassaults_desc",
-			"callback" : "infcb_enablenewassaults",
-			"value" : "enablenewassaults",
-			"default_value" : true
+			"type" : "multiple_choice",
+			"id" : "assaulttweakstype",
+			"title" : "inf_assaulttweakstype",
+			"description" : "inf_assaulttweakstype_desc",
+			"callback" : "infcb_assaulttweakstype",
+			"items" : [
+				"inf_assaulttweaks_off",
+				"inf_assaulttweaks_old",
+				"inf_assaulttweaks_new"
+			],
+			"value" : "assaulttweakstype",
+			"default_value" : 3
 		},
 		{
 			"type" : "toggle",

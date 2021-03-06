@@ -11,7 +11,7 @@ if level and string_startswith(level, "skm_") then
 	return
 end
 
-if not InFmenu.settings.beta then
+if InFmenu.settings.assaulttweakstype ~= 3 then
     return
 end
 
@@ -21,8 +21,6 @@ end
 -- that were split by tactic and force.
 -- I'm throwing away all the old assault tweaks I did and starting anew,
 -- using the old spawngroups as a base.
--- I basically just have to adjust the cop amount to fit how strong players currently are,
--- and I have to add medics. Easy.
 
 --[[
 2 = N
@@ -175,7 +173,7 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_init
 	end
 
 	-- Add skulldozers to Overkill if that's enabled
-	if difficulty_index == 5 and InFmenu.settings.skulldozersahoy then
+	if difficulty_index == 5 and InFmenu.settings.skulldozersahoy > 1 then
 		self.unit_categories.FBI_tank = {
 			special_type = "tank",
 			unit_types = {

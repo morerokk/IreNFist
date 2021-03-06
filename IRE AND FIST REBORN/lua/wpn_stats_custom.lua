@@ -1147,6 +1147,8 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.owen.not_empty_reload_speed_mult = self.owen.not_empty_reload_speed_mult * 1.25
 	end
 
+	-- Vityaz is now in the game officially and has this same internal name, so this code won't work anymore
+	--[[
 	if BeardLib.Utils:ModLoaded("PP-19-01 Vityaz") then
 		self:inf_init("vityaz", "smg", {"range_long"})
 		self.vityaz.sdesc1 = "caliber_p9x19"
@@ -1154,6 +1156,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("vityaz", "ak5")
 		self.vityaz.stats.concealment = 24
 	end
+	]]
 
 	if BeardLib.Utils:ModLoaded("l1a1") then
 		Hooks:RemovePostHook("l1a1ModInit")
@@ -2584,6 +2587,20 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_stats("x_meusoc", "x_1911")
 		self:copy_timers("x_meusoc", "x_pl14")
     end
+
+	-- Beretta M9
+	if self.m92fs then
+		self:inf_init("m92fs", "pistol", nil)
+		self:copy_stats("m92fs", "b92fs")
+		self:copy_sdescs("m92fs", "b92fs")
+		self:copy_timers("m92fs", "pl14")
+	end
+	if self.x_m92fs then
+		self:inf_init("x_m92fs", "pistol", nil)
+		self:copy_stats("x_m92fs", "x_b92fs")
+		self:copy_sdescs("x_m92fs", "x_b92fs")
+		self:copy_timers("x_m92fs", "x_pl14")
+	end
     
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)

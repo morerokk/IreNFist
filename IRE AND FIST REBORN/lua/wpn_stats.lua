@@ -3793,7 +3793,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.m590.stats.spread = self.m590.stats.spread + 10
 	self.m590.AMMO_MAX = 40
 	self.m590.AMMO_PICKUP = self:_pickup_chance(40, 1)
-	self:copy_timers("m590", "m37")
+	self:copy_timers("m590", "r870")
 	self.m590.stats.concealment = 21
 
 

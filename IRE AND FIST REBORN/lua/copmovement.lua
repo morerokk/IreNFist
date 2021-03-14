@@ -1,9 +1,5 @@
 dofile(ModPath .. "infcore.lua")
 
-if not InFmenu.settings.enablenewassaults then
-	return
-end
-
 -- Debug: debugging a very iffy crash when people join in
 -- Why is this happening? self._team is nil even though I literally set it in the prehook below
 function CopMovement:save(save_data)

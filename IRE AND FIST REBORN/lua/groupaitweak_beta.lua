@@ -163,12 +163,12 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_init
 	if difficulty_index >= 6 then
 		self.unit_categories.FBI_swat_M4.unit_types.america = {
 			Idstring("units/payday2/characters/ene_city_swat_1/ene_city_swat_1"),
-			Idstring("units/payday2/characters/ene_city_swat_2/ene_city_swat_2")
+			Idstring("units/payday2/characters/ene_city_swat_3/ene_city_swat_3")
 		}
 
 		self.unit_categories.FBI_swat_R870.unit_types.america = {
 			Idstring("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"),
-			Idstring("units/payday2/characters/ene_city_swat_3/ene_city_swat_3")
+			Idstring("units/payday2/characters/ene_city_swat_2/ene_city_swat_2")
 		}
 	end
 

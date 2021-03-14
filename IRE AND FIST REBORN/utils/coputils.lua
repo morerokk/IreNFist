@@ -91,44 +91,6 @@ function CopUtils:CounterArrestAttacker(player_unit, attacker_unit)
     -- Sorry, I haven't gotten this to work yet, it just crashes
     -- For now, a knockdown to the face will have to suffice
     return self:KnockDownAttacker(player_unit, attacker_unit)
-
-    --[[
-    CopLogicBase._exit(attacker_unit, "intimidated", {
-        aggressor_unit = player_unit
-    })
-
-    managers.chat:feed_system_message(1, "Exited into intimidated logic")
-
-    -- Most of this is copied from coplogicintimidated
-	attacker_unit:inventory():destroy_all_items()
-    attacker_unit:brain():set_update_enabled_state(false)
-    
-	attacker_unit:brain():rem_pos_rsrv("stand")
-	managers.groupai:state():on_enemy_tied(attacker_unit:key())
-    attacker_unit:base():set_slot(attacker_unit, 22)
-    
-	if attacker_unit:unit_data().mission_element then
-		attacker_unit:unit_data().mission_element:event("tied", attacker_unit)
-    end
-    
-    attacker_unit:character_damage():drop_pickup()
-    attacker_unit:character_damage():set_pickup(nil)
-
-    if player_unit == managers.player:player_unit() then
-        managers.statistics:tied({
-            name = attacker_unit:base()._tweak_table
-        })
-    else
-        player_unit:network():send_to_unit({
-            "statistics_tied",
-            attacker_unit:base()._tweak_table
-        })
-    end
-
-	managers.groupai:state():on_criminal_suspicion_progress(nil, attacker_unit, nil)
-
-    managers.chat:feed_system_message(1, "Went and tied the fuck")
-    ]]
 end
 
 function CopUtils:KnockDownAttacker(player_unit, attacker_unit)

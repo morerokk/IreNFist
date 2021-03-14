@@ -4591,6 +4591,11 @@ end
             self[sec].override = deep_clone(self[pri].override)
         end
 
+        -- Add missing gadget rails and stuff
+        if self[pri].adds then
+            self[sec].adds = deep_clone(self[pri].adds)
+        end
+
         self[sec].uses_parts = deep_clone(self[pri].uses_parts)
         self[sec].default_blueprint = deep_clone(self[pri].default_blueprint)
     end

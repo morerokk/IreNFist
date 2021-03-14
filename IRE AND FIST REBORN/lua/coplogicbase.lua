@@ -10,6 +10,22 @@ local mvec3_dis_sq = mvector3.distance_sq
 local tmp_vec1 = Vector3()
 local tmp_vec2 = Vector3()
 
+-- Add extra chance to surrender outside of assaults
+local evaluate_surrender_orig = CopLogicBase._evaluate_reason_to_surrender
+function CopLogicBase._evaluate_reason_to_surrender(data, my_data, aggressor_unit)
+	local surrender_chance = evaluate_surrender_orig(data, my_data, aggressor_unit)
+
+	if not surrender_chance or surrender_chance >= 1 then
+		return surrender_chance
+	end
+
+	if not managers.groupai:state():get_assault_mode() then
+		surrender_chance = surrender_chance + 0.15
+	end
+
+	return surrender_chance
+end
+
 -- Debug
 if not InFmenu.settings.debug then
     return

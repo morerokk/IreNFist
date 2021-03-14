@@ -1074,7 +1074,7 @@ function PlayerStandard:_check_action_primary_attack(t, input)
 				-- ANIMATE FASTER
 				local anim_speed_mult = 1
 				-- but not during bursts
-				if not weap_base:in_burst_mode() then
+				if weap_base.in_burst_mode and not weap_base:in_burst_mode() then
 					anim_speed_mult = weap_base:fire_rate_multiplier() or 1
 				end
 				if weap_base._anim_speed_mult then

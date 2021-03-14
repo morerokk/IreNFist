@@ -1147,17 +1147,6 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.owen.not_empty_reload_speed_mult = self.owen.not_empty_reload_speed_mult * 1.25
 	end
 
-	-- Vityaz is now in the game officially and has this same internal name, so this code won't work anymore
-	--[[
-	if BeardLib.Utils:ModLoaded("PP-19-01 Vityaz") then
-		self:inf_init("vityaz", "smg", {"range_long"})
-		self.vityaz.sdesc1 = "caliber_p9x19"
-		self.vityaz.sdesc2 = "action_blowback"
-		self:copy_timers("vityaz", "ak5")
-		self.vityaz.stats.concealment = 24
-	end
-	]]
-
 	if BeardLib.Utils:ModLoaded("l1a1") then
 		Hooks:RemovePostHook("l1a1ModInit")
 		self:inf_init("l1a1", "ar", {"ldmr"})

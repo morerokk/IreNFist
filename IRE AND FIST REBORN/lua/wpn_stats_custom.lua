@@ -794,32 +794,6 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.g3_m203buckshot.AMMO_PICKUP = {1338, 50}
 		self:copy_timers("g3_m203buckshot", "contraband_m203")
 		self.g3_m203buckshot.reload_speed_mult = 1.20
-
-		self:inf_init("g3_m203flechette", "shotgun", {"dmg_heavy"})
-		self.g3_m203flechette.stats.damage = 75 -- 375
-		self.g3_m203flechette.stats_modifiers = {damage = 5}
-		self.g3_m203flechette.rays = 28
-		self.g3_m203flechette.damage_near = 1000 * 1.25
-		self.g3_m203flechette.damage_far = 1500 * 1.25
-		self.g3_m203flechette.armor_piercing_chance = 1
-		self.g3_m203flechette.stats.spread = 40
-		self.g3_m203flechette.AMMO_MAX = 4
-		self.g3_m203flechette.AMMO_PICKUP = {1338, 50}
-		self:copy_timers("g3_m203flechette", "contraband_m203")
-		self.g3_m203flechette.reload_speed_mult = 1.20
-
-		--[[
-		self:inf_init("g3_m203slug", "snp", "heavy")
-		self.g3_m203slug.stats.damage = 90 -- 450
-		self.g3_m203slug.stats_modifiers = {damage = 5}
-		self.g3_m203slug.damage_near = 1000 * 100
-		self.g3_m203slug.damage_far = 2500 * 100
-		self.g3_m203slug.stats.spread = 50
-		self.g3_m203slug.AMMO_MAX = 4
-		self.g3_m203slug.AMMO_PICKUP = {1338, 100}
-		self:copy_timers("g3_m203slug", "contraband_m203")
-		self.g3_m203slug.reload_speed_mult = 1.20
-		--]]
 	end
 
 	if BeardLib.Utils:ModLoaded("AAC Honey Badger") then

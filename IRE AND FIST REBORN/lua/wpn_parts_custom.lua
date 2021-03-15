@@ -1591,29 +1591,24 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
     end
 
     if BeardLib.Utils:ModLoaded("Ghost Ring Sight") then
-        self.parts.wpn_fps_upg_p226_o_ghostring.stats = deep_clone(nostats)
+        self.parts.wpn_fps_upg_o_ghostring.stats = deep_clone(nostats)
+        self.parts.wpn_fps_upg_o_ghostring_front.stats = deep_clone(nostats)
+        self.parts.wpn_fps_upg_o_ghostring_pis.stats = deep_clone(nostats)
         local r870stocks = {"wpn_fps_shot_r870_s_folding", "wpn_fps_upg_m4_s_standard", "wpn_fps_upg_m4_s_pts", "wpn_fps_upg_m4_s_crane", "wpn_fps_upg_m4_s_mk46", "wpn_fps_upg_m4_s_ubr", "wpn_fps_snp_tti_s_vltor"}
         for a, stock in pairs(r870stocks) do
             self.parts[stock].forbids = self.parts[stock].forbids or {}
-            table.insert(self.parts[stock].forbids, "wpn_fps_upg_870_o_ghostring")
-            table.insert(self.parts[stock].forbids, "wpn_fps_upg_870_o_ghostring_short")
+            table.insert(self.parts[stock].forbids, "wpn_fps_upg_o_ghostring")
         end
 
-        self.parts.wpn_fps_upg_870_o_ghostring.forbids = self.parts.wpn_fps_upg_870_o_ghostring.forbids or {}
-        table.insert(self.parts.wpn_fps_upg_870_o_ghostring.forbids, "wpn_fps_ass_scar_o_flipups_up")
-        self.parts.wpn_fps_upg_870_o_ghostring_short.forbids = self.parts.wpn_fps_upg_870_o_ghostring_short.forbids or {}
-        table.insert(self.parts.wpn_fps_upg_870_o_ghostring_short.forbids, "wpn_fps_ass_scar_o_flipups_up")
+        self.parts.wpn_fps_upg_o_ghostring.forbids = self.parts.wpn_fps_upg_o_ghostring.forbids or {}
+        table.insert(self.parts.wpn_fps_upg_o_ghostring.forbids, "wpn_fps_ass_scar_o_flipups_up")
 
+        -- These were removed by the mod author
+        --[[
         table.insert(self.wpn_fps_shot_m37primary.uses_parts, "wpn_fps_upg_m37_o_ghostring")
         self.wpn_fps_shot_m37primary.adds = self.wpn_fps_shot_m37primary.adds or {}
         self.wpn_fps_shot_m37primary.adds.wpn_fps_upg_m37_o_ghostring = {"inf_sightdummy"}
-
-    -- no worky
-    --[[
-    DelayedCalls:Add("ghostringdelay", delay, function(self, params)
-        tweak_data.weapon.factory.parts.wpn_fps_upg_m37_o_ghostring.stance_mod.wpn_fps_shot_m37primary = {translation = Vector3(0, 0, -0.61)}
-    end)
-    --]]
+        ]]
     end
 
     if BeardLib.Utils:ModLoaded("HX25 Handheld Grenade Launcher") then

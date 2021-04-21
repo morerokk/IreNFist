@@ -1,8 +1,8 @@
 {
-    "name" : "Ire and Fist",
-    "description" : "Unnecessarily large rebalance mod for gratuitously hypermasculine people.",
-    "author" : "Solo Queue Pixy (maintained by Rokk)",
-    "version" : "1.64.2",
+	"name" : "Ire and Fist",
+	"description" : "Unnecessarily large rebalance mod for gratuitously hypermasculine people.",
+	"author" : "Solo Queue Pixy (maintained by Rokk)",
+	"version" : "1.64.3",
 	"image" : "memedaytheheist.png",
 	"priority" : "-1",
 	"blt_version" : 2,

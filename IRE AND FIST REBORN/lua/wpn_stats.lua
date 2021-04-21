@@ -3395,6 +3395,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.stech.CLIP_AMMO_MAX = 20
 	self.stech.AMMO_MAX = 160
 	self.stech.AMMO_PICKUP = self:_pickup_chance(160, 1)
+	self.stech.fire_mode_data.fire_rate = 60/750
 	self:copy_timers("stech", "b92fs")
 
 	self.x_stech.sdesc1 = "caliber_p9x19"
@@ -3402,6 +3403,7 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.x_stech.CLIP_AMMO_MAX = 40
 	self.x_stech.AMMO_MAX = 180
 	self.x_stech.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self.x_stech.fire_mode_data.fire_rate = 60/750
 	self:copy_timers("x_stech", "x_b92fs")
 	
 	-- Hudson H9/Holt
@@ -3427,12 +3429,14 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.czech.stats.concealment = 30
 	self.czech.AMMO_MAX = 144
 	self.czech.AMMO_PICKUP = self:_pickup_chance(144, 1)
+	self.czech.fire_mode_data.fire_rate = 60/1000
 
 	self:inf_init("x_czech", "pistol", nil)
 	self:copy_sdescs("x_czech", "czech", true)
 	self.x_czech.stats.concealment = 30
 	self.x_czech.AMMO_MAX = 180
 	self.x_czech.AMMO_PICKUP = self:_pickup_chance(180, 1)
+	self.x_czech.fire_mode_data.fire_rate = 60/1000
 	self:copy_timers("x_czech", "x_b92fs")
 
 	-- Joceline O/U

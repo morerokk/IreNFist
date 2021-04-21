@@ -570,22 +570,6 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.temple.timers.unequip = 0.7
 	end
 
-	if BeardLib.Utils:ModLoaded("Beretta 93R") then
-		self:inf_init("b93r", "pistol", nil)
-		self.b93r.sdesc1 = "caliber_p9x19"
-		self.b93r.sdesc2 = "action_shortrecoil"
-		--self.b93r.stats.concealment = 29
-		self.b93r.AMMO_MAX = 140
-		self.b93r.AMMO_PICKUP = self:_pickup_chance(140, 1)
-		self.b93r.BURST_FIRE = 3
-		self.b93r.ADAPTIVE_BURST_SIZE = false
-		self.b93r.BURST_FIRE_RATE_MULTIPLIER = 1100/600
-		self.b93r.DELAYED_BURST_RECOIL = false
-		self.b93r.stats.spread = self.b93r.stats.spread - 15
-		self:copy_timers("b93r", "b92fs")
-	end
-
-	-- Yoink, the B93R is now actually in the game
 	self:inf_init("beer", "pistol", nil)
 	self.beer.sdesc1 = "caliber_p9x19"
 	self.beer.sdesc2 = "action_shortrecoil"
@@ -2563,6 +2547,59 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_stats("x_m92fs", "x_b92fs")
 		self:copy_sdescs("x_m92fs", "x_b92fs")
 		self:copy_timers("x_m92fs", "x_pl14")
+	end
+
+	-- MCX Virtus
+	if self.virtus then
+		self:inf_init("virtus", "ar", nil)
+		self.virtus.sdesc1 = "caliber_r556x45"
+		self.virtus.sdesc2 = "action_gasshort"
+		self:copy_stats("virtus", "s552")
+		self:copy_timers("virtus", "s552")
+	end
+
+	-- FMG-9
+	if self.fmg9 then
+		self:inf_init("fmg9", "smg", {"range_short"})
+		self.fmg9.sdesc1 = "caliber_p9x19"
+		self.fmg9.sdesc2 = "action_blowback"
+	end
+
+	-- Akimbo FMG-9
+	if self.x_fmg9 then
+		self:inf_init("x_fmg9", "smg", {"range_short"})
+		self.x_fmg9.sdesc1 = "caliber_p9x19"
+		self.x_fmg9.sdesc2 = "action_blowback"
+	end
+
+	-- Galil ACE 23
+	if self.galilace then
+		self:inf_init("galilace", "ar", nil)
+		self.galilace.sdesc1 = "caliber_r556x45"
+		self.galilace.sdesc2 = "action_gas"
+		self:copy_timers("galilace", "ak5")
+	end
+
+	-- HK433
+	if self.hkg14976 then
+		self:inf_init("hkg14976", "ar", nil)
+		self.hkg14976.sdesc1 = "caliber_r556x45"
+		self.hkg14976.sdesc2 = "action_gas"
+		self:copy_timers("hkg14976", "s552")
+	end
+
+	-- Original Beretta 93R, mistakenly removed earlier
+	if self.b93r then
+		self:inf_init("b93r", "pistol", nil)
+		self:copy_sdescs("b93r", "beer")
+		self:copy_stats("b93r", "beer")
+		self:copy_timers("b93r", "b92fs")
+
+		-- Setup burst values
+		self.b93r.BURST_FIRE = 3
+		self.b93r.ADAPTIVE_BURST_SIZE = false
+		self.b93r.BURST_FIRE_RATE_MULTIPLIER = 1100/600
+		self.b93r.DELAYED_BURST_RECOIL = false
 	end
     
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:

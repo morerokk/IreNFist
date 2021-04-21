@@ -984,7 +984,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
         }
     end
 
-    if BeardLib.Utils:ModLoaded("Beretta 93R") then
+    if BeardLib.Utils:ModLoaded("Beretta 93R") and self.parts.wpn_fps_upg_b93r_comp_93r then
         self.parts.wpn_fps_upg_b93r_comp_93r.stats = {
             value = 0,
             recoil = 2,
@@ -4312,48 +4312,9 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
             concealment = 0
         }
 
-        --self.parts.wpn_fps_upg_scar_m203_grip_magpul_miad.stats = deep_clone(nostats)
-        --self.parts.wpn_fps_upg_scar_m203_grip_magpul_moe.stats = deep_clone(nostats)
-        --self.parts.wpn_fps_upg_scar_m203_grip_vindicator.stats = deep_clone(nostats)
         self.parts.wpn_fps_ass_scar_m203_mag.stats = deep_clone(nostats)
         self.parts.wpn_fps_upg_scar_m203_mag_pull_assist.stats = deep_clone(nostats)
     end
-
-    --[[
-    if BeardLib.Utils:ModLoaded("Kar98k") then
-        self.parts.wpn_fps_snp_kar98k_b_medium.stats = deep_clone(barrel_p1)
-        self.parts.wpn_fps_snp_kar98k_b_short.stats = deep_clone(barrel_p2)
-
-        self.parts.wpn_fps_snp_kar98k_b_geha.stats = deep_clone(nostats)
-        self.parts.wpn_fps_snp_kar98k_body_black.stats = deep_clone(nostats)
-        self.parts.wpn_fps_snp_kar98k_body_1935.stats = deep_clone(nostats)
-        self.parts.wpn_fps_snp_kar98k_body_1935_black.stats = deep_clone(nostats)
-
-        self.parts.wpn_fps_snp_kar98k_b_sniper.custom_stats = snpsilencercustomstats
-        self.parts.wpn_fps_snp_kar98k_b_sniper.stats = deep_clone(silstatssnp)
-
-        self.parts.wpn_fps_snp_kar98k_m_geha.stats = {
-            value = 0,
-            extra_ammo = -2,
-            spread = -30,
-            concealment = 0
-        }
-
-    DelayedCalls:Add("kar98kdelay", delay, function(self, params)
-        tweak_data.weapon.factory.parts.wpn_fps_snp_kar98k_iron_sight.stats = deep_clone(nostats)
-        tweak_data.weapon.factory.parts.wpn_fps_snp_kar98k_iron_sight.stats.zoom = 0
-        tweak_data.weapon.factory.parts.wpn_fps_upg_a_german12.custom_stats = {
-            rays = 10,
-            armor_piercing_add = 0,
-            can_shoot_through_enemy = false, 
-            can_shoot_through_shield = false, 
-            can_shoot_through_wall = false,
-            damage_far_mul = 0.15,
-            damage_near_mul = 0.30,
-        }
-    end)
-    end
-    --]]
 
     if BeardLib.Utils:ModLoaded("SKS") then
         self.parts.wpn_fps_ass_sks_mag.stats = deep_clone(nostats)
@@ -4753,6 +4714,97 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
     if BeardLib.Utils:ModLoaded("Beretta M9 Base") and self.parts.wpn_fps_pis_m92fs_g_ergo then
         -- Ergo grip
         self.parts.wpn_fps_pis_m92fs_g_ergo.stats = deep_clone(nostats)
+    end
+
+    -- MCX Virtus Parts
+    if BeardLib.Utils:ModLoaded("MCX Virtus") and self.parts.wpn_fps_upg_virtus_b_blk then
+        -- Black barrel
+        self.parts.wpn_fps_upg_virtus_b_blk.stats = deep_clone(barrel_m1)
+        -- Long foregrip
+        self.parts.wpn_fps_upg_virtus_fg_long.stats = deep_clone(barrel_m1)
+        -- Short foregrip
+        self.parts.wpn_fps_upg_virtus_fg_short.stats = deep_clone(barrel_p1)
+        -- Silenced barrel/front
+        self.parts.wpn_fps_upg_virtus_fg_quiet.stats = deep_clone(silstatsconc0)
+        self.parts.wpn_fps_upg_virtus_fg_quiet.custom_stats = deep_clone(silencercustomstats)
+        -- Extended stock
+        self.parts.wpn_fps_upg_virtus_s_extended.stats = {
+            value = 2,
+            concealment = -1,
+            recoil = 2
+        }
+        -- Lightweight stock
+        self.parts.wpn_fps_upg_virtus_s_lw.stats = {
+            concealment = 1,
+            recoil = -2
+        }
+        -- No stock
+        self.parts.wpn_fps_upg_virtus_s_nope.stats = {
+            concealment = 2,
+            recoil = -4
+        }
+        -- Taped grip
+        self.parts.wpn_fps_upg_virtus_g_tape.stats = deep_clone(nostats)
+
+        -- Pointy barrel extension
+        self.parts.wpn_fps_upg_virtus_ns_pointy.stats = {
+            value = 1,
+            spread = 5,
+            concealment = -1
+        }
+
+        -- The other barrel extension thingy
+        self.parts.wpn_fps_upg_virtus_ns_dos.stats = {
+            value = 1,
+            spread = 2,
+            recoil = 1,
+            concealment = -1
+        }
+    end
+
+    -- Galil ACE 23 parts
+    if BeardLib.Utils:ModLoaded("Galil ACE 23") and self.parts.wpn_fps_upg_galilace_stock_extended then
+        -- Extended stock
+        self.parts.wpn_fps_upg_galilace_stock_extended.stats = {
+            concealment = -1,
+            recoil = 1
+        }
+        -- Folded stock
+        self.parts.wpn_fps_upg_galilace_stock_folding.stats = {
+            concealment = 1,
+            recoil = -1
+        }
+        -- No stock
+        self.parts.wpn_fps_upg_galilace_stock_removed.stats = {
+            value = 1,
+            concealment = 2,
+            recoil = -2
+        }
+    end
+
+    -- HK433 parts
+    if BeardLib.Utils:ModLoaded("HK HK433") and self.parts.wpn_fps_ass_hkg14976_b_11in then
+        -- Short barrel
+        self.parts.wpn_fps_ass_hkg14976_b_11in.stats = deep_clone(barrel_p1)
+        -- Long barrel
+        self.parts.wpn_fps_ass_hkg14976_b_145in.stats = deep_clone(barrel_m1)
+        -- Suppressed barrel
+        self.parts.wpn_fps_ass_hkg14976_b_supp.stats = deep_clone(silstatsconc2)
+        self.parts.wpn_fps_ass_hkg14976_b_supp.custom_stats = deep_clone(silencercustomstats)
+        -- Long handguard
+        self.parts.wpn_fps_ass_hkg14976_hg_long.stats = deep_clone(nostats)
+        -- Marksman stock
+        self.parts.wpn_fps_ass_hkg14976_s_marksman.stats = {
+            value = 1,
+            concealment = -1,
+            recoil = 1
+        }
+        -- Telescopic stock
+        self.parts.wpn_fps_ass_hkg14976_s_telescopic.stats = {
+            value = 1,
+            concealment = 1,
+            recoil = -1
+        }
     end
 
     -- HOW TO ADD CUSTOM WEAPON MOD SUPPORT

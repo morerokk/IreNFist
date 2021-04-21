@@ -122,21 +122,21 @@ function PlayerIncapacitated:_get_unit_intimidation_action(intimidate_enemies, i
 	if intimidate_civilians then
 		local civilians = managers.enemy:all_civilians()
 		for u_key, u_data in pairs(civilians) do
-            local dist = intimidate_range_civ
-            local prio = 100
-            self:_add_unit_to_char_table(char_table, u_data.unit, unit_type_civilian, dist, false, false, prio, my_head_pos, cam_fwd)
+			local dist = intimidate_range_civ
+			local prio = 100
+			self:_add_unit_to_char_table(char_table, u_data.unit, unit_type_civilian, dist, false, false, prio, my_head_pos, cam_fwd)
 		end
-        
-        if IreNFist._converts then
-            for u_key, u_data in pairs(IreNFist._converts) do
+		
+		if IreNFist._converts then
+			for u_key, u_data in pairs(IreNFist._converts) do
 				-- Argh, more crash checks
 				if u_data and u_data.alive and u_data:alive() and u_data.movement and u_data:movement() then
 					if not u_data:movement():cool() and not u_data:anim_data().long_dis_interact_disabled then
 						self:_add_unit_to_char_table(char_table, u_data, unit_type_enemy, highlight_range, true, false, 100, my_head_pos, cam_fwd)
 					end
 				end
-            end
-        end 
+			end
+		end 
 	end
 
 	if intimidate_teammates and not managers.groupai:state():whisper_mode() then

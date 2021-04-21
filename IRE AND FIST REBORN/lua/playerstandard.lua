@@ -3,11 +3,11 @@ dofile(ModPath .. "infcore.lua")
 Hooks:Add("MenuManagerInitialize", "mmi_inf", function(menu_manager)
 	-- custom keybind
 	local mod
-    for _, m in pairs(BLT.Mods:Mods()) do
-        if m:GetName() == "Hold The Key" then
-            mod = m
-            break
-        end
+	for _, m in pairs(BLT.Mods:Mods()) do
+		if m:GetName() == "Hold The Key" then
+			mod = m
+			break
+		end
 	end
 	if mod and mod:IsEnabled() then
 		HoldTheKey:Add_Keybind("inf_dash")
@@ -2278,7 +2278,7 @@ Hooks:PostHook(PlayerStandard, "_end_action_ducking", "slide_stopducking", funct
 end)
 
 Hooks:PostHook(PlayerStandard, "_determine_move_direction", "slide_movedir", function(self)
-    if self._is_sliding then
+	if self._is_sliding then
 		if self._move_dir then
 			local slide_angle = math.atan2(self._slide_dir.y, self._slide_dir.x)
 			local move_angle = math.atan2(self._move_dir.y, self._move_dir.x)

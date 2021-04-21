@@ -130,9 +130,9 @@ function ExplosionManager:detect_and_give_dmg(params)
 		local character = hit_body:unit():character_damage() and hit_body:unit():character_damage().damage_explosion and not hit_body:unit():character_damage():dead()
 		local apply_dmg = hit_body:extension() and hit_body:extension().damage
 		units_to_push[hit_body:unit():key()] = hit_body:unit()
-        local dir, len, damage, ray_hit, damage_character = nil
+		local dir, len, damage, ray_hit, damage_character = nil
 
-        local shield_slotmask = managers.slot:get_mask("enemy_shield_check")
+		local shield_slotmask = managers.slot:get_mask("enemy_shield_check")
 
 		if character and not characters_hit[hit_body:unit():key()] then
 			if params.no_raycast_check_characters then
@@ -140,12 +140,12 @@ function ExplosionManager:detect_and_give_dmg(params)
 				damage_character = true
 				characters_hit[hit_body:unit():key()] = true
 			else
-                for i_splinter, s_pos in ipairs(splinters) do
-                    -- I have absolutely no clue what -17 is, some arcane bit magic probably
-                    -- Either way we'll do our own raycast and check for just shields
-                    ray_hit = not World:raycast("ray", s_pos, hit_body:center_of_mass(), "slot_mask", slotmask - 17, "ignore_unit", ignore_units, "report")
-                    
-                    local shield_hit = World:raycast("ray", hit_pos, hit_body:center_of_mass(), "slot_mask", shield_slotmask)
+				for i_splinter, s_pos in ipairs(splinters) do
+					-- I have absolutely no clue what -17 is, some arcane bit magic probably
+					-- Either way we'll do our own raycast and check for just shields
+					ray_hit = not World:raycast("ray", s_pos, hit_body:center_of_mass(), "slot_mask", slotmask - 17, "ignore_unit", ignore_units, "report")
+					
+					local shield_hit = World:raycast("ray", hit_pos, hit_body:center_of_mass(), "slot_mask", shield_slotmask)
 
 					if shield_hit then
 						shield_stumbled = true

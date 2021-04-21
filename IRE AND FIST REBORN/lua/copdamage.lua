@@ -334,13 +334,13 @@ end
 
 -- If a converted cop dies, unregister them from the converts list.
 Hooks:PostHook(CopDamage, "_on_death", "InF_SkillOverhaulRemoveJoker", function(self)
-    if self._unit:unit_data().is_convert and IreNFist._converts then
-        for i, unit in pairs(IreNFist._converts) do
-            if unit == self._unit then
-                table.remove(IreNFist._converts, i)
-            end
-        end
-    end
+	if self._unit:unit_data().is_convert and IreNFist._converts then
+		for i, unit in pairs(IreNFist._converts) do
+			if unit == self._unit then
+				table.remove(IreNFist._converts, i)
+			end
+		end
+	end
 end)
 
 Hooks:PreHook(CopDamage, "damage_bullet", "inf_copdamage_damagebullet_stopcrashifnoteam", function(self)

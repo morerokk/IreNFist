@@ -5,7 +5,7 @@ local mvec_to = Vector3()
 --[[
 -- Unless this weapon should follow standard logic...
 function RaycastWeaponBase:_soundfix_should_play_normal()
-    local name_id = self:get_name_id()
+	local name_id = self:get_name_id()
 	--conditions for firesounds to play in normal method:
 	--1.lacking a singlefire sound
 	--2.currently in gadget override such as underbarrel mode
@@ -13,35 +13,35 @@ function RaycastWeaponBase:_soundfix_should_play_normal()
 	--4. is NPC. Not sure why this started crashing now though, since that was fixed in v1 of AFSF2
 
 	--Using the saiga is a special case for unique auto-fire method using looped "start_shooting" sound function
-    if not self._setup.user_unit == managers.player:player_unit() or (tweak_data.weapon[name_id].sounds.fire_single == nil and not (name_id == "saiga" or name_id == "basset")) or self:gadget_overrides_weapon_functions() or name_id == "flamethrower_mk2" or name_id == "m134" or name_id == "mg42" or name_id == "saw" or name_id == "saw_secondary" or tweak_data.weapon[name_id].no_sound_fix == true then
+	if not self._setup.user_unit == managers.player:player_unit() or (tweak_data.weapon[name_id].sounds.fire_single == nil and not (name_id == "saiga" or name_id == "basset")) or self:gadget_overrides_weapon_functions() or name_id == "flamethrower_mk2" or name_id == "m134" or name_id == "mg42" or name_id == "saw" or name_id == "saw_secondary" or tweak_data.weapon[name_id].no_sound_fix == true then
 		return true
-    end
-    return false
+	end
+	return false
 end
 
 
 -- ...don't play a sound conventionally...
 local original_fire_sound = RaycastWeaponBase._fire_sound
 function RaycastWeaponBase:_fire_sound()
-    if self:_soundfix_should_play_normal() then
-        original_fire_sound(self)
-    end
+	if self:_soundfix_should_play_normal() then
+		original_fire_sound(self)
+	end
 end
 
 -- ...and instead play the single fire noise here
 local original_fire = RaycastWeaponBase.fire
 function RaycastWeaponBase:fire(...)
-    local result = original_fire(self, ...)
-    if not self:_soundfix_should_play_normal() and result then
-        self:play_tweak_data_sound("fire_single", "fire")
-    end
+	local result = original_fire(self, ...)
+	if not self:_soundfix_should_play_normal() and result then
+		self:play_tweak_data_sound("fire_single", "fire")
+	end
 
 	-- af2011
 	if self._double_fire then
 		original_fire(self, ...)
 	end
  
-    return result
+	return result
 end
 
 
@@ -325,7 +325,7 @@ end
 -- fire, but twice
 local original_fire = RaycastWeaponBase.fire
 function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
-    local result = original_fire(self, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
+	local result = original_fire(self, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 
 	-- af2011/hx25
 	if self._instant_multishot and self._instant_multishot > 1 then
@@ -367,7 +367,7 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 		end
 	end
  
-    return result
+	return result
 end
 
 function RaycastWeaponBase:fire_use_no_ammo(from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)

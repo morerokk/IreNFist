@@ -12,7 +12,7 @@ if level and string_startswith(level, "skm_") then
 end
 
 if InFmenu.settings.assaulttweakstype ~= 2 then
-    return
+	return
 end
 
 --[[

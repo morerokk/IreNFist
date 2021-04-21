@@ -12,7 +12,7 @@ if level and string_startswith(level, "skm_") then
 end
 
 if InFmenu.settings.assaulttweakstype ~= 3 then
-    return
+	return
 end
 
 -- The spawngroup variety in vanilla is even worse than I thought, 
@@ -149,7 +149,7 @@ end)
 -- New difficulties should supplement forces and not replace them in a sea of grey
 -- Also the Blue SWAT shotgunners just look sick and it would be a waste to restrict them to lower difficulties
 Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "inf_groupaitweak_initunitcategories_beta", function(self, difficulty_index)
-    -- Forgot why this was necessary, random missing halloween cop
+	-- Forgot why this was necessary, random missing halloween cop
 	table.insert(self.unit_categories.CS_cop_C45_R870.unit_types.zombie, Idstring("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"))
 
 	-- Overkill made yet another typo which crashes the game on Federales heists, fixing it by setting the Federales FBI groups to be identical to America
@@ -526,7 +526,7 @@ end)
 -- SPAWNGROUPS
 -- The big one
 Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_initenemyspawngroups_beta", function(self, difficulty_index)
-    -- First of all, fuck off
+	-- First of all, fuck off
 	self.enemy_spawn_groups = {}
 	
 	-- Huge list of tactics, blabla
@@ -800,7 +800,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 		end
 	end
 
-    -- Mostly copied from U87 but it works
+	-- Mostly copied from U87 but it works
 	self.enemy_spawn_groups.CS_defend_a = {
 		amount = {3, 4},
 		spawn = {

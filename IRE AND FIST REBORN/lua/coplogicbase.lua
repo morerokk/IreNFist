@@ -28,7 +28,7 @@ end
 
 -- Debug
 if not InFmenu.settings.debug then
-    return
+	return
 end
 
 function CopLogicBase.add_delayed_clbk(internal_data, id, clbk, exec_t)

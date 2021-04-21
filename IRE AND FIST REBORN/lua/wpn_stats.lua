@@ -4247,11 +4247,11 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.saw_secondary.recoil_table = InFmenu.rtable.norecoil
 
 
-    -- SECONDARY AKIMBOS
-    -- These mostly work already through main.xml, but they need stats fixes
-    
-    -- Table of original akimbos as key, and new akimbos as value
-    local primary_to_secondary_akimbos = {
+	-- SECONDARY AKIMBOS
+	-- These mostly work already through main.xml, but they need stats fixes
+	
+	-- Table of original akimbos as key, and new akimbos as value
+	local primary_to_secondary_akimbos = {
 		x_pl14 = "x_pl14_secondary",
 		x_sparrow = "x_sparrow_secondary",
 		x_legacy = "x_legacy_secondary",
@@ -4262,9 +4262,9 @@ function WeaponTweakData:_init_new_weapons(...)
 		x_holt = "x_holt_secondary"
 	}
 	
-    -- Normally the ammo akimbos have is (primary ammo)/1.8
-    -- But max ammo doesn't quite match up with mag sizes most of the time, let's fix that
-    local secondary_akimbo_ammo_overrides = {
+	-- Normally the ammo akimbos have is (primary ammo)/1.8
+	-- But max ammo doesn't quite match up with mag sizes most of the time, let's fix that
+	local secondary_akimbo_ammo_overrides = {
 		x_sparrow_secondary = 120,
 		x_g17_secondary = 121, -- Aargh
 		x_b92fs_secondary = 120,
@@ -4273,11 +4273,11 @@ function WeaponTweakData:_init_new_weapons(...)
 		x_jowi_secondary = 120,
 		x_packrat_secondary = 120,
 		x_holt_secondary = 120
-    }
+	}
 
 	-- Copy name/description and fix some stats automagically
-    -- This will save us a ton of unnecessary XML work
-    for pri, sec in pairs(primary_to_secondary_akimbos) do
+	-- This will save us a ton of unnecessary XML work
+	for pri, sec in pairs(primary_to_secondary_akimbos) do
 		self:inf_init(sec, "pistol", nil)
 		self:copy_stats(sec, pri)
 		self:copy_sdescs(sec, pri)
@@ -4293,37 +4293,37 @@ function WeaponTweakData:_init_new_weapons(...)
 		local max_ammo = secondary_akimbo_ammo_overrides[sec] or math.ceil(self[pri].AMMO_MAX / 1.6)
 		self[sec].AMMO_MAX = max_ammo
 		self[sec].AMMO_PICKUP = self:_pickup_chance(120, 1)
-    end
+	end
 
 
 
 	-- CUSTOM WEAPONS
 
-    -- With debug on, execute the function normally so it crashes hard if something goes wrong
+	-- With debug on, execute the function normally so it crashes hard if something goes wrong
 	-- With debug off, silently eat any errors. Custom weapon stats might not work correctly.
 	-- I'm so done with people's entire games crashing over an update to a custom weapon mod
-    if InFmenu.settings.debug then
-        self:_inf_init_custom_weapons(lmglist)
-    else
-        local successful, errmessage = pcall(WeaponTweakData._inf_init_custom_weapons, self, lmglist)
-        if not successful then
-            log("[InF] FATAL ERROR while loading custom weapon stats:")
-            if not errmessage then
-                errmessage = "(Unable to obtain error message)"
-            end
+	if InFmenu.settings.debug then
+		self:_inf_init_custom_weapons(lmglist)
+	else
+		local successful, errmessage = pcall(WeaponTweakData._inf_init_custom_weapons, self, lmglist)
+		if not successful then
+			log("[InF] FATAL ERROR while loading custom weapon stats:")
+			if not errmessage then
+				errmessage = "(Unable to obtain error message)"
+			end
 			log(errmessage)
 
-            -- Open a message dialog box in the menu, notifying the user that an error occurred trying to intitialize weapons
-            -- Don't just leave them hanging
-            Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_weapontweak_failedinit", function(menu_manager, nodes)            
-                QuickMenu:new("IREnFIST - Error initializing custom weapons", "An error occurred while trying to initialize support for custom weapons. Some custom weapons may have incorrect stats.\n\nIt is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs).", {
-                    [1] = {
-                        text = "OK",
-                        is_cancel_button = true
-                    }
-                }):show()
-            end)
-        end
+			-- Open a message dialog box in the menu, notifying the user that an error occurred trying to intitialize weapons
+			-- Don't just leave them hanging
+			Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_weapontweak_failedinit", function(menu_manager, nodes)            
+				QuickMenu:new("IREnFIST - Error initializing custom weapons", "An error occurred while trying to initialize support for custom weapons. Some custom weapons may have incorrect stats.\n\nIt is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs).", {
+					[1] = {
+						text = "OK",
+						is_cancel_button = true
+					}
+				}):show()
+			end)
+		end
 	end
 	
 	-- The text guide on how to add custom weapon support was moved to the bottom of wpn_stats_custom.lua

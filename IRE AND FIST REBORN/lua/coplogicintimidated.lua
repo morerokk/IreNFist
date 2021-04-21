@@ -3,7 +3,7 @@ dofile(ModPath .. "infcore.lua")
 -- Debug only
 -- Debugging a weird crash
 if not InFmenu.settings.debug then
-    return
+	return
 end
 
 function CopLogicIntimidated._add_delayed_rescue_SO(data, my_data)

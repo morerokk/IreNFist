@@ -8,10 +8,10 @@ end
 -- And yes, this really is yet another "cops spawn with no team" crash.
 local coplogictravel_enter_orig = CopLogicTravel.enter
 function CopLogicTravel.enter(data, new_logic_name, enter_params)
-    if not data.team then
-        -- Calling movement:team() will also force-initialize the team if it doesn't exist yet
-        data.team = data.unit:movement():team()
-    end
+	if not data.team then
+		-- Calling movement:team() will also force-initialize the team if it doesn't exist yet
+		data.team = data.unit:movement():team()
+	end
 
-    return coplogictravel_enter_orig(data, new_logic_name, enter_params)
+	return coplogictravel_enter_orig(data, new_logic_name, enter_params)
 end

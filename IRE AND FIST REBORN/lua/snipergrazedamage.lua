@@ -1,7 +1,7 @@
 dofile(ModPath .. "infcore.lua")
 
 if IreNFist.mod_compatibility.sso then
-    return
+	return
 end
 
 -- Note: temporarily on hold until I can figure out these three things:
@@ -15,30 +15,30 @@ end
 -- Graze is kinda dumb anyway, SSO's Ricochet is cooler
 local function weaponUnitCanHaveGraze(weapon_unit)
 	if weapon_unit:base():is_category("snp") then
-        return true
-    end
+		return true
+	end
 
-    if weapon_unit:base():is_category("shotgun") then
-        local weapontweak = weapon_unit:base():weapon_tweak_data()
-        -- Disallow anything that can have full auto
+	if weapon_unit:base():is_category("shotgun") then
+		local weapontweak = weapon_unit:base():weapon_tweak_data()
+		-- Disallow anything that can have full auto
 		if not weapontweak or not weapon_unit:base().can_toggle_firemode or weapon_unit:base():can_toggle_firemode() or weapontweak.FIRE_MODE ~= "single" then
-            return false
-        end
+			return false
+		end
 
-        -- Disallow anything with more than 1 ray
+		-- Disallow anything with more than 1 ray
 		if weapon_unit:base()._rays ~= 1 then
-            return false
-        end
+			return false
+		end
 
-        -- I don't think this ever happens without custom weapons, but also disallow akimbo shotguns
+		-- I don't think this ever happens without custom weapons, but also disallow akimbo shotguns
 		if weapon_unit:base():is_category("akimbo") then
-            return false
-        end
+			return false
+		end
 
-        return true
-    end
+		return true
+	end
 
-    return false
+	return false
 end
 
 -- Allow graze on slug pump shotguns (not implemented, might not be a good idea)
@@ -57,8 +57,8 @@ function SniperGrazeDamage:on_weapon_fired(weapon_unit, result)
 	]]
 
 	if not weapon_unit:base():is_category("snp") then
-        return
-    end
+		return
+	end
 
 	if weapon_unit ~= managers.player:equipped_weapon_unit() then
 		return
@@ -81,9 +81,9 @@ function SniperGrazeDamage:on_weapon_fired(weapon_unit, result)
 
 	for i, hit in ipairs(result.rays) do
 		local is_turret = hit.unit:in_slot(sentry_mask)
-        local is_ally = hit.unit:in_slot(ally_mask)
-        -- Don't trigger graze on a civilian
-        local is_civilian = managers.enemy:is_civilian(hit.unit)
+		local is_ally = hit.unit:in_slot(ally_mask)
+		-- Don't trigger graze on a civilian
+		local is_civilian = managers.enemy:is_civilian(hit.unit)
 
 		local is_valid_hit = hit.damage_result and hit.damage_result.attack_data and true or false
 
@@ -104,12 +104,12 @@ function SniperGrazeDamage:on_weapon_fired(weapon_unit, result)
 
 	if best_damage == 0 then
 		return
-    end
-    
+	end
+	
 	-- Cut shotgun slug graze damage in half
 	--[[
-    if weapon_unit:base():is_category("shotgun") then
-        best_damage = best_damage * 0.5
+	if weapon_unit:base():is_category("shotgun") then
+		best_damage = best_damage * 0.5
 	end
 	]]
 

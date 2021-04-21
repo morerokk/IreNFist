@@ -36,13 +36,13 @@ local pivot_head_translation = nil
 local pivot_head_rotation = nil
 
 function WeaponTweakData:_inf_init_custom_weapons(lmglist)
-    -- STUFF FOR CUSTOM WEAPONs GOES HERE
-    -- This stuff is all wrapped in a pcall if debug is disabled, if anything goes wrong it won't crash your whole game.
-    -- NOTE THAT THIS MEANS ERRORS ARE BASICALLY EATEN unless "debug" mode is turned off in the InF options.
-    -- When adding your own support, ALWAYS have debug enabled so it crashes early and crashes hard.
-    -- Any errors in this file means that custom weapons won't have proper stats,
-    -- and this might very rarely cause you to lose some custom weapons you have in your inventory 
-    -- if something would be "wrong with them".
+	-- STUFF FOR CUSTOM WEAPONs GOES HERE
+	-- This stuff is all wrapped in a pcall if debug is disabled, if anything goes wrong it won't crash your whole game.
+	-- NOTE THAT THIS MEANS ERRORS ARE BASICALLY EATEN unless "debug" mode is turned off in the InF options.
+	-- When adding your own support, ALWAYS have debug enabled so it crashes early and crashes hard.
+	-- Any errors in this file means that custom weapons won't have proper stats,
+	-- and this might very rarely cause you to lose some custom weapons you have in your inventory 
+	-- if something would be "wrong with them".
 	-- You can just rebuy them of course, but still.
 
 	-- Vikhr/SR Einheri
@@ -2533,7 +2533,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_sdescs("x_meusoc", "x_1911")
 		self:copy_stats("x_meusoc", "x_1911")
 		self:copy_timers("x_meusoc", "x_pl14")
-    end
+	end
 
 	-- Beretta M9
 	if self.m92fs then
@@ -2601,7 +2601,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.b93r.BURST_FIRE_RATE_MULTIPLIER = 1100/600
 		self.b93r.DELAYED_BURST_RECOIL = false
 	end
-    
+	
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)
 	-- Then do something like this for pistols:
@@ -2685,8 +2685,8 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	]]
 	-- Don't directly check for WeaponLib or CAP's existence. There might be other mods which will supersede WeaponLib/CAP, but still offer the same function.
 	-- RotationCAP should probably be fine to use instead of Rotation, if you even need it.
-    -- Don't push elements to the attachment_points table, the SetupAttachmentPoint function might do something extra either now or in the future
-    
-    -- Finally, please use a code editor that can spot and highlight syntax errors for you. Test it out and make sure it catches errors.
-    -- Visual Studio Code has a few addons that merely highlight Lua syntax, but there are others that also highlight syntax errors. Get one of those.
+	-- Don't push elements to the attachment_points table, the SetupAttachmentPoint function might do something extra either now or in the future
+	
+	-- Finally, please use a code editor that can spot and highlight syntax errors for you. Test it out and make sure it catches errors.
+	-- Visual Studio Code has a few addons that merely highlight Lua syntax, but there are others that also highlight syntax errors. Get one of those.
 end

@@ -2370,6 +2370,14 @@ end
 	}
 	
 
+	-- QBU-88 parts
+	-- Short barrel
+	self.parts.wpn_fps_snp_qbu88_b_short.stats = deep_clone(barrel_p1)
+	-- Long barrel
+	self.parts.wpn_fps_snp_qbu88_b_long.stats = deep_clone(barrel_m1)
+	-- Extended mag
+	self.parts.wpn_fps_snp_qbu88_m_extended.stats = deep_clone(mag_150)
+	self.parts.wpn_fps_snp_qbu88_m_extended.stats.extra_ammo = 5
 
 	-- CMP PARTS
 	-- Extended Magazine

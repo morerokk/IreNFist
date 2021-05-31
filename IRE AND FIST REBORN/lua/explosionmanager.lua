@@ -246,7 +246,10 @@ function ExplosionManager:detect_and_give_dmg(params)
 						attack_dir = Vector3(0,1,0)
 					}
 
-					hit_unit:character_damage():damage_melee(action_data)
+					-- Check if the unit is valid and can be damaged with melee, sometimes units without a damage_melee function still sneak into here
+					if hit_unit and hit_unit.character_damage and hit_unit:character_damage() and hit_unit:character_damage().damage_melee then
+						hit_unit:character_damage():damage_melee(action_data)
+					end
 				end
 			end
 		end

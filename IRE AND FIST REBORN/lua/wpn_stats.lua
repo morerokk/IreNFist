@@ -1665,12 +1665,14 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.g3.stats.concealment = 19
 	self.g3.fire_mode_data.fire_rate = 60/600
 	-- who sold us this animation, the cops?
-	self.g3.not_empty_reload_speed_mult = 0.90
+	self.g3.not_empty_reload_speed_mult = 1.1
 	self.g3.timers.reload_not_empty = 1.4
 	self.g3.timers.reload_not_empty_end = 0.6 -- 2.22
-	self.g3.empty_reload_speed_mult = 1.0
+	self.g3.empty_reload_speed_mult = 1.2
 	self.g3.timers.reload_empty = 1.9
 	self.g3.timers.reload_empty_end = 1.1 -- 3.00
+	-- NOTE: changed G3 magazine size to 20 to match IRL. Improved reload speed as a result. Has 30rnd mag weaponmod that makes it like before.
+	self.g3.CLIP_AMMO_MAX = 20
 	self:apply_standard_bipod_stats("g3")
 	self.g3.custom_bipod = true
 	self.g3.bipod_weapon_translation = Vector3(-3, -5, -4)
@@ -1684,10 +1686,10 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.g3.use_custom_anim_state = true
 	if checkfolders("old g3 animation") then
 		Hooks:RemovePostHook("g3animsrevertinit")
-		self.g3.not_empty_reload_speed_mult = 1.60
+		self.g3.not_empty_reload_speed_mult = 1.80
 		self.g3.timers.reload_not_empty = 2.5
 		self.g3.timers.reload_not_empty_end = 1.0 -- 2.19
-		self.g3.empty_reload_speed_mult = 1.55
+		self.g3.empty_reload_speed_mult = 1.75
 		self.g3.timers.reload_empty = 3.4
 		self.g3.timers.reload_empty_end = 1.1 -- 2.90
 	end
@@ -1702,12 +1704,14 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.asval.stats.concealment = 23
 	self.asval.fire_mode_data.fire_rate = 60/900
 	self.asval.auto.fire_rate = 60/900
-	self.asval.not_empty_reload_speed_mult = 1.40
+	self.asval.not_empty_reload_speed_mult = 1.6
 	self.asval.timers.reload_not_empty = 2.5
 	self.asval.timers.reload_not_empty_end = 0.50 -- 2.14
-	self.asval.empty_reload_speed_mult = 1.55
+	self.asval.empty_reload_speed_mult = 1.75
 	self.asval.timers.reload_empty = 3.2
 	self.asval.timers.reload_empty_end = 0.70 -- 2.52
+	-- NOTE: lowered the magazine size on the AS val but increased the reload speed mults by about an additive 0.2x
+	self.asval.CLIP_AMMO_MAX = 20
 	--self.asval.price = 500*1000
 	if self.SetupAttachmentPoint then
 		self:SetupAttachmentPoint("asval", {
@@ -1750,7 +1754,21 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.contraband_m203.timers.reload_empty_end = 0.40
 	--self.contraband.price = 200*1000
 
+	-- KETCHNOV Byk-1 (Groza)
+	self:inf_init("groza", "ar", {"medium", "has_gl"})
+	self.groza.sdesc1 = "caliber_r9x39"
+	self.groza.sdesc2 = "action_gas"
+	self:copy_timers("groza", "l85a2")
+	-- Groza underbarrel
+	self.groza_underbarrel.AMMO_MAX = 2
+	self.groza_underbarrel.AMMO_PICKUP = {1338, 15}
+	self.groza_underbarrel.timers.reload_not_empty = 2.35
+	self.groza_underbarrel.timers.reload_not_empty_end = 0.40
+	self.groza_underbarrel.timers.reload_empty = 2.35
+	self.groza_underbarrel.timers.reload_empty_end = 0.40
+	
 
+	-- Galil
 	self.galil.sdesc1 = "caliber_r762x51"
 	self.galil.sdesc2 = "action_gas"
 	self.galil.stats.concealment = 20
@@ -2212,6 +2230,14 @@ function WeaponTweakData:_init_new_weapons(...)
 		})
 	end
 
+	-- QBU-88 sniper (Kang Arms X1 Sniper Rifle)
+	self:inf_init("qbu88", "ar", {"dmr"})
+	self:copy_stats("qbu88", "siltstone")
+	self:copy_timers("qbu88", "siltstone")
+	self.qbu88.sdesc1 = "caliber_r58x42"
+	self.qbu88.sdesc2 = "action_gas"
+
+	-- Tec-9
 	self.tec9.sdesc1 = "caliber_p9x19"
 	self.tec9.sdesc2 = "action_blowback"
 	self.tec9.FIRE_MODE = "single"
@@ -2896,6 +2922,22 @@ function WeaponTweakData:_init_new_weapons(...)
 	self:copy_sdescs("x_vityaz", "vityaz", true)
 	self:copy_stats("x_vityaz", "vityaz", true)
 	self:copy_timers("x_vityaz", "vityaz", true)
+
+	
+	-- Miyaka 10 (Minebea PM-9) SMG
+	self:inf_init("pm9", "smg", {"range_short"})
+	self:copy_timers("pm9", "baka")
+	self:copy_stats("pm9", "baka")
+	self.pm9.fire_mode_data.fire_rate = 60/1100
+	self.pm9.sdesc1 = "caliber_p9x19"
+	self.pm9.sdesc2 = "action_blowback"
+
+	self:inf_init("x_pm9", "smg", {"range_short"})
+	self:copy_timers("x_pm9", "x_baka")
+	self:copy_stats("x_pm9", "x_baka")
+	self.x_pm9.fire_mode_data.fire_rate = 60/1100
+	self.x_pm9.sdesc1 = "caliber_p9x19"
+	self.x_pm9.sdesc2 = "action_blowback"
 
 
 	self.b92fs.sdesc1 = "caliber_p9x19"

@@ -2027,7 +2027,8 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_schakal_m_short_desc = "The other side of the coin. A little embarrassing to look at.",
 	bm_wp_schakal_vg_surefire = "Anubis Grip",
 	bm_wp_schakal_vg_surefire_desc = "Guidance. For the dead or to the soon-to-be, you'll have to find out.",
-
+	-- Silentgear Silencer
+	bm_wp_schakal_ns_silencer_desc = silstr,
 
 	-- CR 805B
 	bm_w_hajk_desc = "Czech assault rifle developed to replace a Cold War rifle that resembled but was internally different from the AK.762.",
@@ -2572,6 +2573,19 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_shuno_b_short = "Short Barrel",
 	bm_wp_shuno_b_short_desc = "What do you have to lose besides a few pounds?\n\n-40% spin-up/down time",
 
+	-- Groza
+	bm_w_groza = "Groza",
+	bm_w_groza_desc = "Bullpup special operations weapon. Although based on the Krinkov, no 5.45x39mm variant went into production due to a lack of interest in smaller intermediate calibers.\n\nThis variant comes fitted with an underbarrel grenade launcher, courtesy of Gage.",
+
+	-- Minebea PM-9
+	bm_w_pm9 = "Minebea PM-9",
+	bm_w_pm9_desc = "The official submachine gun used by the JSDF, inspired by the Israeli IMI Mini-Uzi.",
+	bm_w_x_pm9 = "Akimbo Minebea PM-9",
+	bm_w_x_pm9_desc = "When life knocks you down seven times, stand up for round eight.",
+
+	-- QBU-88 chink sniper
+	bm_w_qbu88 = "QBU-88",
+	bm_w_qbu88_desc = "Designated Marksman Rifle for the Chinese People's Liberation Army.\n\nThe initial design for this sniper rifle was copied from the Russian SVD, and was prone to failure due to poor craftsmanship. After several iterations, the design became streamlined enough to be put to use by Chinese infantry and special forces.",
 
 	-- OVE9000 SAW
 	bm_w_saw_desc = "Powered circular saw. Though intended for cutting open locks, the blades will also cut through armor and brains with disgusting ease.",

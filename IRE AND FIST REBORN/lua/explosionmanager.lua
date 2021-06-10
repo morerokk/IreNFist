@@ -235,7 +235,7 @@ function ExplosionManager:detect_and_give_dmg(params)
 					-- Strike them with a low damage high knockdown melee attack
 					local action_data = {
 						damage_effect = 1,
-						damage = 0,
+						damage = 1,
 						variant = "counter_spooc",
 						attacker_unit = player_unit,
 						col_ray = {

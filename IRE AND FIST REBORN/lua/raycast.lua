@@ -1126,13 +1126,15 @@ function InstantBulletBase:give_impact_damage(col_ray, weapon_unit, user_unit, d
 		action_data.name_id = "taser"
 		action_data.charge_lerp_value = 0	
 		
-		defense_data = hit_unit and hit_unit:character_damage().damage_tase and hit_unit:character_damage():damage_melee(action_data)
-		if hit_unit and hit_unit:character_damage().damage_tase then
+		defense_data = hit_unit and hit_unit:character_damage().damage_tase and hit_unit:character_damage().damage_melee and hit_unit:character_damage():damage_melee(action_data)
+		if defense_data and hit_unit and hit_unit:character_damage().damage_tase then
 			action_data.damage = 0
 			action_data.damage_effect = nil
 			hit_unit:character_damage():damage_tase(action_data)
+			return defense_data
+		else
+			return instantbullet_give_impact_dmg_orig(self, col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
 		end
-		return defense_data
 	else
 		return instantbullet_give_impact_dmg_orig(self, col_ray, weapon_unit, user_unit, damage, armor_piercing, shield_knock, knock_down, stagger, variant)
 	end

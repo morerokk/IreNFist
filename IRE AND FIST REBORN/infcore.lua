@@ -158,20 +158,17 @@ if not IreNFist then
         log("[InF] PDTH HUD Reborn compatibility enabled")
         IreNFist.mod_compatibility.pdthhud = true
     end
-    -- Auto-Fire Sound Fix 2
-    -- Currently not necessary in InF and therefore not supported anymore either
-    --[[
-    local afsf_compat = BLT.Mods:GetModByName("Auto-Fire Sound Fix")
-    if afsf_compat and afsf_compat:IsEnabled() then
-        log("[InF] Auto Fire Sound Fix compatibility enabled")
-        IreNFist.mod_compatibility.afsf_compat = true
-    end
-    ]]
     -- Vanilla HUD Plus
     local vanillahudplus_compat = BLT.Mods:GetModByName("VanillaHUDPlus")
     if vanillahudplus_compat and vanillahudplus_compat:IsEnabled() then
         log("[InF] Vanilla HUD Plus compatibility enabled")
         IreNFist.mod_compatibility.vanillahudplus = true
+    end
+    -- Goonmod shop standalone
+    local goonmodshop_compat = BLT.Mods:GetModByName("Extended Continental Coin Shop Goonmod Standalone")
+    if (goonmodshop_compat and goonmodshop_compat:IsEnabled()) or _G.GageModShop then
+        log("[InF] Goonmod shop standalone compatibility enabled")
+        IreNFist.mod_compatibility.goonmodshop = true
     end
 
     -- Include arrest utils

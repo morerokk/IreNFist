@@ -15,5 +15,4 @@ If you want to see support for a custom weapon added, the fastest and best way t
 You can also suggest it be added on the Issues page or on the MWS page, but I'm not likely to take suggestions if the weapon isn't sufficiently interesting.
 
 # Beta Features
-This mod has beta features that can be enabled in the options. The current beta features are:
-* **New Assaults:** The entire police force has been given a makeover in the classic style. Enemies will now greatly resemble that of pre-Hoxton Housewarming, both in variety, damage output and numbers.
+This mod has beta features that can be enabled in the options. There are currently no beta-only features.

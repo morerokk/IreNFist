@@ -2222,6 +2222,17 @@ function PlayerStandard:_get_modified_move_speed(state)
 end
 
 Hooks:PostHook(PlayerStandard, "_start_action_ducking", "slide_startducking", function(self, params)
+	-- Some mods do naughty things and mess with the order in which functions are called, meaning that you can duck before the first playerstandard:update() is called.
+	-- This results in crashes due to these values being nil.
+	-- As a safety measure, set these to 0 instead.
+	if not self._last_t then
+		self._last_t = 0
+	end
+
+	if not self._last_slide_time then
+		self._last_slide_time = 0
+	end
+
 	self:_check_slide()
 end)
 

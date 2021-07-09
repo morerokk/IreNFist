@@ -425,7 +425,7 @@ if InFmenu.settings.assaulttweakstype == 3 then
 							stance = "hos",
 							pose = "crouch",
 							type = "assault_area",
-							area = spawn_group.area,
+							area = primary_target_area,
 							coarse_path = {
 								{
 									spawn_group.area.pos_nav_seg,

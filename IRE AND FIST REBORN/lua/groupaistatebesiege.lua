@@ -423,15 +423,9 @@ if InFmenu.settings.assaulttweakstype == 3 then
 						local grp_objective = {
 							attitude = "avoid",
 							stance = "hos",
-							pose = "crouch",
+							pose = task_data.phase == "anticipation" and "crouch" or "stand",
 							type = "assault_area",
-							area = spawn_group.area,
-							coarse_path = {
-								{
-									spawn_group.area.pos_nav_seg,
-									spawn_group.area.pos
-								}
-							}
+							area = primary_target_area
 						}
 
 						self:_spawn_in_group(spawn_group, spawn_group_type, grp_objective, task_data)

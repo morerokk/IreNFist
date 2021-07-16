@@ -420,13 +420,32 @@ if InFmenu.settings.assaulttweakstype == 3 then
 					local spawn_group, spawn_group_type = self:_find_spawn_group_near_area(primary_target_area, self._tweak_data.assault.groups, nil, nil, nil)
 
 					if spawn_group then
-						local grp_objective = {
-							attitude = "avoid",
-							stance = "hos",
-							pose = task_data.phase == "anticipation" and "crouch" or "stand",
-							type = "assault_area",
-							area = primary_target_area
-						}
+						local grp_objective
+
+						-- Testing new beta tweaks thanks to RedFlame, makes cops less likely to get stuck at their spawnpoint.
+						if InFmenu and InFmenu.settings.beta then
+							grp_objective = {
+								attitude = "avoid",
+								stance = "hos",
+								pose = task_data.phase == "anticipation" and "crouch" or "stand",
+								type = "assault_area",
+								area = primary_target_area
+							}
+						else
+							grp_objective = {
+								attitude = "avoid",
+								stance = "hos",
+								pose = "crouch",
+								type = "assault_area",
+								area = spawn_group.area,
+								coarse_path = {
+									{
+										spawn_group.area.pos_nav_seg,
+										spawn_group.area.pos
+									}
+								}
+							}
+						end
 
 						self:_spawn_in_group(spawn_group, spawn_group_type, grp_objective, task_data)
 					end

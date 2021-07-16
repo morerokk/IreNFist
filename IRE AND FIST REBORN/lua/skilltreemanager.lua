@@ -3,12 +3,12 @@ dofile(ModPath .. "infcore.lua")
 -- Spoof perk deck as armorer to prevent crashes (and to prevent malicious mods like Full Speed Swarm from kicking us)
 local skilltreemanager_pack_string_orig = SkillTreeManager.pack_to_string
 function SkillTreeManager:pack_to_string()
-	if not IreNFist.holdout_deck_index then
+	if not IREnFIST.holdout_deck_index then
 		return skilltreemanager_pack_string_orig(self)
 	end
 
 	local current_specialization = self:digest_value(self._global.specializations.current_specialization, false, 1)
-	if current_specialization ~= IreNFist.holdout_deck_index then
+	if current_specialization ~= IREnFIST.holdout_deck_index then
 		return skilltreemanager_pack_string_orig(self)
 	end
 

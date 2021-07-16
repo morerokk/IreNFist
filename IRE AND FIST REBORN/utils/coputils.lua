@@ -1,21 +1,21 @@
-if CopUtils then
+if IREnFIST and IREnFIST.CopUtils then
     return
 end
 
-CopUtils = {}
+dofile(ModPath .. "infcore.lua")
 
--- Quick and easy "private" variables
-local this = {}
+IREnFIST.CopUtils = {}
+
 -- Determines how big the search radius is for getting an eligible cop to arrest the player
 -- For reference, the medic's heal radius is 400
-this.arrest_search_radius = 900
+IREnFIST.CopUtils._arrest_search_radius = 900
 -- How big the radius for the actual (non-melee) arrest is
-this.arrest_action_radius = 100
+IREnFIST.CopUtils._arrest_action_radius = 100
 -- Must be interacting for at least this long to be arrested
-this.minimum_interact_time = 0.35
+IREnFIST.CopUtils._minimum_interact_time = 0.35
 
 -- Checks if the local player should be arrested
-function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit, is_melee)
+function IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit, is_melee)
     -- Check if this is our own player unit
     if player_unit ~= managers.player:player_unit() then
         return nil, "not local player unit"
@@ -38,14 +38,14 @@ function CopUtils:CheckLocalMeleeDamageArrest(player_unit, attacker_unit, is_mel
     -- interact_expire_t is the *remaining time* in the interaction, such as 3.8
     -- Therefore, state._interact_params.timer - state._interact_expire_t gives you how long you've been interacting for.
     local current_interact_t = state._interact_params.timer - state._interact_expire_t
-    if current_interact_t < this.minimum_interact_time then
+    if current_interact_t < self._minimum_interact_time then
         return false, "interaction too short"
     end
 
     -- Check if the cop isn't too far away to do this
     if not is_melee and attacker_unit and alive(attacker_unit) then
         local dist = mvector3.distance(player_unit:position(), attacker_unit:position())
-        if dist > this.arrest_action_radius then
+        if dist > self._arrest_action_radius then
             return false, "too far away for non-melee arrest"
         end
     end
@@ -66,7 +66,7 @@ end
 -- Check if another unmodded player should be arrested
 -- Modded players can do this check themselves
 -- Since husks are too simplistic, unmodded clients will always be arrested since getting their timer isn't as easy and they won't have counterstrike. Such is life
-function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_melee)
+function IREnFIST.CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_melee)
     if Network and Network:is_client() then
         return nil, "not host, no husk check"
     end
@@ -79,7 +79,7 @@ function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_me
     -- Check if the cop isn't too far away to do this
     if not is_melee and attacker_unit and alive(attacker_unit) then
         local dist = mvector3.distance(player_unit:position(), attacker_unit:position())
-        if dist > this.arrest_action_radius then
+        if dist > self._arrest_action_radius then
             return false, "cop too far away from husk"
         end
     end
@@ -87,13 +87,13 @@ function CopUtils:CheckClientMeleeDamageArrest(player_unit, attacker_unit, is_me
     return "arrested"
 end
 
-function CopUtils:CounterArrestAttacker(player_unit, attacker_unit)
+function IREnFIST.CopUtils:CounterArrestAttacker(player_unit, attacker_unit)
     -- Sorry, I haven't gotten this to work yet, it just crashes
     -- For now, a knockdown to the face will have to suffice
     return self:KnockDownAttacker(player_unit, attacker_unit)
 end
 
-function CopUtils:KnockDownAttacker(player_unit, attacker_unit)
+function IREnFIST.CopUtils:KnockDownAttacker(player_unit, attacker_unit)
     -- Strike them with a low damage high knockdown melee attack
     local action_data = {
         damage_effect = 1,
@@ -111,7 +111,7 @@ function CopUtils:KnockDownAttacker(player_unit, attacker_unit)
     attacker_unit:character_damage():damage_melee(action_data)
 end
 
-function CopUtils:SendCopToArrestPlayer(player_unit)
+function IREnFIST.CopUtils:SendCopToArrestPlayer(player_unit)
     -- Only the host may do this
     if Network and Network:is_client() then
         return
@@ -127,7 +127,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
         return
     end
 
-    local enemies = World:find_units_quick(player_unit, "sphere", player_unit:position(), this.arrest_search_radius, managers.slot:get_mask("enemies"))
+    local enemies = World:find_units_quick(player_unit, "sphere", player_unit:position(), self._arrest_search_radius, managers.slot:get_mask("enemies"))
     if not enemies or #enemies <= 0 then
         return
     end
@@ -203,7 +203,7 @@ function CopUtils:SendCopToArrestPlayer(player_unit)
 end
 
 -- Callback is executed when the cop arrives at their arrest position
-function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
+function IREnFIST.CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
     if Network and Network:is_client() then
         return
     end
@@ -223,8 +223,8 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
     else
         -- If the client has InF, they can figure it out for themselves
         local peer = managers.network:session():peer_by_unit(player_unit)
-        if peer and (IreNFist.peersWithMod[peer:id()] or IreNFist.arrestModPeers[peer:id()]) then
-            return CopUtils:TellClientCheckArrest(peer:id(), cop:id())
+        if peer and (IREnFIST.peersWithMod[peer:id()] or IREnFIST.arrestModPeers[peer:id()]) then
+            return self:TellClientCheckArrest(peer:id(), cop:id())
         end
 
         -- Client does not have InF, do a simple check ourselves
@@ -244,12 +244,12 @@ function CopUtils:_onCopArrivedAtArrestPosition(clbk_data)
 end
 
 -- Tell the client that they should do the arrest check themselves
-function CopUtils:TellClientCheckArrest(peer_id, cop_id)
+function IREnFIST.CopUtils:TellClientCheckArrest(peer_id, cop_id)
     LuaNetworking:SendToPeer(peer_id, "irenfist_checkarrest", tostring(cop_id))
 end
 
 -- Get the requested enemy from just a unit ID
-function CopUtils:GetCopFromId(unit_id)
+function IREnFIST.CopUtils:GetCopFromId(unit_id)
     local enemies = managers.enemy:all_enemies()
     for i, unit_data in pairs(enemies) do
         if unit_data and unit_data.unit and alive(unit_data.unit) and unit_data.unit.id and tostring(unit_data.unit:id()) == unit_id then
@@ -260,7 +260,7 @@ function CopUtils:GetCopFromId(unit_id)
 end
 
 -- Find out if unit A is an enemy of unit B
-function CopUtils:AreUnitsEnemies(unit_a, unit_b)
+function IREnFIST.CopUtils:AreUnitsEnemies(unit_a, unit_b)
     if not unit_a or not unit_b or not unit_a:movement() or not unit_b:movement() then
         return false
     end
@@ -291,7 +291,7 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_coputils', functi
         return
     end
 
-    local cop = CopUtils:GetCopFromId(unit_id)
+    local cop = IREnFIST.CopUtils:GetCopFromId(unit_id)
     if not alive(cop) then
         return
     end
@@ -302,12 +302,12 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_coputils', functi
     end
 
     -- Check if this cop should arrest us
-    local result = CopUtils:CheckLocalMeleeDamageArrest(managers.player:player_unit(), cop)
+    local result = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(managers.player:player_unit(), cop)
     if result == "counterarrest" then
-        CopUtils:CounterArrestAttacker(managers.player:player_unit(), cop)
+        IREnFIST.CopUtils:CounterArrestAttacker(managers.player:player_unit(), cop)
         return
     elseif result == "countered" then
-        CopUtils:KnockDownAttacker(managers.player:player_unit(), cop)
+        IREnFIST.CopUtils:KnockDownAttacker(managers.player:player_unit(), cop)
         return
     elseif result == "arrested" then
         managers.player:player_unit():movement():on_cuffed()

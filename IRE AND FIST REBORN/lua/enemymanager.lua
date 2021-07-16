@@ -2,7 +2,7 @@ dofile(ModPath .. "infcore.lua")
 
 -- Most of this is copypasted from my Think Faster mod.
 -- If Think Faster is already installed, defer this functionality to there instead.
-if IreNFist.mod_compatibility.think_faster or not InFmenu.settings.thinkfaster then
+if IREnFIST.mod_compatibility.think_faster or not InFmenu.settings.thinkfaster then
 	return
 end
 

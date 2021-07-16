@@ -1,7 +1,7 @@
 dofile(ModPath .. "infcore.lua")
 
 -- If sydch's skill overhaul is enabled then touch the trees differently
-if IreNFist.mod_compatibility.sso then
+if IREnFIST.mod_compatibility.sso then
 
 	-- I checked the BLT source and registering the same hook twice isn't a big deal, the second call is ignored.
 	-- What *is* a big deal is trying to add a hook before it's registered, so let's not do that!
@@ -200,7 +200,7 @@ if IreNFist.mod_compatibility.sso then
 		-- This is better compatible with other perkdeck-adding mods and also future-proof
 		local i = #self.specializations + 1
 		self.specializations[i] = holdout_deck
-		IreNFist.holdout_deck_index = i
+		IREnFIST.holdout_deck_index = i
 	end)
 else
 	Hooks:PostHook(SkillTreeTweakData, "init", "remove_denbts", function(self, params)
@@ -375,7 +375,7 @@ else
 		-- This is better compatible with other perkdeck-adding mods and also future-proof
 		local i = #self.specializations + 1
 		self.specializations[i] = holdout_deck
-		IreNFist.holdout_deck_index = i
+		IREnFIST.holdout_deck_index = i
 
 		-- Rogue
 		-- Give yet more dodge to the final perk, replace "pierce body armor" with "pierce enemies" since piercing body armor is redundant

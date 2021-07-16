@@ -6,7 +6,7 @@ InFmenu = {
 		homeruncontest = false
 	}
 }
-IreNFist = {true}
+IREnFIST = {true}
 
 dofile("../IRE AND FIST REBORN/lua/copdamage.lua")
 

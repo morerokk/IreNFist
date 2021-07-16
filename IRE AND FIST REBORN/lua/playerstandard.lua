@@ -3432,6 +3432,6 @@ if InFmenu.settings.enablenewcopbehavior then
 			return
 		end
 
-		CopUtils:SendCopToArrestPlayer(self._unit)
+		IREnFIST.CopUtils:SendCopToArrestPlayer(self._unit)
 	end)
 end

@@ -10,14 +10,14 @@ if InFmenu.settings.enablenewassaults then
 
 		local job = Global.level_data and Global.level_data.level_id
 
-		if job and IreNFist.bad_heist_overrides[job] and IreNFist.bad_heist_overrides[job].initial_spawn_delay then
+		if job and IREnFIST.bad_heist_overrides[job] and IREnFIST.bad_heist_overrides[job].initial_spawn_delay then
 			-- Set the difficulty to 0 to force no spawns
 			local current_difficulty = self._difficulty_value
 			self:set_difficulty(0)
 			log("[InF] Set difficulty to 0 due to bad heist " .. job)
 
 			-- After the specified delay, set the difficulty back to normal to allow spawns again
-			DelayedCalls:Add("inf_badheist_dospawndelay", IreNFist.bad_heist_overrides[job].initial_spawn_delay, function()
+			DelayedCalls:Add("inf_badheist_dospawndelay", IREnFIST.bad_heist_overrides[job].initial_spawn_delay, function()
 				self:set_difficulty(current_difficulty)
 				log("[InF] Spawn delay on bad heist " .. job .. " expired, setting difficulty back to " .. current_difficulty)
 			end)
@@ -147,7 +147,7 @@ end
 -- Copied from Think Faster, and is therefore disabled if Think Faster is installed.
 -- For compatibility reasons, this feature is also disabled if "Think Faster" is disabled in InF's options.
 -- There is usually no need to *not* play with this fix, so that is not recommended unless you have another mod that fixes this already.
-if not IreNFist.mod_compatibility.think_faster and InFmenu.settings.thinkfaster then
+if not IREnFIST.mod_compatibility.think_faster and InFmenu.settings.thinkfaster then
 
 	-- Holds removed attention objects. This is necessary for maps that might switch from loud back to stealth.
 	local removed_attention_objects = {}

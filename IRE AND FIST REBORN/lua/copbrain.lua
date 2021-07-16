@@ -23,7 +23,7 @@ end
 Hooks:PostHook(CopBrain, "convert_to_criminal", "InF_SkillOverhaulCopBrainDoConvert", function(self)
 	self._unit:unit_data().is_convert = true
 
-	table.insert(IreNFist._converts, self._unit)    
+	table.insert(IREnFIST._converts, self._unit)    
 end)
 
 -- Winters, for the love of god end the assault already when you die

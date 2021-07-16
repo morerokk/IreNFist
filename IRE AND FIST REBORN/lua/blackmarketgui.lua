@@ -43,7 +43,7 @@ end
 
 -- Sadly it looks like this means the whole setup function has to be overridden
 function BlackMarketGui:_setup(is_start_page, component_data)
-	if IreNFist.mod_compatibility.goonmodshop then
+	if IREnFIST.mod_compatibility.goonmodshop then
 		Hooks:Call("BlackMarketGUIPreSetup", self, is_start_page, component_data)
 	end
 
@@ -2410,7 +2410,7 @@ function BlackMarketGui:_setup(is_start_page, component_data)
 
 	self._in_setup = nil
 
-	if IreNFist.mod_compatibility.goonmodshop then
+	if IREnFIST.mod_compatibility.goonmodshop then
 		Hooks:Call("BlackMarketGUIPostSetup", self, is_start_page, component_data)
 	end
 end

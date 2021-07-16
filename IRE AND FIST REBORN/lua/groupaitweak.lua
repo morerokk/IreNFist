@@ -1590,12 +1590,12 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_assault_tweaks", functi
 
 	-- Check and apply heist-specific overrides for the above values
 	local job = Global.level_data and Global.level_data.level_id
-	if job and IreNFist.bad_heist_overrides[job] then
-		self.besiege.assault.force = IreNFist.bad_heist_overrides[job].force
-		self.besiege.assault.force_balance_mul = IreNFist.bad_heist_overrides[job].force_balance_mul
+	if job and IREnFIST.bad_heist_overrides[job] then
+		self.besiege.assault.force = IREnFIST.bad_heist_overrides[job].force
+		self.besiege.assault.force_balance_mul = IREnFIST.bad_heist_overrides[job].force_balance_mul
 
-		self.besiege.assault.force_pool = IreNFist.bad_heist_overrides[job].force_pool
-		self.besiege.assault.force_pool_balance_mul = IreNFist.bad_heist_overrides[job].force_pool_balance_mul
+		self.besiege.assault.force_pool = IREnFIST.bad_heist_overrides[job].force_pool
+		self.besiege.assault.force_pool_balance_mul = IREnFIST.bad_heist_overrides[job].force_pool_balance_mul
 
 		log("[IREnFIST] Bad heist " .. job .. " found, applying relevant assault overrides")
 	end

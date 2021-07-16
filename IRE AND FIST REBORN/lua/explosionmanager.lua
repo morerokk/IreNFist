@@ -242,7 +242,7 @@ function ExplosionManager:detect_and_give_dmg(params)
 							body = hit_unit:body("body"),
 							position = hit_unit:position() + math.UP * 100
 						},
-						name_id = managers.blackmarket:equipped_melee_weapon(),
+						name_id = managers.blackmarket:equipped_melee_weapon() or "baton",
 						attack_dir = Vector3(0,1,0)
 					}
 

@@ -2,7 +2,7 @@ require("tests/mocks/copunit")
 require("tests/mocks/playermanager")
 
 InFmenu = {true}
-IreNFist = {
+IREnFIST = {
     peersWithMod = {}
 }
 
@@ -17,7 +17,7 @@ end)
 local function coputils_testunsuccessfularrest_notlocalplayer()
     local player_unit = {"some random dude"}
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit)
 
     LuaU:assertNil(result)
     LuaU:assertEqual("not local player unit", reason)
@@ -28,7 +28,7 @@ local function coputils_testunsuccessfularrest_nointeracting()
     local player_unit = managers.player:player_unit()
     player_unit:_mockSetInteracting(false)
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit)
 
     LuaU:assertFalse(result)
     LuaU:assertEqual("not interacting", reason)
@@ -39,7 +39,7 @@ local function coputils_testunsuccessfularrest_interactiontooshort()
     local player_unit = managers.player:player_unit()
     player_unit:_mockSetInteracting(true, 5, 4.9)
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit)
 
     LuaU:assertFalse(result)
     LuaU:assertEqual("interaction too short", reason)
@@ -51,7 +51,7 @@ local function coputils_testunsuccessfularrest_coptoofaraway()
     player_unit:_mockSetInteracting(true, 5, 2)
     mvector3:_mockDistance(999999)
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, false)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, false)
 
     LuaU:assertFalse(result)
     LuaU:assertEqual("too far away for non-melee arrest", reason)
@@ -63,7 +63,7 @@ local function coputils_testsuccessfularrest_copcloseby()
     player_unit:_mockSetInteracting(true, 5, 2)
     mvector3:_mockDistance(10)
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, false)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, false)
 
     LuaU:assertEqual("arrested", result)
     LuaU:assertNil(reason)
@@ -75,7 +75,7 @@ local function coputils_testsuccessfularrest_meleealwaysworks()
     player_unit:_mockSetInteracting(true, 5, 2)
     mvector3:_mockDistance(999999999)
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, true)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, true)
 
     LuaU:assertEqual("arrested", result)
     LuaU:assertNil(reason)
@@ -93,7 +93,7 @@ local function coputils_testunsuccessfularrest_counterstrike_counterarrest()
         }
     })
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, true)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, true)
 
     LuaU:assertEqual("counterarrest", result)
     LuaU:assertNil(reason)
@@ -110,7 +110,7 @@ local function coputils_testunsuccessfularrest_counterstrike_knockdown()
         }
     })
 
-    local result, reason = CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, true)
+    local result, reason = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(player_unit, copMockUnit, true)
 
     LuaU:assertEqual("countered", result)
     LuaU:assertNil(reason)

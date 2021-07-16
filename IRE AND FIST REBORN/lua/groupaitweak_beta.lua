@@ -792,8 +792,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "inf_groupaitweak_i
 	-- Apply spawn chance multipliers to cloakers if the map spams them with scripted spawns
 	local spooc_chance_mul = 1
 	local current_level_id = Global.game_settings and Global.game_settings.level_id
-	if current_level_id and IreNFist.level_force_overrides[current_level_id] then
-		local override = IreNFist.level_force_overrides[current_level_id]
+	if current_level_id and IREnFIST.level_force_overrides[current_level_id] then
+		local override = IREnFIST.level_force_overrides[current_level_id]
 		-- Too many cloakers on some heists due to map-specific spawns
 		if override.too_many_cloakers then
 			spooc_chance_mul = 0.2
@@ -1626,7 +1626,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 		}
 	end
 
-	-- Base assault values, how many cops are allowed on the map and how big is the spawnpool
+	-- Base assault values, how many cops are allowed on the map at once, and how big is the spawnpool?
 	-- Increases for each assault
 	self.besiege.assault.force = {
 		10,
@@ -1667,8 +1667,8 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "inf_groupaitweak_inittaskda
 	-- This means that the balance muls can be adjusted on a per-assault "difficulty" basis, instead of being adjustable by playercount.
 	-- Playercount is basically always 3 or 4 anyway (3 with bots, 4 with at least one other player).
 	local current_level_id = Global.game_settings and Global.game_settings.level_id
-	if current_level_id and IreNFist.level_force_overrides[current_level_id] then
-		local override = IreNFist.level_force_overrides[current_level_id]
+	if current_level_id and IREnFIST.level_force_overrides[current_level_id] then
+		local override = IREnFIST.level_force_overrides[current_level_id]
 		if override.force_mul then
 			for i, v in ipairs(self.besiege.assault.force_balance_mul) do
 				self.besiege.assault.force_balance_mul[i] = self.besiege.assault.force_balance_mul[i] * override.force_mul[i]
@@ -2188,8 +2188,8 @@ function GroupAITweakData:inf_init_taskdata_mayhem_deathwish(difficulty_index)
 	if difficulty_index == 6 then
 		self.besiege.assault.groups.FBI_tanks = {
 			0,
-			0.25,
-			0.35
+			0.2,
+			0.3
 		}
 	end
 

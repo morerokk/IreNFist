@@ -115,11 +115,6 @@ Hooks:PreHook(CopMovement, "team", "inf_setcopteamifnoteam", function(self)
 end)
 
 function CopMovement:_override_weapons(primary, secondary)
-
-	if not primary or secondary then
-		return
-	end
-
 	if primary then
 		self._unit:inventory():add_unit_by_name(primary, true)
 	end

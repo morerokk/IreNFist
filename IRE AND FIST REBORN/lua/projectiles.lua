@@ -8,7 +8,7 @@ Hooks:PostHook(BlackMarketTweakData, "_init_projectiles", "throwablecount", func
 	self.projectiles.wpn_prj_target.max_amount = 9
 
 	-- Change Sicario smoke grenade cooldown from 60 to 30
-	if not IreNFist.mod_compatibility.sso then
+	if not IREnFIST.mod_compatibility.sso then
 		self.projectiles.smoke_screen_grenade.base_cooldown = 30
 	end
 end)

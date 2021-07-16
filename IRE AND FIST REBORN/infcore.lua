@@ -31,30 +31,30 @@ local function rtable_mult(array, vert, horiz)
 end
 
 -- New InF table, primarily used for tweakdata
-if not IreNFist then
+if not IREnFIST then
 
-    _G.IreNFist = {}
+    _G.IREnFIST = {}
 
     -- Keeps a list of converted cops
     -- This is for the skill that allows you to call converted cops over to revive you
-    IreNFist._converts = {}
+    IREnFIST._converts = {}
 
     -- List of peers that have InF installed
     -- Needed for some networking functions
-    IreNFist.peersWithMod = {}
+    IREnFIST.peersWithMod = {}
 
     -- List of peers that have the standalone cop cuffing mod installed
     -- Interop with irenfist
-    IreNFist.arrestModPeers = {}
+    IREnFIST.arrestModPeers = {}
 
     -- Index of newly inserted bunker/holdout perk deck
-    IreNFist.holdout_deck_index = nil
+    IREnFIST.holdout_deck_index = nil
 
     -- Bullet storm charge
-    IreNFist.current_bulletstorm_charge = 0
+    IREnFIST.current_bulletstorm_charge = 0
 
     -- Whether bullet storm is active
-    IreNFist.bulletstorm_active = false
+    IREnFIST.bulletstorm_active = false
 
     -- NOTE: The below values are not used with the newest assault tweaks.
     -- Only the spawn delay is used.
@@ -67,7 +67,7 @@ if not IreNFist then
     -- self.besiege.assault.force_pool = {40, 45, 50} -- originally 150, 175, 225
     -- self.besiege.assault.force_pool_balance_mul = {1, 2, 3, 4} -- originally 1, 2, 3, 4
     -- Spawn delay is optional. If not given, is basically 0.
-    IreNFist.bad_heist_overrides = {
+    IREnFIST.bad_heist_overrides = {
         sah = { -- Shacklethorne Auction, lower max cops but increase the assault pool size
             force = { 12, 13, 14 },
             force_balance_mul = { 1, 2, 3, 4 },
@@ -103,7 +103,7 @@ if not IreNFist then
     }
 
     -- Not sure which one of these two names Golden Grin uses, so just override them both.
-    IreNFist.bad_heist_overrides.cas = deep_clone(IreNFist.bad_heist_overrides.kenaz)
+    IREnFIST.bad_heist_overrides.cas = deep_clone(IREnFIST.bad_heist_overrides.kenaz)
 
     -- Fucking sexy NEW overrides
     -- Because some heists just need a little extra care put into their police force counts
@@ -111,7 +111,7 @@ if not IreNFist then
     -- NOTE: These force_muls are applied on top of the existing force balance muls, not on the force values directly
     -- and they don't replace anything either, they *multiply* the existing value.
     -- Maybe they *should* multiply the base values instead of the balance_muls?
-    IreNFist.level_force_overrides = {
+    IREnFIST.level_force_overrides = {
         hox_1 = { -- Hoxout day 1, the "first assault is very light" mechanic doesn't really work if the whole gauntlet is assault 1
             force_mul = { 2, 2, 2, 2 },
             force_pool_mul = { 1.2, 1.2, 1.2, 1.2 } -- Barely matters here, assault is assault
@@ -127,48 +127,48 @@ if not IreNFist then
 
     -- Mod compatibility detection
     -- Detect if a mod is installed and enabled, if it is then add a table entry so we can keep track of the mod
-    IreNFist.mod_compatibility = {}
+    IREnFIST.mod_compatibility = {}
     -- Sydch's Skill Overhaul
     local sso_compat = BLT.Mods:GetModByName("Skill Overhaul")
     if (sso_compat and sso_compat:IsEnabled()) or BeardLib.Utils:ModLoaded("Skill Overhaul") then
         log("[InF] SSO compatibility enabled")
-        IreNFist.mod_compatibility.sso = true
+        IREnFIST.mod_compatibility.sso = true
     end
     -- Armor Overhaul
     local armor_overhaul_compat = BLT.Mods:GetModByName("Armor Overhaul")
     if armor_overhaul_compat and armor_overhaul_compat:IsEnabled() then
         log("[InF] Armor Overhaul compatibility enabled")
-        IreNFist.mod_compatibility.armor_overhaul = true
+        IREnFIST.mod_compatibility.armor_overhaul = true
     end
     -- Think Faster
     local think_faster_compat = BLT.Mods:GetModByName("Think Faster")
     if think_faster_compat and think_faster_compat:IsEnabled() then
         log("[InF] Think Faster compatibility enabled")
-        IreNFist.mod_compatibility.think_faster = true
+        IREnFIST.mod_compatibility.think_faster = true
     end
     -- WolfHUD
     local wolfhud_compat = BLT.Mods:GetModByName("WolfHUD")
     if wolfhud_compat and wolfhud_compat:IsEnabled() then
         log("[InF] WolfHUD compatibility enabled")
-        IreNFist.mod_compatibility.wolfhud = true
+        IREnFIST.mod_compatibility.wolfhud = true
     end
     -- PDTH HUD Reborn
     local pdthhud_compat = BLT.Mods:GetModByName("PAYDAY: The Heist HUD Reborn")
     if pdthhud_compat and pdthhud_compat:IsEnabled() then
         log("[InF] PDTH HUD Reborn compatibility enabled")
-        IreNFist.mod_compatibility.pdthhud = true
+        IREnFIST.mod_compatibility.pdthhud = true
     end
     -- Vanilla HUD Plus
     local vanillahudplus_compat = BLT.Mods:GetModByName("VanillaHUDPlus")
     if vanillahudplus_compat and vanillahudplus_compat:IsEnabled() then
         log("[InF] Vanilla HUD Plus compatibility enabled")
-        IreNFist.mod_compatibility.vanillahudplus = true
+        IREnFIST.mod_compatibility.vanillahudplus = true
     end
     -- Goonmod shop standalone
     local goonmodshop_compat = BLT.Mods:GetModByName("Extended Continental Coin Shop Goonmod Standalone")
     if (goonmodshop_compat and goonmodshop_compat:IsEnabled()) or _G.GageModShop then
         log("[InF] Goonmod shop standalone compatibility enabled")
-        IreNFist.mod_compatibility.goonmodshop = true
+        IREnFIST.mod_compatibility.goonmodshop = true
     end
 
     -- Include arrest utils
@@ -189,19 +189,19 @@ if not IreNFist then
     Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_IREnFIST', function(sender, messageType, data)
         -- Acknowledge that a peer has InF installed
         if messageType == "irenfist_hello" then
-            IreNFist.peersWithMod[sender] = true
+            IREnFIST.peersWithMod[sender] = true
         end
 
         -- Cop arrest interop
         if messageType == "coparrest_hello" then
-            IreNFist.arrestModPeers[sender] = true
+            IREnFIST.arrestModPeers[sender] = true
         end
     end)
 
     -- If a peer leaves, remove them from the list
     Hooks:Add('BaseNetworkSessionOnPeerRemoved', 'BaseNetworkSessionOnPeerRemoved_VocalHeisters', function(peer, peer_id, reason)
-        IreNFist.peersWithMod[peer_id] = nil
-        IreNFist.arrestModPeers[peer_id] = nil
+        IREnFIST.peersWithMod[peer_id] = nil
+        IREnFIST.arrestModPeers[peer_id] = nil
     end)
 end
 

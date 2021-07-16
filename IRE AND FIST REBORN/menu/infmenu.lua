@@ -180,7 +180,7 @@ Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_frogman_fss", func
 			return
 		end
 	
-		QuickMenu:new("FSS Detected", "You are using Full Speed Swarm, which breaks some IREnFIST features and breaks the cop AI. We strongly recommend removing or disabling Full Speed Swarm for the best gameplay experience.\n\nYou can disable this warning in the IreNFist mod options.", {
+		QuickMenu:new("FSS Detected", "You are using Full Speed Swarm, which breaks some IREnFIST features and breaks the cop AI. We strongly recommend removing or disabling Full Speed Swarm for the best gameplay experience.\n\nYou can disable this warning in the IREnFIST mod options.", {
 			[1] = {
 				text = "OK",
 				is_cancel_button = true
@@ -196,7 +196,7 @@ Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_frogman_iter", fun
 			return
 		end
 	
-		QuickMenu:new("Iter Detected", "You are using Iter, which breaks the cops' flanking AI and forces them to always rush at you. In light of InF's assault tweaks, we strongly recommend removing Iter for the best gameplay experience. If you need the mod for Keepers, you can leave it installed but disabled.\n\nYou can disable this warning in the IreNFist mod options.", {
+		QuickMenu:new("Iter Detected", "You are using Iter, which breaks the cops' flanking AI and forces them to always rush at you. In light of InF's assault tweaks, we strongly recommend removing Iter for the best gameplay experience. If you need the mod for Keepers, you can leave it installed but disabled.\n\nYou can disable this warning in the IREnFIST mod options.", {
 			[1] = {
 				text = "OK",
 				is_cancel_button = true
@@ -219,7 +219,7 @@ Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_assaulttweaks_comp
 		end
 	
 		if ats_found then
-			QuickMenu:new("Assault Tweaks Detected", "You are using Assault Tweaks Standalone, which is already included in IREnFIST. We strongly recommend removing Assault Tweaks Standalone to avoid crashes or other issues.\n\nYou can disable this warning in the IreNFist mod options.", {
+			QuickMenu:new("Assault Tweaks Detected", "You are using Assault Tweaks Standalone, which is already included in IREnFIST. We strongly recommend removing Assault Tweaks Standalone to avoid crashes or other issues.\n\nYou can disable this warning in the IREnFIST mod options.", {
 				[1] = {
 					text = "OK",
 					is_cancel_button = true

@@ -90,7 +90,7 @@ if not _G.IS_VR then
 	FPCameraPlayerBase.stop_shooting = stopShootingNew
 	
 	-- With SSO installed, override these on a delayed call
-	if IreNFist.mod_compatibility.sso then
+	if IREnFIST.mod_compatibility.sso then
 		DelayedCalls:Add("inf_fpcamera_recoil_startstopshoot_ssocompat", 1, function()
 			FPCameraPlayerBase.start_shooting = startShootingNew
 			FPCameraPlayerBase.stop_shooting = stopShootingNew
@@ -150,7 +150,7 @@ end
 FPCameraPlayerBase.recoil_kick = recoilKickNew
 
 -- With SSO installed, override recoil kick on a delayed call
-if IreNFist.mod_compatibility.sso then
+if IREnFIST.mod_compatibility.sso then
 	DelayedCalls:Add("inf_fpcamera_recoil_recoilkick_ssocompat", 1, function()
 		FPCameraPlayerBase.recoil_kick = recoilKickNew
 	end)

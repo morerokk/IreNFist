@@ -26,7 +26,7 @@ Weapon tweak data attributes:
 		true/false	-	Build up and delay recoil until last shot in burst is fired
 ]]
 
-if IreNFist.mod_compatibility.vanillahudplus then
+if IREnFIST.mod_compatibility.vanillahudplus then
 	local fire_original = NewRaycastWeaponBase.fire
 	-- used for shotgun bursts
 	function NewRaycastWeaponBase:fire2(...)

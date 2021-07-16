@@ -12,11 +12,11 @@ if InFmenu.settings.enablenewcopbehavior then
 	local playerdamage_damagemelee_orig = PlayerDamage.damage_melee
 	function PlayerDamage:damage_melee(attack_data)
 
-		local result = CopUtils:CheckLocalMeleeDamageArrest(self._unit, attack_data.attacker_unit, true)
+		local result = IREnFIST.CopUtils:CheckLocalMeleeDamageArrest(self._unit, attack_data.attacker_unit, true)
 
 		if result == "countered" then
 			-- TODO: Arrest the cop instead of just knocking them down
-			return CopUtils:CounterArrestAttacker(self._unit, attack_data.attacker_unit)
+			return IREnFIST.CopUtils:CounterArrestAttacker(self._unit, attack_data.attacker_unit)
 		elseif result == "arrested" then
 			self._unit:movement():on_cuffed()
 			attack_data.attacker_unit:sound():say("i03", true, false)

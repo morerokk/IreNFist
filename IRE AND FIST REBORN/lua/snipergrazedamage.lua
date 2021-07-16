@@ -1,6 +1,6 @@
 dofile(ModPath .. "infcore.lua")
 
-if IreNFist.mod_compatibility.sso then
+if IREnFIST.mod_compatibility.sso then
 	return
 end
 

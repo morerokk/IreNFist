@@ -334,10 +334,10 @@ end
 
 -- If a converted cop dies, unregister them from the converts list.
 Hooks:PostHook(CopDamage, "_on_death", "InF_SkillOverhaulRemoveJoker", function(self)
-	if self._unit:unit_data().is_convert and IreNFist._converts then
-		for i, unit in pairs(IreNFist._converts) do
+	if self._unit:unit_data().is_convert and IREnFIST._converts then
+		for i, unit in pairs(IREnFIST._converts) do
 			if unit == self._unit then
-				table.remove(IreNFist._converts, i)
+				table.remove(IREnFIST._converts, i)
 			end
 		end
 	end
@@ -395,7 +395,7 @@ Hooks:Add('NetworkReceivedData', 'NetworkReceivedData_irenfist_copdamage_meleesn
 		return
 	end
 
-	local cop = CopUtils:GetCopFromId(unit_id)
+	local cop = IREnFIST.CopUtils:GetCopFromId(unit_id)
 	if not cop then
 		return
 	end

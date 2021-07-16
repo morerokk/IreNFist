@@ -1,7 +1,7 @@
 dofile(ModPath .. "infcore.lua")
 
 -- If sydch's skill overhaul is enabled then don't touch a lot of the skills and decks
-if IreNFist.mod_compatibility.sso then
+if IREnFIST.mod_compatibility.sso then
 
 else
 	-- These values are only for if SSO is explicitly *not* enabled. For values that apply to both cases, they're further down
@@ -60,7 +60,7 @@ else
 	Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "inf_fuckyourskills2", function(self, params)
 		-- STOP JUMPING MY SCREEN AROUND
 		--[[
-		if not IreNFist.mod_compatibility.armor_overhaul then
+		if not IREnFIST.mod_compatibility.armor_overhaul then
 			self.values.player.body_armor.damage_shake = {0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10}
 		end
 		]]
@@ -162,7 +162,7 @@ else
 
 		-- Add extra ammo to the flak jacket *only*
 		-- Has overlap with armor overhaul and with SSO, and is therefore disabled if either are present
-		if not IreNFist.mod_compatibility.armor_overhaul then
+		if not IREnFIST.mod_compatibility.armor_overhaul then
 			self.values.player.body_armor.skill_ammo_mul = {
 				1,
 				1,

@@ -264,7 +264,7 @@ function PlayerManager:skill_dodge_chance(...)
 end
 
 -- Moving Target movement speed bonus
-if not IreNFist.mod_compatibility.sso then
+if not IREnFIST.mod_compatibility.sso then
 	local player_movement_speed_multiplier_orig = PlayerManager.movement_speed_multiplier
 	function PlayerManager:movement_speed_multiplier(...)
 		local multiplier = player_movement_speed_multiplier_orig(self, ...)
@@ -292,18 +292,18 @@ function PlayerManager:update_bulletstorm(t, dt)
 		return
 	end
 
-	if IreNFist.bulletstorm_active then
+	if IREnFIST.bulletstorm_active then
 		-- Deduct elapsed time from our charge level
-		IreNFist.current_bulletstorm_charge = IreNFist.current_bulletstorm_charge - dt
+		IREnFIST.current_bulletstorm_charge = IREnFIST.current_bulletstorm_charge - dt
 		-- If we are at or below 0, clamp the value to 0 and disable bulletstorm
-		if IreNFist.current_bulletstorm_charge <= 0 then
-			IreNFist.current_bulletstorm_charge = 0
-			IreNFist.bulletstorm_active = false
+		if IREnFIST.current_bulletstorm_charge <= 0 then
+			IREnFIST.current_bulletstorm_charge = 0
+			IREnFIST.bulletstorm_active = false
 		end
 	end
 
 	managers.hud:set_bulletstorm_charge_enabled(true)
-	managers.hud:set_bulletstorm_charge_level({ current = IreNFist.current_bulletstorm_charge, max = tweak_data.upgrades.bulletstorm_max_seconds })
+	managers.hud:set_bulletstorm_charge_level({ current = IREnFIST.current_bulletstorm_charge, max = tweak_data.upgrades.bulletstorm_max_seconds })
 end
 
 -- Try to activate bulletstorm
@@ -314,17 +314,17 @@ function PlayerManager:try_activate_bulletstorm()
 	end
 
 	-- Must not already be active
-	if IreNFist.bulletstorm_active then
+	if IREnFIST.bulletstorm_active then
 		return false
 	end
 
 	-- Must have reached the minimum charge level
-	if IreNFist.current_bulletstorm_charge < tweak_data.upgrades.bulletstorm_min_seconds then
+	if IREnFIST.current_bulletstorm_charge < tweak_data.upgrades.bulletstorm_min_seconds then
 		return false
 	end
 
 	-- Everything seems ok, activate it
-	IreNFist.bulletstorm_active = true
+	IREnFIST.bulletstorm_active = true
 	return true
 end
 

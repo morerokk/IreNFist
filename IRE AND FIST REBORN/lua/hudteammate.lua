@@ -1,6 +1,6 @@
 dofile(ModPath .. "infcore.lua")
 
-if IreNFist.mod_compatibility.wolfhud or IreNFist.mod_compatibility.pdthhud then
+if IREnFIST.mod_compatibility.wolfhud or IREnFIST.mod_compatibility.pdthhud then
 	function HUDTeammate:set_holdout_indicator_enabled(enabled)
 
 	end

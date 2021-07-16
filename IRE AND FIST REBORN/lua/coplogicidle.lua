@@ -7,6 +7,9 @@ end
 -- Undid a change introduced in Update 173, where cops would stop defending areas if criminals aren't in them.
 -- This makes cops less braindead rush-heavy and makes them actually defend an area, even if players aren't nearby yet.
 -- Thanks RedFlame for pointing this out!
+-- EDIT: The changes that Overkill made were actually worse than thought. Apparently, almost every objective has the "defend_area" type, which means that
+-- cops will happily ignore special objectives and will even stop fleeing the scene if players aren't close to the edges of the map when an assault ends.
+-- Thankfully, simply restoring this function to pre-Update 173 makes all of this work again. Thanks again RedFlame!
 function CopLogicIdle._chk_relocate(data)
 	if data.objective and data.objective.type == "follow" then
 		if data.is_converted then

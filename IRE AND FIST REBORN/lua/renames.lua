@@ -923,7 +923,7 @@ end
 })
 
 -- Skill renames and descriptions, other ones are used if Sydch's skill overhaul is installed
-if IreNFist.mod_compatibility.sso then
+if IREnFIST.mod_compatibility.sso then
 	LocalizationManager:add_localized_strings({
 		menu_insulation_beta_desc = "##TIER BONUS##\nEnemies make ##90%## less noise when shot to death.\n\nBASIC ##$basic##\nWhen you get tased, there will be a shock effect once every second. Each effect has a ##30%## chance to backfire on the Taser and knock them back. With this effects, there is slight chance for taser incapacitates you, although you are still vulnerable to other gunfire that can down you.\n\nAdditionally, you recover ##50%## faster when you freed from Tasers.\n\nACE ##$pro##\nWhen tased, you are able to free yourself from the Taser interacting with it within ##2## seconds by looking at the Taser and using the ##Interact## button. Your bullets will stun enemies while tased.\n\n##''I GOT FIFTY-THOUSAND VOLTS HERE WITH YOUR NAME ON EM.''##",
 		menu_silence_expert_desc = "BASIC ##$basic##\nYou gain ##8## weapon stability with silenced weapons.\n\nACE ##$pro##\nYou gain ##12## weapon accuracy and ##100%## snap to zoom speed increase with silenced weapons.",

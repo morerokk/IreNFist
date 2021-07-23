@@ -34,6 +34,13 @@ if IREnFIST.mod_compatibility.vanillahudplus then
 		return result
 	end
 
+	-- TODO: Revamp VHP compatibility so a HUD mod's burstfire does not take precedence over a weapon rebalance's burstfire
+	if not NewRaycastWeaponBase.in_burst_mode then
+		function NewRaycastWeaponBase:in_burst_mode()
+			return false
+		end
+	end
+
 	return
 end
 

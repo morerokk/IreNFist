@@ -26,24 +26,6 @@ Weapon tweak data attributes:
 		true/false	-	Build up and delay recoil until last shot in burst is fired
 ]]
 
-if IREnFIST.mod_compatibility.vanillahudplus then
-	local fire_original = NewRaycastWeaponBase.fire
-	-- used for shotgun bursts
-	function NewRaycastWeaponBase:fire2(...)
-		local result = fire_original(self, ...)
-		return result
-	end
-
-	-- TODO: Revamp VHP compatibility so a HUD mod's burstfire does not take precedence over a weapon rebalance's burstfire
-	if not NewRaycastWeaponBase.in_burst_mode then
-		function NewRaycastWeaponBase:in_burst_mode()
-			return false
-		end
-	end
-
-	return
-end
-
 if RequiredScript == "lib/units/weapons/newraycastweaponbase" then
 
 	local _update_stats_values_original = NewRaycastWeaponBase._update_stats_values

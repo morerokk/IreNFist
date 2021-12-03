@@ -498,6 +498,8 @@ end
 	caliber_r408cheytac = ".408 CheyTac.",
 	caliber_r280 = ".280 British.",
 	caliber_r303 = ".303 British.",
+	caliber_r127x55 = "12.7×55mm.",
+	caliber_r127x55sts130 = "12.7×55mm STs-130.",
 	caliber_r127x108 = "12.7x108mm.",
 	caliber_r75x54 = "7.5x54mm French.",
 	caliber_r380acp = ".380 ACP.",
@@ -590,6 +592,13 @@ end
 	caliber_flammenwerfer = "Flammable gas mix.",
 	caliber_forcommies = "Fast-burning gas mix.",
 	caliber_forjournalists = "Long-burning gas mix.",
+
+    caliber_r95x40 = "9.5x40mm M634 X-HP-SAP",
+
+    caliber_p500sw = ".500 Smith &amp; Wesson.",
+    caliber_p45fpo = "45mm.",
+    caliber_p5x23 = "5x23mm M443 Caseless FMJ.",
+    caliber_railgun = "CLASSIFIED.",
 
 	caliber_nothing = "",
 
@@ -730,7 +739,7 @@ end
 
 
 	-- BOOSTS
-	bm_menu_bonus = "Charm",
+	bm_menu_bonus = "Bonus",
 
 	bm_wp_upg_bonus_team_exp_money_p3 = "Wear and Tear",
 	bm_wp_upg_bonus_team_exp_money_p3_desc = "I fear not the man who has fired five thousand weapons once, but the man who has fired one weapon five thousand times." .. charm,
@@ -1308,17 +1317,17 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_wp_upg_a_slug_desc = "Fires a large penetrating slug.\n\nRemoves falloff. Fully penetrates tan armor.",
 	-- 000 Buckshot
 	bm_wp_upg_a_custom = "Triple-Ought Buck",
-	bm_wp_upg_a_custom_desc = "Fires fewer and larger pellets.\n\nFires 8 pellets instead of 10.",
+	bm_wp_upg_a_custom_desc = "Fires fewer and larger pellets.\n\nFires 8 pellets instead of 10, -25% armor piercing.",
 	--bm_wp_upg_a_custom2_desc = "Fires fewer and larger pellets.\n\nFires 8 pellets instead of 10, -20% range",
 	-- breacher rounds
 	bm_wp_upg_a_custom_free = "Breaching Round",
-	bm_wp_upg_a_custom_free_desc = "Dense frangible round designed to destroy locks and hinges. Breaches any target the OVE9000 portable saw can.\n\nExtremely short range.",
+	bm_wp_upg_a_custom_free_desc = "Dense frangible round designed to destroy locks and hinges. Breaches any target the OVE9000 portable saw can.\n\nExtremely short range, 95% tan armor piercing.",
 	-- Frag Rounds/HE Rounds
 	bm_wp_upg_a_explosive = "HE-Frag Rounds",
 	bm_wp_upg_a_explosive_desc = "Fires a fin-stabilized explosive round that explodes upon impact, disorienting or killing anyone in the blast.\n\n-25% ammo scavenge.",
 	-- Flechette Rounds
 	bm_wp_upg_a_piercing = "Flechette Rounds",
-	bm_wp_upg_a_piercing_desc = "Fires thin tungsten rods that deal less damage, but retain their velocity over greater distances.\n\nFires 14 flechettes instead of 10 pellets, +25% range",
+	bm_wp_upg_a_piercing_desc = "Fires thin tungsten rods that deal less damage, but retain their velocity over greater distances.\n\nFires 14 flechettes instead of 10 pellets, +25% range, 85% armor piercing.",
 	-- Dragon's Breath
 	bm_wp_upg_a_dragons_breath = "Dragon's Breath",
 	bm_wp_upg_a_dragons_breath_desc = "Fires pellets that go up in spark and flame. Nearly guaranteed to start a fire.\n\n+25% spread, 15m ignition range, 30 damage/sec for 3sec",
@@ -2445,7 +2454,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- CZ 75
 	bm_w_czech = "CZ-75 Auto",
 	bm_w_czech_desc = "One of the original \"wonder nines\". This select-fire variant was made for law enforcement and military use.",
-	bm_w_x_czech = "Akimbo CZ-75 Auto",
+	bm_w_x_czech = "Akimbo CZ-75 Autos",
 	bm_w_x_czech_desc = "Violence is for the weak, yet the weak are the ones at the receiving end of it.",
 	
 	-- Stechkin/Igor
@@ -2458,7 +2467,7 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_holt = "Hudson H9",
 	bm_w_holt_desc = "A light and slightly unusually shaped pistol designed to minimize recoil. Borrows the better aspects of many other handguns, but ultimately discontinued due to mismanagement.",
 	
-	bm_w_x_holt = "Akimbo Hudson H9",
+	bm_w_x_holt = "Akimbo Hudson H9's",
 	bm_w_x_holt_desc = "Even when you can do something better than anyone else, it won't mean a thing if you don't do it.",
 
 	-- Model 3
@@ -2467,6 +2476,21 @@ if InFmenu.settings.txt_wpnname > 1 then
 	bm_w_x_model3 = "Akimbo S&W Model 3 Russian",
 	bm_w_model3_desc = "The Russian take on the Smith & Wesson Model 3. Nearly bankrupted Smith & Wesson after the Russians ordered large amounts of revolvers, copied the design, then canceled their orders while refusing to pay for handguns that were already delivered.",
 	bm_w_x_model3_desc = "Bullets are like words, you can't take them back.",
+
+	-- TT-33
+	bm_w_type54 = "TT-33",
+	bm_w_type54_desc = "Developed as a replacement for the Nagant M1895 revolver. While the TT-33 was eventually replaced by the Makarov, its widespread success spawned many copies that are still in use today.",
+	bm_w_x_type54 = "Akimbo TT-33's",
+	bm_w_x_type54_desc = "Having two old friends is better than making four new ones.",
+
+	-- SHAK-12
+	bm_w_shak12 = "ShAK-12 Rifle",
+	bm_w_shak12_desc = "A Russian bullpup chambered in a prestigious caliber. Designed for high-risk SWAT operations that demand high stopping power and little collateral damage. Perfect for neutralizing a hostile target inside a commieblock.",
+
+	-- RUS-12/RSH-12
+	bm_w_rsh12 = "RSh-12 Revolver",
+	bm_w_rsh12_desc = "Chambered in the same massive 12.7x55 cartridge as the ShAK-12, this revolver is a bad idea. Fires from the bottom cylinder to make it a little less of a bad idea.",
+
 
 	-- GL40
 	bm_w_gre_m79_desc = "Thump Gun. Pro Pipe. Noob Tube. Blooper. The things we love have many names. Many sizes too, if you feel like sawing it down.",
@@ -3947,6 +3971,71 @@ if InFmenu.settings.txt_wpnname > 1 then
 	-- BS-23
 	bm_w_bs23 = "KS-23M",
 	bm_w_bs23_desc = "Built using flawed barrels from anti-aircraft guns, earning it the title of the largest-bored shotgun in use today. Show them how it's done.",
+
+
+    -- MARK 10  
+    bm_wp_inf_9mm_incendiary = "9mm Firestorm",
+    bm_wp_inf_9mm_incendiary_desc = "TOASTY",
+
+    -- ar18
+    bm_w_ar18_desc = "The Widowmaker. The little Armalite. Infamously used by the IRA and cyborgs alike in clashes against local authorities.",
+    bm_wp_wpn_fps_upg_ar18_mag_30_dual_desc = "Two magazines joined together.\n\nEvery other reload is 50% faster.",
+
+    -- BIG GLOCK
+    bm_w_glawk19_desc = "This is a Glock &amp; Wesson 45mm FPO designed in 1789 by Colt Koch.",
+
+    -- Browning M1919A6
+    bm_w_m1919a6_desc = "Machine gun developed during World War I. Used extensively during World War II in the Pacific Theater",
+    bm_wp_wpn_fps_upg_m1919a6_bipod_desc = bipodstr,
+    bm_wp_wpn_fps_upg_m1919a6_irons_desc = "Aims directly down the sights",
+
+    -- CAR CMAG
+    bm_wp_wpn_fps_upg_ar15_m_cmag = "Beta C-Mag",
+    bm_wp_wpn_fps_upg_ar15_m_cmag_desc = "The theory goes like this: You pull the trigger on a machine gun until the whole world turns into blood, and it is awesome. You can't argue with that; that's science.",
+    bm_wp_wpn_fps_upg_g36_m_cmag = "Beta C-Mag",
+    bm_wp_wpn_fps_upg_g36_m_cmag_desc = "The theory goes like this: You pull the trigger on a machine gun until the whole world turns into blood, and it is awesome. You can't argue with that; that's science.",
+
+    -- Halo BR55
+    bm_w_br55_desc = "When nothing else gets the job done, the BR55 Battle Rifle will do. As the standard gun for all UNSC forces, the BR55 is the easiest gun to pick up and use.",
+
+    -- Halo M7 SMG
+    bm_w_m7caseless_desc = "The M7 Caseless Submachine Gun, the Bullet Hose. Simply aim around the floor near your enemies and think happy thoughts.",
+    bm_w_m7caseless_prim_desc = "The M7 Caseless Submachine Gun, the Bullet Hose. Simply aim around the floor near your enemies and think happy thoughts.",
+    bm_w_x_m7caseless_desc = "Did I hit anything? Don’t know — probably never will — no more bogeys afterward, though.",
+
+    -- Halo DMR
+    bm_w_reachdmr_desc = "Semi-automatic marksman rifle firing a powerful projectile. Particularly deadly at long range. Great for crashing grunt birthday parties.", 
+
+    -- MAG 7
+    bm_w_techno_desc = "Possibly the worst shotgun ever! Chains and Wolf bubba'd the thing to hell and back just to make it a viable weapon. The result: a blowback operated pistol limited to using 12 gauge minishells.",
+    bm_w_x_techno_desc = "Wait, that's illegal.",
+
+    -- MTs 255
+    bm_w_mts255_desc = "A popular Hunting shotgun banned from importation because it made games of Russian Roulette a bit too messy.",
+    bm_w_x_mts255_desc = "No one dared to ask his business, no one dared to make a slip. For the stranger there among them had a big iron on his hip.",
+
+    -- Pancor Jackhammer Pack
+    bm_w_x_jackhammer_desc = "This is getting out of hand. Now there are two of them!",
+    bm_w_jackhammer_desc = "A shotgun prototype which never went into production. Looks like those schematics in Chains' workshop were put to good use.",
+
+    -- Paw20
+    bm_w_inkunzi_desc = "Turns out making a high-velocity grenade launcher by shoving standard 20mm projectiles into a shorter cartridge is surprisingly effective. Mind the recoil.",
+
+    -- Rorsch Railgun
+    bm_w_roach_desc = "It is believed to be a small experimental prototype version of a much larger weapon platform, likely a cannon or artillery emplacement.",
+
+    -- scorpion evo
+    bm_w_czevo_desc = "A less expensive competitor to the MP5. Not to be confused with the older VZ61 'Skorpion'.",
+    bm_w_x_czevo_desc = "Just because you can, doesn't mean you should... but it also doesn't mean you can't.",
+    bm_wp_wpn_fps_smg_czevo_a_strong_desc = "Ammo loaded with a higher amount of propellant for better ballistic performance. Increases recoil.",
+    bm_wp_wpn_fps_smg_czevo_a_classic_desc = "Cheap surplus ammo used for high volume shooting on a budget.",
+
+    -- Smith&amp;Wesson 500
+    bm_w_shatters_fury_desc = "The absolute last word in a one handed caliber pissing match.",
+
+    -- spectre m4
+    bm_w_spectre_m4_desc = "An Italian submachine gun which makes use of unconventional quadstack magazines. Favored by MI6 agents during that one international incident with a satelite mounted laser cannon.",
+    bm_w_x_spectre_m4_desc = "Governments change. The lies stay the same.",
 
 	-- who the fuck thought it was a good idea to cover the center of the screen with text exactly when you want to make a quick and accurate shot
 	hud_suspicion_detected = ""

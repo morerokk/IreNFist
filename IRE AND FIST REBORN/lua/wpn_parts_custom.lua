@@ -285,7 +285,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	-- You can just rebuy them of course, but still
 
 	-- SR EINHERI PARTS
-	if BeardLib.Utils:ModLoaded("SR-3M Vikhr") then
+	if IREnFIST:check_beardlib_mod_installed("SR-3M Vikhr") then
 		-- default mag
 		self.parts.wpn_fps_ass_sr3m_mag.stats = {}
 		-- mounting sights in an aesthetic fashion
@@ -334,7 +334,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 
 
 	-- CZ-75 SHADOW PARTS
-	if BeardLib.Utils:ModLoaded("cz") then
+	if IREnFIST:check_beardlib_mod_installed("cz") then
 		-- prevents from loading after InF and overwriting my clearly-superior stats
 		-- now done via delayed calls
 		--Hooks:RemovePostHook("czInit")
@@ -365,7 +365,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- M2 HEAVY BARREL
-	if BeardLib.Utils:ModLoaded("M2HB_HMG") then
+	if IREnFIST:check_beardlib_mod_installed("M2HB_HMG") then
 		self.parts.inf_lmg_offset.stance_mod.wpn_fps_lmg_m2hb = {translation = Vector3(4, 0, -1)}
 		self.parts.inf_lmg_offset_nongadget.stance_mod.wpn_fps_lmg_m2hb = {translation = Vector3(4, 0, -1)}
 		table.insert(self.wpn_fps_lmg_m2hb.uses_parts, "inf_lmg_offset")
@@ -373,7 +373,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- MATEBA 6 UNICA PARTS
-	if BeardLib.Utils:ModLoaded("Mateba Model 6 Unica") then
+	if IREnFIST:check_beardlib_mod_installed("Mateba Model 6 Unica") then
 		-- Compensator
 		self.parts.wpn_fps_upg_unica6_comp.stats = {
 			value = 0,
@@ -385,7 +385,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Contender Special") then
+	if IREnFIST:check_beardlib_mod_installed("Contender Special") then
 		-- standard
 		self.parts.wpn_fps_special_contender_shell_rifle.internal_part = true
 		self.parts.wpn_fps_special_contender_shell_rifle.type = "ammo"
@@ -447,7 +447,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("m1c") then
+	if IREnFIST:check_beardlib_mod_installed("m1c") then
 		-- funnel compensator
 		self.parts.wpn_fps_ass_m1c_comp.stats = {
 			value = 0,
@@ -461,7 +461,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Tokarev SVT-40") then
+	if IREnFIST:check_beardlib_mod_installed("Tokarev SVT-40") then
 		-- upgraded muzzle brake
 		self.parts.wpn_fps_upg_svt40_muzzle_brake_upg.stats = deep_clone(nostats)
 		-- PU scopes
@@ -479,7 +479,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_svt40_suppressor.stats = deep_clone(silstatsconc2)
 	end
 
-	if BeardLib.Utils:ModLoaded("AN-94 AR") and self.parts.wpn_fps_ass_akrocket_s_adjusted then
+	if IREnFIST:check_beardlib_mod_installed("AN-94 AR") and self.parts.wpn_fps_ass_akrocket_s_adjusted then
 		self.parts.wpn_fps_ass_akrocket_s_adjusted.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_akrocket_g_mod.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_akrocket_fg_modern.stats = deep_clone(nostats)
@@ -492,7 +492,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_akrocket_m_fastext.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("tilt") then
+	if IREnFIST:check_beardlib_mod_installed("tilt") then
 		self.parts.wpn_fps_ass_tilt_g_wood.stats = deep_clone(nostats)
 		-- bulk magazine
 		self.parts.wpn_fps_ass_tilt_mag_big.stats = deep_clone(self.parts.wpn_fps_upg_ak_m_quad.stats)
@@ -533,7 +533,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Makarov Pistol") then
+	if IREnFIST:check_beardlib_mod_installed("Makarov Pistol") then
 		-- pmm 12rnd mag
 		self.parts.wpn_fps_pis_pm_m_custom.stats = deep_clone(mag_150)
 		self.parts.wpn_fps_pis_pm_m_custom.stats.extra_ammo = 4
@@ -572,7 +572,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Remington Various Attachment") then
+	if IREnFIST:check_beardlib_mod_installed("Remington Various Attachment") then
 		-- heat-shielded barrel
 		self.parts.wpn_fps_shot_mossberg_b_heat.stats = deep_clone(nostats)
 		-- flashlight grip
@@ -661,7 +661,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Winchester Model 1912") then
+	if IREnFIST:check_beardlib_mod_installed("Winchester Model 1912") then
 		-- base receiver
 		self.parts.wpn_fps_shot_m1912_receiver.stats = deep_clone(nostats)
 		-- field barrel
@@ -704,7 +704,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("KS-23") then
+	if IREnFIST:check_beardlib_mod_installed("KS-23") then
 		-- shrapnel-25
 		self.parts.wpn_fps_upg_ks23_ammo_buckshot_8pellet.custom_stats = {rays = 8, damage_near_mul = 25/15, damage_far_mul = 35/30, sdesc1 = "caliber_s23mm25"}
 		self.parts.wpn_fps_upg_ks23_ammo_buckshot_8pellet.stats = {
@@ -757,7 +757,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Marlin Model 1894 Custom") then
+	if IREnFIST:check_beardlib_mod_installed("Marlin Model 1894 Custom") then
 		-- default parts
 		self.parts.wpn_fps_snp_m1894_loading_spring.stats = {}
 		self.parts.wpn_fps_snp_m1894_irons.stats = {
@@ -770,7 +770,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- primary svu/SVU-T
-	if BeardLib.Utils:ModLoaded("svudragunov") then
+	if IREnFIST:check_beardlib_mod_installed("svudragunov") then
 		table.insert(gunlist_snp, {"wpn_fps_snp_svu_dragunov", -3})
 		table.insert(self.wpn_fps_snp_svu_dragunov.uses_parts, "wpn_fps_upg_o_spot")
 		table.insert(self.wpn_fps_snp_svu_dragunov.uses_parts, "inf_shortdot")
@@ -803,7 +803,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- secondary svu
-	if BeardLib.Utils:ModLoaded("SVU") then
+	if IREnFIST:check_beardlib_mod_installed("SVU") then
 		-- default parts
 		self.parts.wpn_fps_snp_svu_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_snp_svu_pso.custom_stats = {disallow_ads_while_reloading = true}
@@ -833,7 +833,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Gewehr 43") then
+	if IREnFIST:check_beardlib_mod_installed("Gewehr 43") then
 		table.insert(gunlist_snp, {"wpn_fps_snp_g43", -3})
 		self.parts.wpn_fps_snp_g43_clothwrap.stats = deep_clone(nostats)
 		self.parts.wpn_fps_snp_g43_sling.stats = deep_clone(nostats)
@@ -873,7 +873,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- primary mosin-nagant obrez
-	if BeardLib.Utils:ModLoaded("Mosin Nagant Obrez Kit") then
+	if IREnFIST:check_beardlib_mod_installed("Mosin Nagant Obrez Kit") then
 		table.insert(self.parts.wpn_fps_snp_mosin_b_obrez.forbids, "inf_bipod_snp")
 		self.parts.wpn_fps_snp_mosin_b_obrez.custom_stats = {muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash_dragons_breath"}
 		self.parts.wpn_fps_snp_mosin_b_obrez.stats = {
@@ -889,7 +889,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- secondary obrez
-	if BeardLib.Utils:ModLoaded("Mosin Nagant M9130 Obrez") then
+	if IREnFIST:check_beardlib_mod_installed("Mosin Nagant M9130 Obrez") then
 		-- ridiculous flash is set in wpn_stats
 		-- default part
 		self.parts.wpn_fps_snp_obrez_clip.stats = deep_clone(nostats)
@@ -907,7 +907,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 
 
 	-- BAR
-	if BeardLib.Utils:ModLoaded("BAR LMG") then
+	if IREnFIST:check_beardlib_mod_installed("BAR LMG") then
 		self.parts.wpn_fps_ass_bar_g_monitor.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_bar_bipod.custom_stats = {recoil_horizontal_mult = 2}
 		self.parts.wpn_fps_ass_bar_bipod.adds = {"inf_bipod_part"}
@@ -942,7 +942,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Seburo M5") then
+	if IREnFIST:check_beardlib_mod_installed("Seburo M5") then
 		self.parts.wpn_fps_pis_seburo_g_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_seburo_f_silver.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_seburo_s_silver.stats = deep_clone(nostats)
@@ -964,7 +964,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 
-	if BeardLib.Utils:ModLoaded("HKG11") then
+	if IREnFIST:check_beardlib_mod_installed("HKG11") then
 		self.parts.wpn_fps_upg_temple_i_matthewreilly.perks = nil
 		self.parts.wpn_fps_upg_temple_i_matthewreilly.custom_stats = {has_burst_fire = false, inf_rof_mult = 2100/460} -- this is fucking stupid
 		self.parts.wpn_fps_upg_temple_i_matthewreilly.stats = {
@@ -984,7 +984,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Beretta 93R") and self.parts.wpn_fps_upg_b93r_comp_93r then
+	if IREnFIST:check_beardlib_mod_installed("Beretta 93R") and self.parts.wpn_fps_upg_b93r_comp_93r then
 		self.parts.wpn_fps_upg_b93r_comp_93r.stats = {
 			value = 0,
 			recoil = 2,
@@ -1016,7 +1016,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_b93r_vertgrip_rail.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("TOZ-34") then
+	if IREnFIST:check_beardlib_mod_installed("TOZ-34") then
 		self.parts.wpn_fps_shot_toz34_sight_rail.stance_mod = {wpn_fps_shot_toz34 = {translation = Vector3(0, -11, -0.2), rotation = Rotation(0, 0.2, 0)}}
 		self.parts.wpn_fps_shot_toz34_body.stance_mod = {wpn_fps_shot_toz34 = {translation = Vector3(0, 11, 0.2), rotation = Rotation(0, -0.2, 0)}}
 		self.parts.wpn_fps_shot_toz34_body.stats = deep_clone(nostats)
@@ -1042,11 +1042,11 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 
 
 		-- MEUSOC grip
-	if BeardLib.Utils:ModLoaded("Pachmayr Grip") then
+	if IREnFIST:check_beardlib_mod_installed("Pachmayr Grip") then
 		self.parts.wpn_fps_pis_1911_g_pachmayr.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("TOZ-66") then
+	if IREnFIST:check_beardlib_mod_installed("TOZ-66") then
 		self.parts.wpn_fps_shot_toz66_body.stats = {}
 		self.parts.wpn_fps_shot_toz66_body.stance_mod = {wpn_fps_shot_toz66 = {translation = Vector3(0, 0, 1.5)}}
 
@@ -1068,11 +1068,11 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_toz66_duckbill.stats = deep_clone(self.parts.wpn_fps_upg_ns_duck.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("PU Scope") then
+	if IREnFIST:check_beardlib_mod_installed("PU Scope") then
 		self.parts.wpn_fps_snp_mosin_pu_scope.custom_stats = {disallow_ads_while_reloading = true}
 	end
 
-	if BeardLib.Utils:ModLoaded("pdr") then
+	if IREnFIST:check_beardlib_mod_installed("pdr") then
 		-- swift mag
 		self.parts.wpn_fps_smg_pdr_m_pmag.stats = deep_clone(nostats)
 		-- short mag
@@ -1080,7 +1080,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_smg_pdr_m_short.stats.extra_ammo = -10
 	end
 
-	if BeardLib.Utils:ModLoaded("Steyr AUG A3 9mm XS") then
+	if IREnFIST:check_beardlib_mod_installed("Steyr AUG A3 9mm XS") then
 		self.parts.wpn_fps_smg_aug9mm_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_aug9mm_barrel_long.stats = {
 			value = 0,
@@ -1117,7 +1117,8 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_aug9mm_vg_troy_short.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("L115") then
+	--[[
+	if IREnFIST:check_beardlib_mod_installed("L115") then
 		table.insert(gunlist_snp, {"wpn_fps_snp_l115", -3})
 		self.parts.wpn_fps_snp_l115_mag.stats = nil
 		table.insert(self.wpn_fps_snp_l115.uses_parts, "inf_shortdot")
@@ -1128,12 +1129,13 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_l115_barrel_awc.stats = deep_clone(silstatssnp)
 		self.parts.wpn_fps_upg_l115_supp.custom_stats = snpsilencercustomstats
 		self.parts.wpn_fps_upg_l115_supp.stats = deep_clone(silstatssnp)
-		if BeardLib.Utils:ModLoaded("Custom Attachment Points") or BeardLib.Utils:ModLoaded("WeaponLib") then
+		if IREnFIST:check_beardlib_mod_installed("Custom Attachment Points") or IREnFIST:check_beardlib_mod_installed("WeaponLib") then
 			table.insert(self.wpn_fps_snp_l115.uses_parts, "inf_bipod_snp")
 		end
 	end
+	]]
 
-	if BeardLib.Utils:ModLoaded("US Optics ST-10 Scope") then
+	if IREnFIST:check_beardlib_mod_installed("US Optics ST-10 Scope") then
 		self.parts.wpn_fps_upg_o_st10.customsight = true
 		self.parts.wpn_fps_upg_o_st10.customsighttrans = {}
 		self.parts.wpn_fps_upg_o_st10.customsighttrans.wpn_fps_ass_galil_fg_fab = {translation = Vector3(0, 3, 0)}
@@ -1151,12 +1153,12 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("ZeissMod") then
+	if IREnFIST:check_beardlib_mod_installed("ZeissMod") then
 		self.parts.wpn_fps_upg_o_zeiss.customsight = true
 		self.parts.wpn_fps_upg_o_zeiss.stats = deep_clone(self.parts.wpn_fps_upg_o_t1micro.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("AK Topless") then
+	if IREnFIST:check_beardlib_mod_installed("AK Topless") then
 		self.parts.wpn_fps_ass_akm_topless.stats = {
 			value = 0,
 			recoil = -2,
@@ -1170,7 +1172,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_ass_akm_topless")
 	end
 
-	if BeardLib.Utils:ModLoaded("Montana 5.56") then
+	if IREnFIST:check_beardlib_mod_installed("Montana 5.56") then
 		self.parts.wpn_fps_ass_yayo_fg_rail.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_yayo_mag_dual.custom_stats = {alternating_reload = 1.20/0.80}
 		self.parts.wpn_fps_ass_yayo_mag_dual.stats = {
@@ -1200,7 +1202,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_yayo_flipup.stance_mod.wpn_fps_ass_yayo = {translation = Vector3(0, 0, -1), rotation = Rotation(0, -0.5, 0)}
 	end
 
-	if BeardLib.Utils:ModLoaded("Bren Ten") then
+	if IREnFIST:check_beardlib_mod_installed("Bren Ten") then
 		self.parts.wpn_fps_pis_sonny_sl_runt.stats = {
 			value = 0,
 			spread = -5,
@@ -1208,7 +1210,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("VisionKing VS1.5-5x30QZ") then
+	if IREnFIST:check_beardlib_mod_installed("VisionKing VS1.5-5x30QZ") then
 		self.parts.wpn_fps_upg_o_visionking.customsight = true
 		self.parts.wpn_fps_upg_o_visionking.customsighttrans = {}
 		self.parts.wpn_fps_upg_o_visionking.customsighttrans.wpn_fps_ass_galil_fg_fab = {translation = Vector3(0, 10, 0)}
@@ -1223,7 +1225,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("CompM4s Sight") then
+	if IREnFIST:check_beardlib_mod_installed("CompM4s Sight") then
 		self.parts.wpn_fps_upg_o_compm4s.customsight = true
 		self.parts.wpn_fps_upg_o_compm4s.stats = {
 			value = 0,
@@ -1232,7 +1234,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("STG 44") then
+	if IREnFIST:check_beardlib_mod_installed("STG 44") then
 		self.parts.wpn_fps_ass_stg44_b_short.stats = deep_clone(barrel_p2)
 		self.parts.wpn_fps_ass_stg44_b_long.stats = {
 			value = 0,
@@ -1268,7 +1270,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_stg44_fg_a280.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("HK G3A3 M203") then
+	if IREnFIST:check_beardlib_mod_installed("HK G3A3 M203") then
 		self.parts.wpn_fps_ass_g3m203_mag.stats = {}
 		self.parts.wpn_fps_upg_g3m203_barrel_g3ka4.stats = {
 			value = 0,
@@ -1310,7 +1312,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_g3m203_gre_incendiary.custom_stats.sdesc3 = "misc_gl40x46mmIC"
 	end
 
-	if BeardLib.Utils:ModLoaded("AAC Honey Badger") then
+	if IREnFIST:check_beardlib_mod_installed("AAC Honey Badger") then
 		-- default part
 		self.parts.wpn_fps_ass_bajur_b_std.custom_stats = silencercustomstats
 
@@ -1351,12 +1353,12 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Kobra Sight") then
+	if IREnFIST:check_beardlib_mod_installed("Kobra Sight") then
 		self.parts.wpn_fps_upg_o_kobra.customsight = true
 		self.parts.wpn_fps_upg_o_kobra.stats = deep_clone(self.parts.wpn_fps_upg_o_t1micro.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("OKP-7 Sight") then
+	if IREnFIST:check_beardlib_mod_installed("OKP-7 Sight") then
 		self.parts.wpn_fps_upg_o_okp7.customsight = true
 		self.parts.wpn_fps_upg_o_okp7.customsighttrans = {}
 		self.parts.wpn_fps_upg_o_okp7.customsighttrans.wpn_fps_ass_galil_fg_fab = {translation = Vector3(0.6, 0, 0.93)}
@@ -1369,7 +1371,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_o_okp7.stats = deep_clone(self.parts.wpn_fps_upg_o_t1micro.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("af2011") then
+	if IREnFIST:check_beardlib_mod_installed("af2011") then
 		self.parts.wpn_fps_pis_af2011_body_standard.stats = {
 			value = 0,
 			spread_multi = {2.00, 0.50},
@@ -1409,7 +1411,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("1P69 Giperon Scope CS5") then
+	if IREnFIST:check_beardlib_mod_installed("1P69 Giperon Scope CS5") then
 		self.parts.wpn_fps_upg_o_1p69.customsight = true
 		self.parts.wpn_fps_upg_o_1p69.custom_stats = {disallow_ads_while_reloading = true}
 		self.parts.wpn_fps_upg_o_1p69.stats = {
@@ -1419,7 +1421,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("STF-12") then
+	if IREnFIST:check_beardlib_mod_installed("STF-12") then
 		-- it's a short barrel
 		-- it's fixed by now
 		self.parts.wpn_fps_shot_stf12_b_short.stats = deep_clone(barrelsho_p1)
@@ -1436,7 +1438,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(customsightaddlist, {"wpn_fps_shot_stf12", "wpn_fps_shot_r870", true})
 	end
 
-	if BeardLib.Utils:ModLoaded("PO 4x24P Scope") then
+	if IREnFIST:check_beardlib_mod_installed("PO 4x24P Scope") then
 		self.parts.wpn_fps_upg_o_po4.customsight = true
 		self.parts.wpn_fps_upg_o_po4.custom_stats = {disallow_ads_while_reloading = true}
 		self.parts.wpn_fps_upg_o_po4.stats = {
@@ -1519,7 +1521,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_o_po4.stance_mod.wpn_fps_gre_slap = {translation = Vector3(0.18, 0, -0.59)}
 	end
 
-	if BeardLib.Utils:ModLoaded("CheyTac M200") then
+	if IREnFIST:check_beardlib_mod_installed("CheyTac M200") then
 		-- big default scope with 8 zoom
 		table.insert(gunlist_snp, {"wpn_fps_snp_m200", -4})
 		self.parts.wpn_fps_snp_m200_deltatitanium.custom_stats = {disallow_ads_while_reloading = true}
@@ -1533,7 +1535,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_m200_supp.stats = deep_clone(silstatssnp)
 	end
 
-	if BeardLib.Utils:ModLoaded("EOTech 552 Holographic Sight") then
+	if IREnFIST:check_beardlib_mod_installed("EOTech 552 Holographic Sight") then
 		self.parts.wpn_fps_upg_o_eotech552.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 
 		self.parts.wpn_fps_upg_o_eotech552.customsight = true
@@ -1550,7 +1552,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Minebea SMG") then
+	if IREnFIST:check_beardlib_mod_installed("Minebea SMG") then
 		self.parts.wpn_fps_smg_minebea_m_standard.stats = deep_clone(nostats)
 		self.parts.wpn_fps_smg_minebea_m_extended.stats = deep_clone(mag_150)
 		self.parts.wpn_fps_smg_minebea_m_extended.stats.extra_ammo = 10
@@ -1586,11 +1588,11 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Thermal Scope") then
+	if IREnFIST:check_beardlib_mod_installed("Thermal Scope") then
 		self.parts.wpn_fps_upg_o_thersig.stats = deep_clone(self.parts.wpn_fps_upg_o_aimpoint.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("Ghost Ring Sight") then
+	if IREnFIST:check_beardlib_mod_installed("Ghost Ring Sight") then
 		self.parts.wpn_fps_upg_o_ghostring.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_o_ghostring_front.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_o_ghostring_pis.stats = deep_clone(nostats)
@@ -1611,7 +1613,9 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		]]
 	end
 
-	if BeardLib.Utils:ModLoaded("HX25 Handheld Grenade Launcher") then
+	-- Temp removed due to crashes
+	--[[
+	if IREnFIST:check_beardlib_mod_installed("HX25 Handheld Grenade Launcher") then
 		self.parts.wpn_fps_gre_hx25_barrel.custom_stats = {}
 		self.parts.wpn_fps_gre_hx25_barrel.stats = {
 			value = 0,
@@ -1638,6 +1642,9 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 			spread = -20,
 			concealment = 0
 		}
+
+		]]
+
 		--[[
 		self.parts.wpn_fps_upg_hx25_dragons_breath_ammo.custom_stats = {
 			armor_piercing_add = 1,
@@ -1667,14 +1674,17 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 			concealment = 0
 		}
 		]]
+
+		--[[
 		self.parts.wpn_fps_upg_hx25_sight_iron_il.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_hx25_sight_rmr.stats = {
 			value = 0,
 			concealment = -1
 		}
 	end
+	]]
 
-	if BeardLib.Utils:ModLoaded("Illuminated Iron Sight Pack") then
+	if IREnFIST:check_beardlib_mod_installed("Illuminated Iron Sight Pack") then
 		self.parts.wpn_fps_upg_1911_tritium.stats = {value = 0, concealment = 0}
 		self.parts.wpn_fps_upg_b92fs_tritium.stats = {value = 0, concealment = 0}
 		self.parts.wpn_fps_upg_baka_tritium.stats = {value = 0, concealment = 0}
@@ -1705,7 +1715,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_stech_tritium.stats = {value = 0, concealment = 0}
 	end
 
-	if BeardLib.Utils:ModLoaded("stock_attachment_pack") then
+	if IREnFIST:check_beardlib_mod_installed("stock_attachment_pack") then
 		primarysmgadds_specific.wpn_fps_smg_mp5primary = primarysmgadds_specific.wpn_fps_smg_mp5primary or {}
 		table.insert(primarysmgadds_specific.wpn_fps_smg_mp5primary, "wpn_fps_smg_mp5_s_folded")
 		table.insert(primarysmgadds_specific.wpn_fps_smg_mp5primary, "wpn_fps_smg_mp5_s_adjusted")
@@ -1814,7 +1824,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.wpn_fps_smg_x_mp5.override.wpn_fps_smg_mp5_s_nostock = {stats = deep_clone(nostats)}
 	end
 
-	if BeardLib.Utils:ModLoaded("amt") then
+	if IREnFIST:check_beardlib_mod_installed("amt") then
 		self.parts.wpn_fps_upg_amt_visionking.stats = {
 			value = 0,
 			zoom = 7,
@@ -1827,7 +1837,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_pis_amt_m_short.stats.extra_ammo = 4
 	end
 
-	if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") and self.parts.wpn_fps_pis_lebman_body_classic then
+	if IREnFIST:check_beardlib_mod_installed("Vanilla Styled Weapon Mods") and self.parts.wpn_fps_pis_lebman_body_classic then
 		self.parts.wpn_fps_ass_flint_b_short.stats = deep_clone(barrel_p1)
 		self.parts.wpn_fps_ass_flint_b_long.stats = deep_clone(barrel_m1)
 		self.parts.wpn_fps_ass_flint_m_long.stats = deep_clone(mag_133)
@@ -1923,10 +1933,14 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 
 		-- Dragon 5.45 parts
 		-- Discreet Foregrip
-		self.parts.wpn_fps_pis_smolak_fg_polymer.stats = deep_clone(nostats)
+		if self.parts.wpn_fps_pis_smolak_fg_polymer then
+			self.parts.wpn_fps_pis_smolak_fg_polymer.stats = deep_clone(nostats)
+		end
 
 		-- Add Ivans Legacy
-		table.insert(self.wpn_fps_pis_smolak.uses_parts, "inf_ivan")
+		if self.wpn_fps_pis_smolak then
+			table.insert(self.wpn_fps_pis_smolak.uses_parts, "inf_ivan")
+		end
 
 		-- Lebman/Crosskill auto parts
 		-- Room broom kit
@@ -2009,7 +2023,9 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		-- AK titanium grip
 		self.parts.wpn_upg_ak_g_titanium.stats = deep_clone(nostats)
 		-- AK Speedpull Mag
-		self.parts.wpn_fps_pis_smolak_m_custom.stats = deep_clone(nostats)
+		if self.parts.wpn_fps_pis_smolak_m_custom then
+			self.parts.wpn_fps_pis_smolak_m_custom.stats = deep_clone(nostats)
+		end
 		-- Smooth AK Cover
 		self.parts.wpn_fps_sho_saiga_upper_receiver_smooth.stats = deep_clone(nostats)
 		-- Low profile pistol compensator
@@ -2071,7 +2087,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Vanilla styled modpack 2
-	if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods Volume 2") and self.parts.wpn_fps_shot_minibeck_shells then
+	if IREnFIST:check_beardlib_mod_installed("Vanilla Styled Weapon Mods Volume 2") and self.parts.wpn_fps_shot_minibeck_shells then
 		self.parts.wpn_fps_shot_minibeck_shells.stats = {
 			value = 0,
 			reload = 5,
@@ -2119,7 +2135,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_shot_m37_o_classic.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("Zenith 10mm") then
+	if IREnFIST:check_beardlib_mod_installed("Zenith 10mm") then
 		self.parts.wpn_fps_upg_zenith_ammo_ap.custom_stats = {sdesc1 = "caliber_p10hr", pen_shield_dmg_mult = 0.20/0.25, ammo_pickup_min_mul = 0.50, ammo_pickup_max_mul = 0.50, can_shoot_through_shield = true, can_shoot_through_wall = true}
 		self.parts.wpn_fps_upg_zenith_ammo_ap.internal_part = true
 		self.parts.wpn_fps_upg_zenith_ammo_ap.stats = {
@@ -2133,7 +2149,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_zenith_compact_laser.desc_id = "bm_wp_wpn_fps_upg_zenith_compact_laser_desc"
 	end
 
-	if BeardLib.Utils:ModLoaded("Widowmaker TX") then
+	if IREnFIST:check_beardlib_mod_installed("Widowmaker TX") then
 		self.parts.wpn_fps_shot_wmtx_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_wmtx_ammo_minishell.custom_stats = {sdesc1 = "caliber_s12dx", rays = 6, ammo_pickup_min_mul = 1.50, ammo_pickup_max_mul = 1.50}
 		self.parts.wpn_fps_upg_wmtx_ammo_minishell.stats = {
@@ -2151,7 +2167,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_wmtx_ns_firebull.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("DP12 Shotgun") then
+	if IREnFIST:check_beardlib_mod_installed("DP12 Shotgun") then
 		self.parts.wpn_fps_sho_dp12_o_standard.stance_mod = {wpn_fps_sho_dp12 = {translation = Vector3(0, 0, -0.3)}}
 		self.parts.wpn_fps_sho_dp12_ns_breacher.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
 
@@ -2182,7 +2198,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("ELCAN SpecterDR with Docter Sight") then
+	if IREnFIST:check_beardlib_mod_installed("ELCAN SpecterDR with Docter Sight") then
 		self.parts.wpn_fps_upg_o_su230_docter.customsight = true
 		self.parts.wpn_fps_upg_o_su230_docter.stats = {
 			value = 0,
@@ -2203,7 +2219,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("gsup") then
+	if IREnFIST:check_beardlib_mod_installed("gsup") then
 		-- pistol sils
 		self.parts.wpn_fps_ass_ns_g_sup1.custom_stats = silencercustomstats
 		self.parts.wpn_fps_ass_ns_g_sup1.stats = deep_clone(silstatsconc2) --3
@@ -2238,7 +2254,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(primarysmgadds, "wpn_fps_ass_ns_g_sup5")
 	end
 
-	if BeardLib.Utils:ModLoaded("Lost Gadgets Pack") then
+	if IREnFIST:check_beardlib_mod_installed("Lost Gadgets Pack") then
 		self.parts.wpn_fps_upg_fl_anpeq2.desc_id = "bm_wp_wpn_fps_upg_fl_anpeq2_desc"
 		self.parts.wpn_fps_upg_fl_anpeq2.stats = {
 			value = 0,
@@ -2288,7 +2304,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Heavy Metal Muzzle Device Pack") then
+	if IREnFIST:check_beardlib_mod_installed("Heavy Metal Muzzle Device Pack") then
 		self.parts.wpn_fps_upg_ns_ass_mb556k.stats = deep_clone(self.parts.wpn_fps_upg_ass_ns_surefire.stats)
 		self.parts.wpn_fps_upg_ns_ass_tbrake.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_tank.stats)
 		self.parts.wpn_fps_upg_ns_ass_vortex.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_stubby.stats)
@@ -2305,7 +2321,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_ns_shot_nomad.stats = deep_clone(self.parts.wpn_fps_upg_ns_shot_shark.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("Magpul Attachments Pack - AK") then
+	if IREnFIST:check_beardlib_mod_installed("Magpul Attachments Pack - AK") then
 		self.parts.wpn_fps_upg_fg_ak_moe.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_g_ak_moe.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_s_ak_moe.stats = deep_clone(nostats)
@@ -2318,7 +2334,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(primarysmgadds_specific.wpn_fps_smg_akmsuprimary, "wpn_fps_upg_ak_m_pmag")
 	end
 
-	if BeardLib.Utils:ModLoaded("Magpul Attachments Pack - M4") then
+	if IREnFIST:check_beardlib_mod_installed("Magpul Attachments Pack - M4") then
 		self.parts.wpn_fps_upg_fg_moe2.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_g_m4_moe.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_s_m4_sl_c.stats = {
@@ -2363,7 +2379,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	--]]
 	end
 
-	if BeardLib.Utils:ModLoaded("Magpul Attachments Pack - Universal") then
+	if IREnFIST:check_beardlib_mod_installed("Magpul Attachments Pack - Universal") then
 		self.parts.wpn_fps_upg_fg_moe2_short.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_s_m4_ubr.stats = deep_clone(nostats)
 		primarysmgadds_specific.wpn_fps_smg_olympicprimary = primarysmgadds_specific.wpn_fps_smg_olympicprimary or {}
@@ -2480,7 +2496,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(primarysmgadds_specific.wpn_fps_smg_hajkprimary, "wpn_fps_upg_m4_m_pmag20")
 	end
 
-	if BeardLib.Utils:ModLoaded("Lahti L-35") then
+	if IREnFIST:check_beardlib_mod_installed("Lahti L-35") then
 		self.parts.wpn_fps_upg_l35_barrel_long.stats = {
 			value = 0,
 			spread = 5,
@@ -2500,7 +2516,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_l35_mag_long.stats.extra_ammo = 8
 	end
 
-	if BeardLib.Utils:ModLoaded("OTs-14-4A Groza") then
+	if IREnFIST:check_beardlib_mod_installed("OTs-14-4A Groza") then
 		self.parts.wpn_fps_ass_ots_14_4a_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_ots_14_4a_supp.stats = deep_clone(silstatsconc2)
 		self.parts.wpn_fps_upg_ots_14_4a_supp_b.stats = deep_clone(silstatsconc2)
@@ -2533,13 +2549,13 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.inf_groza_556.stats.concealment = mag_150.concealment
 	end
 
-	if BeardLib.Utils:ModLoaded("M16A1 Wooden Furniture") then
+	if IREnFIST:check_beardlib_mod_installed("M16A1 Wooden Furniture") then
 		self.parts.wpn_fps_ass_m16_fg_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_m16_s_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_m16_g_wood.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("MK18 Specialist") then
+	if IREnFIST:check_beardlib_mod_installed("MK18 Specialist") then
 		self.parts.wpn_fps_ass_mk18s_fg_black.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_mk18s_grip_black.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_mk18s_tacstock.stats = deep_clone(nostats)
@@ -2564,7 +2580,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(self.wpn_fps_ass_mk18s.uses_parts, "inf_mk18_nomagwelldevice")
 	end
 
-	if BeardLib.Utils:ModLoaded("Lewis Gun") then
+	if IREnFIST:check_beardlib_mod_installed("Lewis Gun") then
 		self.parts.wpn_fps_upg_lewis_bolt_aa.stats = {
 			value = 0,
 			spread = -5,
@@ -2587,7 +2603,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("HK416") then
+	if IREnFIST:check_beardlib_mod_installed("HK416") then
 		self.parts.wpn_fps_ass_hk416_bolt.stats = deep_clone(nostats)
 		--self.parts.wpn_fps_upg_hk416_grip_magpul_miad.stats = deep_clone(nostats)
 		--self.parts.wpn_fps_upg_hk416_grip_magpul_moe.stats = deep_clone(nostats)
@@ -2648,7 +2664,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_hk416_stock_slimline.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("HK416C Standalone") then
+	if IREnFIST:check_beardlib_mod_installed("HK416C Standalone") then
 		self.parts.wpn_fps_upg_drongo_s_orig.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_drongo_s_compact.stats = deep_clone(self.parts.wpn_fps_m4_uupg_s_fold.stats)
 		self.parts.wpn_fps_ass_drongo_lower.stance_mod = {
@@ -2675,7 +2691,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_o_45rds_v2.stance_mod.wpn_fps_ass_drongo = deep_clone(self.parts.wpn_fps_upg_o_45rds_v2.stance_mod.wpn_fps_ass_m4)
 	end
 
-	if BeardLib.Utils:ModLoaded("HK417 Standalone") then
+	if IREnFIST:check_beardlib_mod_installed("HK417 Standalone") then
 		self.parts.wpn_fps_upg_recce_s_orig.stats = deep_clone(nostats)
 
 		table.insert(self.wpn_fps_ass_recce.uses_parts, "inf_hk417_dmr")
@@ -2685,7 +2701,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.inf_hk417_dmr.stats.reload = -20
 	end
 
-	if BeardLib.Utils:ModLoaded("acwr") then
+	if IREnFIST:check_beardlib_mod_installed("acwr") then
 		self.parts.wpn_fps_ass_acwr_expert.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_acwr_mag_pmag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_acwr_covers.stats = deep_clone(nostats)
@@ -2695,7 +2711,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_acwr_gl_fire.custom_stats = {sdesc3 = "misc_gl40x46mmIC"}
 	end
 
-	if BeardLib.Utils:ModLoaded("SAI GRY") then
+	if IREnFIST:check_beardlib_mod_installed("SAI GRY") then
 		self.parts.wpn_fps_upg_saigry_mag_pmag.stats = deep_clone(mag_75)
 		self.parts.wpn_fps_upg_saigry_mag_pmag.stats.extra_ammo = -10
 		self.parts.wpn_fps_upg_saigry_mag_stanag.stats = deep_clone(self.parts.wpn_fps_upg_saigry_mag_pmag.stats)
@@ -2709,7 +2725,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_saigry_a_556.custom_stats.sdesc1 = "caliber_r556x45"
 	end
 
-	if BeardLib.Utils:ModLoaded("Owen Gun") then
+	if IREnFIST:check_beardlib_mod_installed("Owen Gun") then
 		self.parts.wpn_fps_smg_owen_b_43.stats = deep_clone(nostats)
 		self.parts.wpn_fps_smg_owen_s_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_smg_owen_sling.stats = deep_clone(nostats)
@@ -2733,7 +2749,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("PP-19-01 Vityaz") then
+	if IREnFIST:check_beardlib_mod_installed("PP-19-01 Vityaz") then
 		self.parts.wpn_fps_smg_vityaz_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_vityaz_grip_ak.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_vityaz_grip_molot.stats = deep_clone(nostats)
@@ -2785,7 +2801,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Tactical Operator Attachments") then
+	if IREnFIST:check_beardlib_mod_installed("Tactical Operator Attachments") then
 		self.parts.wpn_fps_upg_s_devgru.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_fg_ropup.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_fg_daniel.stats = deep_clone(nostats)
@@ -2872,7 +2888,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("l1a1") then
+	if IREnFIST:check_beardlib_mod_installed("l1a1") then
 		self.parts.wpn_fps_ass_l1a1_grip_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_l1a1_foregrip_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_l1a1_stock_wood.stats = deep_clone(nostats)
@@ -2886,7 +2902,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_l1a1_mag_short.stats.extra_ammo = -10
 	end
 
-	if BeardLib.Utils:ModLoaded("Mk14") then
+	if IREnFIST:check_beardlib_mod_installed("Mk14") then
 		-- Mk14 has ironsights, no need for this
 		--table.insert(gunlist_snp, {"wpn_fps_snp_wargoddess", -3})
 		--self.parts.wpn_fps_snp_wargoddess_b_ebr.stats = deep_clone(barrel_p1)
@@ -2904,7 +2920,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_snp_wargoddess_supp.stats = deep_clone(silstatssnp)
 	end
 
-	if BeardLib.Utils:ModLoaded("sg552") then
+	if IREnFIST:check_beardlib_mod_installed("sg552") then
 		self.parts.wpn_fps_ass_sg552_g_ergo.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_sg552_m_milspec.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_sg552_s_tactical.stats = deep_clone(nostats)
@@ -2953,7 +2969,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") and self.parts.wpn_fps_pis_px4_mag then
+	if IREnFIST:check_beardlib_mod_installed("Beretta Px4 Storm") and self.parts.wpn_fps_pis_px4_mag then
 		self.parts.wpn_fps_pis_px4_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_px4_barrel_sd.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_px4_grip_backstrap_rubber.stats = deep_clone(nostats)
@@ -2977,11 +2993,11 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_px4_ammo_45acp.internal_part = true
 	end
 
-	if BeardLib.Utils:ModLoaded("Sword Cutlass Grips") then
+	if IREnFIST:check_beardlib_mod_installed("Sword Cutlass Grips") then
 		self.parts.wpn_fps_pis_beretta_g_cutlass.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("Walther P99 AS") then
+	if IREnFIST:check_beardlib_mod_installed("Walther P99 AS") then
 		self:convert_part("wpn_fps_upg_p99_ammo_40sw", "lightpis", "mediumpis", nil, 84)
 		self.parts.wpn_fps_upg_p99_ammo_40sw.custom_stats.sdesc1 = "caliber_p40sw"
 		self.parts.wpn_fps_upg_p99_ammo_40sw.stats.extra_ammo = -3
@@ -3005,7 +3021,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Leupold DeltaPoint Sight") then
+	if IREnFIST:check_beardlib_mod_installed("Leupold DeltaPoint Sight") then
 		self.parts.wpn_fps_upg_o_deltapoint.stats = {
 			value = 0,
 			zoom = 0,
@@ -3013,7 +3029,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Tromix Barrel-Ext") then
+	if IREnFIST:check_beardlib_mod_installed("Tromix Barrel-Ext") then
 		self.parts.wpn_fps_upg_ns_ass_smg_tromix.stats = {
 			value = 0,
 			recoil = 3,
@@ -3022,12 +3038,12 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(primarysmgadds, "wpn_fps_upg_ns_ass_smg_tromix")
 	end
 
-	if BeardLib.Utils:ModLoaded("M45A1 CQBP") and self.parts.wpn_fps_pis_m45a1_m_ext then
+	if IREnFIST:check_beardlib_mod_installed("M45A1 CQBP") and self.parts.wpn_fps_pis_m45a1_m_ext then
 		self.parts.wpn_fps_pis_m45a1_m_ext.stats = deep_clone(mag_150)
 		self.parts.wpn_fps_pis_m45a1_m_ext.stats.extra_ammo = 3
 	end
 
-	if BeardLib.Utils:ModLoaded("Mossberg 590") and self.parts.wpn_fps_shot_mossberg590_s_old then
+	if IREnFIST:check_beardlib_mod_installed("Mossberg 590") and self.parts.wpn_fps_shot_mossberg590_s_old then
 		self.parts.wpn_fps_shot_mossberg590_ironsight.stats = deep_clone(nostats)
 		self.parts.wpn_fps_shot_mossberg590_ironsight_dummy.stats = deep_clone(nostats)
 
@@ -3049,7 +3065,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Vepr-12") then
+	if IREnFIST:check_beardlib_mod_installed("Vepr-12") then
 		self.parts.wpn_fps_upg_vepr12_grip_ak_plastic.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_vepr12_grip_ak_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_vepr12_handguard_ak_wood.stats = deep_clone(nostats)
@@ -3065,7 +3081,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_vepr12_barrel_long.stats = deep_clone(barrelsho_m1)
 	end
 
-	if BeardLib.Utils:ModLoaded("M3 Grease Gun") then
+	if IREnFIST:check_beardlib_mod_installed("M3 Grease Gun") then
 		self.parts.wpn_fps_smg_m3_b_suppressor.custom_stats = silencercustomstats
 		self.parts.wpn_fps_smg_m3_b_suppressor.stats = deep_clone(silstatsconc2)
 		self.parts.wpn_fps_smg_m3_s_ext.stats = {
@@ -3100,7 +3116,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Howa AR") then
+	if IREnFIST:check_beardlib_mod_installed("Howa AR") then
 		self:convert_part("wpn_fps_ass_howa_t64_body", "lrifle", "hrifle")
 		self.parts.wpn_fps_ass_howa_t64_body.custom_stats.sdesc1 = "caliber_r762x51jp"
 		self.parts.wpn_fps_ass_howa_t64_body.custom_stats.use_reload_2 = true
@@ -3127,7 +3143,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("vp70") then
+	if IREnFIST:check_beardlib_mod_installed("vp70") then
 		self.parts.wpn_fps_pis_vp70_body_early.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_vp70_s_scifi.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_vp70_stp_standard.stats = deep_clone(nostats)
@@ -3155,7 +3171,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_pis_vp70_m_ext.stats.extra_ammo = 6
 	end
 
-	if BeardLib.Utils:ModLoaded("lapd") then
+	if IREnFIST:check_beardlib_mod_installed("lapd") then
 		self.parts.wpn_fps_pis_lapd_grip_pearl.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_lapd_grip_polymer.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_lapd_grip_cherry.stats = deep_clone(nostats)
@@ -3184,7 +3200,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	--]]
 	end
 
-	if BeardLib.Utils:ModLoaded("Valday 1P87") then
+	if IREnFIST:check_beardlib_mod_installed("Valday 1P87") then
 		self.parts.wpn_fps_upg_o_valday1p87.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 		self.parts.wpn_fps_upg_o_valday1p87.customsight = true
 		self.parts.wpn_fps_upg_o_valday1p87.customsighttrans = {}
@@ -3198,7 +3214,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_o_valday1p87.customsighttrans.wpn_fps_upg_o_m14_scopemount = {translation = Vector3(0, 0, valdayoffset)}
 	end
 
-	if BeardLib.Utils:ModLoaded("Remington R5 RGP") then
+	if IREnFIST:check_beardlib_mod_installed("Remington R5 RGP") then
 		self.parts.wpn_fps_upg_mikon_s_viper.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_mikon_am_parp.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_mikon_am_parp.custom_stats = {sdesc1 = "caliber_r556x45m193"}
@@ -3207,7 +3223,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_mikon_am_spc.stats.extra_ammo = 0
 	end
 
-	if BeardLib.Utils:ModLoaded("Parker-Hale PDW") then
+	if IREnFIST:check_beardlib_mod_installed("Parker-Hale PDW") then
 		self.parts.wpn_fps_upg_nya_s_nope.stats = {
 			value = 0,
 			recoil = -4,
@@ -3237,7 +3253,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("ARX-160 REBORN") then
+	if IREnFIST:check_beardlib_mod_installed("ARX-160 REBORN") then
 		table.insert(self.wpn_fps_ass_lazy.uses_parts, "inf_car4_ironsretain")
 		self.parts.wpn_fps_upg_lazy_b_long.stats = deep_clone(barrel_m2)
 	--[[
@@ -3250,7 +3266,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		--self.parts.wpn_fps_upg_lazy_am_beefish.stats = 
 	end
 
-	if BeardLib.Utils:ModLoaded("DP28") then
+	if IREnFIST:check_beardlib_mod_installed("DP28") then
 		self.parts.wpn_fps_lmg_dp28_stock_dpm.stats = deep_clone(nostats)
 		self.parts.wpn_fps_lmg_dp28_g_dpm.stats = deep_clone(nostats)
 		self.parts.wpn_fps_lmg_dp28_bipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -3290,7 +3306,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 
 	-- Actually ingame now, this mod is now broken to begin with sadly
 	--[[
-	if BeardLib.Utils:ModLoaded("M60") then
+	if IREnFIST:check_beardlib_mod_installed("M60") then
 		self.parts.wpn_fps_lmg_m60_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_m60_bipod.custom_stats = {recoil_horizontal_mult = 2}
 		self.parts.wpn_fps_upg_m60_bipod.desc_id = "bm_wp_wpn_fps_upg_m60_bipod_desc"
@@ -3312,7 +3328,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 	]]
 
-	if BeardLib.Utils:ModLoaded("RPD") then
+	if IREnFIST:check_beardlib_mod_installed("RPD") then
 		self.parts.wpn_fps_upg_rpd_bipod.custom_stats = {recoil_horizontal_mult = 2}
 		self.parts.wpn_fps_upg_rpd_bipod.desc_id = "bm_wp_wpn_fps_upg_rpd_bipod_desc"
 		self.parts.wpn_fps_lmg_rpd_mag.stats = deep_clone(nostats)
@@ -3322,7 +3338,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("LSAT") then
+	if IREnFIST:check_beardlib_mod_installed("LSAT") then
 		self.parts.wpn_fps_lmg_lsat_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_lsat_barrel_long.stats = deep_clone(barrel_m2)
 		self.parts.wpn_fps_upg_lsat_barrel_short.stats = deep_clone(barrel_p2)
@@ -3337,7 +3353,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_lsat_irons.internal_part = true
 	end
 
-	if BeardLib.Utils:ModLoaded("GSPS Various Attachment") then
+	if IREnFIST:check_beardlib_mod_installed("GSPS Various Attachment") then
 		self.parts.wpn_fps_shot_m37_b_trench.stats = deep_clone(nostats)
 		self.parts.wpn_fps_shot_m37_b_deerslayer.stats = deep_clone(barrelsho_m2)
 		self.parts.wpn_fps_shot_m37_s_rack.stats = deep_clone(nostats)
@@ -3349,7 +3365,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		table.insert(self.wpn_fps_shot_m37primary.uses_parts, "wpn_fps_shot_m37_s_stakeout")
 	end
 
-	if BeardLib.Utils:ModLoaded("gtt33") then
+	if IREnFIST:check_beardlib_mod_installed("gtt33") then
 		self.parts.wpn_fps_pis_gtt33_g_wood.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_gtt33_g_white.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_gtt33_g_bling.stats = deep_clone(nostats)
@@ -3364,7 +3380,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		--self:convert_part("wpn_fps_pis_gtt33_a_c45", "", "")
 	end
 
-	if BeardLib.Utils:ModLoaded("Fang-45") then
+	if IREnFIST:check_beardlib_mod_installed("Fang-45") then
 		self.parts.wpn_fps_smg_fang45_m_std.stats = deep_clone(nostats)
 		self.parts.wpn_fps_smg_fang45_s_folded.stats = {
 			value = 0,
@@ -3373,7 +3389,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("CZ 75 B") then
+	if IREnFIST:check_beardlib_mod_installed("CZ 75 B") then
 		self.parts.wpn_fps_pis_cz75b_g_pre.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_cz75b_g_b.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_cz75b_g_rub.stats = deep_clone(nostats)
@@ -3415,7 +3431,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("CZ 75 Short Rail") then
+	if IREnFIST:check_beardlib_mod_installed("CZ 75 Short Rail") then
 		self.parts.wpn_fps_pis_rally_m_ext.stats = deep_clone(mag_150)
 		self.parts.wpn_fps_pis_rally_m_ext.stats.extra_ammo = 10
 		self.parts.wpn_fps_pis_rally_g_wood.stats = deep_clone(nostats)
@@ -3429,7 +3445,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("CZ Auto Pistol") then
+	if IREnFIST:check_beardlib_mod_installed("CZ Auto Pistol") then
 		self.parts.wpn_fps_pis_czauto_ns_compensated.stats = deep_clone(self.parts.wpn_fps_pis_g18c_co_1.stats)
 		self.parts.wpn_fps_pis_czauto_m_extended.stats = deep_clone(mag_150)
 		self.parts.wpn_fps_pis_czauto_m_extended.stats.extra_ammo = 10
@@ -3448,7 +3464,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Chiappa Rhino 60DS") and self.parts.wpn_fps_pis_rhino_bullets then
+	if IREnFIST:check_beardlib_mod_installed("Chiappa Rhino 60DS") and self.parts.wpn_fps_pis_rhino_bullets then
 		self.parts.wpn_fps_pis_rhino_bullets.stats = deep_clone(nostats)
 		--self.parts.wpn_fps_upg_rhino_grip_rubber_small.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_rhino_grip_wood_small.stats = deep_clone(nostats)
@@ -3473,13 +3489,13 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		]]
 	end
 
-	if BeardLib.Utils:ModLoaded("Sjögren Inertia") then
+	if IREnFIST:check_beardlib_mod_installed("Sjögren Inertia") then
 		self.parts.wpn_fps_upg_sjogren_barrel_medium.stats = deep_clone(barrelsho_p1)
 		self.parts.wpn_fps_upg_sjogren_barrel_short.stats = deep_clone(barrelsho_p3)
 	end
 
 
-	if BeardLib.Utils:ModLoaded("ThompsonM1a1") then
+	if IREnFIST:check_beardlib_mod_installed("ThompsonM1a1") then
 		self.parts.wpn_fps_smg_tm1a1_ns_ext.stats = deep_clone(nostats)
 		self.parts.wpn_fps_smg_tm1a1_body_black.stats = deep_clone(nostats)
 		self.parts.wpn_fps_smg_tm1a1_body_noiron.stats = deep_clone(nostats)
@@ -3521,7 +3537,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("M6G Magnum") then
+	if IREnFIST:check_beardlib_mod_installed("M6G Magnum") then
 		self.parts.wpn_fps_pis_m6g_grip_discrete.stats = {
 			value = 0,
 			concealment = 2
@@ -3557,7 +3573,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-9") then
+	if IREnFIST:check_beardlib_mod_installed("AK-9") then
 		self.parts.wpn_fps_ass_heffy_939_ba_tiss.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_939_fh_tiss.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_939_st_tiss.stats = deep_clone(nostats)
@@ -3572,7 +3588,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-47") then
+	if IREnFIST:check_beardlib_mod_installed("AK-47") then
 		self.parts.wpn_fps_ass_heffy_762_pg_t2.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_762_fh_ak47.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_762_ba_akm.stats = deep_clone(nostats)
@@ -3710,7 +3726,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Apparently theres two mods called AK74? Thanks
-	if BeardLib.Utils:ModLoaded("AK-74") and self.parts.wpn_fps_ass_heffy_545_fh_ak74 then
+	if IREnFIST:check_beardlib_mod_installed("AK-74") and self.parts.wpn_fps_ass_heffy_545_fh_ak74 then
 		self.parts.wpn_fps_ass_heffy_545_fh_ak74.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_545_fh_aks74u.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_545_lr_aks74u.stats = deep_clone(nostats)
@@ -3770,7 +3786,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		--self.parts.wpn_fps_ass_heffy_545_m_poly_60.stats.extra_ammo = 30
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-101") and self.parts.wpn_fps_ass_heffy_556_fh_ak101 then
+	if IREnFIST:check_beardlib_mod_installed("AK-101") and self.parts.wpn_fps_ass_heffy_556_fh_ak101 then
 		self.parts.wpn_fps_ass_heffy_556_fh_ak101.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_556_fh_ak102.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_556_ba_ak108.stats = deep_clone(nostats)
@@ -3791,13 +3807,13 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("AK Color Attachments") then
+	if IREnFIST:check_beardlib_mod_installed("AK Color Attachments") then
 		self.parts.wpn_fps_ass_heffy_all_mc_bake_bl.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_all_mc_bake_or.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_all_camo.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("AK Extra Attachments") then
+	if IREnFIST:check_beardlib_mod_installed("AK Extra Attachments") then
 		self.parts.wpn_fps_ass_heffy_545_st_ivan.stats = {
 			value = 0,
 			recoil = -4,
@@ -4002,7 +4018,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_heffy_all_sm_cover.adds = {"inf_sightdummy2"}
 	end
 
-	if BeardLib.Utils:ModLoaded("Golden-AKMS") then
+	if IREnFIST:check_beardlib_mod_installed("Golden-AKMS") then
 		self.parts.wpn_fps_ass_heffy_gold_st_akm.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_gold_st_akms.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_heffy_gold_fh_none.stats = deep_clone(nostats)
@@ -4017,7 +4033,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Saiga-12") then
+	if IREnFIST:check_beardlib_mod_installed("Saiga-12") then
 		self.parts.wpn_fps_sho_heffy_12g_ext_saiga12k.stats = deep_clone(nostats)
 		self.parts.wpn_fps_sho_heffy_12g_lfg_utg_short.stats = deep_clone(nostats)
 		self.parts.wpn_fps_sho_heffy_12g_lfg_utg_long.stats = deep_clone(nostats)
@@ -4033,7 +4049,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Nagant M1895") then
+	if IREnFIST:check_beardlib_mod_installed("Nagant M1895") then
 		self.parts.wpn_fps_pis_m1895_cylinder.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_m1895_body_blued.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_m1895_body_gold.stats = deep_clone(nostats)
@@ -4051,7 +4067,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_m1895_barrel_long.stats = deep_clone(barrel_m1)
 	end
 
-	if BeardLib.Utils:ModLoaded("VHS Various Attachment") then
+	if IREnFIST:check_beardlib_mod_installed("VHS Various Attachment") then
 		self.parts.wpn_fps_ass_vhs_body_future.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_vhs_m_lsw.stats = {
 			value = 0,
@@ -4066,7 +4082,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_vhs_ub_nade.custom_stats = {sdesc3 = "misc_gl40x46mm"}
 	end
 
-	if BeardLib.Utils:ModLoaded("Aimpoint CompM2 Sight") then
+	if IREnFIST:check_beardlib_mod_installed("Aimpoint CompM2 Sight") then
 		self.parts.wpn_fps_upg_o_compm2.customsight = true
 		self.parts.wpn_fps_upg_o_compm2.stats = {
 			value = 0,
@@ -4075,12 +4091,12 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("Stealth Flashlights") then
+	if IREnFIST:check_beardlib_mod_installed("Stealth Flashlights") then
 		self.parts.wpn_fps_upg_fl_wml.desc_id = "bm_wp_wpn_fps_upg_fl_wml_desc"
 		self.parts.wpn_fps_upg_fl_pis_micro90.desc_id = "bm_wp_wpn_fps_upg_fl_micro90_desc"
 	end
 
-	if BeardLib.Utils:ModLoaded("Gepard GM6 Lynx") then
+	if IREnFIST:check_beardlib_mod_installed("Gepard GM6 Lynx") then
 		table.insert(gunlist_snp, {"wpn_fps_snp_lynx", -3})
 		self.parts.wpn_fps_snp_lynx_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_snp_lynx_a_low.internal_part = true
@@ -4099,7 +4115,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("PPSh-41") then
+	if IREnFIST:check_beardlib_mod_installed("PPSh-41") then
 		--self.parts.wpn_fps_upg_ppsh_barrel_extension.stats = deep_clone(barrel_m1)
 		--self.parts.wpn_fps_upg_ppsh_stock_black.stats = deep_clone(nostats)
 		--self.parts.wpn_fps_upg_ppsh_stock_camo_jungle.stats = deep_clone(nostats)
@@ -4122,7 +4138,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_ppsh_mag_drum.stats.extra_ammo = 36
 	end
 
-	if BeardLib.Utils:ModLoaded("CSGO Sniper Scope") then
+	if IREnFIST:check_beardlib_mod_installed("CSGO Sniper Scope") then
 		self.parts.wpn_fps_upg_o_csgoscope.customsight = true
 		self.parts.wpn_fps_upg_o_csgoscope.custom_stats = {disallow_ads_while_reloading = true}
 		self.parts.wpn_fps_upg_o_csgoscope.stats = {
@@ -4132,7 +4148,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("M1 Garand Modpack") then
+	if IREnFIST:check_beardlib_mod_installed("M1 Garand Modpack") then
 		self.parts.wpn_fps_ass_ching_o_m84.customsight = true
 		self.parts.wpn_fps_ass_ching_o_m84.custom_stats = {disallow_ads_while_reloading = true}
 		self.parts.wpn_fps_ass_ching_o_m84.stats = {
@@ -4148,18 +4164,18 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_ching_ns_expsilencer.stats = deep_clone(silstatsconc1)
 	end
 
-	if BeardLib.Utils:ModLoaded("Kel-Tec RFB") then
+	if IREnFIST:check_beardlib_mod_installed("Kel-Tec RFB") then
 		self.parts.wpn_fps_upg_leet_fg_ext.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_leet_b_smol.stats = deep_clone(barrel_p2)
 	end
 
-	if BeardLib.Utils:ModLoaded("Silent Killer High Standard HDM") then
+	if IREnFIST:check_beardlib_mod_installed("Silent Killer High Standard HDM") then
 		self.parts.wpn_fps_pis_hshdm_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_hshdm_frame_gold.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_hshdm_barrel.custom_stats = silencercustomstats
 	end
 
-	if BeardLib.Utils:ModLoaded("Silent Killer Maxim 9") then
+	if IREnFIST:check_beardlib_mod_installed("Silent Killer Maxim 9") then
 		self.parts.wpn_fps_pis_max9_b_standard.custom_stats = silencercustomstats
 
 		self.parts.wpn_fps_pis_max9_b_short.custom_stats = silencercustomstats
@@ -4183,7 +4199,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_pis_max9_b_nosup.stats.reload = barrel_p2.reload
 	end
 
-	if BeardLib.Utils:ModLoaded("Silent Killer Welrod") then
+	if IREnFIST:check_beardlib_mod_installed("Silent Killer Welrod") then
 		self.parts.wpn_fps_pis_welrod_b_bolt.custom_stats = silencercustomstats
 		self.parts.wpn_fps_pis_welrod_b_short.stats = deep_clone(barrel_p1)
 		self.parts.wpn_fps_pis_welrod_b_short.stats.alert_size = -2
@@ -4197,13 +4213,13 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self:convert_total_ammo_mod("wpn_fps_pis_welrod_a_ap", "heavypis", 30)
 	end
 
-	if BeardLib.Utils:ModLoaded("PB") then
+	if IREnFIST:check_beardlib_mod_installed("PB") then
 		self.parts.wpn_fps_pis_pb_ns_std.custom_stats = silencercustomstats
 		self.parts.wpn_fps_pis_pb_ns_std.stats = deep_clone(silstatsconc2)
 		self.parts.wpn_fps_pis_pb_ns_std.stats.concealment = -1
 	end
 
-	if BeardLib.Utils:ModLoaded("G3 Various Attachment") then
+	if IREnFIST:check_beardlib_mod_installed("G3 Various Attachment") then
 		--self.parts.wpn_fps_upg_g3_bipod.type = "bipod"
 		--self.parts.wpn_fps_upg_g3_bipod.adds = {"inf_bipod_part"}
 		self.parts.wpn_fps_upg_g3_bipod.custom_stats = {recoil_horizontal_mult = 2}
@@ -4227,7 +4243,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_ass_g3_m_30mag.stats.extra_ammo = 10
 	end
 
-	if BeardLib.Utils:ModLoaded("Browning Auto Shotgun") then
+	if IREnFIST:check_beardlib_mod_installed("Browning Auto Shotgun") then
 		self.parts.wpn_fps_shot_auto5_b_short.stats = deep_clone(barrelsho_p1)
 		self.parts.wpn_fps_shot_auto5_b_reinforced.stats = deep_clone(nostats)
 		self.parts.wpn_fps_shot_auto5_s_pad.stats = deep_clone(nostats)
@@ -4250,7 +4266,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("M40A5") then
+	if IREnFIST:check_beardlib_mod_installed("M40A5") then
 		table.insert(self.wpn_fps_snp_m40a5.uses_parts, "inf_bipod_snp")
 		table.insert(gunlist_snp, {"wpn_fps_snp_m40a5", -3})
 		self.parts.wpn_fps_snp_m40a5_m8541.custom_stats = {disallow_ads_while_reloading = true}
@@ -4260,12 +4276,12 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_m40a5_omega.stats = deep_clone(silstatssnp)
 	end
 
-	if BeardLib.Utils:ModLoaded("PKA-S Sight") then
+	if IREnFIST:check_beardlib_mod_installed("PKA-S Sight") then
 		self.parts.wpn_fps_upg_o_pkas.stats = deep_clone(self.parts.wpn_fps_upg_o_aimpoint.stats)
 		self.parts.wpn_fps_upg_o_pkas.customsight = true
 	end
 
-	if BeardLib.Utils:ModLoaded("Trijicon ACOG TA648 Scope") then
+	if IREnFIST:check_beardlib_mod_installed("Trijicon ACOG TA648 Scope") then
 		self.parts.wpn_fps_upg_o_ta648.stats = {
 			value = 0,
 			zoom = 6,
@@ -4275,7 +4291,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_o_ta648.custom_stats = {disallow_ads_while_reloading = true}
 	end
 
-	if BeardLib.Utils:ModLoaded("Desert Tech MDR") then
+	if IREnFIST:check_beardlib_mod_installed("Desert Tech MDR") then
 		self.parts.wpn_fps_ass_mdr_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_mdr_vg_bcm.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_mdr_vg_fab_reg.stats = deep_clone(nostats)
@@ -4293,7 +4309,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_mdr_supp_omega.stats = deep_clone(silstatsconc1)
 	end
 
-	if BeardLib.Utils:ModLoaded("FN SCAR-L M203") then
+	if IREnFIST:check_beardlib_mod_installed("FN SCAR-L M203") then
 		self.parts.wpn_fps_upg_scar_m203_barrel_long.stats = deep_clone(barrel_m2)
 
 		self.parts.wpn_fps_upg_scar_m203_stock_collapsed.stats = {
@@ -4316,7 +4332,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_scar_m203_mag_pull_assist.stats = deep_clone(nostats)
 	end
 
-	if BeardLib.Utils:ModLoaded("SKS") then
+	if IREnFIST:check_beardlib_mod_installed("SKS") then
 		self.parts.wpn_fps_ass_sks_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_sks_mag_tapco.stats = deep_clone(nostats)
 
@@ -4329,7 +4345,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		self.parts.wpn_fps_upg_sks_dtk2.stats = deep_clone(self.parts.wpn_fps_upg_ns_ass_smg_tank.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("MAS-49") then
+	if IREnFIST:check_beardlib_mod_installed("MAS-49") then
 		table.insert(gunlist_snp, {"wpn_fps_snp_mas49", -3})
 		self.parts.wpn_fps_snp_mas49_scope_apx.custom_stats = {disallow_ads_while_reloading = true}
 
@@ -4341,7 +4357,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-12") then
+	if IREnFIST:check_beardlib_mod_installed("AK-12") and self.parts.wpn_fps_upg_ak12_grip_molot then
 		self.parts.wpn_fps_ass_ak12_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_ak12_grip_molot.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_ak12_mag_magpul.stats = deep_clone(nostats)
@@ -4366,7 +4382,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-12/76") and self.parts.wpn_fps_shot_ak12_76_mag then
+	if IREnFIST:check_beardlib_mod_installed("AK-12/76") and self.parts.wpn_fps_shot_ak12_76_mag then
 		self.parts.wpn_fps_shot_ak12_76_mag.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_ak12_76_grip_molot.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_ak12_76_mag_magpul.stats = deep_clone(nostats)
@@ -4379,18 +4395,18 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
-	if BeardLib.Utils:ModLoaded("RAZOR AMG UH-1") and self.parts.wpn_fps_upg_o_razoramg then
+	if IREnFIST:check_beardlib_mod_installed("RAZOR AMG UH-1") and self.parts.wpn_fps_upg_o_razoramg then
 		self.parts.wpn_fps_upg_o_razoramg.customsight = true
 		self.parts.wpn_fps_upg_o_razoramg.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 	end
 
-	if BeardLib.Utils:ModLoaded("Trijicon RMR Sight") and self.parts.wpn_fps_upg_o_rmr_riser then
+	if IREnFIST:check_beardlib_mod_installed("Trijicon RMR Sight") and self.parts.wpn_fps_upg_o_rmr_riser then
 		self.parts.wpn_fps_upg_o_rmr_riser.customsight = true
 		self.parts.wpn_fps_upg_o_rmr_riser.stats = deep_clone(self.parts.wpn_fps_upg_o_eotech.stats)
 	end
 
 	-- McMillan CS5
-	if BeardLib.Utils:ModLoaded("McMillan CS5") and self.parts.wpn_fps_upg_cs5_barrel_short then
+	if IREnFIST:check_beardlib_mod_installed("McMillan CS5") and self.parts.wpn_fps_upg_cs5_barrel_short then
 		-- Long barrel
 		self.parts.wpn_fps_upg_cs5_barrel_long.stats = deep_clone(barrel_m1)
 		-- Short barrel
@@ -4413,7 +4429,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- FN SCAR MK17 (Eagle Tactical)
-	if BeardLib.Utils:ModLoaded("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
+	if IREnFIST:check_beardlib_mod_installed("MK17") and self.parts.wpn_fps_upg_mk17_b_smol then
 		-- Long barrel
 		self.parts.wpn_fps_upg_mk17_b_long.stats = deep_clone(barrel_m1)
 		-- Short barrel
@@ -4460,7 +4476,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	-- CARL WAS HERE AGAIN
 	-- my own guns
 	-- FN Five-seveN MK2
-	if BeardLib.Utils:ModLoaded("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_hoxy_o_scopemount then
+	if IREnFIST:check_beardlib_mod_installed("Not Rarted Five-seveN") and self.parts.wpn_fps_upg_hoxy_o_scopemount then
 		-- I REGRET NOTHING.
 		-- threaded barrel
 		self.parts.wpn_fps_upg_hoxy_b_threaded.stats = deep_clone(barrel_m1)
@@ -4474,7 +4490,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- ST AR-15
-	if BeardLib.Utils:ModLoaded("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_flat_bolt_sai then
+	if IREnFIST:check_beardlib_mod_installed("Spikes Tactical AR-15") and self.parts.wpn_fps_upg_flat_bolt_sai then
 		-- Remove ST AR-15 posthook because it causes issues, sorry
 		Hooks:RemovePostHook("star15_init")
 
@@ -4528,7 +4544,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 
 	-- Desert Eagle Duet
 	-- Deagle XIX
-	if BeardLib.Utils:ModLoaded("Desert Eagle XIX") and self.parts.wpn_fps_upg_deltaoneniner_frame_borat then
+	if IREnFIST:check_beardlib_mod_installed("Desert Eagle XIX") and self.parts.wpn_fps_upg_deltaoneniner_frame_borat then
 		-- Bling Frame
 		self.parts.wpn_fps_upg_deltaoneniner_frame_borat.stats = deep_clone(nostats)
 		-- Sweetheart Grip
@@ -4539,7 +4555,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Deagle L5
-	if BeardLib.Utils:ModLoaded("Desert Eagle L5") and self.parts.wpn_fps_upg_limafive_frame_pink then
+	if IREnFIST:check_beardlib_mod_installed("Desert Eagle L5") and self.parts.wpn_fps_upg_limafive_frame_pink then
 		-- Pink Frame
 		self.parts.wpn_fps_upg_limafive_frame_pink.stats = deep_clone(nostats)
 		-- Sweetheart Grip
@@ -4553,14 +4569,14 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- HL1 9mm pistol
-	if BeardLib.Utils:ModLoaded("Half Life 1 Glock") and self.parts.wpn_fps_pis_hl1g_suppress then
+	if IREnFIST:check_beardlib_mod_installed("Half Life 1 Glock") and self.parts.wpn_fps_pis_hl1g_suppress then
 		self.parts.wpn_fps_pis_hl1g_suppress.custom_stats = silencercustomstats
 		self.parts.wpn_fps_pis_hl1g_suppress.stats = deep_clone(silstatsconc1)
 	end
 
 	-- Glock 17 Gen 3
 	-- So many calibers, holy
-	if BeardLib.Utils:ModLoaded("Glock 17 Gen 3") then
+	if IREnFIST:check_beardlib_mod_installed("Glock 17 Gen 3") then
 		-- .22 LR conversion kit
 		self.parts.wpn_fps_pis_glawk_a1_22lr.stats = deep_clone(nostats)
 		self.parts.wpn_fps_pis_glawk_a1_22lr.stats.spread = -2
@@ -4592,23 +4608,23 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Glock 19
-	if BeardLib.Utils:ModLoaded("Glock 19") and self.parts.wpn_fps_upg_g19_ammo_9mm_p then
+	if IREnFIST:check_beardlib_mod_installed("Glock 19") and self.parts.wpn_fps_upg_g19_ammo_9mm_p then
 		self:convert_part("wpn_fps_upg_g19_ammo_9mm_p", "lightpis", "mediumpis")
 		self.parts.wpn_fps_upg_g19_ammo_9mm_p.custom_stats.sdesc1 = "caliber_p9x19nade"
 	end
 
 	-- TR-1
-	if BeardLib.Utils:ModLoaded("TR-1") and self.parts.wpn_fps_ass_hugsforleon_upper then
+	if IREnFIST:check_beardlib_mod_installed("TR-1") and self.parts.wpn_fps_ass_hugsforleon_upper then
 		self.parts.wpn_fps_ass_hugsforleon_upper.stats = deep_clone(nostats)
 	end
 
 	-- ACR
-	if BeardLib.Utils:ModLoaded("acwr") and self.parts.wpn_fps_ass_acwr_b_short then
+	if IREnFIST:check_beardlib_mod_installed("acwr") and self.parts.wpn_fps_ass_acwr_b_short then
 		self.parts.wpn_fps_ass_acwr_b_short.stats = deep_clone(barrel_p1)
 	end
 
 	-- Dokkaebi M14
-	if BeardLib.Utils:ModLoaded("Dokkaebi M14 modpack") and self.parts.wpn_fps_ass_m14_body_goblin then
+	if IREnFIST:check_beardlib_mod_installed("Dokkaebi M14 modpack") and self.parts.wpn_fps_ass_m14_body_goblin then
 		self.parts.wpn_fps_ass_m14_body_goblin.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_m14_body_goblin.custom_stats = {}
 		
@@ -4620,7 +4636,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Dokkaebi SMG-12
-	if BeardLib.Utils:ModLoaded("Dokkaebi SMG12 modpack") and self.parts.wpn_fps_mp_master_m_standard then
+	if IREnFIST:check_beardlib_mod_installed("Dokkaebi SMG12 modpack") and self.parts.wpn_fps_mp_master_m_standard then
 		-- No speedpull speed
 		self.parts.wpn_fps_mp_master_m_standard.stats = deep_clone(nostats)
 
@@ -4651,14 +4667,14 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Triton TR-15
-	if BeardLib.Utils:ModLoaded("Triton TR-15") and self.parts.wpn_fps_ass_hometown_ba_wylde then
+	if IREnFIST:check_beardlib_mod_installed("Triton TR-15") and self.parts.wpn_fps_ass_hometown_ba_wylde then
 		self.parts.wpn_fps_ass_hometown_ba_wylde.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_hometown_st_moe_bp.stats = deep_clone(nostats)
 		self.parts.wpn_fps_ass_hometown_st_slk.stats = deep_clone(nostats)
 	end
 
 	-- TTI Pack
-	if BeardLib.Utils:ModLoaded("TTI Attachment Pack") and self.parts.wpn_fps_upg_g22c_body_tti then
+	if IREnFIST:check_beardlib_mod_installed("TTI Attachment Pack") and self.parts.wpn_fps_upg_g22c_body_tti then
 		self.parts.wpn_fps_upg_g22c_body_tti.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_m_tti.stats = deep_clone(nostats)
 		self.parts.wpn_fps_upg_g22c_sl_tti.stats = deep_clone(barrel_m1)
@@ -4680,7 +4696,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Trench Gun 1897
-	if BeardLib.Utils:ModLoaded("Trench Shotgun") and self.parts.wpn_fps_shot_trench_b_long then
+	if IREnFIST:check_beardlib_mod_installed("Trench Shotgun") and self.parts.wpn_fps_shot_trench_b_long then
 		self.parts.wpn_fps_shot_trench_b_long.stats = deep_clone(barrelsho_m1)
 		self.parts.wpn_fps_shot_trench_bayonet.stats = {
 			value = 0,
@@ -4711,13 +4727,13 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Beretta M9 Parts
-	if BeardLib.Utils:ModLoaded("Beretta M9 Base") and self.parts.wpn_fps_pis_m92fs_g_ergo then
+	if IREnFIST:check_beardlib_mod_installed("Beretta M9 Base") and self.parts.wpn_fps_pis_m92fs_g_ergo then
 		-- Ergo grip
 		self.parts.wpn_fps_pis_m92fs_g_ergo.stats = deep_clone(nostats)
 	end
 
 	-- MCX Virtus Parts
-	if BeardLib.Utils:ModLoaded("MCX Virtus") and self.parts.wpn_fps_upg_virtus_b_blk then
+	if IREnFIST:check_beardlib_mod_installed("MCX Virtus") and self.parts.wpn_fps_upg_virtus_b_blk then
 		-- Black barrel
 		self.parts.wpn_fps_upg_virtus_b_blk.stats = deep_clone(barrel_m1)
 		-- Long foregrip
@@ -4763,7 +4779,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- Galil ACE 23 parts
-	if BeardLib.Utils:ModLoaded("Galil ACE 23") and self.parts.wpn_fps_upg_galilace_stock_extended then
+	if IREnFIST:check_beardlib_mod_installed("Galil ACE 23") and self.parts.wpn_fps_upg_galilace_stock_extended then
 		-- Extended stock
 		self.parts.wpn_fps_upg_galilace_stock_extended.stats = {
 			concealment = -1,
@@ -4783,7 +4799,7 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	end
 
 	-- HK433 parts
-	if BeardLib.Utils:ModLoaded("HK HK433") and self.parts.wpn_fps_ass_hkg14976_b_11in then
+	if IREnFIST:check_beardlib_mod_installed("HK HK433") and self.parts.wpn_fps_ass_hkg14976_b_11in then
 		-- Short barrel
 		self.parts.wpn_fps_ass_hkg14976_b_11in.stats = deep_clone(barrel_p1)
 		-- Long barrel
@@ -4807,6 +4823,236 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 		}
 	end
 
+
+	-- Sent by UCA-notHunky
+
+    -- C-Mag for Various Weapons
+    if IREnFIST:check_beardlib_mod_installed("C-Mag for Various Weapon") and self.parts.wpn_fps_upg_ar15_m_cmag then
+        self.parts.wpn_fps_upg_ar15_m_cmag.stats = deep_clone(mag_300)
+        self.parts.wpn_fps_upg_ar15_m_cmag.stats.extra_ammo = 70
+        self.parts.wpn_fps_upg_ar15_m_cmag.stats.total_ammo_mod = 110
+        self.wpn_fps_smg_olympic.override.wpn_fps_upg_ar15_m_cmag = {}
+        self.wpn_fps_smg_olympic.override.wpn_fps_upg_ar15_m_cmag.stats = deep_clone(mag_300)
+        self.wpn_fps_smg_olympic.override.wpn_fps_upg_ar15_m_cmag.stats.extra_ammo = 80
+        self.wpn_fps_smg_olympic.override.wpn_fps_upg_ar15_m_cmag.stats.total_ammo_mod = 666
+        self.wpn_fps_ass_m16.override.wpn_fps_upg_ar15_m_cmag = deep_clone(self.wpn_fps_smg_olympic.override.wpn_fps_upg_ar15_m_cmag)
+        self.parts.wpn_fps_upg_g36_m_cmag.stats = deep_clone(mag_300)
+        self.parts.wpn_fps_upg_g36_m_cmag.stats.extra_ammo = 70
+    end
+
+    -- Railgun Rorsch Mk-1
+    if IREnFIST:check_beardlib_mod_installed("Railgun Rorsch Mk-1") and self.parts.wpn_fps_special_roach_a_sabot then
+        -- Sabot ammo
+        self.parts.wpn_fps_special_roach_a_sabot.custom_stats = {
+            rays = 1,
+            armor_piercing_add = 1,
+            can_shoot_through_enemy = true, 
+            can_shoot_through_shield = true, 
+            can_shoot_through_wall = true, 
+            damage_near_mul = 1.1,
+            damage_far_mul = 0.9,
+            bullet_class = "InstantExplosiveBulletBase"
+        }
+        -- Tungsten ammo
+        self.parts.wpn_fps_special_roach_a_tungsten.custom_stats = {
+            rays = 1,
+            armor_piercing_add = 1,
+            can_shoot_through_enemy = true, 
+            can_shoot_through_shield = true, 
+            can_shoot_through_wall = true,
+            ammo_pickup_min_mul = 1,
+            ammo_pickup_max_mul = 2.03,
+            taser_hole = true
+        }
+        self.parts.wpn_fps_special_roach_a_tungsten.stats = {
+            value = 0,
+            damage = -50,
+            recoil = 3,
+            total_ammo_mod = 500
+        }
+        -- Thermal ammo
+        self.parts.wpn_fps_special_roach_a_thermal.override = {
+            wpn_fps_special_roach_barrel = { unit="units/mods/weapons/wpn_fps_special_roach_pts/wpn_fps_special_roach_barrel-thermal" },
+        }
+        self.parts.wpn_fps_special_roach_a_thermal.forbids = {"wpn_fps_special_roach_discharge"}
+        self.parts.wpn_fps_special_roach_a_thermal.custom_stats = {
+            rays = 1,
+            armor_piercing_add = 1,
+            can_shoot_through_enemy = true, 
+            can_shoot_through_shield = true, 
+            can_shoot_through_wall = true,
+            damage_near_mul = 0.95,
+            damage_far_mul = 0.75,
+            bullet_class = "InstantExplosiveBulletBase",
+            ammo_pickup_min_mul = 1,
+            ammo_pickup_max_mul = 4.06
+        }
+        self.parts.wpn_fps_special_roach_a_thermal.stats = {
+        value = 0,
+        damage = -65,
+        extra_ammo = 2,
+        total_ammo_mod = 1000,
+        recoil = 5
+        }
+    end
+
+    -- L85 Various Attachment
+    if IREnFIST:check_beardlib_mod_installed("L85 Various Attachment") and self.parts.wpn_fps_ass_l85a2_m_drum then
+        -- Drum Mag
+        self.parts.wpn_fps_ass_l85a2_m_drum.stats = deep_clone(mag_200)
+        self.parts.wpn_fps_ass_l85a2_m_drum.stats.extra_ammo = 30
+        self.parts.wpn_fps_upg_l85a2_bipod.adds = {"inf_bipod_part"}
+        self.parts.wpn_fps_upg_l85a2_bipod.type = "bipod"
+        self.parts.wpn_fps_upg_l85a2_bipod.custom_stats = {recoil_horizontal_mult = 2}
+        self.parts.wpn_fps_upg_l85a2_bipod.stats = {
+            value = 0,
+            concealment = -1
+        }
+    end
+
+    -- M1919A6
+    if IREnFIST:check_beardlib_mod_installed("Browning M1919A6") and self.parts.wpn_fps_upg_m1919a6_bipod then
+        self.parts.wpn_fps_upg_m1919a6_bipod.custom_stats = {recoil_horizontal_mult = 2}
+        self.parts.wpn_fps_upg_m1919a6_bipod.adds = {"inf_bipod_part"}
+        self.parts.wpn_fps_upg_m1919a6_bipod.type = "bipod"
+        self.parts.wpn_fps_upg_m1919a6_bipod.stats = deep_clone(nostats)
+        self.parts.wpn_fps_upg_m1919a6_stock_m1.custom_stats = {inf_rof_mult = 1200/600, anim_speed_mult = 600/1200}
+        self.parts.wpn_fps_upg_m1919a6_stock_m1.stats = {
+            value = 0,
+            recoil = 10
+        }
+        self.parts.wpn_fps_upg_m1919a6_mag_ext.stats = deep_clone(mag_300)
+        self.parts.wpn_fps_upg_m1919a6_mag_ext.stats.extra_ammo = 80
+        self.parts.wpn_fps_upg_m1919a6_mag_m60.stats = deep_clone(mag_200)
+        self.parts.wpn_fps_upg_m1919a6_mag_m60.stats.extra_ammo = 50
+        self.parts.wpn_fps_upg_m1919a6_barrel_m1917.stats = {
+            value = 0,
+            recoil = 2,
+            concealment = -1
+        }
+        self.parts.wpn_fps_upg_m1919a6_irons.internal_part = true
+    end
+
+    -- Armalite AR-18
+    if IREnFIST:check_beardlib_mod_installed("Armalite AR-18") and self.parts.wpn_fps_ass_ar18_mag then
+        self.parts.wpn_fps_ass_ar18_mag.stats = deep_clone(mag_75)
+        self.parts.wpn_fps_upg_ar18_mag_window.stats = deep_clone(self.parts.wpn_fps_ass_ar18_mag.stats)
+        self.parts.wpn_fps_upg_ar18_mag_30.stats = deep_clone(mag_133)
+        self.parts.wpn_fps_upg_ar18_mag_30.stats.extra_ammo = 10
+        self.parts.wpn_fps_upg_ar18_mag_30_dual.custom_stats = {alternating_reload = 1.20/0.80}
+        self.parts.wpn_fps_upg_ar18_mag_30_dual.stats = {
+            value = 0,
+            reload = -20,
+            extra_ammo = 10,
+            concealment = -1
+        }
+
+        self.parts.wpn_fps_upg_ar18_stock_folded.stats = deep_clone(self.parts.wpn_fps_m4_uupg_s_fold.stats)
+        self.parts.wpn_fps_upg_ar18_stock_removed.stats = deep_clone(self.parts.wpn_fps_smg_mp5_s_ring.stats)
+        self.parts.wpn_fps_upg_ar18_barrel_long.stats = deep_clone(barrel_m1)
+        self.parts.wpn_fps_upg_ar18_barrel_short.stats = deep_clone(barrel_p1)
+        self.parts.wpn_fps_upg_ar18_bolt_firerate.forbids = {"wpn_fps_upg_i_autofire"}
+        self.parts.wpn_fps_upg_ar18_bolt_firerate.custom_stats = deep_clone(self.parts.wpn_fps_upg_i_autofire.custom_stats)
+        self.parts.wpn_fps_upg_ar18_bolt_firerate.stats = deep_clone(self.parts.wpn_fps_upg_i_autofire.stats)
+
+        -- Armalite Scope
+        self.parts.wpn_fps_upg_ar18_scope.custom_stats = {disallow_ads_while_reloading = true}
+        self.parts.wpn_fps_upg_ar18_scope.stats = {
+            value = 0,
+            zoom = 5,
+            concealment = -2
+        }
+    end
+
+    -- MAG7 shotguns
+    if IREnFIST:check_beardlib_mod_installed("MAG7 Shotgun") and self.parts.wpn_fps_shot_techno_m_extended then
+        self.parts.wpn_fps_shot_techno_m_extended.stats = deep_clone(mag_133)
+        self.parts.wpn_fps_shot_techno_m_extended.stats.extra_ammo = 2
+
+        --self.wpn_fps_shot_x_techno.override.wpn_fps_shot_techno_m_extended = {}
+        --self.wpn_fps_shot_x_techno.override.wpn_fps_shot_techno_m_extended.stats = deep_clone(mag_150)
+        --self.wpn_fps_shot_x_techno.override.wpn_fps_shot_techno_m_extended.stats.extra_ammo = self.parts.wpn_fps_shot_techno_m_extended.stats.extra_ammo * 2
+
+        self.parts.wpn_fps_shot_techno_b_short.stats = deep_clone(barrelshoammo_m1)
+        self.parts.wpn_fps_shot_techno_s_wooden.stats = deep_clone(stock_snp)
+        self.parts.wpn_fps_shot_techno_s_fold.stats = {
+            value = 0,
+            recoil = 5,
+            concealment = -1
+        }
+        -- 000 buck
+        self.parts.wpn_fps_shot_techno_a_16ga.custom_stats = deep_clone(self.parts.wpn_fps_upg_a_custom.custom_stats)
+        self.parts.wpn_fps_shot_techno_a_16ga.stats = deep_clone(self.parts.wpn_fps_upg_a_custom.stats)
+        -- ap slug
+        self.parts.wpn_fps_shot_techno_a_16slug.custom_stats = deep_clone(self.parts.wpn_fps_upg_a_slug.custom_stats)
+        self.parts.wpn_fps_shot_techno_a_16slug.stats = deep_clone(self.parts.wpn_fps_upg_a_slug.stats)
+
+        DelayedCalls:Add("mag7delay", delay, function(self, params)
+        tweak_data.weapon.factory.wpn_fps_shot_x_techno.override.wpn_fps_shot_techno_m_extended.stats = deep_clone(tweak_data.weapon.factory.parts.wpn_fps_shot_techno_m_extended.stats)
+        tweak_data.weapon.factory.wpn_fps_shot_x_techno.override.wpn_fps_shot_techno_m_extended.stats.extra_ammo = tweak_data.weapon.factory.wpn_fps_shot_x_techno.override.wpn_fps_shot_techno_m_extended.stats.extra_ammo * 2
+        end)    
+    end 
+
+    -- CZ Scorpion Evo
+    if IREnFIST:check_beardlib_mod_installed("CZ Scorpion Evo") and self.parts.wpn_fps_smg_czevo_vg_handstop then
+        self.parts.wpn_fps_smg_czevo_vg_handstop.stats = deep_clone(nostats)
+        self.parts.wpn_fps_smg_czevo_vg_cover.stats = deep_clone(nostats)
+        self.parts.wpn_fps_smg_czevo_vg_ptk.stats = deep_clone(nostats)
+        self.parts.wpn_fps_smg_czevo_barrel_long.stats = deep_clone(barrel_m1)
+        self.parts.wpn_fps_smg_czevo_barrel_silenced.custom_stats = silencercustomstats
+        self.parts.wpn_fps_smg_czevo_barrel_silenced.stats = deep_clone(silstatsconc2)
+        self.parts.wpn_fps_smg_czevo_a_strong.stats = {
+            value = 0,
+            total_ammo_mod = -250,
+            damage = 10,
+            recoil = -10,
+            concealment = 0
+        }
+        self:convert_part("wpn_fps_smg_czevo_a_classic", "longsmg", "shortsmg")
+    end
+
+    -- Halo 2 Battle Rifle
+    if IREnFIST:check_beardlib_mod_installed("Halo 2 Battle Rifle") and self.parts.wpn_fps_br55_hb then
+        self.parts.wpn_fps_br55_hb.stats = deep_clone(barrel_m1)
+        self.parts.wpn_fps_br55_magazine_quick.stats = deep_clone(mag_75)
+    end
+
+    -- Halo SMG
+    if IREnFIST:check_beardlib_mod_installed("Halo 2/3/ODST SMG") and self.parts.wpn_fps_m7caseless_stock_folded then
+        self.parts.wpn_fps_m7caseless_stock_folded.stats = {
+            value = 0,
+            recoil = -2,
+            concealment = 1
+        }
+        self.parts.wpn_fps_m7caseless_odst_am.stats = {
+            value = 0,
+            total_ammo_mod = -250,
+            damage = 10,
+            recoil = -10,
+            concealment = 0
+        }
+        self.parts.wpn_fps_m7caseless_silencer.custom_stats = silencercustomstats
+        self.parts.wpn_fps_m7caseless_silencer.stats = deep_clone(silstatsconc2)
+        self.parts.wpn_fps_m7caseless_silencer_separate.custom_stats = silencercustomstats
+        self.parts.wpn_fps_m7caseless_silencer_separate.stats = deep_clone(silstatsconc2)
+    end
+
+    -- Halo Reach DMR
+    if IREnFIST:check_beardlib_mod_installed("Halo Reach DMR") and self.parts.wpn_fps_reachdmr_noble_am then
+        self:convert_part("wpn_fps_reachdmr_noble_am", "ldmr", "hdmr", 75, 60)
+        self.parts.wpn_fps_reachdmr_noble_am.custom_stats = {
+            rays = 1,
+            armor_piercing_add = 1,
+            headshot_dmg_mult_reachdmr = 1.25
+        }
+        self.parts.wpn_fps_reachdmr_shortbarrel.stats = deep_clone(barrel_p1)
+        self.parts.wpn_fps_reachdmr_magazine_quick.stats = deep_clone(mag_75)
+        self.parts.wpn_fps_reachdmr_spam.forbids = {"wpn_fps_upg_i_autofire"}
+        self.parts.wpn_fps_reachdmr_spam.custom_stats = deep_clone(self.parts.wpn_fps_upg_i_autofire.custom_stats)
+        self.parts.wpn_fps_reachdmr_spam.stats = deep_clone(self.parts.wpn_fps_upg_i_autofire.stats)
+    end
+
+
 	-- HOW TO ADD CUSTOM WEAPON MOD SUPPORT
 	-- This applies to any BeardLib mod that adds custom weapon mods, whether they come with an actual weapon or not.
 	-- You first need the weapon mod's ID, which can be found in the mod's XML files (such as main.xml).
@@ -4816,19 +5062,21 @@ function WeaponFactoryTweakData:_init_inf_custom_weapon_parts(gunlist_snp, custo
 	-- The BeardLib mod's name is actually defined in the main.xml file. This is <table name="mymod">, where the name would then be "mymod".
 
 	-- Example:
-	-- if BeardLib.Utils:ModLoaded("Glock 19") and self.parts.wpn_fps_upg_g19_ammo_9mm_p then
+	-- if IREnFIST:check_beardlib_mod_installed("Glock 19") and self.parts.wpn_fps_upg_g19_ammo_9mm_p then
 		-- This is a "conversion mod". It converts the weapon from A to B. In this case, this higher-caliber ammo changes the glock 19 from a light pistol into a medium pistol,
 		-- effectively making it equal to other medium pistols such as the Crosskill.
 		-- The from/to is based on the weapon values in InfMenu (infcore.lua). So it's not "pistol light", but "lightpis".
 		-- self:convert_part("wpn_fps_upg_g19_ammo_9mm_p", "lightpis", "mediumpis")
-		-- This also changes the caliber in the weapon's short description.
+		-- You can also change the caliber in the weapon's short description like this:
 		-- self.parts.wpn_fps_upg_g19_ammo_9mm_p.custom_stats.sdesc1 = "caliber_p9x19nade"
 	-- end
 
 	-- One note about conversion kits (especially to/from DMR's) is that shield and enemy piercing gets iffy
 	-- if you try to apply that to a weaponmod that isn't of the "ammo" type.
+	-- This is why InF has the "convert_part_a" and "convert_part_b" functions. One applies to just ammo, other applies to the non-ammo part.
+	-- The G3 uses this for the DMR kit which has an ammo part and a non-ammo part.
 
-	-- This is something you will see a lot. Any weapon mod that shouldn't have any stat changes (grips, front guards etc) should have its stats cloned from the "nostats" table.
+	-- This is something you will see a lot: any weapon mod that shouldn't have any stat changes (grips, front guards etc) should have its stats cloned from the "nostats" table.
 	-- self.parts.wpn_fps_pis_glawk_gr_pachmayr.stats = deep_clone(nostats)
 
 	-- Silencers are another common feature. Clone their stats from the most appropriate silencer preset (depending on size) and also clone the silencer custom stats.

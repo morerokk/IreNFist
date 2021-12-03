@@ -248,6 +248,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "inf_initweaponfactory_partstats"
 		recoil = 6,
 		concealment = -2
 	}
+	local silstatsconc3 = {
+		value = 1,
+		suppression = 12,
+		alert_size = 12,
+		spread = 6,
+		recoil = 7,
+		concealment = -3
+	}
 	-- sniper rifle
 	local silstatssnp = {
 		value = 1,
@@ -1112,7 +1120,8 @@ end
 		taser_hole = true,
 		sdesc1 = "caliber_s12g_ap",
 		sdesc3 = "range_shotslug",
-		sdesc3_range_override = true
+		sdesc3_range_override = true,
+		body_armor_dmg_penalty_mul = 0
 	}
 	self.parts.wpn_fps_upg_a_slug.stats = {
 		value = 0,
@@ -1123,7 +1132,8 @@ end
 	-- 000 Buck
 	self.parts.wpn_fps_upg_a_custom.custom_stats = {
 		rays = 8,
-		sdesc1 = "caliber_s12g_000"
+		sdesc1 = "caliber_s12g_000",
+		body_armor_dmg_penalty_mul = 0.95
 	}
 	self.parts.wpn_fps_upg_a_custom.stats = {
 		value = 0,
@@ -1141,7 +1151,8 @@ end
 		damage_near_mul = 0.20,
 		damage_far_mul = 0.20,
 		can_breach = true, breach_power_mult = 1, -- mult not functioning yet
-		sdesc1 = "caliber_s12g_breach"
+		sdesc1 = "caliber_s12g_breach",
+		body_armor_dmg_penalty_mul = 0.1
 	}
 	self.parts.wpn_fps_upg_a_custom_free.stats = {
 		value = 0,
@@ -1172,7 +1183,8 @@ end
 		damage_near_mul = 1.25,
 		damage_far_mul = 1.25,
 		rays = 14,
-		sdesc1 = "caliber_s12g_fl"
+		sdesc1 = "caliber_s12g_fl",
+		body_armor_dmg_penalty_mul = 0.15
 	}
 	self.parts.wpn_fps_upg_a_piercing.stats = {
 		value = 0,
@@ -2045,10 +2057,16 @@ end
 	table.insert(self.parts.wpn_fps_ass_contraband_o_standard.forbids, "inf_contraband_ironsretain")
 
 
-	
-
-
-
+	-- SHAK-12 (KS12 Urban Rifle)
+	-- *Very* long suppressor
+	self.parts.wpn_fps_ass_shak12_ns_suppressor.stats = deep_clone(silstatsconc3)
+	self.parts.wpn_fps_ass_shak12_ns_suppressor.custom_stats = silencercustomstats
+	-- Weird muzzle device
+	self.parts.wpn_fps_ass_shak12_ns_muzzle.stats = {
+		value = 1,
+		spread = 5,
+		concealment = -1
+	}
 
 
 	-- M308 PARTS
@@ -2459,7 +2477,8 @@ end
 		can_shoot_through_wall = true,
 		pen_shield_dmg_mult = 0.5,
 		pen_wall_dmg_mult = 1,
-		ammo_pickup_max_mul = 0.5
+		ammo_pickup_max_mul = 0.5,
+		body_armor_dmg_penalty_mul = 0.25
 	}
 
 	-- COMPACT-5 PARTS
@@ -2588,6 +2607,34 @@ end
 	-- Custom Built Frame
 	self.parts.wpn_fps_smg_mac10_body_modern.stats = deep_clone(nostats)
 
+	-- Sent by UCA-notHunky:
+	--
+    --Firebug ammo for mac10
+    self.parts.inf_9mm_incendiary.sub_type = "ammo_dragons_breath"
+    self.parts.inf_9mm_incendiary.internal_part = true
+    self.parts.inf_9mm_incendiary.custom_stats = {
+        sdesc1 = "caliber_9mminc",
+        bullet_class = "FlameBulletBase",
+        can_shoot_through_shield = false,
+        can_shoot_through_enemy = true,
+        can_shoot_through_wall = true,
+        --rays = 1,
+        fire_dot_data = {
+            dot_trigger_chance = "100",
+            dot_damage = "1.5",
+            dot_length = "3.1",
+            dot_trigger_max_distance = "10000", -- 100m
+            dot_tick_period = "0.5"
+        }
+    }
+    self.parts.inf_9mm_incendiary.stats = deep_clone(nostats)
+    -- don't allow this shit to be used without the crash fix
+    if not BeardLib.Utils:FindMod("Fix Custom Weapon Dragons Breath Crash") then
+        self.parts.wpn_fps_smg_mac10_magazine.forbids = self.parts.wpn_fps_smg_mac10_magazine.forbids or {}
+        table.insert(self.parts.wpn_fps_smg_mac10_magazine.forbids, "inf_9mm_incendiary")
+        self.parts.inf_9mm_incendiary.desc_id = "bm_wp_inf_50bmg_raufoss_restricted_desc"
+    end 
+	--
 
 	-- KOBRA PARTS
 	-- skorpion suppressor
@@ -3415,7 +3462,8 @@ end
 		can_shoot_through_wall = true,
 		pen_shield_dmg_mult = 0.5,
 		pen_wall_dmg_mult = 1,
-		ammo_pickup_max_mul = 0.5
+		ammo_pickup_max_mul = 0.5,
+		body_armor_dmg_penalty_mul = 25
 	}
 
 
@@ -3823,6 +3871,50 @@ end
 	self.parts.wpn_fps_pis_model3_b_long.stats = deep_clone(barrel_m1)
 	-- Bling grip (mule bone grip)
 	self.parts.wpn_fps_pis_model3_g_bling.stats = deep_clone(nostats)
+
+
+	-- TT-33 Parts (Model 54)
+	-- Barrel extender
+	self.parts.wpn_fps_pis_type54_b_long.stats = deep_clone(barrel_m1)
+	-- Extended Mag
+	self.parts.wpn_fps_pis_type54_m_ext.stats = deep_clone(mag_150)
+	self.parts.wpn_fps_pis_type54_m_ext.stats.extra_ammo = 5
+	-- Underbarrel Shotgun
+	-- What in God's name are you doing to this historical piece?
+	local t54_underbarrel_stats = {
+		value = 2,
+		concealment = -2,
+		total_ammo_mod = -125 -- From 80 max ammo to 60 to compensate for the underbarrel
+	}
+
+	-- TODO: Give the flechettes and slugs proper stat changes for the underbarrel only. I can't do stuff like apply slug damage properly because they would affect the main gun.
+	-- This stuff is hurting my head...
+
+	-- Regular underbarrel
+	self.parts.wpn_fps_pis_type54_underbarrel.stats = deep_clone(t54_underbarrel_stats)
+
+	-- Underbarrel flechettes
+	self.parts.wpn_fps_pis_type54_underbarrel_piercing.stats = deep_clone(t54_underbarrel_stats)
+
+	-- Underbarrel slug
+	self.parts.wpn_fps_pis_type54_underbarrel_slug.stats = deep_clone(t54_underbarrel_stats)
+
+	-- Akimbo variants
+	local t54_underbarrel_akimbo_stats = {
+		value = 2,
+		concealment = -4,
+		total_ammo_mod = -200 -- From 100 to 80
+	}
+	self.parts.wpn_fps_pis_x_type54_underbarrel.stats = deep_clone(t54_underbarrel_akimbo_stats)
+	self.parts.wpn_fps_pis_x_type54_underbarrel_piercing.stats = deep_clone(t54_underbarrel_akimbo_stats)
+	self.parts.wpn_fps_pis_x_type54_underbarrel_slug.stats = deep_clone(t54_underbarrel_akimbo_stats)
+
+
+	-- RSh-12 parts
+	self.parts.wpn_fps_pis_rsh12_b_comp.stats = deep_clone(barrel_m1)
+	self.parts.wpn_fps_pis_rsh12_b_short.stats = deep_clone(barrel_p1)
+	self.parts.wpn_fps_pis_rsh12_g_wood.stats = deep_clone(nostats)
+
 
 
 	-- RPK PARTS
@@ -4311,7 +4403,7 @@ end
 
 
 	-- With debug on, execute the function normally so it crashes hard if something goes wrong
-	-- With debug off, silently eat any errors. Custom weapon parts might not work correctly.
+	-- With debug off, silently eat any errors and then show a dialog in the menu. Custom weapon parts might not work correctly.
 	if InFmenu.settings.debug then
 		self:_init_inf_custom_weapon_parts(gunlist_snp, customsightaddlist, primarysmgadds, primarysmgadds_specific)
 	else
@@ -4322,11 +4414,17 @@ end
 				errmessage = "(Unable to obtain error message)"
 			end
 			log(errmessage)
+
+			local userdialogerrmessage = "An error occurred while trying to initialize support for custom weapon mods. Some weaponmods may have incorrect stats.\n\n"
+			userdialogerrmessage = userdialogerrmessage .. "It is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs)."
+			if IREnFIST.last_attempted_custom_weapon_mod then
+				userdialogerrmessage = userdialogerrmessage .. "\n\nSuspected mod: " .. IREnFIST.last_attempted_custom_weapon_mod
+			end
 			
 			-- Open a message dialog box in the menu, notifying the user that an error occurred trying to intitialize weaponmods
 			-- Don't just leave them hanging
 			Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_weaponfactorytweak_failedinit", function(menu_manager, nodes)            
-				QuickMenu:new("IREnFIST - Error initializing parts", "An error occurred while trying to initialize support for custom weapon mods. Some weaponmods may have incorrect stats.\n\nIt is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs).", {
+				QuickMenu:new("IREnFIST - Error initializing parts", userdialogerrmessage, {
 					[1] = {
 						text = "OK",
 						is_cancel_button = true

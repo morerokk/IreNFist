@@ -20,7 +20,7 @@ function CopLogicBase._evaluate_reason_to_surrender(data, my_data, aggressor_uni
 	end
 
 	if not managers.groupai:state():get_assault_mode() then
-		surrender_chance = surrender_chance + 0.15
+		surrender_chance = surrender_chance - 0.15
 	end
 
 	return surrender_chance

@@ -120,8 +120,26 @@ if not IREnFIST then
             force_mul = { 1.75, 1.75, 1.75, 1.75 },
             force_pool_mul = { 1.35, 1.35, 1.35, 1.35 }
         },
-        branchbank = {
+        branchbank = { -- H&T bank
             too_many_cloakers = true -- Should be enabled for heists that spam too many scripted cloaker spawns. This lessens/removes the cloakers from regular squads.
+        },
+        framing_frame_1 = { -- FF day 1
+            too_many_cloakers = true
+        },
+        pex = { -- Breakfast in Tijuana
+            too_many_cloakers = true
+        },
+        nightclub = { -- Nightclub
+            too_many_cloakers = true
+        },
+        welcome_to_the_jungle_2 = { -- Big Oil day 2
+            too_many_cloakers = true
+        },
+        ukrainian_job = { -- Ukrainian Job
+            too_many_cloakers = true
+        },
+        red2 = { -- First World Bank
+            too_many_cloakers = true
         }
     }
 
@@ -173,6 +191,16 @@ if not IREnFIST then
 
     -- Include arrest utils
     dofile(ModPath .. "utils/coputils.lua")
+
+    -- This is a variable that gets updated every time the mod attempts to load support for custom weapons or custom weapon mods.
+    -- This way, if an error occurs, the error message can at least tell you which weapon it most likely is.
+    IREnFIST.last_attempted_custom_weapon_mod = nil
+
+    -- Wrapper around BeardLib.Utils:ModLoaded() that also stores the last checked mod name.
+    function IREnFIST:check_beardlib_mod_installed(modname)
+        self.last_attempted_custom_weapon_mod = modname
+        return BeardLib.Utils:ModLoaded(modname)
+    end
 
     -- Networking functions
     -- Tell others that you have the mod installed
@@ -269,8 +297,25 @@ if not InFmenu then
         end
     end
     
-    InFmenu:Load()
-    -- generate save data even if nobody ever touches the mod options menu
+    -- Load the config in a pcall to prevent any corrupt config issues.
+    local configResult = pcall(function()
+        InFmenu:Load()
+    end)
+
+    -- Notify the user if something went wrong
+    if not configResult then
+        Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_configcorrupted", function(menu_manager, nodes)            
+            QuickMenu:new("IREnFIST - Error loading config", "Your IREnFIST options file was corrupted. Your IREnFIST mod options have been reset to the defaults.", {
+                [1] = {
+                    text = "OK",
+                    is_cancel_button = true
+                }
+            }):show()
+        end)
+    end
+
+    -- Generate save data even if nobody ever touches the mod options menu.
+    -- This also regenerates a "fresh" config if it's corrupted.
     InFmenu:Save()
 
     -- Tons of tweakdata stuff ahead

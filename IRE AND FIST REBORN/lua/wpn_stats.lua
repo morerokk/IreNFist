@@ -759,7 +759,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 	self[wpn].AMMO_MAX = 42
 	self[wpn].AMMO_PICKUP = self:_pickup_chance(42, 1)
 	self[wpn].armor_piercing_chance = 0.50
-	self[wpn].body_armor_dmg_penalty_mul = 1
+	self[wpn].body_armor_dmg_penalty_mul = 0.75
 	if not self[wpn].stats_modifiers then
 		self[wpn].stats_modifiers = {}
 	end
@@ -803,7 +803,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 			self[wpn].AMMO_PICKUP = self:_pickup_chance(48, 1)
 			self[wpn].shake.fire_multiplier = 1.25
 			self[wpn].shake.fire_steelsight_multiplier = 1.25
-			self[wpn].body_armor_dmg_penalty_mul = 0.9
+			self[wpn].body_armor_dmg_penalty_mul = 0.7
 		end
 		if self:has_in_table(subtype, "dmg_light") then
 			self[wpn].stats.damage = 38 -- 190
@@ -812,6 +812,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 			self[wpn].AMMO_PICKUP = self:_pickup_chance(48, 1)
 			self[wpn].shake.fire_multiplier = 1.25
 			self[wpn].shake.fire_steelsight_multiplier = 1.25
+			self[wpn].body_armor_dmg_penalty_mul = 0.8
 		end
 		if self:has_in_table(subtype, "dmg_vlight") then
 			self[wpn].stats.damage = 36 -- 180
@@ -820,6 +821,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 			self[wpn].AMMO_PICKUP = self:_pickup_chance(48, 1)
 			self[wpn].shake.fire_multiplier = 1.00
 			self[wpn].shake.fire_steelsight_multiplier = 1.00
+			self[wpn].body_armor_dmg_penalty_mul = 0.85
 		end
 		if self:has_in_table(subtype, "dmg_aa12") then
 			self[wpn].stats.damage = 26 -- 130
@@ -836,7 +838,7 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 			self[wpn].AMMO_PICKUP = self:_pickup_chance(24, 1)
 			self[wpn].shake.fire_multiplier = 2.00
 			self[wpn].shake.fire_steelsight_multiplier = 2.00
-			self[wpn].body_armor_dmg_penalty_mul = 0.8
+			self[wpn].body_armor_dmg_penalty_mul = 0.65
 		end
 
 		if self:has_in_table(subtype, "rof_semi") then
@@ -864,6 +866,10 @@ function WeaponTweakData:inf_init_shotgun(wpn, subtype)
 		if self:has_in_table(subtype, "rof_veryslow") then
 			self[wpn].fire_mode_data = {fire_rate = 60/45}
 			self[wpn].single = {fire_rate = 60/45}
+		end
+		if self:has_in_table(subtype, "is_underbarrel") then
+			self[wpn].AMMO_MAX = 8
+			self[wpn].AMMO_PICKUP = self:_pickup_chance(16, 1)
 		end
 	end
 	if self:has_category(wpn, "akimbo") then
@@ -1766,6 +1772,13 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.groza_underbarrel.timers.reload_not_empty_end = 0.40
 	self.groza_underbarrel.timers.reload_empty = 2.35
 	self.groza_underbarrel.timers.reload_empty_end = 0.40
+
+	-- KS12 Urban Rifle (SHAK-12)
+	self:inf_init("shak12", "ar", {"heavy"})
+	self.shak12.sdesc1 = "caliber_r127x55sts130"
+	self.shak12.sdesc2 = "action_shortrecoil"
+	self.shak12.fire_mode_data.fire_rate = 60/500
+	self:copy_timers("shak12", "flint")
 	
 
 	-- Galil
@@ -3481,6 +3494,59 @@ function WeaponTweakData:_init_new_weapons(...)
 	self.x_czech.fire_mode_data.fire_rate = 60/1000
 	self:copy_timers("x_czech", "x_b92fs")
 
+
+	-- Type 54 (model 54), cheap chink copy of the TT-33
+	-- Apparently the ingame one is actually a TT-33, even though Overkill calls it the Type 54? Let's say it's a TT-33 then.
+	self:inf_init("type54", "pistol", "medium")
+	self.type54.sdesc1 = "caliber_p762x25"
+	self.type54.sdesc2 = "action_shortrecoil"
+	self:copy_timers("type54", "b92fs")
+
+	-- TT-33 underbarrel :(
+	self.type54_underbarrel.DAMAGE = nil
+	self.type54_underbarrel.ignore_crit_damage = false
+	self.type54_underbarrel.ignore_damage_multipliers = false
+	self.type54_underbarrel.ignore_damage_upgrades = false
+	self:inf_init("type54_underbarrel", "shotgun", {"rof_slow", "range_slowpump", "is_underbarrel"})
+	self:copy_timers("type54_underbarrel", "judge")
+	self.type54_underbarrel.timers.reload_not_empty = 1.78
+	self.type54_underbarrel.timers.reload_empty = 1.78
+	self.type54_underbarrel.timers.unequip = 0.6
+	self.type54_underbarrel.timers.equip = 0.6
+	self.type54_underbarrel.timers.equip_underbarrel = 0.4
+	self.type54_underbarrel.timers.unequip_underbarrel = 0.4
+
+
+
+	-- Akimbo TT-33
+	self:inf_init("x_type54", "pistol", "medium")
+	self:copy_sdescs("x_type54", "type54", true)
+	self.x_type54.AMMO_MAX = 100
+	self:copy_timers("x_type54", "x_b92fs")
+
+	-- Please stop
+	self.x_type54_underbarrel.DAMAGE = nil
+	self.x_type54_underbarrel.ignore_crit_damage = false
+	self.x_type54_underbarrel.ignore_damage_multipliers = false
+	self.x_type54_underbarrel.ignore_damage_upgrades = false
+	self:inf_init("x_type54_underbarrel", "shotgun", {"rof_slow", "range_slowpump", "is_underbarrel"})
+	self.x_type54_underbarrel.AMMO_MAX = 10
+	self:copy_timers("x_type54_underbarrel", "x_judge")
+	self.x_type54_underbarrel.timers.reload_not_empty = 3
+	self.x_type54_underbarrel.timers.reload_empty = 3
+	self.x_type54_underbarrel.timers.unequip = 0.5
+	self.x_type54_underbarrel.timers.equip = 0.5
+	self.x_type54_underbarrel.timers.reload_not_empty_half = 2.5
+	self.x_type54_underbarrel.timers.reload_empty_half = 2.5
+
+	-- RSh-12
+	self:inf_init("rsh12", "pistol", "heavy")
+	self.rsh12.sdesc1 = "caliber_r127x55sts130"
+	self.rsh12.sdesc2 = "action_da"
+	self.rsh12.chamber = 0
+	self:copy_timers("rsh12", "new_raging_bull")
+
+
 	-- Joceline O/U
 	self.b682.sdesc1 = "caliber_s12g"
 	self.b682.sdesc2 = "action_breakou"
@@ -4355,10 +4421,16 @@ function WeaponTweakData:_init_new_weapons(...)
 			end
 			log(errmessage)
 
+			local userdialogerrmessage = "An error occurred while trying to initialize support for custom weapons. Some custom weapons may have incorrect stats.\n\n"
+			userdialogerrmessage = userdialogerrmessage .. "It is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs)."
+			if IREnFIST.last_attempted_custom_weapon_mod then
+				userdialogerrmessage = userdialogerrmessage .. "\n\nSuspected mod: " .. IREnFIST.last_attempted_custom_weapon_mod
+			end
+
 			-- Open a message dialog box in the menu, notifying the user that an error occurred trying to intitialize weapons
 			-- Don't just leave them hanging
 			Hooks:Add("MenuManagerOnOpenMenu", "MenuManagerOnOpenMenu_inf_weapontweak_failedinit", function(menu_manager, nodes)            
-				QuickMenu:new("IREnFIST - Error initializing custom weapons", "An error occurred while trying to initialize support for custom weapons. Some custom weapons may have incorrect stats.\n\nIt is strongly recommended to create an issue on the IREnFIST Github repository (or comment on the Mod Workshop page), with your latest BLT Log attached (PAYDAY 2/mods/logs).", {
+				QuickMenu:new("IREnFIST - Error initializing custom weapons", userdialogerrmessage, {
 					[1] = {
 						text = "OK",
 						is_cancel_button = true

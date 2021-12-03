@@ -46,7 +46,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	-- You can just rebuy them of course, but still.
 
 	-- Vikhr/SR Einheri
-	if BeardLib.Utils:ModLoaded("SR-3M Vikhr") then
+	if IREnFIST:check_beardlib_mod_installed("SR-3M Vikhr") then
 		self:inf_init("sr3m", "ar", {"medium"})
 		self.sr3m.sdesc1 = "caliber_r9x39"
 		self.sr3m.sdesc2 = "action_gas"
@@ -59,7 +59,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- CZ-75 Shadow
-	if BeardLib.Utils:ModLoaded("cz") then
+	if IREnFIST:check_beardlib_mod_installed("cz") then
 		Hooks:RemovePostHook("czModInit")
 		self:inf_init("cz", "pistol", nil)
 		self.cz.sdesc1 = "caliber_p9x19"
@@ -78,7 +78,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- MA DEUCE
-	if BeardLib.Utils:ModLoaded("M2HB_HMG") then
+	if IREnFIST:check_beardlib_mod_installed("M2HB_HMG") then
 		self:inf_init("m2hb", "lmg", nil)
 		self.m2hb.categories = {"lmg"}
 		self.m2hb.sdesc1 = "caliber_r50bmg"
@@ -104,7 +104,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- MATEBA 6 UNICA
-	if BeardLib.Utils:ModLoaded("Mateba Model 6 Unica") then
+	if IREnFIST:check_beardlib_mod_installed("Mateba Model 6 Unica") then
 		self:inf_init("unica6", "pistol", "heavy")
 		self.unica6.sdesc1 = "caliber_p357"
 		self.unica6.sdesc2 = "action_mateba"
@@ -114,7 +114,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Contender Special") then
+	if IREnFIST:check_beardlib_mod_installed("Contender Special") then
 		self:inf_init("contender", "pistol", "heavy")
 		self.contender.sdesc1 = "caliber_r68"
 		self.contender.sdesc2 = "action_breakopen"
@@ -154,7 +154,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.contender.can_shoot_through_enemy = true
 	end
 
-	if BeardLib.Utils:ModLoaded("m1c") then
+	if IREnFIST:check_beardlib_mod_installed("m1c") then
 		self:inf_init("m1c", "ar", {"ldmr"})
 		self.m1c.sdesc1 = "caliber_r30carbine"
 		self.m1c.sdesc2 = "action_gasshort"
@@ -166,7 +166,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Tokarev SVT-40") then
+	if IREnFIST:check_beardlib_mod_installed("Tokarev SVT-40") then
 		self:inf_init("svt40", "ar", {"dmr"})
 		self.svt40.sdesc1 = "caliber_r762x54r"
 		self.svt40.sdesc2 = "action_gasshort"
@@ -174,7 +174,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.svt40.stats.concealment = 23
 	end
 
-	if BeardLib.Utils:ModLoaded("AN-94 AR") then
+	if IREnFIST:check_beardlib_mod_installed("AN-94 AR") then
 		self:inf_init("akrocket", "ar", nil)
 		self.akrocket.categories = {"assault_rifle"}
 		self.akrocket.sdesc1 = "caliber_r545x39"
@@ -195,7 +195,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("akrocket", "akmsu")
 	end
 
-	if BeardLib.Utils:ModLoaded("tilt") then
+	if IREnFIST:check_beardlib_mod_installed("tilt") then
 		Hooks:RemovePostHook("tiltModInit")
 		self:inf_init("tilt", "ar", nil)
 		self.tilt.sdesc1 = "caliber_r545x39"
@@ -216,7 +216,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("tilt", "flint")
 	end
 
-	if BeardLib.Utils:ModLoaded("Makarov Pistol") then
+	if IREnFIST:check_beardlib_mod_installed("Makarov Pistol") then
 		self:inf_init("pm", "pistol", "medium")
 		self.pm.sdesc1 = "caliber_p9x18"
 		self.pm.sdesc2 = "action_blowbackstraight"
@@ -247,7 +247,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.xs_pm.stats.concealment = 26
 	end
 
-	if BeardLib.Utils:ModLoaded("Remington Various Attachment") then
+	if IREnFIST:check_beardlib_mod_installed("Remington Various Attachment") then
 		-- removed the stat fix (bitch i got my own stats)
 		Hooks:RemovePostHook("R870AttachModInit")
 		
@@ -287,7 +287,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 
-	if BeardLib.Utils:ModLoaded("Winchester Model 1912") then
+	if IREnFIST:check_beardlib_mod_installed("Winchester Model 1912") then
 		self:inf_init("m1912", "shotgun", {"rof_slow", "range_slowpump"})
 		self.m1912.sdesc1 = "caliber_s12g"
 		self.m1912.sdesc2 = "action_pump"
@@ -299,7 +299,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 
-	if BeardLib.Utils:ModLoaded("KS-23") then
+	if IREnFIST:check_beardlib_mod_installed("KS-23") then
 		self:inf_init("ks23", "shotgun", {"dmg_heavy"})
 		self.ks23.sdesc1 = "caliber_s23mm"
 		self.ks23.sdesc2 = "action_pump"
@@ -319,7 +319,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.ks23.stats.concealment = 19
 	end
 
-	if BeardLib.Utils:ModLoaded("Marlin Model 1894 Custom") then
+	if IREnFIST:check_beardlib_mod_installed("Marlin Model 1894 Custom") then
 		InFmenu.has_secondary_sniper = true
 		self:inf_init("m1894", "snp", nil)
 		self.m1894.recategorize = "snp"
@@ -338,7 +338,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- primary SVU/SVU-T
-	if BeardLib.Utils:ModLoaded("svudragunov") then
+	if IREnFIST:check_beardlib_mod_installed("svudragunov") then
 		self:inf_init("svudragunov", "ar", {"dmr"})
 		self.svudragunov.sdesc1 = "caliber_r762x54r"
 		self.svudragunov.sdesc2 = "action_gas"
@@ -355,7 +355,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- secondary SVU
-	if BeardLib.Utils:ModLoaded("SVU") then
+	if IREnFIST:check_beardlib_mod_installed("SVU") then
 		InFmenu.has_secondary_dmr = true
 		self:inf_init("svu", "ar", {"dmr"})
 		self.svu.sdesc1 = "caliber_r762x54r"
@@ -371,7 +371,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.svu.empty_reload_speed_mult = 1
 	end
 
-	if BeardLib.Utils:ModLoaded("Gewehr 43") then
+	if IREnFIST:check_beardlib_mod_installed("Gewehr 43") then
 		self:inf_init("g43", "ar", {"dmr"})
 		self.g43.sdesc1 = "caliber_r792mauser"
 		self.g43.sdesc2 = "action_gasshort"
@@ -381,7 +381,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.g43.stats.concealment = 20
 	end
 
-	if BeardLib.Utils:ModLoaded("Mosin Nagant M9130 Obrez") then
+	if IREnFIST:check_beardlib_mod_installed("Mosin Nagant M9130 Obrez") then
 		InFmenu.has_secondary_sniper = true
 		self:inf_init("obrez", "snp", "heavy")
 		self.obrez.sdesc1 = "caliber_r762x54r"
@@ -397,7 +397,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.obrez.AMMO_PICKUP = self:_pickup_chance(15, 1)
 	end
 
-	if BeardLib.Utils:ModLoaded("BAR LMG") then
+	if IREnFIST:check_beardlib_mod_installed("BAR LMG") then
 		self:inf_init("bar", "ar", {"heavy"})
 		self.bar.categories = {"assault_rifle"}
 		self.bar.can_shoot_through_enemy = false
@@ -422,7 +422,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.bar.use_custom_anim_state = true
 	end
 
-	if BeardLib.Utils:ModLoaded("QBZ-97B") then
+	if IREnFIST:check_beardlib_mod_installed("QBZ-97B") then
 		self:inf_init("qbz97b", "smg", {"range_carbine"})
 		self.qbz97b.sdesc1 = "caliber_r556x45"
 		self.qbz97b.sdesc2 = "action_pistonshort"
@@ -431,7 +431,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.qbz97b.stats.concealment = 25
 	end
 
-	if BeardLib.Utils:ModLoaded("Seburo M5") then
+	if IREnFIST:check_beardlib_mod_installed("Seburo M5") then
 		Hooks:RemovePostHook("seburoM5Init")
 
 		self:inf_init("seburo", "pistol", nil)
@@ -552,7 +552,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		end
 	end
 
-	if BeardLib.Utils:ModLoaded("HKG11") then
+	if IREnFIST:check_beardlib_mod_installed("HKG11") then
 		self:inf_init("temple", "ar", nil)
 		self.temple.sdesc1 = "caliber_r473x33"
 		self.temple.sdesc2 = "action_gas"
@@ -606,7 +606,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	self.x_beer.sounds.fire_auto = "beretta_fire"
 	self:copy_timers("x_beer", "x_b92fs")
 
-	if BeardLib.Utils:ModLoaded("TOZ-34") then
+	if IREnFIST:check_beardlib_mod_installed("TOZ-34") then
 		self:inf_init("toz34", "shotgun", {"dmg_heavy", "range_long", "rof_db"})
 		self.toz34.sdesc1 = "caliber_s12g"
 		self.toz34.sdesc2 = "action_breakou"
@@ -617,7 +617,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.toz34.reload_speed_mult = self.toz34.reload_speed_mult * 0.95
 	end
 
-	if BeardLib.Utils:ModLoaded("TOZ-66") then
+	if IREnFIST:check_beardlib_mod_installed("TOZ-66") then
 		self:inf_init("toz66", "shotgun", {"dmg_heavy", "rof_db"})
 		self.toz66.sdesc1 = "caliber_s12g"
 		self.toz66.sdesc2 = "action_breaksxs"
@@ -630,7 +630,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.toz66.reload_speed_mult = self.toz66.reload_speed_mult * 1.4
 	end
 
-	if BeardLib.Utils:ModLoaded("Akimbo TOZ-66") then
+	if IREnFIST:check_beardlib_mod_installed("Akimbo TOZ-66") then
 		self:inf_init("x_toz66", "shotgun", {"dmg_heavy", "rof_db"})
 		self.x_toz66.stats.concealment = 27
 		self.x_toz66.chamber = 0
@@ -643,7 +643,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("x_toz66", "x_judge")
 	end
 
-	if BeardLib.Utils:ModLoaded("pdr") then
+	if IREnFIST:check_beardlib_mod_installed("pdr") then
 		Hooks:RemovePostHook("pdrModInit")
 		self:inf_init("pdr", "smg", {"range_carbine"})
 		self.pdr.sdesc1 = "caliber_r556x45"
@@ -652,7 +652,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.pdr.stats.concealment = 23
 	end
 
-	if BeardLib.Utils:ModLoaded("Steyr AUG A3 9mm XS") then
+	if IREnFIST:check_beardlib_mod_installed("Steyr AUG A3 9mm XS") then
 		self:inf_init("aug9mm", "smg", {"range_long"})
 		self.aug9mm.sdesc1 = "caliber_p9x19"
 		self.aug9mm.sdesc2 = "action_blowback"
@@ -666,7 +666,8 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.aug9mm.stats.concealment = 24
 	end
 
-	if BeardLib.Utils:ModLoaded("L115") then
+	--[[
+	if IREnFIST:check_beardlib_mod_installed("L115") then
 		self:inf_init("l115", "snp", "heavy")
 		self.l115.sdesc1 = "caliber_r338"
 		self.l115.sdesc2 = "action_bolt"
@@ -695,8 +696,9 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 			})
 		end
 	end
+	]]
 
-	if BeardLib.Utils:ModLoaded("Montana 5.56") then
+	if IREnFIST:check_beardlib_mod_installed("Montana 5.56") then
 		self:inf_init("yayo", "ar", {"has_gl"})
 		self.yayo.sdesc1 = "caliber_r556x45"
 		self.yayo.sdesc2 = "action_di"
@@ -711,7 +713,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("yayo_m203gl", "contraband_m203")
 	end
 
-	if BeardLib.Utils:ModLoaded("Bren Ten") then
+	if IREnFIST:check_beardlib_mod_installed("Bren Ten") then
 		self:inf_init("sonny", "pistol", "supermedium")
 		self.sonny.sdesc1 = "caliber_p10"
 		self.sonny.sdesc2 = "action_shortrecoil"
@@ -736,7 +738,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("x_sonny", "x_packrat")
 	end
 
-	if BeardLib.Utils:ModLoaded("STG 44") then
+	if IREnFIST:check_beardlib_mod_installed("STG 44") then
 		self:inf_init("stg44", "ar", nil)
 		self.stg44.sdesc1 = "caliber_r792x33"
 		self.stg44.sdesc2 = "action_gas"
@@ -752,7 +754,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("HK G3A3 M203") then
+	if IREnFIST:check_beardlib_mod_installed("HK G3A3 M203") then
 		self:inf_init("g3m203", "ar", {"heavy", "has_gl"})
 		self.g3m203.sdesc1 = "caliber_r762x51"
 		self.g3m203.sdesc2 = "action_blowbackroller"
@@ -780,7 +782,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.g3_m203buckshot.reload_speed_mult = 1.20
 	end
 
-	if BeardLib.Utils:ModLoaded("AAC Honey Badger") then
+	if IREnFIST:check_beardlib_mod_installed("AAC Honey Badger") then
 		self:inf_init("bajur", "ar", {"medium"})
 		self.bajur.sdesc1 = "caliber_r300blackout"
 		self.bajur.sdesc2 = "action_di"
@@ -794,7 +796,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		-- 3.02/2.32
 	end
 
-	if BeardLib.Utils:ModLoaded("af2011") then
+	if IREnFIST:check_beardlib_mod_installed("af2011") then
 		Hooks:RemovePostHook("af2011")
 		self:inf_init("af2011", "pistol", "medium")
 		self.af2011.sdesc1 = "caliber_p45acp"
@@ -831,7 +833,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_af2011.reload_speed_mult = self.x_af2011.reload_speed_mult * 0.90
 	end
 
-	if BeardLib.Utils:ModLoaded("STF-12") then
+	if IREnFIST:check_beardlib_mod_installed("STF-12") then
 		self:inf_init("stf12", "shotgun", {"dmg_mid"})
 		self.stf12.sdesc1 = "caliber_s12g"
 		self.stf12.sdesc2 = "action_pump"
@@ -840,7 +842,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("stf12", "r870")
 	end
 
-	if BeardLib.Utils:ModLoaded("CheyTac M200") then
+	if IREnFIST:check_beardlib_mod_installed("CheyTac M200") then
 		self:inf_init("m200", "snp", "heavy")
 		self.m200.sdesc1 = "caliber_r408cheytac"
 		self.m200.sdesc2 = "action_bolt"
@@ -867,7 +869,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.m200.bipod_rof_mult = 1.25
 	end
 
-	if BeardLib.Utils:ModLoaded("Minebea SMG") then
+	if IREnFIST:check_beardlib_mod_installed("Minebea SMG") then
 		self:inf_init("minebea", "smg", nil)
 		self.minebea.sdesc1 = "caliber_p9x19"
 		self.minebea.sdesc2 = "action_blowback"
@@ -900,7 +902,9 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_minebea.reload_speed_mult = self.x_minebea.reload_speed_mult * 1.15
 	end
 
-	if BeardLib.Utils:ModLoaded("HX25 Handheld Grenade Launcher") then
+	-- Temp removed due to crash issues
+	--[[
+	if IREnFIST:check_beardlib_mod_installed("HX25 Handheld Grenade Launcher") then
 		self.hx25.categories = {"shotgun"}
 		self.hx25.recategorize = nil
 		self.hx25.ignore_damage_upgrades = false
@@ -922,9 +926,10 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		-- instant_multishot set in ammo type
 		-- inf does something that breaks multiple-ray explosive rounds, but i couldn't be bothered to figure out what
 	end
+	]]
 
 	-- automag
-	if BeardLib.Utils:ModLoaded("amt") then
+	if IREnFIST:check_beardlib_mod_installed("amt") then
 		self:inf_init("amt", "pistol", "heavy")
 		self.amt.sdesc1 = "caliber_p44amp"
 		self.amt.sdesc2 = "action_shortrecoil"
@@ -932,7 +937,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.amt.stats.concealment = 28
 	end
 
-	if BeardLib.Utils:ModLoaded("Zenith 10mm") then
+	if IREnFIST:check_beardlib_mod_installed("Zenith 10mm") then
 		self:inf_init("zenith", "pistol", "supermedium")
 		self.zenith.sdesc1 = "caliber_p10"
 		self.zenith.sdesc2 = "action_shortrecoil"
@@ -941,7 +946,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.zenith.stats.concealment = 28
 	end
 
-	if BeardLib.Utils:ModLoaded("Widowmaker TX") then
+	if IREnFIST:check_beardlib_mod_installed("Widowmaker TX") then
 		self:inf_init("wmtx", "shotgun", {"range_short", "dmg_vlight", "rof_mag"})
 		self.wmtx.sdesc1 = "caliber_s12g"
 		self.wmtx.sdesc2 = "action_gas"
@@ -959,7 +964,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.wmtx.reload_speed_mult = self.wmtx.reload_speed_mult * 1.60
 	end
 
-	if BeardLib.Utils:ModLoaded("DP12 Shotgun") then
+	if IREnFIST:check_beardlib_mod_installed("DP12 Shotgun") then
 		self:inf_init("dp12", "shotgun", {"dmg_light"})
 		self.dp12.is_dp12 = true
 		self.dp12.dp12_no_pump_rof_mult = 5
@@ -981,7 +986,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.dp12.timers.shell_reload_early = 0.10
 	end
 
-	if BeardLib.Utils:ModLoaded("Lahti L-35") then
+	if IREnFIST:check_beardlib_mod_installed("Lahti L-35") then
 		self:inf_init("l35", "pistol", "medium")
 		self.l35.sdesc1 = "caliber_p9x19"
 		self.l35.sdesc2 = "action_recoil"
@@ -989,7 +994,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.l35.stats.concealment = 29
 	end
 
-	if BeardLib.Utils:ModLoaded("OTs-14-4A Groza") then
+	if IREnFIST:check_beardlib_mod_installed("OTs-14-4A Groza") then
 		self:inf_init("ots_14_4a", "ar", {"medium"})
 		self.ots_14_4a.sdesc1 = "caliber_r9x39"
 		self.ots_14_4a.sdesc2 = "action_gas"
@@ -1018,7 +1023,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		end
 	end
 
-	if BeardLib.Utils:ModLoaded("MK18 Specialist") then
+	if IREnFIST:check_beardlib_mod_installed("MK18 Specialist") then
 		self:inf_init("mk18s", "ar", nil)
 		self.mk18s.sdesc1 = "caliber_r556x45"
 		self.mk18s.sdesc2 = "action_di"
@@ -1032,7 +1037,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.mk18s.BURST_FIRE_RATE_MULTIPLIER = 2
 	end
 
-	if BeardLib.Utils:ModLoaded("Lewis Gun") then
+	if IREnFIST:check_beardlib_mod_installed("Lewis Gun") then
 		self:inf_init("lewis", "lmg", "heavy")
 		self.lewis.sdesc1 = "caliber_r303"
 		self.lewis.sdesc2 = "action_gaslong"
@@ -1050,7 +1055,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		table.insert(lmglist, "lewis")
 	end
 
-	if BeardLib.Utils:ModLoaded("HK416") then
+	if IREnFIST:check_beardlib_mod_installed("HK416") then
 		self:inf_init("hk416", "ar", nil)
 		self.hk416.sdesc1 = "caliber_r556x45"
 		self.hk416.sdesc2 = "action_pistonshort"
@@ -1061,7 +1066,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.hk416.reload_timed_stance_mod.empty.ads[2].translation = Vector3(-13, -3, -15)
 	end
 
-	if BeardLib.Utils:ModLoaded("HK416C Standalone") then
+	if IREnFIST:check_beardlib_mod_installed("HK416C Standalone") then
 		self:inf_init("drongo", "ar", nil)
 		self.drongo.sdesc1 = "caliber_r556x45"
 		self.drongo.sdesc2 = "action_pistonshort"
@@ -1071,7 +1076,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.drongo.fire_mode_data.fire_rate = 60/800
 	end
 
-	if BeardLib.Utils:ModLoaded("HK417 Standalone") then
+	if IREnFIST:check_beardlib_mod_installed("HK417 Standalone") then
 		self:inf_init("recce", "ar", {"heavy"})
 		self.recce.sdesc1 = "caliber_r762x51"
 		self.recce.sdesc2 = "action_pistonshort"
@@ -1081,7 +1086,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.recce.FIRE_MODE = "auto"
 	end
 
-	if BeardLib.Utils:ModLoaded("SAI GRY") then
+	if IREnFIST:check_beardlib_mod_installed("SAI GRY") then
 		self:inf_init("saigry", "ar", {"medium"})
 		self.saigry.sdesc1 = "caliber_r300blackout"
 		self.saigry.sdesc2 = "action_di"
@@ -1091,7 +1096,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.saigry.reload_speed_mult = self.saigry.reload_speed_mult * self:convert_reload_to_mult("mag_133") * 0.85
 	end
 
-	if BeardLib.Utils:ModLoaded("Owen Gun") then
+	if IREnFIST:check_beardlib_mod_installed("Owen Gun") then
 		self:inf_init("owen", "smg", {"range_long"})
 		self.owen.sdesc1 = "caliber_p9x19"
 		self.owen.sdesc2 = "action_blowback"
@@ -1105,7 +1110,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.owen.not_empty_reload_speed_mult = self.owen.not_empty_reload_speed_mult * 1.25
 	end
 
-	if BeardLib.Utils:ModLoaded("l1a1") then
+	if IREnFIST:check_beardlib_mod_installed("l1a1") then
 		Hooks:RemovePostHook("l1a1ModInit")
 		self:inf_init("l1a1", "ar", {"ldmr"})
 		self:copy_sdescs("l1a1", "fal")
@@ -1114,14 +1119,14 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.l1a1.stats.concealment = 19
 	end
 
-	if BeardLib.Utils:ModLoaded("Mk14") then
+	if IREnFIST:check_beardlib_mod_installed("Mk14") then
 		self:inf_init("wargoddess", "ar", {"ldmr"})
 		self:copy_sdescs("wargoddess", "new_m14")
 		self:copy_timers("wargoddess", "new_m14")
 		self.wargoddess.stats.concealment = 18
 	end
 
-	if BeardLib.Utils:ModLoaded("sg552") then
+	if IREnFIST:check_beardlib_mod_installed("sg552") then
 		Hooks:RemovePostHook("sg552ModInit")
 		self:inf_init("sg552", "ar", nil)
 		self:copy_sdescs("sg552", "s552")
@@ -1130,7 +1135,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.sg552.stats.concealment = 24
 	end
 
-	if BeardLib.Utils:ModLoaded("Beretta Px4 Storm") and self.px4 then
+	if IREnFIST:check_beardlib_mod_installed("Beretta Px4 Storm") and self.px4 then
 		self:inf_init("px4", "pistol", "medium")
 		self.px4.sdesc1 = "caliber_p40sw"
 		self.px4.sdesc2 = "action_shortrecoil"
@@ -1140,7 +1145,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.px4.stats.concealment = 28
 	end
 
-	if BeardLib.Utils:ModLoaded("Walther P99 AS") then
+	if IREnFIST:check_beardlib_mod_installed("Walther P99 AS") then
 		self:inf_init("p99", "pistol", nil)
 		self.p99.sdesc1 = "caliber_p9x19"
 		self.p99.sdesc2 = "action_shortrecoil"
@@ -1148,7 +1153,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.p99.stats.concealment = 30
 	end
 
-	if BeardLib.Utils:ModLoaded("M45A1 CQBP") then
+	if IREnFIST:check_beardlib_mod_installed("M45A1 CQBP") then
 		self:inf_init("m45a1", "pistol", "medium")
 		self:copy_sdescs("m45a1", "colt_1911")
 		self:copy_timers("m45a1", "colt_1911")
@@ -1157,7 +1162,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.m45a1.stats.concealment = 29
 	end
 
-	if BeardLib.Utils:ModLoaded("Mossberg 590") and self.mossberg590 then
+	if IREnFIST:check_beardlib_mod_installed("Mossberg 590") and self.mossberg590 then
 		self:inf_init("mossberg590", "shotgun", {"rof_slow", "range_slowpump"})
 		self.mossberg590.sdesc1 = "caliber_s12g"
 		self.mossberg590.sdesc2 = "action_pump"
@@ -1168,7 +1173,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.mossberg590.stats.concealment = 21
 	end
 
-	if BeardLib.Utils:ModLoaded("Vepr-12") then
+	if IREnFIST:check_beardlib_mod_installed("Vepr-12") then
 		self:inf_init("vepr12", "shotgun", {"dmg_vlight", "rof_mag"})
 		self:copy_sdescs("vepr12", "saiga")
 		self:copy_timers("vepr12", "flint")
@@ -1177,7 +1182,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.vepr12.stats.concealment = 23
 	end
 
-	if BeardLib.Utils:ModLoaded("M3 Grease Gun") then
+	if IREnFIST:check_beardlib_mod_installed("M3 Grease Gun") then
 		Hooks:RemovePostHook("m3ModInit")
 
 		if self.SetupAttachmentPoint then
@@ -1226,7 +1231,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("x_m3", "x_akmsu")
 	end
 
-	if BeardLib.Utils:ModLoaded("Howa AR") then
+	if IREnFIST:check_beardlib_mod_installed("Howa AR") then
 		self:inf_init("howa", "ar", nil)
 		self.howa.sdesc1 = "caliber_r556x45jp"
 		self.howa.sdesc2 = "action_gas"
@@ -1235,7 +1240,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.howa.stats.concealment = 20
 	end
 
-	if BeardLib.Utils:ModLoaded("vp70") then
+	if IREnFIST:check_beardlib_mod_installed("vp70") then
 		self:inf_init("vp70", "pistol", nil)
 		self.vp70.sdesc1 = "caliber_p9x19"
 		self.vp70.sdesc2 = "action_blowback"
@@ -1256,7 +1261,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_vp70.reload_speed_mult = self.x_vp70.reload_speed_mult * self:convert_reload_to_mult("mag_200")
 	end
 
-	if BeardLib.Utils:ModLoaded("lapd") then
+	if IREnFIST:check_beardlib_mod_installed("lapd") then
 		self:inf_init("lapd", "pistol", "heavy")
 		self.lapd.sdesc1 = "caliber_p357"
 		self.lapd.sdesc2 = "action_dasa"
@@ -1277,7 +1282,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_lapd.reload_speed_mult = self.lapd.reload_speed_mult * 1.15
 	end
 
-	if BeardLib.Utils:ModLoaded("Remington R5 RGP") then
+	if IREnFIST:check_beardlib_mod_installed("Remington R5 RGP") then
 		self:inf_init("mikon", "ar", nil)
 		self.mikon.sdesc1 = "caliber_r556x45"
 		self.mikon.sdesc2 = "action_piston"
@@ -1291,7 +1296,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- IDW
-	if BeardLib.Utils:ModLoaded("Parker-Hale PDW") then
+	if IREnFIST:check_beardlib_mod_installed("Parker-Hale PDW") then
 		self:inf_init("nya", "smg", nil)
 		self.nya.sdesc1 = "caliber_p9x19"
 		self.nya.sdesc2 = "action_blowback"
@@ -1319,7 +1324,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_nya.reload_speed_mult = self.x_nya.reload_speed_mult * self:convert_reload_to_mult("mag_50")
 	end
 
-	if BeardLib.Utils:ModLoaded("ARX-160 REBORN") then
+	if IREnFIST:check_beardlib_mod_installed("ARX-160 REBORN") then
 		-- redundancy
 		self:inf_init("lazy", "ar", nil)
 		self.lazy.sdesc1 = "caliber_r556x45"
@@ -1330,7 +1335,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.lazy.stats.concealment = 21
 	end
 
-	if BeardLib.Utils:ModLoaded("DP28") then
+	if IREnFIST:check_beardlib_mod_installed("DP28") then
 		self:inf_init("dp28", "lmg", "heavy")
 		self.dp28.sdesc1 = "caliber_r762x54r"
 		self.dp28.sdesc2 = "action_gas"
@@ -1359,7 +1364,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 
 	-- Actually in the game now
 	--[[
-	if BeardLib.Utils:ModLoaded("M60") then
+	if IREnFIST:check_beardlib_mod_installed("M60") then
 		self:inf_init("m60", "lmg", "heavy")
 		self.m60.sdesc1 = "caliber_r762x51"
 		self.m60.sdesc2 = "action_gasshort"
@@ -1374,7 +1379,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 	]]
 
-	if BeardLib.Utils:ModLoaded("RPD") then
+	if IREnFIST:check_beardlib_mod_installed("RPD") then
 		self:inf_init("rpd", "lmg", "medium")
 		self.rpd.sdesc1 = "caliber_r762x39"
 		self.rpd.sdesc2 = "action_gas"
@@ -1387,7 +1392,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		table.insert(lmglist, "rpd")
 	end
 
-	if BeardLib.Utils:ModLoaded("LSAT") then
+	if IREnFIST:check_beardlib_mod_installed("LSAT") then
 		self:inf_init("lsat", "lmg", nil)
 		self.lsat.sdesc1 = "caliber_r556x45ct"
 		self.lsat.sdesc2 = "action_gaslsat"
@@ -1401,7 +1406,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		table.insert(lmglist, "lsat")
 	end
 
-	if BeardLib.Utils:ModLoaded("gtt33") then
+	if IREnFIST:check_beardlib_mod_installed("gtt33") then
 		Hooks:RemovePostHook("gtt33Init")
 		self:inf_init("gtt33", "pistol", "medium")
 		self.gtt33.sdesc1 = "caliber_p762x25"
@@ -1412,7 +1417,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.gtt33.stats.concealment = 29
 	end
 
-	if BeardLib.Utils:ModLoaded("Fang-45") then
+	if IREnFIST:check_beardlib_mod_installed("Fang-45") then
 		self:inf_init("fang45", "smg", {"range_long", "dmg_50"})
 		self.fang45.sdesc1 = "caliber_p45acp"
 		self.fang45.sdesc2 = "action_blowback"
@@ -1430,7 +1435,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.fang45.stats.concealment = 23
 	end
 
-	if BeardLib.Utils:ModLoaded("CZ 75 B") then
+	if IREnFIST:check_beardlib_mod_installed("CZ 75 B") then
 		self:inf_init("cz75b", "pistol", nil)
 		self.cz75b.sdesc1 = "caliber_p9x19"
 		self.cz75b.sdesc2 = "action_shortrecoil"
@@ -1448,7 +1453,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("x_cz75b", "x_p226")
 	end
 
-	if BeardLib.Utils:ModLoaded("CZ 75 Short Rail") then
+	if IREnFIST:check_beardlib_mod_installed("CZ 75 Short Rail") then
 		self:inf_init("rally", "pistol", nil)
 		self.rally.sdesc1 = "caliber_p9x19"
 		self.rally.sdesc2 = "action_shortrecoil"
@@ -1466,7 +1471,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("x_rally", "x_packrat")
 	end
 
-	if BeardLib.Utils:ModLoaded("CZ Auto Pistol") then
+	if IREnFIST:check_beardlib_mod_installed("CZ Auto Pistol") then
 		self:inf_init("czauto", "pistol", nil)
 		self.czauto.sdesc1 = "caliber_p9x19"
 		self.czauto.sdesc2 = "action_shortrecoil"
@@ -1479,7 +1484,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.czauto.fire_mode_data.fire_rate = 60/1000
 	end
 
-	if BeardLib.Utils:ModLoaded("Chiappa Rhino 60DS") then
+	if IREnFIST:check_beardlib_mod_installed("Chiappa Rhino 60DS") then
 		self:inf_init("rhino", "pistol", "heavy")
 		self.rhino.sdesc1 = "caliber_p357"
 		self.rhino.sdesc2 = "action_dasa"
@@ -1488,7 +1493,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("rhino", "chinchilla")
 	end
 
-	if BeardLib.Utils:ModLoaded("Trench Shotgun") and self.trench then
+	if IREnFIST:check_beardlib_mod_installed("Trench Shotgun") and self.trench then
 		self:inf_init("trench", "shotgun", {"rof_slow", "range_slowpump"})
 		self.trench.sdesc1 = "caliber_s12g"
 		self.trench.sdesc2 = "action_pump"
@@ -1500,7 +1505,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("trench", "m37")
 	end
 
-	if BeardLib.Utils:ModLoaded("Sjögren Inertia") then
+	if IREnFIST:check_beardlib_mod_installed("Sjögren Inertia") then
 		self:inf_init("sjogren", "shotgun", {"rof_semi", "range_slowpump", "dmg_light"})
 		self.sjogren.sdesc1 = "caliber_s12g"
 		self.sjogren.sdesc2 = "action_recoil"
@@ -1513,7 +1518,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.sjogren.reload_speed_mult = self.sjogren.reload_speed_mult * 0.90
 	end
 
-	if BeardLib.Utils:ModLoaded("ThompsonM1a1") then
+	if IREnFIST:check_beardlib_mod_installed("ThompsonM1a1") then
 		Hooks:RemovePostHook("ThompsonM1A1modInit")
 		self:inf_init("tm1a1", "smg", {"range_long", "dmg_50"})
 		self:copy_sdescs("tm1a1", "m1928")
@@ -1534,7 +1539,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.x_tm1a1.recategorize = "x_smg"
 	end
 
-	if BeardLib.Utils:ModLoaded("M6G Magnum") then
+	if IREnFIST:check_beardlib_mod_installed("M6G Magnum") then
 		self:inf_init("m6g", "pistol", "heavy")
 		self.m6g.sdesc1 = "caliber_p117saphp"
 		self.m6g.sdesc2 = "action_shortrecoil"
@@ -1553,7 +1558,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_m6g.AMMO_PICKUP = self:_pickup_chance(48, 1)
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-9") then
+	if IREnFIST:check_beardlib_mod_installed("AK-9") then
 		self:inf_init("heffy_939", "smg", {"range_mcarbine"})
 		self.heffy_939.sdesc1 = "caliber_r9x39"
 		self.heffy_939.sdesc2 = "action_gaslong"
@@ -1573,7 +1578,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_heffy_939.AMMO_PICKUP = self:_pickup_chance(120, 1)
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-47") then
+	if IREnFIST:check_beardlib_mod_installed("AK-47") then
 		self:inf_init("heffy_762", "ar", {"medium"})
 		self.heffy_762.sdesc1 = "caliber_r762x39"
 		self.heffy_762.sdesc2 = "action_gaslong"
@@ -1596,7 +1601,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- heffy_545 AK74
-	if BeardLib.Utils:ModLoaded("AK-74") and self.heffy_545 then
+	if IREnFIST:check_beardlib_mod_installed("AK-74") and self.heffy_545 then
 		self:inf_init("heffy_545", "ar", nil)
 		self.heffy_545.sdesc1 = "caliber_r545x39"
 		self.heffy_545.sdesc2 = "action_gaslong"
@@ -1619,7 +1624,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- AK Pack 2.0 AK-74
-	if BeardLib.Utils:ModLoaded("AK-74") and self.ak_stamp_545 then
+	if IREnFIST:check_beardlib_mod_installed("AK-74") and self.ak_stamp_545 then
 		self:inf_init("ak_stamp_545", "ar", nil)
 		self.ak_stamp_545.sdesc1 = "caliber_r545x39"
 		self.ak_stamp_545.sdesc2 = "action_gaslong"
@@ -1642,7 +1647,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- heffy_556 AK-101
-	if BeardLib.Utils:ModLoaded("AK-101") and self.heffy_556 then
+	if IREnFIST:check_beardlib_mod_installed("AK-101") and self.heffy_556 then
 		self:inf_init("heffy_556", "ar", nil)
 		self.heffy_556.sdesc1 = "caliber_r545x39"
 		self.heffy_556.sdesc2 = "action_gaslong"
@@ -1650,7 +1655,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- AK Pack 2.0 AK-101
-	if BeardLib.Utils:ModLoaded("AK-101") and self.ak_stamp_556 then
+	if IREnFIST:check_beardlib_mod_installed("AK-101") and self.ak_stamp_556 then
 		self:inf_init("ak_stamp_556", "ar", nil)
 		self.ak_stamp_556.sdesc1 = "caliber_r545x39"
 		self.ak_stamp_556.sdesc2 = "action_gaslong"
@@ -1658,7 +1663,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- Golden AKMS heffy
-	if BeardLib.Utils:ModLoaded("Golden-AKMS") and self.heffy_gold then
+	if IREnFIST:check_beardlib_mod_installed("Golden-AKMS") and self.heffy_gold then
 		self:inf_init("heffy_gold", "ar", {"medium"})
 		self.heffy_gold.sdesc1 = "caliber_r762x39"
 		self.heffy_gold.sdesc2 = "action_gaslong"
@@ -1667,7 +1672,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- Golden AKMS AK Pack 2.0
-	if BeardLib.Utils:ModLoaded("Golden AKMS") and self.ak_stamp_gold then
+	if IREnFIST:check_beardlib_mod_installed("Golden AKMS") and self.ak_stamp_gold then
 		self:inf_init("ak_stamp_gold", "ar", {"medium"})
 		self.ak_stamp_gold.sdesc1 = "caliber_r762x39"
 		self.ak_stamp_gold.sdesc2 = "action_gaslong"
@@ -1676,14 +1681,14 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- AKM AK Pack 2.0
-	if BeardLib.Utils:ModLoaded("AKM") and self.ak_stamp_762 then
+	if IREnFIST:check_beardlib_mod_installed("AKM") and self.ak_stamp_762 then
 		self:inf_init("ak_stamp_762", "ar", {"medium"})
 		self.ak_stamp_762.sdesc1 = "caliber_r762x39"
 		self.ak_stamp_762.sdesc2 = "action_gaslong"
 		self:copy_timers("ak_stamp_762", "flint")
 	end
 
-	if BeardLib.Utils:ModLoaded("Saiga-12") then
+	if IREnFIST:check_beardlib_mod_installed("Saiga-12") then
 		self:inf_init("heffy_12g", "shotgun", {"dmg_vlight", "rof_mag"})
 		self:copy_sdescs("heffy_12g", "saiga")
 		self:copy_timers("heffy_12g", "flint")
@@ -1691,7 +1696,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.heffy_12g.reload_speed_mult = self.heffy_12g.reload_speed_mult * self:convert_reload_to_mult("mag_75")
 	end
 
-	if BeardLib.Utils:ModLoaded("AK Extra Attachments") then
+	if IREnFIST:check_beardlib_mod_installed("AK Extra Attachments") then
 		self:copy_timers("lpo70_flamethrower", "contraband_m203")
 		self.lpo70_flamethrower.stats.damage = 25
 		self.lpo70_flamethrower.timers.reload_empty_end = 1.50
@@ -1704,7 +1709,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		--self.lpo70_flamethrower.animations.only_fullreload = true -- don't feel like unfucking underbarrel reloads right now
 	end
 
-	if BeardLib.Utils:ModLoaded("Nagant M1895") then
+	if IREnFIST:check_beardlib_mod_installed("Nagant M1895") then
 		self:inf_init("m1895", "pistol", "heavy")
 		self.m1895.sdesc1 = "caliber_p762x38r"
 		self.m1895.sdesc2 = "action_dasa"
@@ -1716,7 +1721,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.m1895.stats.damage = 220
 	end
 
-	if BeardLib.Utils:ModLoaded("VHS Various Attachment") then
+	if IREnFIST:check_beardlib_mod_installed("VHS Various Attachment") then
 		self:inf_init("vhs_m203", "grenade_launcher")
 		self.vhs_m203.AMMO_MAX = 2
 		self.vhs_m203.AMMO_PICKUP = {1338, 15}
@@ -1730,7 +1735,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 
 	end
 
-	if BeardLib.Utils:ModLoaded("Kolibri") then
+	if IREnFIST:check_beardlib_mod_installed("Kolibri") then
 		self:inf_init("kolibri", "pistol")
 		self.kolibri.sdesc1 = "caliber_p2mmkolibri"
 		self.kolibri.sdesc2 = "action_gas"
@@ -1750,7 +1755,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.kolibri.fire_mode_data.fire_rate = 60/1000
 	end
 
-	if BeardLib.Utils:ModLoaded("Gepard GM6 Lynx") then
+	if IREnFIST:check_beardlib_mod_installed("Gepard GM6 Lynx") then
 		self:inf_init("lynx", "snp", "superheavy")
 		self.lynx.sdesc1 = "caliber_r50bmg"
 		self.lynx.sdesc2 = "action_gas"
@@ -1765,7 +1770,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.lynx.animations.ignore_fullreload = nil
 	end
 
-	if BeardLib.Utils:ModLoaded("PPSh-41") then
+	if IREnFIST:check_beardlib_mod_installed("PPSh-41") then
 		self:inf_init("ppsh", "smg", {"range_long"})
 		self.ppsh.sdesc1 = "caliber_p762x25"
 		self.ppsh.sdesc2 = "action_blowback"
@@ -1778,7 +1783,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers_to_reload2("ppsh", "m1928")
 	end
 
-	if BeardLib.Utils:ModLoaded("PPS-43") then
+	if IREnFIST:check_beardlib_mod_installed("PPS-43") then
 		self:inf_init("pps43", "smg", {"range_long"})
 		self.pps43.sdesc1 = "caliber_p762x25"
 		self.pps43.sdesc2 = "action_blowback"
@@ -1790,7 +1795,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.pps43.fire_mode_data.fire_rate = 60/700
 	end
 
-	if BeardLib.Utils:ModLoaded("Kel-Tec RFB") then
+	if IREnFIST:check_beardlib_mod_installed("Kel-Tec RFB") then
 		self:inf_init("leet", "ar", {"ldmr"})
 		self.leet.sdesc1 = "caliber_r762x51"
 		self.leet.sdesc2 = "action_gasshort"
@@ -1817,7 +1822,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("Silent Killer High Standard HDM") then
+	if IREnFIST:check_beardlib_mod_installed("Silent Killer High Standard HDM") then
 		self:inf_init("hshdm", "pistol", "medium")
 		self.hshdm.sdesc1 = "caliber_p22lr"
 		self.hshdm.sdesc2 = "action_blowback"
@@ -1836,7 +1841,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_hshdm.reload_speed_mult = self.x_hshdm.reload_speed_mult * self:convert_reload_to_mult("mag_125")
 	end
 
-	if BeardLib.Utils:ModLoaded("Silent Killer Maxim 9") then
+	if IREnFIST:check_beardlib_mod_installed("Silent Killer Maxim 9") then
 		self:inf_init("max9", "pistol", nil)
 		self.max9.sdesc1 = "caliber_p9x19"
 		self.max9.sdesc2 = "action_blowback"
@@ -1847,7 +1852,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("max9", "hs2000")
 	end
 
-	if BeardLib.Utils:ModLoaded("Silent Killer Welrod") then
+	if IREnFIST:check_beardlib_mod_installed("Silent Killer Welrod") then
 		self:inf_init("welrod", "pistol", "heavy")
 		self.welrod.sdesc1 = "caliber_p32acp"
 		self.welrod.sdesc2 = "action_bolt"
@@ -1902,7 +1907,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	--]]
 	end
 
-	if BeardLib.Utils:ModLoaded("PB") then
+	if IREnFIST:check_beardlib_mod_installed("PB") then
 		self:inf_init("pb", "pistol", "medium")
 		self.pb.sdesc1 = "caliber_p9x18"
 		self.pb.sdesc2 = "action_blowbackstraight"
@@ -1912,7 +1917,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.pb.stats.concealment = 30
 	end
 
-	if BeardLib.Utils:ModLoaded("Browning Auto Shotgun") then
+	if IREnFIST:check_beardlib_mod_installed("Browning Auto Shotgun") then
 		self:inf_init("auto5", "shotgun", {"dmg_light", "rof_semi"})
 		self.auto5.sdesc1 = "caliber_s12g"
 		self.auto5.sdesc2 = "action_longrecoil"
@@ -1923,7 +1928,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("auto5", "benelli")
 	end
 
-	if BeardLib.Utils:ModLoaded("M40A5") then
+	if IREnFIST:check_beardlib_mod_installed("M40A5") then
 		self:inf_init("m40a5", "snp", nil)
 		self.m40a5.sdesc1 = "caliber_r762x51"
 		self.m40a5.sdesc2 = "action_bolt"
@@ -1952,7 +1957,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		end
 	end
 
-	if BeardLib.Utils:ModLoaded("Desert Tech MDR") then
+	if IREnFIST:check_beardlib_mod_installed("Desert Tech MDR") then
 		self:inf_init("mdr", "ar", {"heavy"})
 		self.mdr.sdesc1 = "caliber_r762x51"
 		self.mdr.sdesc2 = "action_gas"
@@ -1961,7 +1966,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("mdr", "aug")
 	end
 
-	if BeardLib.Utils:ModLoaded("FN SCAR-L") then
+	if IREnFIST:check_beardlib_mod_installed("FN SCAR-L") then
 		self:inf_init("scarl", "ar", nil)
 		self.scarl.sdesc1 = "caliber_r556x45"
 		self.scarl.sdesc2 = "action_pistonshort"
@@ -1969,7 +1974,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("scarl", "new_m4")
 	end
 
-	if BeardLib.Utils:ModLoaded("FN SCAR-L M203") then
+	if IREnFIST:check_beardlib_mod_installed("FN SCAR-L M203") then
 		self:inf_init("scar_m203", "ar", {"has_gl"})
 		self.scar_m203.sdesc1 = "caliber_r556x45"
 		self.scar_m203.sdesc2 = "action_pistonshort"
@@ -2010,7 +2015,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	--[[
-	if BeardLib.Utils:ModLoaded("Kar98k") then
+	if IREnFIST:check_beardlib_mod_installed("Kar98k") then
 		Hooks:RemovePostHook("kar98kInit")
 		self:inf_init("kar98k", "snp", "heavy")
 		self.kar98k.sdesc1 = "caliber_r792mauser"
@@ -2039,7 +2044,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.kar98k.rays = 1
 	end
 
-	if BeardLib.Utils:ModLoaded("Golden Gun") then
+	if IREnFIST:check_beardlib_mod_installed("Golden Gun") then
 		self:inf_init("goldgun", "pistol", "heavy")
 		self.goldgun.categories = {"pistol"}
 		self.goldgun.sdesc1 = "caliber_pscaramanga"
@@ -2068,7 +2073,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		end)
 	end
 
-	if BeardLib.Utils:ModLoaded("SKS") then
+	if IREnFIST:check_beardlib_mod_installed("SKS") then
 		self:inf_init("sks", "ar", {"ldmr"})
 		self.sks.sdesc1 = "caliber_r762x39"
 		self.sks.sdesc2 = "action_gasshort"
@@ -2076,7 +2081,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.sks.stats.concealment = 22
 	end
 
-	if BeardLib.Utils:ModLoaded("MAS-49") then
+	if IREnFIST:check_beardlib_mod_installed("MAS-49") then
 		self:inf_init("mas49", "ar", {"dmr"})
 		self.mas49.sdesc1 = "caliber_r75x54"
 		self.mas49.sdesc2 = "action_di"
@@ -2084,7 +2089,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.mas49.stats.concealment = 18
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-12") then
+	if IREnFIST:check_beardlib_mod_installed("AK-12") then
 		self:inf_init("ak12", "ar", nil)
 		self.ak12.desc_id = "bm_w_ak12_200_desc"
 		self.ak12.sdesc1 = "caliber_r545x39"
@@ -2093,7 +2098,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("ak12", "flint")
 	end
 
-	if BeardLib.Utils:ModLoaded("AK-12/76") then
+	if IREnFIST:check_beardlib_mod_installed("AK-12/76") then
 		self:inf_init("ak12_76", "shotgun", {"dmg_vlight", "rof_mag"})
 		self.ak12_76.sdesc1 = "caliber_s12g"
 		self.ak12_76.sdesc2 = "action_gaslong"
@@ -2102,13 +2107,14 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 	end
 
 	-- Oh boy this is a big one
-	if BeardLib.Utils:ModLoaded("Vanilla Styled Weapon Mods") and self.amr12 then
+	if IREnFIST:check_beardlib_mod_installed("Vanilla Styled Weapon Mods") and self.amr12 then
 
 		-- AMR12 shotgun
 		self:inf_init("amr12", "shotgun", {"dmg_vlight", "rof_mag"})
 		self.amr12.sdesc1 = "caliber_s12g" -- The AMR12 is not real and it cant hurt you
 		self.amr12.sdesc2 = "action_di"
 		self.amr12.recategorize = "shotgun"
+		self.amr12.stats.concealment = 19
 		self:copy_timers("amr12", "olympic")
 
 		-- SG 416 (HK416)
@@ -2116,14 +2122,16 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.sg416.sdesc1 = "caliber_r556x45"
 		self.sg416.sdesc2 = "action_pistonshort"
 		self:copy_timers("sg416", "amcar")
-		self.sg416.stats.concealment = 18
+		self.sg416.stats.concealment = 19
 
 		-- Mamba 5.56
-		self:inf_init("aknato", "ar", nil)
-		self.aknato.sdesc1 = "caliber_r556x45"
-		self.aknato.sdesc2 = "action_gaslong"
-		self:copy_timers("aknato", "new_m4")
-		self.aknato.stats.concealment = 19
+		if self.aknato then
+			self:inf_init("aknato", "ar", nil)
+			self.aknato.sdesc1 = "caliber_r556x45"
+			self.aknato.sdesc2 = "action_gaslong"
+			self:copy_timers("aknato", "new_m4")
+			self.aknato.stats.concealment = 19
+		end
 
 		-- An AK turned into a shotgun with the SAIGA, turned into a bullpup with the Grimm
 		-- And now you turn it into an AR again
@@ -2181,22 +2189,24 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.x_lebman.sounds.fire_single = "c45_fire"
 
 		-- Classic Crosskill
-		self:inf_init("cold", "pistol", "medium")
-		self.cold.sdesc1 = "caliber_p45acp"
-		self.cold.sdesc2 = "action_shortrecoil"
-		self:copy_timers("cold", "colt_1911")
-		self.cold.CLIP_AMMO_MAX = 7
-		self.cold.AMMO_MAX = 77
-		self.cold.AMMO_PICKUP = self:_pickup_chance(77, 1)
+		if self.cold then
+			self:inf_init("cold", "pistol", "medium")
+			self.cold.sdesc1 = "caliber_p45acp"
+			self.cold.sdesc2 = "action_shortrecoil"
+			self:copy_timers("cold", "colt_1911")
+			self.cold.CLIP_AMMO_MAX = 7
+			self.cold.AMMO_MAX = 77
+			self.cold.AMMO_PICKUP = self:_pickup_chance(77, 1)
 
-		self:inf_init("x_cold", "pistol", "medium")
-		self.x_cold.sdesc1 = "caliber_p45acp"
-		self.x_cold.sdesc2 = "action_shortrecoil"
-		self:copy_timers("x_cold", "x_1911")
-		self.x_cold.CLIP_AMMO_MAX = self.cold.CLIP_AMMO_MAX * 2
-		self.x_cold.AMMO_MAX = 98
-		self.x_cold.AMMO_PICKUP = self:_pickup_chance(98, 1)
-		self.x_cold.stats.recoil = self.cold.stats.recoil - 4
+			self:inf_init("x_cold", "pistol", "medium")
+			self.x_cold.sdesc1 = "caliber_p45acp"
+			self.x_cold.sdesc2 = "action_shortrecoil"
+			self:copy_timers("x_cold", "x_1911")
+			self.x_cold.CLIP_AMMO_MAX = self.cold.CLIP_AMMO_MAX * 2
+			self.x_cold.AMMO_MAX = 98
+			self.x_cold.AMMO_PICKUP = self:_pickup_chance(98, 1)
+			self.x_cold.stats.recoil = self.cold.stats.recoil - 4
+		end
 
 		-- ACAR-9 SMG
 		self:inf_init("car9", "smg", {"range_carbine"})
@@ -2229,17 +2239,19 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("x_ak5s", "x_akmsu")
 
 		-- Dragon 5.45 pistol (AK pistol??? What in fuck)
-		self:inf_init("smolak", "pistol", "heavy")
-		self.smolak.sdesc1 = "caliber_r545x39"
-		self.smolak.sdesc2 = "action_gaslongaks74"
-		self.smolak.CLIP_AMMO_MAX = 10
-		self:copy_timers("smolak", "deagle")
+		if self.smolak then
+			self:inf_init("smolak", "pistol", "heavy")
+			self.smolak.sdesc1 = "caliber_r545x39"
+			self.smolak.sdesc2 = "action_gaslongaks74"
+			self.smolak.CLIP_AMMO_MAX = 10
+			self:copy_timers("smolak", "deagle")
 
-		self:inf_init("x_smolak", "pistol", "heavy")
-		self.x_smolak.sdesc1 = "caliber_r545x39"
-		self.x_smolak.sdesc2 = "action_gaslongaks74"
-		self.x_smolak.CLIP_AMMO_MAX = self.smolak.CLIP_AMMO_MAX * 2
-		self:copy_timers("x_smolak", "x_deagle")
+			self:inf_init("x_smolak", "pistol", "heavy")
+			self.x_smolak.sdesc1 = "caliber_r545x39"
+			self.x_smolak.sdesc2 = "action_gaslongaks74"
+			self.x_smolak.CLIP_AMMO_MAX = self.smolak.CLIP_AMMO_MAX * 2
+			self:copy_timers("x_smolak", "x_deagle")
+		end
 
 		-- Classic reinbeck shotgun
 		self:inf_init("beck", "shotgun", {"rof_slow", "range_slowpump"})
@@ -2306,6 +2318,7 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self:copy_timers("bs23", "china")
 		self.bs23.sdesc1 = "caliber_s23mm"
 		self.bs23.sdesc2 = "action_pump"
+		self.bs23.stats.concealment = 16
 
 		-- Most stats are similar enough to the reinfeld, but this monstrosity needs a lower RoF, more range and more damage
 		self.bs23.stats.damage = self.bs23.stats.damage + 15
@@ -2601,6 +2614,258 @@ function WeaponTweakData:_inf_init_custom_weapons(lmglist)
 		self.b93r.BURST_FIRE_RATE_MULTIPLIER = 1100/600
 		self.b93r.DELAYED_BURST_RECOIL = false
 	end
+
+
+	-- Sent by UCA-notHunky
+
+    -- Smith and Wesson 500
+    if IREnFIST:check_beardlib_mod_installed("shatters_fury") then
+        Hooks:RemovePostHook("shatters_furyInit")
+        self:inf_init("shatters_fury", "pistol", "heavy")
+        self.shatters_fury.use_data.selection_index = 1
+        self.shatters_fury.sdesc1 = "caliber_p500sw"
+        self.shatters_fury.sdesc2 = "action_dasa"
+        self.shatters_fury.chamber = 0
+        self.shatters_fury.AMMO_MAX = 30
+        self.shatters_fury.CLIP_AMMO_MAX = 5
+        self.shatters_fury.stats.spread = 81
+        self.shatters_fury.stats.suppression = 1
+        self.shatters_fury.stats.alert_size = 1
+        self.shatters_fury.stats.recoil = 12
+        self.shatters_fury.AMMO_PICKUP = {0.15, 0.75}
+        self.shatters_fury.can_shoot_through_enemy = true
+        self.shatters_fury.can_shoot_through_shield = true
+        self.shatters_fury.armor_piercing_chance = 1
+        self:copy_timers("shatters_fury", "new_raging_bull")
+    end
+
+    -- Big Glock 19 april fools
+    if IREnFIST:check_beardlib_mod_installed("Big Glock 19") then
+        self:inf_init("glawk19", "pistol", "heavy")
+        self.glawk19.sdesc1 = "caliber_p45fpo"
+        self.glawk19.sdesc2 = "action_shortrecoil"
+        self.glawk19.can_shoot_through_enemy = true
+        self.glawk19.can_shoot_through_shield = true
+        self.glawk19.armor_piercing_chance = 1
+        self.glawk19.stats.spread = 81
+        self.glawk19.stats.recoil = 10
+    end
+
+    -- PAW 20 grenade launcher
+    if IREnFIST:check_beardlib_mod_installed("Neopup PAW-20") then
+        self:inf_init("inkunzi", "grenade_launcher")
+        self.inkunzi.sdesc1 = "caliber_g20mm"
+        self.inkunzi.sdesc2 = "action_recoil"
+        self.inkunzi.stats.spread = 80
+        self.inkunzi.CLIP_AMMO_MAX = 3
+        self.inkunzi.AMMO_MAX = 15
+    end
+
+    -- Railgun Rorsch Mk-1
+    if IREnFIST:check_beardlib_mod_installed("Railgun Rorsch Mk-1") then
+        self:inf_init("roach", "grenade_launcher")
+        self.roach.sdesc1 = "caliber_railgun"
+        self.roach.sdesc2 = "action_breech"
+        self.roach.stats.damage = 90 -- 1500
+        self.roach.stats.spread = 100
+        self.roach.AMMO_MAX = 12
+        self.roach.AMMO_PICKUP = {1338, 75}
+    end
+
+    -- Akimbo Pancor Jackhammer shotguns
+    if IREnFIST:check_beardlib_mod_installed("Akimbo Pancor Jackhammer") then
+        self:inf_init("x_jackhammer", "shotgun", {"range_slowpump", "dmg_aa12", "rof_mag"})
+        self.x_jackhammer.sdesc1 = "caliber_s12g"
+        self.x_jackhammer.sdesc2 = "action_dasa"
+        self.x_jackhammer.chamber = 0
+        self.x_jackhammer.stats.spread = 44
+        self.x_jackhammer.AMMO_MAX = 50
+    end
+
+    -- secondary
+    if IREnFIST:check_beardlib_mod_installed("Pancor Jackhammer") then
+        self:inf_init("jackhammer", "shotgun", {"range_slowpump", "dmg_vlight", "rof_mag"})
+        self.jackhammer.sdesc1 = "caliber_s12g"
+        self.jackhammer.sdesc2 = "action_dasa"
+        self.jackhammer.chamber = 0
+        self.jackhammer.stats.spread = 44
+        self.jackhammer.AMMO_MAX = 30
+    end
+
+    -- Browning M1919A6
+    if IREnFIST:check_beardlib_mod_installed("Browning M1919A6") then
+        self:inf_init("m1919a6", "lmg", "heavy")
+        self.m1919a6.sdesc1 = "caliber_r3006"
+        self.m1919a6.sdesc2 = "action_shortrecoil"
+        self:copy_timers("m1919a6", "par")
+        self.m1919a6.stats.concealment = 11
+        self.m1919a6.chamber = 0
+        self.m1919a6.CLIP_AMMO_MAX = 50
+        self.m1919a6.not_empty_reload_speed_mult = 1.25
+        self.m1919a6.timers.reload_not_empty = 6.5
+        self.m1919a6.timers.reload_not_empty_end = 1.2 -- 3.50
+        self.m1919a6.empty_reload_speed_mult = 1.25
+        self.m1919a6.timers.reload_empty = 6.5
+        self.m1919a6.timers.reload_empty_end = 1.2 -- 3.50
+
+        -- stupid ads bipod needs to be adjusted
+        DelayedCalls:Add("m1919a6timersbipod", 0.50, function(self, params)
+			tweak_data.weapon:apply_standard_bipod_stats("m1919a6")
+			tweak_data.weapon.m1919a6.bipod_weapon_translation = Vector3(-5, 15, -10)
+			local pivot_shoulder_translation = Vector3(0, 0, 0)
+			local pivot_shoulder_rotation = Rotation(0, 0, 0)
+			local pivot_head_translation = Vector3(0, 0, 0)
+			local pivot_head_rotation = Rotation(0, 0, 0)
+			tweak_data.weapon.m1919a6.stances.bipod.shoulders.translation = pivot_head_translation - pivot_shoulder_translation:rotate_with(pivot_shoulder_rotation:inverse()):rotate_with(pivot_head_rotation)
+			tweak_data.weapon.m1919a6.stances.bipod.shoulders.rotation = pivot_head_rotation * pivot_shoulder_rotation:inverse()
+			tweak_data.weapon.m1919a6.stances.bipod.vel_overshot.pivot = pivot_shoulder_translation + Vector3(0, 0, 0)
+        end)
+
+        self.m1919a6.custom_bipod = true
+        self.m1919a6.deploy_ads_stance_mod = {translation = Vector3(5.35, 1.25, -0.625), rotation = Rotation(-0.2, -1, -4.5)}
+        self.m1919a6.bipod_deploy_multiplier = self.dp28.bipod_deploy_multiplier * 1.3
+        --self:apply_standard_bipod_stats("m1919a6")
+        --self.m1919a6.deploy_ads_stance_mod = {translation = Vector3(6.8, 0, -4), rotation = Rotation(-0.1, -1.5, -4.5)}
+        --self.m1919a6.deploy_anim_override = "hk21"
+        table.insert(lmglist, "m1919a6")
+    end
+
+    -- Armalite AR-18
+    if IREnFIST:check_beardlib_mod_installed("Armalite AR-18") then
+        self:inf_init("ar18", "ar", nil)
+        self.ar18.sdesc1 = "caliber_r556x45"
+        self.ar18.sdesc2 = "action_pistonshort"
+        self:copy_timers("ar18", "ak5")
+        self.ar18.stats.concealment = 20    
+    end
+
+    -- Mag 7 akimbo shotguns
+    if IREnFIST:check_beardlib_mod_installed("MAG7 Shotgun") then
+        self:inf_init("x_techno", "shotgun", {"range_short", "dmg_aa12", "rof_mag"})
+        self.x_techno.sdesc1 = "caliber_s12g"
+        self.x_techno.sdesc2 = "action_blowback"
+        self.x_techno.stats.spread = 44
+        self.x_techno.CLIP_AMMO_MAX = 10
+        self.x_techno.AMMO_MAX = 50
+    -- secondary
+        self:inf_init("techno", "shotgun", {"range_slowpump", "dmg_vlight", "rof_mag"})
+        self.techno.sdesc1 = "caliber_s12g"
+        self.techno.sdesc2 = "action_blowback"
+        self.techno.stats.spread = 44
+        self.techno.CLIP_AMMO_MAX = 5
+        self.techno.AMMO_MAX = 30
+    end
+
+    -- MTs-255 revolving shotgun
+    if IREnFIST:check_beardlib_mod_installed("MTs-255") then
+        self:inf_init("mts255", "shotgun", {"range_slowpump", "dmg_vlight", "rof_mag"})
+        self.mts255.sdesc1 = "caliber_s12g"
+        self.mts255.sdesc2 = "action_dasa"
+        self.mts255.chamber = 0
+        self.mts255.stats.spread = 56
+        self.mts255.AMMO_MAX = 50
+    end
+
+    -- Akimbo MTs-255 shotguns
+    if IREnFIST:check_beardlib_mod_installed("MTs-255") then
+        self:inf_init("x_mts255", "shotgun", {"range_short", "dmg_aa12", "rof_mag"})
+        self.x_mts255.sdesc1 = "caliber_s12g"
+        self.x_mts255.sdesc2 = "action_dasa"
+        self.x_mts255.chamber = 0
+        self.x_mts255.stats.spread = 32
+        self.x_mts255.AMMO_MAX = 50
+    end
+
+    -- Spectre M4
+    if IREnFIST:check_beardlib_mod_installed("Spectre M4") then
+        self:inf_init("spectre_m4", "smg", nil)
+        self.spectre_m4.sdesc1 = "caliber_p9x19"
+        self.spectre_m4.sdesc2 = "action_blowback"
+        self:copy_timers("spectre_m4", "tec9")
+        self.spectre_m4.stats.concealment = 26
+        self.spectre_m4.AMMO_MAX = 150
+        self.spectre_m4.AMMO_PICKUP = self:_pickup_chance(150, 1)
+        self.spectre_m4.reload_speed_mult = 0.75
+    -- Picked up Dual Phantoms  
+        self:inf_init("x_spectre_m4", "smg", nil)
+        self:copy_sdescs("x_spectre_m4", "spectre_m4", true)
+        self:copy_stats("x_spectre_m4", "spectre_m4", true)
+        self:copy_timers("x_spectre_m4", "x_tec9")
+        self.x_spectre_m4.AMMO_MAX = 200
+        self.x_spectre_m4.AMMO_PICKUP = self:_pickup_chance(200, 1)
+    end
+
+    -- Scorpion EVO
+    if IREnFIST:check_beardlib_mod_installed("CZ Scorpion Evo") then
+        self:inf_init("czevo", "smg", {"range_long"})
+        self.czevo.sdesc1 = "caliber_p9x19"
+        self.czevo.sdesc2 = "action_blowback"
+        self.czevo.AMMO_MAX = 120
+        self.czevo.AMMO_PICKUP = self:_pickup_chance(120, 1)
+        self:copy_timers("czevo", "shepheard")
+        self.czevo.stats.concealment = 22
+        --akimbo
+        self:inf_init("x_czevo", "smg", {"range_long"})
+        self:copy_sdescs("x_czevo", "czevo", true)
+        self:copy_stats("x_czevo", "czevo", true)
+        self:copy_timers("x_czevo", "x_shepheard")
+        self.x_czevo.stats.concealment = 20
+        self.x_czevo.AMMO_MAX = 180
+        self.x_czevo.AMMO_PICKUP = self:_pickup_chance(180, 1)
+    end
+
+    --Halo Battle Rifle
+    if IREnFIST:check_beardlib_mod_installed("Halo 2 Battle Rifle") then
+        self:inf_init("br55", "ar", {"medium"})
+        self.br55.sdesc1 = "caliber_r95x40"
+        self.br55.sdesc2 = "action_gasshort"
+        self.br55.BURST_FIRE = 3
+        self.br55.ADAPTIVE_BURST_SIZE = false
+        self.br55.BURST_FIRE_RATE_MULTIPLIER = 720/480
+        self.br55.DELAYED_BURST_RECOIL = false
+        self.br55.burst_recoil_table = {0.25, 1.00}
+        self.br55.AMMO_MAX = 144
+        self:copy_timers("br55", "vhs")
+        self.br55.stats.concealment = 12
+    end
+
+    -- Halo M7 SMG
+    if IREnFIST:check_beardlib_mod_installed("Halo 2/3/ODST SMG") then
+        self:inf_init("m7caseless", "smg", nil)
+        self.m7caseless.sdesc1 = "caliber_p5x23"
+        self.m7caseless.sdesc2 = "action_gaslsat"
+        self:copy_timers("m7caseless", "sr2")
+        self.m7caseless.stats.concealment = 26
+        self.m7caseless.AMMO_MAX = 180
+        self.m7caseless.AMMO_PICKUP = self:_pickup_chance(180, 1)
+    -- Primary SMG: CURRENTLY BUGGED, DOES NOT SHOW UP IN THE CORRECT WEAPON CATEGORY!
+        self:inf_init("m7caseless_prim", "smg", nil)
+        self.m7caseless_prim.categories = {"assault_rifle"}
+        self:copy_sdescs("m7caseless_prim", "m7caseless")
+        self:copy_stats("m7caseless_prim", "m7caseless")
+        self.m7caseless_prim.stats.concealment = 26
+        self.m7caseless_prim.AMMO_MAX = 240
+        self.m7caseless_prim.AMMO_PICKUP = self:_pickup_chance(240, 1)
+        self:copy_timers("m7caseless_prim", "sr2")
+    -- Hold Y to dual wield 
+        self:inf_init("x_m7caseless", "smg", nil)
+        self:copy_sdescs("x_m7caseless", "m7caseless", true)
+        self:copy_stats("x_m7caseless", "m7caseless", true)
+        self:copy_timers("x_m7caseless", "x_sr2")
+        self.x_m7caseless.AMMO_MAX = 300
+        self.x_m7caseless.AMMO_PICKUP = self:_pickup_chance(300, 1) 
+    end
+
+    -- Halo Reach DMR
+    if IREnFIST:check_beardlib_mod_installed("Halo Reach DMR") then
+        self:inf_init("reachdmr", "ar", {"ldmr"})
+        self.reachdmr.sdesc1 = "caliber_r762x51"
+        self.reachdmr.sdesc2 = "action_gasshort"
+        self.reachdmr.AMMO_MAX = 75
+        self:copy_timers("reachdmr", "wa2000")
+        self.reachdmr.stats.concealment = 18
+    end
+
 	
 	-- HOW TO ADD CUSTOM WEAPON SUPPORT:
 	-- Open the custom weapon's main.xml file and find out its id (<weapon id="glawk"> for instance)

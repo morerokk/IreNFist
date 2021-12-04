@@ -215,6 +215,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "inf_initweaponfactory_partstats"
 	-- I'm not going to hardcode a check for BeardLib's existence, instead I am simply going to check if the primary SMG's are loaded.
 	-- Just in case another mod comes around to replace BeardLib
 	if not self.parts.inf_bipod_part then
+		log("[INF] ERROR While initializing InF weaponmods! self.parts.inf_bipod_part in weaponfactorytweakdata is missing! Is BeardLib installed properly?")
 		error("Could not initialize IREnFIST weaponmods (weaponfactorytweakdata self.parts.inf_bipod_part)! Is BeardLib installed?")
 	end
 

@@ -209,7 +209,12 @@ end
 
 
 
-Hooks:PostHook(WeaponFactoryTweakData, "init", "inf_initweaponfactory_partstats", function(self, params)
+--Hooks:PostHook(WeaponFactoryTweakData, "init", "inf_initweaponfactory_partstats", function(self, params)
+local weaponfactorytweak_oldinit = WeaponFactoryTweakData.init
+function WeaponFactoryTweakData:init(params, ...)
+
+	weaponfactorytweak_oldinit(self, params, ...)
+
 	-- Check if BeardLib is installed, THIS IS NECESSARY for InF to work. Apparently this isn't clear enough for some people,
 	-- so I'll let the crashlogs speak for themselves.
 	-- I'm not going to hardcode a check for BeardLib's existence, instead I am simply going to check if the primary SMG's are loaded.
@@ -2608,35 +2613,6 @@ end
 	-- Custom Built Frame
 	self.parts.wpn_fps_smg_mac10_body_modern.stats = deep_clone(nostats)
 
-	-- Sent by UCA-notHunky:
-	--
-    --Firebug ammo for mac10
-    self.parts.inf_9mm_incendiary.sub_type = "ammo_dragons_breath"
-    self.parts.inf_9mm_incendiary.internal_part = true
-    self.parts.inf_9mm_incendiary.custom_stats = {
-        sdesc1 = "caliber_9mminc",
-        bullet_class = "FlameBulletBase",
-        can_shoot_through_shield = false,
-        can_shoot_through_enemy = true,
-        can_shoot_through_wall = true,
-        --rays = 1,
-        fire_dot_data = {
-            dot_trigger_chance = "100",
-            dot_damage = "1.5",
-            dot_length = "3.1",
-            dot_trigger_max_distance = "10000", -- 100m
-            dot_tick_period = "0.5"
-        }
-    }
-    self.parts.inf_9mm_incendiary.stats = deep_clone(nostats)
-    -- don't allow this shit to be used without the crash fix
-    if not BeardLib.Utils:FindMod("Fix Custom Weapon Dragons Breath Crash") then
-        self.parts.wpn_fps_smg_mac10_magazine.forbids = self.parts.wpn_fps_smg_mac10_magazine.forbids or {}
-        table.insert(self.parts.wpn_fps_smg_mac10_magazine.forbids, "inf_9mm_incendiary")
-        self.parts.inf_9mm_incendiary.desc_id = "bm_wp_inf_50bmg_raufoss_restricted_desc"
-    end 
-	--
-
 	-- KOBRA PARTS
 	-- skorpion suppressor
 	self.parts.wpn_fps_smg_scorpion_b_suppressed.custom_stats = silencercustomstats
@@ -4711,7 +4687,7 @@ end
 	-- Enables better compatibility with other mods if they choose to override something InF does
 	Hooks:Call("inf_weaponfactorytweak_initcomplete", self, params)
 
-end)
+end
 
 
 

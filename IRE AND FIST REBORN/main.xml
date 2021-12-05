@@ -644,19 +644,6 @@ Seriously, these are already there, why can't we use these normally?
 </WeaponMod>
 
 
-<!--Mac10 incendiary ammo, sent by UCA-notHunky-->
-<WeaponMod id="inf_9mm_incendiary" based_on="wpn_fps_smg_mp9_b_dummy" type="ammo" drop="false" is_a_unlockable="true" texture_bundle_folder="infimg">
-    <pcs/>
-    <weapons>
-        <value_node value="wpn_fps_smg_mac10"/>
-    </weapons>
-</WeaponMod>
-
-
-
-
-
-
 
 
 	<!-- Secondary M79 (stats-wise a clone of the M320). I wanted to base this on the china lake for better sync but that crashes the game -->
